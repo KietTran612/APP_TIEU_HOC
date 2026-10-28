@@ -1,0 +1,557 @@
+{
+  "schema": 1,
+  "lesson_id": "tv1_t1_b42",
+  "book": "tv1_t1_1990",
+  "lesson_no": 42,
+  "type": "van_moi",
+  "title": "an",
+  "new_units": [
+    "an"
+  ],
+  "source": {
+    "pages": [
+      47
+    ],
+    "scan_file": "024",
+    "verification": "page_verified"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[5]",
+        "note": "Sách chỉ có tranh nhà sàn. Tranh lan can, đàn ngan, bàn ghế là vẽ thêm để làm bài tập."
+      },
+      {
+        "where": "part1[5].items[1]",
+        "note": "dùng tên đọc riêng tr.122 cho 'ng' (tạm)"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "an",
+      "audio": "van_an",
+      "hl": [
+        {
+          "s": 0,
+          "n": 2
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "text": "nhà sàn",
+      "audio": "tu_nhaf_sanf",
+      "image": "img_b42_nhaf_sanf",
+      "hl": [
+        {
+          "s": 5,
+          "n": 2
+        }
+      ]
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        {
+          "text": "nhà sàn",
+          "audio": "tu_nhaf_sanf",
+          "hl": [
+            {
+              "s": 5,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "text": "sàn",
+          "audio": "tieng_sanf",
+          "hl": [
+            {
+              "s": 1,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "text": "an",
+          "audio": "van_an",
+          "hl": [
+            {
+              "s": 0,
+              "n": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "spell",
+      "spell": {
+        "target": "an",
+        "drag_tone": false,
+        "parts": [
+          {
+            "kind": "unit",
+            "text": "a",
+            "audio": "van_a"
+          },
+          {
+            "kind": "unit",
+            "text": "n",
+            "audio": "am_n"
+          },
+          {
+            "kind": "join",
+            "text": "an",
+            "audio": "van_an"
+          }
+        ]
+      }
+    },
+    {
+      "type": "spell",
+      "spell": {
+        "target": "sàn",
+        "drag_tone": true,
+        "parts": [
+          {
+            "kind": "unit",
+            "text": "s",
+            "audio": "am_s"
+          },
+          {
+            "kind": "unit",
+            "text": "an",
+            "audio": "van_an"
+          },
+          {
+            "kind": "join",
+            "text": "san",
+            "audio": "tieng_san"
+          },
+          {
+            "kind": "tone",
+            "text": "ˋ",
+            "audio": "dau_huyen",
+            "tone": "huyen"
+          },
+          {
+            "kind": "join",
+            "text": "sàn",
+            "audio": "tieng_sanf"
+          }
+        ]
+      },
+      "then_text": "nhà sàn",
+      "then_audio": "tu_nhaf_sanf"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "lan can",
+          "audio": "tu_lan_can",
+          "image": "img_b42_lan_can",
+          "hl": [
+            {
+              "s": 1,
+              "n": 2
+            },
+            {
+              "s": 5,
+              "n": 2
+            }
+          ],
+          "spells": [
+            {
+              "target": "lan",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "l",
+                  "audio": "am_l"
+                },
+                {
+                  "kind": "unit",
+                  "text": "an",
+                  "audio": "van_an"
+                },
+                {
+                  "kind": "join",
+                  "text": "lan",
+                  "audio": "tieng_lan"
+                }
+              ]
+            },
+            {
+              "target": "can",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "an",
+                  "audio": "van_an"
+                },
+                {
+                  "kind": "join",
+                  "text": "can",
+                  "audio": "tieng_can"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đàn ngan",
+          "audio": "tu_ddanf_ngan",
+          "image": "img_b42_ddanf_ngan",
+          "note": "ngan: ở phía Nam gọi là vịt xiêm.",
+          "hl": [
+            {
+              "s": 1,
+              "n": 2
+            },
+            {
+              "s": 6,
+              "n": 2
+            }
+          ],
+          "spells": [
+            {
+              "target": "đàn",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "an",
+                  "audio": "van_an"
+                },
+                {
+                  "kind": "join",
+                  "text": "đan",
+                  "audio": "tieng_ddan"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "đàn",
+                  "audio": "tieng_ddanf"
+                }
+              ]
+            },
+            {
+              "target": "ngan",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "ng",
+                  "audio": "am_ng"
+                },
+                {
+                  "kind": "unit",
+                  "text": "an",
+                  "audio": "van_an"
+                },
+                {
+                  "kind": "join",
+                  "text": "ngan",
+                  "audio": "tieng_ngan"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "bàn ghế",
+          "audio": "tu_banf_ghees",
+          "image": "img_b42_banf_ghees",
+          "hl": [
+            {
+              "s": 1,
+              "n": 2
+            }
+          ],
+          "spells": [
+            {
+              "target": "bàn",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "b",
+                  "audio": "am_b"
+                },
+                {
+                  "kind": "unit",
+                  "text": "an",
+                  "audio": "van_an"
+                },
+                {
+                  "kind": "join",
+                  "text": "ban",
+                  "audio": "tieng_ban"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "bàn",
+                  "audio": "tieng_banf"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_lan",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "lan",
+          "audio": "tieng_lan",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "can",
+          "audio": "tieng_can",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bàn",
+          "audio": "tieng_banf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_can",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "can",
+          "audio": "tieng_can",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lan",
+          "audio": "tieng_lan",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đàn",
+          "audio": "tieng_ddanf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_banf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bàn",
+          "audio": "tieng_banf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đàn",
+          "audio": "tieng_ddanf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_ddanf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bàn",
+          "audio": "tieng_banf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đàn",
+          "audio": "tieng_ddanf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_banf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bàn",
+          "audio": "tieng_banf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đàn",
+          "audio": "tieng_ddanf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "compose",
+      "tag": "",
+      "instruction_audio": "hd_keo_vao_cho_trong",
+      "prompt_audio": "tu_lan_can",
+      "prompt_text": "l_ can",
+      "base_text": "",
+      "image": "img_b42_lan_can",
+      "options": [
+        {
+          "text": "an",
+          "audio": "van_an",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "a",
+          "audio": "van_a",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "u",
+          "audio": "van_u",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tu_ddanf_ngan",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "nhà sàn",
+          "audio": "",
+          "image": "img_b42_nhaf_sanf",
+          "tone": ""
+        },
+        {
+          "text": "lan can",
+          "audio": "",
+          "image": "img_b42_lan_can",
+          "tone": ""
+        },
+        {
+          "text": "đàn ngan",
+          "audio": "",
+          "image": "img_b42_ddanf_ngan",
+          "tone": ""
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tu_banf_ghees",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "lan can",
+          "audio": "",
+          "image": "img_b42_lan_can",
+          "tone": ""
+        },
+        {
+          "text": "bàn ghế",
+          "audio": "",
+          "image": "img_b42_banf_ghees",
+          "tone": ""
+        },
+        {
+          "text": "nhà sàn",
+          "audio": "",
+          "image": "img_b42_nhaf_sanf",
+          "tone": ""
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

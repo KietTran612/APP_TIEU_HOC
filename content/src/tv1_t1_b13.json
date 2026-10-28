@@ -1,0 +1,191 @@
+{
+  "lesson_id": "tv1_t1_b13",
+  "book": "tv1_t1_1990",
+  "lesson_no": 13,
+  "type": "am_moi",
+  "title": "u ư",
+  "source": {
+    "pages": [
+      18
+    ],
+    "scan_file": "010",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "u",
+    "ư"
+  ],
+  "images": {
+    "img_b13_cais_ddu": "Bé gái ngồi trên ván đu, hai tay nắm hai sợi dây đu buộc từ trên cao",
+    "img_b13_cuwr_taj": "Cậu bé mặc áo ba lỗ đứng giơ quả tạ (thanh đòn có hai bánh tạ) lên quá đầu",
+    "img_b13_ddu_ddur": "Một quả đu đủ chín, thuôn dài, có cuống nhỏ",
+    "img_b13_cur_tuwf": "Một củ từ (khoai từ) vỏ sần, có vài rễ con"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "u"
+    },
+    {
+      "type": "keyword",
+      "text": "cái đu",
+      "image": "img_b13_cais_ddu"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái đu",
+        "đu",
+        "u"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "đu",
+      "then": "cái đu"
+    },
+    {
+      "type": "unit",
+      "text": "ư"
+    },
+    {
+      "type": "keyword",
+      "text": "cử tạ",
+      "image": "img_b13_cuwr_taj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cử tạ",
+        "cử",
+        "ư"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "cử",
+      "drag_tone": true,
+      "then": "cử tạ"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "đu đủ",
+          "image": "img_b13_ddu_ddur"
+        },
+        {
+          "text": "củ từ",
+          "image": "img_b13_cur_tuwf"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "má có củ từ"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "cù",
+          "cừ",
+          "dù",
+          "tư",
+          "nụ",
+          "mụ"
+        ],
+        [
+          "từ từ",
+          "tù mù"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "u",
+          "options": [
+            "u",
+            "ư",
+            "o"
+          ]
+        },
+        {
+          "answer": "ư",
+          "options": [
+            "ư",
+            "u",
+            "a"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "u",
+          "options": [
+            "u",
+            "ư"
+          ]
+        },
+        {
+          "answer": "ư",
+          "options": [
+            "u",
+            "ư"
+          ]
+        },
+        {
+          "answer": "ư",
+          "options": [
+            "u",
+            "ư"
+          ]
+        },
+        {
+          "answer": "u",
+          "options": [
+            "u",
+            "ư"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "củ từ",
+      "template": "củ t_",
+      "answer": "ừ",
+      "options": [
+        "ừ",
+        "ù",
+        "à"
+      ],
+      "image": "img_b13_cur_tuwf"
+    },
+    {
+      "kind": "listen_picture",
+      "word": "củ từ",
+      "answer": "img_b13_cur_tuwf",
+      "options": [
+        "img_b13_ddu_ddur",
+        "img_b13_cur_tuwf",
+        "img_b13_cuwr_taj"
+      ]
+    }
+  ]
+}

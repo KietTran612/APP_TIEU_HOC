@@ -1,0 +1,92 @@
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace TapDoc
+{
+    /// <summary>
+    /// Câu ứng dụng: mỗi tiếng một thẻ trên một dòng. Chạm tiếng nào thì app làm mẫu đánh vần tiếng đó.
+    /// "Nghe cả câu" đọc câu, các tiếng sáng lần lượt. "Con đọc xong rồi" báo xong.
+    /// </summary>
+    public class SentenceView : StepViewBase
+    {
+        private readonly List<Tile> _tokens = new();
+        private Button _doneButton;
+        private int _listenGeneration;
+
+        protected override void Build()
+        {
+            AddMarker();
+            var items = Step.items;
+            const float gap = 24f;
+            var widths = items.Select(i => i.text.Length <= 3 ? 200f : 280f).ToList();
+            var total = widths.Sum() + (items.Count - 1) * gap;
+            var x = -total / 2f;
+            for (var j = 0; j < items.Count; j++)
+            {
+                var index = j;
+                var tile = AddTile(items[j].text, new Vector2(widths[j], 190f), new Vector2(x + widths[j] / 2f, 110f), 110f);
+                tile.Tapped += () => OnTokenTapped(index);
+                _tokens.Add(tile);
+                x += widths[j] + gap;
+            }
+
+            var listen = UiKit.CreateButton(Root.transform, UiText.ListenSentence, OnListen);
+            Place(listen, new Vector2(-240f, -180f), new Vector2(420f, UiKit.MinTouch));
+            _doneButton = UiKit.CreateButton(Root.transform, UiText.DoneReading, Complete);
+            Place(_doneButton, new Vector2(240f, -180f), new Vector2(420f, UiKit.MinTouch));
+        }
+
+        private static void Place(Button b, Vector2 pos, Vector2 size)
+        {
+            var rt = (RectTransform)b.transform;
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta = size;
+            rt.anchoredPosition = pos;
+        }
+
+        private void OnTokenTapped(int index)
+        {
+            _listenGeneration++;
+            Highlight(-1);
+            var item = Step.items[index];
+            var ids = item.spells.SelectMany(s => s.parts).Select(p => p.audio).ToList();
+            // Mảnh cuối của chuỗi đánh vần đã là tiếng đó: không đọc lại.
+            if (ids.Count == 0 || ids[ids.Count - 1] != item.audio) ids.Add(item.audio);
+            _ = Ctx.Speech.PlaySequenceAsync(ids);
+        }
+
+        private async void OnListen()
+        {
+            var gen = ++_listenGeneration;
+            var clip = Ctx.Assets.Audio(Step.audio);
+            var play = Ctx.Speech.PlayAsync(Step.audio);
+            if (clip != null && _tokens.Count > 0)
+            {
+                var starts = SequenceTimeline.EvenStarts(clip.length * Ctx.Speech.WaitScale, _tokens.Count);
+                var t0 = Time.realtimeSinceStartup;
+                for (var k = 0; k < starts.Length; k++)
+                {
+                    while (Time.realtimeSinceStartup - t0 < starts[k])
+                    {
+                        await Awaitable.NextFrameAsync();
+                        if (!IsAlive || gen != _listenGeneration) return;
+                    }
+                    Highlight(k);
+                }
+            }
+            await play;
+            if (IsAlive && gen == _listenGeneration) Highlight(-1);
+        }
+
+        private void Highlight(int index)
+        {
+            for (var k = 0; k < _tokens.Count; k++) _tokens[k].SetHighlighted(k == index);
+        }
+
+        public override void Replay() => OnListen();
+
+        protected override void ActForTest() => _doneButton.onClick.Invoke();
+    }
+}

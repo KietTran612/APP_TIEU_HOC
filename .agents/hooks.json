@@ -1,0 +1,18 @@
+{
+  "rule-keeper": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "node skills/rule-keeper/bin/rk.mjs hook agy pre",
+        "timeout": 30
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "node skills/rule-keeper/bin/rk.mjs hook agy stop",
+        "timeout": 60
+      }
+    ]
+  }
+}

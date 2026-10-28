@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duyệt âm thanh và tranh — Tập đọc</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 16px 24px;
+      background: #f7f8fa;
+      color: #1f2937;
+    }
+    h1 {
+      margin: 0 0 12px 0;
+      font-size: 22px;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+    }
+    .tabs {
+      display: flex;
+      gap: 8px;
+    }
+    .tab-btn {
+      padding: 8px 16px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid #d1d5db;
+      background: #f3f4f6;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+    }
+    select, input[type="text"] {
+      padding: 6px 10px;
+      font-size: 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: #ffffff;
+    }
+    .summary {
+      margin-left: auto;
+      font-size: 14px;
+      color: #4b5563;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      vertical-align: middle;
+      font-size: 14px;
+    }
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+    }
+    .code-id {
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 13px;
+      color: #374151;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .status-dat { background: #dcfce7; color: #166534; }
+    .status-khong_dat { background: #fee2e2; color: #991b1b; }
+    .status-cho_duyet { background: #fef3c7; color: #92400e; }
+    .status-chua_co { background: #e5e7eb; color: #4b5563; }
+    .careful-badge {
+      background: #dbeafe;
+      color: #1e40af;
+      margin-left: 6px;
+    }
+    .thumb {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      background: #f9fafb;
+      display: block;
+    }
+    .actions {
+      display: flex;
+      gap: 6px;
+    }
+    .btn {
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      cursor: pointer;
+    }
+    .btn-ok:hover, .btn-ok.selected {
+      background: #16a34a;
+      color: #ffffff;
+      border-color: #16a34a;
+    }
+    .btn-bad:hover, .btn-bad.selected {
+      background: #dc2626;
+      color: #ffffff;
+      border-color: #dc2626;
+    }
+    .note-input {
+      width: 100%;
+      min-width: 180px;
+      box-sizing: border-box;
+    }
+    .toast {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      background: #1f2937;
+      color: #ffffff;
+      font-size: 13px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Duyệt âm thanh và tranh</h1>
+
+  <div class="toolbar">
+    <div class="tabs">
+      <button type="button" id="tab-audio" class="tab-btn active">Âm thanh</button>
+      <button type="button" id="tab-images" class="tab-btn">Tranh</button>
+    </div>
+
+    <label class="filter-group">
+      <span>Trạng thái:</span>
+      <select id="filter-status">
+        <option value="">Tất cả</option>
+        <option value="cho_duyet">Chờ duyệt (cho_duyet)</option>
+        <option value="dat">Đạt (dat)</option>
+        <option value="khong_dat">Không đạt (khong_dat)</option>
+        <option value="chua_co">Chưa có (chua_co)</option>
+      </select>
+    </label>
+
+    <label class="filter-group">
+      <span>Bài:</span>
+      <select id="filter-bai">
+        <option value="">Tất cả</option>
+      </select>
+    </label>
+
+    <label class="filter-group" id="careful-filter-wrap">
+      <input type="checkbox" id="filter-careful">
+      <span>chỉ file cần nghe kỹ</span>
+    </label>
+
+    <div class="summary" id="summary-text"></div>
+  </div>
+
+  <table>
+    <thead id="table-head"></thead>
+    <tbody id="table-body"></tbody>
+  </table>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    (function () {
+      let currentTab = "audio";
+      let state = { audio: [], images: [] };
+
+      const tabAudioBtn = document.getElementById("tab-audio");
+      const tabImagesBtn = document.getElementById("tab-images");
+      const filterStatus = document.getElementById("filter-status");
+      const filterBai = document.getElementById("filter-bai");
+      const filterCareful = document.getElementById("filter-careful");
+      const carefulWrap = document.getElementById("careful-filter-wrap");
+      const summaryText = document.getElementById("summary-text");
+      const tableHead = document.getElementById("table-head");
+      const tableBody = document.getElementById("table-body");
+      const toastEl = document.getElementById("toast");
+
+      function showToast(msg) {
+        toastEl.textContent = msg;
+        toastEl.style.display = "block";
+        clearTimeout(showToast._timer);
+        showToast._timer = setTimeout(() => {
+          toastEl.style.display = "none";
+        }, 2000);
+      }
+
+      function populateLessonFilter() {
+        const lessons = new Set();
+        for (const list of [state.audio, state.images]) {
+          for (const row of list) {
+            for (const b of row.bai || []) {
+              lessons.add(b);
+            }
+          }
+        }
+        const current = filterBai.value;
+        filterBai.textContent = "";
+        const allOpt = document.createElement("option");
+        allOpt.value = "";
+        allOpt.textContent = "Tất cả";
+        filterBai.appendChild(allOpt);
+        for (const b of Array.from(lessons).sort()) {
+          const opt = document.createElement("option");
+          opt.value = b;
+          opt.textContent = b;
+          filterBai.appendChild(opt);
+        }
+        filterBai.value = current;
+      }
+
+      async function saveReview(manifest, row, newStatus, newNote) {
+        const payload = {
+          manifest: manifest,
+          id: row.id,
+          status: newStatus,
+          ghi_chu: newNote
+        };
+        const resp = await fetch("/api/review", {
+          method: "POST",
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+        if (!resp.ok) {
+          showToast("Lỗi lưu " + row.id);
+          return;
+        }
+        const updated = await resp.json();
+        row.status = updated.status;
+        row.ghi_chu = updated.ghi_chu;
+        showToast("Đã lưu " + row.id);
+        render();
+      }
+
+      function filteredRows() {
+        const list = currentTab === "audio" ? state.audio : state.images;
+        const st = filterStatus.value;
+        const bai = filterBai.value;
+        const carefulOnly = currentTab === "audio" && filterCareful.checked;
+        return list.filter((row) => {
+          if (st && row.status !== st) return false;
+          if (bai && !(row.bai || []).includes(bai)) return false;
+          if (carefulOnly && !row.can_nghe_ky) return false;
+          return true;
+        });
+      }
+
+      function render() {
+        carefulWrap.style.display = currentTab === "audio" ? "flex" : "none";
+        tabAudioBtn.classList.toggle("active", currentTab === "audio");
+        tabImagesBtn.classList.toggle("active", currentTab === "images");
+
+        tableHead.textContent = "";
+        const headRow = document.createElement("tr");
+        const headers = currentTab === "audio"
+          ? ["Mã", "Lời đọc", "Loại", "Bài", "Nghe thử", "Trạng thái", "Duyệt", "Ghi chú"]
+          : ["Mã", "Mô tả", "Bài", "Ảnh (160 px)", "Trạng thái", "Duyệt", "Ghi chú"];
+        for (const h of headers) {
+          const th = document.createElement("th");
+          th.textContent = h;
+          headRow.appendChild(th);
+        }
+        tableHead.appendChild(headRow);
+
+        const rows = filteredRows();
+        const total = (currentTab === "audio" ? state.audio : state.images).length;
+        summaryText.textContent = "Đang hiện " + rows.length + " / " + total + " mục";
+
+        tableBody.textContent = "";
+        for (const row of rows) {
+          const tr = document.createElement("tr");
+
+          const tdId = document.createElement("td");
+          tdId.className = "code-id";
+          tdId.textContent = row.id;
+          tr.appendChild(tdId);
+
+          const tdText = document.createElement("td");
+          tdText.textContent = currentTab === "audio" ? row.text : row.mo_ta;
+          if (currentTab === "audio" && row.can_nghe_ky) {
+            const cBadge = document.createElement("span");
+            cBadge.className = "badge careful-badge";
+            cBadge.textContent = "cần nghe kỹ";
+            tdText.appendChild(cBadge);
+          }
+          tr.appendChild(tdText);
+
+          if (currentTab === "audio") {
+            const tdKind = document.createElement("td");
+            tdKind.textContent = row.kind || "";
+            tr.appendChild(tdKind);
+          }
+
+          const tdBai = document.createElement("td");
+          tdBai.textContent = (row.bai || []).join(", ");
+          tr.appendChild(tdBai);
+
+          const tdMedia = document.createElement("td");
+          if (currentTab === "audio") {
+            const audio = document.createElement("audio");
+            audio.controls = true;
+            audio.preload = "none";
+            audio.src = "/media/audio/" + encodeURIComponent(row.id) + ".mp3";
+            tdMedia.appendChild(audio);
+          } else {
+            const img = document.createElement("img");
+            img.className = "thumb";
+            img.alt = row.id;
+            img.loading = "lazy";
+            img.src = "/media/images/" + encodeURIComponent(row.id) + ".png";
+            tdMedia.appendChild(img);
+          }
+          tr.appendChild(tdMedia);
+
+          const tdStatus = document.createElement("td");
+          const sBadge = document.createElement("span");
+          sBadge.className = "badge status-" + row.status;
+          sBadge.textContent = row.status;
+          tdStatus.appendChild(sBadge);
+          tr.appendChild(tdStatus);
+
+          const tdActions = document.createElement("td");
+          const actWrap = document.createElement("div");
+          actWrap.className = "actions";
+
+          const btnOk = document.createElement("button");
+          btnOk.type = "button";
+          btnOk.className = "btn btn-ok" + (row.status === "dat" ? " selected" : "");
+          btnOk.textContent = "Đạt";
+
+          const btnBad = document.createElement("button");
+          btnBad.type = "button";
+          btnBad.className = "btn btn-bad" + (row.status === "khong_dat" ? " selected" : "");
+          btnBad.textContent = "Không đạt";
+
+          const tdNote = document.createElement("td");
+          const noteInput = document.createElement("input");
+          noteInput.type = "text";
+          noteInput.className = "note-input";
+          noteInput.value = row.ghi_chu || "";
+          noteInput.placeholder = "Ghi chú...";
+
+          btnOk.addEventListener("click", () => {
+            saveReview(currentTab, row, "dat", noteInput.value);
+          });
+          btnBad.addEventListener("click", () => {
+            saveReview(currentTab, row, "khong_dat", noteInput.value);
+          });
+          noteInput.addEventListener("blur", () => {
+            if (noteInput.value !== (row.ghi_chu || "")) {
+              const targetStatus = row.status === "chua_co" ? "cho_duyet" : row.status;
+              saveReview(currentTab, row, targetStatus, noteInput.value);
+            }
+          });
+
+          actWrap.appendChild(btnOk);
+          actWrap.appendChild(btnBad);
+          tdActions.appendChild(actWrap);
+          tr.appendChild(tdActions);
+
+          tdNote.appendChild(noteInput);
+          tr.appendChild(tdNote);
+
+          tableBody.appendChild(tr);
+        }
+      }
+
+      tabAudioBtn.addEventListener("click", () => {
+        currentTab = "audio";
+        render();
+      });
+      tabImagesBtn.addEventListener("click", () => {
+        currentTab = "images";
+        render();
+      });
+      filterStatus.addEventListener("change", render);
+      filterBai.addEventListener("change", render);
+      filterCareful.addEventListener("change", render);
+
+      async function loadData() {
+        const resp = await fetch("/api/data");
+        state = await resp.json();
+        populateLessonFilter();
+        render();
+      }
+
+      loadData();
+    })();
+  </script>
+</body>
+</html>
+

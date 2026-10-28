@@ -1,0 +1,23 @@
+{
+  "_help": "Cấu hình rule-keeper cho project này. Khoá bắt đầu bằng '_' là ghi chú, bị bỏ qua. Xem README.md mục 'Cấu hình'.",
+  "ledgerDir": ".agent-ledger",
+  "ruleFiles": [
+    "**/AGENTS.md",
+    "**/AGENTS.override.md",
+    "**/CLAUDE.md",
+    "**/GEMINI.md",
+    ".agents/rules/*.md",
+    ".agent/rules/*.md"
+  ],
+  "_ruleFiles": "Mẫu glob của git (so từ thư mục gốc project). rules/*.md và SKILL.md của kit luôn được theo dõi thêm.",
+  "exclude": [".agents/rules/rule-keeper.md"],
+  "_exclude": "File bị bỏ khỏi danh sách theo dõi. rule-keeper.md là bản sao do kit tự sinh, theo dõi nó sẽ báo trùng.",
+  "stopGate": true,
+  "_stopGate": "false = không chặn agent kết thúc lượt; chỉ còn nhắc và lệnh gate chạy tay.",
+  "maxConsecutiveStopBlocks": 2,
+  "anchorEvery": 15,
+  "_anchorEvery": "Antigravity: cứ bao nhiêu lần gọi model trong một lượt dài thì nhắc lại yêu cầu một lần.",
+  "maxDiffLines": 120,
+  "maxContextChars": 24000,
+  "maxMessageChars": 4000
+}

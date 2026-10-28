@@ -1,0 +1,169 @@
+{
+  "lesson_id": "tv1_t1_b42",
+  "book": "tv1_t1_1990",
+  "lesson_no": 42,
+  "type": "van_moi",
+  "title": "an",
+  "source": {
+    "pages": [
+      47
+    ],
+    "scan_file": "024",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "an"
+  ],
+  "images": {
+    "img_b42_nhaf_sanf": "Ngôi nhà sàn mái lá dốc, cột gỗ cao, có cầu thang lên sàn; phía sau là đồi núi",
+    "img_b42_lan_can": "Hàng lan can gỗ chạy dọc hiên nhà (sách không có tranh này, vẽ mới)",
+    "img_b42_ddanf_ngan": "Một đàn ngan (vịt xiêm) lông trắng, mào đỏ, đi trên bãi cỏ (sách không có tranh này, vẽ mới)",
+    "img_b42_banf_ghees": "Bộ bàn ghế gỗ: một cái bàn và hai cái ghế (sách không có tranh này, vẽ mới)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[5]",
+        "note": "Sách chỉ có tranh nhà sàn. Tranh lan can, đàn ngan, bàn ghế là vẽ thêm để làm bài tập."
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "an"
+    },
+    {
+      "type": "keyword",
+      "text": "nhà sàn",
+      "image": "img_b42_nhaf_sanf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "nhà sàn",
+        "sàn",
+        "an"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "an",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "sàn",
+      "drag_tone": true,
+      "then": "nhà sàn"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "lan can",
+          "image": "img_b42_lan_can"
+        },
+        {
+          "text": "đàn ngan",
+          "image": "img_b42_ddanf_ngan",
+          "note": "ngan: ở phía Nam gọi là vịt xiêm."
+        },
+        {
+          "text": "bàn ghế",
+          "image": "img_b42_banf_ghees",
+          "spell": [
+            "bàn"
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "lan",
+          "options": [
+            "lan",
+            "can",
+            "bàn"
+          ]
+        },
+        {
+          "answer": "can",
+          "options": [
+            "can",
+            "lan",
+            "đàn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "bàn",
+          "options": [
+            "bàn",
+            "đàn"
+          ]
+        },
+        {
+          "answer": "đàn",
+          "options": [
+            "bàn",
+            "đàn"
+          ]
+        },
+        {
+          "answer": "bàn",
+          "options": [
+            "bàn",
+            "đàn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "lan can",
+      "template": "l_ can",
+      "answer": "an",
+      "options": [
+        "an",
+        "a",
+        "u"
+      ],
+      "image": "img_b42_lan_can"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "đàn ngan",
+          "answer": "img_b42_ddanf_ngan",
+          "options": [
+            "img_b42_nhaf_sanf",
+            "img_b42_lan_can",
+            "img_b42_ddanf_ngan"
+          ]
+        },
+        {
+          "word": "bàn ghế",
+          "answer": "img_b42_banf_ghees",
+          "options": [
+            "img_b42_lan_can",
+            "img_b42_banf_ghees",
+            "img_b42_nhaf_sanf"
+          ]
+        }
+      ]
+    }
+  ]
+}

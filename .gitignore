@@ -1,0 +1,30 @@
+# Tài liệu tham chiếu nội bộ — ảnh scan sách không bao giờ vào repo hay app
+sach-giao-khoa-viet-nam/
+*.jpg
+*.jpeg
+
+# Cấu hình công cụ agent trên máy
+.codex/
+.superpowers/
+*.7z
+
+# Unity
+unity/TapDoc/[Ll]ibrary/
+unity/TapDoc/[Tt]emp/
+unity/TapDoc/[Oo]bj/
+unity/TapDoc/[Ll]ogs/
+unity/TapDoc/[Uu]serSettings/
+unity/TapDoc/[Bb]uilds/
+unity/TapDoc/TestOutput/
+unity/TapDoc/.vs/
+unity/TapDoc/*.csproj
+unity/TapDoc/*.sln
+unity/TapDoc/*.slnx
+unity/*.log
+
+# Python
+__pycache__/
+*.pyc
+
+# File sinh tự động
+content/requests/

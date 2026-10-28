@@ -1,0 +1,160 @@
+{
+  "lesson_id": "tv1_t1_b04",
+  "book": "tv1_t1_1990",
+  "lesson_no": 4,
+  "type": "dau_thanh",
+  "title": "Dấu huyền - Dấu sắc",
+  "source": {
+    "pages": [
+      9
+    ],
+    "scan_file": "005",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "huyen",
+    "sac"
+  ],
+  "images": {
+    "img_b04_ca": "Cái ca (cốc) có quai, trên thân ca vẽ một chú chim nhỏ",
+    "img_b04_caf": "Quả cà tròn có cuống ngắn (giống quả cà chua)",
+    "img_b04_cas": "Con cá có vảy, vây lưng và đuôi, bơi nằm ngang",
+    "img_b04_mua": "Năm bạn gái mặc váy xòe đứng thành hàng ngang, nhún chân múa, hai tay đưa lên ngang mặt; dưới chân có mấy bông hoa nhỏ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "keyword",
+      "text": "ca",
+      "image": "img_b04_ca"
+    },
+    {
+      "type": "spell",
+      "target": "ca"
+    },
+    {
+      "type": "tone_intro",
+      "tone": "huyen"
+    },
+    {
+      "type": "tone_attach",
+      "target": "cà",
+      "image": "img_b04_caf"
+    },
+    {
+      "type": "tone_intro",
+      "tone": "sac"
+    },
+    {
+      "type": "tone_attach",
+      "target": "cá",
+      "image": "img_b04_cas"
+    },
+    {
+      "type": "picture",
+      "image": "img_b04_mua",
+      "say": "Các bạn đang múa vui. Con hãy múa theo các bạn nhé."
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "có cà"
+        },
+        {
+          "text": "có cá"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cà",
+          "options": [
+            "ca",
+            "cà",
+            "cá"
+          ]
+        },
+        {
+          "answer": "cá",
+          "options": [
+            "ca",
+            "cà",
+            "cá"
+          ]
+        },
+        {
+          "answer": "ca",
+          "options": [
+            "ca",
+            "cà",
+            "cá"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "cá",
+          "options": [
+            "huyen",
+            "sac"
+          ]
+        },
+        {
+          "model": "cà",
+          "options": [
+            "huyen",
+            "sac"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "cá",
+      "template": "c_",
+      "answer": "á",
+      "options": [
+        "á",
+        "à",
+        "a"
+      ],
+      "image": "img_b04_cas"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cá",
+          "answer": "img_b04_cas",
+          "options": [
+            "img_b04_ca",
+            "img_b04_caf",
+            "img_b04_cas"
+          ]
+        },
+        {
+          "word": "cà",
+          "answer": "img_b04_caf",
+          "options": [
+            "img_b04_ca",
+            "img_b04_caf",
+            "img_b04_cas"
+          ]
+        }
+      ]
+    }
+  ]
+}
