@@ -45,18 +45,13 @@ Các bước:
 4. Review cả kế hoạch bằng một người review mới (1 subagent), sửa phát hiện quan trọng (test trước).
 5. Dọn worktree Codex/Antigravity còn lại (`node ~/.claude/delegate/bin/delegate.mjs status`).
 
-## 4. Phát hành — CẦN CHỦ DỰ ÁN QUYẾT
+## 4. Phát hành
 
-**Đã xảy ra:** lúc 17:42 ngày 29/10, chủ dự án tự push `main` lên GitHub tới `d5d8488` (22 commit chưa gộp, gồm Đợt 2 và một phần Đợt 3). Các commit sau đó (`cc172f6`, `4561f19`, `a277098`, ghi chú này) mới chỉ có ở máy.
+Lúc 17:42 ngày 29/10, chủ dự án tự push `main` lên GitHub tới `d5d8488` (22 commit lẻ). Sau đó chủ dự án chọn **giữ nguyên lịch sử**:
+- không gộp commit theo đợt nữa, không ghi đè lịch sử trên GitHub (không force push);
+- mỗi việc một commit rõ ràng; push bình thường khi chủ dự án phát hành hoặc yêu cầu.
 
-Quy tắc cũ là "mỗi đợt gộp 1 commit đặt lên bản phát hành trước, rồi push thường". Vì GitHub đã có các commit lẻ, có 2 cách:
-- **Giữ nguyên lịch sử trên GitHub**, từ giờ push thường, không gộp nữa (không cần ghi đè).
-- **Gộp lại** Đợt 2 và Đợt 3 thành 2 commit rồi **ghi đè lịch sử trên GitHub** (force push). Chỉ làm khi chủ dự án đồng ý rõ.
-
-Nếu gộp, cách sắp xếp (đặt lên `fc4510c`, dùng cherry-pick, không tạo nhánh):
-- Đợt 2: `003e17f` … `efeeb97` (17 commit), `2c68729`, `4561f19`.
-- Đợt 3: `f1bf8e6`, `9dc08aa`, `27a915a`, `d5d8488`, `cc172f6`, `a277098` và các commit sau.
-  - `cc172f6` sửa cả công cụ (Đợt 2) lẫn màn bảng nhóm vần (Đợt 3) nên đặt vào Đợt 3.
+Các commit sau `d5d8488` mới chỉ có ở máy: `git log origin/main..main`.
 
 ## 5. Việc của chủ dự án (làm lúc nào cũng được)
 
