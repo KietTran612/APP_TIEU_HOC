@@ -2,10 +2,13 @@
 
 import argparse
 import sys
+import threading
+import webbrowser
 
 from .build import BuildError, build_all
 from .chatgpt_requests import write_request_files
 from .importer import import_audio_zip, import_image
+from .launcher import ensure_edge_tts, tool_running
 from .manifest import ManifestError, load_rows, save_rows, update_audio_manifest, update_image_manifest
 from .paths import CONTENT_SRC, MANIFESTS, REQUESTS_DIR, ROOT, STYLE_FILE, UNITY_RES
 from .review_server import make_server
@@ -149,13 +152,15 @@ def _cmd_validate(args: argparse.Namespace) -> int:
     return 1
 
 
-def _cmd_review(args: argparse.Namespace) -> int:
-    server = make_server(args.port, MANIFESTS, UNITY_RES,
-                         settings_path=TTS_SETTINGS, prev_dir=TTS_PREV,
-                         lessons_dir=UNITY_RES / "lessons",
-                         notes_path=ROOT / "content/review/chain_notes.json",
-                         engine_factory=getattr(args, "engine_factory", None))
-    print(f"Mở http://127.0.0.1:{server.server_address[1]}/")  # cổng thật, kể cả khi --port 0
+def _review_server(port: int, engine_factory=None):
+    return make_server(port, MANIFESTS, UNITY_RES,
+                       settings_path=TTS_SETTINGS, prev_dir=TTS_PREV,
+                       lessons_dir=UNITY_RES / "lessons",
+                       notes_path=ROOT / "content/review/chain_notes.json",
+                       engine_factory=engine_factory)
+
+
+def _serve(server) -> int:
     try:
         server.serve_forever()
     except KeyboardInterrupt:
@@ -163,6 +168,31 @@ def _cmd_review(args: argparse.Namespace) -> int:
     finally:
         server.server_close()
     return 0
+
+
+def _cmd_review(args: argparse.Namespace) -> int:
+    server = _review_server(args.port, getattr(args, "engine_factory", None))
+    print(f"Mở http://127.0.0.1:{server.server_address[1]}/")  # cổng thật, kể cả khi --port 0
+    return _serve(server)
+
+
+def _cmd_open(args: argparse.Namespace) -> int:
+    url = f"http://127.0.0.1:{args.port}/"
+    if tool_running(args.port):
+        print(f"Công cụ duyệt đang chạy, mở lại trang {url}", flush=True)
+        webbrowser.open(url)
+        return 0
+    ensure_edge_tts()
+    try:
+        server = _review_server(args.port)
+    except OSError:
+        server = _review_server(0)  # chương trình khác đang giữ cổng thì lấy cổng trống bất kỳ
+    url = f"http://127.0.0.1:{server.server_address[1]}/"
+    print(f"Đang chạy công cụ duyệt tại {url}", flush=True)
+    print("Đóng cửa sổ này để tắt công cụ.", flush=True)
+    # Máy chủ đã nghe trên cổng từ lúc tạo, trình duyệt mở trước serve_forever vẫn được trả lời.
+    threading.Thread(target=webbrowser.open, args=(url,), daemon=True).start()
+    return _serve(server)
 
 
 def _cmd_tts(args: argparse.Namespace) -> int:
@@ -231,6 +261,9 @@ def main(argv: list[str] | None = None, *, engine_factory=None) -> int:
     review_cmd = commands.add_parser("review", help="mở trang web nội bộ để nghe duyệt âm thanh và xem duyệt tranh")
     review_cmd.add_argument("--port", type=int, default=8765, help="cổng lắng nghe trên 127.0.0.1 (mặc định 8765)")
     review_cmd.set_defaults(func=_cmd_review)
+    open_cmd = commands.add_parser("mo", help="mở công cụ duyệt trong trình duyệt; đang chạy rồi thì chỉ mở trang")
+    open_cmd.add_argument("--port", type=int, default=8765, help="cổng của công cụ duyệt (mặc định 8765)")
+    open_cmd.set_defaults(func=_cmd_open)
     tts_cmd = commands.add_parser("tts", help="tạo âm thanh bằng edge-tts theo cấu hình giọng đọc")
     tts_cmd.add_argument("--bai", help="chỉ tạo mã dùng trong bài này")
     tts_cmd.add_argument("--loai", choices=("am", "van", "dau", "tieng", "tu", "cau", "huong_dan", "khen"),
