@@ -38,6 +38,7 @@ INSTRUCTION_AUDIO = {
 _REQUIRED_FIELDS = ("lesson_id", "book", "lesson_no", "type", "title", "source", "new_units", "images",
                     "part1", "part2")
 _HEAD = "(đầu bài)"
+_RIME_LESSON_TYPES = ("van_moi", "on_tap_van", "on_tap_cuoi_ki")
 
 
 class BuildError(Exception):
@@ -107,6 +108,7 @@ class _Builder:
         self.sentence_count = 0
         self.nn = ""
         self.new_units: frozenset[str] = frozenset()
+        self.colour_sentences = False
 
     # ---- lỗi và vị trí ----
 
@@ -324,6 +326,27 @@ class _Builder:
                               "col": column(vowel, cell_where)})
         return {"type": "combine_table", "marker": step.get("marker", ""), "items": items}
 
+    def _step_rime_table(self, step: dict, where: str) -> dict:
+        """Mỗi hàng gồm vần mới và từ chứa vần đó; chỉ tô vần của hàng."""
+        items = []
+        for k, row in enumerate(step["rows"]):
+            row_where = f"{where}.rows[{k}]"
+            rime, word = row["rime"], row["word"]
+            result = spell_rime(rime)
+            if len(result.parts) != 3 or result.parts[-1].kind != "join":
+                raise self.error(row_where, f"vần {rime!r} phải đánh vần thành nguyên âm, âm cuối và vần")
+            items.append({"text": rime, "audio": self._audio(audio_for(rime), row_where),
+                          "role": "rime", "row": k, "spells": [self._spell(result, row_where)]})
+            spans = []
+            for tok, start in tokens(word):
+                syl = split_syllable(tok)
+                if syl.rime == strip_tone(rime.lower()):
+                    spans.append({"s": start + len(syl.onset), "n": len(tok) - len(syl.onset)})
+            items.append({"text": word, "audio": self._audio(text_audio(word), row_where),
+                          "role": "word", "row": k, "hl": spans,
+                          "spells": self._spells_of(word, row_where)})
+        return {"type": "rime_table", "marker": step.get("marker", ""), "items": items}
+
     def _step_letter_pairs(self, step: dict, where: str) -> dict:
         items = []
         for k, letter in enumerate(step["letters"]):
@@ -389,6 +412,7 @@ class _Builder:
         for j, word in enumerate(words):
             item_where = f"{where}.items[{j}]"
             items.append({"text": word, "audio": self._audio(text_audio(word), item_where),
+                          "hl": self._highlights(word) if self.colour_sentences else [],
                           "spells": [self._spell(spell_syllable(word), item_where)]})
         return {"type": "sentence", "marker": step.get("marker", ""), "text": text, "audio": audio_id,
                 "items": items}
@@ -407,6 +431,7 @@ class _Builder:
         "tone_table": _step_tone_table,
         "letter_grid": _step_letter_grid,
         "combine_table": _step_combine_table,
+        "rime_table": _step_rime_table,
         "letter_pairs": _step_letter_pairs,
         "rule": _step_rule,
     }
@@ -520,6 +545,8 @@ class _Builder:
                 raise self.error(_HEAD, f"lesson_no phải là số nguyên: {src['lesson_no']!r}")
             self.nn = f"{src['lesson_no']:02d}"
             self.new_units = frozenset(src["new_units"])
+            # Sách chỉ tô vần mới trong câu ở phần vần; câu ở bài âm mới không tô chữ mới.
+            self.colour_sentences = src["type"] in _RIME_LESSON_TYPES
             in_app = src.get("in_app", True)
             if not isinstance(in_app, bool):
                 raise self.error(_HEAD, f"in_app phải là true/false: {in_app!r}")

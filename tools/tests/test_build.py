@@ -148,7 +148,8 @@ class Lesson13Test(unittest.TestCase):
         self.assertEqual((p["audio"], [i["text"] for i in p["items"]]), ("cau_b13_01", ["má", "có", "củ", "từ"]))
         self.assertEqual([i["audio"] for i in p["items"]], ["tieng_mas", "tieng_cos", "tieng_cur", "tieng_tuwf"])
         self.assertEqual([[s["target"] for s in i["spells"]] for i in p["items"]], [["má"], ["có"], ["củ"], ["từ"]])
-        self.assertEqual(set(p["items"][0]), {"text", "audio", "spells"})
+        self.assertEqual(set(p["items"][0]), {"text", "audio", "hl", "spells"})
+        self.assertEqual(p["items"][0]["hl"], [])  # bài âm mới: câu không tô chữ mới
 
     def test_reading_flattened(self):
         p = self.p1[6]
