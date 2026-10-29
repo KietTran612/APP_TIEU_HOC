@@ -186,5 +186,53 @@ class Lessons37To41Test(BookTestCase):
         self.assertTrue(listen and all(o["text"].isupper() for r in listen for o in r["options"]))
 
 
+
+def index_ids():
+    import json
+    from tapdoc.paths import UNITY_RES
+    return [e["lesson_id"] for e in json.loads((UNITY_RES / "lessons" / "index.json").read_text("utf-8"))["lessons"]]
+
+
+def run_types(no):
+    """Loại bước liền nhau gộp lại: ["sentence", "sentence"] -> ("sentence", 2)."""
+    out = []
+    for t in types(no):
+        if out and out[-1][0] == t:
+            out[-1] = (t, out[-1][1] + 1)
+        else:
+            out.append((t, 1))
+    return out
+
+
+class Lessons42To47Test(BookTestCase):
+    def test_basics(self):
+        for no in range(42, 48):
+            with self.subTest(no=no):
+                self.assert_lesson_basics(no)
+
+    def test_b42_in_app(self):
+        self.assertIn("tv1_t1_b42", index_ids())
+        self.assertTrue(L[lid_of(42)]["in_app"])
+
+    def test_b43_b44_letter_then_rime(self):
+        self.assertEqual([s["text"] for s in steps(43, "unit")], ["ă", "ăn"])
+        self.assertEqual([s["text"] for s in steps(44, "keyword")], ["cân bàn"])
+
+    def test_b45_three_rimes_three_sentences(self):
+        self.assertEqual([s["text"] for s in steps(45, "keyword")], ["quả bồ hòn", "con chồn", "cá thờn bơn"])
+        self.assertIn(("sentence", 3), run_types(45))
+        self.assertEqual([s["text"] for s in steps(45, "sentence")],
+                         ["Mẹ bế bé đi nhà trẻ.", "Cô ân cần đón bé.", "Cô hôn bé."])
+        hon = steps(45, "sentence")[2]["items"][1]
+        self.assertEqual(hon["hl"], [{"s": 1, "n": 2}])  # "hôn": tô vần ôn như sách
+
+    def test_b46_keywords(self):
+        self.assertEqual([s["text"] for s in steps(46, "keyword")], ["dế mèn", "con nhện"])
+
+    def test_b47_poem_four_lines(self):
+        self.assertIn(("sentence", 4), run_types(47))
+        self.assertEqual(steps(47, "sentence")[0]["items"][0]["text"], "Ủn")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,205 @@
+{
+  "lesson_id": "tv1_t1_b46",
+  "book": "tv1_t1_1990",
+  "lesson_no": 46,
+  "type": "van_moi",
+  "title": "en ên",
+  "source": {
+    "pages": [
+      52,
+      53
+    ],
+    "scan_file": "027",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "en",
+    "ên"
+  ],
+  "images": {
+    "img_b46_dees_menf": "Chú dế mèn đứng trên bãi cỏ, râu dài, càng to",
+    "img_b46_con_nheenj": "Con nhện tám chân ngồi giữa tấm mạng nhện tròn",
+    "img_b46_bowf_tre": "Chú dế mèn đứng vẫy tay dưới gốc bụi tre, bên cạnh có bông sen và bụi cỏ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "en"
+    },
+    {
+      "type": "keyword",
+      "text": "dế mèn",
+      "image": "img_b46_dees_menf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "dế mèn",
+        "mèn",
+        "en"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "en",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "mèn",
+      "drag_tone": true,
+      "then": "dế mèn"
+    },
+    {
+      "type": "unit",
+      "text": "ên"
+    },
+    {
+      "type": "keyword",
+      "text": "con nhện",
+      "image": "img_b46_con_nheenj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con nhện",
+        "nhện",
+        "ên"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ên",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "nhện",
+      "drag_tone": true,
+      "then": "con nhện"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "mũ len"
+        },
+        {
+          "text": "đèn pha"
+        },
+        {
+          "text": "con sên"
+        },
+        {
+          "text": "bến phà"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b46_bowf_tre",
+      "say": "Đây là nhà chú dế mèn, bên bờ tre.",
+      "word": "bờ tre"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "nhà chú dế mèn ở bên bờ tre."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "en",
+          "options": [
+            "en",
+            "ên",
+            "an"
+          ]
+        },
+        {
+          "answer": "ên",
+          "options": [
+            "ên",
+            "en",
+            "ơn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "mèn",
+          "options": [
+            "mèn",
+            "mền"
+          ]
+        },
+        {
+          "answer": "bến",
+          "options": [
+            "bến",
+            "bén"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "mũ len",
+      "template": "mũ l_",
+      "answer": "en",
+      "options": [
+        "en",
+        "ên",
+        "an"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "dế mèn",
+          "answer": "img_b46_dees_menf",
+          "options": [
+            "img_b46_dees_menf",
+            "img_b46_con_nheenj",
+            "img_b46_bowf_tre"
+          ]
+        },
+        {
+          "word": "con nhện",
+          "answer": "img_b46_con_nheenj",
+          "options": [
+            "img_b46_con_nheenj",
+            "img_b46_dees_menf",
+            "img_b46_bowf_tre"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "mũ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "lesson_id": "tv1_t1_b47",
+  "book": "tv1_t1_1990",
+  "lesson_no": 47,
+  "type": "van_moi",
+  "title": "in un",
+  "source": {
+    "pages": [
+      54,
+      55
+    ],
+    "scan_file": "028",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "in",
+    "un"
+  ],
+  "images": {
+    "img_b47_soos_chins": "Chữ số 9 thật to, tô màu cam, nằm giữa tranh (chỉ có chữ số 9, không có chữ nào khác)",
+    "img_b47_con_giun": "Con giun đất dài, mình có ngấn, bò trên đất cạnh khóm cỏ",
+    "img_b47_ddanf_lownj": "Đàn lợn con nằm ngủ chen nhau trong chuồng, cạnh máng ăn"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[2]",
+        "note": "tranh từ khoá là chữ số 9 như sách"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "in"
+    },
+    {
+      "type": "keyword",
+      "text": "số chín",
+      "image": "img_b47_soos_chins"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "số chín",
+        "chín",
+        "in"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "in",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chín",
+      "drag_tone": true,
+      "then": "số chín"
+    },
+    {
+      "type": "unit",
+      "text": "un"
+    },
+    {
+      "type": "keyword",
+      "text": "con giun",
+      "image": "img_b47_con_giun"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con giun",
+        "giun",
+        "un"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "un",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "giun",
+      "drag_tone": false,
+      "then": "con giun"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "chữ in"
+        },
+        {
+          "text": "da mịn"
+        },
+        {
+          "text": "bún bò"
+        },
+        {
+          "text": "gỗ mun"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b47_ddanf_lownj",
+      "say": "Đàn lợn con ăn no rồi nằm ngủ.",
+      "word": "đàn lợn"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "“Ủn à ủn ỉn!”"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Chín chú lợn con"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Ăn đã no tròn"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cả đàn đi ngủ."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "in",
+          "options": [
+            "in",
+            "un",
+            "en"
+          ]
+        },
+        {
+          "answer": "un",
+          "options": [
+            "un",
+            "in",
+            "ôn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chín",
+          "options": [
+            "chín",
+            "chén"
+          ]
+        },
+        {
+          "answer": "giun",
+          "options": [
+            "giun",
+            "gin"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "con giun",
+      "template": "con gi_",
+      "answer": "un",
+      "options": [
+        "un",
+        "in",
+        "on"
+      ],
+      "image": "img_b47_con_giun"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "số chín",
+          "answer": "img_b47_soos_chins",
+          "options": [
+            "img_b47_soos_chins",
+            "img_b47_con_giun",
+            "img_b47_ddanf_lownj"
+          ]
+        },
+        {
+          "word": "con giun",
+          "answer": "img_b47_con_giun",
+          "options": [
+            "img_b47_con_giun",
+            "img_b47_soos_chins",
+            "img_b47_ddanf_lownj"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "ủn",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "gỗ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

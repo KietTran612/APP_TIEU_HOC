@@ -73,7 +73,7 @@ class PrototypeContentTest(unittest.TestCase):
         index_data = json.loads(index_path.read_text(encoding="utf-8"))
         index_ids = [item["lesson_id"] for item in index_data["lessons"]]
         self.assertLessEqual({"tv1_t1_b04", "tv1_t1_b13"}, set(index_ids))
-        self.assertNotIn("tv1_t1_b42", index_ids)  # bài 42 dựng nhưng không vào danh sách (in_app false)
+        self.assertIn("tv1_t1_b42", index_ids)  # từ đợt 2 bài 42 vào danh sách
         self.assertTrue((UNITY_RES / "lessons" / "tv1_t1_b42.json").is_file())
         audio_rows = load_rows(MANIFESTS / "audio_manifest.json")
         image_rows = load_rows(MANIFESTS / "image_manifest.json")

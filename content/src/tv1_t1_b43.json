@@ -1,0 +1,159 @@
+{
+  "lesson_id": "tv1_t1_b43",
+  "book": "tv1_t1_1990",
+  "lesson_no": 43,
+  "type": "van_moi",
+  "title": "ă - ăn",
+  "source": {
+    "pages": [
+      48
+    ],
+    "scan_file": "025",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ă",
+    "ăn"
+  ],
+  "images": {
+    "img_b43_cur_sawns": "Củ sắn (khoai mì): mấy củ dài thuôn, vỏ nâu, chụm ở gốc thân cây bị cắt",
+    "img_b43_khawn_rawnf": "Chiếc khăn rằn kẻ ô vuông, gấp gọn (sách không có tranh này, vẽ thêm)",
+    "img_b43_thawnf_lawnf": "Con thằn lằn bò trên bức tường, đuôi dài cong (sách không có tranh này, vẽ thêm)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[6]",
+        "note": "tranh từ ứng dụng không có trong sách, vẽ thêm để làm bài nghe chọn tranh"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ă"
+    },
+    {
+      "type": "unit",
+      "text": "ăn"
+    },
+    {
+      "type": "keyword",
+      "text": "củ sắn",
+      "image": "img_b43_cur_sawns"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "củ sắn",
+        "sắn",
+        "ăn"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ăn",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "sắn",
+      "drag_tone": true,
+      "then": "củ sắn"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "khăn rằn",
+          "image": "img_b43_khawn_rawnf"
+        },
+        {
+          "text": "thằn lằn",
+          "image": "img_b43_thawnf_lawnf"
+        },
+        {
+          "text": "chăn dạ"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăn",
+          "options": [
+            "ăn",
+            "an"
+          ]
+        },
+        {
+          "answer": "ă",
+          "options": [
+            "ă",
+            "a",
+            "o"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "lằn",
+          "options": [
+            "lằn",
+            "làn"
+          ]
+        },
+        {
+          "answer": "chăn",
+          "options": [
+            "chăn",
+            "chan"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "chăn dạ",
+      "template": "ch_ dạ",
+      "answer": "ăn",
+      "options": [
+        "ăn",
+        "an",
+        "a"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "thằn lằn",
+          "answer": "img_b43_thawnf_lawnf",
+          "options": [
+            "img_b43_thawnf_lawnf",
+            "img_b43_khawn_rawnf",
+            "img_b43_cur_sawns"
+          ]
+        },
+        {
+          "word": "củ sắn",
+          "answer": "img_b43_cur_sawns",
+          "options": [
+            "img_b43_cur_sawns",
+            "img_b43_thawnf_lawnf",
+            "img_b43_khawn_rawnf"
+          ]
+        }
+      ]
+    }
+  ]
+}

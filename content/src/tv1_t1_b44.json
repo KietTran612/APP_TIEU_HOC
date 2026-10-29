@@ -1,0 +1,170 @@
+{
+  "lesson_id": "tv1_t1_b44",
+  "book": "tv1_t1_1990",
+  "lesson_no": 44,
+  "type": "van_moi",
+  "title": "â - ân",
+  "source": {
+    "pages": [
+      49
+    ],
+    "scan_file": "025",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "â",
+    "ân"
+  ],
+  "images": {
+    "img_b44_caan_banf": "Chiếc cân bàn có đòn cân và quả cân treo, trên mặt cân đặt hai thúng gạo chồng lên nhau",
+    "img_b44_quar_maanj": "Mấy quả mận chín đỏ có cuống và lá (sách không có tranh này, vẽ thêm)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[6]",
+        "note": "tranh từ ứng dụng không có trong sách, vẽ thêm để làm bài nghe chọn tranh"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "â"
+    },
+    {
+      "type": "unit",
+      "text": "ân"
+    },
+    {
+      "type": "keyword",
+      "text": "cân bàn",
+      "image": "img_b44_caan_banf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cân bàn",
+        "cân",
+        "ân"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ân",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "cân",
+      "drag_tone": false,
+      "then": "cân bàn"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "cần cù"
+        },
+        {
+          "text": "quả mận",
+          "image": "img_b44_quar_maanj"
+        },
+        {
+          "text": "cẩn thận"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ân",
+          "options": [
+            "ân",
+            "ăn",
+            "an"
+          ]
+        },
+        {
+          "answer": "â",
+          "options": [
+            "â",
+            "ă",
+            "a"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cân",
+          "options": [
+            "cân",
+            "căn"
+          ]
+        },
+        {
+          "answer": "mận",
+          "options": [
+            "mận",
+            "mặn"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "cân bàn",
+      "template": "c_ bàn",
+      "answer": "ân",
+      "options": [
+        "ân",
+        "ăn",
+        "an"
+      ],
+      "image": "img_b44_caan_banf"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cân bàn",
+          "answer": "img_b44_caan_banf",
+          "options": [
+            "img_b44_caan_banf",
+            "img_b44_quar_maanj"
+          ]
+        },
+        {
+          "word": "quả mận",
+          "answer": "img_b44_quar_maanj",
+          "options": [
+            "img_b44_quar_maanj",
+            "img_b44_caan_banf"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "cẩn",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

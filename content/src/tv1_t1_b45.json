@@ -1,0 +1,246 @@
+{
+  "lesson_id": "tv1_t1_b45",
+  "book": "tv1_t1_1990",
+  "lesson_no": 45,
+  "type": "van_moi",
+  "title": "on ôn ơn",
+  "source": {
+    "pages": [
+      50,
+      51
+    ],
+    "scan_file": "026",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "on",
+    "ôn",
+    "ơn"
+  ],
+  "images": {
+    "img_b45_quar_boof_honf": "Ba quả bồ hòn tròn, vỏ sần, có cuống nhỏ",
+    "img_b45_con_choonf": "Con chồn mình thon dài, đuôi xù, nằm trên bãi cỏ",
+    "img_b45_cas_thownf_bown": "Con cá thờn bơn dẹt hình bầu dục, hai mắt nằm cùng một bên",
+    "img_b45_nhaf_trer": "Sân nhà trẻ: cô giáo bế em bé từ tay mẹ, bạn nhỏ đạp xe ba bánh, chậu hoa bên thềm"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "on"
+    },
+    {
+      "type": "keyword",
+      "text": "quả bồ hòn",
+      "image": "img_b45_quar_boof_honf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả bồ hòn",
+        "hòn",
+        "on"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "on",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "hòn",
+      "drag_tone": true,
+      "then": "quả bồ hòn"
+    },
+    {
+      "type": "unit",
+      "text": "ôn"
+    },
+    {
+      "type": "keyword",
+      "text": "con chồn",
+      "image": "img_b45_con_choonf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con chồn",
+        "chồn",
+        "ôn"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ôn",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chồn",
+      "drag_tone": true,
+      "then": "con chồn"
+    },
+    {
+      "type": "unit",
+      "text": "ơn"
+    },
+    {
+      "type": "keyword",
+      "text": "cá thờn bơn",
+      "image": "img_b45_cas_thownf_bown"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cá thờn bơn",
+        "bơn",
+        "ơn"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ơn",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "bơn",
+      "drag_tone": false,
+      "then": "cá thờn bơn"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "con rắn"
+        },
+        {
+          "text": "ngọn cỏ"
+        },
+        {
+          "text": "ôn tồn"
+        },
+        {
+          "text": "vồn vã"
+        },
+        {
+          "text": "con lợn"
+        },
+        {
+          "text": "sơn đỏ"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b45_nhaf_trer",
+      "say": "Mẹ đưa bé tới nhà trẻ, cô giáo ra đón.",
+      "word": "nhà trẻ"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Mẹ bế bé đi nhà trẻ."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cô ân cần đón bé."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cô hôn bé."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ôn",
+          "options": [
+            "ôn",
+            "on",
+            "ơn"
+          ]
+        },
+        {
+          "answer": "ơn",
+          "options": [
+            "ơn",
+            "on",
+            "ôn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chồn",
+          "options": [
+            "chồn",
+            "chòn"
+          ]
+        },
+        {
+          "answer": "hòn",
+          "options": [
+            "hòn",
+            "hờn"
+          ]
+        },
+        {
+          "answer": "sơn",
+          "options": [
+            "sơn",
+            "son"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "cá thờn bơn",
+      "template": "cá thờn b_",
+      "answer": "ơn",
+      "options": [
+        "ơn",
+        "on",
+        "ôn"
+      ],
+      "image": "img_b45_cas_thownf_bown"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con chồn",
+          "answer": "img_b45_con_choonf",
+          "options": [
+            "img_b45_quar_boof_honf",
+            "img_b45_con_choonf",
+            "img_b45_cas_thownf_bown"
+          ]
+        },
+        {
+          "word": "quả bồ hòn",
+          "answer": "img_b45_quar_boof_honf",
+          "options": [
+            "img_b45_quar_boof_honf",
+            "img_b45_cas_thownf_bown",
+            "img_b45_nhaf_trer"
+          ]
+        }
+      ]
+    }
+  ]
+}
