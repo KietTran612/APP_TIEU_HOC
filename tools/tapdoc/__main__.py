@@ -130,7 +130,7 @@ def _cmd_import_image(args: argparse.Namespace) -> int:
 
 
 def _cmd_validate(args: argparse.Namespace) -> int:
-    issues = validate_all(allow_missing=args.allow_missing)
+    issues = validate_all(allow_missing=args.allow_missing, release=args.release)
     for issue in issues:
         print(_printable(f"{issue.lesson} {issue.where}: {issue.message}"))
     if not issues:
@@ -142,7 +142,7 @@ def _cmd_validate(args: argparse.Namespace) -> int:
 
 def _cmd_review(args: argparse.Namespace) -> int:
     server = make_server(args.port, MANIFESTS, UNITY_RES)
-    print(f"Mở http://127.0.0.1:{args.port}/")
+    print(f"Mở http://127.0.0.1:{server.server_address[1]}/")  # cổng thật, kể cả khi --port 0
     try:
         server.serve_forever()
     except KeyboardInterrupt:
@@ -175,6 +175,8 @@ def main(argv: list[str] | None = None) -> int:
     validate_cmd = commands.add_parser("validate", help="kiểm tra file bài đã dựng, danh mục và project Unity")
     validate_cmd.add_argument("--allow-missing", action="store_true",
                               help="bỏ qua việc kiểm tra file âm thanh/tranh còn thiếu")
+    validate_cmd.add_argument("--release", action="store_true",
+                              help="thêm điều kiện phát hành: bài trong app đã duyệt, âm thanh/tranh đã duyệt")
     validate_cmd.set_defaults(func=_cmd_validate)
     review_cmd = commands.add_parser("review", help="mở trang web nội bộ để nghe duyệt âm thanh và xem duyệt tranh")
     review_cmd.add_argument("--port", type=int, default=8765, help="cổng lắng nghe trên 127.0.0.1 (mặc định 8765)")

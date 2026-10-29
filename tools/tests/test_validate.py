@@ -704,6 +704,56 @@ class ValidateAllTest(unittest.TestCase):
         self.assertTrue(any(i.lesson == "-" and i.where == "audio_manifest.json" for i in issues))
 
 
+class ReleaseTest(ValidateAllTest):
+    """`validate --release`: bài trong app phải đã duyệt; âm thanh/tranh không còn `chua_co`, `cho_duyet`."""
+
+    def set_status(self, lesson_status=None, row_status="dat", bad_ids=()):
+        if lesson_status is not None:
+            lesson = json.loads(self.lesson_path.read_text(encoding="utf-8"))
+            lesson["review"]["status"] = lesson_status
+            self.write_json(self.lesson_path, lesson)
+        for rows, name in ((self.audio_rows, "audio_manifest.json"), (self.image_rows, "image_manifest.json")):
+            for row in rows:
+                row["status"] = "khong_dat" if row["id"] in bad_ids else row_status
+            self.write_json(self.manifests / name, rows)
+
+    def test_release_accepts_reviewed_lesson_and_assets(self):
+        self.build_all_good()
+        self.set_status("da_duyet", "dat", bad_ids=(self.audio_rows[0]["id"],))  # khong_dat vẫn dùng tạm
+        self.assertEqual(validate_all(release=True), [])
+
+    def test_release_rejects_unreviewed(self):
+        self.build_all_good()
+        self.set_status("chua_duyet", "dat")
+        issues = validate_all(release=True)
+        self.assertEqual([(i.lesson, i.where) for i in issues], [("tv1_t1_b13", "review.status")])
+        self.assertIn("chưa duyệt", issues[0].message)
+        self.assertEqual(validate_all(), [])  # không --release thì không kiểm tra
+
+    def test_release_ignores_lesson_not_in_app(self):
+        src = copy.deepcopy(SRC)
+        src["in_app"] = False
+        self.build_all_good(src)
+        self.set_status("chua_duyet", "dat")
+        self.assertEqual(validate_all(release=True), [])
+
+    def test_release_rejects_pending_assets(self):
+        self.build_all_good()
+        self.set_status("da_duyet", "cho_duyet")
+        issues = validate_all(release=True)
+        self.assertEqual(len(issues), len(self.audio_rows) + len(self.image_rows))
+        self.assertTrue(all(i.lesson == "-" and "cho_duyet" in i.message for i in issues))
+
+    def test_release_rejects_missing_assets(self):
+        self.build_all_good()
+        self.set_status("da_duyet", "dat")
+        self.audio_rows[0]["status"] = "chua_co"
+        self.write_json(self.manifests / "audio_manifest.json", self.audio_rows)
+        issues = validate_all(release=True)
+        self.assertEqual([i.where for i in issues], [self.audio_rows[0]["id"]])
+        self.assertIn("chua_co", issues[0].message)
+
+
 class CliTest(unittest.TestCase):
     def run_cli(self, issues, argv=("validate",)):
         out = io.StringIO()
@@ -714,7 +764,7 @@ class CliTest(unittest.TestCase):
     def test_ok(self):
         code, lines, fake = self.run_cli([])
         self.assertEqual((code, lines), (0, ["OK"]))
-        fake.assert_called_once_with(allow_missing=False)
+        fake.assert_called_once_with(allow_missing=False, release=False)
 
     def test_issues(self):
         issues = [Issue("tv1_t1_b13", "part2[3]", "chưa học"), Issue("-", "am_dd", "không có file audio/am_dd.mp3")]
@@ -724,7 +774,11 @@ class CliTest(unittest.TestCase):
 
     def test_allow_missing_flag(self):
         _, _, fake = self.run_cli([], ("validate", "--allow-missing"))
-        fake.assert_called_once_with(allow_missing=True)
+        fake.assert_called_once_with(allow_missing=True, release=False)
+
+    def test_release_flag(self):
+        _, _, fake = self.run_cli([], ("validate", "--release"))
+        fake.assert_called_once_with(allow_missing=False, release=True)
 
     def test_control_characters_in_file_names_are_escaped(self):
         code, lines, _ = self.run_cli([Issue("-", "a\x1b[2Jb.jpg", "ảnh scan")])

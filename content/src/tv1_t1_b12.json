@@ -1,0 +1,197 @@
+{
+  "lesson_id": "tv1_t1_b12",
+  "book": "tv1_t1_1990",
+  "lesson_no": 12,
+  "type": "am_moi",
+  "title": "n m",
+  "source": {
+    "pages": [
+      17
+    ],
+    "scan_file": "009",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "n",
+    "m"
+  ],
+  "images": {
+    "img_b12_ca_noo": "Chiếc ca nô có buồng lái và lá cờ nhỏ trên nóc, đang lướt trên mặt nước tạo sóng",
+    "img_b12_quar_mow": "Quả mơ tròn có rãnh dọc, cuống ngắn, nằm trên một chiếc lá dài",
+    "img_b12_nuj_hoa": "Một nụ hoa đang chúm chím trên cành nhỏ có hai chiếc lá",
+    "img_b12_quar_me": "Quả me dài hơi cong, vỏ nâu, bên cạnh có cành lá me nhỏ li ti"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "n"
+    },
+    {
+      "type": "keyword",
+      "text": "ca nô",
+      "image": "img_b12_ca_noo"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "ca nô",
+        "nô",
+        "n"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "nô",
+      "then": "ca nô"
+    },
+    {
+      "type": "unit",
+      "text": "m"
+    },
+    {
+      "type": "keyword",
+      "text": "quả mơ",
+      "image": "img_b12_quar_mow"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả mơ",
+        "mơ",
+        "m"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "mơ",
+      "then": "quả mơ"
+    },
+    {
+      "type": "picture",
+      "image": "img_b12_nuj_hoa",
+      "say": "Đây là nụ hoa.",
+      "word": "nụ hoa"
+    },
+    {
+      "type": "picture",
+      "image": "img_b12_quar_me",
+      "say": "Đây là quả me.",
+      "word": "quả me"
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "tí đi ô tô, má đi ca nô"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "no",
+          "nô",
+          "nơ"
+        ],
+        [
+          "me",
+          "mê",
+          "mi"
+        ],
+        [
+          "na ná",
+          "nơ đỏ",
+          "tò mò"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "n",
+          "options": [
+            "n",
+            "m",
+            "t"
+          ]
+        },
+        {
+          "answer": "m",
+          "options": [
+            "m",
+            "n",
+            "đ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nô",
+          "options": [
+            "nô",
+            "mô"
+          ]
+        },
+        {
+          "answer": "mơ",
+          "options": [
+            "mơ",
+            "nơ"
+          ]
+        },
+        {
+          "answer": "me",
+          "options": [
+            "me",
+            "ne"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "mơ",
+      "template": "m_",
+      "answer": "ơ",
+      "options": [
+        "ơ",
+        "ô",
+        "o"
+      ],
+      "image": "img_b12_quar_mow"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "ca nô",
+          "answer": "img_b12_ca_noo",
+          "options": [
+            "img_b12_ca_noo",
+            "img_b12_quar_mow",
+            "img_b12_nuj_hoa"
+          ]
+        },
+        {
+          "word": "quả me",
+          "answer": "img_b12_quar_me",
+          "options": [
+            "img_b12_quar_mow",
+            "img_b12_quar_me",
+            "img_b12_nuj_hoa"
+          ]
+        }
+      ]
+    }
+  ]
+}

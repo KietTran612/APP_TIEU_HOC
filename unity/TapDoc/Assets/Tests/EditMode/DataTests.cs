@@ -22,10 +22,14 @@ namespace TapDoc.Tests
         }
 
         [Test]
-        public void Index_HasThreeLessonsInOrder() =>
+        public void Index_ListsLessons1To17InOrder()
+        {
+            // Bản đầu tiên: bài 1–17. Bài mẫu 42 vẫn nạp được theo mã nhưng không nằm trong danh sách bài.
             CollectionAssert.AreEqual(
-                new[] { 4, 13, 42 },
+                Enumerable.Range(1, 17),
                 LessonRepository.LoadIndex().lessons.Select(e => e.lesson_no));
+            Assert.AreEqual(42, LessonRepository.Load("tv1_t1_b42").lesson_no);
+        }
 
         [Test]
         public void Parse_NormalizesNfc() =>

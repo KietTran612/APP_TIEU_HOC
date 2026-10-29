@@ -21,15 +21,14 @@ namespace TapDoc
             var items = Step.items;
             const float gap = 24f;
             var widths = items.Select(i => i.text.Length <= 3 ? 200f : 280f).ToList();
-            var total = widths.Sum() + (items.Count - 1) * gap;
-            var x = -total / 2f;
+            // Câu dài (ví dụ 8 tiếng ở bài 12) tự xuống dòng, vẫn giữ thứ tự đọc.
+            var centers = FlowLayout.Place(widths, 190f, FlowWidth, gap, 20f);
             for (var j = 0; j < items.Count; j++)
             {
                 var index = j;
-                var tile = AddTile(items[j].text, new Vector2(widths[j], 190f), new Vector2(x + widths[j] / 2f, 110f), 110f);
+                var tile = AddTile(items[j].text, new Vector2(widths[j], 190f), centers[j] + new Vector2(0f, 115f), 110f);
                 tile.Tapped += () => OnTokenTapped(index);
                 _tokens.Add(tile);
-                x += widths[j] + gap;
             }
 
             var listen = UiKit.CreateButton(Root.transform, UiText.ListenSentence, OnListen);

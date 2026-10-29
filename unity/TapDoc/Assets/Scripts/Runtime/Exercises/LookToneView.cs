@@ -23,6 +23,7 @@ namespace TapDoc
             {
                 var option = Order[k];
                 var tile = AddTile(Round.options[option].text, new Vector2(size, size), new Vector2(RowX(k, Order.Count, size, 80f), -190f), 150f);
+                tile.SetTone(Round.options[option].tone);
                 var drag = tile.gameObject.AddComponent<DragTile>();
                 drag.DroppedOn += slot => { if (slot == _slot) Answer(option); };
                 OptionTiles[option] = tile;

@@ -4,13 +4,27 @@ using UnityEngine.UI;
 
 namespace TapDoc
 {
+    /// <summary>
+    /// Màn kết thúc bài: khen, 3 sao (không phụ thuộc số lần sai), nút "Học bài tiếp" và "Về danh sách".
+    /// Khi mở màn này bài được ghi là đã học xong và tiến độ được lưu ngay. Phiên "Ôn lại"
+    /// (<see cref="ReviewSession.LessonId"/>) không phải một bài: không ghi đã học và không có nút "Học bài tiếp".
+    /// </summary>
     public class ResultScreen : MonoBehaviour
     {
+        private const float StarSize = 180f;
+
         public Button NextLessonButton { get; private set; }
         public Button ToListButton { get; private set; }
 
         public void Build(AppRoot app, string lessonId)
         {
+            var isReview = lessonId == ReviewSession.LessonId;
+            if (!string.IsNullOrEmpty(lessonId) && !isReview)
+            {
+                app.Progress.MarkCompleted(lessonId);
+                app.SaveProgress();
+            }
+
             var praise = UiKit.CreateLabel(transform, UiText.Praise, 72f);
             var praiseRt = praise.GetComponent<RectTransform>();
             praiseRt.anchorMin = new Vector2(0.5f, 1f);
@@ -33,17 +47,9 @@ namespace TapDoc
             starsHlg.childControlWidth = false;
             starsHlg.childControlHeight = false;
 
-            var starSprite = app.Assets.Image(SystemImages.Star);
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < ProgressStore.MaxStars; i++)
             {
-                var starGo = new GameObject($"Star_{i}", typeof(RectTransform), typeof(Image));
-                starGo.transform.SetParent(starsRow.transform, false);
-                starGo.GetComponent<RectTransform>().sizeDelta = new Vector2(180f, 180f);
-                var img = starGo.GetComponent<Image>();
-                img.sprite = starSprite ?? UiKit.WhiteSprite;
-                img.preserveAspect = true;
-                img.color = starSprite != null ? Color.white : new Color(1f, 0.82f, 0.15f, 1f);
-                img.raycastTarget = false;
+                MarkerIcon.CreateStar(starsRow.transform, app.Assets, StarSize).name = $"Star_{i}";
             }
 
             var btnRow = new GameObject("Buttons", typeof(RectTransform), typeof(HorizontalLayoutGroup));
@@ -61,7 +67,7 @@ namespace TapDoc
             btnHlg.childControlWidth = true;
             btnHlg.childControlHeight = true;
 
-            var nextLessonId = FindNextLessonId(lessonId);
+            var nextLessonId = isReview ? null : FindNextLessonId(app.Progress, lessonId);
             if (!string.IsNullOrEmpty(nextLessonId))
             {
                 NextLessonButton = UiKit.CreateButton(btnRow.transform, UiText.NextLesson, () => app.ShowLesson(nextLessonId));
@@ -78,16 +84,17 @@ namespace TapDoc
             _ = app.Speech.PlayAsync(SystemAudio.khen_hoan_thanh);
         }
 
-        private static string FindNextLessonId(string currentLessonId)
+        /// <summary>Bài đứng sau <paramref name="currentLessonId"/> trong danh sách, nếu bài đó đã mở cho bé.</summary>
+        private static string FindNextLessonId(ProgressStore progress, string currentLessonId)
         {
             if (string.IsNullOrEmpty(currentLessonId)) return null;
             try
             {
-                var entries = LessonRepository.LoadIndex().lessons;
-                var idx = entries.FindIndex(e => e.lesson_id == currentLessonId);
-                if (idx >= 0 && idx + 1 < entries.Count)
+                var ordered = LessonRepository.LoadIndex().lessons.Select(e => e.lesson_id).ToList();
+                var idx = ordered.IndexOf(currentLessonId);
+                if (idx >= 0 && idx + 1 < ordered.Count && progress.IsUnlocked(ordered, ordered[idx + 1]))
                 {
-                    return entries[idx + 1].lesson_id;
+                    return ordered[idx + 1];
                 }
             }
             catch

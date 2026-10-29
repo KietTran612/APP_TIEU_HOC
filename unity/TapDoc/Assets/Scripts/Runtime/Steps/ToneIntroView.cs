@@ -10,6 +10,7 @@ namespace TapDoc
         protected override void Build()
         {
             _glyphTile = AddTile(Step.glyph, new Vector2(420f, 420f), new Vector2(0f, 90f), 320f);
+            _glyphTile.SetTone(Step.tone);
             _glyphTile.Tapped += Replay;
             var name = UiKit.CreateLabel(Root.transform, Step.text, 96f);
             var rt = name.rectTransform;

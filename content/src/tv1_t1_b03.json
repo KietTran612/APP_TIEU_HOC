@@ -1,0 +1,160 @@
+{
+  "lesson_id": "tv1_t1_b03",
+  "book": "tv1_t1_1990",
+  "lesson_no": 3,
+  "type": "am_moi",
+  "title": "a",
+  "source": {
+    "pages": [
+      8
+    ],
+    "scan_file": "005",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "a"
+  ],
+  "images": {
+    "img_b03_cais_ca": "Cái ca tráng men màu trắng có nắp đậy và quai cầm, thân có viền hoa văn nhỏ",
+    "img_b03_baf": "Bà cụ hiền hậu tóc búi, quàng khăn len kẻ ô, mặc áo len, ngồi quỳ gối",
+    "img_b03_quar_caf": "Quả cà tròn to có múi, cuống ngắn (giống quả cà ở bài 4)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[5]",
+        "note": "Quả trong tranh là quả cà hay quả bí? App tạm gọi là quả cà (giống tranh cà ở bài 4)."
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "a"
+    },
+    {
+      "type": "keyword",
+      "text": "cái ca",
+      "image": "img_b03_cais_ca"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái ca",
+        "ca",
+        "a"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ca",
+      "then": "cái ca"
+    },
+    {
+      "type": "picture",
+      "image": "img_b03_baf",
+      "say": "Đây là bà.",
+      "word": "bà"
+    },
+    {
+      "type": "picture",
+      "image": "img_b03_quar_caf",
+      "say": "Đây là quả cà.",
+      "word": "quả cà"
+    },
+    {
+      "type": "words",
+      "marker": "●▨",
+      "items": [
+        {
+          "text": "ca"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "a",
+          "options": [
+            "a",
+            "o",
+            "c"
+          ]
+        },
+        {
+          "answer": "o",
+          "options": [
+            "o",
+            "a",
+            "c"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "a",
+          "options": [
+            "a",
+            "o"
+          ]
+        },
+        {
+          "answer": "o",
+          "options": [
+            "a",
+            "o"
+          ]
+        },
+        {
+          "answer": "a",
+          "options": [
+            "a",
+            "o"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "ca",
+      "template": "c_",
+      "answer": "a",
+      "options": [
+        "a",
+        "o"
+      ],
+      "image": "img_b03_cais_ca"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cái ca",
+          "answer": "img_b03_cais_ca",
+          "options": [
+            "img_b03_cais_ca",
+            "img_b03_baf",
+            "img_b03_quar_caf"
+          ]
+        },
+        {
+          "word": "bà",
+          "answer": "img_b03_baf",
+          "options": [
+            "img_b03_cais_ca",
+            "img_b03_baf",
+            "img_b03_quar_caf"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "lesson_id": "tv1_t1_b02",
+  "book": "tv1_t1_1990",
+  "lesson_no": 2,
+  "type": "am_moi",
+  "title": "c",
+  "source": {
+    "pages": [
+      7
+    ],
+    "scan_file": "004",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "c"
+  ],
+  "images": {
+    "img_b02_keos_co": "Năm bạn nhỏ nắm tay nhau thành hàng, ngả người kéo co; đầu hàng có chú mèo con níu theo",
+    "img_b02_cof": "Hai con cò đứng bên bờ nước có cỏ lau: một con ngậm con cá nhỏ, một con cúi mổ dưới nước; trên trời có chim bay"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "c"
+    },
+    {
+      "type": "keyword",
+      "text": "kéo co",
+      "image": "img_b02_keos_co"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "kéo co",
+        "co",
+        "c"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "co",
+      "then": "kéo co"
+    },
+    {
+      "type": "picture",
+      "image": "img_b02_cof",
+      "say": "Đây là con cò.",
+      "word": "con cò"
+    },
+    {
+      "type": "words",
+      "marker": "●▨",
+      "items": [
+        {
+          "text": "co"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "c",
+          "options": [
+            "c",
+            "o"
+          ]
+        },
+        {
+          "answer": "o",
+          "options": [
+            "o",
+            "c"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "c",
+          "options": [
+            "c",
+            "o"
+          ]
+        },
+        {
+          "answer": "o",
+          "options": [
+            "c",
+            "o"
+          ]
+        },
+        {
+          "answer": "c",
+          "options": [
+            "c",
+            "o"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "co",
+      "template": "c_",
+      "answer": "o",
+      "options": [
+        "o",
+        "c"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "kéo co",
+          "answer": "img_b02_keos_co",
+          "options": [
+            "img_b02_keos_co",
+            "img_b02_cof"
+          ]
+        },
+        {
+          "word": "con cò",
+          "answer": "img_b02_cof",
+          "options": [
+            "img_b02_keos_co",
+            "img_b02_cof"
+          ]
+        }
+      ]
+    }
+  ]
+}

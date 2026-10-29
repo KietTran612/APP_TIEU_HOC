@@ -216,7 +216,7 @@ class Lesson13Test(unittest.TestCase):
 
     def test_top_level(self):
         lesson = self.r.lesson
-        self.assertEqual(list(lesson), ["schema", "lesson_id", "book", "lesson_no", "type", "title", "new_units",
+        self.assertEqual(list(lesson), ["schema", "lesson_id", "book", "lesson_no", "type", "title", "in_app", "new_units",
                                         "source", "review", "part1", "part2"])
         self.assertEqual((lesson["schema"], lesson["lesson_id"], lesson["lesson_no"], lesson["type"]),
                          (1, "tv1_t1_b13", 13, "am_moi"))
@@ -641,7 +641,9 @@ class SystemAssetsTest(unittest.TestCase):
             self.assertIn(round_["instruction_audio"], SYSTEM_AUDIO)
 
     def test_system_images(self):
-        self.assertEqual(set(SYSTEM_IMAGES), {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap"})
+        avatars = {f"img_chung_avatar_{n:02d}" for n in range(1, 7)}  # hình đại diện cho bé chọn (MVP Task 5)
+        self.assertEqual(set(SYSTEM_IMAGES), {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap"} | avatars)
+        self.assertIn("con mèo", SYSTEM_IMAGES["img_chung_avatar_01"])
         self.assertTrue(all(unicodedata.is_normalized("NFC", v) for v in SYSTEM_IMAGES.values()))
 
 

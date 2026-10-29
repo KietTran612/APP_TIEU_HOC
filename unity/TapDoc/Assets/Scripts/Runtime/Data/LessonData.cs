@@ -82,6 +82,10 @@ namespace TapDoc
         public string image;
         public string note;
         public int row;
+        public int col;
+        public string role;   // letter, tone, onset, vowel, base, form, cell (khung chữ, bảng ghép, bảng dấu)
+        public string tone;
+        public string glyph;
         public List<Span> hl = new();
         public List<Spell> spells = new();
     }

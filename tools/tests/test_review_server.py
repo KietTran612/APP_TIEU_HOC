@@ -251,6 +251,7 @@ class ReviewServerTest(unittest.TestCase):
 
     def test_cli_review_prints_url_and_stops_on_keyboard_interrupt(self):
         fake_server = mock.MagicMock()
+        fake_server.server_address = ("127.0.0.1", 8765)  # server thật luôn có địa chỉ đã gắn
         fake_server.serve_forever.side_effect = KeyboardInterrupt
         out, err = io.StringIO(), io.StringIO()
         with mock.patch("tapdoc.__main__.make_server", return_value=fake_server) as mocked_make, \
@@ -261,6 +262,32 @@ class ReviewServerTest(unittest.TestCase):
         mocked_make.assert_called_once()
         fake_server.serve_forever.assert_called_once()
         fake_server.server_close.assert_called_once()
+
+    def test_cli_review_prints_real_bound_port_when_port_is_zero(self):
+        fake_server = mock.MagicMock()
+        fake_server.server_address = ("127.0.0.1", 54321)
+        fake_server.serve_forever.side_effect = KeyboardInterrupt
+        fake_server.server_close.return_value = None
+        out, err = io.StringIO(), io.StringIO()
+        with mock.patch("tapdoc.__main__.make_server", return_value=fake_server) as mocked_make, \
+                redirect_stdout(out), redirect_stderr(err):
+            code = cli.main(["review", "--port", "0"])
+        self.assertEqual(code, 0, err.getvalue())
+        self.assertIn("127.0.0.1:54321", out.getvalue())
+        mocked_make.assert_called_once()
+        fake_server.serve_forever.assert_called_once()
+        fake_server.server_close.assert_called_once()
+
+    def test_save_review_does_not_call_render(self):
+        with self._get("/") as resp:
+            html = resp.read().decode("utf-8")
+        match = re.search(
+            r"(?:async\s+)?function\s+saveReview\b(.*?)(?=\r?\n\s*(?:async\s+)?function\s+\w+)",
+            html,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(match)
+        self.assertNotIn("render(", match.group(1))
 
 
 if __name__ == "__main__":

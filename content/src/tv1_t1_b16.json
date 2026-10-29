@@ -1,0 +1,179 @@
+{
+  "lesson_id": "tv1_t1_b16",
+  "book": "tv1_t1_1990",
+  "lesson_no": 16,
+  "type": "am_moi",
+  "title": "b",
+  "source": {
+    "pages": [
+      21
+    ],
+    "scan_file": "011",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "b"
+  ],
+  "images": {
+    "img_b16_ba_ba": "Con ba ba (rùa mai mềm) mai tròn có đốm, cổ dài vươn ra, đang bò",
+    "img_b16_bof_bee": "Con bò mẹ đứng trên bãi cỏ, con bê con đứng bên cạnh dụi đầu vào mẹ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "b"
+    },
+    {
+      "type": "keyword",
+      "text": "ba ba",
+      "image": "img_b16_ba_ba"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "ba ba",
+        "ba",
+        "b"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ba",
+      "then": "ba ba"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "bò",
+          "image": "img_b16_bof_bee"
+        },
+        {
+          "text": "bê"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "bà bế bé"
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "bé bá cổ bà."
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "ba",
+          "bo",
+          "bô",
+          "be",
+          "bê",
+          "bi",
+          "bu",
+          "bư"
+        ],
+        [
+          "bé bi bô",
+          "ba bó lá"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "b",
+          "options": [
+            "b",
+            "d",
+            "đ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ba",
+          "options": [
+            "ba",
+            "da"
+          ]
+        },
+        {
+          "answer": "bô",
+          "options": [
+            "bô",
+            "dô"
+          ]
+        },
+        {
+          "answer": "be",
+          "options": [
+            "be",
+            "de"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "bé",
+          "options": [
+            "bé",
+            "bè",
+            "bẻ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "bê",
+      "template": "b_",
+      "answer": "ê",
+      "options": [
+        "ê",
+        "e",
+        "ô"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "ba ba",
+          "answer": "img_b16_ba_ba",
+          "options": [
+            "img_b16_ba_ba",
+            "img_b16_bof_bee"
+          ]
+        },
+        {
+          "word": "bò",
+          "answer": "img_b16_bof_bee",
+          "options": [
+            "img_b16_ba_ba",
+            "img_b16_bof_bee"
+          ]
+        }
+      ]
+    }
+  ]
+}

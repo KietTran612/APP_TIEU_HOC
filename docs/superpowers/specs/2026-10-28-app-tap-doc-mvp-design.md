@@ -393,3 +393,34 @@ Mã viết theo **kiểu gõ Telex, chỉ dùng chữ ASCII**, để không bị
   - kí hiệu dấu trong thẻ còn nhỏ và nằm hơi cao;
   - màn rộng còn nhiều khoảng trống hai bên;
   - thiếu tranh ngôi sao thì hiện ô vàng.
+
+### Bản đầu tiên bài 1–17: đã làm (29/10/2026)
+
+Kế hoạch: [2026-10-29-ban-dau-tien-bai-1-17.md](../plans/2026-10-29-ban-dau-tien-bai-1-17.md).
+
+- **Phần thưởng [Đề xuất, đã làm]:** học xong một bài được 3 sao, không phụ thuộc số lần sai. Chưa có nhân vật dẫn dắt.
+- **Nội dung:**
+  - 17 bài chép từ trang sách (ảnh 004–012). Mức xác minh của cả 17 bài là `page_verified`.
+  - Bài 42 vẫn được dựng nhưng không hiện trong danh sách bài (`in_app: false`).
+- **Màn mới:**
+  - bảng dấu (bài 6), khung chữ và bảng ghép (bài ôn tập 7, 11, 17);
+  - dòng chữ dài tự xuống dòng;
+  - thẻ kí hiệu dấu to và nằm giữa thẻ.
+- **App:**
+  - hồ sơ bé (tên gọi ở nhà và 6 hình đại diện);
+  - tiến độ lưu riêng từng bé, qua file tạm, nên file không bị ghi dở;
+  - bài mở theo thứ tự, có sao;
+  - mục "Ôn lại" lấy các lượt bé đã nhầm;
+  - màn phụ huynh khóa bằng một phép cộng.
+- **Tài nguyên tạm** (ChatGPT Kiet_1, đều ở trạng thái `cho_duyet`):
+  - 278 âm thanh, giọng máy vi-sgn+f3;
+  - 58 tranh, gồm 6 hình đại diện.
+- **Kết quả test:**
+  - EditMode 79 đạt, trong đó có test kiểm tra đủ tài nguyên thật;
+  - PlayMode 108 đạt, gồm chạy trọn 17 bài và bài 42, kiểm tra bố cục ở khung 2400×1080 và 2048×1536;
+  - Python đều đạt.
+  - Kiểm tra dữ liệu bản đầy đủ báo `OK`.
+- **Việc trau chuốt để sau:**
+  - câu dài xuống dòng có thể để một chữ đứng riêng ở dòng hai (bài 14 "tá");
+  - tên bài dài (bài 4, bài 6) bị thu chữ khá nhỏ trên thẻ danh sách bài;
+  - màn rộng vẫn còn khoảng trống hai bên.

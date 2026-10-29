@@ -1,0 +1,968 @@
+{
+  "schema": 1,
+  "lesson_id": "tv1_t1_b06",
+  "book": "tv1_t1_1990",
+  "lesson_no": 6,
+  "type": "dau_thanh",
+  "title": "Dấu hỏi - Dấu ngã - Dấu nặng",
+  "in_app": true,
+  "new_units": [
+    "hoi",
+    "nga",
+    "nang"
+  ],
+  "source": {
+    "pages": [
+      11
+    ],
+    "scan_file": "006",
+    "verification": "page_verified"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[3]",
+        "note": "Âm 'ng' chưa học: app đọc trơn tiếng gốc 'nga' rồi thêm dấu ngã, không đánh vần âm đầu."
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "tone_intro",
+      "tone": "hoi",
+      "text": "hỏi",
+      "glyph": "ˀ",
+      "audio": "dau_hoi"
+    },
+    {
+      "type": "tone_attach",
+      "image": "img_b06_cor",
+      "spell": {
+        "target": "cỏ",
+        "drag_tone": true,
+        "parts": [
+          {
+            "kind": "join",
+            "text": "co",
+            "audio": "tieng_co"
+          },
+          {
+            "kind": "tone",
+            "text": "ˀ",
+            "audio": "dau_hoi",
+            "tone": "hoi"
+          },
+          {
+            "kind": "join",
+            "text": "cỏ",
+            "audio": "tieng_cor"
+          }
+        ]
+      }
+    },
+    {
+      "type": "tone_intro",
+      "tone": "nga",
+      "text": "ngã",
+      "glyph": "˜",
+      "audio": "dau_nga"
+    },
+    {
+      "type": "tone_attach",
+      "image": "img_b06_ngax",
+      "spell": {
+        "target": "ngã",
+        "drag_tone": true,
+        "parts": [
+          {
+            "kind": "join",
+            "text": "nga",
+            "audio": "tieng_nga"
+          },
+          {
+            "kind": "tone",
+            "text": "˜",
+            "audio": "dau_nga",
+            "tone": "nga"
+          },
+          {
+            "kind": "join",
+            "text": "ngã",
+            "audio": "tieng_ngax"
+          }
+        ]
+      }
+    },
+    {
+      "type": "tone_intro",
+      "tone": "nang",
+      "text": "nặng",
+      "glyph": ".",
+      "audio": "dau_nang"
+    },
+    {
+      "type": "tone_attach",
+      "image": "img_b06_coj",
+      "spell": {
+        "target": "cọ",
+        "drag_tone": true,
+        "parts": [
+          {
+            "kind": "join",
+            "text": "co",
+            "audio": "tieng_co"
+          },
+          {
+            "kind": "tone",
+            "text": ".",
+            "audio": "dau_nang",
+            "tone": "nang"
+          },
+          {
+            "kind": "join",
+            "text": "cọ",
+            "audio": "tieng_coj"
+          }
+        ]
+      }
+    },
+    {
+      "type": "tone_table",
+      "text": "đo",
+      "audio": "tieng_ddo",
+      "items": [
+        {
+          "text": "đò",
+          "audio": "tieng_ddof",
+          "role": "cell",
+          "tone": "huyen",
+          "glyph": "ˋ",
+          "spells": [
+            {
+              "target": "đò",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "đò",
+                  "audio": "tieng_ddof"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đó",
+          "audio": "tieng_ddos",
+          "role": "cell",
+          "tone": "sac",
+          "glyph": "ˊ",
+          "spells": [
+            {
+              "target": "đó",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "đó",
+                  "audio": "tieng_ddos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đỏ",
+          "audio": "tieng_ddor",
+          "role": "cell",
+          "tone": "hoi",
+          "glyph": "ˀ",
+          "spells": [
+            {
+              "target": "đỏ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˀ",
+                  "audio": "dau_hoi",
+                  "tone": "hoi"
+                },
+                {
+                  "kind": "join",
+                  "text": "đỏ",
+                  "audio": "tieng_ddor"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đõ",
+          "audio": "tieng_ddox",
+          "role": "cell",
+          "tone": "nga",
+          "glyph": "˜",
+          "spells": [
+            {
+              "target": "đõ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "˜",
+                  "audio": "dau_nga",
+                  "tone": "nga"
+                },
+                {
+                  "kind": "join",
+                  "text": "đõ",
+                  "audio": "tieng_ddox"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đọ",
+          "audio": "tieng_ddoj",
+          "role": "cell",
+          "tone": "nang",
+          "glyph": ".",
+          "spells": [
+            {
+              "target": "đọ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": ".",
+                  "audio": "dau_nang",
+                  "tone": "nang"
+                },
+                {
+                  "kind": "join",
+                  "text": "đọ",
+                  "audio": "tieng_ddoj"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "●▨",
+      "items": [
+        {
+          "text": "cò",
+          "audio": "tieng_cof",
+          "hl": [],
+          "spells": [
+            {
+              "target": "cò",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "co",
+                  "audio": "tieng_co"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "cò",
+                  "audio": "tieng_cof"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "cỏ",
+          "audio": "tieng_cor",
+          "hl": [],
+          "spells": [
+            {
+              "target": "cỏ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "co",
+                  "audio": "tieng_co"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˀ",
+                  "audio": "dau_hoi",
+                  "tone": "hoi"
+                },
+                {
+                  "kind": "join",
+                  "text": "cỏ",
+                  "audio": "tieng_cor"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "cọ",
+          "audio": "tieng_coj",
+          "hl": [],
+          "spells": [
+            {
+              "target": "cọ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "co",
+                  "audio": "tieng_co"
+                },
+                {
+                  "kind": "tone",
+                  "text": ".",
+                  "audio": "dau_nang",
+                  "tone": "nang"
+                },
+                {
+                  "kind": "join",
+                  "text": "cọ",
+                  "audio": "tieng_coj"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "items": [
+        {
+          "text": "đo",
+          "audio": "tieng_ddo",
+          "row": 0,
+          "spells": [
+            {
+              "target": "đo",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đò",
+          "audio": "tieng_ddof",
+          "row": 0,
+          "spells": [
+            {
+              "target": "đò",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "đò",
+                  "audio": "tieng_ddof"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đó",
+          "audio": "tieng_ddos",
+          "row": 0,
+          "spells": [
+            {
+              "target": "đó",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "đó",
+                  "audio": "tieng_ddos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đỏ",
+          "audio": "tieng_ddor",
+          "row": 0,
+          "spells": [
+            {
+              "target": "đỏ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˀ",
+                  "audio": "dau_hoi",
+                  "tone": "hoi"
+                },
+                {
+                  "kind": "join",
+                  "text": "đỏ",
+                  "audio": "tieng_ddor"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đõ",
+          "audio": "tieng_ddox",
+          "row": 0,
+          "spells": [
+            {
+              "target": "đõ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "˜",
+                  "audio": "dau_nga",
+                  "tone": "nga"
+                },
+                {
+                  "kind": "join",
+                  "text": "đõ",
+                  "audio": "tieng_ddox"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đọ",
+          "audio": "tieng_ddoj",
+          "row": 0,
+          "spells": [
+            {
+              "target": "đọ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": ".",
+                  "audio": "dau_nang",
+                  "tone": "nang"
+                },
+                {
+                  "kind": "join",
+                  "text": "đọ",
+                  "audio": "tieng_ddoj"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đo đỏ",
+          "audio": "tu_ddo_ddor",
+          "row": 1,
+          "spells": [
+            {
+              "target": "đo",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                }
+              ]
+            },
+            {
+              "target": "đỏ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˀ",
+                  "audio": "dau_hoi",
+                  "tone": "hoi"
+                },
+                {
+                  "kind": "join",
+                  "text": "đỏ",
+                  "audio": "tieng_ddor"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "dạ",
+          "audio": "tieng_daj",
+          "row": 1,
+          "spells": [
+            {
+              "target": "dạ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "d",
+                  "audio": "am_d"
+                },
+                {
+                  "kind": "unit",
+                  "text": "a",
+                  "audio": "van_a"
+                },
+                {
+                  "kind": "join",
+                  "text": "da",
+                  "audio": "tieng_da"
+                },
+                {
+                  "kind": "tone",
+                  "text": ".",
+                  "audio": "dau_nang",
+                  "tone": "nang"
+                },
+                {
+                  "kind": "join",
+                  "text": "dạ",
+                  "audio": "tieng_daj"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nhin_keo_dau",
+      "prompt_audio": "",
+      "prompt_text": "đỏ",
+      "base_text": "đo",
+      "image": "",
+      "options": [
+        {
+          "text": "ˀ",
+          "audio": "",
+          "image": "",
+          "tone": "hoi"
+        },
+        {
+          "text": "˜",
+          "audio": "",
+          "image": "",
+          "tone": "nga"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nhin_keo_dau",
+      "prompt_audio": "",
+      "prompt_text": "đõ",
+      "base_text": "đo",
+      "image": "",
+      "options": [
+        {
+          "text": "ˀ",
+          "audio": "",
+          "image": "",
+          "tone": "hoi"
+        },
+        {
+          "text": "˜",
+          "audio": "",
+          "image": "",
+          "tone": "nga"
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nhin_keo_dau",
+      "prompt_audio": "",
+      "prompt_text": "cọ",
+      "base_text": "co",
+      "image": "",
+      "options": [
+        {
+          "text": ".",
+          "audio": "",
+          "image": "",
+          "tone": "nang"
+        },
+        {
+          "text": "ˊ",
+          "audio": "",
+          "image": "",
+          "tone": "sac"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_ddof",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đò",
+          "audio": "tieng_ddof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đó",
+          "audio": "tieng_ddos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đọ",
+          "audio": "tieng_ddoj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_ddos",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đó",
+          "audio": "tieng_ddos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đò",
+          "audio": "tieng_ddof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đọ",
+          "audio": "tieng_ddoj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "compose",
+      "tag": "",
+      "instruction_audio": "hd_keo_vao_cho_trong",
+      "prompt_audio": "tieng_cor",
+      "prompt_text": "c_",
+      "base_text": "",
+      "image": "img_b06_cor",
+      "options": [
+        {
+          "text": "ỏ",
+          "audio": "tieng_or",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ọ",
+          "audio": "tieng_oj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ó",
+          "audio": "tieng_os",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tieng_cor",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cỏ",
+          "audio": "",
+          "image": "img_b06_cor",
+          "tone": ""
+        },
+        {
+          "text": "ngã",
+          "audio": "",
+          "image": "img_b06_ngax",
+          "tone": ""
+        },
+        {
+          "text": "cọ",
+          "audio": "",
+          "image": "img_b06_coj",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tieng_coj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cỏ",
+          "audio": "",
+          "image": "img_b06_cor",
+          "tone": ""
+        },
+        {
+          "text": "ngã",
+          "audio": "",
+          "image": "img_b06_ngax",
+          "tone": ""
+        },
+        {
+          "text": "cọ",
+          "audio": "",
+          "image": "img_b06_coj",
+          "tone": ""
+        }
+      ],
+      "answer": 2
+    }
+  ]
+}

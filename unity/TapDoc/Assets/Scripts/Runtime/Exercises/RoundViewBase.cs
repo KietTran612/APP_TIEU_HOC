@@ -77,7 +77,21 @@ namespace TapDoc
             if (!await Feedback.Handle(correct, answerTile)) return;
             if (!IsAlive || _completed) return;
             _completed = true;
+            ReportFinished();
             Completed?.Invoke();
+        }
+
+        /// <summary>Báo lượt xong kèm số lần nhầm. Lỗi khi ghi tiến độ không được chặn việc chuyển lượt.</summary>
+        private void ReportFinished()
+        {
+            try
+            {
+                Ctx.RoundFinished?.Invoke(Round, Feedback.Mistakes);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
+            }
         }
 
         /// <summary>Việc riêng khi bé làm đúng, trước lời khen (ví dụ hiện đủ chữ). Mặc định không làm gì.</summary>
@@ -102,6 +116,24 @@ namespace TapDoc
             -((count - 1) * (width + gap)) / 2f + k * (width + gap);
 
         protected abstract void ActForTest();
+
+        /// <summary>
+        /// Móc cho test: chọn một phương án sai theo đúng cách bé thao tác ở màn này (chạm thẻ, hoặc kéo thẻ vào ô nhận).
+        /// </summary>
+        internal void ActWrongForTest()
+        {
+            var wrong = Enumerable.Range(0, Round.options.Count).First(i => i != Round.answer);
+            var tile = OptionTiles[wrong];
+            var drag = tile.GetComponent<DragTile>();
+            if (drag != null)
+            {
+                drag.SimulateDropOn(Root.GetComponentInChildren<DropSlot>(true));
+            }
+            else
+            {
+                tile.SimulateTap();
+            }
+        }
 
         public IEnumerator CompleteForTest()
         {

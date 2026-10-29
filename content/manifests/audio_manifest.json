@@ -9,6 +9,8 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
+      "tv1_t1_b16",
+      "tv1_t1_b17",
       "tv1_t1_b42"
     ]
   },
@@ -22,8 +24,19 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
+      "tv1_t1_b02",
+      "tv1_t1_b03",
       "tv1_t1_b04",
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b10",
+      "tv1_t1_b12",
       "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
       "tv1_t1_b42"
     ]
   },
@@ -37,7 +50,15 @@
     "can_nghe_ky": true,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b09",
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b13",
+      "tv1_t1_b16"
     ]
   },
   {
@@ -50,7 +71,17 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b09",
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
       "tv1_t1_b13",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
       "tv1_t1_b42"
     ]
   },
@@ -64,6 +95,9 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17",
       "tv1_t1_b42"
     ]
   },
@@ -77,7 +111,11 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b12",
+      "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b17"
     ]
   },
   {
@@ -90,7 +128,9 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
+      "tv1_t1_b12",
       "tv1_t1_b13",
+      "tv1_t1_b17",
       "tv1_t1_b42"
     ]
   },
@@ -130,7 +170,39 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "cau_b10_01",
+    "text": "tí đi ô tô",
+    "kind": "cau",
+    "file": "audio/cau_b10_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10"
+    ]
+  },
+  {
+    "id": "cau_b12_01",
+    "text": "tí đi ô tô, má đi ca nô",
+    "kind": "cau",
+    "file": "audio/cau_b12_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
     ]
   },
   {
@@ -147,6 +219,58 @@
     ]
   },
   {
+    "id": "cau_b14_01",
+    "text": "tổ y tế có cô y tá",
+    "kind": "cau",
+    "file": "audio/cau_b14_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14"
+    ]
+  },
+  {
+    "id": "cau_b15_01",
+    "text": "tí có lá cờ đỏ",
+    "kind": "cau",
+    "file": "audio/cau_b15_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "cau_b16_01",
+    "text": "bà bế bé",
+    "kind": "cau",
+    "file": "audio/cau_b16_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "cau_b16_02",
+    "text": "bé bá cổ bà.",
+    "kind": "cau",
+    "file": "audio/cau_b16_02.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
     "id": "dau_hoi",
     "text": "hỏi",
     "kind": "dau",
@@ -156,7 +280,15 @@
     "can_nghe_ky": true,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b10",
+      "tv1_t1_b12",
+      "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16"
     ]
   },
   {
@@ -170,7 +302,15 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b04",
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b09",
+      "tv1_t1_b12",
       "tv1_t1_b13",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
       "tv1_t1_b42"
     ]
   },
@@ -184,7 +324,28 @@
     "can_nghe_ky": true,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b13",
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "dau_nga",
+    "text": "ngã",
+    "kind": "dau",
+    "file": "audio/dau_nga.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b09",
+      "tv1_t1_b15"
     ]
   },
   {
@@ -198,7 +359,83 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b04",
-      "tv1_t1_b13"
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b09",
+      "tv1_t1_b10",
+      "tv1_t1_b12",
+      "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "hd_b01_tranh_01",
+    "text": "Đây là chùm nho.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b01_tranh_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b01"
+    ]
+  },
+  {
+    "id": "hd_b01_tranh_02",
+    "text": "Đây là con bò.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b01_tranh_02.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b01"
+    ]
+  },
+  {
+    "id": "hd_b02_tranh_01",
+    "text": "Đây là con cò.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b02_tranh_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b02"
+    ]
+  },
+  {
+    "id": "hd_b03_tranh_01",
+    "text": "Đây là bà.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b03_tranh_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b03"
+    ]
+  },
+  {
+    "id": "hd_b03_tranh_02",
+    "text": "Đây là quả cà.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b03_tranh_02.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b03"
     ]
   },
   {
@@ -212,6 +449,136 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b04"
+    ]
+  },
+  {
+    "id": "hd_b05_tranh_01",
+    "text": "Đây là con dê.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b05_tranh_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05"
+    ]
+  },
+  {
+    "id": "hd_b05_tranh_02",
+    "text": "Đây là con đò.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b05_tranh_02.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05"
+    ]
+  },
+  {
+    "id": "hd_b08_tranh_01",
+    "text": "Đây là cái ba lô.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b08_tranh_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
+    "id": "hd_b08_tranh_02",
+    "text": "Đây là quyển vở.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b08_tranh_02.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
+    "id": "hd_b09_tranh_01",
+    "text": "Đây là con ve.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b09_tranh_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "hd_b09_tranh_02",
+    "text": "Đây là búp bê.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b09_tranh_02.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "hd_b10_tranh_01",
+    "text": "Đây là hai hòn bi.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b10_tranh_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10"
+    ]
+  },
+  {
+    "id": "hd_b10_tranh_02",
+    "text": "Đây là cái tủ.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b10_tranh_02.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10"
+    ]
+  },
+  {
+    "id": "hd_b12_tranh_01",
+    "text": "Đây là nụ hoa.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b12_tranh_01.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
+    ]
+  },
+  {
+    "id": "hd_b12_tranh_02",
+    "text": "Đây là quả me.",
+    "kind": "huong_dan",
+    "file": "audio/hd_b12_tranh_02.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
     ]
   },
   {
@@ -355,7 +722,35 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b04",
-      "tv1_t1_b13"
+      "tv1_t1_b07",
+      "tv1_t1_b13",
+      "tv1_t1_b14"
+    ]
+  },
+  {
+    "id": "tieng_aj",
+    "text": "ạ",
+    "kind": "tieng",
+    "file": "audio/tieng_aj.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b07"
+    ]
+  },
+  {
+    "id": "tieng_ar",
+    "text": "ả",
+    "kind": "tieng",
+    "file": "audio/tieng_ar.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14"
     ]
   },
   {
@@ -368,7 +763,50 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b04"
+      "tv1_t1_b04",
+      "tv1_t1_b07",
+      "tv1_t1_b14"
+    ]
+  },
+  {
+    "id": "tieng_ba",
+    "text": "ba",
+    "kind": "tieng",
+    "file": "audio/tieng_ba.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_baf",
+    "text": "bà",
+    "kind": "tieng",
+    "file": "audio/tieng_baf.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b03",
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_baj",
+    "text": "bạ",
+    "kind": "tieng",
+    "file": "audio/tieng_baj.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b17"
     ]
   },
   {
@@ -398,6 +836,208 @@
     ]
   },
   {
+    "id": "tieng_bas",
+    "text": "bá",
+    "kind": "tieng",
+    "file": "audio/tieng_bas.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_be",
+    "text": "be",
+    "kind": "tieng",
+    "file": "audio/tieng_be.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_bee",
+    "text": "bê",
+    "kind": "tieng",
+    "file": "audio/tieng_bee.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_bees",
+    "text": "bế",
+    "kind": "tieng",
+    "file": "audio/tieng_bees.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_bef",
+    "text": "bè",
+    "kind": "tieng",
+    "file": "audio/tieng_bef.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_ber",
+    "text": "bẻ",
+    "kind": "tieng",
+    "file": "audio/tieng_ber.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_bes",
+    "text": "bé",
+    "kind": "tieng",
+    "file": "audio/tieng_bes.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_bi",
+    "text": "bi",
+    "kind": "tieng",
+    "file": "audio/tieng_bi.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_bo",
+    "text": "bo",
+    "kind": "tieng",
+    "file": "audio/tieng_bo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_bof",
+    "text": "bò",
+    "kind": "tieng",
+    "file": "audio/tieng_bof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_boo",
+    "text": "bô",
+    "kind": "tieng",
+    "file": "audio/tieng_boo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_bos",
+    "text": "bó",
+    "kind": "tieng",
+    "file": "audio/tieng_bos.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_bow",
+    "text": "bơ",
+    "kind": "tieng",
+    "file": "audio/tieng_bow.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_bu",
+    "text": "bu",
+    "kind": "tieng",
+    "file": "audio/tieng_bu.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_buw",
+    "text": "bư",
+    "kind": "tieng",
+    "file": "audio/tieng_buw.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
     "id": "tieng_ca",
     "text": "ca",
     "kind": "tieng",
@@ -407,7 +1047,12 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b04"
+      "tv1_t1_b03",
+      "tv1_t1_b04",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b10",
+      "tv1_t1_b12"
     ]
   },
   {
@@ -420,7 +1065,8 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b04"
+      "tv1_t1_b04",
+      "tv1_t1_b07"
     ]
   },
   {
@@ -437,6 +1083,19 @@
     ]
   },
   {
+    "id": "tieng_car",
+    "text": "cả",
+    "kind": "tieng",
+    "file": "audio/tieng_car.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b07"
+    ]
+  },
+  {
     "id": "tieng_cas",
     "text": "cá",
     "kind": "tieng",
@@ -446,7 +1105,9 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b04"
+      "tv1_t1_b04",
+      "tv1_t1_b08",
+      "tv1_t1_b10"
     ]
   },
   {
@@ -459,8 +1120,82 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
+      "tv1_t1_b02",
       "tv1_t1_b04",
-      "tv1_t1_b13"
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_cof",
+    "text": "cò",
+    "kind": "tieng",
+    "file": "audio/tieng_cof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06",
+      "tv1_t1_b07"
+    ]
+  },
+  {
+    "id": "tieng_coj",
+    "text": "cọ",
+    "kind": "tieng",
+    "file": "audio/tieng_coj.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06"
+    ]
+  },
+  {
+    "id": "tieng_coo",
+    "text": "cô",
+    "kind": "tieng",
+    "file": "audio/tieng_coo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08",
+      "tv1_t1_b14",
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_coor",
+    "text": "cổ",
+    "kind": "tieng",
+    "file": "audio/tieng_coor.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08",
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_cor",
+    "text": "cỏ",
+    "kind": "tieng",
+    "file": "audio/tieng_cor.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06"
     ]
   },
   {
@@ -474,7 +1209,51 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b04",
-      "tv1_t1_b13"
+      "tv1_t1_b07",
+      "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_cow",
+    "text": "cơ",
+    "kind": "tieng",
+    "file": "audio/tieng_cow.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_cowf",
+    "text": "cờ",
+    "kind": "tieng",
+    "file": "audio/tieng_cowf.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_cows",
+    "text": "cớ",
+    "kind": "tieng",
+    "file": "audio/tieng_cows.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
     ]
   },
   {
@@ -556,6 +1335,68 @@
     ]
   },
   {
+    "id": "tieng_da",
+    "text": "da",
+    "kind": "tieng",
+    "file": "audio/tieng_da.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b11",
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_daf",
+    "text": "dà",
+    "kind": "tieng",
+    "file": "audio/tieng_daf.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b07"
+    ]
+  },
+  {
+    "id": "tieng_daj",
+    "text": "dạ",
+    "kind": "tieng",
+    "file": "audio/tieng_daj.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06",
+      "tv1_t1_b07"
+    ]
+  },
+  {
+    "id": "tieng_dda",
+    "text": "đa",
+    "kind": "tieng",
+    "file": "audio/tieng_dda.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b15"
+    ]
+  },
+  {
     "id": "tieng_ddan",
     "text": "đan",
     "kind": "tieng",
@@ -579,6 +1420,207 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b42"
+    ]
+  },
+  {
+    "id": "tieng_ddas",
+    "text": "đá",
+    "kind": "tieng",
+    "file": "audio/tieng_ddas.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b07"
+    ]
+  },
+  {
+    "id": "tieng_ddax",
+    "text": "đã",
+    "kind": "tieng",
+    "file": "audio/tieng_ddax.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
+    "id": "tieng_dde",
+    "text": "đe",
+    "kind": "tieng",
+    "file": "audio/tieng_dde.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09",
+      "tv1_t1_b11"
+    ]
+  },
+  {
+    "id": "tieng_ddee",
+    "text": "đê",
+    "kind": "tieng",
+    "file": "audio/tieng_ddee.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09",
+      "tv1_t1_b11"
+    ]
+  },
+  {
+    "id": "tieng_ddi",
+    "text": "đi",
+    "kind": "tieng",
+    "file": "audio/tieng_ddi.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12"
+    ]
+  },
+  {
+    "id": "tieng_ddo",
+    "text": "đo",
+    "kind": "tieng",
+    "file": "audio/tieng_ddo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_ddof",
+    "text": "đò",
+    "kind": "tieng",
+    "file": "audio/tieng_ddof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b06"
+    ]
+  },
+  {
+    "id": "tieng_ddoj",
+    "text": "đọ",
+    "kind": "tieng",
+    "file": "audio/tieng_ddoj.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06"
+    ]
+  },
+  {
+    "id": "tieng_ddoo",
+    "text": "đô",
+    "kind": "tieng",
+    "file": "audio/tieng_ddoo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08",
+      "tv1_t1_b10",
+      "tv1_t1_b11"
+    ]
+  },
+  {
+    "id": "tieng_ddoox",
+    "text": "đỗ",
+    "kind": "tieng",
+    "file": "audio/tieng_ddoox.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
+    "id": "tieng_ddor",
+    "text": "đỏ",
+    "kind": "tieng",
+    "file": "audio/tieng_ddor.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b12",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_ddos",
+    "text": "đó",
+    "kind": "tieng",
+    "file": "audio/tieng_ddos.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b07"
+    ]
+  },
+  {
+    "id": "tieng_ddow",
+    "text": "đơ",
+    "kind": "tieng",
+    "file": "audio/tieng_ddow.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08",
+      "tv1_t1_b11"
+    ]
+  },
+  {
+    "id": "tieng_ddox",
+    "text": "đõ",
+    "kind": "tieng",
+    "file": "audio/tieng_ddox.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06"
     ]
   },
   {
@@ -608,6 +1650,189 @@
     ]
   },
   {
+    "id": "tieng_de",
+    "text": "de",
+    "kind": "tieng",
+    "file": "audio/tieng_de.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09",
+      "tv1_t1_b11",
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_dee",
+    "text": "dê",
+    "kind": "tieng",
+    "file": "audio/tieng_dee.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09",
+      "tv1_t1_b10",
+      "tv1_t1_b11"
+    ]
+  },
+  {
+    "id": "tieng_dees",
+    "text": "dế",
+    "kind": "tieng",
+    "file": "audio/tieng_dees.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09",
+      "tv1_t1_b10"
+    ]
+  },
+  {
+    "id": "tieng_deex",
+    "text": "dễ",
+    "kind": "tieng",
+    "file": "audio/tieng_deex.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "tieng_def",
+    "text": "dè",
+    "kind": "tieng",
+    "file": "audio/tieng_def.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "tieng_di",
+    "text": "di",
+    "kind": "tieng",
+    "file": "audio/tieng_di.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_do",
+    "text": "do",
+    "kind": "tieng",
+    "file": "audio/tieng_do.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b07",
+      "tv1_t1_b11"
+    ]
+  },
+  {
+    "id": "tieng_dof",
+    "text": "dò",
+    "kind": "tieng",
+    "file": "audio/tieng_dof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b07"
+    ]
+  },
+  {
+    "id": "tieng_doo",
+    "text": "dô",
+    "kind": "tieng",
+    "file": "audio/tieng_doo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08",
+      "tv1_t1_b11",
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tieng_doox",
+    "text": "dỗ",
+    "kind": "tieng",
+    "file": "audio/tieng_doox.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
+    "id": "tieng_dos",
+    "text": "dó",
+    "kind": "tieng",
+    "file": "audio/tieng_dos.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b07"
+    ]
+  },
+  {
+    "id": "tieng_dow",
+    "text": "dơ",
+    "kind": "tieng",
+    "file": "audio/tieng_dow.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08",
+      "tv1_t1_b11"
+    ]
+  },
+  {
+    "id": "tieng_dowr",
+    "text": "dở",
+    "kind": "tieng",
+    "file": "audio/tieng_dowr.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
     "id": "tieng_du",
     "text": "du",
     "kind": "tieng",
@@ -634,6 +1859,87 @@
     ]
   },
   {
+    "id": "tieng_eef",
+    "text": "ề",
+    "kind": "tieng",
+    "file": "audio/tieng_eef.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "tieng_eer",
+    "text": "ể",
+    "kind": "tieng",
+    "file": "audio/tieng_eer.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "tieng_ees",
+    "text": "ế",
+    "kind": "tieng",
+    "file": "audio/tieng_ees.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "tieng_la",
+    "text": "la",
+    "kind": "tieng",
+    "file": "audio/tieng_la.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_laf",
+    "text": "là",
+    "kind": "tieng",
+    "file": "audio/tieng_laf.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_laj",
+    "text": "lạ",
+    "kind": "tieng",
+    "file": "audio/tieng_laj.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b17"
+    ]
+  },
+  {
     "id": "tieng_lan",
     "text": "lan",
     "kind": "tieng",
@@ -647,6 +1953,172 @@
     ]
   },
   {
+    "id": "tieng_las",
+    "text": "lá",
+    "kind": "tieng",
+    "file": "audio/tieng_las.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_le",
+    "text": "le",
+    "kind": "tieng",
+    "file": "audio/tieng_le.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_lee",
+    "text": "lê",
+    "kind": "tieng",
+    "file": "audio/tieng_lee.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_lex",
+    "text": "lẽ",
+    "kind": "tieng",
+    "file": "audio/tieng_lex.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_li",
+    "text": "li",
+    "kind": "tieng",
+    "file": "audio/tieng_li.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_lis",
+    "text": "lí",
+    "kind": "tieng",
+    "file": "audio/tieng_lis.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_lo",
+    "text": "lo",
+    "kind": "tieng",
+    "file": "audio/tieng_lo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_loj",
+    "text": "lọ",
+    "kind": "tieng",
+    "file": "audio/tieng_loj.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_loo",
+    "text": "lô",
+    "kind": "tieng",
+    "file": "audio/tieng_loo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_low",
+    "text": "lơ",
+    "kind": "tieng",
+    "file": "audio/tieng_low.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_lu",
+    "text": "lu",
+    "kind": "tieng",
+    "file": "audio/tieng_lu.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_luw",
+    "text": "lư",
+    "kind": "tieng",
+    "file": "audio/tieng_luw.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
     "id": "tieng_ma",
     "text": "ma",
     "kind": "tieng",
@@ -656,7 +2128,9 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b12",
+      "tv1_t1_b13",
+      "tv1_t1_b17"
     ]
   },
   {
@@ -669,7 +2143,133 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
+      "tv1_t1_b12",
       "tv1_t1_b13"
+    ]
+  },
+  {
+    "id": "tieng_me",
+    "text": "me",
+    "kind": "tieng",
+    "file": "audio/tieng_me.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_mee",
+    "text": "mê",
+    "kind": "tieng",
+    "file": "audio/tieng_mee.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_mi",
+    "text": "mi",
+    "kind": "tieng",
+    "file": "audio/tieng_mi.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b14",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_mir",
+    "text": "mỉ",
+    "kind": "tieng",
+    "file": "audio/tieng_mir.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14"
+    ]
+  },
+  {
+    "id": "tieng_mo",
+    "text": "mo",
+    "kind": "tieng",
+    "file": "audio/tieng_mo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_mof",
+    "text": "mò",
+    "kind": "tieng",
+    "file": "audio/tieng_mof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
+    ]
+  },
+  {
+    "id": "tieng_moo",
+    "text": "mô",
+    "kind": "tieng",
+    "file": "audio/tieng_moo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_mow",
+    "text": "mơ",
+    "kind": "tieng",
+    "file": "audio/tieng_mow.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_mowx",
+    "text": "mỡ",
+    "kind": "tieng",
+    "file": "audio/tieng_mowx.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
     ]
   },
   {
@@ -682,7 +2282,8 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b13",
+      "tv1_t1_b17"
     ]
   },
   {
@@ -695,7 +2296,8 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b13",
+      "tv1_t1_b17"
     ]
   },
   {
@@ -708,7 +2310,101 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b13",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_mus",
+    "text": "mú",
+    "kind": "tieng",
+    "file": "audio/tieng_mus.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_muw",
+    "text": "mư",
+    "kind": "tieng",
+    "file": "audio/tieng_muw.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_na",
+    "text": "na",
+    "kind": "tieng",
+    "file": "audio/tieng_na.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_nas",
+    "text": "ná",
+    "kind": "tieng",
+    "file": "audio/tieng_nas.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
+    ]
+  },
+  {
+    "id": "tieng_ne",
+    "text": "ne",
+    "kind": "tieng",
+    "file": "audio/tieng_ne.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_nee",
+    "text": "nê",
+    "kind": "tieng",
+    "file": "audio/tieng_nee.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_nga",
+    "text": "nga",
+    "kind": "tieng",
+    "file": "audio/tieng_nga.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06"
     ]
   },
   {
@@ -725,6 +2421,74 @@
     ]
   },
   {
+    "id": "tieng_ngax",
+    "text": "ngã",
+    "kind": "tieng",
+    "file": "audio/tieng_ngax.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06"
+    ]
+  },
+  {
+    "id": "tieng_ni",
+    "text": "ni",
+    "kind": "tieng",
+    "file": "audio/tieng_ni.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_no",
+    "text": "no",
+    "kind": "tieng",
+    "file": "audio/tieng_no.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_noo",
+    "text": "nô",
+    "kind": "tieng",
+    "file": "audio/tieng_noo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_now",
+    "text": "nơ",
+    "kind": "tieng",
+    "file": "audio/tieng_now.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12",
+      "tv1_t1_b17"
+    ]
+  },
+  {
     "id": "tieng_nu",
     "text": "nu",
     "kind": "tieng",
@@ -734,7 +2498,8 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b13",
+      "tv1_t1_b17"
     ]
   },
   {
@@ -748,6 +2513,102 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b13"
+    ]
+  },
+  {
+    "id": "tieng_nuw",
+    "text": "nư",
+    "kind": "tieng",
+    "file": "audio/tieng_nuw.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_of",
+    "text": "ò",
+    "kind": "tieng",
+    "file": "audio/tieng_of.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b08"
+    ]
+  },
+  {
+    "id": "tieng_oj",
+    "text": "ọ",
+    "kind": "tieng",
+    "file": "audio/tieng_oj.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_oof",
+    "text": "ồ",
+    "kind": "tieng",
+    "file": "audio/tieng_oof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
+    "id": "tieng_or",
+    "text": "ỏ",
+    "kind": "tieng",
+    "file": "audio/tieng_or.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_os",
+    "text": "ó",
+    "kind": "tieng",
+    "file": "audio/tieng_os.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_owf",
+    "text": "ờ",
+    "kind": "tieng",
+    "file": "audio/tieng_owf.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
     ]
   },
   {
@@ -777,6 +2638,212 @@
     ]
   },
   {
+    "id": "tieng_ta",
+    "text": "ta",
+    "kind": "tieng",
+    "file": "audio/tieng_ta.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b14",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_tas",
+    "text": "tá",
+    "kind": "tieng",
+    "file": "audio/tieng_tas.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_te",
+    "text": "te",
+    "kind": "tieng",
+    "file": "audio/tieng_te.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b11"
+    ]
+  },
+  {
+    "id": "tieng_tee",
+    "text": "tê",
+    "kind": "tieng",
+    "file": "audio/tieng_tee.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_teef",
+    "text": "tề",
+    "kind": "tieng",
+    "file": "audio/tieng_teef.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14"
+    ]
+  },
+  {
+    "id": "tieng_tees",
+    "text": "tế",
+    "kind": "tieng",
+    "file": "audio/tieng_tees.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tieng_ti",
+    "text": "ti",
+    "kind": "tieng",
+    "file": "audio/tieng_ti.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b14",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_tir",
+    "text": "tỉ",
+    "kind": "tieng",
+    "file": "audio/tieng_tir.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14"
+    ]
+  },
+  {
+    "id": "tieng_tis",
+    "text": "tí",
+    "kind": "tieng",
+    "file": "audio/tieng_tis.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b12",
+      "tv1_t1_b14",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_to",
+    "text": "to",
+    "kind": "tieng",
+    "file": "audio/tieng_to.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tieng_tof",
+    "text": "tò",
+    "kind": "tieng",
+    "file": "audio/tieng_tof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
+    ]
+  },
+  {
+    "id": "tieng_too",
+    "text": "tô",
+    "kind": "tieng",
+    "file": "audio/tieng_too.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b14"
+    ]
+  },
+  {
+    "id": "tieng_toor",
+    "text": "tổ",
+    "kind": "tieng",
+    "file": "audio/tieng_toor.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b14"
+    ]
+  },
+  {
+    "id": "tieng_tow",
+    "text": "tơ",
+    "kind": "tieng",
+    "file": "audio/tieng_tow.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b11"
+    ]
+  },
+  {
     "id": "tieng_tu",
     "text": "tu",
     "kind": "tieng",
@@ -786,7 +2853,8 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b13",
+      "tv1_t1_b17"
     ]
   },
   {
@@ -800,6 +2868,19 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b13"
+    ]
+  },
+  {
+    "id": "tieng_tus",
+    "text": "tú",
+    "kind": "tieng",
+    "file": "audio/tieng_tus.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14"
     ]
   },
   {
@@ -855,6 +2936,46 @@
     ]
   },
   {
+    "id": "tieng_y",
+    "text": "y",
+    "kind": "tieng",
+    "file": "audio/tieng_y.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tu_ba_ba",
+    "text": "ba ba",
+    "kind": "tu",
+    "file": "audio/tu_ba_ba.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tu_ba_bos_las",
+    "text": "ba bó lá",
+    "kind": "tu",
+    "file": "audio/tu_ba_bos_las.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
     "id": "tu_banf_ghees",
     "text": "bàn ghế",
     "kind": "tu",
@@ -868,6 +2989,71 @@
     ]
   },
   {
+    "id": "tu_bes_bi_boo",
+    "text": "bé bi bô",
+    "kind": "tu",
+    "file": "audio/tu_bes_bi_boo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b16"
+    ]
+  },
+  {
+    "id": "tu_ca_noo",
+    "text": "ca nô",
+    "kind": "tu",
+    "file": "audio/tu_ca_noo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
+    ]
+  },
+  {
+    "id": "tu_caay_dda",
+    "text": "cây đa",
+    "kind": "tu",
+    "file": "audio/tu_caay_dda.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05"
+    ]
+  },
+  {
+    "id": "tu_cais_ca",
+    "text": "cái ca",
+    "kind": "tu",
+    "file": "audio/tu_cais_ca.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b03"
+    ]
+  },
+  {
+    "id": "tu_cais_dde",
+    "text": "cái đe",
+    "kind": "tu",
+    "file": "audio/tu_cais_dde.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
     "id": "tu_cais_ddu",
     "text": "cái đu",
     "kind": "tu",
@@ -878,6 +3064,175 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b13"
+    ]
+  },
+  {
+    "id": "tu_cais_loj",
+    "text": "cái lọ",
+    "kind": "tu",
+    "file": "audio/tu_cais_loj.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tu_cais_oo",
+    "text": "cái ô",
+    "kind": "tu",
+    "file": "audio/tu_cais_oo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
+    "id": "tu_cais_tur",
+    "text": "cái tủ",
+    "kind": "tu",
+    "file": "audio/tu_cais_tur.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10"
+    ]
+  },
+  {
+    "id": "tu_cas_cowf",
+    "text": "cá cờ",
+    "kind": "tu",
+    "file": "audio/tu_cas_cowf.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
+    "id": "tu_cas_to",
+    "text": "cá to",
+    "kind": "tu",
+    "file": "audio/tu_cas_to.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10"
+    ]
+  },
+  {
+    "id": "tu_cawpj_da",
+    "text": "cặp da",
+    "kind": "tu",
+    "file": "audio/tu_cawpj_da.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05"
+    ]
+  },
+  {
+    "id": "tu_chumf_nho",
+    "text": "chùm nho",
+    "kind": "tu",
+    "file": "audio/tu_chumf_nho.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b01"
+    ]
+  },
+  {
+    "id": "tu_con_bof",
+    "text": "con bò",
+    "kind": "tu",
+    "file": "audio/tu_con_bof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b01"
+    ]
+  },
+  {
+    "id": "tu_con_cof",
+    "text": "con cò",
+    "kind": "tu",
+    "file": "audio/tu_con_cof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b02"
+    ]
+  },
+  {
+    "id": "tu_con_ddof",
+    "text": "con đò",
+    "kind": "tu",
+    "file": "audio/tu_con_ddof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b05"
+    ]
+  },
+  {
+    "id": "tu_con_dees",
+    "text": "con dế",
+    "kind": "tu",
+    "file": "audio/tu_con_dees.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "tu_con_ve",
+    "text": "con ve",
+    "kind": "tu",
+    "file": "audio/tu_con_ve.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "tu_coo_y_tas",
+    "text": "cô y tá",
+    "kind": "tu",
+    "file": "audio/tu_coo_y_tas.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14"
     ]
   },
   {
@@ -946,6 +3301,45 @@
     ]
   },
   {
+    "id": "tu_ddi_ddof",
+    "text": "đi đò",
+    "kind": "tu",
+    "file": "audio/tu_ddi_ddof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10"
+    ]
+  },
+  {
+    "id": "tu_ddo_ddor",
+    "text": "đo đỏ",
+    "kind": "tu",
+    "file": "audio/tu_ddo_ddor.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b06"
+    ]
+  },
+  {
+    "id": "tu_ddow_ddax",
+    "text": "đơ đã",
+    "kind": "tu",
+    "file": "audio/tu_ddow_ddax.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
     "id": "tu_ddu_ddur",
     "text": "đu đủ",
     "kind": "tu",
@@ -956,6 +3350,45 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b13"
+    ]
+  },
+  {
+    "id": "tu_dee_deex",
+    "text": "dê dễ",
+    "kind": "tu",
+    "file": "audio/tu_dee_deex.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "tu_e_def",
+    "text": "e dè",
+    "kind": "tu",
+    "file": "audio/tu_e_def.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09"
+    ]
+  },
+  {
+    "id": "tu_keos_co",
+    "text": "kéo co",
+    "kind": "tu",
+    "file": "audio/tu_keos_co.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b02"
     ]
   },
   {
@@ -972,6 +3405,84 @@
     ]
   },
   {
+    "id": "tu_las_cowf",
+    "text": "lá cờ",
+    "kind": "tu",
+    "file": "audio/tu_las_cowf.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08"
+    ]
+  },
+  {
+    "id": "tu_las_dda",
+    "text": "lá đa",
+    "kind": "tu",
+    "file": "audio/tu_las_dda.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tu_lis_lex",
+    "text": "lí lẽ",
+    "kind": "tu",
+    "file": "audio/tu_lis_lex.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tu_loj_mowx",
+    "text": "lọ mỡ",
+    "kind": "tu",
+    "file": "audio/tu_loj_mowx.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tu_low_laf",
+    "text": "lơ là",
+    "kind": "tu",
+    "file": "audio/tu_low_laf.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tu_na_nas",
+    "text": "na ná",
+    "kind": "tu",
+    "file": "audio/tu_na_nas.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
+    ]
+  },
+  {
     "id": "tu_nhaf_sanf",
     "text": "nhà sàn",
     "kind": "tu",
@@ -982,6 +3493,136 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b42"
+    ]
+  },
+  {
+    "id": "tu_now_ddor",
+    "text": "nơ đỏ",
+    "kind": "tu",
+    "file": "audio/tu_now_ddor.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
+    ]
+  },
+  {
+    "id": "tu_of_os_o_o",
+    "text": "ò ó o... o!",
+    "kind": "tu",
+    "file": "audio/tu_of_os_o_o.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b01"
+    ]
+  },
+  {
+    "id": "tu_oo_too",
+    "text": "ô tô",
+    "kind": "tu",
+    "file": "audio/tu_oo_too.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10"
+    ]
+  },
+  {
+    "id": "tu_quar_me",
+    "text": "quả me",
+    "kind": "tu",
+    "file": "audio/tu_quar_me.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
+    ]
+  },
+  {
+    "id": "tu_quar_mow",
+    "text": "quả mơ",
+    "kind": "tu",
+    "file": "audio/tu_quar_mow.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
+    ]
+  },
+  {
+    "id": "tu_tir_mir",
+    "text": "tỉ mỉ",
+    "kind": "tu",
+    "file": "audio/tu_tir_mir.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14"
+    ]
+  },
+  {
+    "id": "tu_tir_tee",
+    "text": "tỉ tê",
+    "kind": "tu",
+    "file": "audio/tu_tir_tee.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14"
+    ]
+  },
+  {
+    "id": "tu_tis_ti",
+    "text": "tí ti",
+    "kind": "tu",
+    "file": "audio/tu_tis_ti.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10"
+    ]
+  },
+  {
+    "id": "tu_tof_mof",
+    "text": "tò mò",
+    "kind": "tu",
+    "file": "audio/tu_tof_mof.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b12"
+    ]
+  },
+  {
+    "id": "tu_toor_dees",
+    "text": "tổ dế",
+    "kind": "tu",
+    "file": "audio/tu_toor_dees.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10"
     ]
   },
   {
@@ -1011,6 +3652,60 @@
     ]
   },
   {
+    "id": "tu_xe_lu",
+    "text": "xe lu",
+    "kind": "tu",
+    "file": "audio/tu_xe_lu.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b15"
+    ]
+  },
+  {
+    "id": "tu_y_baj",
+    "text": "y bạ",
+    "kind": "tu",
+    "file": "audio/tu_y_baj.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tu_y_tas",
+    "text": "y tá",
+    "kind": "tu",
+    "file": "audio/tu_y_tas.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "tu_y_tees",
+    "text": "y tế",
+    "kind": "tu",
+    "file": "audio/tu_y_tees.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14",
+      "tv1_t1_b17"
+    ]
+  },
+  {
     "id": "van_a",
     "text": "a",
     "kind": "van",
@@ -1020,8 +3715,21 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
+      "tv1_t1_b03",
       "tv1_t1_b04",
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b09",
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
       "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17",
       "tv1_t1_b42"
     ]
   },
@@ -1039,6 +3747,65 @@
     ]
   },
   {
+    "id": "van_e",
+    "text": "e",
+    "kind": "van",
+    "file": "audio/van_e.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09",
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "van_ee",
+    "text": "ê",
+    "kind": "van",
+    "file": "audio/van_ee.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b09",
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "van_i",
+    "text": "i ngắn",
+    "kind": "van",
+    "file": "audio/van_i.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
     "id": "van_o",
     "text": "o",
     "kind": "van",
@@ -1048,8 +3815,61 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
+      "tv1_t1_b01",
+      "tv1_t1_b02",
+      "tv1_t1_b03",
       "tv1_t1_b04",
-      "tv1_t1_b13"
+      "tv1_t1_b05",
+      "tv1_t1_b06",
+      "tv1_t1_b07",
+      "tv1_t1_b08",
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "van_oo",
+    "text": "ô",
+    "kind": "van",
+    "file": "audio/van_oo.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08",
+      "tv1_t1_b09",
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "van_ow",
+    "text": "ơ",
+    "kind": "van",
+    "file": "audio/van_ow.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": false,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b08",
+      "tv1_t1_b10",
+      "tv1_t1_b11",
+      "tv1_t1_b12",
+      "tv1_t1_b15",
+      "tv1_t1_b17"
     ]
   },
   {
@@ -1063,6 +3883,10 @@
     "ghi_chu": "",
     "bai": [
       "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17",
       "tv1_t1_b42"
     ]
   },
@@ -1076,7 +3900,25 @@
     "can_nghe_ky": false,
     "ghi_chu": "",
     "bai": [
-      "tv1_t1_b13"
+      "tv1_t1_b13",
+      "tv1_t1_b14",
+      "tv1_t1_b15",
+      "tv1_t1_b16",
+      "tv1_t1_b17"
+    ]
+  },
+  {
+    "id": "van_y",
+    "text": "i dài",
+    "kind": "van",
+    "file": "audio/van_y.mp3",
+    "source": "chatgpt_tam",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "tv1_t1_b14",
+      "tv1_t1_b17"
     ]
   }
 ]

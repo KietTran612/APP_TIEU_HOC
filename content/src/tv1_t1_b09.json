@@ -1,0 +1,199 @@
+{
+  "lesson_id": "tv1_t1_b09",
+  "book": "tv1_t1_1990",
+  "lesson_no": 9,
+  "type": "am_moi",
+  "title": "e ê",
+  "source": {
+    "pages": [
+      14
+    ],
+    "scan_file": "008",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "e",
+    "ê"
+  ],
+  "images": {
+    "img_b09_cais_dde": "Cái đe của thợ rèn bằng sắt, mặt trên phẳng, một đầu nhọn, chân đế vững",
+    "img_b09_con_dees": "Con dế mèn to, đôi râu dài, chân sau có gai, đứng trên đất",
+    "img_b09_con_ve": "Con ve sầu có đôi cánh trong suốt dài hơn thân, đậu nghiêng",
+    "img_b09_bups_bee": "Búp bê bé gái tóc ngắn, mặc váy xòe, đứng thẳng"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "e"
+    },
+    {
+      "type": "keyword",
+      "text": "cái đe",
+      "image": "img_b09_cais_dde"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái đe",
+        "đe",
+        "e"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "đe",
+      "then": "cái đe"
+    },
+    {
+      "type": "unit",
+      "text": "ê"
+    },
+    {
+      "type": "keyword",
+      "text": "con dế",
+      "image": "img_b09_con_dees"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con dế",
+        "dế",
+        "ê"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "dế",
+      "then": "con dế"
+    },
+    {
+      "type": "picture",
+      "image": "img_b09_con_ve",
+      "say": "Đây là con ve.",
+      "word": "con ve"
+    },
+    {
+      "type": "picture",
+      "image": "img_b09_bups_bee",
+      "say": "Đây là búp bê.",
+      "word": "búp bê"
+    },
+    {
+      "type": "words",
+      "marker": "●▨",
+      "items": [
+        {
+          "text": "đe"
+        },
+        {
+          "text": "dế"
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "de",
+          "đe",
+          "dê",
+          "đê"
+        ],
+        [
+          "e dè",
+          "dê dễ"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "e",
+          "options": [
+            "e",
+            "ê",
+            "a"
+          ]
+        },
+        {
+          "answer": "ê",
+          "options": [
+            "ê",
+            "e",
+            "ô"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "de",
+          "options": [
+            "de",
+            "dê"
+          ]
+        },
+        {
+          "answer": "đê",
+          "options": [
+            "đe",
+            "đê"
+          ]
+        },
+        {
+          "answer": "dê",
+          "options": [
+            "de",
+            "dê"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "dế",
+      "template": "d_",
+      "answer": "ế",
+      "options": [
+        "ế",
+        "ề",
+        "ể"
+      ],
+      "image": "img_b09_con_dees"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cái đe",
+          "answer": "img_b09_cais_dde",
+          "options": [
+            "img_b09_cais_dde",
+            "img_b09_con_dees",
+            "img_b09_con_ve"
+          ]
+        },
+        {
+          "word": "con ve",
+          "answer": "img_b09_con_ve",
+          "options": [
+            "img_b09_bups_bee",
+            "img_b09_con_ve",
+            "img_b09_con_dees"
+          ]
+        }
+      ]
+    }
+  ]
+}

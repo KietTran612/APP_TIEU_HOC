@@ -220,6 +220,48 @@ namespace TapDoc.Tests
             return drag;
         }
 
+        /// <summary>Ô nhận của thẻ có dấu <paramref name="tone"/> (bảng dấu).</summary>
+        protected static DropSlot SlotForTone(object view, string tone)
+        {
+            var slot = RootOf(view).GetComponentsInChildren<DropSlot>(true).FirstOrDefault(s => s.GetComponent<Tile>()?.Tone == tone);
+            Assert.IsNotNull(slot, $"Không có ô nhận cho dấu '{tone}'");
+            return slot;
+        }
+
+        /// <summary>Thẻ dấu kéo được có dấu <paramref name="tone"/>.</summary>
+        protected static DragTile DragForTone(object view, string tone)
+        {
+            var drag = RootOf(view).GetComponentsInChildren<DragTile>(true).FirstOrDefault(d => d.GetComponent<Tile>()?.Tone == tone);
+            Assert.IsNotNull(drag, $"Không có thẻ dấu '{tone}' kéo được");
+            return drag;
+        }
+
+        /// <summary>Hộp bao nét chữ thật của các kí tự hiện được (không phải chiều cao dòng như <c>textBounds</c>).</summary>
+        internal static Bounds InkBounds(TMP_Text tmp, Transform space = null)
+        {
+            tmp.ForceMeshUpdate();
+            var info = tmp.textInfo;
+            var min = new Vector2(float.MaxValue, float.MaxValue);
+            var max = new Vector2(float.MinValue, float.MinValue);
+            for (var i = 0; i < info.characterCount; i++)
+            {
+                var c = info.characterInfo[i];
+                if (!c.isVisible) continue;
+                min = Vector2.Min(min, c.bottomLeft);
+                max = Vector2.Max(max, c.topRight);
+            }
+            if (min.x > max.x) return new Bounds();
+            if (space != null)
+            {
+                // Đổi sang toạ độ của `space` (ví dụ thẻ), vì nhãn có thể đã được dời để căn giữa nét.
+                min = space.InverseTransformPoint(tmp.transform.TransformPoint(min));
+                max = space.InverseTransformPoint(tmp.transform.TransformPoint(max));
+            }
+            var b = new Bounds();
+            b.SetMinMax(min, max);
+            return b;
+        }
+
         protected static DropSlot ResultSlot(object view)
         {
             var slot = RootOf(view).GetComponentInChildren<DropSlot>(true);

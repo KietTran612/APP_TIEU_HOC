@@ -10,6 +10,9 @@ namespace TapDoc
     /// </summary>
     public abstract class StepViewBase : IStepView, ITestCompletable
     {
+        /// <summary>Bề rộng tối đa của một dòng thẻ: bề rộng Stage trừ 20 mỗi bên (dùng cho <see cref="FlowLayout"/>).</summary>
+        protected const float FlowWidth = UiKit.SafeWidth - 2f * UiKit.StageSideInset - 40f;
+
         public GameObject Root { get; private set; }
         public event Action Completed;
 

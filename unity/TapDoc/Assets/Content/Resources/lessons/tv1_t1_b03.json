@@ -1,0 +1,389 @@
+{
+  "schema": 1,
+  "lesson_id": "tv1_t1_b03",
+  "book": "tv1_t1_1990",
+  "lesson_no": 3,
+  "type": "am_moi",
+  "title": "a",
+  "in_app": true,
+  "new_units": [
+    "a"
+  ],
+  "source": {
+    "pages": [
+      8
+    ],
+    "scan_file": "005",
+    "verification": "page_verified"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[5]",
+        "note": "Quả trong tranh là quả cà hay quả bí? App tạm gọi là quả cà (giống tranh cà ở bài 4)."
+      },
+      {
+        "where": "part1[4]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      },
+      {
+        "where": "part1[5]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "a",
+      "audio": "van_a",
+      "hl": [
+        {
+          "s": 0,
+          "n": 1
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "text": "cái ca",
+      "audio": "tu_cais_ca",
+      "image": "img_b03_cais_ca",
+      "hl": [
+        {
+          "s": 5,
+          "n": 1
+        }
+      ]
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        {
+          "text": "cái ca",
+          "audio": "tu_cais_ca",
+          "hl": [
+            {
+              "s": 5,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "text": "ca",
+          "audio": "tieng_ca",
+          "hl": [
+            {
+              "s": 1,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "text": "a",
+          "audio": "van_a",
+          "hl": [
+            {
+              "s": 0,
+              "n": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "spell",
+      "spell": {
+        "target": "ca",
+        "drag_tone": false,
+        "parts": [
+          {
+            "kind": "unit",
+            "text": "c",
+            "audio": "am_c"
+          },
+          {
+            "kind": "unit",
+            "text": "a",
+            "audio": "van_a"
+          },
+          {
+            "kind": "join",
+            "text": "ca",
+            "audio": "tieng_ca"
+          }
+        ]
+      },
+      "then_text": "cái ca",
+      "then_audio": "tu_cais_ca"
+    },
+    {
+      "type": "picture",
+      "image": "img_b03_baf",
+      "audio": "hd_b03_tranh_01"
+    },
+    {
+      "type": "picture",
+      "image": "img_b03_quar_caf",
+      "audio": "hd_b03_tranh_02"
+    },
+    {
+      "type": "words",
+      "marker": "●▨",
+      "items": [
+        {
+          "text": "ca",
+          "audio": "tieng_ca",
+          "hl": [
+            {
+              "s": 1,
+              "n": 1
+            }
+          ],
+          "spells": [
+            {
+              "target": "ca",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "a",
+                  "audio": "van_a"
+                },
+                {
+                  "kind": "join",
+                  "text": "ca",
+                  "audio": "tieng_ca"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "van_a",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "a",
+          "audio": "van_a",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "o",
+          "audio": "van_o",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "c",
+          "audio": "am_c",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "van_o",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "o",
+          "audio": "van_o",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "a",
+          "audio": "van_a",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "c",
+          "audio": "am_c",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "van_a",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "a",
+          "audio": "van_a",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "o",
+          "audio": "van_o",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "van_o",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "a",
+          "audio": "van_a",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "o",
+          "audio": "van_o",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "van_a",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "a",
+          "audio": "van_a",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "o",
+          "audio": "van_o",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "compose",
+      "tag": "",
+      "instruction_audio": "hd_keo_vao_cho_trong",
+      "prompt_audio": "tieng_ca",
+      "prompt_text": "c_",
+      "base_text": "",
+      "image": "img_b03_cais_ca",
+      "options": [
+        {
+          "text": "a",
+          "audio": "van_a",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "o",
+          "audio": "van_o",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tu_cais_ca",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cái ca",
+          "audio": "",
+          "image": "img_b03_cais_ca",
+          "tone": ""
+        },
+        {
+          "text": "bà",
+          "audio": "",
+          "image": "img_b03_baf",
+          "tone": ""
+        },
+        {
+          "text": "quả cà",
+          "audio": "",
+          "image": "img_b03_quar_caf",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tieng_baf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cái ca",
+          "audio": "",
+          "image": "img_b03_cais_ca",
+          "tone": ""
+        },
+        {
+          "text": "bà",
+          "audio": "",
+          "image": "img_b03_baf",
+          "tone": ""
+        },
+        {
+          "text": "quả cà",
+          "audio": "",
+          "image": "img_b03_quar_caf",
+          "tone": ""
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

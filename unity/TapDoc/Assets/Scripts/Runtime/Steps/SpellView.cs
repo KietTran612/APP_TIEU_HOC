@@ -44,6 +44,7 @@ namespace TapDoc
                 var x = -rowWidth / 2f + TileSize / 2f + k * (TileSize + TileGap);
                 var tile = AddTile(_parts[i].text, new Vector2(TileSize, TileSize), new Vector2(x, 180f), 130f);
                 _tiles[i] = tile;
+                if (_parts[i].kind == "tone") tile.SetTone(_parts[i].tone);
                 if (_practice.RequiresDrag(i))
                 {
                     var drag = tile.gameObject.AddComponent<DragTile>();

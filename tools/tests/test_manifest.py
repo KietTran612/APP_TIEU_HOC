@@ -128,6 +128,15 @@ class RowsFileTest(TempDirCase):
         save_rows(path, [])
         self.assertEqual(load_rows(path), [])
 
+    def test_save_rows_is_atomic(self):
+        path = self.root / "m.json"
+        save_rows(path, [{"id": "a"}])
+        with mock.patch("tapdoc.manifest.os.replace", side_effect=OSError("đĩa đầy")):
+            with self.assertRaises(OSError):
+                save_rows(path, [{"id": "b"}])
+        self.assertEqual(load_rows(path), [{"id": "a"}])
+        self.assertEqual(list(self.root.glob("*.tmp")), [])
+
     def test_bad_file_is_manifest_error(self):
         path = self.root / "hong.json"
         path.write_text("{khong phai json", encoding="utf-8")

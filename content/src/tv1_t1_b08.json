@@ -1,0 +1,195 @@
+{
+  "lesson_id": "tv1_t1_b08",
+  "book": "tv1_t1_1990",
+  "lesson_no": 8,
+  "type": "am_moi",
+  "title": "ô ơ",
+  "source": {
+    "pages": [
+      13
+    ],
+    "scan_file": "007",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ô",
+    "ơ"
+  ],
+  "images": {
+    "img_b08_cais_oo": "Cái ô (cây dù) đang giương, có nhiều nan, cán cong ở dưới",
+    "img_b08_las_cowf": "Lá cờ đỏ sao vàng hình chữ nhật, ngôi sao năm cánh ở giữa",
+    "img_b08_ba_loo": "Cái ba lô vải có quai đeo và hai túi nhỏ phía trước",
+    "img_b08_quyeenr_vowr": "Quyển vở mở nằm nghiêng trên bàn, bìa có hình vẽ em bé đang chạy và một ô nhãn"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ô"
+    },
+    {
+      "type": "keyword",
+      "text": "cái ô",
+      "image": "img_b08_cais_oo"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái ô",
+        "ô",
+        "ô"
+      ]
+    },
+    {
+      "type": "unit",
+      "text": "ơ"
+    },
+    {
+      "type": "keyword",
+      "text": "lá cờ",
+      "image": "img_b08_las_cowf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "lá cờ",
+        "cờ",
+        "ơ"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "cờ",
+      "then": "lá cờ"
+    },
+    {
+      "type": "picture",
+      "image": "img_b08_ba_loo",
+      "say": "Đây là cái ba lô.",
+      "word": "ba lô"
+    },
+    {
+      "type": "picture",
+      "image": "img_b08_quyeenr_vowr",
+      "say": "Đây là quyển vở.",
+      "word": "quyển vở"
+    },
+    {
+      "type": "words",
+      "marker": "●▨",
+      "items": [
+        {
+          "text": "cô"
+        },
+        {
+          "text": "cờ"
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "cổ",
+          "cớ",
+          "dỗ",
+          "dở",
+          "đỗ"
+        ],
+        [
+          "đơ đã",
+          "cá cờ"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ô",
+          "options": [
+            "ô",
+            "ơ",
+            "o"
+          ]
+        },
+        {
+          "answer": "ơ",
+          "options": [
+            "ơ",
+            "ô",
+            "a"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cô",
+          "options": [
+            "cô",
+            "cơ"
+          ]
+        },
+        {
+          "answer": "cơ",
+          "options": [
+            "cô",
+            "cơ"
+          ]
+        },
+        {
+          "answer": "đô",
+          "options": [
+            "đô",
+            "đơ"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "cờ",
+      "template": "c_",
+      "answer": "ờ",
+      "options": [
+        "ờ",
+        "ồ",
+        "ò"
+      ],
+      "image": "img_b08_las_cowf"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cái ô",
+          "answer": "img_b08_cais_oo",
+          "options": [
+            "img_b08_cais_oo",
+            "img_b08_las_cowf",
+            "img_b08_ba_loo"
+          ]
+        },
+        {
+          "word": "lá cờ",
+          "answer": "img_b08_las_cowf",
+          "options": [
+            "img_b08_quyeenr_vowr",
+            "img_b08_las_cowf",
+            "img_b08_cais_oo"
+          ]
+        }
+      ]
+    }
+  ]
+}

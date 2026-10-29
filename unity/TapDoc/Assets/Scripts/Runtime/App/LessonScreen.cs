@@ -8,6 +8,7 @@ namespace TapDoc
     {
         private AppRoot _app;
         private Lesson _lesson;
+        private ReviewSession _review;
         private RectTransform _stage;
         private int _stepToken;
         private bool _advancing;
@@ -18,10 +19,15 @@ namespace TapDoc
         public Button ReplayButton { get; private set; }
         public Button BackButton { get; private set; }
 
-        public void Build(AppRoot app, Lesson lesson)
+        /// <summary>
+        /// Mở bài <paramref name="lesson"/>. <paramref name="review"/> khác <c>null</c> khi đây là phiên "Ôn lại"
+        /// (<paramref name="lesson"/> là <see cref="ReviewSession.Lesson"/>).
+        /// </summary>
+        public void Build(AppRoot app, Lesson lesson, ReviewSession review = null)
         {
             _app = app;
             _lesson = lesson;
+            _review = review;
             Flow = new LessonFlow(lesson);
 
             BackButton = UiKit.CreateButton(transform, UiText.Back, OnBackClicked);
@@ -78,7 +84,8 @@ namespace TapDoc
                 Lesson = _lesson,
                 Speech = _app.Speech,
                 Assets = _app.Assets,
-                Stage = _stage
+                Stage = _stage,
+                RoundFinished = OnRoundFinished
             };
 
             // Handler gắn trước Bind (qua StepViewFactory). Nếu màn báo xong ngay trong Bind thì ghi nhận
@@ -127,6 +134,32 @@ namespace TapDoc
                 _advancing = true;
                 AdvanceFlow();
             }
+        }
+
+        /// <summary>
+        /// Một lượt Phần 2 vừa xong. Bài thường: bé có nhầm thì ghi lượt nhầm. Phiên "Ôn lại": nhầm thì tăng số lần
+        /// nhầm của lượt gốc, làm đúng ngay thì xóa lượt gốc khỏi danh sách nhầm. Mọi thay đổi được lưu ngay, để bé
+        /// thoát giữa chừng vẫn không mất.
+        /// </summary>
+        private void OnRoundFinished(Round round, int mistakes)
+        {
+            if (this == null || _lesson == null) return;
+            var index = _lesson.part2.IndexOf(round);
+            if (index < 0) return;
+
+            if (_review != null)
+            {
+                if (index >= _review.Sources.Count) return;
+                var (lessonId, sourceRound) = _review.Sources[index];
+                if (mistakes > 0) _app.Progress.RecordMistake(lessonId, sourceRound);
+                else _app.Progress.ClearMistake(lessonId, sourceRound);
+            }
+            else
+            {
+                if (mistakes <= 0) return;
+                _app.Progress.RecordMistake(_lesson.lesson_id, index);
+            }
+            _app.SaveProgress();
         }
 
         private void OnNextClicked()

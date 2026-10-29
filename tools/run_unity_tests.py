@@ -80,7 +80,11 @@ def reason_text(element):
 
 
 def summarize(xml_path, label):
-    root = ET.parse(xml_path).getroot()
+    try:
+        root = ET.parse(xml_path).getroot()
+    except (OSError, ET.ParseError):
+        print(f"Không đọc được kết quả test: {xml_path}")
+        return 2
     cases = list(root.iter("test-case"))
     passed = [c for c in cases if c.get("result") == "Passed"]
     failed = [c for c in cases if c.get("result") == "Failed"]
@@ -128,7 +132,12 @@ def main():
     parser = argparse.ArgumentParser(description="Chạy test Unity của project TapDoc.")
     parser.add_argument("platform", choices=sorted(PLATFORMS))
     parser.add_argument("--filter", dest="test_filter", help="Tên (hoặc nhiều tên cách nhau bằng ;) test cần chạy")
+    parser.add_argument("--timeout", type=int, default=1800, metavar="SECONDS", help="Thời gian chờ Unity tối đa (giây)")
     args = parser.parse_args()
+
+    if not UNITY_EXE.exists():
+        print(f"Không tìm thấy Unity: {UNITY_EXE}", file=sys.stderr)
+        return 2
 
     label = PLATFORMS[args.platform]
     if project_is_open():
@@ -140,6 +149,7 @@ def main():
     xml_path = OUTPUT / f"{args.platform}.xml"
     log_path = OUTPUT / f"{args.platform}.log"
     xml_path.unlink(missing_ok=True)  # tránh đọc nhầm kết quả của lần chạy trước
+    log_path.unlink(missing_ok=True)
 
     command = [
         str(UNITY_EXE),
@@ -153,7 +163,11 @@ def main():
     if args.test_filter:
         command += ["-testFilter", args.test_filter]
 
-    completed = subprocess.run(command)
+    try:
+        completed = subprocess.run(command, timeout=args.timeout)
+    except subprocess.TimeoutExpired:
+        print(f"Unity chạy quá {args.timeout} giây, đã dừng.", file=sys.stderr)
+        return 2
 
     log_text = read_log(log_path)
     if BUSY_MARKER in log_text.lower():

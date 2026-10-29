@@ -16,6 +16,9 @@ namespace TapDoc
     /// </summary>
     public class ItemsView : StepViewBase
     {
+        private const float ReadingTileH = 170f;
+        private const float ReadingGap = 24f;
+
         private readonly List<Tile> _tiles = new();
         private readonly Dictionary<int, RectTransform> _noteAnchors = new();
         private TapProgress _progress;
@@ -39,10 +42,14 @@ namespace TapDoc
             var items = Step.items;
             const float colWidth = 420f;
             var left = -(items.Count - 1) * colWidth / 2f;
+            // Không từ nào có tranh: thẻ chữ tự xuống dòng (ví dụ 4 từ của bảng y/i ở bài 14).
+            var anyImage = items.Any(i => !string.IsNullOrEmpty(i.image));
+            var anyNote = items.Any(i => !string.IsNullOrEmpty(i.note));
+            var flow = anyImage ? null : FlowLayout.Place(items.Select(_ => 380f).ToList(), 160f, FlowWidth, 40f, anyNote ? 110f : 40f);
             for (var j = 0; j < items.Count; j++)
             {
                 var index = j;
-                var x = left + j * colWidth;
+                var x = flow != null ? flow[j].x : left + j * colWidth;
                 var item = items[j];
                 var hasImage = !string.IsNullOrEmpty(item.image);
                 if (hasImage)
@@ -53,7 +60,7 @@ namespace TapDoc
                     pic.Tapped += () => OnWordTapped(index);
                     if (sprite == null) pic.gameObject.SetActive(false);
                 }
-                var y = hasImage ? -95f : 0f;
+                var y = flow != null ? flow[j].y : hasImage ? -95f : 0f;
                 var tile = AddTile(TextStyler.Apply(item.text, item.hl), new Vector2(380f, 160f), new Vector2(x, y), 84f);
                 tile.Tapped += () => OnWordTapped(index);
                 _tiles.Add(tile);
@@ -69,24 +76,28 @@ namespace TapDoc
 
         private void BuildReading()
         {
-            var rows = Step.items.Select((it, j) => (it, j)).GroupBy(p => p.it.row).OrderBy(g => g.Key).ToList();
-            const float tileH = 170f;
-            const float gap = 24f;
-            var top = (rows.Count - 1) * (tileH + gap) / 2f;
-            for (var r = 0; r < rows.Count; r++)
+            // Mỗi hàng của sách là một hoặc nhiều dòng thẻ: hàng dài hơn Stage tự xuống dòng (ví dụ 9 tiếng ở bài 15).
+            var lines = new List<List<(Item item, int index, float width)>>();
+            foreach (var group in Step.items.Select((it, j) => (it, j)).GroupBy(p => p.it.row).OrderBy(g => g.Key))
             {
-                var row = rows[r].ToList();
+                var row = group.ToList();
                 var widths = row.Select(p => p.it.text.Length <= 3 ? 190f : 300f).ToList();
-                var total = widths.Sum() + (row.Count - 1) * gap;
-                var x = -total / 2f;
-                for (var k = 0; k < row.Count; k++)
+                foreach (var line in FlowLayout.Lines(widths, FlowWidth, ReadingGap))
                 {
-                    var (item, index) = row[k];
-                    var cx = x + widths[k] / 2f;
-                    var tile = AddTile(item.text, new Vector2(widths[k], tileH), new Vector2(cx, top - r * (tileH + gap)), 76f);
+                    lines.Add(line.Select(k => (row[k].it, row[k].j, widths[k])).ToList());
+                }
+            }
+            var top = (lines.Count - 1) * (ReadingTileH + ReadingGap) / 2f;
+            for (var r = 0; r < lines.Count; r++)
+            {
+                var line = lines[r];
+                var x = -(line.Sum(p => p.width) + (line.Count - 1) * ReadingGap) / 2f;
+                foreach (var (item, index, width) in line)
+                {
+                    var tile = AddTile(item.text, new Vector2(width, ReadingTileH), new Vector2(x + width / 2f, top - r * (ReadingTileH + ReadingGap)), 76f);
                     tile.Tapped += () => OnReadingTapped(index);
                     _tiles.Add(tile);
-                    x += widths[k] + gap;
+                    x += width + ReadingGap;
                 }
             }
         }

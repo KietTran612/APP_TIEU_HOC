@@ -1,0 +1,205 @@
+{
+  "lesson_id": "tv1_t1_b11",
+  "book": "tv1_t1_1990",
+  "lesson_no": 11,
+  "type": "on_tap_am",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      16
+    ],
+    "scan_file": "009",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "letter_grid",
+      "letters": [
+        "ô",
+        "ơ",
+        "e",
+        "ê",
+        "i",
+        "t"
+      ]
+    },
+    {
+      "type": "combine_table",
+      "marker": "●",
+      "rows": [
+        {
+          "onset": "t",
+          "cells": {
+            "a": [
+              "ta"
+            ],
+            "o": [
+              "to"
+            ],
+            "ô": [
+              "tô"
+            ],
+            "ơ": [
+              "tơ"
+            ],
+            "e": [
+              "te"
+            ],
+            "ê": [
+              "tê"
+            ],
+            "i": [
+              "ti"
+            ]
+          }
+        },
+        {
+          "onset": "d",
+          "cells": {
+            "a": [
+              "da"
+            ],
+            "o": [
+              "do"
+            ],
+            "ô": [
+              "dô"
+            ],
+            "ơ": [
+              "dơ"
+            ],
+            "e": [
+              "de"
+            ],
+            "ê": [
+              "dê"
+            ],
+            "i": [
+              "di"
+            ]
+          }
+        },
+        {
+          "onset": "đ",
+          "cells": {
+            "a": [
+              "đa"
+            ],
+            "o": [
+              "đo"
+            ],
+            "ô": [
+              "đô"
+            ],
+            "ơ": [
+              "đơ"
+            ],
+            "e": [
+              "đe"
+            ],
+            "ê": [
+              "đê"
+            ],
+            "i": [
+              "đi"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ô",
+          "options": [
+            "ô",
+            "ơ",
+            "o"
+          ]
+        },
+        {
+          "answer": "ê",
+          "options": [
+            "ê",
+            "e",
+            "i"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tê",
+          "options": [
+            "tê",
+            "te"
+          ]
+        },
+        {
+          "answer": "đơ",
+          "options": [
+            "đơ",
+            "đô"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "tơ",
+      "template": "t_",
+      "answer": "ơ",
+      "options": [
+        "ơ",
+        "ô",
+        "a"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "đỗ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "di",
+          "options": [
+            "di",
+            "đi",
+            "ti"
+          ]
+        },
+        {
+          "answer": "tô",
+          "options": [
+            "tô",
+            "to",
+            "tơ"
+          ]
+        }
+      ]
+    }
+  ]
+}

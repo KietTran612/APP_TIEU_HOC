@@ -1,0 +1,172 @@
+{
+  "lesson_id": "tv1_t1_b14",
+  "book": "tv1_t1_1990",
+  "lesson_no": 14,
+  "type": "am_moi",
+  "title": "y",
+  "source": {
+    "pages": [
+      19
+    ],
+    "scan_file": "010",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "y"
+  ],
+  "images": {
+    "img_b14_coo_y_tas": "Cô y tá đội mũ trắng, mặc áo trắng, cúi xuống tiêm cho bạn nhỏ mặc áo kẻ ô đang ngồi trên ghế"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "y"
+    },
+    {
+      "type": "keyword",
+      "text": "cô y tá",
+      "image": "img_b14_coo_y_tas"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cô y tá",
+        "y",
+        "y"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "y",
+      "then": "cô y tá"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "y tế"
+        },
+        {
+          "text": "y tá"
+        },
+        {
+          "text": "tỉ tê"
+        },
+        {
+          "text": "tỉ mỉ"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "tổ y tế có cô y tá"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "y tế",
+          "y tá"
+        ],
+        [
+          "tỉ tê",
+          "tỉ mỉ"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "y",
+          "options": [
+            "y",
+            "u",
+            "ư"
+          ]
+        },
+        {
+          "answer": "i",
+          "options": [
+            "i",
+            "e",
+            "ê"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tí",
+          "options": [
+            "tí",
+            "tú"
+          ]
+        },
+        {
+          "answer": "y",
+          "options": [
+            "y",
+            "u"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "tá",
+      "template": "t_",
+      "answer": "á",
+      "options": [
+        "á",
+        "à",
+        "ả"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "tỉ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "mỉ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tế",
+          "options": [
+            "tế",
+            "tê",
+            "tề"
+          ]
+        }
+      ]
+    }
+  ]
+}

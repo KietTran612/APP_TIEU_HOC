@@ -1,0 +1,199 @@
+{
+  "lesson_id": "tv1_t1_b05",
+  "book": "tv1_t1_1990",
+  "lesson_no": 5,
+  "type": "am_moi",
+  "title": "d đ",
+  "source": {
+    "pages": [
+      10
+    ],
+    "scan_file": "006",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "d",
+    "đ"
+  ],
+  "images": {
+    "img_b05_cawpj_da": "Chiếc cặp da đi học có quai xách và khóa cài ở giữa nắp",
+    "img_b05_caay_dda": "Cây đa cổ thụ tán rộng, thân to có nhiều rễ phụ; dưới gốc có hai người đứng nghỉ chân",
+    "img_b05_dee": "Con dê có sừng nhỏ và chòm râu, đứng nghiêng",
+    "img_b05_ddof": "Con đò có mui tròn trên mặt sông, người lái đò đứng ở đuôi đò chống sào"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "d"
+    },
+    {
+      "type": "keyword",
+      "text": "cặp da",
+      "image": "img_b05_cawpj_da"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cặp da",
+        "da",
+        "d"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "da",
+      "then": "cặp da"
+    },
+    {
+      "type": "unit",
+      "text": "đ"
+    },
+    {
+      "type": "keyword",
+      "text": "cây đa",
+      "image": "img_b05_caay_dda"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cây đa",
+        "đa",
+        "đ"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "đa",
+      "then": "cây đa"
+    },
+    {
+      "type": "picture",
+      "image": "img_b05_dee",
+      "say": "Đây là con dê.",
+      "word": "con dê"
+    },
+    {
+      "type": "picture",
+      "image": "img_b05_ddof",
+      "say": "Đây là con đò.",
+      "word": "con đò"
+    },
+    {
+      "type": "words",
+      "marker": "●▨",
+      "items": [
+        {
+          "text": "da"
+        },
+        {
+          "text": "đò"
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "do",
+          "dò",
+          "dó"
+        ],
+        [
+          "đa",
+          "đò",
+          "đá"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "d",
+          "options": [
+            "d",
+            "đ",
+            "c"
+          ]
+        },
+        {
+          "answer": "đ",
+          "options": [
+            "đ",
+            "d",
+            "o"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "da",
+          "options": [
+            "da",
+            "đa"
+          ]
+        },
+        {
+          "answer": "đa",
+          "options": [
+            "da",
+            "đa"
+          ]
+        },
+        {
+          "answer": "dó",
+          "options": [
+            "dó",
+            "đó"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "đò",
+      "template": "đ_",
+      "answer": "ò",
+      "options": [
+        "ò",
+        "ó",
+        "o"
+      ],
+      "image": "img_b05_ddof"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cặp da",
+          "answer": "img_b05_cawpj_da",
+          "options": [
+            "img_b05_cawpj_da",
+            "img_b05_caay_dda",
+            "img_b05_dee"
+          ]
+        },
+        {
+          "word": "con đò",
+          "answer": "img_b05_ddof",
+          "options": [
+            "img_b05_dee",
+            "img_b05_ddof",
+            "img_b05_caay_dda"
+          ]
+        }
+      ]
+    }
+  ]
+}

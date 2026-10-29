@@ -1,0 +1,123 @@
+{
+  "lesson_id": "tv1_t1_b01",
+  "book": "tv1_t1_1990",
+  "lesson_no": 1,
+  "type": "am_moi",
+  "title": "o",
+  "source": {
+    "pages": [
+      6
+    ],
+    "scan_file": "004",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "o"
+  ],
+  "images": {
+    "img_b01_gaf_troongs": "Con gà trống đứng trên bãi cỏ có bông hoa nhỏ, ngẩng đầu gáy (mấy vòng tròn nhỏ bay ra từ mỏ); góc trên có ông mặt trời tỏa nắng",
+    "img_b01_chumf_nho": "Một chùm nho nhiều quả tròn mọng, có một lá nho to và tua cuốn",
+    "img_b01_bof": "Con bò có cặp sừng cong, đứng nghiêng, bước đi chậm rãi"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[4]",
+        "note": "Tranh trong sách trông giống con trâu; app gọi là con bò vì bài dạy âm o."
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "o"
+    },
+    {
+      "type": "keyword",
+      "text": "ò ó o... o!",
+      "image": "img_b01_gaf_troongs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "ò ó o... o!",
+        "o",
+        "o"
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b01_chumf_nho",
+      "say": "Đây là chùm nho.",
+      "word": "chùm nho"
+    },
+    {
+      "type": "picture",
+      "image": "img_b01_bof",
+      "say": "Đây là con bò.",
+      "word": "con bò"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "ò ó o... o!",
+          "answer": "img_b01_gaf_troongs",
+          "options": [
+            "img_b01_gaf_troongs",
+            "img_b01_chumf_nho",
+            "img_b01_bof"
+          ]
+        },
+        {
+          "word": "chùm nho",
+          "answer": "img_b01_chumf_nho",
+          "options": [
+            "img_b01_gaf_troongs",
+            "img_b01_chumf_nho",
+            "img_b01_bof"
+          ]
+        },
+        {
+          "word": "con bò",
+          "answer": "img_b01_bof",
+          "options": [
+            "img_b01_gaf_troongs",
+            "img_b01_chumf_nho",
+            "img_b01_bof"
+          ]
+        },
+        {
+          "word": "chùm nho",
+          "answer": "img_b01_chumf_nho",
+          "options": [
+            "img_b01_gaf_troongs",
+            "img_b01_chumf_nho",
+            "img_b01_bof"
+          ]
+        },
+        {
+          "word": "con bò",
+          "answer": "img_b01_bof",
+          "options": [
+            "img_b01_gaf_troongs",
+            "img_b01_chumf_nho",
+            "img_b01_bof"
+          ]
+        },
+        {
+          "word": "ò ó o... o!",
+          "answer": "img_b01_gaf_troongs",
+          "options": [
+            "img_b01_gaf_troongs",
+            "img_b01_chumf_nho",
+            "img_b01_bof"
+          ]
+        }
+      ]
+    }
+  ]
+}

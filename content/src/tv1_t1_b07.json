@@ -1,0 +1,175 @@
+{
+  "lesson_id": "tv1_t1_b07",
+  "book": "tv1_t1_1990",
+  "lesson_no": 7,
+  "type": "on_tap_am",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      12
+    ],
+    "scan_file": "007",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "letter_grid",
+      "letters": [
+        "o",
+        "a",
+        "c",
+        "d",
+        "đ"
+      ],
+      "tones": [
+        "sac",
+        "huyen",
+        "hoi",
+        "nga",
+        "nang"
+      ]
+    },
+    {
+      "type": "combine_table",
+      "marker": "●",
+      "rows": [
+        {
+          "onset": "c",
+          "cells": {
+            "o": [
+              "co",
+              "có",
+              "cò"
+            ],
+            "a": [
+              "ca",
+              "cà",
+              "cả"
+            ]
+          }
+        },
+        {
+          "onset": "d",
+          "cells": {
+            "o": [
+              "do",
+              "dó",
+              "dò"
+            ],
+            "a": [
+              "da",
+              "dạ"
+            ]
+          }
+        },
+        {
+          "onset": "đ",
+          "cells": {
+            "o": [
+              "đo",
+              "đó",
+              "đỏ"
+            ],
+            "a": [
+              "đa",
+              "đá"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "c",
+          "options": [
+            "c",
+            "d",
+            "đ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "do",
+          "options": [
+            "do",
+            "đo"
+          ]
+        },
+        {
+          "answer": "đa",
+          "options": [
+            "da",
+            "đa"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "dạ",
+      "template": "d_",
+      "answer": "ạ",
+      "options": [
+        "ạ",
+        "á",
+        "à"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "cả",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "đỏ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cò",
+          "options": [
+            "cò",
+            "có",
+            "co"
+          ]
+        },
+        {
+          "answer": "dạ",
+          "options": [
+            "dạ",
+            "da",
+            "dà"
+          ]
+        }
+      ]
+    }
+  ]
+}

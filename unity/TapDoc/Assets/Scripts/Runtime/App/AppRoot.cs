@@ -20,11 +20,20 @@ namespace TapDoc
         /// </summary>
         internal static Func<AssetCatalog> CatalogFactory;
 
+        /// <summary>
+        /// Móc cho test: tạo kho tiến độ trỏ tới file tạm. <c>null</c> (mặc định, và luôn luôn trong app thật)
+        /// nghĩa là dùng <see cref="ProgressStore.Default"/>.
+        /// </summary>
+        internal static Func<ProgressStore> StoreFactory;
+
         public Camera UiCamera { get; private set; }
         public Canvas Canvas { get; private set; }
         public SpeechPlayer Speech { get; private set; }
         public AssetCatalog Assets { get; private set; }
         public RectTransform SafeRoot { get; private set; }
+
+        /// <summary>Hồ sơ bé và tiến độ học; <c>Progress.Current</c> là bé đang học.</summary>
+        public ProgressStore Progress { get; private set; }
 
         private GameObject _currentScreen;
 
@@ -48,7 +57,8 @@ namespace TapDoc
         {
             if (scene.name != "Main") return;
             var app = EnsureInstance();
-            app.ShowLessonList();
+            // Chưa có hồ sơ thì màn chọn bé mở thẳng phần tạo hồ sơ; có rồi thì cho chọn bé.
+            app.ShowProfiles();
         }
 
         public static AppRoot EnsureInstance()
@@ -135,19 +145,26 @@ namespace TapDoc
             spGo.transform.SetParent(transform, false);
             Speech = spGo.AddComponent<SpeechPlayer>();
             Speech.Init(Assets);
+
+            Progress = StoreFactory != null ? StoreFactory() : ProgressStore.Default();
         }
 
+        /// <summary>Màn chọn bé. Chưa có hồ sơ nào thì mở thẳng phần tạo hồ sơ.</summary>
+        public void ShowProfiles()
+        {
+            Present<ProfileScreen>().Build(this);
+        }
+
+        /// <summary>Danh sách bài của bé đang học. Chưa chọn bé thì về màn chọn bé.</summary>
         public void ShowLessonList()
         {
             InitIfNeeded();
-            Speech.Stop();
-            ClearCurrentScreen();
-
-            var go = new GameObject("LessonListScreen", typeof(RectTransform), typeof(LessonListScreen));
-            go.transform.SetParent(SafeRoot, false);
-            Stretch(go.GetComponent<RectTransform>());
-            _currentScreen = go;
-            go.GetComponent<LessonListScreen>().Build(this);
+            if (Progress.Current == null)
+            {
+                ShowProfiles();
+                return;
+            }
+            Present<LessonListScreen>().Build(this);
         }
 
         public void ShowLesson(string lessonId)
@@ -158,28 +175,65 @@ namespace TapDoc
 
         public void ShowLesson(Lesson lesson)
         {
-            InitIfNeeded();
-            Speech.Stop();
-            ClearCurrentScreen();
+            Present<LessonScreen>().Build(this, lesson);
+        }
 
-            var go = new GameObject("LessonScreen", typeof(RectTransform), typeof(LessonScreen));
-            go.transform.SetParent(SafeRoot, false);
-            Stretch(go.GetComponent<RectTransform>());
-            _currentScreen = go;
-            go.GetComponent<LessonScreen>().Build(this, lesson);
+        /// <summary>
+        /// Phiên "Ôn lại" của bé đang học: làm lại các lượt bé đã nhầm. Lượt lỗi thời bị xóa và lưu ngay.
+        /// Không còn lượt nào để ôn thì về danh sách bài.
+        /// </summary>
+        public void ShowReview()
+        {
+            InitIfNeeded();
+            var session = ReviewSession.Build(Progress, LessonRepository.Load);
+            SaveProgress();
+            if (session.Lesson.part2.Count == 0)
+            {
+                ShowLessonList();
+                return;
+            }
+            Present<LessonScreen>().Build(this, session.Lesson, session);
         }
 
         public void ShowResult(string lessonId)
+        {
+            Present<ResultScreen>().Build(this, lessonId);
+        }
+
+        /// <summary>Màn phụ huynh: khóa phép tính trước, mở khóa xong mới xem tiến độ và chữ hay nhầm của từng bé.</summary>
+        public void ShowParent()
+        {
+            Present<ParentScreen>().Build(this);
+        }
+
+        /// <summary>
+        /// Ghi tiến độ xuống file. Lỗi đĩa (đầy, không ghi được) chỉ báo cảnh báo trong Console: app không dừng và
+        /// bé không bị gián đoạn.
+        /// </summary>
+        public void SaveProgress()
+        {
+            try
+            {
+                Progress.Save();
+            }
+            catch (Exception ex) when (ex is System.IO.IOException || ex is UnauthorizedAccessException)
+            {
+                Debug.LogWarning($"[TapDoc] Không lưu được tiến độ: {ex.Message}");
+            }
+        }
+
+        /// <summary>Dừng tiếng, bỏ màn đang hiện và tạo màn <typeparamref name="T"/> phủ kín vùng an toàn.</summary>
+        private T Present<T>() where T : MonoBehaviour
         {
             InitIfNeeded();
             Speech.Stop();
             ClearCurrentScreen();
 
-            var go = new GameObject("ResultScreen", typeof(RectTransform), typeof(ResultScreen));
+            var go = new GameObject(typeof(T).Name, typeof(RectTransform), typeof(T));
             go.transform.SetParent(SafeRoot, false);
             Stretch(go.GetComponent<RectTransform>());
             _currentScreen = go;
-            go.GetComponent<ResultScreen>().Build(this, lessonId);
+            return go.GetComponent<T>();
         }
 
         private void ClearCurrentScreen()

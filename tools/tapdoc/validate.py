@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .curriculum import Learned, is_learned_text, learned_until, load_curriculum
-from .manifest import ManifestError, load_rows
+from .manifest import STATUS_NONE, STATUS_PENDING, ManifestError, load_rows
 from .paths import LESSON_INDEX, MANIFESTS, UNITY_ASSETS, UNITY_RES
 from .viet import is_nfc, nfc, split_syllable, syllables
 
@@ -24,6 +24,7 @@ ROUNDS_MIN, ROUNDS_MAX = 6, 10
 VALID_MARKERS = ("", "●", "⌂", "●▨")
 
 NO_LESSONS = "chưa có bài nào được dựng — chạy build trước"
+REVIEWED = "da_duyet"  # `review.status` của bài đã được chủ dự án duyệt
 EMPTY_SPELL = "đánh vần rỗng (chưa có quy tắc) — xem can_duyet"
 
 _ROUND_KINDS = ("listen_choose", "look_tone", "compose", "listen_picture")
@@ -351,11 +352,29 @@ def _learned_for(lesson: dict, curricula: dict) -> tuple[Learned | None, Issue |
         return None, Issue(lid, "(giáo trình)", str(e))
 
 
-def validate_all(allow_missing: bool = False) -> list[Issue]:
+def check_release_lesson(lesson: dict) -> list[Issue]:
+    """Bài hiện trong app phải được chủ dự án duyệt (`review.status` = `da_duyet`)."""
+    if lesson.get("in_app", True) is False:
+        return []
+    review = lesson.get("review")
+    status = review.get("status") if isinstance(review, dict) else None
+    if status == REVIEWED:
+        return []
+    return [Issue(_lid(lesson), "review.status", f"bài chưa duyệt (review.status = {status!r})")]
+
+
+def check_release_rows(rows: list[dict], label: str) -> list[Issue]:
+    """Âm thanh/tranh phải đã có file và đã nghe/xem; `khong_dat` vẫn được dùng tạm."""
+    return [Issue(GLOBAL, str(row.get("id", "?")), f"{label} chưa duyệt (status = {row.get('status')})")
+            for row in rows if row.get("status") in (STATUS_NONE, STATUS_PENDING)]
+
+
+def validate_all(allow_missing: bool = False, release: bool = False) -> list[Issue]:
     """Kiểm tra mọi bài đã dựng trong `UNITY_RES/lessons`, hai danh mục và project Unity.
 
     Thứ tự lỗi: từng bài một, rồi file của danh mục, rồi ảnh scan. `allow_missing` bỏ qua việc
     kiểm tra file âm thanh/tranh còn thiếu (lúc chưa nhập đủ file vẫn kiểm tra được phần còn lại).
+    `release` thêm điều kiện phát hành: bài trong app đã duyệt, âm thanh/tranh không còn chờ duyệt.
     """
     lessons_dir = Path(UNITY_RES) / "lessons"
     paths = sorted(p for p in lessons_dir.glob("*.json") if p.is_file() and p.name != "index.json") \
@@ -390,8 +409,13 @@ def validate_all(allow_missing: bool = False) -> list[Issue]:
             issues.append(problem)
         else:
             issues += check_part2(lesson, learned)
+        if release:
+            issues += check_release_lesson(lesson)
 
     issues += manifest_issues
+    if release:
+        issues += check_release_rows(audio_rows, "âm thanh")
+        issues += check_release_rows(image_rows, "tranh")
     if not allow_missing:
         issues += check_files(audio_rows, UNITY_RES)
         issues += check_files(image_rows, UNITY_RES)

@@ -46,7 +46,11 @@ def launch_windowed(spec: str) -> int:
     return 0
 
 
-def build_windows() -> int:
+def build_windows(timeout: int = 3600) -> int:
+    if not UNITY_EXE.exists():
+        print(f"Không tìm thấy Unity: {UNITY_EXE}", file=sys.stderr)
+        return 2
+
     if project_is_open():
         print(BUSY_MESSAGE)
         return 2
@@ -62,7 +66,11 @@ def build_windows() -> int:
         "-executeMethod", "TapDoc.EditorTools.BuildScript.BuildWindows",
         "-logFile", str(log_path),
     ]
-    completed = subprocess.run(cmd)
+    try:
+        completed = subprocess.run(cmd, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        print(f"Unity chạy quá {timeout} giây, đã dừng.", file=sys.stderr)
+        return 2
     log_text = read_log(log_path)
     if BUSY_MARKER in log_text.lower():
         print(BUSY_MESSAGE)
@@ -82,11 +90,12 @@ def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Build hoặc mở bản Windows của TapDoc.")
     parser.add_argument("--launch", metavar="WxH", help="Mở TapDoc.exe ở khung cửa sổ WxH (ví dụ 1600x720)")
+    parser.add_argument("--timeout", type=int, default=3600, metavar="SECONDS", help="Thời gian chờ Unity tối đa (giây)")
     args = parser.parse_args()
 
     if args.launch:
         return launch_windowed(args.launch)
-    return build_windows()
+    return build_windows(timeout=args.timeout)
 
 
 if __name__ == "__main__":

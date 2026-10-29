@@ -6,6 +6,7 @@ Danh mục là file JSON (danh sách dòng) do công cụ ghi và chủ dự án
 """
 
 import json
+import os
 from pathlib import Path
 
 from .build import BuildResult
@@ -60,11 +61,18 @@ def load_rows(path) -> list[dict]:
 
 
 def save_rows(path, rows: list[dict]) -> None:
+    """Ghi danh mục qua file tạm rồi thay file cũ, để lần ghi dở không làm hỏng danh mục."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8", newline="\n") as f:
-        json.dump(rows, f, ensure_ascii=False, indent=2)
-        f.write("\n")
+    tmp = path.with_name(path.name + ".tmp")
+    try:
+        with open(tmp, "w", encoding="utf-8", newline="\n") as f:
+            json.dump(rows, f, ensure_ascii=False, indent=2)
+            f.write("\n")
+        os.replace(tmp, path)
+    except BaseException:
+        tmp.unlink(missing_ok=True)
+        raise
 
 
 def _same_text_key(text: str) -> str:

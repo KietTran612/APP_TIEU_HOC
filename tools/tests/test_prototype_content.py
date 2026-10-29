@@ -52,7 +52,7 @@ class PrototypeContentTest(unittest.TestCase):
 
     def test_sources_pass_nfc_part1_and_part2_checks(self):
         cur = load_curriculum(LESSON_INDEX)
-        self.assertEqual(set(L.keys()), {"tv1_t1_b04", "tv1_t1_b13", "tv1_t1_b42"})
+        self.assertLessEqual({"tv1_t1_b04", "tv1_t1_b13", "tv1_t1_b42"}, set(L.keys()))  # bản đầu tiên thêm bài 1–17
         for lid, lesson in L.items():
             with self.subTest(lesson=lid):
                 self.assertEqual(check_nfc(lesson), [])
@@ -71,7 +71,10 @@ class PrototypeContentTest(unittest.TestCase):
         index_path = UNITY_RES / "lessons" / "index.json"
         self.assertTrue(index_path.is_file())
         index_data = json.loads(index_path.read_text(encoding="utf-8"))
-        self.assertEqual([item["lesson_id"] for item in index_data["lessons"]], ["tv1_t1_b04", "tv1_t1_b13", "tv1_t1_b42"])
+        index_ids = [item["lesson_id"] for item in index_data["lessons"]]
+        self.assertLessEqual({"tv1_t1_b04", "tv1_t1_b13"}, set(index_ids))
+        self.assertNotIn("tv1_t1_b42", index_ids)  # bài 42 dựng nhưng không vào danh sách (in_app false)
+        self.assertTrue((UNITY_RES / "lessons" / "tv1_t1_b42.json").is_file())
         audio_rows = load_rows(MANIFESTS / "audio_manifest.json")
         image_rows = load_rows(MANIFESTS / "image_manifest.json")
         self.assertGreater(len(audio_rows), 0)

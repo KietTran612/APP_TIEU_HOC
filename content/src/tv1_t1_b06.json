@@ -1,0 +1,191 @@
+{
+  "lesson_id": "tv1_t1_b06",
+  "book": "tv1_t1_1990",
+  "lesson_no": 6,
+  "type": "dau_thanh",
+  "title": "Dấu hỏi - Dấu ngã - Dấu nặng",
+  "source": {
+    "pages": [
+      11
+    ],
+    "scan_file": "006",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "hoi",
+    "nga",
+    "nang"
+  ],
+  "images": {
+    "img_b06_cor": "Một bụi cỏ mọc um tùm, lá dài xòe ra, nền đất xanh",
+    "img_b06_ngax": "Em bé mặc quần yếm bị ngã chúi về phía trước, nằm sấp, hai tay chống xuống đất",
+    "img_b06_coj": "Cây cọ thân cao, tán lá xòe to hình quạt, phía sau là bầu trời"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[3]",
+        "note": "Âm 'ng' chưa học: app đọc trơn tiếng gốc 'nga' rồi thêm dấu ngã, không đánh vần âm đầu."
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "tone_intro",
+      "tone": "hoi"
+    },
+    {
+      "type": "tone_attach",
+      "target": "cỏ",
+      "image": "img_b06_cor"
+    },
+    {
+      "type": "tone_intro",
+      "tone": "nga"
+    },
+    {
+      "type": "tone_attach",
+      "target": "ngã",
+      "image": "img_b06_ngax"
+    },
+    {
+      "type": "tone_intro",
+      "tone": "nang"
+    },
+    {
+      "type": "tone_attach",
+      "target": "cọ",
+      "image": "img_b06_coj"
+    },
+    {
+      "type": "tone_table",
+      "base": "đo",
+      "results": [
+        "đò",
+        "đó",
+        "đỏ",
+        "đõ",
+        "đọ"
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "●▨",
+      "items": [
+        {
+          "text": "cò"
+        },
+        {
+          "text": "cỏ"
+        },
+        {
+          "text": "cọ"
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "đo",
+          "đò",
+          "đó",
+          "đỏ",
+          "đõ",
+          "đọ"
+        ],
+        [
+          "đo đỏ",
+          "dạ"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "đỏ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "đõ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "cọ",
+          "options": [
+            "nang",
+            "sac"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "đò",
+          "options": [
+            "đò",
+            "đó",
+            "đọ"
+          ]
+        },
+        {
+          "answer": "đó",
+          "options": [
+            "đó",
+            "đò",
+            "đọ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "cỏ",
+      "template": "c_",
+      "answer": "ỏ",
+      "options": [
+        "ỏ",
+        "ọ",
+        "ó"
+      ],
+      "image": "img_b06_cor"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cỏ",
+          "answer": "img_b06_cor",
+          "options": [
+            "img_b06_cor",
+            "img_b06_ngax",
+            "img_b06_coj"
+          ]
+        },
+        {
+          "word": "cọ",
+          "answer": "img_b06_coj",
+          "options": [
+            "img_b06_cor",
+            "img_b06_ngax",
+            "img_b06_coj"
+          ]
+        }
+      ]
+    }
+  ]
+}

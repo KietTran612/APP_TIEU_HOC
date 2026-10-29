@@ -228,7 +228,79 @@ class _Builder:
         audio_id = f"hd_b{self.nn}_tranh_{self.picture_count:02d}"
         self._register_audio(audio_id, say, _PICTURE_KIND, where)
         self._note(where, PICTURE_NOTE)
+        if step.get("word"):  # tranh không có chữ trên trang: `word` chỉ để làm bài nghe chọn tranh
+            self.image_text.setdefault(image, step["word"])
         return {"type": "picture", "image": image, "audio": audio_id}
+
+    # ---- bảng dấu, khung chữ, bảng ghép (bài dấu thanh và bài ôn tập) ----
+
+    def _toned_from(self, base: str, toned: str, where: str) -> tuple[str, dict]:
+        """(dấu, đánh vần "tiếng gốc – dấu – tiếng có dấu") của một tiếng có dấu dựng từ `base`."""
+        toned = toned.lower()
+        tone = split_syllable(toned).tone
+        if tone is None:
+            raise self.error(where, f"tiếng {toned!r} không có dấu thanh")
+        if strip_tone(toned) != base:
+            raise self.error(where, f"tiếng {toned!r} không dựng từ {base!r}")
+        parts = [_join_part(base), _tone_part(tone), _join_part(toned)]
+        return tone, self._spell(SpellResult(toned, parts), where)
+
+    def _step_tone_table(self, step: dict, where: str) -> dict:
+        base = step["base"].lower()
+        if split_syllable(base).tone is not None:
+            raise self.error(where, f"tiếng gốc {base!r} phải không có dấu")
+        items, seen = [], set()
+        for j, text in enumerate(step["results"]):
+            item_where = f"{where}.items[{j}]"
+            tone, spell = self._toned_from(base, text, item_where)
+            if tone in seen:
+                raise self.error(item_where, f"hai ô cùng dấu {tone!r}")
+            seen.add(tone)
+            items.append({"text": text, "audio": self._audio(text_audio(text), item_where), "role": "cell",
+                          "tone": tone, "glyph": TONE_INFO[tone][1], "spells": [spell]})
+        return {"type": "tone_table", "text": base, "audio": self._audio(text_audio(base), where), "items": items}
+
+    def _step_letter_grid(self, step: dict, where: str) -> dict:
+        items = []
+        for letter in step["letters"]:
+            item_where = f"{where}.items[{len(items)}]"
+            items.append({"text": letter, "audio": self._audio(audio_for(letter), item_where), "role": "letter",
+                          "row": 0, "col": len(items)})
+        for k, tone in enumerate(step.get("tones", [])):
+            item_where = f"{where}.items[{len(items)}]"
+            if tone not in TONE_INFO:
+                raise self.error(item_where, f"dấu không hợp lệ: {tone!r}")
+            items.append({"text": TONE_INFO[tone][1], "audio": self._audio(tone_audio(tone), item_where),
+                          "role": "tone", "row": 1, "col": k, "tone": tone, "glyph": TONE_INFO[tone][1]})
+        return {"type": "letter_grid", "items": items}
+
+    def _step_combine_table(self, step: dict, where: str) -> dict:
+        items: list[dict] = []
+        vowels: list[str] = []
+        for i, row in enumerate(step["rows"]):
+            onset = row["onset"]
+            items.append({"text": onset, "audio": self._audio(audio_for(onset), f"{where}.rows[{i}]"),
+                          "role": "onset", "row": i, "col": 0})
+            for vowel, forms in row["cells"].items():
+                cell_where = f"{where}.rows[{i}].cells[{vowel!r}]"
+                if vowel not in vowels:
+                    vowels.append(vowel)
+                    items.append({"text": vowel, "audio": self._audio(audio_for(vowel), cell_where),
+                                  "role": "vowel", "row": 0, "col": len(vowels) - 1})
+                col = vowels.index(vowel)
+                if not forms:
+                    raise self.error(cell_where, "ô trống")
+                base = forms[0].lower()
+                if base != onset + vowel:
+                    raise self.error(cell_where, f"tiếng đầu ô {base!r} phải là {onset!r} + {vowel!r}")
+                items.append({"text": base, "audio": self._audio(text_audio(base), cell_where), "role": "base",
+                              "row": i, "col": col, "spells": [self._spell(spell_syllable(base), cell_where)]})
+                for form in forms[1:]:
+                    tone, spell = self._toned_from(base, form, cell_where)
+                    items.append({"text": form, "audio": self._audio(text_audio(form), cell_where), "role": "form",
+                                  "row": i, "col": col, "tone": tone, "glyph": TONE_INFO[tone][1],
+                                  "spells": [spell]})
+        return {"type": "combine_table", "marker": step.get("marker", ""), "items": items}
 
     def _step_words(self, step: dict, where: str) -> dict:
         items = []
@@ -285,6 +357,9 @@ class _Builder:
         "words": _step_words,
         "reading": _step_reading,
         "sentence": _step_sentence,
+        "tone_table": _step_tone_table,
+        "letter_grid": _step_letter_grid,
+        "combine_table": _step_combine_table,
     }
 
     def _build_part1(self) -> list[dict]:
@@ -388,6 +463,9 @@ class _Builder:
                 raise self.error(_HEAD, f"lesson_no phải là số nguyên: {src['lesson_no']!r}")
             self.nn = f"{src['lesson_no']:02d}"
             self.new_units = frozenset(src["new_units"])
+            in_app = src.get("in_app", True)
+            if not isinstance(in_app, bool):
+                raise self.error(_HEAD, f"in_app phải là true/false: {in_app!r}")
         part1 = self._build_part1()
         part2 = self._build_part2()
 
@@ -401,6 +479,7 @@ class _Builder:
             "lesson_no": src["lesson_no"],
             "type": src["type"],
             "title": src["title"],
+            "in_app": in_app,
             "new_units": list(src["new_units"]),
             "source": dict(src["source"]),
             "review": {"status": review.get("status", "chua_duyet"), "can_duyet": source_notes + self.can_duyet},
@@ -450,7 +529,8 @@ def build_all(src_dir, out_dir) -> list[BuildResult]:
     out.mkdir(parents=True, exist_ok=True)
     for result in results:
         _write_json(out / f"{result.lesson['lesson_id']}.json", result.lesson)
-    by_no = sorted((r.lesson for r in results), key=lambda lesson: lesson["lesson_no"])
+    # Bài `in_app: false` (bài mẫu 42) vẫn được dựng để test nạp được, nhưng không hiện trong danh sách bài.
+    by_no = sorted((r.lesson for r in results if r.lesson["in_app"]), key=lambda lesson: lesson["lesson_no"])
     index = {"lessons": [{"lesson_id": l["lesson_id"], "lesson_no": l["lesson_no"], "title": l["title"],
                           "type": l["type"]} for l in by_no]}
     _write_json(out / "index.json", index)

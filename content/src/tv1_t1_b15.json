@@ -1,0 +1,180 @@
+{
+  "lesson_id": "tv1_t1_b15",
+  "book": "tv1_t1_1990",
+  "lesson_no": 15,
+  "type": "am_moi",
+  "title": "l",
+  "source": {
+    "pages": [
+      20
+    ],
+    "scan_file": "011",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "l"
+  ],
+  "images": {
+    "img_b15_cais_loj": "Cái lọ gốm phình bụng, miệng nhỏ, thân vẽ bông hoa, đặt trên tấm khăn trải có hoa văn",
+    "img_b15_las": "Một chiếc lá cây hình bầu dục có gân lá rõ, cuống ngắn",
+    "img_b15_xe_lu": "Chiếc xe lu có trục lu to hình trụ phía trước và ống khói nhỏ, đang lăn đường"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "l"
+    },
+    {
+      "type": "keyword",
+      "text": "cái lọ",
+      "image": "img_b15_cais_loj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái lọ",
+        "lọ",
+        "l"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "lọ",
+      "then": "cái lọ"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "lá",
+          "image": "img_b15_las"
+        },
+        {
+          "text": "xe lu",
+          "image": "img_b15_xe_lu",
+          "spell": [
+            "lu"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "tí có lá cờ đỏ"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "la",
+          "lo",
+          "lô",
+          "lơ",
+          "le",
+          "lê",
+          "li",
+          "lu",
+          "lư"
+        ],
+        [
+          "lơ là",
+          "lí lẽ",
+          "lá đa",
+          "lọ mỡ"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "l",
+          "options": [
+            "l",
+            "t",
+            "i"
+          ]
+        },
+        {
+          "answer": "lá",
+          "options": [
+            "lá",
+            "lọ",
+            "lu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "lo",
+          "options": [
+            "lo",
+            "to"
+          ]
+        },
+        {
+          "answer": "lê",
+          "options": [
+            "tê",
+            "lê"
+          ]
+        },
+        {
+          "answer": "li",
+          "options": [
+            "li",
+            "ti"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "lọ",
+      "template": "l_",
+      "answer": "ọ",
+      "options": [
+        "ọ",
+        "ó",
+        "ỏ"
+      ],
+      "image": "img_b15_cais_loj"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "lá",
+          "answer": "img_b15_las",
+          "options": [
+            "img_b15_cais_loj",
+            "img_b15_las",
+            "img_b15_xe_lu"
+          ]
+        },
+        {
+          "word": "xe lu",
+          "answer": "img_b15_xe_lu",
+          "options": [
+            "img_b15_las",
+            "img_b15_xe_lu",
+            "img_b15_cais_loj"
+          ]
+        }
+      ]
+    }
+  ]
+}

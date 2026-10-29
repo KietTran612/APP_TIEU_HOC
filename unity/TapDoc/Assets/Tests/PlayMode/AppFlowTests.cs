@@ -5,14 +5,13 @@ using System.Linq;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace TapDoc.Tests
 {
-    public class AppFlowTests
+    public class AppFlowTests : AppTestBase
     {
         private const string TapType = "test_tap";
         private const string SyncType = "test_sync";
@@ -133,6 +132,8 @@ namespace TapDoc.Tests
 
             var app = AppRoot.EnsureInstance();
             app.Speech.WaitScale = 0.05f;
+            // Bé phải có hồ sơ mới vào được bài (nút "Về" đưa về danh sách bài của bé đó).
+            if (app.Progress.Current == null) app.Progress.CreateProfile(TestChildName, ProfileScreen.Avatars[0]);
 
             var lesson = new Lesson
             {
@@ -170,19 +171,21 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
-        public IEnumerator MainScene_ListsThreeLessons()
+        public IEnumerator MainScene_ListsIndexLessons()
         {
-            SceneManager.LoadScene("Main");
-            yield return null;
-            yield return null;
-            var labels = Object.FindObjectsByType<LessonListScreen>(FindObjectsSortMode.None)
-                .Single()
+            yield return LoadMainWithProfile(unlockAll: true);
+            var list = Object.FindObjectsByType<LessonListScreen>(FindObjectsSortMode.None).Single();
+            var labels = list
                 .GetComponentsInChildren<TMP_Text>()
                 .Select(t => t.text)
                 .ToList();
-            Assert.That(labels, Has.Some.Contains("Bài 4"));
-            Assert.That(labels, Has.Some.Contains("Bài 13"));
-            Assert.That(labels, Has.Some.Contains("Bài 42"));
+            var entries = LessonRepository.LoadIndex().lessons;
+            Assert.AreEqual(entries.Count, list.LessonCount);
+            foreach (var e in entries)
+            {
+                Assert.That(labels, Has.Some.StartsWith($"{UiText.LessonPrefix} {e.lesson_no}\n"));
+                Assert.IsNotNull(list.ButtonFor(e.lesson_id), $"Không có thẻ bài {e.lesson_id}");
+            }
         }
 
         [UnityTest]
@@ -234,7 +237,7 @@ namespace TapDoc.Tests
         [UnityTest]
         public IEnumerator LessonList_FitsPhoneAndTablet()
         {
-            AppRoot.EnsureInstance();
+            yield return LoadMainWithProfile(unlockAll: true);
             foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
             {
                 var rt = new RenderTexture(size.x, size.y, 24);
@@ -272,6 +275,31 @@ namespace TapDoc.Tests
             yield return null;
             Assert.AreEqual(Phase.Done, screen.Flow.Phase);
             Assert.IsNotNull(Object.FindAnyObjectByType<ResultScreen>());
+        }
+
+        [UnityTest]
+        public IEnumerator Result_MissingStarImage_DrawsStarNotSquare()
+        {
+            // Thiếu tranh ngôi sao: catalog báo thiếu như mọi tranh khác; màn kết quả vẽ ngôi sao vàng, không vẽ ô vuông.
+            AppRoot.CatalogFactory = () => new AssetCatalog(
+                _ => _clip,
+                id => id == SystemImages.Star ? null : _sprite);
+            LogAssert.Expect(LogType.Error, "[TapDoc] Thiếu tranh: " + SystemImages.Star);
+            var app = AppRoot.EnsureInstance();
+            app.Progress.CreateProfile(TestChildName, ProfileScreen.Avatars[0]);
+            app.ShowResult("tv1_t1_b04");
+            yield return null;
+
+            var stars = Object.FindAnyObjectByType<ResultScreen>().GetComponentsInChildren<MarkerIcon>();
+            Assert.AreEqual(3, stars.Length);
+            foreach (var star in stars)
+            {
+                var img = star.GetComponent<Image>();
+                Assert.IsTrue(star.IsFallback);
+                Assert.AreSame(MarkerIcon.FallbackStar, img.sprite);
+                Assert.AreNotSame(UiKit.WhiteSprite, img.sprite);
+                Assert.AreEqual(MarkerIcon.StarYellow, img.color);
+            }
         }
     }
 }

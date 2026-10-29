@@ -1,0 +1,195 @@
+{
+  "lesson_id": "tv1_t1_b10",
+  "book": "tv1_t1_1990",
+  "lesson_no": 10,
+  "type": "am_moi",
+  "title": "i t",
+  "source": {
+    "pages": [
+      15
+    ],
+    "scan_file": "008",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "i",
+    "t"
+  ],
+  "images": {
+    "img_b10_ddi_ddof": "Cô gái ngồi trên chiếc đò nhỏ, người lái đò đội nón lá đứng chèo; bờ sông xa có thuyền",
+    "img_b10_oo_too": "Chiếc ô tô con kiểu cũ, có hai bạn nhỏ ngồi trong xe nhìn ra cửa kính",
+    "img_b10_honf_bi": "Hai hòn bi ve tròn bóng nằm trên mặt đất",
+    "img_b10_cais_tur": "Cái tủ gỗ đứng có hai cánh cửa và bốn chân ngắn"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "i"
+    },
+    {
+      "type": "keyword",
+      "text": "đi đò",
+      "image": "img_b10_ddi_ddof"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "đi đò",
+        "đi",
+        "i"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "đi",
+      "then": "đi đò"
+    },
+    {
+      "type": "unit",
+      "text": "t"
+    },
+    {
+      "type": "keyword",
+      "text": "ô tô",
+      "image": "img_b10_oo_too"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "ô tô",
+        "tô",
+        "t"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "tô",
+      "then": "ô tô"
+    },
+    {
+      "type": "picture",
+      "image": "img_b10_honf_bi",
+      "say": "Đây là hai hòn bi.",
+      "word": "hòn bi"
+    },
+    {
+      "type": "picture",
+      "image": "img_b10_cais_tur",
+      "say": "Đây là cái tủ.",
+      "word": "cái tủ"
+    },
+    {
+      "type": "sentence",
+      "marker": "●▨",
+      "text": "tí đi ô tô"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "di",
+          "đi",
+          "ta",
+          "tô",
+          "tơ",
+          "tê",
+          "ti"
+        ],
+        [
+          "tí ti",
+          "cá to",
+          "tổ dế"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "i",
+          "options": [
+            "i",
+            "t",
+            "e"
+          ]
+        },
+        {
+          "answer": "t",
+          "options": [
+            "t",
+            "đ",
+            "i"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tô",
+          "options": [
+            "tô",
+            "đô"
+          ]
+        },
+        {
+          "answer": "đi",
+          "options": [
+            "đi",
+            "ti"
+          ]
+        },
+        {
+          "answer": "ta",
+          "options": [
+            "ta",
+            "đa"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "tô",
+      "template": "t_",
+      "answer": "ô",
+      "options": [
+        "ô",
+        "ơ",
+        "o"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "đi đò",
+          "answer": "img_b10_ddi_ddof",
+          "options": [
+            "img_b10_ddi_ddof",
+            "img_b10_oo_too",
+            "img_b10_honf_bi"
+          ]
+        },
+        {
+          "word": "cái tủ",
+          "answer": "img_b10_cais_tur",
+          "options": [
+            "img_b10_honf_bi",
+            "img_b10_cais_tur",
+            "img_b10_oo_too"
+          ]
+        }
+      ]
+    }
+  ]
+}

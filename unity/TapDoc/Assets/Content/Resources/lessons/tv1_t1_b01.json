@@ -1,0 +1,312 @@
+{
+  "schema": 1,
+  "lesson_id": "tv1_t1_b01",
+  "book": "tv1_t1_1990",
+  "lesson_no": 1,
+  "type": "am_moi",
+  "title": "o",
+  "in_app": true,
+  "new_units": [
+    "o"
+  ],
+  "source": {
+    "pages": [
+      6
+    ],
+    "scan_file": "004",
+    "verification": "page_verified"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[4]",
+        "note": "Tranh trong sách trông giống con trâu; app gọi là con bò vì bài dạy âm o."
+      },
+      {
+        "where": "part1[3]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      },
+      {
+        "where": "part1[4]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "o",
+      "audio": "van_o",
+      "hl": [
+        {
+          "s": 0,
+          "n": 1
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "text": "ò ó o... o!",
+      "audio": "tu_of_os_o_o",
+      "image": "img_b01_gaf_troongs",
+      "hl": [
+        {
+          "s": 0,
+          "n": 1
+        },
+        {
+          "s": 2,
+          "n": 1
+        },
+        {
+          "s": 4,
+          "n": 1
+        },
+        {
+          "s": 9,
+          "n": 1
+        }
+      ]
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        {
+          "text": "ò ó o... o!",
+          "audio": "tu_of_os_o_o",
+          "hl": [
+            {
+              "s": 0,
+              "n": 1
+            },
+            {
+              "s": 2,
+              "n": 1
+            },
+            {
+              "s": 4,
+              "n": 1
+            },
+            {
+              "s": 9,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "text": "o",
+          "audio": "van_o",
+          "hl": [
+            {
+              "s": 0,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "text": "o",
+          "audio": "van_o",
+          "hl": [
+            {
+              "s": 0,
+              "n": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b01_chumf_nho",
+      "audio": "hd_b01_tranh_01"
+    },
+    {
+      "type": "picture",
+      "image": "img_b01_bof",
+      "audio": "hd_b01_tranh_02"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tu_of_os_o_o",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ò ó o... o!",
+          "audio": "",
+          "image": "img_b01_gaf_troongs",
+          "tone": ""
+        },
+        {
+          "text": "chùm nho",
+          "audio": "",
+          "image": "img_b01_chumf_nho",
+          "tone": ""
+        },
+        {
+          "text": "con bò",
+          "audio": "",
+          "image": "img_b01_bof",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tu_chumf_nho",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ò ó o... o!",
+          "audio": "",
+          "image": "img_b01_gaf_troongs",
+          "tone": ""
+        },
+        {
+          "text": "chùm nho",
+          "audio": "",
+          "image": "img_b01_chumf_nho",
+          "tone": ""
+        },
+        {
+          "text": "con bò",
+          "audio": "",
+          "image": "img_b01_bof",
+          "tone": ""
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tu_con_bof",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ò ó o... o!",
+          "audio": "",
+          "image": "img_b01_gaf_troongs",
+          "tone": ""
+        },
+        {
+          "text": "chùm nho",
+          "audio": "",
+          "image": "img_b01_chumf_nho",
+          "tone": ""
+        },
+        {
+          "text": "con bò",
+          "audio": "",
+          "image": "img_b01_bof",
+          "tone": ""
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tu_chumf_nho",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ò ó o... o!",
+          "audio": "",
+          "image": "img_b01_gaf_troongs",
+          "tone": ""
+        },
+        {
+          "text": "chùm nho",
+          "audio": "",
+          "image": "img_b01_chumf_nho",
+          "tone": ""
+        },
+        {
+          "text": "con bò",
+          "audio": "",
+          "image": "img_b01_bof",
+          "tone": ""
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tu_con_bof",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ò ó o... o!",
+          "audio": "",
+          "image": "img_b01_gaf_troongs",
+          "tone": ""
+        },
+        {
+          "text": "chùm nho",
+          "audio": "",
+          "image": "img_b01_chumf_nho",
+          "tone": ""
+        },
+        {
+          "text": "con bò",
+          "audio": "",
+          "image": "img_b01_bof",
+          "tone": ""
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tu_of_os_o_o",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ò ó o... o!",
+          "audio": "",
+          "image": "img_b01_gaf_troongs",
+          "tone": ""
+        },
+        {
+          "text": "chùm nho",
+          "audio": "",
+          "image": "img_b01_chumf_nho",
+          "tone": ""
+        },
+        {
+          "text": "con bò",
+          "audio": "",
+          "image": "img_b01_bof",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -202,6 +202,7 @@
     (function () {
       let currentTab = "audio";
       let state = { audio: [], images: [] };
+      const rowElements = new Map();
 
       const tabAudioBtn = document.getElementById("tab-audio");
       const tabImagesBtn = document.getElementById("tab-images");
@@ -266,8 +267,17 @@
         const updated = await resp.json();
         row.status = updated.status;
         row.ghi_chu = updated.ghi_chu;
+        const els = rowElements.get(row);
+        if (els) {
+          els.sBadge.className = "badge status-" + row.status;
+          els.sBadge.textContent = row.status;
+          els.btnOk.classList.toggle("selected", row.status === "dat");
+          els.btnBad.classList.toggle("selected", row.status === "khong_dat");
+          if (document.activeElement !== els.noteInput) {
+            els.noteInput.value = row.ghi_chu || "";
+          }
+        }
         showToast("Đã lưu " + row.id);
-        render();
       }
 
       function filteredRows() {
@@ -305,6 +315,7 @@
         summaryText.textContent = "Đang hiện " + rows.length + " / " + total + " mục";
 
         tableBody.textContent = "";
+        rowElements.clear();
         for (const row of rows) {
           const tr = document.createElement("tr");
 
@@ -398,6 +409,15 @@
 
           tdNote.appendChild(noteInput);
           tr.appendChild(tdNote);
+
+          rowElements.set(row, {
+            tr: tr,
+            tdStatus: tdStatus,
+            sBadge: sBadge,
+            btnOk: btnOk,
+            btnBad: btnBad,
+            noteInput: noteInput
+          });
 
           tableBody.appendChild(tr);
         }

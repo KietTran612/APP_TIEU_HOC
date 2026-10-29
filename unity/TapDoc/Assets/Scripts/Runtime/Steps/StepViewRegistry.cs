@@ -15,6 +15,9 @@ namespace TapDoc
             StepViewFactory.Register("words", () => new ItemsView());
             StepViewFactory.Register("reading", () => new ItemsView());
             StepViewFactory.Register("sentence", () => new SentenceView());
+            StepViewFactory.Register("letter_grid", () => new LetterGridView());
+            StepViewFactory.Register("tone_table", () => new ToneTableView());
+            StepViewFactory.Register("combine_table", () => new CombineTableView());
 
             StepViewFactory.RegisterRound("listen_choose", () => new ListenChooseView());
             StepViewFactory.RegisterRound("look_tone", () => new LookToneView());
