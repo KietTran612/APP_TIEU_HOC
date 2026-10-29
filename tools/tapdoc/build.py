@@ -347,6 +347,27 @@ class _Builder:
                           "spells": self._spells_of(word, row_where)})
         return {"type": "rime_table", "marker": step.get("marker", ""), "items": items}
 
+    def _step_rime_grid(self, step: dict, where: str) -> dict:
+        """Bảng ôn các vần (bài 79): hàng đầu là âm cuối, mỗi hàng tiếp là nguyên âm và các ô vần."""
+        finals = list(step["finals"])
+        items: list[dict] = [{"text": final, "role": "final", "col": c} for c, final in enumerate(finals)]
+        for r, row in enumerate(step["rows"]):
+            vowel, cells = row["vowel"], list(row["cells"])
+            if len(cells) != len(finals):
+                raise self.error(where, f"hàng {vowel!r} có {len(cells)} ô, khác số âm cuối ({len(finals)})")
+            items.append({"text": vowel, "role": "vowel", "row": r})
+            for c, cell in enumerate(cells):
+                if not cell:
+                    continue
+                spells = []
+                for rime in (part.strip() for part in cell.split(" - ")):
+                    res = spell_rime(rime)
+                    if not res.parts:
+                        raise self.error(where, f"không đánh vần được vần {rime!r}")
+                    spells.append(self._spell(res, where))
+                items.append({"text": cell, "role": "cell", "row": r, "col": c, "spells": spells})
+        return {"type": "rime_grid", "items": items}
+
     def _step_letter_pairs(self, step: dict, where: str) -> dict:
         items = []
         for k, letter in enumerate(step["letters"]):
@@ -432,6 +453,7 @@ class _Builder:
         "letter_grid": _step_letter_grid,
         "combine_table": _step_combine_table,
         "rime_table": _step_rime_table,
+        "rime_grid": _step_rime_grid,
         "letter_pairs": _step_letter_pairs,
         "rule": _step_rule,
     }
@@ -497,6 +519,10 @@ class _Builder:
         if _normalized_say(answer_text) != _normalized_say(word):
             raise self.error(where, f"tranh đáp án {answer!r} là chữ {answer_text!r}, "
                                     f"không khớp với từ đề {word!r}")
+        if rd.get("prompt"):
+            return {"instruction_audio": "hd_nghe_do_chon_tranh",
+                    "prompt_audio": self._sentence_audio(rd["prompt"], where),
+                    "options": options, "answer": index}
         return {"prompt_audio": self._audio(text_audio(word), where), "options": options, "answer": index}
 
     def _round_match_case(self, rd: dict, where: str) -> dict:
