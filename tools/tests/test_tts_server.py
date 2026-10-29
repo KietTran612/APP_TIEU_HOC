@@ -299,6 +299,31 @@ class TtsServerTest(unittest.TestCase):
         self.assertEqual(self.row()["ghi_chu"], "giữ bản này")
         self.assertFalse(self.row()["has_prev"])
 
+    def test_rows_show_text_displayed_in_app(self):
+        # Cột "Hiển thị": chữ bé nhìn thấy khi mã được đọc, ưu tiên phần học chính, rồi tới câu hỏi luyện tập.
+        lesson = dict(lesson_id="b01", title="Bài một",
+                      part1=[dict(type="spell", spell=dict(target="q", parts=[dict(text="q", audio="am_q")])),
+                             dict(type="letter_pairs", items=[dict(text="q", upper="Q", audio="am_q"),
+                                                              dict(text="Q", audio="am_q")])],
+                      part2=[dict(prompt_audio="am_q", prompt_text="q_"),
+                             dict(prompt_audio="am_a", prompt_text="a_", instruction_audio="hd_b01_01")])
+        (self.lessons / "b01.json").write_text(json.dumps(lesson, ensure_ascii=False), encoding="utf-8")
+        rows = self.tts_rows()
+        self.assertEqual(rows["am_q"]["hien_thi"], ["q", "Q"])
+        self.assertEqual(rows["am_a"]["hien_thi"], ["a_"])
+
+    def tts_rows(self):
+        status, data = self.request("/api/tts")
+        self.assertEqual(status, 200, data)
+        return {row["id"]: row for row in data["rows"]}
+
+    def test_row_without_text_in_app_shows_nothing(self):
+        (self.lessons / "b01.json").write_text(json.dumps(dict(lesson_id="b01", part1=[], part2=[
+            dict(prompt_audio="am_a", prompt_text="", instruction_audio="am_q")])), encoding="utf-8")
+        rows = self.tts_rows()
+        self.assertEqual(rows["am_a"]["hien_thi"], [])
+        self.assertEqual(rows["am_q"]["hien_thi"], [])
+
     def test_missing_engine_dependency_finishes_job(self):
         from tapdoc.tts_engine import TtsUnavailable
         class UnavailableEngine:

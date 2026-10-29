@@ -162,6 +162,8 @@
     .tts-panel h2 { margin-top: 0; font-size: 18px; }
     .tts-default-row { margin: 10px 0; }
     .tts-kind { display: block; margin-bottom: 4px; }
+    .shown-text { font-size: 20px; font-weight: 600; min-width: 72px; max-width: 220px; }
+    .shown-text.muted { color: #9ca3af; font-weight: 400; }
     #tts-default-rows { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 0 24px; }
     .pager { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin: 8px 0; }
     .pager > span, #pager-bottom { display: flex; gap: 8px; align-items: center; }
@@ -385,7 +387,7 @@
           if (carefulOnly && !row.can_nghe_ky) return false;
           if (exactId && row.id !== query) return false;
           if (query && !exactId) {
-            const hay = [row.id, row.text, row.mo_ta, row.params && row.params.doc, row.ghi_chu].filter(Boolean).join(" ");
+            const hay = [row.id, ...(row.hien_thi || []), row.text, row.mo_ta, row.params && row.params.doc, row.ghi_chu].filter(Boolean).join(" ");
             if (marked ? !hay.toLowerCase().includes(query.toLowerCase()) : !fold(hay).includes(fold(query))) return false;
           }
           if (currentTab === "audio") {
@@ -495,7 +497,7 @@
         tableHead.textContent = "";
         const headRow = document.createElement("tr");
         const headers = currentTab === "audio"
-          ? ["Mã", "Lời đọc", "Loại", "Bài", "Nghe thử", "Trạng thái", "Duyệt", "Ghi chú", "Chỉnh giọng đọc"]
+          ? ["Mã", "Hiển thị", "Lời đọc", "Loại", "Bài", "Nghe thử", "Trạng thái", "Duyệt", "Ghi chú", "Chỉnh giọng đọc"]
           : ["Mã", "Mô tả", "Bài", "Ảnh (160 px)", "Trạng thái", "Duyệt", "Ghi chú"];
         for (const h of headers) {
           const th = document.createElement("th");
@@ -529,6 +531,21 @@
           tdId.className = "code-id";
           tdId.textContent = row.id;
           tr.appendChild(tdId);
+
+          if (currentTab === "audio") {
+            // Chữ bé nhìn thấy trong app khi mã này được đọc.
+            const tdShown = document.createElement("td");
+            tdShown.className = "shown-text";
+            const shownList = row.hien_thi || [];
+            if (shownList.length) {
+              tdShown.textContent = shownList.join(" · ");  // không tách "d · D" sang hai dòng
+            } else {
+              tdShown.textContent = "—";
+              tdShown.classList.add("muted");
+              tdShown.title = "Chỉ đọc, không hiện chữ (lời hướng dẫn, lời khen, câu hỏi chọn tranh)";
+            }
+            tr.appendChild(tdShown);
+          }
 
           const tdText = document.createElement("td");
           tdText.textContent = currentTab === "audio" ? row.text : row.mo_ta;

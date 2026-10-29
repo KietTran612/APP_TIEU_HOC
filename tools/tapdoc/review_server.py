@@ -1,5 +1,6 @@
 """Máy chủ HTTP nội bộ để chủ dự án nghe duyệt âm thanh và xem duyệt tranh."""
 
+import collections
 import copy
 import json
 import re
@@ -22,6 +23,40 @@ _MEDIA_NAME_RE = re.compile(r"^[a-z0-9_]+\.(mp3|png)$")
 _VALID_MANIFESTS = {"audio": "audio_manifest.json", "images": "image_manifest.json"}
 _VALID_REVIEW_STATUSES = frozenset({"dat", "khong_dat", "cho_duyet"})
 _MAX_BODY_BYTES = 1_000_000
+
+
+def _collect_shown(node, found) -> None:
+    """Gom chữ đi kèm mỗi khoá *audio (text, prompt_text, then_text; chữ hoa ở cặp chữ)."""
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key.endswith("audio") and isinstance(value, str) and value:
+                prefix = key[:-len("audio")]
+                for shown_key in (prefix + "text", "upper" if not prefix else None):
+                    shown = node.get(shown_key) if shown_key else None
+                    if isinstance(shown, str) and shown.strip():
+                        found.setdefault(value, collections.Counter())[nfc(shown.strip())] += 1
+        for value in node.values():
+            _collect_shown(value, found)
+    elif isinstance(node, list):
+        for value in node:
+            _collect_shown(value, found)
+
+
+def shown_in_app(lessons_dir) -> dict[str, list[str]]:
+    """Chữ bé nhìn thấy khi mỗi mã được đọc: lấy ở phần học chính, không có mới lấy ở câu hỏi luyện tập."""
+    main, practice = {}, {}
+    for path in sorted(Path(lessons_dir).glob("*.json")):
+        if path.name == "index.json":
+            continue
+        try:
+            lesson = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue  # bài hỏng không được làm hỏng trang duyệt
+        if isinstance(lesson, dict):
+            _collect_shown(lesson.get("part1"), main)
+            _collect_shown(lesson.get("part2"), practice)
+    return {audio_id: [text for text, _ in (main.get(audio_id) or practice[audio_id]).most_common()]
+            for audio_id in main.keys() | practice.keys()}
 
 
 class _ReviewHTTPServer(ThreadingHTTPServer):
@@ -307,9 +342,11 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
             return copy.deepcopy(server.job)
         if path == "/api/tts":
             settings = load_settings(server.settings_path)
+            shown = shown_in_app(server.lessons_dir)
             return dict(voice=settings["voice"], defaults=settings["defaults"],
                         voices=[dict(id=voice, label=label) for voice, label in VOICES.items()],
-                        rows=[server.describe(row, settings) for row in server.audio_rows()])
+                        rows=[{**server.describe(row, settings), "hien_thi": shown.get(row["id"], [])}
+                              for row in server.audio_rows()])
         if path == "/api/chain-notes":
             return server.chain_notes()
         if path == "/api/lessons":
