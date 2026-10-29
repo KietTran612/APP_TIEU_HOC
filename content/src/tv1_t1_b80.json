@@ -1,0 +1,303 @@
+{
+  "lesson_id": "tv1_t1_b80",
+  "book": "tv1_t1_1990",
+  "lesson_no": 80,
+  "type": "on_tap_cuoi_ki",
+  "title": "Ôn tập cuối học kì I",
+  "source": {
+    "pages": [
+      119
+    ],
+    "scan_file": "060",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "an",
+    "am",
+    "ac",
+    "at",
+    "ap",
+    "ai",
+    "ay",
+    "ao",
+    "au",
+    "ăn",
+    "ăm",
+    "ăc",
+    "ăt",
+    "ăp",
+    "ân",
+    "âm",
+    "âc",
+    "ât",
+    "âp",
+    "ây",
+    "âu",
+    "on",
+    "om",
+    "oc",
+    "ot",
+    "op",
+    "oi",
+    "ôn",
+    "ôm",
+    "ôc",
+    "ôt",
+    "ôp",
+    "ôi",
+    "ơn",
+    "ơm",
+    "ơt",
+    "ơp",
+    "ơi",
+    "en",
+    "em",
+    "et",
+    "ep",
+    "eo",
+    "ên",
+    "êm",
+    "êt",
+    "êp",
+    "êu",
+    "in",
+    "im",
+    "it",
+    "ip",
+    "iu",
+    "un",
+    "um",
+    "uc",
+    "ut",
+    "up",
+    "ui",
+    "ưc",
+    "ưt",
+    "ưi",
+    "ưu"
+  ],
+  "images": {
+    "img_b80_con_lownj": "Con lợn mũm mĩm, má to, mắt híp, nằm thở trên ổ rơm",
+    "img_b80_con_meof": "Con mèo mướp ngồi liếm chân",
+    "img_b80_con_gaf": "Con gà trống mào đỏ đứng gáy"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[0]",
+        "note": "bảng 7 cột của trang chia thành 2 bước đọc có nhãn (1)–(4) và (5)–(7); ô \"vải-bay\", \"dao-cau\" tách thành 2 tiếng"
+      },
+      {
+        "where": "part1[6]",
+        "note": "tranh con lợn, mèo, gà vẽ thêm cho lượt câu đố"
+      },
+      {
+        "where": "part2[0]",
+        "note": "lời đề câu đố đọc cả bài thơ; đáp án con lợn"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "reading",
+      "marker": "",
+      "rows": [
+        {
+          "label": "(1)",
+          "items": [
+            "sàn",
+            "sắn",
+            "cân",
+            "ngọn",
+            "thôn"
+          ]
+        },
+        {
+          "label": "(2)",
+          "items": [
+            "cam",
+            "tằm",
+            "tấm",
+            "xóm",
+            "tôm"
+          ]
+        },
+        {
+          "label": "(3)",
+          "items": [
+            "lạc",
+            "sắc",
+            "gấc",
+            "cóc",
+            "ốc"
+          ]
+        },
+        {
+          "label": "(4)",
+          "items": [
+            "bát",
+            "cắt",
+            "tất",
+            "sọt",
+            "tốt"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "",
+      "rows": [
+        {
+          "label": "(5)",
+          "items": [
+            "đạp",
+            "bắp",
+            "mập",
+            "cọp",
+            "hộp"
+          ]
+        },
+        {
+          "label": "(6)",
+          "items": [
+            "vải",
+            "bay",
+            "mây",
+            "voi",
+            "nôi"
+          ]
+        },
+        {
+          "label": "(7)",
+          "items": [
+            "dao",
+            "cau",
+            "trâu"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Con gì ăn no"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Má to mắt híp,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Mồm kêu ụt ịt,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nằm thở phì phò?"
+    },
+    {
+      "type": "picture",
+      "image": "img_b80_con_lownj",
+      "say": "Đây là con lợn.",
+      "word": "con lợn"
+    },
+    {
+      "type": "picture",
+      "image": "img_b80_con_meof",
+      "say": "Đây là con mèo.",
+      "word": "con mèo"
+    },
+    {
+      "type": "picture",
+      "image": "img_b80_con_gaf",
+      "say": "Đây là con gà.",
+      "word": "con gà"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con lợn",
+          "prompt": "Con gì ăn no, Má to mắt híp, Mồm kêu ụt ịt, Nằm thở phì phò?",
+          "answer": "img_b80_con_lownj",
+          "options": [
+            "img_b80_con_meof",
+            "img_b80_con_lownj",
+            "img_b80_con_gaf"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "sàn",
+          "options": [
+            "sàn",
+            "sắn",
+            "cân"
+          ]
+        },
+        {
+          "answer": "tôm",
+          "options": [
+            "tôm",
+            "tơm",
+            "tom"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "bát",
+          "options": [
+            "bát",
+            "bắt"
+          ]
+        },
+        {
+          "answer": "hộp",
+          "options": [
+            "hộp",
+            "họp"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "trâu",
+      "template": "tr_",
+      "answer": "âu",
+      "options": [
+        "âu",
+        "au",
+        "ao"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vải",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

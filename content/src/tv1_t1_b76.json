@@ -1,0 +1,220 @@
+{
+  "lesson_id": "tv1_t1_b76",
+  "book": "tv1_t1_1990",
+  "lesson_no": 76,
+  "type": "van_moi",
+  "title": "ep êp",
+  "source": {
+    "pages": [
+      112,
+      113
+    ],
+    "scan_file": "057",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ep",
+    "êp"
+  ],
+  "images": {
+    "img_b76_cas_cheps": "Con cá chép vảy to, có râu, đuôi xoè",
+    "img_b76_ddenf_xeeps": "Hai chiếc đèn xếp (đèn lồng giấy) treo trên một thanh ngang",
+    "img_b76_ddooi_deps": "Đôi dép cao su quai chéo đặt ngay ngắn trên nền đất"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[12]",
+        "note": "tranh sách vẽ Bác Hồ với thiếu nhi (người thật); tranh vẽ lại thay bằng đôi dép cao su — chủ dự án duyệt"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ep"
+    },
+    {
+      "type": "keyword",
+      "text": "cá chép",
+      "image": "img_b76_cas_cheps"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cá chép",
+        "chép",
+        "ep"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ep",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chép",
+      "drag_tone": true,
+      "then": "cá chép"
+    },
+    {
+      "type": "unit",
+      "text": "êp"
+    },
+    {
+      "type": "keyword",
+      "text": "đèn xếp",
+      "image": "img_b76_ddenf_xeeps"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "đèn xếp",
+        "xếp",
+        "êp"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "êp",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "xếp",
+      "drag_tone": true,
+      "then": "đèn xếp"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "đôi dép"
+        },
+        {
+          "text": "pháo tép"
+        },
+        {
+          "text": "bếp lò"
+        },
+        {
+          "text": "gạo nếp"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b76_ddooi_deps",
+      "say": "Đây là đôi dép cao su.",
+      "word": "đôi dép"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đôi dép đơn sơ,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "“Đôi dép Bác Hồ”,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đã đi khắp nẻo quê nhà, Bác ơi!"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ep",
+          "options": [
+            "ep",
+            "êp",
+            "ap"
+          ]
+        },
+        {
+          "answer": "êp",
+          "options": [
+            "êp",
+            "ep",
+            "âp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chép",
+          "options": [
+            "chép",
+            "chếp"
+          ]
+        },
+        {
+          "answer": "xếp",
+          "options": [
+            "xếp",
+            "xép"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "đôi dép",
+      "template": "đôi d_",
+      "answer": "ép",
+      "options": [
+        "ép",
+        "ếp",
+        "áp"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cá chép",
+          "answer": "img_b76_cas_cheps",
+          "options": [
+            "img_b76_cas_cheps",
+            "img_b76_ddenf_xeeps",
+            "img_b76_ddooi_deps"
+          ]
+        },
+        {
+          "word": "đèn xếp",
+          "answer": "img_b76_ddenf_xeeps",
+          "options": [
+            "img_b76_ddenf_xeeps",
+            "img_b76_cas_cheps",
+            "img_b76_ddooi_deps"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nẻo",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

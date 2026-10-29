@@ -1,0 +1,234 @@
+{
+  "lesson_id": "tv1_t1_b70",
+  "book": "tv1_t1_1990",
+  "lesson_no": 70,
+  "type": "van_moi",
+  "title": "ot ôt ơt",
+  "source": {
+    "pages": [
+      100,
+      101
+    ],
+    "scan_file": "051",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ot",
+    "ôt",
+    "ơt"
+  ],
+  "images": {
+    "img_b70_cais_sotj": "Cái sọt tre đan mắt cáo, miệng tròn",
+    "img_b70_cur_caf_roots": "Hai củ cà rốt thon dài có cuống lá",
+    "img_b70_cais_vowtj": "Cái vợt cán dài, đầu là vòng tròn có lưới (vợt bắt bướm)",
+    "img_b70_cootj_cowf": "Cột cờ cao xây bằng gạch, lá cờ đỏ sao vàng bay trên đỉnh, mây trôi"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ot"
+    },
+    {
+      "type": "keyword",
+      "text": "cái sọt",
+      "image": "img_b70_cais_sotj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái sọt",
+        "sọt",
+        "ot"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ot",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "sọt",
+      "drag_tone": true,
+      "then": "cái sọt"
+    },
+    {
+      "type": "unit",
+      "text": "ôt"
+    },
+    {
+      "type": "keyword",
+      "text": "củ cà rốt",
+      "image": "img_b70_cur_caf_roots"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "củ cà rốt",
+        "rốt",
+        "ôt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ôt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "rốt",
+      "drag_tone": true,
+      "then": "củ cà rốt"
+    },
+    {
+      "type": "unit",
+      "text": "ơt"
+    },
+    {
+      "type": "keyword",
+      "text": "cái vợt",
+      "image": "img_b70_cais_vowtj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái vợt",
+        "vợt",
+        "ơt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ơt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "vợt",
+      "drag_tone": true,
+      "then": "cái vợt"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "tấm cót"
+        },
+        {
+          "text": "chim hót líu lo"
+        },
+        {
+          "text": "lá lốt"
+        },
+        {
+          "text": "bạn tốt"
+        },
+        {
+          "text": "quả ớt"
+        },
+        {
+          "text": "cái thớt"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b70_cootj_cowf",
+      "say": "Lá cờ bay trên đỉnh cột cờ.",
+      "word": "cột cờ"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Cột cờ cao chót vót"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Phần phật lá cờ bay."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ôt",
+          "options": [
+            "ôt",
+            "ot",
+            "ơt"
+          ]
+        },
+        {
+          "answer": "ơt",
+          "options": [
+            "ơt",
+            "ot",
+            "ôt"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "sọt",
+          "options": [
+            "sọt",
+            "sột"
+          ]
+        },
+        {
+          "answer": "vợt",
+          "options": [
+            "vợt",
+            "vọt"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "cái vợt",
+      "template": "cái v_",
+      "answer": "ợt",
+      "options": [
+        "ợt",
+        "ọt",
+        "ột"
+      ],
+      "image": "img_b70_cais_vowtj"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cái sọt",
+          "answer": "img_b70_cais_sotj",
+          "options": [
+            "img_b70_cais_sotj",
+            "img_b70_cur_caf_roots",
+            "img_b70_cais_vowtj"
+          ]
+        },
+        {
+          "word": "củ cà rốt",
+          "answer": "img_b70_cur_caf_roots",
+          "options": [
+            "img_b70_cur_caf_roots",
+            "img_b70_cais_vowtj",
+            "img_b70_cootj_cowf"
+          ]
+        }
+      ]
+    }
+  ]
+}

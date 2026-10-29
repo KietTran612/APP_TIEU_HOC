@@ -299,5 +299,116 @@ class Lessons55To64Test(BookTestCase):
         self.assertEqual(heo[0]["note"], "heo nái: lợn nái.")
 
 
+def keywords(no):
+    return [s["text"] for s in steps(no, "keyword")]
+
+
+def lines(no):
+    return [s["text"] for s in steps(no, "sentence")]
+
+
+class Lessons65To73Test(BookTestCase):
+    """Đối chiếu ảnh scan 046–054 (tr.90–107)."""
+
+    def test_basics(self):
+        for no in range(65, 74):
+            with self.subTest(no=no):
+                self.assert_lesson_basics(no)
+
+    def test_keywords(self):
+        expected = {65: ["củ lạc", "con tắc kè", "quả gấc"], 66: ["con sóc", "vỏ ốc"], 67: ["máy xúc", "lọ mực"],
+                    69: ["bãi cát", "chim cắt", "đôi tất"], 70: ["cái sọt", "củ cà rốt", "cái vợt"],
+                    71: ["con vẹt", "bồ kết", "con vịt"], 72: ["bút bi", "mứt tết"]}
+        for no, words in expected.items():
+            with self.subTest(no=no):
+                self.assertEqual(keywords(no), words)
+
+    def test_b65_poem(self):
+        self.assertEqual(lines(65), ["Mặc gió núi đèo cao", "Quân đi như thác chảy."])
+
+    def test_b66_dialogue_keeps_dash_on_screen(self):
+        # Sách ghi lời thoại có gạch đầu dòng; chữ trên màn giữ gạch, phần đọc thì bỏ.
+        self.assertEqual(lines(66), ["Cốc, cốc, cốc!", "– Ai gọi đó?", "– Tôi là thỏ.", "– Nếu là thỏ", "Cho xem tai."])
+        self.assertEqual([i["text"] for i in steps(66, "sentence")[1]["items"]], ["Ai", "gọi", "đó"])
+
+    def test_b67_one_sentence(self):
+        self.assertEqual(lines(67), ["Thu về cúc nở, sực nức mùi thơm."])
+
+    def test_b68_rime_table_and_teacher_note(self):
+        self.assertEqual(table_rows(68), [("ac", "con vạc"), ("ăc", "chè đặc"), ("âc", "xôi gấc"), ("oc", "con cóc"),
+                                          ("ôc", "vỏ ốc"), ("uc", "cá nục"), ("ưc", "thơm phức")])
+        self.assertEqual(lines(68), ["Nhớ lời Bác dạy:", "Chăm học, chăm làm", "Bố mẹ đều khen", "Thầy cô vui vẻ."])
+        self.assertTrue(any("ec" in n for n in notes(68)), notes(68))
+
+    def test_b71_tet_poem(self):
+        self.assertEqual(lines(71), ["Trời ren rét", "Tết đến rồi", "Đào, mai nở", "Thật là vui..."])
+
+    def test_b73_rime_table_eleven_rows(self):
+        rows = table_rows(73)
+        self.assertEqual(len(rows), 11)
+        self.assertEqual((rows[0], rows[-1]), (("at", "bài hát"), ("ưt", "gói mứt")))
+        self.assertIn(("sentence", 5), run_types(73))
+
+
+class Lessons74To80Test(BookTestCase):
+    """Đối chiếu ảnh scan 055–060 (tr.108–119)."""
+
+    def test_basics(self):
+        for no in range(74, 81):
+            with self.subTest(no=no):
+                self.assert_lesson_basics(no)
+
+    def test_keywords(self):
+        expected = {74: ["xe đạp", "cải bắp", "cá mập"], 75: ["con cọp", "tốp ca", "sấm chớp"],
+                    76: ["cá chép", "đèn xếp"], 77: ["nhịp cầu", "búp sen"]}
+        for no, words in expected.items():
+            with self.subTest(no=no):
+                self.assertEqual(keywords(no), words)
+
+    def test_poems(self):
+        self.assertEqual(lines(74)[0], "“Rầm rập rầm rầm rập!”")
+        self.assertIn(("sentence", 4), run_types(74))
+        self.assertIn(("sentence", 6), run_types(75))
+        self.assertEqual(lines(76)[1], "“Đôi dép Bác Hồ”,")
+        self.assertEqual(lines(77), ["Búp sen nhỏ", "Bên bờ ao", "Như tay bé", "Vẫy trời cao."])
+
+    def test_b76_real_person_picture_replaced(self):
+        self.assertTrue(any("Bác Hồ" in n for n in notes(76)), notes(76))
+
+    def test_b78_rime_table_and_passage(self):
+        rows = table_rows(78)
+        self.assertEqual(len(rows), 10)
+        self.assertEqual((rows[0], rows[-1]), (("ap", "xe đạp"), ("up", "chè búp")))
+        self.assertEqual(len(lines(78)), 3)
+        self.assertEqual(lines(78)[1], "Mấy bác đi xe đạp la: “Ếp ếp!”.")
+
+    def test_b79_rime_grid_like_page(self):
+        grid = steps(79, "rime_grid")[0]
+        items = grid["items"]
+        self.assertEqual([i["text"] for i in items if i["role"] == "final"], ["n", "m", "c", "t", "p", "i-y", "o-u"])
+        self.assertEqual([i["text"] for i in items if i["role"] == "vowel"],
+                         ["a", "ă", "â", "o", "ô", "ơ", "e", "ê", "i", "u", "ư"])
+        cells = {(i["row"], i["col"]): i for i in items if i["role"] == "cell"}
+        self.assertEqual(len(cells), 61)
+        self.assertEqual(cells[(0, 5)]["text"], "ai - ay")
+        self.assertEqual([aud(sp) for sp in cells[(0, 5)]["spells"]],
+                         [["van_a", "van_i", "van_ai"], ["van_a", "van_y", "van_ay"]])
+        self.assertEqual([c for (r, c) in cells if r == 10], [2, 3, 5, 6])  # ư: ưc ưt ưi ưu, ô trống như trang
+        self.assertNotIn((5, 2), cells)  # không có "ơc"
+
+    def test_b80_find_words_and_riddle(self):
+        readings = steps(80, "reading")
+        labels = [lb for st in readings for lb in st["labels"]]
+        self.assertEqual(labels, ["(1)", "(2)", "(3)", "(4)", "(5)", "(6)", "(7)"])
+        sixth = readings[1]["items"]
+        self.assertEqual([i["text"] for i in sixth if i["row"] == 1], ["vải", "bay", "mây", "voi", "nôi"])
+        self.assertEqual(lines(80), ["Con gì ăn no", "Má to mắt híp,", "Mồm kêu ụt ịt,", "Nằm thở phì phò?"])
+        riddle = L[lid_of(80)]["part2"][0]
+        self.assertEqual(riddle["kind"], "listen_picture")
+        self.assertEqual(riddle["instruction_audio"], "hd_nghe_do_chon_tranh")
+        self.assertTrue(riddle["prompt_audio"].startswith("cau_b80_"))
+        self.assertEqual(riddle["options"][riddle["answer"]]["image"], "img_b80_con_lownj")
+
+
 if __name__ == "__main__":
     unittest.main()

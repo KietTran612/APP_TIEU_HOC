@@ -1,0 +1,193 @@
+{
+  "lesson_id": "tv1_t1_b67",
+  "book": "tv1_t1_1990",
+  "lesson_no": 67,
+  "type": "van_moi",
+  "title": "uc ưc",
+  "source": {
+    "pages": [
+      94,
+      95
+    ],
+    "scan_file": "048",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uc",
+    "ưc"
+  ],
+  "images": {
+    "img_b67_mays_xucs": "Chiếc máy xúc có cần dài và gầu xúc, chạy bánh xích",
+    "img_b67_loj_muwcj": "Lọ mực tròn nắp đen, nhãn trơn không chữ",
+    "img_b67_hoa_cucs": "Khóm hoa cúc nở nhiều bông cánh xoè"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "uc"
+    },
+    {
+      "type": "keyword",
+      "text": "máy xúc",
+      "image": "img_b67_mays_xucs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "máy xúc",
+        "xúc",
+        "uc"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uc",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "xúc",
+      "drag_tone": true,
+      "then": "máy xúc"
+    },
+    {
+      "type": "unit",
+      "text": "ưc"
+    },
+    {
+      "type": "keyword",
+      "text": "lọ mực",
+      "image": "img_b67_loj_muwcj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "lọ mực",
+        "mực",
+        "ưc"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ưc",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "mực",
+      "drag_tone": true,
+      "then": "lọ mực"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "cái đục"
+        },
+        {
+          "text": "cần trục"
+        },
+        {
+          "text": "thức ăn"
+        },
+        {
+          "text": "thơm phức"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b67_hoa_cucs",
+      "say": "Mùa thu, hoa cúc nở.",
+      "word": "hoa cúc"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Thu về cúc nở, sực nức mùi thơm."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uc",
+          "options": [
+            "uc",
+            "ưc",
+            "ôc"
+          ]
+        },
+        {
+          "answer": "ưc",
+          "options": [
+            "ưc",
+            "uc",
+            "âc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "xúc",
+          "options": [
+            "xúc",
+            "xức"
+          ]
+        },
+        {
+          "answer": "mực",
+          "options": [
+            "mực",
+            "mục"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "lọ mực",
+      "template": "lọ m_",
+      "answer": "ực",
+      "options": [
+        "ực",
+        "ục",
+        "ặc"
+      ],
+      "image": "img_b67_loj_muwcj"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "máy xúc",
+          "answer": "img_b67_mays_xucs",
+          "options": [
+            "img_b67_mays_xucs",
+            "img_b67_loj_muwcj",
+            "img_b67_hoa_cucs"
+          ]
+        },
+        {
+          "word": "lọ mực",
+          "answer": "img_b67_loj_muwcj",
+          "options": [
+            "img_b67_loj_muwcj",
+            "img_b67_mays_xucs",
+            "img_b67_hoa_cucs"
+          ]
+        }
+      ]
+    }
+  ]
+}

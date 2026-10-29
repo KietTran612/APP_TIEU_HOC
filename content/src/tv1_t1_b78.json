@@ -1,0 +1,190 @@
+{
+  "lesson_id": "tv1_t1_b78",
+  "book": "tv1_t1_1990",
+  "lesson_no": 78,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      116,
+      117
+    ],
+    "scan_file": "059",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ap",
+    "ăp",
+    "âp",
+    "op",
+    "ôp",
+    "ơp",
+    "ep",
+    "êp",
+    "ip",
+    "up"
+  ],
+  "images": {
+    "img_b78_xe_qua_caauf": "Xe cộ đi qua cầu: xe buýt, xe tải, xe máy, xe đạp, người gánh hàng"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "rows": [
+        {
+          "rime": "ap",
+          "word": "xe đạp"
+        },
+        {
+          "rime": "ăp",
+          "word": "cải bắp"
+        },
+        {
+          "rime": "âp",
+          "word": "cá mập"
+        },
+        {
+          "rime": "op",
+          "word": "con cọp"
+        },
+        {
+          "rime": "ôp",
+          "word": "cái hộp"
+        },
+        {
+          "rime": "ơp",
+          "word": "lớp học"
+        },
+        {
+          "rime": "ep",
+          "word": "đôi dép"
+        },
+        {
+          "rime": "êp",
+          "word": "đèn xếp"
+        },
+        {
+          "rime": "ip",
+          "word": "dao díp"
+        },
+        {
+          "rime": "up",
+          "word": "chè búp"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b78_xe_qua_caauf",
+      "say": "Xe cộ tấp nập đi qua cầu.",
+      "word": "xe qua cầu"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Xe cộ tấp nập qua cầu."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Mấy bác đi xe đạp la: “Ếp ếp!”."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Xe tải chở sắt thép bấm còi: “Píp píp!”."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăp",
+          "options": [
+            "ăp",
+            "âp",
+            "ap"
+          ]
+        },
+        {
+          "answer": "ơp",
+          "options": [
+            "ơp",
+            "ôp",
+            "op"
+          ]
+        },
+        {
+          "answer": "êp",
+          "options": [
+            "êp",
+            "ep",
+            "ip"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "hộp",
+          "options": [
+            "hộp",
+            "họp"
+          ]
+        },
+        {
+          "answer": "dép",
+          "options": [
+            "dép",
+            "dếp"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "lớp học",
+      "template": "l_ học",
+      "answer": "ớp",
+      "options": [
+        "ớp",
+        "ốp",
+        "óp"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "dao díp",
+          "options": [
+            "dao díp",
+            "chè búp",
+            "cá mập"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "tải",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

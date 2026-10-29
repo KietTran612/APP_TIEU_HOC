@@ -1,0 +1,247 @@
+{
+  "lesson_id": "tv1_t1_b69",
+  "book": "tv1_t1_1990",
+  "lesson_no": 69,
+  "type": "van_moi",
+  "title": "at ăt ât",
+  "source": {
+    "pages": [
+      98,
+      99
+    ],
+    "scan_file": "050",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "at",
+    "ăt",
+    "ât"
+  ],
+  "images": {
+    "img_b69_baix_cats": "Bãi cát ven sông, xa xa có cánh buồm nhỏ và hàng cây",
+    "img_b69_chim_cawts": "Con chim cắt đậu trên cành, mỏ quặp, cánh khép",
+    "img_b69_ddooi_taats": "Đôi tất (vớ) kẻ sọc phơi trên dây",
+    "img_b69_mays_cayf": "Máy cày đang cày trên cánh đồng, mặt trời lên, vài con chim bay"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "at"
+    },
+    {
+      "type": "keyword",
+      "text": "bãi cát",
+      "image": "img_b69_baix_cats"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bãi cát",
+        "cát",
+        "at"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "at",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "cát",
+      "drag_tone": true,
+      "then": "bãi cát"
+    },
+    {
+      "type": "unit",
+      "text": "ăt"
+    },
+    {
+      "type": "keyword",
+      "text": "chim cắt",
+      "image": "img_b69_chim_cawts"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "chim cắt",
+        "cắt",
+        "ăt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ăt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "cắt",
+      "drag_tone": true,
+      "then": "chim cắt"
+    },
+    {
+      "type": "unit",
+      "text": "ât"
+    },
+    {
+      "type": "keyword",
+      "text": "đôi tất",
+      "image": "img_b69_ddooi_taats"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "đôi tất",
+        "tất",
+        "ât"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ât",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "tất",
+      "drag_tone": true,
+      "then": "đôi tất"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "bài hát"
+        },
+        {
+          "text": "gió mát"
+        },
+        {
+          "text": "gặt hái"
+        },
+        {
+          "text": "khăn mặt"
+        },
+        {
+          "text": "thật thà"
+        },
+        {
+          "text": "trật tự"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b69_mays_cayf",
+      "say": "Mặt trời lên, máy cày ra đồng.",
+      "word": "máy cày"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Mặt trời lên ấm đất quê ta"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Thôn xóm vui cấy cày gặt hái."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăt",
+          "options": [
+            "ăt",
+            "ât",
+            "at"
+          ]
+        },
+        {
+          "answer": "ât",
+          "options": [
+            "ât",
+            "ăt",
+            "ân"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cát",
+          "options": [
+            "cát",
+            "cắt"
+          ]
+        },
+        {
+          "answer": "tất",
+          "options": [
+            "tất",
+            "tắt"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "đôi tất",
+      "template": "đôi t_",
+      "answer": "ất",
+      "options": [
+        "ất",
+        "ắt",
+        "át"
+      ],
+      "image": "img_b69_ddooi_taats"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "bãi cát",
+          "answer": "img_b69_baix_cats",
+          "options": [
+            "img_b69_baix_cats",
+            "img_b69_chim_cawts",
+            "img_b69_ddooi_taats"
+          ]
+        },
+        {
+          "word": "chim cắt",
+          "answer": "img_b69_chim_cawts",
+          "options": [
+            "img_b69_chim_cawts",
+            "img_b69_ddooi_taats",
+            "img_b69_mays_cayf"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "bãi",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

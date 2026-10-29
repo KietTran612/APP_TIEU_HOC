@@ -1,0 +1,234 @@
+{
+  "lesson_id": "tv1_t1_b65",
+  "book": "tv1_t1_1990",
+  "lesson_no": 65,
+  "type": "van_moi",
+  "title": "ac ăc âc",
+  "source": {
+    "pages": [
+      90,
+      91
+    ],
+    "scan_file": "046",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ac",
+    "ăc",
+    "âc"
+  ],
+  "images": {
+    "img_b65_cur_lacj": "Hai củ lạc (đậu phộng) vỏ có vân, dính với nhau ở cuống",
+    "img_b65_con_tawcs_kef": "Con tắc kè da lốm đốm, bám trên thân cây",
+    "img_b65_quar_gaacs": "Quả gấc chín đỏ, vỏ có gai mềm, cạnh vài chiếc lá",
+    "img_b65_booj_ddooij": "Đoàn bộ đội đội mũ cối, đeo ba lô hành quân trên đường núi"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ac"
+    },
+    {
+      "type": "keyword",
+      "text": "củ lạc",
+      "image": "img_b65_cur_lacj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "củ lạc",
+        "lạc",
+        "ac"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ac",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "lạc",
+      "drag_tone": true,
+      "then": "củ lạc"
+    },
+    {
+      "type": "unit",
+      "text": "ăc"
+    },
+    {
+      "type": "keyword",
+      "text": "con tắc kè",
+      "image": "img_b65_con_tawcs_kef"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con tắc kè",
+        "tắc",
+        "ăc"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ăc",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "tắc",
+      "drag_tone": true,
+      "then": "con tắc kè"
+    },
+    {
+      "type": "unit",
+      "text": "âc"
+    },
+    {
+      "type": "keyword",
+      "text": "quả gấc",
+      "image": "img_b65_quar_gaacs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả gấc",
+        "gấc",
+        "âc"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "âc",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "gấc",
+      "drag_tone": true,
+      "then": "quả gấc"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "bản nhạc"
+        },
+        {
+          "text": "nhà gác"
+        },
+        {
+          "text": "dao sắc"
+        },
+        {
+          "text": "cái mắc áo"
+        },
+        {
+          "text": "bấc đèn"
+        },
+        {
+          "text": "giấc ngủ"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b65_booj_ddooij",
+      "say": "Các chú bộ đội hành quân qua núi.",
+      "word": "bộ đội"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Mặc gió núi đèo cao"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Quân đi như thác chảy."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăc",
+          "options": [
+            "ăc",
+            "ac",
+            "âc"
+          ]
+        },
+        {
+          "answer": "âc",
+          "options": [
+            "âc",
+            "ăc",
+            "ac"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "lạc",
+          "options": [
+            "lạc",
+            "lặc"
+          ]
+        },
+        {
+          "answer": "gấc",
+          "options": [
+            "gấc",
+            "gác"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "củ lạc",
+      "template": "củ l_",
+      "answer": "ạc",
+      "options": [
+        "ạc",
+        "ặc",
+        "ậc"
+      ],
+      "image": "img_b65_cur_lacj"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con tắc kè",
+          "answer": "img_b65_con_tawcs_kef",
+          "options": [
+            "img_b65_cur_lacj",
+            "img_b65_con_tawcs_kef",
+            "img_b65_quar_gaacs"
+          ]
+        },
+        {
+          "word": "quả gấc",
+          "answer": "img_b65_quar_gaacs",
+          "options": [
+            "img_b65_quar_gaacs",
+            "img_b65_con_tawcs_kef",
+            "img_b65_booj_ddooij"
+          ]
+        }
+      ]
+    }
+  ]
+}

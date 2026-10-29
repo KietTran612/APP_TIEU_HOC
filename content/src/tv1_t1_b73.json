@@ -1,0 +1,205 @@
+{
+  "lesson_id": "tv1_t1_b73",
+  "book": "tv1_t1_1990",
+  "lesson_no": 73,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      106,
+      107
+    ],
+    "scan_file": "054",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "at",
+    "ăt",
+    "ât",
+    "ot",
+    "ôt",
+    "ơt",
+    "et",
+    "êt",
+    "it",
+    "ut",
+    "ưt"
+  ],
+  "images": {
+    "img_b73_chayj_chowi": "Hai bạn nhỏ chạy chơi dưới tán cây xanh nở hoa trắng, chim bay"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "rows": [
+        {
+          "rime": "at",
+          "word": "bài hát"
+        },
+        {
+          "rime": "ăt",
+          "word": "đôi mắt"
+        },
+        {
+          "rime": "ât",
+          "word": "quả đất"
+        },
+        {
+          "rime": "ot",
+          "word": "cái sọt"
+        },
+        {
+          "rime": "ôt",
+          "word": "lá lốt"
+        },
+        {
+          "rime": "ơt",
+          "word": "quả ớt"
+        },
+        {
+          "rime": "et",
+          "word": "con vẹt"
+        },
+        {
+          "rime": "êt",
+          "word": "ngày tết"
+        },
+        {
+          "rime": "it",
+          "word": "quả mít"
+        },
+        {
+          "rime": "ut",
+          "word": "ngòi bút"
+        },
+        {
+          "rime": "ưt",
+          "word": "gói mứt"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b73_chayj_chowi",
+      "say": "Hai bạn nhỏ chạy chơi dưới tán cây.",
+      "word": "chạy chơi"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Mỗi tấc đất"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Thấm bao giọt mồ hôi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cho quả ngọt trái sai"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cho bát cơm thơm bùi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cho em vui ca hát."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăt",
+          "options": [
+            "ăt",
+            "ât",
+            "at"
+          ]
+        },
+        {
+          "answer": "êt",
+          "options": [
+            "êt",
+            "et",
+            "it"
+          ]
+        },
+        {
+          "answer": "ơt",
+          "options": [
+            "ơt",
+            "ôt",
+            "ot"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "mắt",
+          "options": [
+            "mắt",
+            "mất"
+          ]
+        },
+        {
+          "answer": "lốt",
+          "options": [
+            "lốt",
+            "lót"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "quả mít",
+      "template": "quả m_",
+      "answer": "ít",
+      "options": [
+        "ít",
+        "ét",
+        "út"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ngày tết",
+          "options": [
+            "ngày tết",
+            "gói mứt",
+            "bài hát"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "quả",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

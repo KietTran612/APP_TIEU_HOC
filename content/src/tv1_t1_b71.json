@@ -1,0 +1,257 @@
+{
+  "lesson_id": "tv1_t1_b71",
+  "book": "tv1_t1_1990",
+  "lesson_no": 71,
+  "type": "van_moi",
+  "title": "et êt it",
+  "source": {
+    "pages": [
+      102,
+      103
+    ],
+    "scan_file": "052",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "et",
+    "êt",
+    "it"
+  ],
+  "images": {
+    "img_b71_con_vetj": "Con vẹt lông xanh, mỏ quặp, đậu trên giá có cốc nước",
+    "img_b71_boof_keets": "Chùm quả bồ kết dài, cong, treo trên cành",
+    "img_b71_con_vitj": "Con vịt bơi trên mặt nước, bên khóm lau",
+    "img_b71_chowj_hoa_teets": "Chợ hoa ngày Tết đông người, chậu đào, chậu quất bày bán"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "et"
+    },
+    {
+      "type": "keyword",
+      "text": "con vẹt",
+      "image": "img_b71_con_vetj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con vẹt",
+        "vẹt",
+        "et"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "et",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "vẹt",
+      "drag_tone": true,
+      "then": "con vẹt"
+    },
+    {
+      "type": "unit",
+      "text": "êt"
+    },
+    {
+      "type": "keyword",
+      "text": "bồ kết",
+      "image": "img_b71_boof_keets"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bồ kết",
+        "kết",
+        "êt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "êt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "kết",
+      "drag_tone": true,
+      "then": "bồ kết"
+    },
+    {
+      "type": "unit",
+      "text": "it"
+    },
+    {
+      "type": "keyword",
+      "text": "con vịt",
+      "image": "img_b71_con_vitj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con vịt",
+        "vịt",
+        "it"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "it",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "vịt",
+      "drag_tone": true,
+      "then": "con vịt"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "sấm sét"
+        },
+        {
+          "text": "pháo nổ đì đẹt"
+        },
+        {
+          "text": "con rết"
+        },
+        {
+          "text": "nhà máy dệt"
+        },
+        {
+          "text": "quả mít"
+        },
+        {
+          "text": "con nít"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b71_chowj_hoa_teets",
+      "say": "Tết đến, chợ hoa thật đông vui.",
+      "word": "chợ hoa tết"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Trời ren rét"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Tết đến rồi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đào, mai nở"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Thật là vui..."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "êt",
+          "options": [
+            "êt",
+            "et",
+            "it"
+          ]
+        },
+        {
+          "answer": "it",
+          "options": [
+            "it",
+            "êt",
+            "ot"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "vẹt",
+          "options": [
+            "vẹt",
+            "vệt"
+          ]
+        },
+        {
+          "answer": "mít",
+          "options": [
+            "mít",
+            "mét"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "con vịt",
+      "template": "con v_",
+      "answer": "ịt",
+      "options": [
+        "ịt",
+        "ẹt",
+        "ệt"
+      ],
+      "image": "img_b71_con_vitj"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con vẹt",
+          "answer": "img_b71_con_vetj",
+          "options": [
+            "img_b71_con_vetj",
+            "img_b71_boof_keets",
+            "img_b71_con_vitj"
+          ]
+        },
+        {
+          "word": "con vịt",
+          "answer": "img_b71_con_vitj",
+          "options": [
+            "img_b71_con_vitj",
+            "img_b71_con_vetj",
+            "img_b71_chowj_hoa_teets"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nổ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

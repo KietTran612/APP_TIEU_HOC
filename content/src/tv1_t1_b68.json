@@ -1,0 +1,181 @@
+{
+  "lesson_id": "tv1_t1_b68",
+  "book": "tv1_t1_1990",
+  "lesson_no": 68,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      96,
+      97
+    ],
+    "scan_file": "049",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ac",
+    "ăc",
+    "âc",
+    "oc",
+    "ôc",
+    "uc",
+    "ưc"
+  ],
+  "images": {
+    "img_b68_coo_giaos_tawngj_quaf": "Trong lớp học, cô giáo tặng quà cho một bé gái, các bạn đứng xem; trên bàn có lọ hoa (không có ảnh chân dung)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part0",
+        "note": "chú thích sách \"Vần ec rất ít gặp, không dạy\" là lời cho giáo viên, không đưa vào app"
+      },
+      {
+        "where": "part1[1]",
+        "note": "tranh sách có ảnh chân dung Bác Hồ trên tường; tranh vẽ lại bỏ ảnh chân dung — chủ dự án duyệt"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "rows": [
+        {
+          "rime": "ac",
+          "word": "con vạc"
+        },
+        {
+          "rime": "ăc",
+          "word": "chè đặc"
+        },
+        {
+          "rime": "âc",
+          "word": "xôi gấc"
+        },
+        {
+          "rime": "oc",
+          "word": "con cóc"
+        },
+        {
+          "rime": "ôc",
+          "word": "vỏ ốc"
+        },
+        {
+          "rime": "uc",
+          "word": "cá nục"
+        },
+        {
+          "rime": "ưc",
+          "word": "thơm phức"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b68_coo_giaos_tawngj_quaf",
+      "say": "Cô giáo tặng quà cho bé chăm học.",
+      "word": "cô giáo tặng quà"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Nhớ lời Bác dạy:"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Chăm học, chăm làm"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bố mẹ đều khen"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Thầy cô vui vẻ."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăc",
+          "options": [
+            "ăc",
+            "âc",
+            "ac"
+          ]
+        },
+        {
+          "answer": "ưc",
+          "options": [
+            "ưc",
+            "uc",
+            "ôc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "vạc",
+          "options": [
+            "vạc",
+            "vặc"
+          ]
+        },
+        {
+          "answer": "nục",
+          "options": [
+            "nục",
+            "nộc"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "xôi gấc",
+      "template": "xôi g_",
+      "answer": "ấc",
+      "options": [
+        "ấc",
+        "ắc",
+        "ác"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "con cóc",
+          "options": [
+            "con cóc",
+            "vỏ ốc",
+            "cá nục"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vẻ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

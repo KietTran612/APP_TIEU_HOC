@@ -1,0 +1,267 @@
+{
+  "lesson_id": "tv1_t1_b75",
+  "book": "tv1_t1_1990",
+  "lesson_no": 75,
+  "type": "van_moi",
+  "title": "op ôp ơp",
+  "source": {
+    "pages": [
+      110,
+      111
+    ],
+    "scan_file": "056",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "op",
+    "ôp",
+    "ơp"
+  ],
+  "images": {
+    "img_b75_con_copj": "Con cọp (hổ) vằn đen đang gầm, đứng trên tảng đá",
+    "img_b75_toops_ca": "Ba bạn nhỏ đứng hát thành một tốp ca",
+    "img_b75_saams_chowps": "Đám mây đen có tia chớp sáng loé, mưa gió làm cành cây nghiêng",
+    "img_b75_bes_daayj": "Bé gái ngồi dậy trên giường, bên ngoài có con trâu và gà trống"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "op"
+    },
+    {
+      "type": "keyword",
+      "text": "con cọp",
+      "image": "img_b75_con_copj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con cọp",
+        "cọp",
+        "op"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "op",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "cọp",
+      "drag_tone": true,
+      "then": "con cọp"
+    },
+    {
+      "type": "unit",
+      "text": "ôp"
+    },
+    {
+      "type": "keyword",
+      "text": "tốp ca",
+      "image": "img_b75_toops_ca"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "tốp ca",
+        "tốp",
+        "ôp"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ôp",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "tốp",
+      "drag_tone": true,
+      "then": "tốp ca"
+    },
+    {
+      "type": "unit",
+      "text": "ơp"
+    },
+    {
+      "type": "keyword",
+      "text": "sấm chớp",
+      "image": "img_b75_saams_chowps"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "sấm chớp",
+        "chớp",
+        "ơp"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ơp",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chớp",
+      "drag_tone": true,
+      "then": "sấm chớp"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "chóp nón"
+        },
+        {
+          "text": "họp lớp"
+        },
+        {
+          "text": "đất xốp"
+        },
+        {
+          "text": "hộp bút"
+        },
+        {
+          "text": "hợp tác xã"
+        },
+        {
+          "text": "lợp nhà"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b75_bes_daayj",
+      "say": "Bé ơi, dậy đi học thôi.",
+      "word": "bé dậy"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Bé ơi! Bé dậy"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đến lớp Mầm non"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Con trâu tai vẫy"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Con gà mào son"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đều đi cả rồi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bé ơi mau dậy!"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ôp",
+          "options": [
+            "ôp",
+            "op",
+            "ơp"
+          ]
+        },
+        {
+          "answer": "ơp",
+          "options": [
+            "ơp",
+            "op",
+            "ôp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cọp",
+          "options": [
+            "cọp",
+            "cộp"
+          ]
+        },
+        {
+          "answer": "tốp",
+          "options": [
+            "tốp",
+            "tóp"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "con cọp",
+      "template": "con c_",
+      "answer": "ọp",
+      "options": [
+        "ọp",
+        "ộp",
+        "ợp"
+      ],
+      "image": "img_b75_con_copj"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "tốp ca",
+          "answer": "img_b75_toops_ca",
+          "options": [
+            "img_b75_con_copj",
+            "img_b75_toops_ca",
+            "img_b75_saams_chowps"
+          ]
+        },
+        {
+          "word": "sấm chớp",
+          "answer": "img_b75_saams_chowps",
+          "options": [
+            "img_b75_saams_chowps",
+            "img_b75_toops_ca",
+            "img_b75_bes_daayj"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vẫy",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

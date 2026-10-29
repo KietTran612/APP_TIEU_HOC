@@ -1,0 +1,221 @@
+{
+  "lesson_id": "tv1_t1_b77",
+  "book": "tv1_t1_1990",
+  "lesson_no": 77,
+  "type": "van_moi",
+  "title": "ip up",
+  "source": {
+    "pages": [
+      114,
+      115
+    ],
+    "scan_file": "058",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ip",
+    "up"
+  ],
+  "images": {
+    "img_b77_nhipj_caauf": "Cây cầu sắt nhiều nhịp vòm bắc qua sông",
+    "img_b77_bups_sen": "Búp sen hồng chúm chím trên cuống dài",
+    "img_b77_ddaamf_sen": "Đầm sen có nhiều búp sen và lá sen to, mây trôi trên trời"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ip"
+    },
+    {
+      "type": "keyword",
+      "text": "nhịp cầu",
+      "image": "img_b77_nhipj_caauf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "nhịp cầu",
+        "nhịp",
+        "ip"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ip",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "nhịp",
+      "drag_tone": true,
+      "then": "nhịp cầu"
+    },
+    {
+      "type": "unit",
+      "text": "up"
+    },
+    {
+      "type": "keyword",
+      "text": "búp sen",
+      "image": "img_b77_bups_sen"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "búp sen",
+        "búp",
+        "up"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "up",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "búp",
+      "drag_tone": true,
+      "then": "búp sen"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "ca kíp"
+        },
+        {
+          "text": "chim bìm bịp"
+        },
+        {
+          "text": "chụp đèn"
+        },
+        {
+          "text": "lợn béo múp míp"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b77_ddaamf_sen",
+      "say": "Búp sen mọc bên bờ ao.",
+      "word": "đầm sen"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Búp sen nhỏ"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bên bờ ao"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Như tay bé"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Vẫy trời cao."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ip",
+          "options": [
+            "ip",
+            "up",
+            "ep"
+          ]
+        },
+        {
+          "answer": "up",
+          "options": [
+            "up",
+            "ip",
+            "ôp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nhịp",
+          "options": [
+            "nhịp",
+            "nhụp"
+          ]
+        },
+        {
+          "answer": "búp",
+          "options": [
+            "búp",
+            "bíp"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "búp sen",
+      "template": "b_ sen",
+      "answer": "úp",
+      "options": [
+        "úp",
+        "íp",
+        "ép"
+      ],
+      "image": "img_b77_bups_sen"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "nhịp cầu",
+          "answer": "img_b77_nhipj_caauf",
+          "options": [
+            "img_b77_nhipj_caauf",
+            "img_b77_bups_sen",
+            "img_b77_ddaamf_sen"
+          ]
+        },
+        {
+          "word": "búp sen",
+          "answer": "img_b77_bups_sen",
+          "options": [
+            "img_b77_bups_sen",
+            "img_b77_nhipj_caauf",
+            "img_b77_ddaamf_sen"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vẫy",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

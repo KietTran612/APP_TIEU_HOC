@@ -1,0 +1,257 @@
+{
+  "lesson_id": "tv1_t1_b74",
+  "book": "tv1_t1_1990",
+  "lesson_no": 74,
+  "type": "van_moi",
+  "title": "ap ăp âp",
+  "source": {
+    "pages": [
+      108,
+      109
+    ],
+    "scan_file": "055",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ap",
+    "ăp",
+    "âp"
+  ],
+  "images": {
+    "img_b74_xe_ddapj": "Chiếc xe đạp có giỏ trước, dựng nghiêng",
+    "img_b74_cair_bawps": "Cây cải bắp cuộn tròn nhiều lớp lá",
+    "img_b74_cas_maapj": "Con cá mập há miệng bơi giữa sóng",
+    "img_b74_nhayr_sapj": "Các bạn mặc áo dân tộc múa nhảy sạp giữa những cây sào tre, giàn hoa phía trên"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ap"
+    },
+    {
+      "type": "keyword",
+      "text": "xe đạp",
+      "image": "img_b74_xe_ddapj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "xe đạp",
+        "đạp",
+        "ap"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ap",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "đạp",
+      "drag_tone": true,
+      "then": "xe đạp"
+    },
+    {
+      "type": "unit",
+      "text": "ăp"
+    },
+    {
+      "type": "keyword",
+      "text": "cải bắp",
+      "image": "img_b74_cair_bawps"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cải bắp",
+        "bắp",
+        "ăp"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ăp",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "bắp",
+      "drag_tone": true,
+      "then": "cải bắp"
+    },
+    {
+      "type": "unit",
+      "text": "âp"
+    },
+    {
+      "type": "keyword",
+      "text": "cá mập",
+      "image": "img_b74_cas_maapj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cá mập",
+        "mập",
+        "âp"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "âp",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "mập",
+      "drag_tone": true,
+      "then": "cá mập"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "rạp hát"
+        },
+        {
+          "text": "giấy nháp"
+        },
+        {
+          "text": "cắp cặp"
+        },
+        {
+          "text": "đầy ắp"
+        },
+        {
+          "text": "độc lập"
+        },
+        {
+          "text": "tấp nập"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b74_nhayr_sapj",
+      "say": "Các bạn vui nhảy sạp.",
+      "word": "nhảy sạp"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "“Rầm rập rầm rầm rập!”"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Ta dập cho thật đều"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nào bạn nhấc chân cao"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Hãy vào vui nhảy sạp."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăp",
+          "options": [
+            "ăp",
+            "âp",
+            "ap"
+          ]
+        },
+        {
+          "answer": "âp",
+          "options": [
+            "âp",
+            "ăp",
+            "ap"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "bắp",
+          "options": [
+            "bắp",
+            "bấp"
+          ]
+        },
+        {
+          "answer": "mập",
+          "options": [
+            "mập",
+            "mạp"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "xe đạp",
+      "template": "xe đ_",
+      "answer": "ạp",
+      "options": [
+        "ạp",
+        "ặp",
+        "ập"
+      ],
+      "image": "img_b74_xe_ddapj"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cải bắp",
+          "answer": "img_b74_cair_bawps",
+          "options": [
+            "img_b74_xe_ddapj",
+            "img_b74_cair_bawps",
+            "img_b74_cas_maapj"
+          ]
+        },
+        {
+          "word": "cá mập",
+          "answer": "img_b74_cas_maapj",
+          "options": [
+            "img_b74_cas_maapj",
+            "img_b74_cair_bawps",
+            "img_b74_nhayr_sapj"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "cải",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

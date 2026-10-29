@@ -1,0 +1,216 @@
+{
+  "lesson_id": "tv1_t1_b72",
+  "book": "tv1_t1_1990",
+  "lesson_no": 72,
+  "type": "van_moi",
+  "title": "ut ưt",
+  "source": {
+    "pages": [
+      104,
+      105
+    ],
+    "scan_file": "053",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ut",
+    "ưt"
+  ],
+  "images": {
+    "img_b72_buts_bi": "Chiếc bút bi nắp đen nằm chéo",
+    "img_b72_muwts_teets": "Gói mứt Tết bọc giấy hồng, hai đầu xoắn (không có chữ)",
+    "img_b72_vex_tauf": "Bé trai ngồi vẽ con tàu hoả trên giá vẽ, bên cạnh có bảng màu và cốc nước"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ut"
+    },
+    {
+      "type": "keyword",
+      "text": "bút bi",
+      "image": "img_b72_buts_bi"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bút bi",
+        "bút",
+        "ut"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ut",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "bút",
+      "drag_tone": true,
+      "then": "bút bi"
+    },
+    {
+      "type": "unit",
+      "text": "ưt"
+    },
+    {
+      "type": "keyword",
+      "text": "mứt tết",
+      "image": "img_b72_muwts_teets"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "mứt tết",
+        "mứt",
+        "ưt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ưt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "mứt",
+      "drag_tone": true,
+      "then": "mứt tết"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "chăm chút"
+        },
+        {
+          "text": "gió hun hút"
+        },
+        {
+          "text": "bứt lá"
+        },
+        {
+          "text": "đứt dây"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b72_vex_tauf",
+      "say": "Bé dùng bút vẽ con tàu.",
+      "word": "vẽ tàu"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Mẹ cho cây bút"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Em vẽ con tàu"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Lao đi vùn vụt."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ut",
+          "options": [
+            "ut",
+            "ưt",
+            "ot"
+          ]
+        },
+        {
+          "answer": "ưt",
+          "options": [
+            "ưt",
+            "ut",
+            "ơt"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "bút",
+          "options": [
+            "bút",
+            "bứt"
+          ]
+        },
+        {
+          "answer": "mứt",
+          "options": [
+            "mứt",
+            "mút"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "bút bi",
+      "template": "b_ bi",
+      "answer": "út",
+      "options": [
+        "út",
+        "ứt",
+        "ót"
+      ],
+      "image": "img_b72_buts_bi"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "bút bi",
+          "answer": "img_b72_buts_bi",
+          "options": [
+            "img_b72_buts_bi",
+            "img_b72_muwts_teets",
+            "img_b72_vex_tauf"
+          ]
+        },
+        {
+          "word": "mứt tết",
+          "answer": "img_b72_muwts_teets",
+          "options": [
+            "img_b72_muwts_teets",
+            "img_b72_buts_bi",
+            "img_b72_vex_tauf"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vẽ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

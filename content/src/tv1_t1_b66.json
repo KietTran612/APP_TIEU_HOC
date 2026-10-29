@@ -1,0 +1,232 @@
+{
+  "lesson_id": "tv1_t1_b66",
+  "book": "tv1_t1_1990",
+  "lesson_no": 66,
+  "type": "van_moi",
+  "title": "oc ôc",
+  "source": {
+    "pages": [
+      92,
+      93
+    ],
+    "scan_file": "047",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "oc",
+    "ôc"
+  ],
+  "images": {
+    "img_b66_con_socs": "Con sóc đuôi xù ngồi trên cành cây",
+    "img_b66_vor_oocs": "Chiếc vỏ ốc xoắn nhọn đầu, miệng tròn",
+    "img_b66_thor_gox_cuwar": "Chú thỏ mặc áo đứng gõ cửa một ngôi nhà gỗ (không có chữ trong tranh)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[13]",
+        "note": "lời thoại giữ gạch đầu dòng trên chữ như sách (– Ai gọi đó?), khi đọc thì bỏ; chủ dự án xem lại"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "oc"
+    },
+    {
+      "type": "keyword",
+      "text": "con sóc",
+      "image": "img_b66_con_socs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con sóc",
+        "sóc",
+        "oc"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oc",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "sóc",
+      "drag_tone": true,
+      "then": "con sóc"
+    },
+    {
+      "type": "unit",
+      "text": "ôc"
+    },
+    {
+      "type": "keyword",
+      "text": "vỏ ốc",
+      "image": "img_b66_vor_oocs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "vỏ ốc",
+        "ốc",
+        "ôc"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ôc",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "ốc",
+      "drag_tone": true,
+      "then": "vỏ ốc"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "con cóc"
+        },
+        {
+          "text": "cá lóc",
+          "note": "cá lóc: cá quả."
+        },
+        {
+          "text": "gió lốc"
+        },
+        {
+          "text": "gốc cây"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b66_thor_gox_cuwar",
+      "say": "Chú thỏ đứng gõ cửa.",
+      "word": "thỏ gõ cửa"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Cốc, cốc, cốc!"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "– Ai gọi đó?"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "– Tôi là thỏ."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "– Nếu là thỏ"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cho xem tai."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "oc",
+          "options": [
+            "oc",
+            "ôc",
+            "ac"
+          ]
+        },
+        {
+          "answer": "ôc",
+          "options": [
+            "ôc",
+            "oc",
+            "ơn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "sóc",
+          "options": [
+            "sóc",
+            "sốc"
+          ]
+        },
+        {
+          "answer": "lốc",
+          "options": [
+            "lốc",
+            "lóc"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "vỏ ốc",
+      "template": "vỏ _",
+      "answer": "ốc",
+      "options": [
+        "ốc",
+        "óc",
+        "ắc"
+      ],
+      "image": "img_b66_vor_oocs"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con sóc",
+          "answer": "img_b66_con_socs",
+          "options": [
+            "img_b66_con_socs",
+            "img_b66_vor_oocs",
+            "img_b66_thor_gox_cuwar"
+          ]
+        },
+        {
+          "word": "vỏ ốc",
+          "answer": "img_b66_vor_oocs",
+          "options": [
+            "img_b66_vor_oocs",
+            "img_b66_con_socs",
+            "img_b66_thor_gox_cuwar"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vỏ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}
