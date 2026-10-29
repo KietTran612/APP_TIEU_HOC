@@ -234,5 +234,39 @@ class Lessons42To47Test(BookTestCase):
         self.assertEqual(steps(47, "sentence")[0]["items"][0]["text"], "Ủn")
 
 
+
+def table_rows(no):
+    st = steps(no, "rime_table")[0]
+    rimes = [i["text"] for i in st["items"] if i["role"] == "rime"]
+    words = [i["text"] for i in st["items"] if i["role"] == "word"]
+    return list(zip(rimes, words))
+
+
+class Lessons48To54Test(BookTestCase):
+    def test_basics(self):
+        for no in range(48, 55):
+            with self.subTest(no=no):
+                self.assert_lesson_basics(no)
+
+    def test_b48_rime_table(self):
+        self.assertEqual(table_rows(48), [("an", "nhà sàn"), ("ăn", "củ sắn"), ("ân", "quả cân"), ("on", "cỏ non"),
+                                          ("ôn", "con chồn"), ("ơn", "đàn lợn"), ("en", "mũ len"), ("ên", "ngọn nến"),
+                                          ("in", "bản tin"), ("un", "con giun")])
+        self.assertEqual([s["text"] for s in steps(48, "sentence")], ["Lan cho ngan ăn giun, bà khen Lan."])
+
+    def test_b50_name_keyword(self):
+        self.assertEqual([s["text"] for s in steps(50, "keyword")], ["con tằm", "cô Tấm"])
+
+    def test_b51_three_rimes(self):
+        self.assertEqual([s["text"] for s in steps(51, "keyword")], ["com pa", "quả chôm chôm", "bó rơm"])
+
+    def test_b53_poem_three_lines(self):
+        self.assertIn(("sentence", 3), run_types(53))
+
+    def test_b54_rime_table(self):
+        self.assertEqual(len(table_rows(54)), 10)
+        self.assertEqual(table_rows(54)[-1], ("um", "um tùm"))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,241 @@
+{
+  "lesson_id": "tv1_t1_b51",
+  "book": "tv1_t1_1990",
+  "lesson_no": 51,
+  "type": "van_moi",
+  "title": "om ôm ơm",
+  "source": {
+    "pages": [
+      62,
+      63
+    ],
+    "scan_file": "032",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "om",
+    "ôm",
+    "ơm"
+  ],
+  "images": {
+    "img_b51_com_pa": "Chiếc com pa hai chân đang vẽ một vòng tròn trên giấy",
+    "img_b51_quar_choom_choom": "Quả chôm chôm tròn có nhiều lông mềm phủ kín vỏ",
+    "img_b51_bos_rowm": "Một bó rơm khô buộc lại, có con ếch nhỏ ngồi bên cạnh",
+    "img_b51_thoon_xoms": "Xóm làng lúc chập tối: mái nhà, cây cao, đường làng; bé gái cầm đèn đi về, cửa sổ sáng đèn"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "om"
+    },
+    {
+      "type": "keyword",
+      "text": "com pa",
+      "image": "img_b51_com_pa"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "com pa",
+        "com",
+        "om"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "om",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "com",
+      "drag_tone": false,
+      "then": "com pa"
+    },
+    {
+      "type": "unit",
+      "text": "ôm"
+    },
+    {
+      "type": "keyword",
+      "text": "quả chôm chôm",
+      "image": "img_b51_quar_choom_choom"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả chôm chôm",
+        "chôm",
+        "ôm"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ôm",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chôm",
+      "drag_tone": false,
+      "then": "quả chôm chôm"
+    },
+    {
+      "type": "unit",
+      "text": "ơm"
+    },
+    {
+      "type": "keyword",
+      "text": "bó rơm",
+      "image": "img_b51_bos_rowm"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bó rơm",
+        "rơm",
+        "ơm"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ơm",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "rơm",
+      "drag_tone": false,
+      "then": "bó rơm"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "đom đóm"
+        },
+        {
+          "text": "lom khom"
+        },
+        {
+          "text": "ấm nhôm"
+        },
+        {
+          "text": "con tôm"
+        },
+        {
+          "text": "nắm cơm"
+        },
+        {
+          "text": "bơm xe"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b51_thoon_xoms",
+      "say": "Trời tối, thôn xóm đã lên đèn.",
+      "word": "thôn xóm"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Thôn xóm đã lên đèn."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cơm chín thơm làn gió."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ôm",
+          "options": [
+            "ôm",
+            "om",
+            "ơm"
+          ]
+        },
+        {
+          "answer": "ơm",
+          "options": [
+            "ơm",
+            "om",
+            "ôm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tôm",
+          "options": [
+            "tôm",
+            "tơm"
+          ]
+        },
+        {
+          "answer": "cơm",
+          "options": [
+            "cơm",
+            "cam"
+          ]
+        },
+        {
+          "answer": "nhôm",
+          "options": [
+            "nhôm",
+            "nhơm"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "bó rơm",
+      "template": "bó r_",
+      "answer": "ơm",
+      "options": [
+        "ơm",
+        "om",
+        "am"
+      ],
+      "image": "img_b51_bos_rowm"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "com pa",
+          "answer": "img_b51_com_pa",
+          "options": [
+            "img_b51_com_pa",
+            "img_b51_quar_choom_choom",
+            "img_b51_bos_rowm"
+          ]
+        },
+        {
+          "word": "bó rơm",
+          "answer": "img_b51_bos_rowm",
+          "options": [
+            "img_b51_bos_rowm",
+            "img_b51_com_pa",
+            "img_b51_thoon_xoms"
+          ]
+        }
+      ]
+    }
+  ]
+}

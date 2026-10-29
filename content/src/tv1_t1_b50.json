@@ -1,0 +1,210 @@
+{
+  "lesson_id": "tv1_t1_b50",
+  "book": "tv1_t1_1990",
+  "lesson_no": 50,
+  "type": "van_moi",
+  "title": "ăm âm",
+  "source": {
+    "pages": [
+      60,
+      61
+    ],
+    "scan_file": "031",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ăm",
+    "âm"
+  ],
+  "images": {
+    "img_b50_con_tawmf": "Con tằm trắng mình có ngấn, bò trên đám lá dâu",
+    "img_b50_coo_taams": "Cô Tấm mặc áo tứ thân, chít khăn, đứng bên miệng giếng, tay cầm bát cơm, cạnh khóm tre",
+    "img_b50_ddanf_gaf_con": "Bố vác cuốc đi làm về, bé gái đứng bên hiên cho đàn gà con ăn, gà trống đứng cạnh"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ăm"
+    },
+    {
+      "type": "keyword",
+      "text": "con tằm",
+      "image": "img_b50_con_tawmf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con tằm",
+        "tằm",
+        "ăm"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ăm",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "tằm",
+      "drag_tone": true,
+      "then": "con tằm"
+    },
+    {
+      "type": "unit",
+      "text": "âm"
+    },
+    {
+      "type": "keyword",
+      "text": "cô Tấm",
+      "image": "img_b50_coo_taams"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cô Tấm",
+        "Tấm",
+        "âm"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "âm",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "Tấm",
+      "drag_tone": true,
+      "then": "cô Tấm"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "đỏ thắm"
+        },
+        {
+          "text": "chăm làm"
+        },
+        {
+          "text": "mầm non"
+        },
+        {
+          "text": "lấm tấm"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b50_ddanf_gaf_con",
+      "say": "Bé cho đàn gà con ăn, bố đi làm về.",
+      "word": "đàn gà con"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Bé cho đàn gà con ăn tấm."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bố khen bé chăm làm."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăm",
+          "options": [
+            "ăm",
+            "âm",
+            "am"
+          ]
+        },
+        {
+          "answer": "âm",
+          "options": [
+            "âm",
+            "ăm",
+            "ân"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tằm",
+          "options": [
+            "tằm",
+            "tầm"
+          ]
+        },
+        {
+          "answer": "thắm",
+          "options": [
+            "thắm",
+            "thấm"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "chăm làm",
+      "template": "ch_ làm",
+      "answer": "ăm",
+      "options": [
+        "ăm",
+        "âm",
+        "am"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con tằm",
+          "answer": "img_b50_con_tawmf",
+          "options": [
+            "img_b50_con_tawmf",
+            "img_b50_coo_taams",
+            "img_b50_ddanf_gaf_con"
+          ]
+        },
+        {
+          "word": "cô Tấm",
+          "answer": "img_b50_coo_taams",
+          "options": [
+            "img_b50_coo_taams",
+            "img_b50_con_tawmf",
+            "img_b50_ddanf_gaf_con"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "đỏ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

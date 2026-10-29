@@ -1,0 +1,185 @@
+{
+  "lesson_id": "tv1_t1_b49",
+  "book": "tv1_t1_1990",
+  "lesson_no": 49,
+  "type": "van_moi",
+  "title": "am",
+  "source": {
+    "pages": [
+      58,
+      59
+    ],
+    "scan_file": "030",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "am"
+  ],
+  "images": {
+    "img_b49_quar_cam": "Quả cam tròn, vỏ lấm tấm, có cuống và lá nhỏ",
+    "img_b49_xe_lam": "Chiếc xe lam ba bánh chở khách, mui che (sách không có tranh này, vẽ thêm)",
+    "img_b49_ddons_baf": "Bà đứng ở cổng ngõ, tay xách làn rau, đưa quả cam cho bé đang chạy lại"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[5]",
+        "note": "tranh từ ứng dụng không có trong sách, vẽ thêm để làm bài nghe chọn tranh"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "am"
+    },
+    {
+      "type": "keyword",
+      "text": "quả cam",
+      "image": "img_b49_quar_cam"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả cam",
+        "cam",
+        "am"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "am",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "cam",
+      "drag_tone": false,
+      "then": "quả cam"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "quả trám"
+        },
+        {
+          "text": "thảm cỏ"
+        },
+        {
+          "text": "xe lam",
+          "image": "img_b49_xe_lam"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b49_ddons_baf",
+      "say": "Bé chạy ra ngõ đón bà, bà cho bé quả cam.",
+      "word": "đón bà"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Bé lon ton ra ngõ đón bà."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bà cho bé quả cam."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "am",
+          "options": [
+            "am",
+            "an",
+            "ăn"
+          ]
+        },
+        {
+          "answer": "cam",
+          "options": [
+            "cam",
+            "can",
+            "căn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "trám",
+          "options": [
+            "trám",
+            "trán"
+          ]
+        },
+        {
+          "answer": "lam",
+          "options": [
+            "lam",
+            "lan"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "xe lam",
+      "template": "xe l_",
+      "answer": "am",
+      "options": [
+        "am",
+        "an",
+        "ăn"
+      ],
+      "image": "img_b49_xe_lam"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "quả cam",
+          "answer": "img_b49_quar_cam",
+          "options": [
+            "img_b49_quar_cam",
+            "img_b49_xe_lam",
+            "img_b49_ddons_baf"
+          ]
+        },
+        {
+          "word": "xe lam",
+          "answer": "img_b49_xe_lam",
+          "options": [
+            "img_b49_xe_lam",
+            "img_b49_quar_cam",
+            "img_b49_ddons_baf"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "thảm",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

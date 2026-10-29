@@ -1,0 +1,228 @@
+{
+  "lesson_id": "tv1_t1_b53",
+  "book": "tv1_t1_1990",
+  "lesson_no": 53,
+  "type": "van_moi",
+  "title": "im um",
+  "source": {
+    "pages": [
+      66,
+      67
+    ],
+    "scan_file": "034",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "im",
+    "um"
+  ],
+  "images": {
+    "img_b53_toor_chim": "Chim mẹ đứng bên tổ chim có mấy chú chim non há mỏ",
+    "img_b53_toom_humf": "Con tôm hùm to, càng dài, râu dài, mình có đốt",
+    "img_b53_quar_sim": "Hai bạn nhỏ hái sim bên bụi sim trĩu quả, rổ sim đặt trên cỏ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[10]",
+        "note": "sách chỉ tô vần ở \"mũm\"; app tô cả \"mĩm\" (cũng có vần im)"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "im"
+    },
+    {
+      "type": "keyword",
+      "text": "tổ chim",
+      "image": "img_b53_toor_chim"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "tổ chim",
+        "chim",
+        "im"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "im",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chim",
+      "drag_tone": false,
+      "then": "tổ chim"
+    },
+    {
+      "type": "unit",
+      "text": "um"
+    },
+    {
+      "type": "keyword",
+      "text": "tôm hùm",
+      "image": "img_b53_toom_humf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "tôm hùm",
+        "hùm",
+        "um"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "um",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "hùm",
+      "drag_tone": true,
+      "then": "tôm hùm"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "con nhím"
+        },
+        {
+          "text": "bé tìm kim cho bà"
+        },
+        {
+          "text": "chùm nhãn"
+        },
+        {
+          "text": "mũm mĩm"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b53_quar_sim",
+      "say": "Hai bạn nhỏ đi hái sim.",
+      "word": "quả sim"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Hè về trên quê em,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Quả sim chín tím tím"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Lá chen lá um tùm."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "im",
+          "options": [
+            "im",
+            "um",
+            "em"
+          ]
+        },
+        {
+          "answer": "um",
+          "options": [
+            "um",
+            "im",
+            "ôm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chim",
+          "options": [
+            "chim",
+            "chum"
+          ]
+        },
+        {
+          "answer": "hùm",
+          "options": [
+            "hùm",
+            "hìm"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "tổ chim",
+      "template": "tổ ch_",
+      "answer": "im",
+      "options": [
+        "im",
+        "um",
+        "em"
+      ],
+      "image": "img_b53_toor_chim"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "tôm hùm",
+          "answer": "img_b53_toom_humf",
+          "options": [
+            "img_b53_toor_chim",
+            "img_b53_toom_humf",
+            "img_b53_quar_sim"
+          ]
+        },
+        {
+          "word": "tổ chim",
+          "answer": "img_b53_toor_chim",
+          "options": [
+            "img_b53_toor_chim",
+            "img_b53_toom_humf",
+            "img_b53_quar_sim"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "tổ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "mũm",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

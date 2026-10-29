@@ -1,0 +1,213 @@
+{
+  "lesson_id": "tv1_t1_b52",
+  "book": "tv1_t1_1990",
+  "lesson_no": 52,
+  "type": "van_moi",
+  "title": "em êm",
+  "source": {
+    "pages": [
+      64,
+      65
+    ],
+    "scan_file": "033",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "em",
+    "êm"
+  ],
+  "images": {
+    "img_b52_que_kem": "Que kem dài có que cầm, kem đang chảy giọt; bạn nhỏ cười thích thú ở góc tranh",
+    "img_b52_ghees_ddeemj": "Chiếc ghế bành có đệm dày, tay vịn gỗ",
+    "img_b52_ddan_len": "Bên bàn có ngọn đèn dầu, chị ngồi đan len, em trai giữ cuộn len"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "em"
+    },
+    {
+      "type": "keyword",
+      "text": "que kem",
+      "image": "img_b52_que_kem"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "que kem",
+        "kem",
+        "em"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "em",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "kem",
+      "drag_tone": false,
+      "then": "que kem"
+    },
+    {
+      "type": "unit",
+      "text": "êm"
+    },
+    {
+      "type": "keyword",
+      "text": "ghế đệm",
+      "image": "img_b52_ghees_ddeemj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "ghế đệm",
+        "đệm",
+        "êm"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "êm",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "đệm",
+      "drag_tone": true,
+      "then": "ghế đệm"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "ngõ hẻm"
+        },
+        {
+          "text": "tem thư"
+        },
+        {
+          "text": "êm đềm"
+        },
+        {
+          "text": "thềm nhà"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b52_ddan_len",
+      "say": "Chị và em ngồi bên ngọn đèn đan len.",
+      "word": "đan len"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đêm đêm bên ngọn đèn, chị và em đan len."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "em",
+          "options": [
+            "em",
+            "êm",
+            "en"
+          ]
+        },
+        {
+          "answer": "êm",
+          "options": [
+            "êm",
+            "em",
+            "âm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "kem",
+          "options": [
+            "kem",
+            "kêm"
+          ]
+        },
+        {
+          "answer": "đệm",
+          "options": [
+            "đệm",
+            "đẹm"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "que kem",
+      "template": "que k_",
+      "answer": "em",
+      "options": [
+        "em",
+        "êm",
+        "am"
+      ],
+      "image": "img_b52_que_kem"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "que kem",
+          "answer": "img_b52_que_kem",
+          "options": [
+            "img_b52_que_kem",
+            "img_b52_ghees_ddeemj",
+            "img_b52_ddan_len"
+          ]
+        },
+        {
+          "word": "ghế đệm",
+          "answer": "img_b52_ghees_ddeemj",
+          "options": [
+            "img_b52_ghees_ddeemj",
+            "img_b52_que_kem",
+            "img_b52_ddan_len"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "hẻm",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "ngõ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

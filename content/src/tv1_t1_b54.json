@@ -1,0 +1,185 @@
+{
+  "lesson_id": "tv1_t1_b54",
+  "book": "tv1_t1_1990",
+  "lesson_no": 54,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      68,
+      69
+    ],
+    "scan_file": "035",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "am",
+    "ăm",
+    "âm",
+    "om",
+    "ôm",
+    "ơm",
+    "em",
+    "êm",
+    "im",
+    "um"
+  ],
+  "images": {
+    "img_b54_xem_phim": "Trong rạp chiếu phim, bố và bé ngồi xem phim hoạt hình chú thỏ và con sói trên màn ảnh"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "rows": [
+        {
+          "rime": "am",
+          "word": "quả cam"
+        },
+        {
+          "rime": "ăm",
+          "word": "con tằm"
+        },
+        {
+          "rime": "âm",
+          "word": "mầm non"
+        },
+        {
+          "rime": "om",
+          "word": "đom đóm"
+        },
+        {
+          "rime": "ôm",
+          "word": "con tôm"
+        },
+        {
+          "rime": "ơm",
+          "word": "ổ rơm"
+        },
+        {
+          "rime": "em",
+          "word": "que kem"
+        },
+        {
+          "rime": "êm",
+          "word": "ghế đệm"
+        },
+        {
+          "rime": "im",
+          "word": "tổ chim"
+        },
+        {
+          "rime": "um",
+          "word": "um tùm"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b54_xem_phim",
+      "say": "Bố cho bé đi xem phim.",
+      "word": "xem phim"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Bé chăm làm."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Hôm qua, bố cho bé đi xem phim."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăm",
+          "options": [
+            "ăm",
+            "âm",
+            "am"
+          ]
+        },
+        {
+          "answer": "êm",
+          "options": [
+            "êm",
+            "em",
+            "im"
+          ]
+        },
+        {
+          "answer": "ơm",
+          "options": [
+            "ơm",
+            "ôm",
+            "om"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tằm",
+          "options": [
+            "tằm",
+            "tầm"
+          ]
+        },
+        {
+          "answer": "kem",
+          "options": [
+            "kem",
+            "kim"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "tổ chim",
+      "template": "tổ ch_",
+      "answer": "im",
+      "options": [
+        "im",
+        "um",
+        "em"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "đom đóm",
+          "options": [
+            "đom đóm",
+            "um tùm",
+            "ổ rơm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "ổ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

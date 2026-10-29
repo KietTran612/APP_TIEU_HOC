@@ -1,0 +1,187 @@
+{
+  "lesson_id": "tv1_t1_b48",
+  "book": "tv1_t1_1990",
+  "lesson_no": 48,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      56,
+      57
+    ],
+    "scan_file": "029",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "an",
+    "ăn",
+    "ân",
+    "on",
+    "ôn",
+    "ơn",
+    "en",
+    "ên",
+    "in",
+    "un"
+  ],
+  "images": {
+    "img_b48_cho_ngan_awn": "Bà đứng cạnh chum nước dưới gốc cây, bé gái cầm que có con giun cho đàn ngan ăn"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "rows": [
+        {
+          "rime": "an",
+          "word": "nhà sàn"
+        },
+        {
+          "rime": "ăn",
+          "word": "củ sắn"
+        },
+        {
+          "rime": "ân",
+          "word": "quả cân"
+        },
+        {
+          "rime": "on",
+          "word": "cỏ non"
+        },
+        {
+          "rime": "ôn",
+          "word": "con chồn"
+        },
+        {
+          "rime": "ơn",
+          "word": "đàn lợn"
+        },
+        {
+          "rime": "en",
+          "word": "mũ len"
+        },
+        {
+          "rime": "ên",
+          "word": "ngọn nến"
+        },
+        {
+          "rime": "in",
+          "word": "bản tin"
+        },
+        {
+          "rime": "un",
+          "word": "con giun"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b48_cho_ngan_awn",
+      "say": "Bé cho đàn ngan ăn, bà đứng nhìn.",
+      "word": "cho ngan ăn"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Lan cho ngan ăn giun, bà khen Lan."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăn",
+          "options": [
+            "ăn",
+            "ân",
+            "an"
+          ]
+        },
+        {
+          "answer": "ên",
+          "options": [
+            "ên",
+            "en",
+            "in"
+          ]
+        },
+        {
+          "answer": "un",
+          "options": [
+            "un",
+            "ôn",
+            "on"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "sàn",
+          "options": [
+            "sàn",
+            "sằn"
+          ]
+        },
+        {
+          "answer": "non",
+          "options": [
+            "non",
+            "nôn"
+          ]
+        },
+        {
+          "answer": "nến",
+          "options": [
+            "nến",
+            "nén"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "con giun",
+      "template": "con gi_",
+      "answer": "un",
+      "options": [
+        "un",
+        "in",
+        "ôn"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nhà sàn",
+          "options": [
+            "nhà sàn",
+            "củ sắn",
+            "quả cân"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "mũ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}
