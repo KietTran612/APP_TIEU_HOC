@@ -799,6 +799,25 @@ class ReleaseTest(ValidateAllTest):
 
 
 class CliTest(unittest.TestCase):
+    def test_release_warns_on_edge_source_without_error(self):
+        rows = [{"id": "am_b", "source": "tts_edge_hoaimy", "status": "dat"},
+                {"id": "am_c", "source": "azure", "status": "dat"}]
+        warnings = validate.release_warnings(rows)
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("am_b", warnings[0])
+        self.assertEqual(validate.check_release_rows(rows, "âm thanh"), [])
+        many = [{"id": f"am_{i}", "source": "tts_edge_hoaimy", "status": "dat"} for i in range(500)]
+        summary = validate.release_warnings(many)
+        self.assertEqual(len(summary), 1)  # một dòng tóm tắt, không in 500 dòng
+        self.assertIn("500", summary[0])
+        out = io.StringIO()
+        with mock.patch.object(cli, "validate_all", return_value=[]), \
+                mock.patch.object(cli, "load_rows", return_value=rows), redirect_stdout(out):
+            code = cli.main(["validate", "--release"])
+        self.assertEqual(code, 0)
+        self.assertIn("Cảnh báo:", out.getvalue())
+        self.assertIn("OK", out.getvalue())
+
     def run_cli(self, issues, argv=("validate",)):
         out = io.StringIO()
         with mock.patch.object(cli, "validate_all", return_value=issues) as fake, redirect_stdout(out):

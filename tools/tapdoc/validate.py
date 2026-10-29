@@ -381,6 +381,20 @@ def check_release_rows(rows: list[dict], label: str) -> list[Issue]:
             for row in rows if row.get("status") in (STATUS_NONE, STATUS_PENDING)]
 
 
+_RELEASE_WARN_LIST = 5  # quá số này thì chỉ in một dòng tóm tắt
+
+
+def release_warnings(rows) -> list[str]:
+    """Nguồn edge-tts cần xem lại quyền sử dụng khi phát hành, nhưng không chặn kiểm tra."""
+    ids = [str(row.get("id", "?")) for row in rows if str(row.get("source", "")).startswith("tts_edge_")]
+    if not ids:
+        return []
+    note = "dùng dịch vụ Edge không chính thức; cần xem lại quyền sử dụng trước khi phát hành công khai"
+    if len(ids) <= _RELEASE_WARN_LIST:
+        return [f"{audio_id}: nguồn edge-tts {note}" for audio_id in ids]
+    return [f"{len(ids)} file âm thanh nguồn edge-tts (ví dụ {', '.join(ids[:3])}) {note}"]
+
+
 def validate_all(allow_missing: bool = False, release: bool = False) -> list[Issue]:
     """Kiểm tra mọi bài đã dựng trong `UNITY_RES/lessons`, hai danh mục và project Unity.
 

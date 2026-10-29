@@ -148,6 +148,8 @@ def update_audio_manifest(results: list[BuildResult], old_rows: list[dict], audi
             "ghi_chu": note,
             "bai": sorted(lessons),
         })
+        if "tts" in old:
+            rows[-1]["tts"] = dict(old["tts"])
     return rows
 
 

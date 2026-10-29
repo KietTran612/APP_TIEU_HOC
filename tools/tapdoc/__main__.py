@@ -7,12 +7,14 @@ from .build import BuildError, build_all
 from .chatgpt_requests import write_request_files
 from .importer import import_audio_zip, import_image
 from .manifest import ManifestError, load_rows, save_rows, update_audio_manifest, update_image_manifest
-from .paths import CONTENT_SRC, MANIFESTS, REQUESTS_DIR, STYLE_FILE, UNITY_RES
+from .paths import CONTENT_SRC, MANIFESTS, REQUESTS_DIR, ROOT, STYLE_FILE, UNITY_RES
 from .review_server import make_server
-from .validate import validate_all
+from .validate import release_warnings, validate_all
 from .viet import nfc
 
 _STATUSES = ("chua_co", "cho_duyet", "dat", "khong_dat")
+TTS_SETTINGS = ROOT / "content" / "tts" / "settings.json"
+TTS_PREV = ROOT / "content" / "tts" / "prev"
 
 
 def _status_counts(rows: list[dict]) -> str:
@@ -131,6 +133,13 @@ def _cmd_import_image(args: argparse.Namespace) -> int:
 
 def _cmd_validate(args: argparse.Namespace) -> int:
     issues = validate_all(allow_missing=args.allow_missing, release=args.release)
+    if args.release:
+        try:
+            rows = load_rows(MANIFESTS / "audio_manifest.json")
+        except ManifestError:
+            rows = []  # validate_all đã báo lỗi đọc danh mục
+        for warning in release_warnings(rows):
+            print(_printable(f"Cảnh báo: {warning}"))
     for issue in issues:
         print(_printable(f"{issue.lesson} {issue.where}: {issue.message}"))
     if not issues:
@@ -152,7 +161,44 @@ def _cmd_review(args: argparse.Namespace) -> int:
     return 0
 
 
-def main(argv: list[str] | None = None) -> int:
+def _cmd_tts(args: argparse.Namespace) -> int:
+    from .tts_engine import EdgeEngine, TtsUnavailable
+    from .tts_generate import run_batch, selected
+    from .tts_settings import load_settings
+
+    path = MANIFESTS / "audio_manifest.json"
+    try:
+        if not path.is_file():
+            raise ValueError(f"Chưa có danh mục âm thanh: {path}")
+        rows = load_rows(path)
+        settings = load_settings(TTS_SETTINGS)
+        filters = dict(lesson=args.bai, kind=args.loai, ids=args.ma,
+                       include_approved=args.gom_da_duyet)
+        wanted = [row for row in rows if selected(row, settings, **filters)]
+        if args.thu:
+            for row in wanted:
+                print(row["id"])
+            print(f"Sẽ tạo {len(wanted)} mã")
+            return 0
+        if not wanted:
+            print(f"Đã tạo 0, lỗi 0, bỏ qua {len(rows)}")
+            return 0
+        engine = (args.engine_factory or EdgeEngine)()
+        report = run_batch(rows, settings, engine, UNITY_RES / "audio", TTS_PREV,
+                           **filters, save=lambda updated: save_rows(path, updated))
+    except TtsUnavailable as e:
+        print(str(e), file=sys.stderr)
+        return 2
+    except (OSError, ValueError) as e:
+        print(f"Lỗi tạo âm thanh: {e}", file=sys.stderr)
+        return 1
+    print(f"Đã tạo {len(report.done)}, lỗi {len(report.failed)}, bỏ qua {report.skipped}")
+    for audio_id, reason in report.failed.items():
+        print(_printable(f"  {audio_id}: {reason}"), file=sys.stderr)
+    return 1 if report.failed else 0
+
+
+def main(argv: list[str] | None = None, *, engine_factory=None) -> int:
     for stream in (sys.stdout, sys.stderr):
         reconfigure = getattr(stream, "reconfigure", None)
         if reconfigure is not None:
@@ -181,6 +227,14 @@ def main(argv: list[str] | None = None) -> int:
     review_cmd = commands.add_parser("review", help="mở trang web nội bộ để nghe duyệt âm thanh và xem duyệt tranh")
     review_cmd.add_argument("--port", type=int, default=8765, help="cổng lắng nghe trên 127.0.0.1 (mặc định 8765)")
     review_cmd.set_defaults(func=_cmd_review)
+    tts_cmd = commands.add_parser("tts", help="tạo âm thanh bằng edge-tts theo cấu hình giọng đọc")
+    tts_cmd.add_argument("--bai", help="chỉ tạo mã dùng trong bài này")
+    tts_cmd.add_argument("--loai", choices=("am", "van", "dau", "tieng", "tu", "cau", "huong_dan", "khen"),
+                         help="chỉ tạo loại âm thanh này")
+    tts_cmd.add_argument("--ma", nargs="+", help="chỉ tạo các mã này")
+    tts_cmd.add_argument("--gom-da-duyet", action="store_true", help="tạo lại cả mã đã duyệt")
+    tts_cmd.add_argument("--thu", action="store_true", help="chỉ liệt kê mã sẽ tạo, không ghi file")
+    tts_cmd.set_defaults(func=_cmd_tts, engine_factory=engine_factory)
     args = parser.parse_args(argv)
     return args.func(args)
 

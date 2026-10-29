@@ -347,6 +347,24 @@ class AudioManifestTest(TempDirCase):
         self.assertTrue(unicodedata.is_normalized("NFC", by["tieng_mas"]["text"]))
 
 
+class TtsFieldTest(TempDirCase):
+    def test_build_keeps_tts_record(self):
+        from tapdoc.tts_generate import generate_one
+        from tests.test_build import src_of
+        from tests.test_tts_settings import settings
+        from tests.tts_fakes import FakeEngine
+
+        result = build_lesson(src_of(part1=[{"type": "unit", "text": "b"}], new_units=["b"]))
+        rows = update_audio_manifest([result], [], self.audio_dir)
+        old = next(r for r in rows if r["id"] == "am_b")
+        generated = generate_one(old, settings(), FakeEngine(), self.audio_dir, self.root / "prev")
+        generated["status"] = "dat"
+        rebuilt = update_audio_manifest([result], [generated], self.audio_dir)
+        actual = next(r for r in rebuilt if r["id"] == "am_b")
+        for key in ("tts", "source", "status"):
+            self.assertEqual(actual[key], generated[key])
+
+
 class ImageManifestTest(TempDirCase):
     @classmethod
     def setUpClass(cls):
