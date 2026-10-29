@@ -105,7 +105,8 @@ class MvpLessons12To17Test(unittest.TestCase):
 
     def test_index_lists_lessons_1_to_17(self):
         ids = [e["lesson_id"] for e in json.loads((UNITY_RES / "lessons" / "index.json").read_text("utf-8"))["lessons"]]
-        self.assertEqual(ids, [f"tv1_t1_b{n:02d}" for n in range(1, 18)])  # 17 bài, không có bài 42
+        self.assertEqual(ids[:17], [f"tv1_t1_b{n:02d}" for n in range(1, 18)])  # bài 1–17 đứng đầu, đúng thứ tự
+        self.assertNotIn("tv1_t1_b42", ids)  # bài 42 còn in_app false
 
     def test_y_and_i_never_together_in_listening(self):  # y và i cùng đọc /i/
         for lid, lesson in L.items():

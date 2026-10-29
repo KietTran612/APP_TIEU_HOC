@@ -1,0 +1,188 @@
+{
+  "lesson_id": "tv1_t1_b31",
+  "book": "tv1_t1_1990",
+  "lesson_no": 31,
+  "type": "am_moi",
+  "title": "th",
+  "source": {
+    "pages": [
+      36
+    ],
+    "scan_file": "019",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "th"
+  ],
+  "images": {
+    "img_b31_con_thor": "Con thỏ trắng tai dài đang nhảy trên đám cỏ",
+    "img_b31_bif_thuw": "Chiếc phong bì thư có dán tem, đặt chồng lên một phong bì khác; không có chữ trên phong bì"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "th"
+    },
+    {
+      "type": "keyword",
+      "text": "con thỏ",
+      "image": "img_b31_con_thor"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con thỏ",
+        "thỏ",
+        "th"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "thỏ",
+      "then": "con thỏ"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "bì thư",
+          "image": "img_b31_bif_thuw",
+          "spell": [
+            "thư"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "lá thư"
+        },
+        {
+          "text": "thì giờ"
+        },
+        {
+          "text": "thơ ca"
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "tha",
+          "thô",
+          "thơ",
+          "the",
+          "thê",
+          "thi",
+          "thu",
+          "thư"
+        ],
+        [
+          "thủ thỉ",
+          "lơ thơ",
+          "xe thồ",
+          "cá thu"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "th",
+          "options": [
+            "th",
+            "t",
+            "h"
+          ]
+        },
+        {
+          "answer": "thỏ",
+          "options": [
+            "thỏ",
+            "tỏ",
+            "hỏ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "thu",
+          "options": [
+            "thu",
+            "tu"
+          ]
+        },
+        {
+          "answer": "thơ",
+          "options": [
+            "thơ",
+            "hơ"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "thỏ",
+      "template": "th_",
+      "answer": "ỏ",
+      "options": [
+        "ỏ",
+        "ó",
+        "ò"
+      ],
+      "image": "img_b31_con_thor"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con thỏ",
+          "answer": "img_b31_con_thor",
+          "options": [
+            "img_b31_con_thor",
+            "img_b31_bif_thuw"
+          ]
+        },
+        {
+          "word": "bì thư",
+          "answer": "img_b31_bif_thuw",
+          "options": [
+            "img_b31_bif_thuw",
+            "img_b31_con_thor"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "thì",
+          "options": [
+            "thì",
+            "thí",
+            "thị"
+          ]
+        }
+      ]
+    }
+  ]
+}

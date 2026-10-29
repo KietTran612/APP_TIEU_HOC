@@ -1,0 +1,184 @@
+{
+  "lesson_id": "tv1_t1_b35",
+  "book": "tv1_t1_1990",
+  "lesson_no": 35,
+  "type": "am_moi",
+  "title": "q qu",
+  "source": {
+    "pages": [
+      40
+    ],
+    "scan_file": "021",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "q",
+    "qu"
+  ],
+  "images": {
+    "img_b35_quar_thij": "Quả thị tròn chín vàng, có tai cuống và một chiếc lá trên cành nhỏ",
+    "img_b35_ddiax_quar": "Một đĩa quả đầy: quả đu đủ, chùm nho, quả lê và quả khế"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[0]",
+        "note": "tên đọc của 'q' là \"cu\" theo tr.122 (tạm)"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "q"
+    },
+    {
+      "type": "unit",
+      "text": "qu"
+    },
+    {
+      "type": "keyword",
+      "text": "quả thị",
+      "image": "img_b35_quar_thij"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả thị",
+        "quả",
+        "qu"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "quả",
+      "then": "quả thị"
+    },
+    {
+      "type": "picture",
+      "image": "img_b35_ddiax_quar",
+      "say": "Đây là đĩa quả.",
+      "word": "đĩa quả"
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "bà và dì cho bé về quê."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "quê nhà có đủ thứ quả: khế, đu đủ, nho, lê."
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "qua",
+          "quà",
+          "quá",
+          "quả",
+          "que",
+          "quê",
+          "quy"
+        ],
+        [
+          "đi qua",
+          "đi quá",
+          "quà quê"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "qu",
+          "options": [
+            "qu",
+            "q",
+            "g"
+          ]
+        },
+        {
+          "answer": "quả",
+          "options": [
+            "quả",
+            "cả",
+            "gả"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "que",
+          "options": [
+            "que",
+            "quê"
+          ]
+        },
+        {
+          "answer": "qua",
+          "options": [
+            "qua",
+            "ga"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "quả",
+      "template": "qu_",
+      "answer": "ả",
+      "options": [
+        "ả",
+        "á",
+        "à"
+      ],
+      "image": "img_b35_quar_thij"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "quả thị",
+          "answer": "img_b35_quar_thij",
+          "options": [
+            "img_b35_quar_thij",
+            "img_b35_ddiax_quar"
+          ]
+        },
+        {
+          "word": "đĩa quả",
+          "answer": "img_b35_ddiax_quar",
+          "options": [
+            "img_b35_ddiax_quar",
+            "img_b35_quar_thij"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "quả",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

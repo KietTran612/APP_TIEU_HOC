@@ -1,0 +1,179 @@
+{
+  "lesson_id": "tv1_t1_b33",
+  "book": "tv1_t1_1990",
+  "lesson_no": 33,
+  "type": "am_moi",
+  "title": "ch",
+  "source": {
+    "pages": [
+      38
+    ],
+    "scan_file": "020",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ch"
+  ],
+  "images": {
+    "img_b33_chos_xuf": "Con chó xù lông dài bờm xờm, đứng nhìn nghiêng",
+    "img_b33_ddi_chowj": "Người mẹ đội nón lá, tay xách làn, bước đi chợ; con chó nhỏ chạy theo sau"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ch"
+    },
+    {
+      "type": "keyword",
+      "text": "chó xù",
+      "image": "img_b33_chos_xuf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "chó xù",
+        "chó",
+        "ch"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "chó",
+      "then": "chó xù"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "đi chợ",
+          "image": "img_b33_ddi_chowj",
+          "spell": [
+            "chợ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "bé ở nhà chờ mẹ đi chợ về."
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "cha",
+          "cho",
+          "chô",
+          "chơ"
+        ],
+        [
+          "che",
+          "chê",
+          "chi",
+          "chu",
+          "chư"
+        ],
+        [
+          "chỗ ở",
+          "chú như cha"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ch",
+          "options": [
+            "ch",
+            "th",
+            "nh"
+          ]
+        },
+        {
+          "answer": "chó",
+          "options": [
+            "chó",
+            "bó",
+            "nhó"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cha",
+          "options": [
+            "cha",
+            "tha"
+          ]
+        },
+        {
+          "answer": "chê",
+          "options": [
+            "chê",
+            "khê"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "chó",
+      "template": "ch_",
+      "answer": "ó",
+      "options": [
+        "ó",
+        "ò",
+        "ọ"
+      ],
+      "image": "img_b33_chos_xuf"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "chó xù",
+          "answer": "img_b33_chos_xuf",
+          "options": [
+            "img_b33_chos_xuf",
+            "img_b33_ddi_chowj"
+          ]
+        },
+        {
+          "word": "đi chợ",
+          "answer": "img_b33_ddi_chowj",
+          "options": [
+            "img_b33_ddi_chowj",
+            "img_b33_chos_xuf"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "chỗ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "lesson_id": "tv1_t1_b25",
+  "book": "tv1_t1_1990",
+  "lesson_no": 25,
+  "type": "am_moi",
+  "title": "g gh",
+  "source": {
+    "pages": [
+      30
+    ],
+    "scan_file": "016",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "g",
+    "gh"
+  ],
+  "images": {
+    "img_b25_nhaf_ga": "Nhà ga có tháp đồng hồ ở giữa, đoàn tàu hỏa đang đỗ bên sân ga",
+    "img_b25_ghees_gox": "Chiếc ghế đẩu bằng gỗ, mặt vuông, bốn chân choãi ra"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "g"
+    },
+    {
+      "type": "keyword",
+      "text": "nhà ga",
+      "image": "img_b25_nhaf_ga"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "nhà ga",
+        "ga",
+        "g"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ga",
+      "then": "nhà ga"
+    },
+    {
+      "type": "unit",
+      "text": "gh"
+    },
+    {
+      "type": "keyword",
+      "text": "ghế gỗ",
+      "image": "img_b25_ghees_gox"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "ghế gỗ",
+        "ghế",
+        "gh"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ghế",
+      "then": "ghế gỗ"
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "bà kể để dì ghi"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "ga",
+          "go",
+          "gô",
+          "gơ",
+          "ghe",
+          "ghê",
+          "ghi",
+          "gu",
+          "gư"
+        ],
+        [
+          "gồ ghề",
+          "gà gô",
+          "gõ mõ"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "g",
+          "options": [
+            "g",
+            "gh",
+            "h"
+          ]
+        },
+        {
+          "answer": "gh",
+          "options": [
+            "gh",
+            "g",
+            "k"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "gô",
+          "options": [
+            "gô",
+            "hô"
+          ]
+        },
+        {
+          "answer": "gu",
+          "options": [
+            "gu",
+            "hu"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "ghế",
+      "template": "gh_",
+      "answer": "ế",
+      "options": [
+        "ế",
+        "ề",
+        "ể"
+      ],
+      "image": "img_b25_ghees_gox"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "nhà ga",
+          "answer": "img_b25_nhaf_ga",
+          "options": [
+            "img_b25_nhaf_ga",
+            "img_b25_ghees_gox"
+          ]
+        },
+        {
+          "word": "ghế gỗ",
+          "answer": "img_b25_ghees_gox",
+          "options": [
+            "img_b25_ghees_gox",
+            "img_b25_nhaf_ga"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "gõ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

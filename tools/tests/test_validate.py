@@ -146,6 +146,50 @@ class SouthernKeyTest(unittest.TestCase):
         self.assertEqual(southern_key(unicodedata.normalize("NFD", "củ")), southern_key("cũ"))
 
 
+def match_case(model, answer, texts):
+    return _round("match_case", instruction_audio="hd_nhin_chon_chu_hoa", prompt_text=model,
+                  options=[_opt(text=t) for t in texts], answer=texts.index(answer))
+
+
+class SouthernConsonantTest(unittest.TestCase):
+    """Review Focus 1: phụ âm đứng riêng (phương án ở bài nghe chọn chữ) cũng gộp theo giọng miền Nam."""
+
+    def test_lone_consonants_merge(self):
+        self.assertEqual(southern_key("s"), southern_key("x"))
+        self.assertEqual(southern_key("d"), southern_key("gi"))
+        self.assertEqual(southern_key("v"), southern_key("d"))
+        self.assertEqual(southern_key("tr"), southern_key("ch"))
+        self.assertEqual(southern_key("X"), southern_key("s"))
+        self.assertNotEqual(southern_key("s"), southern_key("t"))
+        self.assertNotEqual(southern_key("d"), southern_key("đ"))
+
+    def test_lone_consonant_differs_from_syllable(self):
+        self.assertNotEqual(southern_key("d"), southern_key("da"))
+        self.assertEqual(southern_key("gì"), southern_key("dì"))
+
+    def test_listen_round_with_s_and_x_is_rejected(self):
+        issues = check_part2(lesson_with_rounds([listen("s", ["s", "x"])] * 6, lesson_no=24), learned_until(CUR, 24))
+        self.assertTrue(any("giọng miền Nam" in m for m in messages(issues)))
+
+    def test_listen_round_with_ch_and_tr_is_rejected(self):
+        issues = check_part2(lesson_with_rounds([listen("tr", ["ch", "tr"])] * 6, lesson_no=34), learned_until(CUR, 34))
+        self.assertTrue(any("giọng miền Nam" in m for m in messages(issues)))
+
+
+class MatchCaseValidateTest(unittest.TestCase):
+    def test_match_case_is_valid_and_exempt_from_southern(self):
+        rounds = [match_case("s", "S", ["S", "X", "T"])] * 6
+        self.assertEqual(check_part2(lesson_with_rounds(rounds, lesson_no=41), learned_until(CUR, 41)), [])
+
+    def test_match_case_unlearned_upper_option(self):
+        issues = check_part2(lesson_with_rounds([match_case("a", "A", ["A", "Q"])] * 6, lesson_no=13), L13)
+        self.assertTrue(any("chưa học" in m and "'Q'" in m for m in messages(issues)))
+
+    def test_upper_option_counts_as_learned(self):
+        issues = check_part2(lesson_with_rounds([listen("Đ", ["Đ", "Ô"])] * 6), L13)
+        self.assertFalse(any("chưa học" in m for m in messages(issues)))
+
+
 class Part2Test(unittest.TestCase):
     def test_part2_rules(self):
         l13 = learned_until(load_curriculum(LESSON_INDEX), 13)

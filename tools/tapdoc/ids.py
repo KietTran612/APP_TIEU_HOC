@@ -148,8 +148,12 @@ def text_audio(text: str) -> Audio:
 
 
 def audio_for(text: str) -> Audio:
-    """Phụ âm hoặc nguyên âm đơn dùng `unit_audio` (ă đọc là "á"), còn lại dùng `text_audio`."""
+    """Phụ âm hoặc nguyên âm đơn dùng `unit_audio` (ă đọc là "á"), còn lại dùng `text_audio`.
+
+    Chữ hoa của một âm ("Đ", "Gh") đọc như chữ thường.
+    """
     text = nfc(text)
-    if text in CONSONANT_NAMES or text in VOWEL_NAMES:
-        return unit_audio(text)
+    letter = text.lower()
+    if letter in CONSONANT_NAMES or letter in VOWEL_NAMES:
+        return unit_audio(letter)
     return text_audio(text)

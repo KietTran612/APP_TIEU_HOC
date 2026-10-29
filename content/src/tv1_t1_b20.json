@@ -1,0 +1,208 @@
+{
+  "lesson_id": "tv1_t1_b20",
+  "book": "tv1_t1_1990",
+  "lesson_no": 20,
+  "type": "am_moi",
+  "title": "k kh",
+  "source": {
+    "pages": [
+      25
+    ],
+    "scan_file": "013",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "k",
+    "kh"
+  ],
+  "images": {
+    "img_b20_bos_kee": "Một bó bông kê chín, hạt kê nhỏ li ti trĩu xuống, cuống buộc túm lại",
+    "img_b20_quar_khees": "Quả khế chín vàng có năm múi, cuống ngắn",
+    "img_b20_ker_vowr": "Bạn nhỏ ngồi bên bàn, cầm thước kẻ dòng trên trang vở",
+    "img_b20_con_khir": "Chú khỉ con ngồi xổm, một tay vươn ra, đuôi dài"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "k"
+    },
+    {
+      "type": "keyword",
+      "text": "bó kê",
+      "image": "img_b20_bos_kee"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bó kê",
+        "kê",
+        "k"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "kê",
+      "then": "bó kê"
+    },
+    {
+      "type": "unit",
+      "text": "kh"
+    },
+    {
+      "type": "keyword",
+      "text": "quả khế",
+      "image": "img_b20_quar_khees"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả khế",
+        "khế",
+        "kh"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "khế",
+      "then": "quả khế"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "kẻ vở",
+          "image": "img_b20_ker_vowr",
+          "spell": [
+            "kẻ"
+          ]
+        },
+        {
+          "text": "con khỉ",
+          "image": "img_b20_con_khir",
+          "spell": [
+            "khỉ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "cá kho khế"
+        },
+        {
+          "text": "lê ki ma"
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "ke",
+          "kê",
+          "ki"
+        ],
+        [
+          "kha khá",
+          "khe khẽ",
+          "kì cọ",
+          "cá khô"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "k",
+          "options": [
+            "k",
+            "kh",
+            "h"
+          ]
+        },
+        {
+          "answer": "kh",
+          "options": [
+            "kh",
+            "k",
+            "h"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "kẻ",
+          "options": [
+            "kẻ",
+            "hẻ"
+          ]
+        },
+        {
+          "answer": "khỉ",
+          "options": [
+            "khỉ",
+            "hỉ"
+          ]
+        },
+        {
+          "answer": "kho",
+          "options": [
+            "kho",
+            "ho"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "khế",
+      "template": "kh_",
+      "answer": "ế",
+      "options": [
+        "ế",
+        "ề",
+        "ể"
+      ],
+      "image": "img_b20_quar_khees"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "bó kê",
+          "answer": "img_b20_bos_kee",
+          "options": [
+            "img_b20_bos_kee",
+            "img_b20_quar_khees",
+            "img_b20_ker_vowr"
+          ]
+        },
+        {
+          "word": "con khỉ",
+          "answer": "img_b20_con_khir",
+          "options": [
+            "img_b20_ker_vowr",
+            "img_b20_con_khir",
+            "img_b20_quar_khees"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -70,6 +70,7 @@ namespace TapDoc
         public string then_audio;
         public Spell spell = new();
         public List<Span> hl = new();
+        public List<string> labels = new();
         public List<Item> rows = new();
         public List<Item> items = new();
     }
@@ -78,12 +79,13 @@ namespace TapDoc
     public class Item
     {
         public string text;
+        public string upper;
         public string audio;
         public string image;
         public string note;
         public int row;
         public int col;
-        public string role;   // letter, tone, onset, vowel, base, form, cell (khung chữ, bảng ghép, bảng dấu)
+        public string role;   // letter, tone, onset, vowel, base, form, cell, blocked, pair, line (khung chữ, bảng ghép, bảng dấu, quy tắc)
         public string tone;
         public string glyph;
         public List<Span> hl = new();

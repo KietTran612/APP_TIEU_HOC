@@ -1,0 +1,186 @@
+{
+  "lesson_id": "tv1_t1_b23",
+  "book": "tv1_t1_1990",
+  "lesson_no": 23,
+  "type": "am_moi",
+  "title": "x",
+  "source": {
+    "pages": [
+      28
+    ],
+    "scan_file": "015",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "x"
+  ],
+  "images": {
+    "img_b23_xe_moo_too": "Chiếc xe mô tô hai bánh, bình xăng tròn, yên dài, ống xả bóng loáng",
+    "img_b23_xer_gox": "Hai người kéo cưa xẻ một khúc gỗ to dựng nghiêng trên giàn: một người đứng trên, một người ở dưới",
+    "img_b23_quar_xoaif": "Quả xoài chín vàng, thuôn dài, đầu hơi nhọn"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "x"
+    },
+    {
+      "type": "keyword",
+      "text": "xe mô tô",
+      "image": "img_b23_xe_moo_too"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "xe mô tô",
+        "xe",
+        "x"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "xe",
+      "then": "xe mô tô"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "xẻ gỗ",
+          "image": "img_b23_xer_gox",
+          "spell": [
+            "xẻ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b23_quar_xoaif",
+      "say": "Đây là quả xoài.",
+      "word": "quả xoài"
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "má đi xa về"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "xa",
+          "xo",
+          "xô",
+          "xơ",
+          "xe",
+          "xê",
+          "xi",
+          "xu"
+        ],
+        [
+          "xù xì",
+          "lò xo",
+          "xe bò"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "x",
+          "options": [
+            "x",
+            "v",
+            "r"
+          ]
+        },
+        {
+          "answer": "xe",
+          "options": [
+            "xe",
+            "ve",
+            "re"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "xô",
+          "options": [
+            "xô",
+            "vô"
+          ]
+        },
+        {
+          "answer": "xa",
+          "options": [
+            "xa",
+            "ra"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "xẻ",
+      "template": "x_",
+      "answer": "ẻ",
+      "options": [
+        "ẻ",
+        "é",
+        "è"
+      ],
+      "image": "img_b23_xer_gox"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "xe mô tô",
+          "answer": "img_b23_xe_moo_too",
+          "options": [
+            "img_b23_xe_moo_too",
+            "img_b23_xer_gox",
+            "img_b23_quar_xoaif"
+          ]
+        },
+        {
+          "word": "quả xoài",
+          "answer": "img_b23_quar_xoaif",
+          "options": [
+            "img_b23_xer_gox",
+            "img_b23_quar_xoaif",
+            "img_b23_xe_moo_too"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "xẻ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

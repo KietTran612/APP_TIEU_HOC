@@ -424,3 +424,65 @@ Kế hoạch: [2026-10-29-ban-dau-tien-bai-1-17.md](../plans/2026-10-29-ban-dau-
   - câu dài xuống dòng có thể để một chữ đứng riêng ở dòng hai (bài 14 "tá");
   - tên bài dài (bài 4, bài 6) bị thu chữ khá nhỏ trên thẻ danh sách bài;
   - màn rộng vẫn còn khoảng trống hai bên.
+
+### Đợt 1 bài 18–41: đã làm (29/10/2026)
+
+Kế hoạch: [2026-10-29-hoan-thanh-tv1-tap-1.md](../plans/2026-10-29-hoan-thanh-tv1-tap-1.md), Task 1.1–1.8.
+
+- **Nội dung:** 24 bài chép từ trang sách (ảnh 012–024), đều `page_verified`.
+  - 16 bài âm mới (v … p ph), 7 bài ôn tập (22, 27, 32, 37–40) và bài 41 giới thiệu chữ hoa.
+  - Bài 38: 12 hàng đọc có nhãn của trang được chia thành 4 bước, mỗi bước 3 hàng, cho vừa màn hình.
+- **Màn mới:**
+  - cặp chữ thường/chữ hoa 4 cột, 2 trang (bài 41) và lượt chọn chữ hoa;
+  - luật chính tả (bài 40), nhãn đầu hàng đọc thêm (bài 38);
+  - ô gạch chéo trong bảng ghép (k + a, gh + o…), chạm vào không đọc, không tính;
+  - bảng ghép 5 âm đầu xếp 2 cột cho vừa màn;
+  - danh sách bài cuộn dọc, chia phần "Chữ cái và âm" / "Vần".
+- **Kiểm tra dữ liệu:** luật giọng miền Nam áp dụng cả cho phụ âm đứng riêng (s/x, d/gi/v, ch/tr); chữ hoa đọc và tính "đã học" như chữ thường; gạch nối trong từ mượn (ra-đi-ô) tách âm tiết.
+- **Tài nguyên tạm** (ChatGPT Kiet_1, `cho_duyet`): thêm 467 âm thanh (tổng 745) và 38 tranh (tổng 96).
+  - ChatGPT báo bộ đọc trong máy của nó là eSpeak 1.48 (cùng mã giọng vi-sgn+f3), giống lô "legacy" của bản đầu tiên.
+- **Kết quả test:** Python đều đạt; EditMode 79 đạt; PlayMode 176 đạt, gồm chạy trọn 41 bài và kiểm tra bố cục ở 2 khung hình; `validate` bản đầy đủ báo `OK`.
+- **Việc trau chuốt để sau:** như bản đầu tiên, cộng thêm: tranh từ khoá vẽ thêm cho các từ không có tranh trong sách đều gắn `can_duyet`.
+
+## 16. Hoàn thành TV1 Tập 1: bài 18–80 [Đề xuất, chờ chủ dự án duyệt]
+
+Đây là bước 3 ở mục 12, phần còn lại của quyển. Mọi điều ở mục 2–11 vẫn giữ nguyên. Riêng mục 2 có một thay đổi: phần Vần (bài 42–80) nay nằm trong phạm vi.
+
+**Phạm vi.** Gồm 63 bài:
+- 24 bài phần "Chữ cái và âm": 18 bài âm mới, 5 bài ôn tập, bài 41 giới thiệu chữ hoa;
+- 37 bài phần "Vần": 30 bài vần mới, 7 bài ôn tập vần;
+- 2 bài ôn tập cuối học kì I.
+
+Bài 42 thôi là bài ẩn và hiện trong danh sách bài.
+
+Không đưa vào app: tranh mở đầu, trang kí hiệu, phụ lục bảng chữ cái, trang "Chú ý" và mục lục. Đó không phải bài học. Phần ▨ "Em viết" vẫn bỏ qua như cũ.
+
+**Ba đợt phát hành.** Mỗi đợt kết thúc như bản đầu tiên: bản build Windows cho chủ dự án thử, chủ dự án duyệt, gom 1 commit trên `main` rồi push.
+
+| Đợt | Bài | Nội dung |
+|---|---|---|
+| 1 | 18–41 | âm mới (v … ph), ôn tập âm, chữ hoa |
+| 2 | 42–64 | vần có âm cuối n, m, i/y, o/u, và các bài ôn tập vần |
+| 3 | 65–80 | vần có âm cuối c, t, p, và ôn tập cuối học kì I |
+
+**Cách thể hiện các kiểu trang mới.** Nội dung và thứ tự giữ đúng như trang sách; chỉ cách tương tác là mới.
+
+| Trang sách | Trong app |
+|---|---|
+| Bảng chữ in thường – chữ in hoa (bài 41) | bước `letter_pairs`: mỗi cặp một thẻ, chạm để nghe |
+| Bảng ghép có ô gạch chéo (bài 39–40: "k", "gh", "ngh" không ghép với a, o…) | `combine_table` có ô bị chặn: hiện gạch chéo, chạm không đọc |
+| "Luật chính tả cần nhớ kĩ" (bài 40) | bước `rule`: mỗi dòng một thẻ, chạm để nghe cả dòng |
+| Hàng có nhãn "a – a: ra rả, khà khà" (bài 38) | bước `reading` có nhãn đầu hàng |
+| Bảng thay dấu nhiều tiếng gốc (bài 39–40) | mỗi tiếng gốc một bước `tone_table`, theo thứ tự hàng |
+| Bảng ôn vần: vần = nguyên âm + âm cuối, kèm tiếng/từ ví dụ | bước `rime_table`: chạm hàng thì đánh vần vần rồi đọc từ |
+| Bảng nhóm vần đã học (bài 79) | bước `rime_grid`: chạm ô thì đánh vần vần |
+| Đoạn đọc nhiều câu hoặc bài thơ (từ bài 45) | mỗi câu (hoặc dòng thơ) một bước `sentence`, đúng thứ tự |
+| Câu đố "Đố em" (bài 80) | Phần 1 đọc bài thơ. Phần 2 có lượt nghe câu đố rồi chọn tranh đáp án. Tranh là vẽ thêm, gắn `can_duyet`. |
+
+**Phần 2 có thêm kiểu `match_case`** (từ bài 41): nhìn chữ thường, chọn đúng chữ hoa trong 3 thẻ. Đây là bài nhìn, không có đề bằng âm thanh.
+
+**Giọng miền Nam.** Quy tắc "không làm nhiễu của nhau trong bài nghe" áp dụng cả khi phương án là phụ âm đứng riêng: s/x, d/gi/v, ch/tr.
+
+**Danh sách bài.** Chia hai phần "Chữ cái và âm" và "Vần" (kèm 2 bài ôn tập cuối kì), cuộn dọc. Mọi thẻ vẫn giữ cạnh ≥ 160.
+
+**Âm thanh.** Tiếp tục giọng tạm vi-sgn+f3 cho cả quyển. Sau này thay giọng tốt hơn theo mã, không phải sửa code (mục 2, mục tiêu 4).

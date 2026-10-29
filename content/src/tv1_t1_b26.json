@@ -1,0 +1,182 @@
+{
+  "lesson_id": "tv1_t1_b26",
+  "book": "tv1_t1_1990",
+  "lesson_no": 26,
+  "type": "am_moi",
+  "title": "gi",
+  "source": {
+    "pages": [
+      31
+    ],
+    "scan_file": "016",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "gi"
+  ],
+  "images": {
+    "img_b26_cais_gior": "Cái giỏ tre đựng cua: miệng hẹp, bụng phình, một con cua nhỏ bò trên miệng giỏ",
+    "img_b26_gaf_giof": "Chú gà giò (gà trống tơ) đứng thẳng, mào nhỏ, chân dài"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "gi"
+    },
+    {
+      "type": "keyword",
+      "text": "cái giỏ",
+      "image": "img_b26_cais_gior"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái giỏ",
+        "giỏ",
+        "gi"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "giỏ",
+      "then": "cái giỏ"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "gà giò",
+          "image": "img_b26_gaf_giof",
+          "spell": [
+            "giò"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "dì giã gì đó?"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "dì giã giò"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "gia",
+          "gio",
+          "giô",
+          "giơ",
+          "gie",
+          "giê",
+          "gi",
+          "giu",
+          "giư"
+        ],
+        [
+          "bà già",
+          "gió to"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "gi",
+          "options": [
+            "gi",
+            "g",
+            "gh"
+          ]
+        },
+        {
+          "answer": "già",
+          "options": [
+            "già",
+            "gà",
+            "hà"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "gio",
+          "options": [
+            "gio",
+            "go"
+          ]
+        },
+        {
+          "answer": "giê",
+          "options": [
+            "giê",
+            "ghê"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "giỏ",
+      "template": "gi_",
+      "answer": "ỏ",
+      "options": [
+        "ỏ",
+        "ó",
+        "ò"
+      ],
+      "image": "img_b26_cais_gior"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cái giỏ",
+          "answer": "img_b26_cais_gior",
+          "options": [
+            "img_b26_cais_gior",
+            "img_b26_gaf_giof"
+          ]
+        },
+        {
+          "word": "gà giò",
+          "answer": "img_b26_gaf_giof",
+          "options": [
+            "img_b26_gaf_giof",
+            "img_b26_cais_gior"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "giã",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

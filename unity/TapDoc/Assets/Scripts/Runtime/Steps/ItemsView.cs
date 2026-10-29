@@ -77,14 +77,18 @@ namespace TapDoc
         private void BuildReading()
         {
             // Mỗi hàng của sách là một hoặc nhiều dòng thẻ: hàng dài hơn Stage tự xuống dòng (ví dụ 9 tiếng ở bài 15).
-            var lines = new List<List<(Item item, int index, float width)>>();
+            var lines = new List<List<(Item item, int index, float width, string label)>>();
             foreach (var group in Step.items.Select((it, j) => (it, j)).GroupBy(p => p.it.row).OrderBy(g => g.Key))
             {
                 var row = group.ToList();
-                var widths = row.Select(p => p.it.text.Length <= 3 ? 190f : 300f).ToList();
+                var entries = row.Select(p => (item: p.it, index: p.j,
+                    width: p.it.text.Length <= 3 ? 190f : 300f, label: (string)null)).ToList();
+                var label = Step.labels != null && group.Key >= 0 && group.Key < Step.labels.Count ? Step.labels[group.Key] : null;
+                if (!string.IsNullOrEmpty(label)) entries.Insert(0, (null, -1, 220f, label));
+                var widths = entries.Select(p => p.width).ToList();
                 foreach (var line in FlowLayout.Lines(widths, FlowWidth, ReadingGap))
                 {
-                    lines.Add(line.Select(k => (row[k].it, row[k].j, widths[k])).ToList());
+                    lines.Add(line.Select(k => entries[k]).ToList());
                 }
             }
             var top = (lines.Count - 1) * (ReadingTileH + ReadingGap) / 2f;
@@ -92,9 +96,20 @@ namespace TapDoc
             {
                 var line = lines[r];
                 var x = -(line.Sum(p => p.width) + (line.Count - 1) * ReadingGap) / 2f;
-                foreach (var (item, index, width) in line)
+                foreach (var (item, index, width, label) in line)
                 {
-                    var tile = AddTile(item.text, new Vector2(width, ReadingTileH), new Vector2(x + width / 2f, top - r * (ReadingTileH + ReadingGap)), 76f);
+                    var pos = new Vector2(x + width / 2f, top - r * (ReadingTileH + ReadingGap));
+                    if (label != null)
+                    {
+                        var tmp = UiKit.CreateLabel(Root.transform, label, 60f);
+                        var rt = tmp.rectTransform;
+                        rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+                        rt.sizeDelta = new Vector2(width, ReadingTileH);
+                        rt.anchoredPosition = pos;
+                        x += width + ReadingGap;
+                        continue;
+                    }
+                    var tile = AddTile(item.text, new Vector2(width, ReadingTileH), pos, 76f);
                     tile.Tapped += () => OnReadingTapped(index);
                     _tiles.Add(tile);
                     x += width + ReadingGap;

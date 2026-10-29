@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .curriculum import Learned, is_learned_text, learned_until, load_curriculum
+from .ids import CONSONANT_NAMES
 from .manifest import STATUS_NONE, STATUS_PENDING, ManifestError, load_rows
 from .paths import LESSON_INDEX, MANIFESTS, UNITY_ASSETS, UNITY_RES
 from .viet import is_nfc, nfc, split_syllable, syllables
@@ -27,7 +28,9 @@ NO_LESSONS = "chưa có bài nào được dựng — chạy build trước"
 REVIEWED = "da_duyet"  # `review.status` của bài đã được chủ dự án duyệt
 EMPTY_SPELL = "đánh vần rỗng (chưa có quy tắc) — xem can_duyet"
 
-_ROUND_KINDS = ("listen_choose", "look_tone", "compose", "listen_picture")
+_ROUND_KINDS = ("listen_choose", "look_tone", "compose", "listen_picture", "match_case")
+# Lượt không có đề bằng âm thanh: bé nhìn rồi chọn, không có gì để nghe nhầm theo giọng miền Nam.
+_SILENT_KINDS = ("look_tone", "match_case")
 _AUDIO_KEYS = ("audio", "then_audio")
 _PICTURE_NN = re.compile(r"^img_b(\d+)_")
 _IMAGES_DIR = ("content", "resources", "images")  # so khớp không phân biệt hoa/thường
@@ -58,10 +61,13 @@ _SOUTHERN_ONSET = {"gi": "d", "v": "d", "x": "s", "tr": "ch"}
 
 
 def _southern_token(token: str) -> str:
+    letter = nfc(token).lower()
+    if letter in CONSONANT_NAMES:  # phụ âm đứng riêng (phương án "s", "gi" ở bài nghe chọn chữ)
+        return _SOUTHERN_ONSET.get(letter, letter)
     try:
         syl = split_syllable(token)
     except ValueError:
-        return nfc(token).lower()  # không tách được (chữ chỉ có phụ âm, ký tự lạ): giữ nguyên
+        return letter  # không tách được (ký tự lạ): giữ nguyên
     onset = _SOUTHERN_ONSET.get(syl.onset, syl.onset)
     rime = syl.rime
     if rime.endswith("ng"):
@@ -76,6 +82,7 @@ def southern_key(text: str) -> str:
     """Khóa nghe-giống theo giọng miền Nam: hai chữ cùng khóa thì bé miền Nam khó phân biệt khi nghe.
 
     Mỗi tiếng: ngã -> hỏi; âm đầu gi, v -> d; x -> s; tr -> ch; âm cuối ng -> n, c -> t.
+    Phụ âm đứng riêng gộp như âm đầu ("x" như "s", "gi" và "v" như "d").
     """
     return " ".join(_southern_token(token) for token in syllables(text))
 
@@ -240,6 +247,11 @@ def _check_round(lid: str, i: int, rd, learned: Learned, lesson_no: int) -> list
         issues.append(Issue(lid, f"{where}.answer",
                             f"đáp án {answer!r} không phải vị trí hợp lệ trong {len(options)} phương án"))
 
+    if kind == "match_case":
+        issue = _text_issue(lid, f"{where}.prompt_text", rd.get("prompt_text"), learned, "chữ mẫu")
+        if issue:
+            issues.append(issue)
+
     if kind == "look_tone":
         issue = _text_issue(lid, f"{where}.prompt_text", rd.get("prompt_text"), learned, "chữ mẫu")
         if issue:
@@ -248,7 +260,7 @@ def _check_round(lid: str, i: int, rd, learned: Learned, lesson_no: int) -> list
             if option.get("tone") not in learned.tones:
                 issues.append(Issue(lid, f"{where}.options[{j}].tone",
                                     f"dấu {option.get('tone')!r} chưa học tới bài này"))
-    elif kind != "listen_picture":  # listen_choose, compose
+    elif kind != "listen_picture":  # listen_choose, compose, match_case
         for j, option in enumerate(options):
             issue = _text_issue(lid, f"{where}.options[{j}].text", option.get("text"), learned, "phương án")
             if issue:
@@ -258,7 +270,7 @@ def _check_round(lid: str, i: int, rd, learned: Learned, lesson_no: int) -> list
     for j, option in enumerate(options):
         issues += _picture_issues(lid, f"{where}.options[{j}].image", option.get("image"), lesson_no)
 
-    if kind != "look_tone":  # look_tone chỉ có các ký hiệu dấu, không có chữ để nghe nhầm
+    if kind not in _SILENT_KINDS:
         seen: dict[str, str] = {}  # khóa nghe-giống -> chữ của phương án đầu tiên có khóa đó
         for j, option in enumerate(options):
             text = option.get("text")

@@ -1,0 +1,237 @@
+{
+  "lesson_id": "tv1_t1_b38",
+  "book": "tv1_t1_1990",
+  "lesson_no": 38,
+  "type": "on_tap_am",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      43
+    ],
+    "scan_file": "022",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[1]",
+        "note": "12 hàng đọc có nhãn của trang chia thành 4 bước, mỗi bước 3 hàng, cho vừa màn hình"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "letter_grid",
+      "letters": [
+        "a",
+        "o",
+        "ô",
+        "ơ",
+        "e",
+        "ê",
+        "i",
+        "y",
+        "u",
+        "ư"
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "●",
+      "rows": [
+        {
+          "label": "a – a",
+          "items": [
+            "ra rả",
+            "khà khà"
+          ]
+        },
+        {
+          "label": "o – o",
+          "items": [
+            "lò dò",
+            "đo đỏ"
+          ]
+        },
+        {
+          "label": "ô – ô",
+          "items": [
+            "bô bô",
+            "lố nhố"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "",
+      "rows": [
+        {
+          "label": "ơ – ơ",
+          "items": [
+            "lơ mơ",
+            "lơ thơ"
+          ]
+        },
+        {
+          "label": "e – e",
+          "items": [
+            "lè tè",
+            "se sẽ"
+          ]
+        },
+        {
+          "label": "ê – ê",
+          "items": [
+            "lề mề",
+            "khệ nệ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "",
+      "rows": [
+        {
+          "label": "i – i",
+          "items": [
+            "lí nhí",
+            "tí tỉ tì ti"
+          ]
+        },
+        {
+          "label": "u – u",
+          "items": [
+            "lù mù",
+            "lụ khụ"
+          ]
+        },
+        {
+          "label": "ư – ư",
+          "items": [
+            "lừ đừ",
+            "khư khư"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "",
+      "rows": [
+        {
+          "label": "o – e",
+          "items": [
+            "vo ve",
+            "thỏ thẻ"
+          ]
+        },
+        {
+          "label": "ô – ê",
+          "items": [
+            "gồ ghề",
+            "vỗ về"
+          ]
+        },
+        {
+          "label": "u – i",
+          "items": [
+            "xù xì",
+            "rủ rỉ rù rì"
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ơ",
+          "options": [
+            "ơ",
+            "ô",
+            "o"
+          ]
+        },
+        {
+          "answer": "ư",
+          "options": [
+            "ư",
+            "u",
+            "o"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "lơ",
+          "options": [
+            "lơ",
+            "lô"
+          ]
+        },
+        {
+          "answer": "tê",
+          "options": [
+            "tê",
+            "te"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "đỏ",
+      "template": "đ_",
+      "answer": "ỏ",
+      "options": [
+        "ỏ",
+        "ó",
+        "ò"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "sẽ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "rỉ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "khư",
+          "options": [
+            "khư",
+            "khu",
+            "kho"
+          ]
+        }
+      ]
+    }
+  ]
+}

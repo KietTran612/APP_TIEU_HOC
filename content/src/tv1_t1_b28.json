@@ -1,0 +1,182 @@
+{
+  "lesson_id": "tv1_t1_b28",
+  "book": "tv1_t1_1990",
+  "lesson_no": 28,
+  "type": "am_moi",
+  "title": "ng",
+  "source": {
+    "pages": [
+      33
+    ],
+    "scan_file": "017",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ng"
+  ],
+  "images": {
+    "img_b28_bawps_ngoo": "Một bắp ngô bóc bớt lá bẹ, lộ hàng hạt mẩy, râu ngô ở đầu bắp",
+    "img_b28_ngaf_voi": "Đầu con voi có hai chiếc ngà trắng cong, tai to, vòi buông xuống"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ng"
+    },
+    {
+      "type": "keyword",
+      "text": "bắp ngô",
+      "image": "img_b28_bawps_ngoo"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bắp ngô",
+        "ngô",
+        "ng"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ngô",
+      "then": "bắp ngô"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "ngà voi",
+          "image": "img_b28_ngaf_voi",
+          "spell": [
+            "ngà"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "mẹ bế bé ngủ"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "nga",
+          "ngo",
+          "ngô",
+          "ngơ",
+          "ngu",
+          "ngư"
+        ],
+        [
+          "ngồ ngộ",
+          "bé ngã",
+          "cá ngừ"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ng",
+          "options": [
+            "ng",
+            "g",
+            "n"
+          ]
+        },
+        {
+          "answer": "ngô",
+          "options": [
+            "ngô",
+            "gô",
+            "nô"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nga",
+          "options": [
+            "nga",
+            "ga"
+          ]
+        },
+        {
+          "answer": "ngư",
+          "options": [
+            "ngư",
+            "nư"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "ngô",
+      "template": "ng_",
+      "answer": "ô",
+      "options": [
+        "ô",
+        "ơ",
+        "o"
+      ],
+      "image": "img_b28_bawps_ngoo"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "bắp ngô",
+          "answer": "img_b28_bawps_ngoo",
+          "options": [
+            "img_b28_bawps_ngoo",
+            "img_b28_ngaf_voi"
+          ]
+        },
+        {
+          "word": "ngà voi",
+          "answer": "img_b28_ngaf_voi",
+          "options": [
+            "img_b28_ngaf_voi",
+            "img_b28_bawps_ngoo"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "ngã",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "ngủ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

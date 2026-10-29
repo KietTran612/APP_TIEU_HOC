@@ -1,0 +1,181 @@
+{
+  "lesson_id": "tv1_t1_b30",
+  "book": "tv1_t1_1990",
+  "lesson_no": 30,
+  "type": "am_moi",
+  "title": "nh",
+  "source": {
+    "pages": [
+      35
+    ],
+    "scan_file": "018",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "nh"
+  ],
+  "images": {
+    "img_b30_nhaf_nghir": "Ngôi nhà nghỉ nhiều tầng có cửa sổ vuông, bên cạnh là mái nhà nhỏ và hàng cây xanh",
+    "img_b30_to_nhor": "Hai quả bóng bay buộc dây: một quả to, một quả nhỏ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "nh"
+    },
+    {
+      "type": "keyword",
+      "text": "nhà nghỉ",
+      "image": "img_b30_nhaf_nghir"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "nhà nghỉ",
+        "nhà",
+        "nh"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "nhà",
+      "then": "nhà nghỉ"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "to, nhỏ",
+          "image": "img_b30_to_nhor",
+          "spell": [
+            "nhỏ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "khi đi nhớ đi nhè nhẹ."
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "nha",
+          "nho",
+          "nhô",
+          "nhơ"
+        ],
+        [
+          "nhe",
+          "nhê",
+          "nhi",
+          "nhu",
+          "như"
+        ],
+        [
+          "nhu nhú",
+          "lí nhí",
+          "nhỏ bé",
+          "nhớ nhà"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nh",
+          "options": [
+            "nh",
+            "ng",
+            "ngh"
+          ]
+        },
+        {
+          "answer": "nhà",
+          "options": [
+            "nhà",
+            "ngà",
+            "là"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nho",
+          "options": [
+            "nho",
+            "ho"
+          ]
+        },
+        {
+          "answer": "nhi",
+          "options": [
+            "nhi",
+            "nghi"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "nhà",
+      "template": "nh_",
+      "answer": "à",
+      "options": [
+        "à",
+        "á",
+        "ạ"
+      ],
+      "image": "img_b30_nhaf_nghir"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "nhà nghỉ",
+          "answer": "img_b30_nhaf_nghir",
+          "options": [
+            "img_b30_nhaf_nghir",
+            "img_b30_to_nhor"
+          ]
+        },
+        {
+          "word": "to, nhỏ",
+          "answer": "img_b30_to_nhor",
+          "options": [
+            "img_b30_to_nhor",
+            "img_b30_nhaf_nghir"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nhỏ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

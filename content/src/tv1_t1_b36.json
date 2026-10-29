@@ -1,0 +1,193 @@
+{
+  "lesson_id": "tv1_t1_b36",
+  "book": "tv1_t1_1990",
+  "lesson_no": 36,
+  "type": "am_moi",
+  "title": "p ph",
+  "source": {
+    "pages": [
+      41
+    ],
+    "scan_file": "021",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "p",
+    "ph"
+  ],
+  "images": {
+    "img_b36_pis_pa_pis_poo": "Bạn nhỏ cười tươi lái chiếc ô tô đồ chơi, một tay vẫy, xe chạy nhanh để lại vệt gió",
+    "img_b36_phoos_xas": "Góc phố có hàng cây, nhà cửa, chiếc xe buýt, ô tô tải và người đi bộ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "p"
+    },
+    {
+      "type": "keyword",
+      "text": "pí pa pí pô",
+      "image": "img_b36_pis_pa_pis_poo"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "pí pa pí pô",
+        "pí",
+        "p"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "pí",
+      "then": "pí pa pí pô"
+    },
+    {
+      "type": "unit",
+      "text": "ph"
+    },
+    {
+      "type": "keyword",
+      "text": "phố xá",
+      "image": "img_b36_phoos_xas"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "phố xá",
+        "phố",
+        "ph"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "phố",
+      "then": "phố xá"
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "bà cho bé đi ra phố."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "phố xá có đủ thứ xe cộ."
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "pha",
+          "pho",
+          "phô",
+          "phơ",
+          "phe",
+          "phê",
+          "phi",
+          "phu"
+        ],
+        [
+          "sa-pa",
+          "cà phê",
+          "phở",
+          "phì phò"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "p",
+          "options": [
+            "p",
+            "ph",
+            "b"
+          ]
+        },
+        {
+          "answer": "ph",
+          "options": [
+            "ph",
+            "p",
+            "th"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "pha",
+          "options": [
+            "pha",
+            "ba"
+          ]
+        },
+        {
+          "answer": "phê",
+          "options": [
+            "phê",
+            "thê"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "phố",
+      "template": "ph_",
+      "answer": "ố",
+      "options": [
+        "ố",
+        "ồ",
+        "ộ"
+      ],
+      "image": "img_b36_phoos_xas"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "pí pa pí pô",
+          "answer": "img_b36_pis_pa_pis_poo",
+          "options": [
+            "img_b36_pis_pa_pis_poo",
+            "img_b36_phoos_xas"
+          ]
+        },
+        {
+          "word": "phố xá",
+          "answer": "img_b36_phoos_xas",
+          "options": [
+            "img_b36_phoos_xas",
+            "img_b36_pis_pa_pis_poo"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "phở",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

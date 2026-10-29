@@ -1,0 +1,185 @@
+{
+  "lesson_id": "tv1_t1_b24",
+  "book": "tv1_t1_1990",
+  "lesson_no": 24,
+  "type": "am_moi",
+  "title": "s",
+  "source": {
+    "pages": [
+      29
+    ],
+    "scan_file": "015",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "s"
+  ],
+  "images": {
+    "img_b24_chim_ser": "Chim sẻ nhỏ lông nâu, ngực sáng màu, đậu trên một cành cây",
+    "img_b24_hoa_sen": "Bông sen nở to trên mặt hồ, bên cạnh có nụ sen và lá sen",
+    "img_b24_su_su": "Quả su su xanh nhạt, vỏ có rãnh dọc và gai mềm"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "s"
+    },
+    {
+      "type": "keyword",
+      "text": "chim sẻ",
+      "image": "img_b24_chim_ser"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "chim sẻ",
+        "sẻ",
+        "s"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "sẻ",
+      "then": "chim sẻ"
+    },
+    {
+      "type": "picture",
+      "image": "img_b24_hoa_sen",
+      "say": "Đây là hoa sen.",
+      "word": "hoa sen"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "su su",
+          "image": "img_b24_su_su"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "mẹ bé là ca sĩ"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "sa",
+          "so",
+          "sô",
+          "sơ",
+          "se",
+          "sê",
+          "si",
+          "su",
+          "sư"
+        ],
+        [
+          "se sẽ",
+          "lá sả",
+          "đồ sứ",
+          "xổ số"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "s",
+          "options": [
+            "s",
+            "r",
+            "l"
+          ]
+        },
+        {
+          "answer": "sẻ",
+          "options": [
+            "sẻ",
+            "bẻ",
+            "vẻ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "sa",
+          "options": [
+            "sa",
+            "ra"
+          ]
+        },
+        {
+          "answer": "su",
+          "options": [
+            "su",
+            "lu"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "sẻ",
+      "template": "s_",
+      "answer": "ẻ",
+      "options": [
+        "ẻ",
+        "é",
+        "è"
+      ],
+      "image": "img_b24_chim_ser"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "chim sẻ",
+          "answer": "img_b24_chim_ser",
+          "options": [
+            "img_b24_chim_ser",
+            "img_b24_hoa_sen",
+            "img_b24_su_su"
+          ]
+        },
+        {
+          "word": "su su",
+          "answer": "img_b24_su_su",
+          "options": [
+            "img_b24_hoa_sen",
+            "img_b24_su_su",
+            "img_b24_chim_ser"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "sư",
+          "options": [
+            "sư",
+            "su",
+            "so"
+          ]
+        }
+      ]
+    }
+  ]
+}

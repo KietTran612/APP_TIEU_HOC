@@ -71,10 +71,52 @@ namespace TapDoc.Tests
                 UiKit.MinTouch - 0.5f,
                 $"{kind} '{name}' quá nhỏ: {w:F1}x{h:F1}");
 
+            var scroll = target.GetComponentInParent<ScrollRect>();
+            if (scroll != null && scroll.transform != target.transform)
+            {
+                AssertInsideScroll(canvasRect, rt, scroll, kind);
+                return;
+            }
+
             Assert.GreaterOrEqual(minX, cBounds.xMin - 1f, $"{kind} '{name}' tràn trái ({minX:F1} < {cBounds.xMin:F1})");
             Assert.LessOrEqual(maxX, cBounds.xMax + 1f, $"{kind} '{name}' tràn phải ({maxX:F1} > {cBounds.xMax:F1})");
             Assert.GreaterOrEqual(minY, cBounds.yMin - 1f, $"{kind} '{name}' tràn dưới ({minY:F1} < {cBounds.yMin:F1})");
             Assert.LessOrEqual(maxY, cBounds.yMax + 1f, $"{kind} '{name}' tràn trên ({maxY:F1} > {cBounds.yMax:F1})");
+        }
+
+        /// <summary>Kiểm tra vùng nhìn trong canvas và thẻ còn hiện, cho phép cắt dọc theo trục cuộn.</summary>
+        private static void AssertInsideScroll(RectTransform canvasRect, RectTransform target, ScrollRect scroll, string kind)
+        {
+            var viewport = scroll.viewport;
+            var corners = new Vector3[4];
+            viewport.GetWorldCorners(corners);
+            foreach (var corner in corners)
+            {
+                var local = canvasRect.InverseTransformPoint(corner);
+                Assert.That(local.x, Is.InRange(canvasRect.rect.xMin - 1f, canvasRect.rect.xMax + 1f), "Vùng cuộn tràn canvas");
+                Assert.That(local.y, Is.InRange(canvasRect.rect.yMin - 1f, canvasRect.rect.yMax + 1f), "Vùng cuộn tràn canvas");
+            }
+            target.GetWorldCorners(corners);
+            var min = new Vector2(float.MaxValue, float.MaxValue);
+            var max = new Vector2(float.MinValue, float.MinValue);
+            foreach (var corner in corners)
+            {
+                var local = (Vector2)viewport.InverseTransformPoint(corner);
+                min = Vector2.Min(min, local);
+                max = Vector2.Max(max, local);
+            }
+            var rect = viewport.rect;
+            if (max.x <= rect.xMin || min.x >= rect.xMax || max.y <= rect.yMin || min.y >= rect.yMax) return;
+            if (!scroll.horizontal)
+            {
+                Assert.GreaterOrEqual(min.x, rect.xMin - 1f, $"{kind} '{target.name}' tràn trái vùng cuộn");
+                Assert.LessOrEqual(max.x, rect.xMax + 1f, $"{kind} '{target.name}' tràn phải vùng cuộn");
+            }
+            if (!scroll.vertical)
+            {
+                Assert.GreaterOrEqual(min.y, rect.yMin - 1f, $"{kind} '{target.name}' tràn dưới vùng cuộn");
+                Assert.LessOrEqual(max.y, rect.yMax + 1f, $"{kind} '{target.name}' tràn trên vùng cuộn");
+            }
         }
     }
 }

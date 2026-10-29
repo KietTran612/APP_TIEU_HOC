@@ -1,0 +1,276 @@
+{
+  "lesson_id": "tv1_t1_b37",
+  "book": "tv1_t1_1990",
+  "lesson_no": 37,
+  "type": "on_tap_am",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      42
+    ],
+    "scan_file": "022",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "letter_grid",
+      "letters": [
+        "ch",
+        "tr",
+        "qu",
+        "p",
+        "ph"
+      ]
+    },
+    {
+      "type": "combine_table",
+      "marker": "●",
+      "rows": [
+        {
+          "onset": "ch",
+          "cells": {
+            "a": [
+              "cha"
+            ],
+            "o": [
+              "cho"
+            ],
+            "ô": [
+              "chô"
+            ],
+            "ơ": [
+              "chơ"
+            ],
+            "e": [
+              "che"
+            ],
+            "ê": [
+              "chê"
+            ],
+            "i": [
+              "chi"
+            ],
+            "u": [
+              "chu"
+            ],
+            "ư": [
+              "chư"
+            ]
+          }
+        },
+        {
+          "onset": "tr",
+          "cells": {
+            "a": [
+              "tra"
+            ],
+            "o": [
+              "tro"
+            ],
+            "ô": [
+              "trô"
+            ],
+            "ơ": [
+              "trơ"
+            ],
+            "e": [
+              "tre"
+            ],
+            "ê": [
+              "trê"
+            ],
+            "i": [
+              "tri"
+            ],
+            "u": [
+              "tru"
+            ],
+            "ư": [
+              "trư"
+            ]
+          }
+        },
+        {
+          "onset": "qu",
+          "cells": {
+            "a": [
+              "qua"
+            ],
+            "ơ": [
+              "quơ"
+            ],
+            "e": [
+              "que"
+            ],
+            "ê": [
+              "quê"
+            ],
+            "i": [
+              "qui"
+            ],
+            "y": [
+              "quy"
+            ]
+          }
+        },
+        {
+          "onset": "p",
+          "cells": {
+            "a": [
+              "pa"
+            ],
+            "o": [
+              "po"
+            ],
+            "ô": [
+              "pô"
+            ],
+            "ơ": [
+              "pơ"
+            ],
+            "e": [
+              "pe"
+            ],
+            "ê": [
+              "pê"
+            ],
+            "i": [
+              "pi"
+            ],
+            "u": [
+              "pu"
+            ],
+            "ư": [
+              "pư"
+            ]
+          }
+        },
+        {
+          "onset": "ph",
+          "cells": {
+            "a": [
+              "pha"
+            ],
+            "o": [
+              "pho"
+            ],
+            "ô": [
+              "phô"
+            ],
+            "ơ": [
+              "phơ"
+            ],
+            "e": [
+              "phe"
+            ],
+            "ê": [
+              "phê"
+            ],
+            "i": [
+              "phi"
+            ],
+            "u": [
+              "phu"
+            ],
+            "ư": [
+              "phư"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "qu",
+          "options": [
+            "qu",
+            "p",
+            "ph"
+          ]
+        },
+        {
+          "answer": "ph",
+          "options": [
+            "ph",
+            "p",
+            "th"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "pi",
+          "options": [
+            "pi",
+            "bi"
+          ]
+        },
+        {
+          "answer": "pho",
+          "options": [
+            "pho",
+            "tho"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "quê",
+      "template": "qu_",
+      "answer": "ê",
+      "options": [
+        "ê",
+        "e",
+        "ơ"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "chỗ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "trễ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "phở",
+          "options": [
+            "phở",
+            "phố",
+            "phờ"
+          ]
+        }
+      ]
+    }
+  ]
+}

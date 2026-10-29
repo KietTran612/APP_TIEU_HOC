@@ -152,7 +152,8 @@ class Lesson13Test(unittest.TestCase):
 
     def test_reading_flattened(self):
         p = self.p1[6]
-        self.assertEqual(set(p), {"type", "marker", "items"})
+        self.assertEqual(set(p), {"type", "marker", "labels", "items"})
+        self.assertEqual(p["labels"], ["", ""])
         self.assertEqual(p["marker"], "⌂")
         self.assertEqual([(i["text"], i["row"]) for i in p["items"]], [("cù", 0), ("dù", 0), ("từ từ", 1)])
         self.assertEqual(p["items"][2]["audio"], "tu_tuwf_tuwf")
@@ -627,7 +628,8 @@ class SystemAssetsTest(unittest.TestCase):
     def test_system_audio(self):
         self.assertEqual(set(SYSTEM_AUDIO), {
             "hd_nghe_chon_chu", "hd_nghe_chon_tranh", "hd_nhin_keo_dau", "hd_keo_vao_cho_trong", "hd_danh_van_theo",
-            "hd_keo_dau_vao_chu", "hd_thu_lai", "khen_01", "khen_02", "khen_hoan_thanh"})
+            "hd_keo_dau_vao_chu", "hd_thu_lai", "khen_01", "khen_02", "khen_hoan_thanh",
+            "hd_nhin_chon_chu_hoa", "hd_nghe_do_chon_tranh"})
         self.assertEqual(SYSTEM_AUDIO["hd_nghe_chon_chu"], "Con nghe rồi chọn chữ đúng nhé.")
         self.assertEqual(SYSTEM_AUDIO["khen_hoan_thanh"], "Con học xong bài rồi. Giỏi lắm!")
         self.assertTrue(all(k.isascii() and unicodedata.is_normalized("NFC", v) for k, v in SYSTEM_AUDIO.items()))

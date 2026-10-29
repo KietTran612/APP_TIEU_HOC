@@ -22,12 +22,13 @@ namespace TapDoc.Tests
         }
 
         [Test]
-        public void Index_ListsLessons1To17InOrder()
+        public void Index_ListsLessonsInBookOrder()
         {
-            // Bản đầu tiên: bài 1–17. Bài mẫu 42 vẫn nạp được theo mã nhưng không nằm trong danh sách bài.
-            CollectionAssert.AreEqual(
-                Enumerable.Range(1, 17),
-                LessonRepository.LoadIndex().lessons.Select(e => e.lesson_no));
+            // Danh sách bài đi liền từ bài 1 theo thứ tự sách (mỗi đợt thêm bài). Bài 42 nạp được theo mã kể cả khi
+            // chưa nằm trong danh sách.
+            var numbers = LessonRepository.LoadIndex().lessons.Select(e => e.lesson_no).ToList();
+            CollectionAssert.AreEqual(Enumerable.Range(1, numbers.Count), numbers);
+            Assert.GreaterOrEqual(numbers.Count, 17);
             Assert.AreEqual(42, LessonRepository.Load("tv1_t1_b42").lesson_no);
         }
 

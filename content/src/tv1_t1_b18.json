@@ -1,0 +1,188 @@
+{
+  "lesson_id": "tv1_t1_b18",
+  "book": "tv1_t1_1990",
+  "lesson_no": 18,
+  "type": "am_moi",
+  "title": "v",
+  "source": {
+    "pages": [
+      23
+    ],
+    "scan_file": "012",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "v"
+  ],
+  "images": {
+    "img_b18_tof_vof": "Con tò vò thân thon, eo nhỏ, hai đôi cánh mỏng, đứng trên sáu chân dài",
+    "img_b18_quar_var": "Hai quả vả tròn, vỏ lấm tấm đốm, treo trên một cuống nhỏ",
+    "img_b18_ong_vof_vex": "Con ong vò vẽ bay cạnh một tấm mạng nhện giăng giữa cành cây"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[4]",
+        "note": "tranh không chữ: Claude đoán là quả vả (có thể là quả vải)"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "v"
+    },
+    {
+      "type": "keyword",
+      "text": "tò vò",
+      "image": "img_b18_tof_vof"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "tò vò",
+        "vò",
+        "v"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "vò",
+      "then": "tò vò"
+    },
+    {
+      "type": "picture",
+      "image": "img_b18_quar_var",
+      "say": "Đây là quả vả.",
+      "word": "quả vả"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "ong vò vẽ",
+          "image": "img_b18_ong_vof_vex",
+          "spell": [
+            "vò",
+            "vẽ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "ve vẻ vè ve"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "va",
+          "vo",
+          "vô",
+          "vơ",
+          "ve",
+          "vê",
+          "vi",
+          "vu",
+          "vư"
+        ],
+        [
+          "vỗ về",
+          "vi vu",
+          "va li",
+          "ti vi"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "v",
+          "options": [
+            "v",
+            "b",
+            "l"
+          ]
+        },
+        {
+          "answer": "vò",
+          "options": [
+            "vò",
+            "bò",
+            "lò"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "vơ",
+          "options": [
+            "vơ",
+            "bơ"
+          ]
+        },
+        {
+          "answer": "ve",
+          "options": [
+            "ve",
+            "be"
+          ]
+        },
+        {
+          "answer": "vi",
+          "options": [
+            "vi",
+            "li"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "vò",
+      "template": "v_",
+      "answer": "ò",
+      "options": [
+        "ò",
+        "ó",
+        "ỏ"
+      ],
+      "image": "img_b18_tof_vof"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "tò vò",
+          "answer": "img_b18_tof_vof",
+          "options": [
+            "img_b18_tof_vof",
+            "img_b18_quar_var",
+            "img_b18_ong_vof_vex"
+          ]
+        },
+        {
+          "word": "ong vò vẽ",
+          "answer": "img_b18_ong_vof_vex",
+          "options": [
+            "img_b18_quar_var",
+            "img_b18_ong_vof_vex",
+            "img_b18_tof_vof"
+          ]
+        }
+      ]
+    }
+  ]
+}

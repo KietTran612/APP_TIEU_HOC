@@ -1,0 +1,179 @@
+{
+  "lesson_id": "tv1_t1_b29",
+  "book": "tv1_t1_1990",
+  "lesson_no": 29,
+  "type": "am_moi",
+  "title": "ngh",
+  "source": {
+    "pages": [
+      34
+    ],
+    "scan_file": "018",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ngh"
+  ],
+  "images": {
+    "img_b29_con_nghes": "Con nghé (trâu con) đứng trên bãi cỏ, chân dài, cúi đầu",
+    "img_b29_nghir_ngowi": "Bố ngồi duỗi chân nghỉ trên bãi cát bờ biển, bé ngồi chơi cát bên cạnh; xa xa có sóng nước và mây"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ngh"
+    },
+    {
+      "type": "keyword",
+      "text": "con nghé",
+      "image": "img_b29_con_nghes"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con nghé",
+        "nghé",
+        "ngh"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "nghé",
+      "then": "con nghé"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "nghỉ ngơi",
+          "image": "img_b29_nghir_ngowi",
+          "spell": [
+            "nghỉ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "bé kể bà nghe, nghỉ hè bố và bé đi ra bờ bể."
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "nghe",
+          "nghê",
+          "nghi"
+        ],
+        [
+          "ngô nghê",
+          "nghĩ kĩ",
+          "củ nghệ"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ngh",
+          "options": [
+            "ngh",
+            "ng",
+            "gh"
+          ]
+        },
+        {
+          "answer": "nghé",
+          "options": [
+            "nghé",
+            "ghé",
+            "khé"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nghe",
+          "options": [
+            "nghe",
+            "ghe"
+          ]
+        },
+        {
+          "answer": "nghi",
+          "options": [
+            "nghi",
+            "ghi"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "nghé",
+      "template": "ngh_",
+      "answer": "é",
+      "options": [
+        "é",
+        "è",
+        "ẹ"
+      ],
+      "image": "img_b29_con_nghes"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con nghé",
+          "answer": "img_b29_con_nghes",
+          "options": [
+            "img_b29_con_nghes",
+            "img_b29_nghir_ngowi"
+          ]
+        },
+        {
+          "word": "nghỉ ngơi",
+          "answer": "img_b29_nghir_ngowi",
+          "options": [
+            "img_b29_nghir_ngowi",
+            "img_b29_con_nghes"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nghĩ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "nghỉ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

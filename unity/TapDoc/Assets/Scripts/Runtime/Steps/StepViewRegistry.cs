@@ -16,10 +16,13 @@ namespace TapDoc
             StepViewFactory.Register("reading", () => new ItemsView());
             StepViewFactory.Register("sentence", () => new SentenceView());
             StepViewFactory.Register("letter_grid", () => new LetterGridView());
+            StepViewFactory.Register("letter_pairs", () => new LetterPairsView());
+            StepViewFactory.Register("rule", () => new RuleView());
             StepViewFactory.Register("tone_table", () => new ToneTableView());
             StepViewFactory.Register("combine_table", () => new CombineTableView());
 
             StepViewFactory.RegisterRound("listen_choose", () => new ListenChooseView());
+            StepViewFactory.RegisterRound("match_case", () => new MatchCaseView());
             StepViewFactory.RegisterRound("look_tone", () => new LookToneView());
             StepViewFactory.RegisterRound("compose", () => new ComposeView());
             StepViewFactory.RegisterRound("listen_picture", () => new ListenPictureView());

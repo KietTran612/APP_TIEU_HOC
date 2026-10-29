@@ -12,6 +12,8 @@ SYSTEM_AUDIO: dict[str, str] = {
     "hd_keo_vao_cho_trong": "Con kéo chữ vào chỗ trống nhé.",
     "hd_danh_van_theo": "Con đánh vần theo nhé.",
     "hd_keo_dau_vao_chu": "Con kéo dấu vào chữ nhé.",
+    "hd_nhin_chon_chu_hoa": "Con nhìn chữ thường rồi chọn chữ hoa đúng nhé.",
+    "hd_nghe_do_chon_tranh": "Con nghe câu đố rồi chọn tranh đúng nhé.",
     "hd_thu_lai": "Con thử lại nhé.",
     "khen_01": "Đúng rồi!",
     "khen_02": "Giỏi lắm!",

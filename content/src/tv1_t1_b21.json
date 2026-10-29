@@ -1,0 +1,186 @@
+{
+  "lesson_id": "tv1_t1_b21",
+  "book": "tv1_t1_1990",
+  "lesson_no": 21,
+  "type": "am_moi",
+  "title": "r",
+  "source": {
+    "pages": [
+      26
+    ],
+    "scan_file": "014",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "r"
+  ],
+  "images": {
+    "img_b21_cas_roo": "Con cá rô vảy sẫm màu, vây lưng có gai, bơi nghiêng",
+    "img_b21_con_ruaf": "Con rùa có mai khum vân ô, thò đầu và bốn chân ra bò",
+    "img_b21_ra_ddi_oo": "Chiếc ra-đi-ô (máy thu thanh) hình hộp, mặt loa tròn, có cần ăng-ten dựng lên"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "r"
+    },
+    {
+      "type": "keyword",
+      "text": "cá rô",
+      "image": "img_b21_cas_roo"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cá rô",
+        "rô",
+        "r"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "rô",
+      "then": "cá rô"
+    },
+    {
+      "type": "picture",
+      "image": "img_b21_con_ruaf",
+      "say": "Đây là con rùa.",
+      "word": "con rùa"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "ra-đi-ô",
+          "image": "img_b21_ra_ddi_oo",
+          "spell": [
+            "ra"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "rổ cá"
+        },
+        {
+          "text": "rổ khế"
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "ra",
+          "ro",
+          "rô",
+          "rơ",
+          "re",
+          "rê",
+          "ri",
+          "ru"
+        ],
+        [
+          "ve ra rả",
+          "rủ rê"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "r",
+          "options": [
+            "r",
+            "v",
+            "n"
+          ]
+        },
+        {
+          "answer": "rô",
+          "options": [
+            "rô",
+            "vô",
+            "nô"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ru",
+          "options": [
+            "ru",
+            "nu"
+          ]
+        },
+        {
+          "answer": "rơ",
+          "options": [
+            "rơ",
+            "nơ"
+          ]
+        },
+        {
+          "answer": "rê",
+          "options": [
+            "rê",
+            "nê"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "rô",
+      "template": "r_",
+      "answer": "ô",
+      "options": [
+        "ô",
+        "ơ",
+        "o"
+      ],
+      "image": "img_b21_cas_roo"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cá rô",
+          "answer": "img_b21_cas_roo",
+          "options": [
+            "img_b21_cas_roo",
+            "img_b21_con_ruaf",
+            "img_b21_ra_ddi_oo"
+          ]
+        },
+        {
+          "word": "con rùa",
+          "answer": "img_b21_con_ruaf",
+          "options": [
+            "img_b21_ra_ddi_oo",
+            "img_b21_con_ruaf",
+            "img_b21_cas_roo"
+          ]
+        }
+      ]
+    }
+  ]
+}

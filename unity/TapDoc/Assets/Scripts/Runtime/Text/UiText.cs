@@ -5,11 +5,15 @@ namespace TapDoc
         public const string Back = "Về";
         public const string Replay = "Nghe lại";
         public const string Next = "Tiếp";
+        public const string PagePrev = "Trang trước";
+        public const string PageNext = "Trang sau";
         public const string ListenSentence = "Nghe cả câu";
         public const string DoneReading = "Con đọc xong rồi";
         public const string NextLesson = "Học bài tiếp";
         public const string ToList = "Về danh sách";
         public const string LessonPrefix = "Bài";
+        public const string PartLetters = "Chữ cái và âm";
+        public const string PartRimes = "Vần";
         public const string Praise = "Giỏi lắm!";
         public const string AppTitle = "Tập đọc lớp 1";
         public const string ReviewMistakes = "Ôn lại";
@@ -32,11 +36,15 @@ namespace TapDoc
             Back,
             Replay,
             Next,
+            PagePrev,
+            PageNext,
             ListenSentence,
             DoneReading,
             NextLesson,
             ToList,
             LessonPrefix,
+            PartLetters,
+            PartRimes,
             Praise,
             AppTitle,
             ReviewMistakes,

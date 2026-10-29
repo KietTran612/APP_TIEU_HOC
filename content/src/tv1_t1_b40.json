@@ -1,0 +1,265 @@
+{
+  "lesson_id": "tv1_t1_b40",
+  "book": "tv1_t1_1990",
+  "lesson_no": 40,
+  "type": "on_tap_am",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      45
+    ],
+    "scan_file": "023",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "letter_grid",
+      "letters": [
+        "ch",
+        "th",
+        "nh",
+        "kh",
+        "gh",
+        "ng",
+        "ngh",
+        "tr",
+        "gi",
+        "ph",
+        "qu"
+      ]
+    },
+    {
+      "type": "combine_table",
+      "marker": "●",
+      "rows": [
+        {
+          "onset": "ch",
+          "cells": {
+            "a": [
+              "cha"
+            ],
+            "o": [
+              "cho"
+            ],
+            "ô": [
+              "chô"
+            ],
+            "ơ": [
+              "chơ"
+            ],
+            "e": [
+              "che"
+            ],
+            "ê": [
+              "chê"
+            ],
+            "i": [
+              "chi"
+            ],
+            "u": [
+              "chu"
+            ],
+            "ư": [
+              "chư"
+            ]
+          }
+        },
+        {
+          "onset": "gh",
+          "cells": {
+            "e": [
+              "ghe"
+            ],
+            "ê": [
+              "ghê"
+            ],
+            "i": [
+              "ghi"
+            ]
+          },
+          "blocked": [
+            "a",
+            "o",
+            "ô",
+            "ơ",
+            "u",
+            "ư"
+          ]
+        },
+        {
+          "onset": "ng",
+          "cells": {
+            "a": [
+              "nga"
+            ],
+            "o": [
+              "ngo"
+            ],
+            "ô": [
+              "ngô"
+            ],
+            "ơ": [
+              "ngơ"
+            ],
+            "u": [
+              "ngu"
+            ],
+            "ư": [
+              "ngư"
+            ]
+          },
+          "blocked": [
+            "e",
+            "ê",
+            "i"
+          ]
+        },
+        {
+          "onset": "ngh",
+          "cells": {
+            "e": [
+              "nghe"
+            ],
+            "ê": [
+              "nghê"
+            ],
+            "i": [
+              "nghi"
+            ]
+          },
+          "blocked": [
+            "a",
+            "o",
+            "ô",
+            "ơ",
+            "u",
+            "ư"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tone_table",
+      "base": "cha",
+      "results": [
+        "chà",
+        "chá",
+        "chả",
+        "chã",
+        "chạ"
+      ]
+    },
+    {
+      "type": "tone_table",
+      "base": "ghe",
+      "results": [
+        "ghè",
+        "ghé",
+        "ghẻ",
+        "ghẽ",
+        "ghẹ"
+      ]
+    },
+    {
+      "type": "rule",
+      "lines": [
+        "k chỉ ghép với e, ê, i",
+        "gh chỉ ghép với e, ê, i",
+        "ngh chỉ ghép với e, ê, i"
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "gh",
+          "options": [
+            "gh",
+            "g",
+            "ng"
+          ]
+        },
+        {
+          "answer": "ngh",
+          "options": [
+            "ngh",
+            "ng",
+            "nh"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ghe",
+          "options": [
+            "ghe",
+            "nghe"
+          ]
+        },
+        {
+          "answer": "gà",
+          "options": [
+            "gà",
+            "ngà"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "ghế",
+      "template": "gh_",
+      "answer": "ế",
+      "options": [
+        "ế",
+        "ề",
+        "ệ"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "ngã",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "nghĩ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chà",
+          "options": [
+            "chà",
+            "chá",
+            "chạ"
+          ]
+        }
+      ]
+    }
+  ]
+}

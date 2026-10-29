@@ -1,0 +1,284 @@
+{
+  "lesson_id": "tv1_t1_b39",
+  "book": "tv1_t1_1990",
+  "lesson_no": 39,
+  "type": "on_tap_am",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      44
+    ],
+    "scan_file": "023",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "letter_grid",
+      "letters": [
+        "b",
+        "c",
+        "d",
+        "đ",
+        "g",
+        "h",
+        "k",
+        "l",
+        "m",
+        "n",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "v",
+        "x"
+      ]
+    },
+    {
+      "type": "combine_table",
+      "marker": "●",
+      "rows": [
+        {
+          "onset": "b",
+          "cells": {
+            "a": [
+              "ba"
+            ],
+            "o": [
+              "bo"
+            ],
+            "ô": [
+              "bô"
+            ],
+            "ơ": [
+              "bơ"
+            ],
+            "e": [
+              "be"
+            ],
+            "ê": [
+              "bê"
+            ],
+            "i": [
+              "bi"
+            ],
+            "u": [
+              "bu"
+            ],
+            "ư": [
+              "bư"
+            ]
+          }
+        },
+        {
+          "onset": "c",
+          "cells": {
+            "a": [
+              "ca"
+            ],
+            "o": [
+              "co"
+            ],
+            "ô": [
+              "cô"
+            ],
+            "ơ": [
+              "cơ"
+            ],
+            "u": [
+              "cu"
+            ],
+            "ư": [
+              "cư"
+            ]
+          },
+          "blocked": [
+            "e",
+            "ê",
+            "i"
+          ]
+        },
+        {
+          "onset": "k",
+          "cells": {
+            "e": [
+              "ke"
+            ],
+            "ê": [
+              "kê"
+            ],
+            "i": [
+              "ki"
+            ]
+          },
+          "blocked": [
+            "a",
+            "o",
+            "ô",
+            "ơ",
+            "u",
+            "ư"
+          ]
+        },
+        {
+          "onset": "d",
+          "cells": {
+            "a": [
+              "da"
+            ],
+            "o": [
+              "do"
+            ],
+            "ô": [
+              "dô"
+            ],
+            "ơ": [
+              "dơ"
+            ],
+            "e": [
+              "de"
+            ],
+            "ê": [
+              "dê"
+            ],
+            "i": [
+              "di"
+            ],
+            "u": [
+              "du"
+            ],
+            "ư": [
+              "dư"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "tone_table",
+      "base": "ba",
+      "results": [
+        "bà",
+        "bá",
+        "bả",
+        "bã",
+        "bạ"
+      ]
+    },
+    {
+      "type": "tone_table",
+      "base": "ca",
+      "results": [
+        "cà",
+        "cá",
+        "cả",
+        "cã",
+        "cạ"
+      ]
+    },
+    {
+      "type": "tone_table",
+      "base": "ke",
+      "results": [
+        "kè",
+        "ké",
+        "kẻ",
+        "kẽ",
+        "kẹ"
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "k",
+          "options": [
+            "k",
+            "c",
+            "h"
+          ]
+        },
+        {
+          "answer": "q",
+          "options": [
+            "q",
+            "p",
+            "g"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ba",
+          "options": [
+            "ba",
+            "da"
+          ]
+        },
+        {
+          "answer": "đo",
+          "options": [
+            "đo",
+            "do"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "ke",
+      "template": "k_",
+      "answer": "e",
+      "options": [
+        "e",
+        "a",
+        "o"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "bã",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "kẽ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cá",
+          "options": [
+            "cá",
+            "cà",
+            "cạ"
+          ]
+        }
+      ]
+    }
+  ]
+}

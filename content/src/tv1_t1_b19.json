@@ -1,0 +1,173 @@
+{
+  "lesson_id": "tv1_t1_b19",
+  "book": "tv1_t1_1990",
+  "lesson_no": 19,
+  "type": "am_moi",
+  "title": "h",
+  "source": {
+    "pages": [
+      24
+    ],
+    "scan_file": "013",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "h"
+  ],
+  "images": {
+    "img_b19_con_hor": "Con hổ vằn vện đang bước đi, đuôi cong vút lên",
+    "img_b19_tu_hus": "Chim tu hú đậu trên cành, mổ chùm quả chín mọng"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "h"
+    },
+    {
+      "type": "keyword",
+      "text": "con hổ",
+      "image": "img_b19_con_hor"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con hổ",
+        "hổ",
+        "h"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "hổ",
+      "then": "con hổ"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "tu hú",
+          "image": "img_b19_tu_hus",
+          "spell": [
+            "hú"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "hè về có tu hú"
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "ha",
+          "ho",
+          "hô",
+          "hơ",
+          "he",
+          "hê",
+          "hi",
+          "hu",
+          "hư"
+        ],
+        [
+          "hả hê",
+          "lá hẹ",
+          "hè về",
+          "hò dô ta"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "h",
+          "options": [
+            "h",
+            "b",
+            "l"
+          ]
+        },
+        {
+          "answer": "hè",
+          "options": [
+            "hè",
+            "bè",
+            "vè"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "hồ",
+          "options": [
+            "hồ",
+            "bồ"
+          ]
+        },
+        {
+          "answer": "ho",
+          "options": [
+            "ho",
+            "lo"
+          ]
+        },
+        {
+          "answer": "hu",
+          "options": [
+            "hu",
+            "bu"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "hổ",
+      "template": "h_",
+      "answer": "ổ",
+      "options": [
+        "ổ",
+        "ố",
+        "ồ"
+      ],
+      "image": "img_b19_con_hor"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con hổ",
+          "answer": "img_b19_con_hor",
+          "options": [
+            "img_b19_con_hor",
+            "img_b19_tu_hus"
+          ]
+        },
+        {
+          "word": "tu hú",
+          "answer": "img_b19_tu_hus",
+          "options": [
+            "img_b19_tu_hus",
+            "img_b19_con_hor"
+          ]
+        }
+      ]
+    }
+  ]
+}

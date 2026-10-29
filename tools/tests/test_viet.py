@@ -49,3 +49,7 @@ class SplitTest(unittest.TestCase):
 
     def test_tokens_index_counts_nfc_characters(self):
         self.assertEqual(tokens(unicodedata.normalize("NFD", "cái đu")), [("cái", 0), ("đu", 4)])
+
+    def test_hyphen_separates_loan_word_syllables(self):
+        self.assertEqual(syllables("ra-đi-ô"), ["ra", "đi", "ô"])
+        self.assertEqual(tokens("ra-đi-ô"), [("ra", 0), ("đi", 3), ("ô", 6)])

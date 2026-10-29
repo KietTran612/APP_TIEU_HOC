@@ -21,6 +21,10 @@ _PICTURE_KIND = "huong_dan"
 _SENTENCE_KIND = "cau"
 
 PICTURE_NOTE = "lời dẫn tranh do Claude đề xuất"
+Q_NOTE = "tên đọc của 'q' là \"cu\" theo tr.122 (tạm)"
+
+# Bảng chữ thường / chữ hoa của bài 41 xếp 4 cột, đọc theo hàng.
+_PAIR_COLUMNS = 4
 
 # Lời hướng dẫn của từng loại bài tập (mã nằm trong `system_assets.SYSTEM_AUDIO`).
 INSTRUCTION_AUDIO = {
@@ -28,6 +32,7 @@ INSTRUCTION_AUDIO = {
     "look_tone": "hd_nhin_keo_dau",
     "compose": "hd_keo_vao_cho_trong",
     "listen_picture": "hd_nghe_chon_tranh",
+    "match_case": "hd_nhin_chon_chu_hoa",
 }
 
 _REQUIRED_FIELDS = ("lesson_id", "book", "lesson_no", "type", "title", "source", "new_units", "images",
@@ -83,6 +88,11 @@ def _join_part(text: str) -> Part:
 def _tone_part(tone: str) -> Part:
     audio_id, say, akind = tone_audio(tone)
     return Part("tone", TONE_INFO[tone][1], audio_id, tone, say, akind)
+
+
+def _combined(onset: str, vowel: str) -> str:
+    """Tiếng ghép âm đầu với nguyên âm trong bảng ghép; gi + i viết là "gi" (không lặp i)."""
+    return "gi" if (onset, vowel) == ("gi", "i") else onset + vowel
 
 
 class _Builder:
@@ -277,21 +287,28 @@ class _Builder:
     def _step_combine_table(self, step: dict, where: str) -> dict:
         items: list[dict] = []
         vowels: list[str] = []
+
+        def column(vowel: str, cell_where: str) -> int:
+            if vowel not in vowels:
+                vowels.append(vowel)
+                items.append({"text": vowel, "audio": self._audio(audio_for(vowel), cell_where),
+                              "role": "vowel", "row": 0, "col": len(vowels) - 1})
+            return vowels.index(vowel)
+
         for i, row in enumerate(step["rows"]):
             onset = row["onset"]
             items.append({"text": onset, "audio": self._audio(audio_for(onset), f"{where}.rows[{i}]"),
                           "role": "onset", "row": i, "col": 0})
+            blocked = list(row.get("blocked", []))
             for vowel, forms in row["cells"].items():
                 cell_where = f"{where}.rows[{i}].cells[{vowel!r}]"
-                if vowel not in vowels:
-                    vowels.append(vowel)
-                    items.append({"text": vowel, "audio": self._audio(audio_for(vowel), cell_where),
-                                  "role": "vowel", "row": 0, "col": len(vowels) - 1})
-                col = vowels.index(vowel)
+                if vowel in blocked:
+                    raise self.error(cell_where, f"nguyên âm {vowel!r} vừa có ô vừa bị chặn")
+                col = column(vowel, cell_where)
                 if not forms:
                     raise self.error(cell_where, "ô trống")
                 base = forms[0].lower()
-                if base != onset + vowel:
+                if base != _combined(onset, vowel):
                     raise self.error(cell_where, f"tiếng đầu ô {base!r} phải là {onset!r} + {vowel!r}")
                 items.append({"text": base, "audio": self._audio(text_audio(base), cell_where), "role": "base",
                               "row": i, "col": col, "spells": [self._spell(spell_syllable(base), cell_where)]})
@@ -300,7 +317,34 @@ class _Builder:
                     items.append({"text": form, "audio": self._audio(text_audio(form), cell_where), "role": "form",
                                   "row": i, "col": col, "tone": tone, "glyph": TONE_INFO[tone][1],
                                   "spells": [spell]})
+            # Ô gạch chéo trên trang: âm đầu không ghép với nguyên âm này (k + a, gh + o).
+            for vowel in blocked:
+                cell_where = f"{where}.rows[{i}].blocked[{vowel!r}]"
+                items.append({"text": "", "role": "blocked", "row": i,
+                              "col": column(vowel, cell_where)})
         return {"type": "combine_table", "marker": step.get("marker", ""), "items": items}
+
+    def _step_letter_pairs(self, step: dict, where: str) -> dict:
+        items = []
+        for k, letter in enumerate(step["letters"]):
+            item_where = f"{where}.items[{k}]"
+            if letter == "q":
+                self._note(item_where, Q_NOTE)
+            items.append({"text": letter, "upper": letter.upper(), "audio": self._audio(audio_for(letter), item_where),
+                          "role": "pair", "row": k // _PAIR_COLUMNS, "col": k % _PAIR_COLUMNS})
+        return {"type": "letter_pairs", "items": items}
+
+    def _step_rule(self, step: dict, where: str) -> dict:
+        """Luật chính tả in trên trang (k, gh, ngh chỉ ghép với e, ê, i): mỗi dòng đọc liền như một câu."""
+        items = [{"text": line, "audio": self._sentence_audio(line, f"{where}.items[{k}]"), "role": "line"}
+                 for k, line in enumerate(step["lines"])]
+        return {"type": "rule", "marker": step.get("marker", ""), "items": items}
+
+    def _sentence_audio(self, text: str, where: str) -> str:
+        """Mã âm thanh `cau_bNN_kk` kế tiếp cho một câu (hoặc dòng luật) đọc liền."""
+        self.sentence_count += 1
+        audio_id = f"cau_b{self.nn}_{self.sentence_count:02d}"
+        return self._register_audio(audio_id, text, _SENTENCE_KIND, where)
 
     def _step_words(self, step: dict, where: str) -> dict:
         items = []
@@ -320,24 +364,27 @@ class _Builder:
         return {"type": "words", "marker": step.get("marker", ""), "items": items}
 
     def _step_reading(self, step: dict, where: str) -> dict:
-        items = []
+        """Mỗi hàng là danh sách chữ, hoặc `{"label": …, "items": […]}` khi hàng có nhãn ở đầu (bài ôn tập)."""
+        items, labels = [], []
         for row, texts in enumerate(step["rows"]):
+            label = ""
+            if isinstance(texts, dict):
+                label, texts = texts.get("label", ""), texts["items"]
             if not isinstance(texts, list):
                 raise self.error(where, f"hàng {row} phải là danh sách chữ, không phải {texts!r}")
+            labels.append(label)
             for text in texts:
                 item_where = f"{where}.items[{len(items)}]"
                 items.append({"text": text, "audio": self._audio(text_audio(text), item_where), "row": row,
                               "spells": self._spells_of(text, item_where)})
-        return {"type": "reading", "marker": step.get("marker", ""), "items": items}
+        return {"type": "reading", "marker": step.get("marker", ""), "labels": labels, "items": items}
 
     def _step_sentence(self, step: dict, where: str) -> dict:
         text = step["text"]
         words = syllables(text)
         if not words:
             raise self.error(where, "câu không có tiếng nào")
-        self.sentence_count += 1
-        audio_id = f"cau_b{self.nn}_{self.sentence_count:02d}"
-        self._register_audio(audio_id, text, _SENTENCE_KIND, where)
+        audio_id = self._sentence_audio(text, where)
         items = []
         for j, word in enumerate(words):
             item_where = f"{where}.items[{j}]"
@@ -360,6 +407,8 @@ class _Builder:
         "tone_table": _step_tone_table,
         "letter_grid": _step_letter_grid,
         "combine_table": _step_combine_table,
+        "letter_pairs": _step_letter_pairs,
+        "rule": _step_rule,
     }
 
     def _build_part1(self) -> list[dict]:
@@ -425,11 +474,19 @@ class _Builder:
                                     f"không khớp với từ đề {word!r}")
         return {"prompt_audio": self._audio(text_audio(word), where), "options": options, "answer": index}
 
+    def _round_match_case(self, rd: dict, where: str) -> dict:
+        model, answer, texts = rd["model"], rd["answer"], list(rd["options"])
+        index = self._answer_index(texts, answer, where)
+        if answer != model.upper():
+            raise self.error(where, f"đáp án {answer!r} không phải chữ hoa của {model!r}")
+        return {"prompt_text": model, "options": [_option(text=t) for t in texts], "answer": index}
+
     _ROUNDS = {
         "listen_choose": _round_listen_choose,
         "look_tone": _round_look_tone,
         "compose": _round_compose,
         "listen_picture": _round_listen_picture,
+        "match_case": _round_match_case,
     }
 
     def _build_part2(self) -> list[dict]:

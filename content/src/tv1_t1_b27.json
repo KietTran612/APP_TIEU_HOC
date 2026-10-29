@@ -1,0 +1,270 @@
+{
+  "lesson_id": "tv1_t1_b27",
+  "book": "tv1_t1_1990",
+  "lesson_no": 27,
+  "type": "on_tap_am",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      32
+    ],
+    "scan_file": "017",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[2]",
+        "note": "dòng ⌂ là lời dặn làm ở nhà; app đọc như một dòng luật — chủ dự án xem có giữ không"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "letter_grid",
+      "letters": [
+        "x",
+        "s",
+        "g",
+        "gh",
+        "gi"
+      ]
+    },
+    {
+      "type": "combine_table",
+      "marker": "●",
+      "rows": [
+        {
+          "onset": "x",
+          "cells": {
+            "a": [
+              "xa"
+            ],
+            "o": [
+              "xo"
+            ],
+            "ô": [
+              "xô"
+            ],
+            "ơ": [
+              "xơ"
+            ],
+            "e": [
+              "xe"
+            ],
+            "ê": [
+              "xê"
+            ],
+            "i": [
+              "xi"
+            ],
+            "u": [
+              "xu"
+            ],
+            "ư": [
+              "xư"
+            ]
+          }
+        },
+        {
+          "onset": "s",
+          "cells": {
+            "a": [
+              "sa"
+            ],
+            "o": [
+              "so"
+            ],
+            "ô": [
+              "sô"
+            ],
+            "ơ": [
+              "sơ"
+            ],
+            "e": [
+              "se"
+            ],
+            "ê": [
+              "sê"
+            ],
+            "i": [
+              "si"
+            ],
+            "u": [
+              "su"
+            ],
+            "ư": [
+              "sư"
+            ]
+          }
+        },
+        {
+          "onset": "g",
+          "cells": {
+            "a": [
+              "ga"
+            ],
+            "o": [
+              "go"
+            ],
+            "ô": [
+              "gô"
+            ],
+            "ơ": [
+              "gơ"
+            ],
+            "u": [
+              "gu"
+            ],
+            "ư": [
+              "gư"
+            ]
+          }
+        },
+        {
+          "onset": "gh",
+          "cells": {
+            "e": [
+              "ghe"
+            ],
+            "ê": [
+              "ghê"
+            ],
+            "i": [
+              "ghi"
+            ]
+          }
+        },
+        {
+          "onset": "gi",
+          "cells": {
+            "a": [
+              "gia"
+            ],
+            "o": [
+              "gio"
+            ],
+            "ô": [
+              "giô"
+            ],
+            "ơ": [
+              "giơ"
+            ],
+            "e": [
+              "gie"
+            ],
+            "ê": [
+              "giê"
+            ],
+            "i": [
+              "gi"
+            ],
+            "u": [
+              "giu"
+            ],
+            "ư": [
+              "giư"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "⌂",
+      "lines": [
+        "Ghép thêm dấu thanh để tạo tiếng mới ở nhà."
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "x",
+          "options": [
+            "x",
+            "gh",
+            "h"
+          ]
+        },
+        {
+          "answer": "gi",
+          "options": [
+            "gi",
+            "gh",
+            "g"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ghi",
+          "options": [
+            "ghi",
+            "gi"
+          ]
+        },
+        {
+          "answer": "go",
+          "options": [
+            "go",
+            "gio"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "ghế",
+      "template": "gh_",
+      "answer": "ế",
+      "options": [
+        "ế",
+        "ề",
+        "ể"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "sẽ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "gỗ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "xà",
+          "options": [
+            "xà",
+            "xá",
+            "xạ"
+          ]
+        }
+      ]
+    }
+  ]
+}

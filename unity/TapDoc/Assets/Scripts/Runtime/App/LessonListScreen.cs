@@ -26,6 +26,7 @@ namespace TapDoc
         internal Button ReviewButton { get; private set; }
         internal Button ParentButton { get; private set; }
         internal Button SwitchChildButton { get; private set; }
+        internal ScrollRect Scroll { get; private set; }
         internal int LessonCount => _lessonButtons.Count;
 
         /// <summary>Thẻ của bài <paramref name="lessonId"/>; <c>null</c> nếu bài không có trong danh sách.</summary>
@@ -47,47 +48,78 @@ namespace TapDoc
             headerRt.sizeDelta = new Vector2(800f, UiKit.MinTouch);
             headerRt.anchoredPosition = new Vector2(0f, -20f);
 
-            var gridGo = new GameObject("LessonButtons", typeof(RectTransform), typeof(GridLayoutGroup));
-            gridGo.transform.SetParent(transform, false);
-            var gridRt = (RectTransform)gridGo.transform;
-            gridRt.anchorMin = new Vector2(0.5f, 0.5f);
-            gridRt.anchorMax = new Vector2(0.5f, 0.5f);
-            gridRt.sizeDelta = new Vector2(
-                Columns * CardWidth + (Columns - 1) * CardGap,
-                3 * CardHeight + 2 * CardGap);
-            gridRt.anchoredPosition = Vector2.zero;
-            var grid = gridGo.GetComponent<GridLayoutGroup>();
-            grid.cellSize = new Vector2(CardWidth, CardHeight);
-            grid.spacing = new Vector2(CardGap, CardGap);
-            grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            grid.constraintCount = Columns;
-            grid.childAlignment = TextAnchor.UpperCenter;
+            var scrollGo = new GameObject("LessonScroll", typeof(RectTransform), typeof(ScrollRect), typeof(Image), typeof(RectMask2D));
+            scrollGo.transform.SetParent(transform, false);
+            var viewport = (RectTransform)scrollGo.transform;
+            viewport.anchorMin = new Vector2(0.5f, 0f);
+            viewport.anchorMax = new Vector2(0.5f, 1f);
+            viewport.sizeDelta = new Vector2(Columns * CardWidth + (Columns - 1) * CardGap, -2f * (UiKit.MinTouch + 40f));
+            viewport.anchoredPosition = Vector2.zero;
+            scrollGo.GetComponent<Image>().color = Color.clear;
+            var contentGo = new GameObject("Content", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
+            contentGo.transform.SetParent(viewport, false);
+            var content = (RectTransform)contentGo.transform;
+            content.anchorMin = new Vector2(0f, 1f);
+            content.anchorMax = Vector2.one;
+            content.pivot = new Vector2(0.5f, 1f);
+            content.sizeDelta = Vector2.zero;
+            content.anchoredPosition = Vector2.zero;
+            var layout = contentGo.GetComponent<VerticalLayoutGroup>();
+            layout.spacing = CardGap;
+            layout.childAlignment = TextAnchor.UpperLeft;
+            layout.childControlWidth = true;
+            layout.childControlHeight = true;
+            layout.childForceExpandWidth = true;
+            layout.childForceExpandHeight = false;
+            contentGo.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            Scroll = scrollGo.GetComponent<ScrollRect>();
+            Scroll.viewport = viewport;
+            Scroll.content = content;
+            Scroll.horizontal = false;
+            Scroll.vertical = true;
+            Scroll.movementType = ScrollRect.MovementType.Clamped;
 
             var entries = LessonRepository.LoadIndex().lessons;
             var ordered = entries.Select(e => e.lesson_id).ToList();
-            foreach (var entry in entries)
+            foreach (var part in new[] { false, true })
             {
-                var lessonId = entry.lesson_id;
-                var label = $"{UiText.LessonPrefix} {entry.lesson_no}\n{entry.title}";
-                var btn = UiKit.CreateButton(gridGo.transform, label, () => app.ShowLesson(lessonId));
-                btn.name = $"Lesson_{lessonId}";
-                var text = btn.GetComponentInChildren<TMP_Text>();
-                var textRt = text.rectTransform;
-                textRt.anchorMin = new Vector2(0f, 0.24f);
-                textRt.anchorMax = Vector2.one;
-                textRt.offsetMin = new Vector2(8f, 0f);
-                textRt.offsetMax = new Vector2(-8f, -6f);
-
-                if (!progress.IsUnlocked(ordered, lessonId))
+                var section = entries.Where(e => part ? e.lesson_no >= 42 : e.lesson_no >= 1 && e.lesson_no <= 41).ToList();
+                if (section.Count == 0) continue;
+                var sectionHeader = UiKit.CreateLabel(content, part ? UiText.PartRimes : UiText.PartLetters, 44f);
+                sectionHeader.alignment = TextAlignmentOptions.Left;
+                sectionHeader.gameObject.AddComponent<LayoutElement>().preferredHeight = 64f;
+                var gridGo = new GameObject("LessonButtons", typeof(RectTransform), typeof(GridLayoutGroup));
+                gridGo.transform.SetParent(content, false);
+                var grid = gridGo.GetComponent<GridLayoutGroup>();
+                grid.cellSize = new Vector2(CardWidth, CardHeight);
+                grid.spacing = new Vector2(CardGap, CardGap);
+                grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+                grid.constraintCount = Columns;
+                grid.childAlignment = TextAnchor.UpperLeft;
+                foreach (var entry in section)
                 {
-                    btn.interactable = false;
-                    btn.gameObject.AddComponent<CanvasGroup>().alpha = LockedAlpha;
+                    var lessonId = entry.lesson_id;
+                    var label = $"{UiText.LessonPrefix} {entry.lesson_no}\n{entry.title}";
+                    var btn = UiKit.CreateButton(gridGo.transform, label, () => app.ShowLesson(lessonId));
+                    btn.name = $"Lesson_{lessonId}";
+                    var text = btn.GetComponentInChildren<TMP_Text>();
+                    var textRt = text.rectTransform;
+                    textRt.anchorMin = new Vector2(0f, 0.24f);
+                    textRt.anchorMax = Vector2.one;
+                    textRt.offsetMin = new Vector2(8f, 0f);
+                    textRt.offsetMax = new Vector2(-8f, -6f);
+
+                    if (!progress.IsUnlocked(ordered, lessonId))
+                    {
+                        btn.interactable = false;
+                        btn.gameObject.AddComponent<CanvasGroup>().alpha = LockedAlpha;
+                    }
+
+                    var stars = progress.StarsFor(lessonId);
+                    if (stars > 0) AddStars(btn.transform, app.Assets, stars);
+
+                    _lessonButtons[lessonId] = btn;
                 }
-
-                var stars = progress.StarsFor(lessonId);
-                if (stars > 0) AddStars(btn.transform, app.Assets, stars);
-
-                _lessonButtons[lessonId] = btn;
             }
 
             ReviewButton = UiKit.CreateButton(transform, UiText.ReviewMistakes, app.ShowReview);
@@ -98,6 +130,29 @@ namespace TapDoc
             reviewRt.sizeDelta = new Vector2(360f, UiKit.MinTouch);
             reviewRt.anchoredPosition = new Vector2(0f, 20f);
             ReviewButton.interactable = progress.Mistakes().Count > 0;
+            Canvas.ForceUpdateCanvases();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+            Scroll.verticalNormalizedPosition = 1f;
+        }
+
+        /// <summary>Cuộn để thẻ bài nằm trọn trong vùng nhìn; bỏ qua mã bài không có.</summary>
+        internal void ScrollTo(string lessonId)
+        {
+            var button = ButtonFor(lessonId);
+            if (button == null) return;
+            Canvas.ForceUpdateCanvases();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(Scroll.content);
+            var corners = new Vector3[4];
+            ((RectTransform)button.transform).GetWorldCorners(corners);
+            var bottom = Scroll.viewport.InverseTransformPoint(corners[0]).y;
+            var top = Scroll.viewport.InverseTransformPoint(corners[1]).y;
+            var rect = Scroll.viewport.rect;
+            if (bottom >= rect.yMin && top <= rect.yMax) return;
+            var position = Scroll.content.anchoredPosition;
+            position.y += bottom < rect.yMin ? rect.yMin - bottom : rect.yMax - top;
+            position.y = Mathf.Clamp(position.y, 0f, Mathf.Max(0f, Scroll.content.rect.height - rect.height));
+            Scroll.StopMovement();
+            Scroll.content.anchoredPosition = position;
         }
 
         /// <summary>Nút ở góc trên (<paramref name="side"/> 0 là trái, 1 là phải), cao đúng <see cref="UiKit.MinTouch"/>.</summary>

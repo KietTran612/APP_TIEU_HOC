@@ -59,7 +59,8 @@ class IdsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             telex("“đu” a-b")
         with self.assertRaises(ValueError):
-            text_audio("đu-đu")
+            text_audio("đu/đu")
+        self.assertEqual(text_audio("ra-đi-ô")[0], text_audio("ra đi ô")[0])  # gạch nối tách âm tiết
         with self.assertRaises(ValueError):
             unit_audio("an1")
 

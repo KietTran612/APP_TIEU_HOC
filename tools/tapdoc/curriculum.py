@@ -67,7 +67,7 @@ def learned_until(cur: dict[int, tuple[str, str]], lesson_no: int) -> Learned:
 def is_learned_text(text: str, learned: Learned) -> bool:
     """True nếu mọi âm, vần, dấu trong `text` đều đã học (hoặc `text` là một chữ/vần đã học)."""
     text = nfc(text)
-    if text in learned.letters or text in learned.rimes:
+    if text.lower() in learned.letters or text.lower() in learned.rimes:  # chữ hoa đã học khi chữ thường đã học
         return True
     words = syllables(text)
     if not words:

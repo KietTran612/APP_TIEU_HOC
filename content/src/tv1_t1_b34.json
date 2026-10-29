@@ -1,0 +1,187 @@
+{
+  "lesson_id": "tv1_t1_b34",
+  "book": "tv1_t1_1990",
+  "lesson_no": 34,
+  "type": "am_moi",
+  "title": "tr",
+  "source": {
+    "pages": [
+      39
+    ],
+    "scan_file": "020",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "tr"
+  ],
+  "images": {
+    "img_b34_buij_tre": "Một bụi tre xanh rậm rạp, thân tre mọc thành khóm cao, ngọn uốn cong",
+    "img_b34_cas_tree": "Con cá trê thân dài trơn, có râu ở mép, đuôi cong lên"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "tr"
+    },
+    {
+      "type": "keyword",
+      "text": "bụi tre",
+      "image": "img_b34_buij_tre"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bụi tre",
+        "tre",
+        "tr"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "tre",
+      "then": "bụi tre"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "cá trê",
+          "image": "img_b34_cas_tree",
+          "spell": [
+            "trê"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "bé đi nhà trẻ, chớ đi trễ giờ."
+    },
+    {
+      "type": "reading",
+      "marker": "⌂",
+      "rows": [
+        [
+          "tra",
+          "tro",
+          "trô",
+          "trơ",
+          "tre",
+          "trê",
+          "tri",
+          "tru",
+          "trư"
+        ],
+        [
+          "trở về",
+          "lá tre",
+          "che chở",
+          "cha mẹ",
+          "tra ngô"
+        ]
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tr",
+          "options": [
+            "tr",
+            "th",
+            "t"
+          ]
+        },
+        {
+          "answer": "tre",
+          "options": [
+            "tre",
+            "the",
+            "te"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "trê",
+          "options": [
+            "trê",
+            "tê"
+          ]
+        },
+        {
+          "answer": "tro",
+          "options": [
+            "tro",
+            "to"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "trê",
+      "template": "tr_",
+      "answer": "ê",
+      "options": [
+        "ê",
+        "e",
+        "ơ"
+      ],
+      "image": "img_b34_cas_tree"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "bụi tre",
+          "answer": "img_b34_buij_tre",
+          "options": [
+            "img_b34_buij_tre",
+            "img_b34_cas_tree"
+          ]
+        },
+        {
+          "word": "cá trê",
+          "answer": "img_b34_cas_tree",
+          "options": [
+            "img_b34_cas_tree",
+            "img_b34_buij_tre"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "trễ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "trở",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}
