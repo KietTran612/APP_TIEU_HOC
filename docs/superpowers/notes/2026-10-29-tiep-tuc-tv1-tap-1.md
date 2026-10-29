@@ -51,7 +51,7 @@ Lúc 17:42 ngày 29/10, chủ dự án tự push `main` lên GitHub tới `d5d84
 - không gộp commit theo đợt nữa, không ghi đè lịch sử trên GitHub (không force push);
 - mỗi việc một commit rõ ràng; push bình thường khi chủ dự án phát hành hoặc yêu cầu.
 
-Các commit sau `d5d8488` mới chỉ có ở máy: `git log origin/main..main`.
+Chủ dự án push tiếp lúc 18:05 tới `a277098`. Xem phần chưa push bằng `git log origin/main..main`.
 
 ## 5. Việc của chủ dự án (làm lúc nào cũng được)
 
