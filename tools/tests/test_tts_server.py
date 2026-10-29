@@ -299,6 +299,27 @@ class TtsServerTest(unittest.TestCase):
         self.assertEqual(self.row()["ghi_chu"], "giữ bản này")
         self.assertFalse(self.row()["has_prev"])
 
+    def test_lesson_scan_is_cached_until_a_lesson_changes(self):
+        import os
+        from unittest import mock
+        from tapdoc import review_server
+        with mock.patch.object(review_server, "shown_in_app", wraps=review_server.shown_in_app) as scan:
+            self.tts_rows()
+            self.tts_rows()
+            self.assertEqual(scan.call_count, 1)
+            lesson = self.lessons / "b01.json"
+            lesson.write_text(json.dumps({**self.lesson, "title": "Bài một (sửa)"}), encoding="utf-8")
+            stat = lesson.stat()
+            os.utime(lesson, ns=(stat.st_atime_ns, stat.st_mtime_ns + 1_000_000_000))
+            self.tts_rows()
+            self.assertEqual(scan.call_count, 2)
+
+    def test_second_server_on_same_port_is_refused(self):
+        # Windows cho hai máy chủ cùng nghe một cổng nếu bật SO_REUSEADDR: yêu cầu sẽ chia lung tung.
+        port = self.server.server_address[1]
+        with self.assertRaises(OSError):
+            make_server(port, self.manifests, self.res).server_close()
+
     def test_rows_show_text_displayed_in_app(self):
         # Cột "Hiển thị": chữ bé nhìn thấy khi mã được đọc, ưu tiên phần học chính, rồi tới câu hỏi luyện tập.
         lesson = dict(lesson_id="b01", title="Bài một",

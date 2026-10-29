@@ -213,6 +213,16 @@ class BatchTest(TempCase):
         self.assertEqual(run_batch(rows, self.s, engine, self.audio, self.prev,
                                    include_approved=True).done, ["am_b"])
 
+    def test_include_approved_still_skips_up_to_date_rows(self):
+        # "Gồm mã đã duyệt" thêm mã đã duyệt mà khác thông số, không tạo lại mã đã khớp cấu hình.
+        fresh = generate_one(row("am_c", "cờ"), self.s, FakeEngine(), self.audio, self.prev)
+        approved_fresh = {**fresh, "id": "am_d", "file": "audio/am_d.mp3", "status": "dat"}  # cùng chữ, cùng chữ ký
+        approved_stale = row("am_dd", "đờ", status="dat")
+        rows = [fresh, approved_fresh, approved_stale]
+        report = run_batch(rows, self.s, FakeEngine(), self.audio, self.prev, include_approved=True)
+        self.assertEqual(report.done, ["am_dd"])
+        self.assertEqual(report.skipped, 2)
+
     def test_filters_lesson_kind(self):
         rows = [self.r, row("cau_x", "bé đi", "cau"), row("am_c", "cờ")]
         rows[2]["bai"] = ["tv1_t1_b02"]
@@ -332,3 +342,20 @@ class EdgeEngineTest(unittest.TestCase):
             with self.assertRaises(TtsError):
                 EdgeEngine().synthesize(effective_params(settings(), row()))
         self.assertEqual(factory.call_count, 4)
+
+
+class EdgeEngineNoRetryTest(unittest.TestCase):
+    def test_bad_parameters_fail_at_once_without_waiting(self):
+        # Sai tên giọng hay thông số thì thử lại cũng hỏng y như cũ: báo ngay, không chờ 1+2+4 giây.
+        factory = mock.Mock(side_effect=ValueError("Invalid voice 'vi-VN-Sai'"))
+        with mock.patch.dict("sys.modules", {"edge_tts": mock.Mock(Communicate=factory)}), \
+                mock.patch("tapdoc.tts_engine.asyncio.sleep", new_callable=mock.AsyncMock) as wait:
+            with self.assertRaises(TtsError) as ctx:
+                EdgeEngine().synthesize(effective_params(settings(), row()))
+        self.assertEqual(factory.call_count, 1)
+        wait.assert_not_called()
+        self.assertIn("Invalid voice", str(ctx.exception))
+
+
+if __name__ == "__main__":
+    unittest.main()

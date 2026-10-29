@@ -89,6 +89,19 @@ def save_rows(path, rows: list[dict]) -> None:
         raise
 
 
+def keep_concurrent_tts(rows: list[dict], read_rows: list[dict], live_rows: list[dict]) -> list[dict]:
+    """Dòng mà lệnh tts hay trang duyệt ghi xen vào lúc đang tính (khác bản đã đọc) giữ kết quả tạo âm thanh mới."""
+    before = {row["id"]: row.get("tts") for row in read_rows}
+    live = {row["id"]: row for row in live_rows}
+    kept = []
+    for row in rows:
+        now = live.get(row["id"])
+        if now is not None and now.get("tts") != before.get(row["id"]):
+            row = {**row, **{key: now[key] for key in ("tts", "source", "status") if key in now}}
+        kept.append(row)
+    return kept
+
+
 def _same_text_key(text: str) -> str:
     """Khóa so sánh lời đọc: chữ thường, NFC, bỏ mọi ký tự không phải chữ hay khoảng trắng."""
     kept = "".join(ch if ch.isalpha() else " " if ch.isspace() else "" for ch in nfc(nfc(text).lower()))

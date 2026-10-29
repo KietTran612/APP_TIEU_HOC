@@ -8,7 +8,7 @@ from pathlib import Path
 from .importer import _ID_RE, _looks_like_mp3, _without_changed_note, _write_atomic
 from .mp3trim import trim_mp3
 from .tts_engine import TtsError, TtsUnavailable
-from .tts_settings import VOICES, effective_params, needs_regen, set_override, signature
+from .tts_settings import VOICES, differs_from_settings, effective_params, set_override, signature
 
 
 @dataclass
@@ -104,11 +104,12 @@ def approve(row, prev_dir) -> dict:
 
 
 def selected(row, settings, *, lesson=None, kind=None, ids=None, include_approved=False):
-    """Cùng một phép chọn cho chế độ thử và tạo thật."""
+    """Cùng một phép chọn cho chế độ thử và tạo thật: chỉ mã khác cấu hình; mã đã duyệt chỉ khi include_approved."""
     return ((lesson is None or lesson in row.get("bai", []))
             and (kind is None or row.get("kind") == kind)
             and (ids is None or row["id"] in ids)
-            and (include_approved or needs_regen(settings, row)))
+            and differs_from_settings(settings, row)
+            and (include_approved or row.get("status") != "dat"))
 
 
 def run_batch(rows, settings, engine, audio_dir, prev_dir, *, lesson=None, kind=None,

@@ -69,6 +69,10 @@ namespace TapDoc
                 }
             }
 
+            // Trang toàn ô trống không có gì để chạm: không được chặn việc báo xong.
+            for (var p = 0; p < PageCount; p++)
+                if (_cells.All(c => c.page != p)) _progress.Tap(p);
+
             if (PageCount > 1)
                 _pager = new PageButtons(Root.transform, () => ShowPage(Page - 1), () => ShowPage(Page + 1), ButtonX, ButtonW);
             ShowPage(0);

@@ -174,6 +174,33 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator RimeGrid_PageWithoutCellsDoesNotBlockDone()
+        {
+            // Trang 2 chỉ có hàng "ư" toàn ô trống: không có gì để chạm nên không được chặn việc báo xong.
+            var step = new Step { type = "rime_grid" };
+            step.items.Add(new Item { role = "final", col = 0, text = "n" });
+            var vowels = new[] { "a", "ă", "â", "ư" };
+            for (var r = 0; r < vowels.Length; r++) step.items.Add(new Item { role = "vowel", row = r, text = vowels[r] });
+            var an = new Item { role = "cell", row = 0, col = 0, text = "an" };
+            an.spells.Add(new Spell
+            {
+                target = "an",
+                parts = new List<Part>
+                {
+                    new() { kind = "vowel", text = "a", audio = "van_a" },
+                    new() { kind = "final", text = "n", audio = "am_n" },
+                    new() { kind = "join", text = "an", audio = "van_an" }
+                }
+            });
+            step.items.Add(an);
+            var v = (RimeGridView)CreateTrackedStep(step);
+            Assert.AreEqual(2, v.PageCount);
+            TileWithText(v, "an").SimulateTap();
+            yield return new WaitForSeconds(.4f);
+            Assert.IsTrue(Done(v));
+        }
+
+        [UnityTest]
         public IEnumerator RimeGrid_ShowsOnlyCurrentPage()
         {
             var v = (RimeGridView)CreateTrackedStep(Grid());

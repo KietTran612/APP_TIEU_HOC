@@ -6,11 +6,13 @@ title Công cụ duyệt âm thanh và tranh - Tập đọc
 cd /d "%~dp0tools"
 
 set "PY="
-where python >nul 2>nul && set "PY=python"
-if not defined PY where py >nul 2>nul && set "PY=py -3"
+rem Chạy thử chứ không chỉ "where": "python" giả của Microsoft Store có trong PATH nhưng không chạy được.
+rem "call" để python dạng .bat/.cmd (vd. pyenv-win) không làm dừng file này.
+call python -c "import sys" >nul 2>nul && set "PY=python"
+if not defined PY call py -3 -c "import sys" >nul 2>nul && set "PY=py -3"
 if not defined PY goto khong_co_python
 
-%PY% -m tapdoc mo
+call %PY% -m tapdoc mo
 if errorlevel 1 pause
 exit /b
 

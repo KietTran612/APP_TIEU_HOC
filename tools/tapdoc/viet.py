@@ -34,8 +34,8 @@ _VOWELS = frozenset("aăâeêioôơuưy")
 # Chữ cái tiếng Việt (không có f, j, w, z); ký tự khác trong một âm tiết là không hợp lệ.
 _LETTERS = frozenset("abcdeghiklmnopqrstuvxyăâđêôơư")
 
-# Gạch nối (ra-đi-ô) cũng tách âm tiết; bỏ cả ngoặc kép cong và gạch đầu dòng lời thoại.
-_TOKEN_RE = re.compile(r'[^\s,.?!;:*"“”–-]+')
+# Gạch nối (ra-đi-ô) cũng tách âm tiết; bỏ cả ngoặc kép/đơn cong, gạch lời thoại (– —) và dấu ba chấm liền (…).
+_TOKEN_RE = re.compile(r'[^\s,.?!;:*"“”‘’…–—-]+')
 
 
 @dataclass(frozen=True)
@@ -87,7 +87,7 @@ def split_syllable(s: str) -> Syllable:
 
 
 def tokens(text: str) -> list[tuple[str, int]]:
-    """Các âm tiết kèm vị trí bắt đầu (tính theo ký tự NFC); bỏ dấu câu `,.?!;:*"“”`, gạch nối và gạch thoại."""
+    """Các âm tiết kèm vị trí bắt đầu (tính theo ký tự NFC); bỏ dấu câu `,.?!;:*"“”‘’…`, gạch nối và gạch thoại."""
     return [(m.group(), m.start()) for m in _TOKEN_RE.finditer(nfc(text))]
 
 

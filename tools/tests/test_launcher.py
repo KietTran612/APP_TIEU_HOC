@@ -1,7 +1,9 @@
 import _thread
 import contextlib
 import io
+import os
 import socket
+import subprocess
 import sys
 import tempfile
 import threading
@@ -14,6 +16,7 @@ from unittest import mock
 from tapdoc import __main__ as cli
 from tapdoc.launcher import REQUIREMENTS, ensure_edge_tts, tool_running
 from tapdoc.manifest import save_rows
+from tapdoc.paths import ROOT
 from tapdoc.review_server import make_server
 
 
@@ -111,6 +114,26 @@ class LauncherTest(unittest.TestCase):
             self.assertEqual(cli.main(["mo", "--port", str(port)]), 0)
         ensure.assert_called_once()
         self.assertEqual(opened, [(f"http://127.0.0.1:{port}/", 200)])
+
+    @unittest.skipUnless(sys.platform == "win32", "file .cmd chỉ chạy trên Windows")
+    def test_cmd_falls_back_to_py_when_python_is_the_store_stub(self):
+        # Máy chỉ có "python" giả của Microsoft Store (báo không tìm thấy, mã 9009) nhưng có py launcher.
+        bin_dir = self.root / "bin"
+        bin_dir.mkdir()
+        (bin_dir / "python.cmd").write_text("@echo off\r\necho Python was not found\r\nexit /b 9009\r\n", encoding="ascii")
+        (bin_dir / "py.cmd").write_text('@echo off\r\necho %*>>"%~dp0calls.txt"\r\nexit /b 0\r\n', encoding="ascii")
+        system32 = os.path.join(os.environ.get("SystemRoot", r"C:\Windows"), "System32")
+        env = {**os.environ, "PATH": f"{bin_dir};{system32}"}
+        subprocess.run(["cmd", "/c", str(ROOT / "MoCongCuDuyet.cmd")], env=env, stdin=subprocess.DEVNULL,
+                       capture_output=True, timeout=30)
+        calls = (bin_dir / "calls.txt").read_text(encoding="ascii") if (bin_dir / "calls.txt").exists() else ""
+        self.assertIn("-3 -m tapdoc mo", calls)
+
+    def test_review_on_busy_port_says_so(self):
+        port = _serve(self, make_server(0, self.manifests, self.res))
+        with mock.patch.object(cli, "MANIFESTS", self.manifests), mock.patch.object(cli, "UNITY_RES", self.res):
+            self.assertEqual(cli.main(["review", "--port", str(port)]), 1)
+        self.assertIn(f"Cổng {port} đang bận", self.out.getvalue())
 
     def test_open_moves_to_free_port_when_other_program_holds_it(self):
         opened = []

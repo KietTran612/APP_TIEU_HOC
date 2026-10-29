@@ -9,7 +9,8 @@ from .build import BuildError, build_all
 from .chatgpt_requests import write_request_files
 from .importer import import_audio_zip, import_image
 from .launcher import ensure_edge_tts, tool_running
-from .manifest import ManifestError, load_rows, save_rows, update_audio_manifest, update_image_manifest
+from .manifest import (ManifestError, keep_concurrent_tts, load_rows, save_rows, update_audio_manifest,
+                       update_image_manifest)
 from .paths import CONTENT_SRC, MANIFESTS, REQUESTS_DIR, ROOT, STYLE_FILE, UNITY_RES
 from .review_server import make_server
 from .validate import release_warnings, validate_all
@@ -46,8 +47,11 @@ def _cmd_build(args: argparse.Namespace) -> int:
     audio_path = MANIFESTS / "audio_manifest.json"
     image_path = MANIFESTS / "image_manifest.json"
     try:
-        audio_rows = update_audio_manifest(results, load_rows(audio_path), UNITY_RES / "audio")
+        read_rows = load_rows(audio_path)
+        audio_rows = update_audio_manifest(results, read_rows, UNITY_RES / "audio")
         image_rows = update_image_manifest(results, load_rows(image_path), UNITY_RES / "images")
+        # Lệnh tts có thể đang chạy song song: đọc lại ngay trước khi ghi để không xoá kết quả vừa tạo.
+        audio_rows = keep_concurrent_tts(audio_rows, read_rows, load_rows(audio_path))
     except ManifestError as e:
         print(f"Lỗi danh mục: {e}", file=sys.stderr)
         return 1
@@ -172,7 +176,11 @@ def _serve(server) -> int:
 
 
 def _cmd_review(args: argparse.Namespace) -> int:
-    server = _review_server(args.port, getattr(args, "engine_factory", None))
+    try:
+        server = _review_server(args.port, getattr(args, "engine_factory", None))
+    except OSError as e:
+        print(f"Cổng {args.port} đang bận (có thể công cụ duyệt đã mở sẵn): {e}")
+        return 1
     print(f"Mở http://127.0.0.1:{server.server_address[1]}/")  # cổng thật, kể cả khi --port 0
     return _serve(server)
 

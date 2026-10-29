@@ -51,6 +51,9 @@ class EdgeEngine:
                     raise TtsError("Dịch vụ không trả âm thanh")
                 return SynthResult(bytes(audio), min(starts) if starts else None,
                                    max(ends) if ends else None)
+            except (ValueError, TypeError) as e:
+                # Sai giọng hay thông số: thử lại cũng hỏng y như cũ.
+                raise TtsError(f"Thông số đọc không hợp lệ: {e}") from e
             except Exception as e:
                 if attempt == 3:
                     raise TtsError(f"Không tạo được âm thanh sau 4 lần thử: {e}") from e

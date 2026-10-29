@@ -4,6 +4,7 @@ import collections
 import copy
 import json
 import re
+import sys
 import threading
 from dataclasses import asdict
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -60,6 +61,9 @@ def shown_in_app(lessons_dir) -> dict[str, list[str]]:
 
 
 class _ReviewHTTPServer(ThreadingHTTPServer):
+    # Trên Windows SO_REUSEADDR cho máy chủ thứ hai cùng nghe cổng đang dùng mà không báo lỗi.
+    allow_reuse_address = sys.platform != "win32"
+
     def __init__(self, server_address: tuple[str, int], manifests_dir: Path, res_dir: Path,
                  *, settings_path=None, prev_dir=None, lessons_dir=None, notes_path=None,
                  engine_factory=None):
@@ -76,6 +80,15 @@ class _ReviewHTTPServer(ThreadingHTTPServer):
         self.engine_factory = engine_factory or EdgeEngine
         self.job = dict(running=False, total=0, done=0, current=None, failed={})
         self.batch_thread = None
+        self._shown = (None, {})
+
+    def shown(self):
+        """Chữ hiển thị trong app theo mã; chỉ quét lại bài khi có file bài đổi (thời điểm sửa, kích thước)."""
+        key = tuple((p.name, st.st_mtime_ns, st.st_size)
+                    for p in sorted(self.lessons_dir.glob("*.json")) for st in (p.stat(),))
+        if key != self._shown[0]:
+            self._shown = (key, shown_in_app(self.lessons_dir))
+        return self._shown[1]
 
     def audio_rows(self):
         return load_rows(self.manifests_dir / "audio_manifest.json")
@@ -342,7 +355,7 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
             return copy.deepcopy(server.job)
         if path == "/api/tts":
             settings = load_settings(server.settings_path)
-            shown = shown_in_app(server.lessons_dir)
+            shown = server.shown()
             return dict(voice=settings["voice"], defaults=settings["defaults"],
                         voices=[dict(id=voice, label=label) for voice, label in VOICES.items()],
                         rows=[{**server.describe(row, settings), "hien_thi": shown.get(row["id"], [])}

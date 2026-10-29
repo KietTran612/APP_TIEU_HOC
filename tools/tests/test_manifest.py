@@ -483,6 +483,28 @@ class BuildCliManifestTest(TempDirCase):
         for status in ("cho_duyet", "dat", "khong_dat"):
             self.assertIn(f"{status} 0", out)
 
+    def test_build_keeps_audio_generated_while_it_ran(self):
+        # Lệnh tts ghi một dòng vào danh mục trong lúc build đang tính: build không được ghi đè mất kết quả đó.
+        touch(self.res / "audio", "am_dd")
+        path = self.manifests / "audio_manifest.json"
+        save_rows(path, [{"id": "am_dd", "text": "đờ", "status": "cho_duyet", "source": "chatgpt_tam", "ghi_chu": ""}])
+        generated = {"doc": "đờ", "sig": "moi", "voice": "vi-VN-HoaiMyNeural"}
+        real_update = cli.update_audio_manifest
+
+        def update_then_tts_writes(results, old_rows, audio_dir):
+            rows = real_update(results, old_rows, audio_dir)
+            live = load_rows(path)
+            live[0].update(tts=generated, source="tts_edge_hoaimy", status="cho_duyet")
+            save_rows(path, live)
+            return rows
+        with mock.patch.object(cli, "update_audio_manifest", update_then_tts_writes):
+            code, out, err = self.run_cli(["build"])
+        self.assertEqual(code, 0, err)
+        by = {r["id"]: r for r in load_rows(path)}
+        self.assertEqual(by["am_dd"]["tts"], generated)
+        self.assertEqual(by["am_dd"]["source"], "tts_edge_hoaimy")
+        self.assertTrue(any(r["id"] == "tieng_cuwr" for r in by.values()))
+
     def test_build_reads_old_status_and_the_audio_and_image_folders(self):
         touch(self.res / "audio", "am_dd", "tieng_cuwr")
         touch(self.res / "images", "img_b13_cais_ddu", ext="png")
