@@ -1,0 +1,74 @@
+# Ghi chú tiếp tục — TV1 Tập 1 (cập nhật 29/10/2026, tối)
+
+Đọc file này trước khi làm tiếp. Kế hoạch gốc: [2026-10-29-hoan-thanh-tv1-tap-1.md](../plans/2026-10-29-hoan-thanh-tv1-tap-1.md); giọng đọc: mục 17 của [bản thiết kế](../specs/2026-10-28-app-tap-doc-mvp-design.md).
+
+## 1. Đang ở đâu
+
+| Phần | Trạng thái |
+|---|---|
+| Đợt 1 (bài 1–41) | Đã phát hành: `fc4510c` |
+| Đợt 2 (bài 42–64) | Xong nội dung, 154 tranh, giọng HoaiMy cho 1.317 mã, công cụ duyệt. **Chờ chủ dự án thử app rồi nói "phát hành"** |
+| Đợt 3 (bài 65–80) | Xong code, nội dung 16 bài, 585 âm thanh, **39/45 tranh**. Còn 6 tranh (mục 2) |
+| Review code | 8 lỗi đã sửa ở `cc172f6` (test viết trước, đỏ rồi xanh) |
+| Test | Python 631 đạt. Unity: chạy riêng các màn mới đạt (31/31); **chưa chạy trọn 80 bài** |
+
+Âm thanh và tranh đều ở trạng thái `cho_duyet` (tạo theo mặc định, chủ dự án duyệt sau).
+
+## 2. Việc khi ChatGPT mở lại lượt tạo ảnh (sau 14:30 ngày 30/10/2026)
+
+Ngày 29/10 gói Plus báo hết lượt tạo ảnh sau 39 tranh. Còn 6 tranh `chua_co`:
+
+| Mã | Vẽ |
+|---|---|
+| `img_b75_saams_chowps` | Đám mây đen có tia chớp sáng loé, mưa gió làm cành cây nghiêng |
+| `img_b77_nhipj_caauf` | Cây cầu sắt nhiều nhịp vòm bắc qua sông |
+| `img_b78_xe_qua_caauf` | Xe cộ đi qua cầu: xe buýt, xe tải, xe máy, xe đạp, người gánh hàng |
+| `img_b80_con_lownj` | Con lợn mũm mĩm, má to, mắt híp, nằm thở trên ổ rơm |
+| `img_b80_con_meof` | Con mèo mướp ngồi liếm chân |
+| `img_b80_con_gaf` | Con gà trống mào đỏ đứng gáy |
+
+Lời yêu cầu đầy đủ nằm trong `content/requests/images_tv1_t1_b75.md`, `…b77.md`, `…b78.md`, `…b80.md` (tạo lại bằng `cd tools && python -m tapdoc requests` nếu đã bị xoá).
+
+Các bước:
+1. Dùng **Edge trên máy này** (Claude in Chrome, thiết bị `407cb8a9-…`, kiểm tra trình duyệt là "Microsoft Edge"), dự án ChatGPT **Kiet_1**. Có thể gửi tiếp trong 3 cuộc trò chuyện cũ ("Tạo tranh minh họa", "Tạo tranh tắc kè", "Tạo tranh củ lạc") để giữ cùng phong cách.
+2. Kịch bản dán/thu/tải: `.superpowers/scripts/chatgpt_tranh.js` (đọc chú thích đầu file: `RUN()`, `HARVEST()`, `DOWNLOAD()`).
+   - Bài học 29/10: phải chờ nút Gửi xuất hiện rồi mới bấm; không xoá khung soạn khi nó đang trống; trang chỉ dựng phần đang thấy nên phải cuộn lên đầu khi thu tranh.
+3. Chủ dự án đã đồng ý tải lô 45 tranh này (29/10). Tải về Downloads, chuyển vào thư mục tạm riêng.
+4. Soát bằng bảng xem nhanh: `.superpowers/scripts/sheet.ps1` (đúng mã, đúng nội dung, không chữ, không khung).
+5. Nhập: `cd tools && python -m tapdoc import-image <file.png> <mã>` cho từng tranh, rồi `python -m tapdoc validate` phải ra `OK` (không còn `--allow-missing`).
+
+## 3. Sau khi đủ 45 tranh
+
+1. Chạy trọn Unity: `python tools/run_unity_tests.py editmode` và `python tools/run_unity_tests.py playmode` (MvpEndToEndTests đi hết 80 bài ở 2 khung hình, bố cục, bảng nhóm vần bài 79, câu đố bài 80).
+2. Commit các file `.meta` Unity tạo cho tranh mới.
+3. Điền số liệu test vào mục 15 của bản thiết kế (phần "Đợt 2" đã viết sẵn, **chưa commit**, dòng Unity để trống); viết phần "Đợt 3" và nghiệm thu cả quyển (mục 15, 16).
+4. Review cả kế hoạch bằng một người review mới (1 subagent), sửa phát hiện quan trọng (test trước).
+5. Dọn worktree Codex/Antigravity còn lại (`node ~/.claude/delegate/bin/delegate.mjs status`).
+
+## 4. Phát hành — CẦN CHỦ DỰ ÁN QUYẾT
+
+**Đã xảy ra:** lúc 17:42 ngày 29/10, chủ dự án tự push `main` lên GitHub tới `d5d8488` (22 commit chưa gộp, gồm Đợt 2 và một phần Đợt 3). Các commit sau đó (`cc172f6`, `4561f19`, `a277098`, ghi chú này) mới chỉ có ở máy.
+
+Quy tắc cũ là "mỗi đợt gộp 1 commit đặt lên bản phát hành trước, rồi push thường". Vì GitHub đã có các commit lẻ, có 2 cách:
+- **Giữ nguyên lịch sử trên GitHub**, từ giờ push thường, không gộp nữa (không cần ghi đè).
+- **Gộp lại** Đợt 2 và Đợt 3 thành 2 commit rồi **ghi đè lịch sử trên GitHub** (force push). Chỉ làm khi chủ dự án đồng ý rõ.
+
+Nếu gộp, cách sắp xếp (đặt lên `fc4510c`, dùng cherry-pick, không tạo nhánh):
+- Đợt 2: `003e17f` … `efeeb97` (17 commit), `2c68729`, `4561f19`.
+- Đợt 3: `f1bf8e6`, `9dc08aa`, `27a915a`, `d5d8488`, `cc172f6`, `a277098` và các commit sau.
+  - `cc172f6` sửa cả công cụ (Đợt 2) lẫn màn bảng nhóm vần (Đợt 3) nên đặt vào Đợt 3.
+
+## 5. Việc của chủ dự án (làm lúc nào cũng được)
+
+- Duyệt âm thanh: bấm đúp `MoCongCuDuyet.cmd`, nghe từng mã (1.902 mã `cho_duyet`), sửa cách đọc rồi **Tạo lại** mới nghe được bản mới.
+- Duyệt tranh: 193 tranh `cho_duyet` (thêm 6 khi vẽ xong). Lưu ý: `img_b72_muwts_teets` (gói mứt Tết) trông giống cái kẹo.
+- Xem các mục "cần duyệt" trong từng bài (`review.can_duyet`), nhất là tranh vẽ thay người thật (bài 68, 76).
+- Thử app bài 42–64 (và 65–80 khi đủ tranh), rồi báo "phát hành".
+
+## 6. Quy tắc làm việc đã thống nhất
+
+- Chỉ branch `main`; không build bản thử, chỉ commit.
+- Claude viết và review mọi test; Codex/Antigravity chỉ viết code cho test của Claude chạy xanh. Review kỹ, tránh code rác và hard-code.
+- Trình duyệt: chỉ Edge trên máy này. Hỏi trước khi tải file (một lần cho mỗi lô).
+- Âm thanh tạo theo mặc định (HoaiMy nữ); chủ dự án duyệt sau.
+- Trả lời bằng tiếng Việt.
