@@ -486,3 +486,94 @@ Không đưa vào app: tranh mở đầu, trang kí hiệu, phụ lục bảng c
 **Danh sách bài.** Chia hai phần "Chữ cái và âm" và "Vần" (kèm 2 bài ôn tập cuối kì), cuộn dọc. Mọi thẻ vẫn giữ cạnh ≥ 160.
 
 **Âm thanh.** Tiếp tục giọng tạm vi-sgn+f3 cho cả quyển. Sau này thay giọng tốt hơn theo mã, không phải sửa code (mục 2, mục tiêu 4).
+
+## 17. Giọng đọc mới bằng edge-tts và công cụ chỉnh âm thanh [Đề xuất 29/10/2026, chờ chủ dự án duyệt bản viết]
+
+**Vì sao.** Chủ dự án nghe các file tạm (ChatGPT, bộ đọc eSpeak vi-sgn+f3) và thấy không file nào dùng được:
+- đọc quá nhanh, khó nghe;
+- chữ cái và vần quá ngắn, không nghe ra;
+- chưa chắc cách đọc từng mảnh đã đúng.
+
+Bản nghe thử ngày 29/10 dùng gói Python `edge-tts` (giọng `vi-VN-HoaiMyNeural`, nữ, giọng Bắc). Chủ dự án thấy "ok hơn rất nhiều", nhưng cần một công cụ để tự nghe và chỉnh từng từ.
+
+**Mục tiêu**
+1. Thay toàn bộ âm thanh (1.317 mã tới bài 64, sau đó cả quyển) bằng file do `edge-tts` tạo.
+   - **Tên file và mã giữ nguyên** như mục 7.4 (`am_b.mp3`, `tu_nhaf_sanf.mp3`…). Công cụ chỉ ghi đè nội dung file. Code, bài học và danh mục không đổi.
+   - File mp3 đóng gói vào app như hiện nay. **App không cần mạng và không gọi bộ đọc khi chạy**; bản build vẫn phát âm đủ.
+2. **Công cụ chỉnh âm thanh**, chạy trên máy cùng lệnh `python -m tapdoc review`:
+   - **Lọc:** theo bài, theo loại (mục 7.1), theo trạng thái (`chua_co`, `cho_duyet`, `dat`, `khong_dat`) và theo "đã chỉnh tay".
+   - **Mỗi dòng là một mã:**
+     - chữ hiển thị trong app;
+     - **cách đọc**: chữ đưa cho bộ đọc, mặc định bằng `text`, sửa tay được;
+     - tốc độ, cao độ, âm lượng;
+     - nút **Tạo lại**, **Nghe**, **Nghe bản trước**, **Đạt** / **Không đạt**, ô ghi chú.
+   - **Tạo lại** gọi `edge-tts` ngay trên máy và ghi đè đúng file mà app dùng. Nghe trong công cụ thế nào thì app phát y như vậy.
+   - Bản trước được giữ lại để nghe so sánh, đến khi chủ dự án bấm Đạt. Bản trước lưu ở thư mục không đưa vào git và không vào bản build.
+   - **Nghe theo bài:** mở một bài, nghe từng chuỗi đánh vần và câu đúng như bé nghe trong app (cùng khoảng nghỉ giữa các mảnh). Bấm vào một mảnh thì nhảy tới dòng của mảnh đó.
+3. **File cấu hình giọng đọc** nằm trong dự án và có trong git:
+   - giọng;
+   - thông số mặc định theo loại;
+   - các mã đã chỉnh tay (chỉ lưu những gì khác mặc định).
+4. **Lệnh tạo hàng loạt**, ví dụ `python -m tapdoc tts`:
+   - tạo file cho các mã còn thiếu, hoặc mã có cách đọc/thông số đã đổi kể từ lần tạo trước;
+   - lọc được theo bài hoặc theo loại;
+   - không tạo lại file đã `dat` trừ khi chủ dự án yêu cầu rõ.
+
+   Sau khi tạo, mã về trạng thái `cho_duyet` và `source` ghi `tts_edge_hoaimy`.
+
+**Mặc định ban đầu [Claude chọn; chỉnh được trong công cụ]**
+
+| Loại | Tốc độ |
+|---|---|
+| `am`, `van`, `dau` | −30% |
+| `tieng` | −25% |
+| `tu`, `cau`, `huong_dan`, `khen` | −15% |
+
+- Cao độ và âm lượng giữ nguyên.
+- Khoảng nghỉ giữa các mảnh đánh vần trong app vẫn là 0,5 giây (`SequenceTimeline.DefaultGap`). Nếu chủ dự án muốn đổi thì đổi ở đó, không tạo lại file.
+
+**Cách đọc và cách đánh vần**
+- "Cách đọc" chỉ đổi lời đọc của **một mã** (ví dụ viết lại "cu" cho bộ đọc đọc rõ hơn). Nó không đổi chữ hiển thị, không đổi mã, không đổi cấu trúc chuỗi đánh vần.
+- Nếu một chuỗi đánh vần sai (thiếu hay thừa mảnh, sai quy tắc tr.122), chủ dự án ghi chú trong công cụ. Claude sửa quy tắc trong bộ công cụ, rồi dựng lại bài.
+
+**Không làm lúc này**
+- giọng miền Nam;
+- giọng người thật;
+- bộ đọc chạy trong app;
+- sửa quy tắc đánh vần ngay trong công cụ;
+- đổi tên file.
+
+**Ràng buộc**
+- Phần dựng bài và kiểm tra vẫn chỉ dùng thư viện chuẩn của Python. `edge-tts` là phụ thuộc riêng của phần tạo âm thanh, cài theo một file yêu cầu riêng. Thiếu gói thì lệnh báo rõ cách cài.
+- Tạo âm thanh cần mạng (dịch vụ đọc của Microsoft). Lỗi mạng, hoặc dịch vụ trả về rỗng (đã gặp với chữ "cu"), thì thử lại vài lần rồi báo đúng mã bị lỗi; không ghi đè file cũ bằng file hỏng.
+- Test không gọi mạng: phần gọi bộ đọc thay được bằng bộ đọc giả trong test.
+
+**Rủi ro cần chủ dự án biết**
+- `edge-tts` dùng dịch vụ đọc của trình duyệt Edge một cách **không chính thức**, có thể ngừng hoạt động bất cứ lúc nào.
+- Quyền dùng file tạo ra trong một app phát hành công khai chưa rõ. Trước khi phát hành, nên chuyển sang dịch vụ chính thức của Microsoft (Azure, cùng giọng HoaiMy, có phí, điều khoản rõ) hoặc một nhà cung cấp khác.
+- Thiết kế giữ phần "bộ đọc" thay được, để việc chuyển chỉ là đổi cấu hình rồi tạo lại.
+
+**Builder tự quyết**
+- định dạng file cấu hình;
+- giao diện cụ thể của công cụ;
+- cách lưu bản trước;
+- cách nhận biết "thông số đã đổi" (ví dụ băm cách đọc và thông số).
+
+**Quyết định thêm sau khi soát bản viết [Claude chọn; chủ dự án đổi được]**
+1. **Mặc định theo loại sửa được ngay trong công cụ.**
+   - Đổi một mặc định thì các mã chưa `dat` theo mặc định đó được đánh dấu "cần tạo lại". Công cụ có nút tạo lại hàng loạt, có thanh tiến độ; lệnh `tts` cũng làm được việc này.
+   - Mã đã `dat` **giữ nguyên file và giữ nguyên thông số lúc được duyệt.** Công cụ chỉ báo "khác mặc định mới", không tự tạo lại.
+   - Vì vậy file cấu hình lưu, cho mỗi mã đã tạo: cách đọc, các thông số thực dùng và dấu nhận dạng của lần tạo.
+2. **Bản trước** là bản ngay trước lần Tạo lại gần nhất, chỉ giữ một bản.
+   - Có nút **Dùng lại bản trước**: trả lại cả file lẫn cách đọc và thông số của bản đó, để cấu hình luôn khớp với file.
+   - Bấm Đạt thì xoá bản trước.
+3. **Khoảng lặng hai đầu file:** cắt về một mức đều, khoảng 0,1 giây mỗi đầu.
+   - Mục đích: khoảng nghỉ giữa các mảnh trong app chỉ còn do `SequenceTimeline.DefaultGap` quyết định, và chữ sáng lên đúng lúc có tiếng.
+   - Dùng mốc thời gian do `edge-tts` trả về và cắt theo khung mp3, không thêm thư viện xử lý âm thanh.
+   - Nếu cắt không được thì giữ nguyên file và ghi chú lại.
+4. **Ghi chú cho cả một chuỗi đánh vần**, ở chế độ "Nghe theo bài", lưu riêng cho từng bài và từng bước.
+   - Mỗi ghi chú gồm bài, vị trí bước và chữ của chuỗi, để vẫn tìm lại được sau khi dựng lại bài.
+   - Claude đọc các ghi chú này để sửa quy tắc đánh vần.
+5. **Chỉ có edge-tts.** Phần bộ đọc làm thành một chỗ thay được, chưa làm Azure (chủ dự án chọn "dùng free trước").
+   - `validate --release` chỉ **cảnh báo** khi file có nguồn `tts_edge_*`, không chặn, vì chưa phát hành công khai.
+6. **Danh mục âm thanh được thêm trường.** Chỉ mã và tên file là cố định.
