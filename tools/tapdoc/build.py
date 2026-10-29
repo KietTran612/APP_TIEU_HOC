@@ -34,6 +34,8 @@ INSTRUCTION_AUDIO = {
     "listen_picture": "hd_nghe_chon_tranh",
     "match_case": "hd_nhin_chon_chu_hoa",
 }
+# Lượt nghe chọn tranh có câu đố (bài 80): đọc câu đố thay cho từ đáp án.
+RIDDLE_INSTRUCTION_AUDIO = "hd_nghe_do_chon_tranh"
 
 _REQUIRED_FIELDS = ("lesson_id", "book", "lesson_no", "type", "title", "source", "new_units", "images",
                     "part1", "part2")
@@ -520,7 +522,7 @@ class _Builder:
             raise self.error(where, f"tranh đáp án {answer!r} là chữ {answer_text!r}, "
                                     f"không khớp với từ đề {word!r}")
         if rd.get("prompt"):
-            return {"instruction_audio": "hd_nghe_do_chon_tranh",
+            return {"instruction_audio": RIDDLE_INSTRUCTION_AUDIO,
                     "prompt_audio": self._sentence_audio(rd["prompt"], where),
                     "options": options, "answer": index}
         return {"prompt_audio": self._audio(text_audio(word), where), "options": options, "answer": index}

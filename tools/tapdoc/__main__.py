@@ -18,6 +18,7 @@ from .viet import nfc
 _STATUSES = ("chua_co", "cho_duyet", "dat", "khong_dat")
 TTS_SETTINGS = ROOT / "content" / "tts" / "settings.json"
 TTS_PREV = ROOT / "content" / "tts" / "prev"
+REVIEW_PORT = 8765  # cổng của công cụ duyệt, dùng chung cho lệnh review và mo
 
 
 def _status_counts(rows: list[dict]) -> str:
@@ -270,10 +271,11 @@ def main(argv: list[str] | None = None, *, engine_factory=None) -> int:
                               help="thêm điều kiện phát hành: bài trong app đã duyệt, âm thanh/tranh đã duyệt")
     validate_cmd.set_defaults(func=_cmd_validate)
     review_cmd = commands.add_parser("review", help="mở trang web nội bộ để nghe duyệt âm thanh và xem duyệt tranh")
-    review_cmd.add_argument("--port", type=int, default=8765, help="cổng lắng nghe trên 127.0.0.1 (mặc định 8765)")
+    review_cmd.add_argument("--port", type=int, default=REVIEW_PORT,
+                            help=f"cổng lắng nghe trên 127.0.0.1 (mặc định {REVIEW_PORT})")
     review_cmd.set_defaults(func=_cmd_review)
     open_cmd = commands.add_parser("mo", help="mở công cụ duyệt trong trình duyệt; đang chạy rồi thì chỉ mở trang")
-    open_cmd.add_argument("--port", type=int, default=8765, help="cổng của công cụ duyệt (mặc định 8765)")
+    open_cmd.add_argument("--port", type=int, default=REVIEW_PORT, help=f"cổng của công cụ duyệt (mặc định {REVIEW_PORT})")
     open_cmd.set_defaults(func=_cmd_open)
     tts_cmd = commands.add_parser("tts", help="tạo âm thanh bằng edge-tts theo cấu hình giọng đọc")
     tts_cmd.add_argument("--bai", help="chỉ tạo mã dùng trong bài này")

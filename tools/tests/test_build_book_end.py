@@ -109,5 +109,15 @@ class RiddleRoundTest(unittest.TestCase):
         self.assertEqual(rd["instruction_audio"], "hd_nghe_chon_tranh")
 
 
+class InstructionAudioTest(unittest.TestCase):
+    def test_every_instruction_is_a_system_audio(self):
+        # Lời hướng dẫn nằm một chỗ trong build.py và phải có file hệ thống tương ứng.
+        from tapdoc.build import INSTRUCTION_AUDIO, RIDDLE_INSTRUCTION_AUDIO
+        from tapdoc.system_assets import SYSTEM_AUDIO
+        for audio_id in [*INSTRUCTION_AUDIO.values(), RIDDLE_INSTRUCTION_AUDIO]:
+            with self.subTest(audio_id=audio_id):
+                self.assertIn(audio_id, SYSTEM_AUDIO)
+
+
 if __name__ == "__main__":
     unittest.main()
