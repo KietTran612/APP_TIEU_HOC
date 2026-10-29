@@ -2,6 +2,7 @@ import copy
 import io
 import json
 import tempfile
+import threading
 import unicodedata
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
@@ -136,6 +137,36 @@ class RowsFileTest(TempDirCase):
                 save_rows(path, [{"id": "b"}])
         self.assertEqual(load_rows(path), [{"id": "a"}])
         self.assertEqual(list(self.root.glob("*.tmp")), [])
+
+    def test_save_rows_waits_while_another_program_reads(self):
+        # Trang duyệt đang đọc danh mục đúng lúc lệnh tts thay file: Windows từ chối thay, phải chờ rồi thử lại.
+        path = self.root / "m.json"
+        save_rows(path, [{"id": "a"}])
+        reader = open(path, encoding="utf-8")
+        self.addCleanup(reader.close)
+        threading.Timer(0.2, reader.close).start()
+        save_rows(path, [{"id": "b"}])
+        self.assertEqual(load_rows(path), [{"id": "b"}])
+        self.assertEqual(list(self.root.glob("*.tmp")), [])
+
+    def test_save_rows_gives_up_when_file_stays_locked(self):
+        path = self.root / "m.json"
+        save_rows(path, [{"id": "a"}])
+        with mock.patch("tapdoc.manifest.os.replace", side_effect=PermissionError("đang bị giữ")), \
+                mock.patch("tapdoc.manifest.time.sleep"):
+            with self.assertRaises(PermissionError):
+                save_rows(path, [{"id": "b"}])
+        self.assertEqual(load_rows(path), [{"id": "a"}])
+        self.assertEqual(list(self.root.glob("*.tmp")), [])
+
+    def test_save_rows_leaves_other_writers_temp_file_alone(self):
+        # Hai tiến trình cùng ghi một danh mục không được dùng chung một file tạm.
+        path = self.root / "m.json"
+        other = self.root / "m.json.tmp"
+        other.write_text("của tiến trình khác", encoding="utf-8")
+        save_rows(path, [{"id": "a"}])
+        self.assertEqual(other.read_text(encoding="utf-8"), "của tiến trình khác")
+        self.assertEqual(load_rows(path), [{"id": "a"}])
 
     def test_bad_file_is_manifest_error(self):
         path = self.root / "hong.json"

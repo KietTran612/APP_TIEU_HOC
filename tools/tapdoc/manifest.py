@@ -7,6 +7,8 @@ Danh mục là file JSON (danh sách dòng) do công cụ ghi và chủ dự án
 
 import json
 import os
+import threading
+import time
 from pathlib import Path
 
 from .build import BuildResult
@@ -60,16 +62,28 @@ def load_rows(path) -> list[dict]:
     return rows
 
 
+_REPLACE_TRIES = 40  # tối đa khoảng 2 giây
+
+
 def save_rows(path, rows: list[dict]) -> None:
     """Ghi danh mục qua file tạm rồi thay file cũ, để lần ghi dở không làm hỏng danh mục."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_name(path.name + ".tmp")
+    # Trang duyệt và lệnh tts có thể cùng ghi: mỗi tiến trình, mỗi luồng một file tạm riêng.
+    tmp = path.with_name(f"{path.name}.{os.getpid()}.{threading.get_ident()}.tmp")
     try:
         with open(tmp, "w", encoding="utf-8", newline="\n") as f:
             json.dump(rows, f, ensure_ascii=False, indent=2)
             f.write("\n")
-        os.replace(tmp, path)
+        for attempt in range(_REPLACE_TRIES):
+            try:
+                os.replace(tmp, path)
+                break
+            except PermissionError:
+                # Windows không cho thay file khi tiến trình khác đang mở đọc; chờ một chút rồi thử lại.
+                if attempt == _REPLACE_TRIES - 1:
+                    raise
+                time.sleep(0.05)
     except BaseException:
         tmp.unlink(missing_ok=True)
         raise
