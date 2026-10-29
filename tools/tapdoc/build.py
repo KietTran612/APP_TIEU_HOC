@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .ids import audio_for, text_audio, tone_audio
+from .lesson_notes import lesson_notes
 from .spelling import Part, SpellResult, spell_rime, spell_syllable
 from .viet import TONE_INFO, nfc, split_syllable, strip_tone, syllables, tokens
 
@@ -410,7 +411,13 @@ class _Builder:
         return {"type": "words", "marker": step.get("marker", ""), "items": items}
 
     def _step_reading(self, step: dict, where: str) -> dict:
-        """Mỗi hàng là danh sách chữ, hoặc `{"label": …, "items": […]}` khi hàng có nhãn ở đầu (bài ôn tập)."""
+        """Mỗi hàng là danh sách chữ, hoặc `{"label": …, "items": […]}` khi hàng có nhãn ở đầu (bài ôn tập).
+
+        `"colour": "onset"`: tô phụ âm đầu như trang "Tìm tiếng có vần đã học" (bài 80).
+        """
+        colour = step.get("colour")
+        if colour not in (None, "onset"):
+            raise self.error(where, f"colour chỉ nhận \"onset\", không phải {colour!r}")
         items, labels = [], []
         for row, texts in enumerate(step["rows"]):
             label = ""
@@ -423,6 +430,8 @@ class _Builder:
                 item_where = f"{where}.items[{len(items)}]"
                 items.append({"text": text, "audio": self._audio(text_audio(text), item_where), "row": row,
                               "spells": self._spells_of(text, item_where)})
+                if colour == "onset":
+                    items[-1]["hl"] = _onset_spans(text)
         return {"type": "reading", "marker": step.get("marker", ""), "labels": labels, "items": items}
 
     def _step_sentence(self, step: dict, where: str) -> dict:
@@ -581,6 +590,12 @@ class _Builder:
         part1 = self._build_part1()
         part2 = self._build_part2()
 
+        with self._located("notes"):
+            try:
+                notes = lesson_notes(src.get("notes", []), src["type"], src["new_units"], _word_notes(part1))
+            except ValueError as e:
+                raise self.error("notes", str(e)) from e
+
         review = src.get("review") or {}
         with self._located("review.notes"):
             source_notes = [{"where": n["where"], "note": n["note"]} for n in review.get("notes", [])]
@@ -594,11 +609,35 @@ class _Builder:
             "in_app": in_app,
             "new_units": list(src["new_units"]),
             "source": dict(src["source"]),
+            "notes": notes,
             "review": {"status": review.get("status", "chua_duyet"), "can_duyet": source_notes + self.can_duyet},
             "part1": part1,
             "part2": part2,
         }
         return BuildResult(lesson, self.audio, self.images)
+
+
+def _onset_spans(text: str) -> list[dict]:
+    """Vị trí phụ âm đầu của từng tiếng (tiếng không có phụ âm đầu thì bỏ qua)."""
+    spans = []
+    for tok, start in tokens(text):
+        try:
+            onset = split_syllable(tok).onset
+        except ValueError:
+            continue
+        if onset:
+            spans.append({"s": start, "n": len(onset)})
+    return spans
+
+
+def _word_notes(node) -> list[str]:
+    """Chú thích in dưới từ (ví dụ "cá lóc: cá quả.") cũng là ghi chú của sách cho cả bài."""
+    if isinstance(node, dict):
+        found = [node["note"]] if isinstance(node.get("note"), str) and node["note"].strip() else []
+        return found + [n for value in node.values() for n in _word_notes(value)]
+    if isinstance(node, list):
+        return [n for value in node for n in _word_notes(value)]
+    return []
 
 
 def build_lesson(src: dict) -> BuildResult:

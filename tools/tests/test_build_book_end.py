@@ -109,6 +109,24 @@ class RiddleRoundTest(unittest.TestCase):
         self.assertEqual(rd["instruction_audio"], "hd_nghe_chon_tranh")
 
 
+class ReadingOnsetColourTest(unittest.TestCase):
+    """Bài 80 "Tìm tiếng có vần đã học": sách tô phụ âm đầu màu xanh để làm nổi phần vần."""
+
+    def test_onsets_coloured(self):
+        st = step_of({"type": "reading", "colour": "onset",
+                      "rows": [{"label": "(1)", "items": ["sàn", "ngọn"]}, {"label": "(3)", "items": ["ốc"]}]})
+        self.assertEqual([(i["text"], i["hl"]) for i in st["items"]],
+                         [("sàn", [{"s": 0, "n": 1}]), ("ngọn", [{"s": 0, "n": 2}]), ("ốc", [])])
+
+    def test_reading_without_colour_has_no_highlight(self):
+        st = step_of({"type": "reading", "rows": [["sàn"]]})
+        self.assertNotIn("hl", st["items"][0])
+
+    def test_unknown_colour_is_an_error(self):
+        with self.assertRaises(BuildError):
+            step_of({"type": "reading", "colour": "rime_xanh", "rows": [["sàn"]]})
+
+
 class InstructionAudioTest(unittest.TestCase):
     def test_every_instruction_is_a_system_audio(self):
         # Lời hướng dẫn nằm một chỗ trong build.py và phải có file hệ thống tương ứng.

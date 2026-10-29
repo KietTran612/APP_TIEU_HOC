@@ -410,5 +410,39 @@ class Lessons74To80Test(BookTestCase):
         self.assertEqual(riddle["options"][riddle["answer"]]["image"], "img_b80_con_lownj")
 
 
+
+def notes_by_kind(no, kind):
+    return [n["text"] for n in L[lid_of(no)]["notes"] if n["kind"] == kind]
+
+
+class LessonNotesContentTest(unittest.TestCase):
+    """Ghi chú cho phụ huynh: chú thích sách, tên đọc riêng (tr.122), chỗ app khác sách."""
+
+    def test_book_footnotes(self):
+        self.assertTrue(any("vịt xiêm" in t for t in notes_by_kind(42, "sach")))
+        self.assertIn("heo nái: lợn nái.", notes_by_kind(60, "sach"))
+        self.assertIn("cá lóc: cá quả.", notes_by_kind(66, "sach"))
+        self.assertTrue(any("Vần ec rất ít gặp" in t for t in notes_by_kind(68, "sach")))
+
+    def test_reading_names_only_in_lessons_teaching_those_letters(self):
+        with_names = {no for no in range(1, 81) if notes_by_kind(no, "ten_doc")}
+        self.assertEqual(with_names, {2, 5, 10, 14, 20, 25, 26, 28, 29, 35})
+        self.assertEqual(len(notes_by_kind(25, "ten_doc")), 2)  # g và gh
+        self.assertTrue(any('"k" đọc là "ca"' in t for t in notes_by_kind(20, "ten_doc")))
+        self.assertTrue(any('"qu" đọc là "quờ"' in t for t in notes_by_kind(35, "ten_doc")))
+
+    def test_app_differences_noted(self):
+        with_diff = {no for no in range(1, 81) if notes_by_kind(no, "khac_sach")}
+        self.assertEqual(with_diff, {1, 3, 6, 18, 27, 38, 42, 43, 44, 49, 53, 66, 68, 76, 80})
+        self.assertTrue(any("4 bước" in t for t in notes_by_kind(38, "khac_sach")))
+        self.assertTrue(any("đôi dép" in t for t in notes_by_kind(76, "khac_sach")))
+
+    def test_b80_onsets_coloured_like_page(self):
+        first = steps(80, "reading")[0]["items"]
+        self.assertEqual([(i["text"], i["hl"]) for i in first[:2]], [("sàn", [{"s": 0, "n": 1}]), ("sắn", [{"s": 0, "n": 1}])])
+        oc = next(i for st in steps(80, "reading") for i in st["items"] if i["text"] == "ốc")
+        self.assertEqual(oc["hl"], [])
+
+
 if __name__ == "__main__":
     unittest.main()

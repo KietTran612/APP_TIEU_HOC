@@ -219,7 +219,8 @@ class Lesson13Test(unittest.TestCase):
     def test_top_level(self):
         lesson = self.r.lesson
         self.assertEqual(list(lesson), ["schema", "lesson_id", "book", "lesson_no", "type", "title", "in_app", "new_units",
-                                        "source", "review", "part1", "part2"])
+                                        "source", "notes", "review", "part1", "part2"])
+        self.assertEqual(lesson["notes"], [])  # u, ư không có tên đọc riêng, trang không có chú thích
         self.assertEqual((lesson["schema"], lesson["lesson_id"], lesson["lesson_no"], lesson["type"]),
                          (1, "tv1_t1_b13", 13, "am_moi"))
         self.assertEqual(lesson["new_units"], ["u", "ư"])
