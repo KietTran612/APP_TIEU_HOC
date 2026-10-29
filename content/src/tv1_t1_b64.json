@@ -1,0 +1,180 @@
+{
+  "lesson_id": "tv1_t1_b64",
+  "book": "tv1_t1_1990",
+  "lesson_no": 64,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      88,
+      89
+    ],
+    "scan_file": "045",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ao",
+    "eo",
+    "au",
+    "âu",
+    "êu",
+    "iu",
+    "ưu"
+  ],
+  "images": {
+    "img_b64_bes_ngur": "Dưới hiên nhà, mẹ ngồi sàng gạo, em bé nằm ngủ trên chiếc võng mắc giữa hai cột"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "rows": [
+        {
+          "rime": "ao",
+          "word": "con cáo"
+        },
+        {
+          "rime": "eo",
+          "word": "cái kéo"
+        },
+        {
+          "rime": "au",
+          "word": "quả cau"
+        },
+        {
+          "rime": "âu",
+          "word": "cần cẩu"
+        },
+        {
+          "rime": "êu",
+          "word": "gối thêu"
+        },
+        {
+          "rime": "iu",
+          "word": "cái rìu"
+        },
+        {
+          "rime": "ưu",
+          "word": "cây lựu"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b64_bes_ngur",
+      "say": "Mẹ sàng gạo, bé nằm ngủ trên võng.",
+      "word": "bé ngủ"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đêm hè trời đầy sao"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bé nằm ngủ thiu thiu"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Lá cây reo rì rào"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Như ru cho bé ngủ."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ao",
+          "options": [
+            "ao",
+            "eo",
+            "au"
+          ]
+        },
+        {
+          "answer": "âu",
+          "options": [
+            "âu",
+            "au",
+            "êu"
+          ]
+        },
+        {
+          "answer": "ưu",
+          "options": [
+            "ưu",
+            "iu",
+            "êu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cáo",
+          "options": [
+            "cáo",
+            "kéo"
+          ]
+        },
+        {
+          "answer": "rìu",
+          "options": [
+            "rìu",
+            "rều"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "quả cau",
+      "template": "quả c_",
+      "answer": "au",
+      "options": [
+        "au",
+        "ao",
+        "âu"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cần cẩu",
+          "options": [
+            "cần cẩu",
+            "gối thêu",
+            "cây lựu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "cẩu",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

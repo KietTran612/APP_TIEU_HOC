@@ -1,0 +1,212 @@
+{
+  "lesson_id": "tv1_t1_b63",
+  "book": "tv1_t1_1990",
+  "lesson_no": 63,
+  "type": "van_moi",
+  "title": "iu ưu",
+  "source": {
+    "pages": [
+      86,
+      87
+    ],
+    "scan_file": "044",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "iu",
+    "ưu"
+  ],
+  "images": {
+    "img_b63_cais_riuf": "Chiếc rìu cán gỗ dài, lưỡi sắt to",
+    "img_b63_con_cuwuf": "Con cừu lông xoăn dày, đứng nghiêng",
+    "img_b63_caay_luwuj": "Bé trai đứng dưới cây lựu sai trĩu quả cạnh bức tường, tay chỉ lên cây"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "iu"
+    },
+    {
+      "type": "keyword",
+      "text": "cái rìu",
+      "image": "img_b63_cais_riuf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái rìu",
+        "rìu",
+        "iu"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "iu",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "rìu",
+      "drag_tone": true,
+      "then": "cái rìu"
+    },
+    {
+      "type": "unit",
+      "text": "ưu"
+    },
+    {
+      "type": "keyword",
+      "text": "con cừu",
+      "image": "img_b63_con_cuwuf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con cừu",
+        "cừu",
+        "ưu"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ưu",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "cừu",
+      "drag_tone": true,
+      "then": "con cừu"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "bé xíu"
+        },
+        {
+          "text": "gió hiu hiu"
+        },
+        {
+          "text": "cây lựu"
+        },
+        {
+          "text": "lá ngải cứu"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b63_caay_luwuj",
+      "say": "Cây lựu đầu nhà sai trĩu quả.",
+      "word": "cây lựu"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đầu nhà cây lựu sai trĩu quả."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "iu",
+          "options": [
+            "iu",
+            "ưu",
+            "êu"
+          ]
+        },
+        {
+          "answer": "ưu",
+          "options": [
+            "ưu",
+            "iu",
+            "âu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cừu",
+          "options": [
+            "cừu",
+            "cầu"
+          ]
+        },
+        {
+          "answer": "hiu",
+          "options": [
+            "hiu",
+            "hưu"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "gió hiu hiu",
+      "template": "gió h_ hiu",
+      "answer": "iu",
+      "options": [
+        "iu",
+        "ưu",
+        "êu"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cái rìu",
+          "answer": "img_b63_cais_riuf",
+          "options": [
+            "img_b63_cais_riuf",
+            "img_b63_con_cuwuf",
+            "img_b63_caay_luwuj"
+          ]
+        },
+        {
+          "word": "con cừu",
+          "answer": "img_b63_con_cuwuf",
+          "options": [
+            "img_b63_con_cuwuf",
+            "img_b63_cais_riuf",
+            "img_b63_caay_luwuj"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "trĩu",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        },
+        {
+          "model": "ngải",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

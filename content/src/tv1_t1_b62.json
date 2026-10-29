@@ -1,0 +1,175 @@
+{
+  "lesson_id": "tv1_t1_b62",
+  "book": "tv1_t1_1990",
+  "lesson_no": 62,
+  "type": "van_moi",
+  "title": "êu",
+  "source": {
+    "pages": [
+      84,
+      85
+    ],
+    "scan_file": "043",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "êu"
+  ],
+  "images": {
+    "img_b62_cais_leeuf": "Chiếc lều bạt dựng trên đất, có cờ nhỏ trên đỉnh và dây néo hai bên",
+    "img_b62_ddanf_seeus": "Đàn sếu bay trên bầu trời có mây, dưới là bụi cỏ lau phất phơ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "êu"
+    },
+    {
+      "type": "keyword",
+      "text": "cái lều",
+      "image": "img_b62_cais_leeuf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái lều",
+        "lều",
+        "êu"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "êu",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "lều",
+      "drag_tone": true,
+      "then": "cái lều"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "gối thêu"
+        },
+        {
+          "text": "khêu đèn"
+        },
+        {
+          "text": "mèo kêu meo meo"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b62_ddanf_seeus",
+      "say": "Đàn sếu bay trên bầu trời.",
+      "word": "đàn sếu"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đàn sếu bay, đàn sếu bay,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bay đi đâu cả tối ngày sếu ơi?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "êu",
+          "options": [
+            "êu",
+            "eo",
+            "âu"
+          ]
+        },
+        {
+          "answer": "lều",
+          "options": [
+            "lều",
+            "lèo",
+            "lầu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "thêu",
+          "options": [
+            "thêu",
+            "theo"
+          ]
+        },
+        {
+          "answer": "kêu",
+          "options": [
+            "kêu",
+            "keo"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "khêu đèn",
+      "template": "kh_ đèn",
+      "answer": "êu",
+      "options": [
+        "êu",
+        "eo",
+        "âu"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cái lều",
+          "answer": "img_b62_cais_leeuf",
+          "options": [
+            "img_b62_cais_leeuf",
+            "img_b62_ddanf_seeus"
+          ]
+        },
+        {
+          "word": "đàn sếu",
+          "answer": "img_b62_ddanf_seeus",
+          "options": [
+            "img_b62_ddanf_seeus",
+            "img_b62_cais_leeuf"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "sếu",
+          "options": [
+            "sếu",
+            "sấu",
+            "séo"
+          ]
+        }
+      ]
+    }
+  ]
+}

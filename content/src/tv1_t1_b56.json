@@ -1,0 +1,221 @@
+{
+  "lesson_id": "tv1_t1_b56",
+  "book": "tv1_t1_1990",
+  "lesson_no": 56,
+  "type": "van_moi",
+  "title": "ay ây",
+  "source": {
+    "pages": [
+      72,
+      73
+    ],
+    "scan_file": "037",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ay",
+    "ây"
+  ],
+  "images": {
+    "img_b56_mays_bay": "Chiếc máy bay chở khách đang bay giữa trời",
+    "img_b56_ghees_maay": "Chiếc ghế mây lưng cao đan bằng sợi mây",
+    "img_b56_ddu_quay": "Các bạn nhỏ ngồi trong đu quay hình máy bay và tên lửa, vẫy tay vui vẻ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ay"
+    },
+    {
+      "type": "keyword",
+      "text": "máy bay",
+      "image": "img_b56_mays_bay"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "máy bay",
+        "bay",
+        "ay"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ay",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "bay",
+      "drag_tone": false,
+      "then": "máy bay"
+    },
+    {
+      "type": "unit",
+      "text": "ây"
+    },
+    {
+      "type": "keyword",
+      "text": "ghế mây",
+      "image": "img_b56_ghees_maay"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "ghế mây",
+        "mây",
+        "ây"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ây",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "mây",
+      "drag_tone": false,
+      "then": "ghế mây"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "bàn tay"
+        },
+        {
+          "text": "cái cày"
+        },
+        {
+          "text": "tờ giấy"
+        },
+        {
+          "text": "nhảy dây"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b56_ddu_quay",
+      "say": "Các bạn nhỏ chơi đu quay.",
+      "word": "đu quay"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đu quay, đu quay"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Em đi máy bay!"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bè bạn xum vầy,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Hay hay hay hay!"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ay",
+          "options": [
+            "ay",
+            "ây",
+            "ai"
+          ]
+        },
+        {
+          "answer": "ây",
+          "options": [
+            "ây",
+            "ay",
+            "âm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "bay",
+          "options": [
+            "bay",
+            "bây"
+          ]
+        },
+        {
+          "answer": "mây",
+          "options": [
+            "mây",
+            "may"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "máy bay",
+      "template": "máy b_",
+      "answer": "ay",
+      "options": [
+        "ay",
+        "ây",
+        "ai"
+      ],
+      "image": "img_b56_mays_bay"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "máy bay",
+          "answer": "img_b56_mays_bay",
+          "options": [
+            "img_b56_mays_bay",
+            "img_b56_ghees_maay",
+            "img_b56_ddu_quay"
+          ]
+        },
+        {
+          "word": "ghế mây",
+          "answer": "img_b56_ghees_maay",
+          "options": [
+            "img_b56_ghees_maay",
+            "img_b56_mays_bay",
+            "img_b56_ddu_quay"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nhảy",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "lesson_id": "tv1_t1_b58",
+  "book": "tv1_t1_1990",
+  "lesson_no": 58,
+  "type": "van_moi",
+  "title": "ui ưi",
+  "source": {
+    "pages": [
+      76,
+      77
+    ],
+    "scan_file": "039",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ui",
+    "ưi"
+  ],
+  "images": {
+    "img_b58_cais_tuis": "Chiếc túi đeo vai có quai dài và túi nhỏ phía trước",
+    "img_b58_guwir_thuw": "Bạn nhỏ đội mũ cười tươi, bỏ lá thư vào thùng thư (không có chữ trên thùng)",
+    "img_b58_gaf_mej": "Gà mẹ cúi bới tìm mồi trên sân gạch, đàn gà con lông vàng quanh mẹ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ui"
+    },
+    {
+      "type": "keyword",
+      "text": "cái túi",
+      "image": "img_b58_cais_tuis"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái túi",
+        "túi",
+        "ui"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ui",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "túi",
+      "drag_tone": true,
+      "then": "cái túi"
+    },
+    {
+      "type": "unit",
+      "text": "ưi"
+    },
+    {
+      "type": "keyword",
+      "text": "gửi thư",
+      "image": "img_b58_guwir_thuw"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "gửi thư",
+        "gửi",
+        "ưi"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ưi",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "gửi",
+      "drag_tone": true,
+      "then": "gửi thư"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "đồi núi"
+        },
+        {
+          "text": "vui chơi"
+        },
+        {
+          "text": "cây tầm gửi"
+        },
+        {
+          "text": "tai nghe mũi ngửi"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b58_gaf_mej",
+      "say": "Gà mẹ tìm mồi cho đàn con.",
+      "word": "gà mẹ"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Con gà mái mẹ"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cặm cụi tìm mồi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Để đàn con nhỏ"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nhởn nhơ vui chơi"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ui",
+          "options": [
+            "ui",
+            "ưi",
+            "ôi"
+          ]
+        },
+        {
+          "answer": "ưi",
+          "options": [
+            "ưi",
+            "ui",
+            "ơi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "túi",
+          "options": [
+            "túi",
+            "tối"
+          ]
+        },
+        {
+          "answer": "gửi",
+          "options": [
+            "gửi",
+            "gởi"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "vui chơi",
+      "template": "v_ chơi",
+      "answer": "ui",
+      "options": [
+        "ui",
+        "ưi",
+        "oi"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cái túi",
+          "answer": "img_b58_cais_tuis",
+          "options": [
+            "img_b58_cais_tuis",
+            "img_b58_guwir_thuw",
+            "img_b58_gaf_mej"
+          ]
+        },
+        {
+          "word": "gửi thư",
+          "answer": "img_b58_guwir_thuw",
+          "options": [
+            "img_b58_guwir_thuw",
+            "img_b58_cais_tuis",
+            "img_b58_gaf_mej"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "ngửi",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

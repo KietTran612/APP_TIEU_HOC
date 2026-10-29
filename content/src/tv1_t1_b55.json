@@ -1,0 +1,176 @@
+{
+  "lesson_id": "tv1_t1_b55",
+  "book": "tv1_t1_1990",
+  "lesson_no": 55,
+  "type": "van_moi",
+  "title": "ai",
+  "source": {
+    "pages": [
+      70,
+      71
+    ],
+    "scan_file": "036",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ai"
+  ],
+  "images": {
+    "img_b55_chumf_vair": "Chùm vải chín ba quả tròn, vỏ sần, có cuống",
+    "img_b55_ddanf_nai": "Đàn nai mẹ và nai con bên suối trong rừng, một con cúi uống nước"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ai"
+    },
+    {
+      "type": "keyword",
+      "text": "chùm vải",
+      "image": "img_b55_chumf_vair"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "chùm vải",
+        "vải",
+        "ai"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ai",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "vải",
+      "drag_tone": true,
+      "then": "chùm vải"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "xóm chài"
+        },
+        {
+          "text": "cái kìm"
+        },
+        {
+          "text": "cô lái đò"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b55_ddanf_nai",
+      "say": "Đàn nai đi ăn sớm bên bờ suối.",
+      "word": "đàn nai"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Nai mẹ và nai con"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cả đàn đi ăn sớm."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ai",
+          "options": [
+            "ai",
+            "an",
+            "am"
+          ]
+        },
+        {
+          "answer": "vải",
+          "options": [
+            "vải",
+            "vản",
+            "vảm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chài",
+          "options": [
+            "chài",
+            "chàm"
+          ]
+        },
+        {
+          "answer": "lái",
+          "options": [
+            "lái",
+            "lán"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "đàn nai",
+      "template": "đàn n_",
+      "answer": "ai",
+      "options": [
+        "ai",
+        "an",
+        "am"
+      ],
+      "image": "img_b55_ddanf_nai"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "chùm vải",
+          "answer": "img_b55_chumf_vair",
+          "options": [
+            "img_b55_chumf_vair",
+            "img_b55_ddanf_nai"
+          ]
+        },
+        {
+          "word": "đàn nai",
+          "answer": "img_b55_ddanf_nai",
+          "options": [
+            "img_b55_ddanf_nai",
+            "img_b55_chumf_vair"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vải",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

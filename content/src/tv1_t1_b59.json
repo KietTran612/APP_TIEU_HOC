@@ -1,0 +1,185 @@
+{
+  "lesson_id": "tv1_t1_b59",
+  "book": "tv1_t1_1990",
+  "lesson_no": 59,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      78,
+      79
+    ],
+    "scan_file": "040",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ai",
+    "ay",
+    "ây",
+    "oi",
+    "ôi",
+    "ơi",
+    "ui",
+    "ưi"
+  ],
+  "images": {
+    "img_b59_mays_cayf": "Chiếc máy cày đỏ đang cày ruộng, hai chị em đứng bên bờ ruộng chỉ tay nhìn theo"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "rows": [
+        {
+          "rime": "ai",
+          "word": "xóm chài"
+        },
+        {
+          "rime": "ay",
+          "word": "máy cày"
+        },
+        {
+          "rime": "ây",
+          "word": "thợ xây"
+        },
+        {
+          "rime": "oi",
+          "word": "con voi"
+        },
+        {
+          "rime": "ôi",
+          "word": "cái nôi"
+        },
+        {
+          "rime": "ơi",
+          "word": "con dơi"
+        },
+        {
+          "rime": "ui",
+          "word": "cái túi"
+        },
+        {
+          "rime": "ưi",
+          "word": "cây tầm gửi"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b59_mays_cayf",
+      "say": "Máy cày đang cày ruộng, hai chị em đứng xem.",
+      "word": "máy cày"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Thôn em đổi mới"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đã có máy cày"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Rồi ngày mai đây"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Em ngồi cầm lái."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ai",
+          "options": [
+            "ai",
+            "ay",
+            "ây"
+          ]
+        },
+        {
+          "answer": "ơi",
+          "options": [
+            "ơi",
+            "ôi",
+            "oi"
+          ]
+        },
+        {
+          "answer": "ưi",
+          "options": [
+            "ưi",
+            "ui",
+            "ơi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cày",
+          "options": [
+            "cày",
+            "cài"
+          ]
+        },
+        {
+          "answer": "xây",
+          "options": [
+            "xây",
+            "xay"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "con voi",
+      "template": "con v_",
+      "answer": "oi",
+      "options": [
+        "oi",
+        "ôi",
+        "ơi"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "thợ xây",
+          "options": [
+            "thợ xây",
+            "máy cày",
+            "xóm chài"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "gửi",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

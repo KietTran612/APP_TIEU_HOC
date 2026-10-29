@@ -1,0 +1,242 @@
+{
+  "lesson_id": "tv1_t1_b57",
+  "book": "tv1_t1_1990",
+  "lesson_no": 57,
+  "type": "van_moi",
+  "title": "oi ôi ơi",
+  "source": {
+    "pages": [
+      74,
+      75
+    ],
+    "scan_file": "038",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "oi",
+    "ôi",
+    "ơi"
+  ],
+  "images": {
+    "img_b57_con_voi": "Chú voi con tai to, vòi cong, đứng cạnh quả bóng",
+    "img_b57_cais_nooi": "Em bé nằm ngủ trong chiếc nôi tre treo bằng dây",
+    "img_b57_con_dowi": "Con dơi xoè đôi cánh mỏng bay trên bầu trời có đám mây",
+    "img_b57_chim_non": "Chim mẹ đậu trên cành, mớm mồi cho ba chú chim non há mỏ trong tổ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "oi"
+    },
+    {
+      "type": "keyword",
+      "text": "con voi",
+      "image": "img_b57_con_voi"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con voi",
+        "voi",
+        "oi"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oi",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "voi",
+      "drag_tone": false,
+      "then": "con voi"
+    },
+    {
+      "type": "unit",
+      "text": "ôi"
+    },
+    {
+      "type": "keyword",
+      "text": "cái nôi",
+      "image": "img_b57_cais_nooi"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái nôi",
+        "nôi",
+        "ôi"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ôi",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "nôi",
+      "drag_tone": false,
+      "then": "cái nôi"
+    },
+    {
+      "type": "unit",
+      "text": "ơi"
+    },
+    {
+      "type": "keyword",
+      "text": "con dơi",
+      "image": "img_b57_con_dowi"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con dơi",
+        "dơi",
+        "ơi"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ơi",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "dơi",
+      "drag_tone": false,
+      "then": "con dơi"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "cái còi"
+        },
+        {
+          "text": "nói lời hay"
+        },
+        {
+          "text": "bộ đội"
+        },
+        {
+          "text": "Hà Nội"
+        },
+        {
+          "text": "nghỉ ngơi"
+        },
+        {
+          "text": "đi chơi"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b57_chim_non",
+      "say": "Chim mẹ mớm mồi cho chim non.",
+      "word": "chim non"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Chim non mới nở, chim mẹ mớm mồi"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ôi",
+          "options": [
+            "ôi",
+            "oi",
+            "ơi"
+          ]
+        },
+        {
+          "answer": "ơi",
+          "options": [
+            "ơi",
+            "oi",
+            "ôi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "voi",
+          "options": [
+            "voi",
+            "vôi"
+          ]
+        },
+        {
+          "answer": "dơi",
+          "options": [
+            "dơi",
+            "dôi"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "con voi",
+      "template": "con v_",
+      "answer": "oi",
+      "options": [
+        "oi",
+        "ôi",
+        "ơi"
+      ],
+      "image": "img_b57_con_voi"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cái nôi",
+          "answer": "img_b57_cais_nooi",
+          "options": [
+            "img_b57_con_voi",
+            "img_b57_cais_nooi",
+            "img_b57_con_dowi"
+          ]
+        },
+        {
+          "word": "con dơi",
+          "answer": "img_b57_con_dowi",
+          "options": [
+            "img_b57_con_dowi",
+            "img_b57_cais_nooi",
+            "img_b57_chim_non"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nghỉ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

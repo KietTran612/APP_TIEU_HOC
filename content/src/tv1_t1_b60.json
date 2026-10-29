@@ -1,0 +1,222 @@
+{
+  "lesson_id": "tv1_t1_b60",
+  "book": "tv1_t1_1990",
+  "lesson_no": 60,
+  "type": "van_moi",
+  "title": "ao eo",
+  "source": {
+    "pages": [
+      80,
+      81
+    ],
+    "scan_file": "042",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ao",
+    "eo"
+  ],
+  "images": {
+    "img_b60_con_dao": "Con dao lưỡi dài, cán tròn màu xanh",
+    "img_b60_cais_keos": "Chiếc kéo hai lưỡi đang mở, hai quai tròn",
+    "img_b60_chim_chaof_maof": "Cây cao bên cánh đồng, bầy chim chào mào làm tổ trên cành, một con đang bay tới"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ao"
+    },
+    {
+      "type": "keyword",
+      "text": "con dao",
+      "image": "img_b60_con_dao"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con dao",
+        "dao",
+        "ao"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ao",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "dao",
+      "drag_tone": false,
+      "then": "con dao"
+    },
+    {
+      "type": "unit",
+      "text": "eo"
+    },
+    {
+      "type": "keyword",
+      "text": "cái kéo",
+      "image": "img_b60_cais_keos"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái kéo",
+        "kéo",
+        "eo"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "eo",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "kéo",
+      "drag_tone": true,
+      "then": "cái kéo"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "chào cờ"
+        },
+        {
+          "text": "kéo pháo"
+        },
+        {
+          "text": "con mèo"
+        },
+        {
+          "text": "heo nái",
+          "note": "heo nái: lợn nái."
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b60_chim_chaof_maof",
+      "say": "Bầy chim chào mào làm tổ trên cây cao.",
+      "word": "chim chào mào"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Bầy chim chào mào"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Xây tổ trên cao"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Gió về nhẹ thổi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Lao xao, lao xao!"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ao",
+          "options": [
+            "ao",
+            "eo",
+            "ai"
+          ]
+        },
+        {
+          "answer": "eo",
+          "options": [
+            "eo",
+            "ao",
+            "em"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "dao",
+          "options": [
+            "dao",
+            "deo"
+          ]
+        },
+        {
+          "answer": "mèo",
+          "options": [
+            "mèo",
+            "mào"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "con dao",
+      "template": "con d_",
+      "answer": "ao",
+      "options": [
+        "ao",
+        "eo",
+        "ai"
+      ],
+      "image": "img_b60_con_dao"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con dao",
+          "answer": "img_b60_con_dao",
+          "options": [
+            "img_b60_con_dao",
+            "img_b60_cais_keos",
+            "img_b60_chim_chaof_maof"
+          ]
+        },
+        {
+          "word": "cái kéo",
+          "answer": "img_b60_cais_keos",
+          "options": [
+            "img_b60_cais_keos",
+            "img_b60_con_dao",
+            "img_b60_chim_chaof_maof"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "thổi",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

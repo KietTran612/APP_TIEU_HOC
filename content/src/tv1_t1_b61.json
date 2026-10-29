@@ -1,0 +1,211 @@
+{
+  "lesson_id": "tv1_t1_b61",
+  "book": "tv1_t1_1990",
+  "lesson_no": 61,
+  "type": "van_moi",
+  "title": "au âu",
+  "source": {
+    "pages": [
+      82,
+      83
+    ],
+    "scan_file": "041",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "au",
+    "âu"
+  ],
+  "images": {
+    "img_b61_quar_cau": "Quả cau thuôn tròn, có cuống và bẹ nhỏ ở đầu",
+    "img_b61_boof_caau": "Con chim bồ câu đứng mổ thóc",
+    "img_b61_con_traau": "Con trâu đang gặm cỏ, bé gái ngồi trên lưng trâu vẫy tay; xa xa có người đang cày ruộng"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "au"
+    },
+    {
+      "type": "keyword",
+      "text": "quả cau",
+      "image": "img_b61_quar_cau"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả cau",
+        "cau",
+        "au"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "au",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "cau",
+      "drag_tone": false,
+      "then": "quả cau"
+    },
+    {
+      "type": "unit",
+      "text": "âu"
+    },
+    {
+      "type": "keyword",
+      "text": "bồ câu",
+      "image": "img_b61_boof_caau"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bồ câu",
+        "câu",
+        "âu"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "âu",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "câu",
+      "drag_tone": false,
+      "then": "bồ câu"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "rau cải"
+        },
+        {
+          "text": "chậu thau"
+        },
+        {
+          "text": "con gấu"
+        },
+        {
+          "text": "đàn bầu"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b61_con_traau",
+      "say": "Bé ngồi trên lưng trâu, trâu gặm cỏ.",
+      "word": "con trâu"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Trâu ơi ta bảo trâu này,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Trâu ăn no cỏ trâu cày với ta."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "au",
+          "options": [
+            "au",
+            "âu",
+            "ao"
+          ]
+        },
+        {
+          "answer": "âu",
+          "options": [
+            "âu",
+            "au",
+            "ây"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cau",
+          "options": [
+            "cau",
+            "câu"
+          ]
+        },
+        {
+          "answer": "gấu",
+          "options": [
+            "gấu",
+            "gáu"
+          ]
+        }
+      ],
+      "tag": "look_alike"
+    },
+    {
+      "kind": "compose",
+      "word": "quả cau",
+      "template": "quả c_",
+      "answer": "au",
+      "options": [
+        "au",
+        "âu",
+        "ao"
+      ],
+      "image": "img_b61_quar_cau"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "bồ câu",
+          "answer": "img_b61_boof_caau",
+          "options": [
+            "img_b61_quar_cau",
+            "img_b61_boof_caau",
+            "img_b61_con_traau"
+          ]
+        },
+        {
+          "word": "con trâu",
+          "answer": "img_b61_con_traau",
+          "options": [
+            "img_b61_con_traau",
+            "img_b61_boof_caau",
+            "img_b61_quar_cau"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "cải",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

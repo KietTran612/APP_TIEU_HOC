@@ -268,5 +268,36 @@ class Lessons48To54Test(BookTestCase):
         self.assertEqual(table_rows(54)[-1], ("um", "um tùm"))
 
 
+
+class Lessons55To64Test(BookTestCase):
+    def test_basics(self):
+        for no in range(55, 65):
+            with self.subTest(no=no):
+                self.assert_lesson_basics(no)
+
+    def test_i_y_rimes_flagged(self):
+        for no, word in ((55, "i ngắn"), (56, "i dài"), (57, "i ngắn"), (58, "i ngắn")):
+            with self.subTest(no=no):
+                self.assertTrue(any(word in n for n in notes(no)), notes(no))
+
+    def test_b56_poem_four_lines(self):
+        self.assertIn(("sentence", 4), run_types(56))
+        self.assertEqual(steps(56, "sentence")[3]["text"], "Hay hay hay hay!")
+
+    def test_b57_ha_noi(self):
+        words = [i["text"] for s in steps(57, "words") for i in s["items"]]
+        self.assertIn("Hà Nội", words)
+
+    def test_b59_b64_rime_tables(self):
+        self.assertEqual(len(table_rows(59)), 8)
+        self.assertEqual(table_rows(59)[0], ("ai", "xóm chài"))
+        self.assertEqual(table_rows(64), [("ao", "con cáo"), ("eo", "cái kéo"), ("au", "quả cau"), ("âu", "cần cẩu"),
+                                          ("êu", "gối thêu"), ("iu", "cái rìu"), ("ưu", "cây lựu")])
+
+    def test_b60_note_on_heo(self):
+        heo = [i for s in steps(60, "words") for i in s["items"] if i["text"] == "heo nái"]
+        self.assertEqual(heo[0]["note"], "heo nái: lợn nái.")
+
+
 if __name__ == "__main__":
     unittest.main()
