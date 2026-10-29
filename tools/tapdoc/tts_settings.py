@@ -8,6 +8,8 @@ from pathlib import Path
 
 from .viet import nfc
 
+VOICES = {"vi-VN-HoaiMyNeural": "HoaiMy (nữ)", "vi-VN-NamMinhNeural": "NamMinh (nam)"}
+
 _LIMITS = {"rate": (-60, 30), "pitch": (-30, 30), "volume": (-50, 50)}
 
 
@@ -28,8 +30,8 @@ def _number(key, value):
 
 
 def _validate(settings):
-    if not isinstance(settings, dict) or not isinstance(settings.get("voice"), str) or not settings["voice"].strip():
-        raise ValueError("Cấu hình phải có giọng đọc voice")
+    if not isinstance(settings, dict) or not isinstance(settings.get("voice"), str) or settings["voice"] not in VOICES:
+        raise ValueError("Giọng đọc voice không hợp lệ")
     defaults, overrides = settings.get("defaults"), settings.get("overrides")
     if not isinstance(defaults, dict) or not isinstance(overrides, dict):
         raise ValueError("defaults và overrides phải là đối tượng JSON")
@@ -40,10 +42,12 @@ def _validate(settings):
         for key in _LIMITS:
             _number(key, values.get(key))
     for audio_id, values in overrides.items():
-        if not isinstance(values, dict) or values.keys() - {"doc", *_LIMITS}:
+        if not isinstance(values, dict) or values.keys() - {"doc", "voice", *_LIMITS}:
             raise ValueError(f"Thông số chỉnh tay không hợp lệ: {audio_id}")
         if "doc" in values and not isinstance(values["doc"], str):
             raise ValueError(f"Cách đọc của {audio_id} phải là chữ")
+        if "voice" in values and (not isinstance(values["voice"], str) or values["voice"] not in VOICES):
+            raise ValueError(f"Giọng đọc của {audio_id} không hợp lệ")
         for key in values.keys() & _LIMITS.keys():
             _number(key, values[key])
 
@@ -75,7 +79,8 @@ def effective_params(settings: dict, row: dict) -> TtsParams:
     doc = values.get("doc") or row["text"]
     if not isinstance(doc, str):
         raise ValueError("Cách đọc phải là chữ")
-    return TtsParams(nfc(doc), *(_number(key, values[key]) for key in _LIMITS), settings["voice"])
+    return TtsParams(nfc(doc), *(_number(key, values[key]) for key in _LIMITS),
+                     settings["overrides"].get(row["id"], {}).get("voice", settings["voice"]))
 
 
 def signature(p: TtsParams) -> str:
@@ -83,19 +88,22 @@ def signature(p: TtsParams) -> str:
     return hashlib.sha1(data).hexdigest()
 
 
-def set_override(settings, row, *, doc=None, rate=None, pitch=None, volume=None) -> None:
+def set_override(settings, row, *, doc=None, rate=None, pitch=None, volume=None, voice=None) -> None:
     values = dict(settings["overrides"].get(row["id"], {}))
-    for key, value in (("doc", doc), ("rate", rate), ("pitch", pitch), ("volume", volume)):
+    for key, value in (("doc", doc), ("rate", rate), ("pitch", pitch), ("volume", volume), ("voice", voice)):
         if value is None:
             continue
         if key == "doc":
             if not isinstance(value, str):
                 raise ValueError("Cách đọc phải là chữ")
             value = nfc(value).strip()
+        elif key == "voice":
+            if not isinstance(value, str) or value not in VOICES:
+                raise ValueError("Giọng đọc không hợp lệ")
         else:
             value = _number(key, value)
         values[key] = value
-    defaults = {**settings["defaults"][row["kind"]], "doc": nfc(row["text"])}
+    defaults = {**settings["defaults"][row["kind"]], "doc": nfc(row["text"]), "voice": settings["voice"]}
     values = {key: value for key, value in values.items()
               if value != defaults[key] and not (key == "doc" and not value)}
     if values:

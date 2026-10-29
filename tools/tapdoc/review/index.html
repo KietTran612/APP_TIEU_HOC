@@ -160,7 +160,9 @@
     .tts-fields label { display: flex; flex-direction: column; gap: 4px; }
     .tts-panel, .lesson-chain { padding: 12px; background: white; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 12px; }
     .tts-panel h2 { margin-top: 0; font-size: 18px; }
-    .tts-default-row { margin: 8px 0; }
+    .tts-default-row { margin: 10px 0; }
+    .tts-kind { display: block; margin-bottom: 4px; }
+    .tts-default-row .tts-fields { align-items: flex-end; }
     .tts-stale { display: block; color: #92400e; }
     .playing { background: #dbeafe; }
     .actions { flex-wrap: wrap; }
@@ -211,6 +213,7 @@
   </div>
   <section id="tts-defaults" class="tts-panel">
     <h2>Mặc định theo loại</h2>
+    <p id="tts-default-voice"></p>
     <div id="tts-default-rows"></div>
     <p id="tts-regen-count"></p>
     <button type="button" id="tts-batch" class="btn">Tạo lại các mã cần tạo lại</button>
@@ -238,6 +241,8 @@
       const rowElements = new Map();
       let ttsAvailable = false;
       let ttsDefaults = {};
+      let ttsVoices = [];
+      let ttsVoice = "vi-VN-HoaiMyNeural";
       let jobTimer;
       let playback = null;
       let lessonRequest = 0;
@@ -553,7 +558,7 @@
             input.reportValidity();
             throw new Error("Thông số phải nằm trong giới hạn cho phép");
           }
-          values[key] = key === "doc" ? input.value : Number(input.value);
+          values[key] = (key === "doc" || key === "voice") ? input.value : Number(input.value);
         }
         return values;
       }
@@ -572,7 +577,7 @@
         if (document.activeElement !== els.noteInput) els.noteInput.value = row.ghi_chu || "";
         if (els.tts) {
           for (const [key, input] of Object.entries(els.tts.inputs)) {
-            if (document.activeElement !== input) input.value = (row.params || {})[key] ?? (key === "doc" ? row.text : 0);
+            if (document.activeElement !== input) input.value = (row.params || {})[key] ?? (key === "doc" ? row.text : key === "voice" ? ttsVoice : 0);
           }
           els.tts.badge.textContent = row.needs_regen ? "cần tạo lại" : row.differs ? "khác mặc định mới" : "";
           els.tts.previous.hidden = !row.has_prev;
@@ -602,6 +607,30 @@
         fields.className = "tts-fields";
         const params = row.params || { doc: row.text, rate: 0, pitch: 0, volume: 0 };
         const inputs = {};
+        const voice = document.createElement("select");
+        voice.className = "tts-voice";
+        voice.setAttribute("aria-label", "Giọng");
+        for (const item of ttsVoices) {
+          const option = document.createElement("option");
+          option.value = item.id;
+          option.textContent = item.label;
+          voice.appendChild(option);
+        }
+        voice.value = params.voice || ttsVoice;
+        voice.disabled = !ttsAvailable;
+        inputs.voice = voice;
+        const voiceWrap = document.createElement("label");
+        voiceWrap.textContent = "Giọng";
+        voiceWrap.appendChild(voice);
+        fields.appendChild(voiceWrap);
+        voice.addEventListener("change", () => {
+          let values;
+          try { values = inputValues(inputs); } catch (error) { showToast(error.message); return; }
+          queueRow(row, async () => {
+            Object.assign(row, await api("/api/tts/row", { id: row.id, ...values }));
+            updateTtsRow(row);
+          });
+        });
         for (const [key, label] of [["doc", "Cách đọc"], ["rate", "Tốc độ (%)"], ["pitch", "Cao độ (Hz)"], ["volume", "Âm lượng (%)"]]) {
           inputs[key] = parameterInput(fields, label, key, params[key]);
           inputs[key].disabled = !ttsAvailable;
@@ -650,6 +679,9 @@
       async function refreshTts(reloadAudio = false) {
         const data = await api("/api/tts");
         ttsDefaults = data.defaults;
+        ttsVoices = data.voices;
+        ttsVoice = data.voice;
+        byId("tts-default-voice").textContent = "Giọng mặc định: " + (ttsVoices.find(v => v.id === ttsVoice)?.label || ttsVoice);
         for (const updated of data.rows) {
           const row = state.audio.find(r => r.id === updated.id);
           if (row) {
@@ -661,6 +693,9 @@
         updateRegenCount();
       }
 
+      const KIND_LABELS = { am: "âm", van: "vần", dau: "dấu thanh", tieng: "tiếng", tu: "từ", cau: "câu",
+                            huong_dan: "lời hướng dẫn", khen: "lời khen" };
+
       function buildDefaults() {
         const container = byId("tts-default-rows");
         container.textContent = "";
@@ -669,11 +704,15 @@
           option.value = kind;
           option.textContent = kind;
           byId("filter-kind").appendChild(option);
-          const line = document.createElement("div");
-          line.className = "tts-fields tts-default-row";
+          // Tên loại một dòng riêng để các ô thông số của mọi loại thẳng cột.
+          const block = document.createElement("div");
+          block.className = "tts-default-row";
           const title = document.createElement("strong");
-          title.textContent = kind;
-          line.appendChild(title);
+          title.className = "tts-kind";
+          title.textContent = kind + (KIND_LABELS[kind] ? " — " + KIND_LABELS[kind] : "");
+          const line = document.createElement("div");
+          line.className = "tts-fields";
+          block.append(title, line);
           const inputs = {};
           for (const [key, label] of [["rate", "Tốc độ (%)"], ["pitch", "Cao độ (Hz)"], ["volume", "Âm lượng (%)"]]) {
             inputs[key] = parameterInput(line, label, key, params[key]);
@@ -689,7 +728,7 @@
             finally { save.disabled = false; }
           });
           line.appendChild(save);
-          container.appendChild(line);
+          container.appendChild(block);
         }
         updateRegenCount();
       }
@@ -870,6 +909,9 @@
             const data = await api("/api/tts");
             state.audio = data.rows;
             ttsDefaults = data.defaults;
+            ttsVoices = data.voices;
+            ttsVoice = data.voice;
+            byId("tts-default-voice").textContent = "Giọng mặc định: " + (ttsVoices.find(v => v.id === ttsVoice)?.label || ttsVoice);
             ttsAvailable = true;
             buildDefaults();
           } catch (error) { showToast(error.message); }

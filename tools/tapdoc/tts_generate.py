@@ -8,7 +8,7 @@ from pathlib import Path
 from .importer import _ID_RE, _looks_like_mp3, _without_changed_note, _write_atomic
 from .mp3trim import trim_mp3
 from .tts_engine import TtsError, TtsUnavailable
-from .tts_settings import effective_params, needs_regen, set_override, signature
+from .tts_settings import VOICES, effective_params, needs_regen, set_override, signature
 
 
 @dataclass
@@ -39,7 +39,7 @@ def generate_one(row, settings, engine, audio_dir, prev_dir) -> dict:
         raise TtsError(f"{row['id']}: bộ đọc trả dữ liệu rỗng hoặc không phải MP3")
     audio, trimmed = trim_mp3(result.audio, result.speech_start, result.speech_end)
     updated = copy.deepcopy(row)
-    updated.update(status="cho_duyet", source="tts_edge_hoaimy",
+    updated.update(status="cho_duyet", source="tts_edge_" + p.voice.removeprefix("vi-VN-").removesuffix("Neural").lower(),
                    tts={**asdict(p), "sig": signature(p), "trimmed": trimmed})
     updated["ghi_chu"] = _without_changed_note(row.get("ghi_chu", ""))
     old_audio = dest.read_bytes() if dest.is_file() else None
@@ -81,9 +81,9 @@ def restore_previous(row, settings, audio_dir, prev_dir) -> dict:
     config = copy.deepcopy(settings)
     record = old.get("tts")
     if record:
-        if record["voice"] != config["voice"]:
-            raise ValueError("Giọng đọc bản trước khác giọng hiện tại; cần khôi phục giọng trong cấu hình trước")
-        set_override(config, restored, **{key: record[key] for key in ("doc", "rate", "pitch", "volume")})
+        if not isinstance(record.get("voice"), str) or record["voice"] not in VOICES:
+            raise ValueError("Giọng đọc bản trước không hợp lệ")
+        set_override(config, restored, **{key: record[key] for key in ("doc", "rate", "pitch", "volume", "voice")})
     elif old.get("override"):
         config["overrides"][row["id"]] = old["override"]
     else:

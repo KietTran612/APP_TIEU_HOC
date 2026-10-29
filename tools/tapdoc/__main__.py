@@ -218,8 +218,19 @@ def _cmd_tts(args: argparse.Namespace) -> int:
             print(f"Đã tạo 0, lỗi 0, bỏ qua {len(rows)}")
             return 0
         engine = (args.engine_factory or EdgeEngine)()
-        report = run_batch(rows, settings, engine, UNITY_RES / "audio", TTS_PREV,
-                           **filters, save=lambda updated: save_rows(path, updated))
+        written = list(rows)
+
+        def save(updated):
+            # Chỉ ghi dòng vừa tạo vào danh mục mới nhất: đánh giá lưu từ trang duyệt trong lúc chạy không bị ghi đè.
+            fresh = {}
+            for index, current in enumerate(updated):
+                if current is not written[index]:
+                    fresh[current["id"]] = current
+                    written[index] = current
+            if fresh:
+                save_rows(path, [fresh.get(r["id"], r) for r in load_rows(path)])
+
+        report = run_batch(rows, settings, engine, UNITY_RES / "audio", TTS_PREV, **filters, save=save)
     except TtsUnavailable as e:
         print(str(e), file=sys.stderr)
         return 2

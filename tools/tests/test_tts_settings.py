@@ -1,4 +1,5 @@
 import copy
+import json
 import tempfile
 import unittest
 from dataclasses import asdict
@@ -23,6 +24,53 @@ def row(audio_id="am_b", text="bờ", kind="am", status="cho_duyet"):
 
 
 class ParamsTest(unittest.TestCase):
+    def test_no_voice_override_keeps_signature(self):
+        s = settings()
+        self.assertEqual(s["voice"], "vi-VN-HoaiMyNeural")
+        self.assertEqual(signature(effective_params(s, row())),
+                         "417167990541752ddcb7d8eac0586bebf7e6a535")
+
+    def test_voice_override_changes_params_and_signature(self):
+        s, r = settings(), row()
+        before = effective_params(s, r)
+        set_override(s, r, voice="vi-VN-NamMinhNeural")
+        after = effective_params(s, r)
+        self.assertEqual(after.voice, "vi-VN-NamMinhNeural")
+        self.assertEqual(asdict(after), {**asdict(before), "voice": after.voice})
+        self.assertNotEqual(signature(before), signature(after))
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "settings.json"
+            save_settings(path, s)
+            self.assertEqual(load_settings(path), s)
+
+    def test_voice_equal_to_default_is_dropped(self):
+        s, r = settings(), row()
+        set_override(s, r, voice="vi-VN-NamMinhNeural", rate=-40)
+        set_override(s, r, voice=s["voice"])
+        self.assertEqual(s["overrides"][r["id"]], {"rate": -40})
+        set_override(s, r, rate=-30)
+        self.assertNotIn(r["id"], s["overrides"])
+        set_override(s, r, voice=s["voice"])
+        self.assertNotIn(r["id"], s["overrides"])
+
+    def test_unknown_voice_rejected(self):
+        for voice in ("khác", "", 123, []):
+            with self.subTest(voice=voice):
+                s, r = settings(), row()
+                before = copy.deepcopy(s)
+                with self.assertRaisesRegex(ValueError, "Giọng đọc"):
+                    set_override(s, r, doc="cu", voice=voice)
+                self.assertEqual(s, before)
+                with tempfile.TemporaryDirectory() as tmp:
+                    path = Path(tmp) / "settings.json"
+                    for invalid in ({**s, "voice": voice},
+                                    {**s, "overrides": {r["id"]: {"voice": voice}}}):
+                        with self.assertRaises(ValueError):
+                            save_settings(path, invalid)
+                        path.write_text(json.dumps(invalid), encoding="utf-8")
+                        with self.assertRaises(ValueError):
+                            load_settings(path)
+
     def test_defaults_by_kind(self):
         s = settings()
         for kind, rate in (("am", -30), ("van", -30), ("dau", -30), ("tieng", -25),
@@ -61,7 +109,7 @@ class ParamsTest(unittest.TestCase):
             self.assertEqual(load_settings(path), s)
             with mock.patch("tapdoc.tts_settings.os.replace", side_effect=OSError("đĩa đầy")):
                 with self.assertRaises(OSError):
-                    save_settings(path, {**s, "voice": "khác"})
+                    save_settings(path, {**s, "voice": "vi-VN-NamMinhNeural"})
             self.assertEqual(load_settings(path), s)
             self.assertEqual(list(Path(tmp).glob("*.tmp")), [])
 

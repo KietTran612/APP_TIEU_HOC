@@ -13,7 +13,7 @@ from .manifest import ManifestError, load_rows, save_rows
 from .tts_engine import EdgeEngine, TtsError
 from .tts_generate import approve, generate_one, restore_previous, run_batch, selected
 from .tts_settings import (load_settings, save_settings, effective_params, set_override,
-                           needs_regen, differs_from_settings)
+                           needs_regen, differs_from_settings, VOICES)
 from .viet import nfc
 
 INDEX_HTML_PATH = Path(__file__).resolve().parent / "review" / "index.html"
@@ -308,6 +308,7 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
         if path == "/api/tts":
             settings = load_settings(server.settings_path)
             return dict(voice=settings["voice"], defaults=settings["defaults"],
+                        voices=[dict(id=voice, label=label) for voice, label in VOICES.items()],
                         rows=[server.describe(row, settings) for row in server.audio_rows()])
         if path == "/api/chain-notes":
             return server.chain_notes()
@@ -385,7 +386,7 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
                 row = next((r for r in rows if r["id"] == item_id), None)
                 if row is None:
                     raise ValueError("Không có mã trong danh mục")
-                allowed = {"id", "doc", "rate", "pitch", "volume"} if path == "/api/tts/row" else {"id"}
+                allowed = {"id", "doc", "rate", "pitch", "volume", "voice"} if path == "/api/tts/row" else {"id"}
                 if payload.keys() - allowed or any(v is None for v in payload.values()):
                     raise ValueError("Thông số không hợp lệ")
                 if path == "/api/tts/row":

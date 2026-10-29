@@ -87,6 +87,38 @@ class TtsServerTest(unittest.TestCase):
         self.assertEqual(status, 200, data)
         return data["rows"][0]
 
+    def test_row_voice_override_and_voices_listed(self):
+        status, data = self.request("/api/tts")
+        self.assertEqual(status, 200)
+        self.assertEqual(data["voice"], "vi-VN-HoaiMyNeural")
+        self.assertEqual(data["voices"], [
+            dict(id="vi-VN-HoaiMyNeural", label="HoaiMy (nữ)"),
+            dict(id="vi-VN-NamMinhNeural", label="NamMinh (nam)")])
+        self.post("/api/tts/generate", dict(id="am_q"))
+        row = self.post("/api/tts/row", dict(id="am_q", voice="vi-VN-NamMinhNeural"))
+        self.assertEqual(row["params"]["voice"], "vi-VN-NamMinhNeural")
+        self.assertTrue(row["needs_regen"])
+        self.assertTrue(row["overridden"])
+        saved = json.loads(self.settings_path.read_text(encoding="utf-8"))
+        self.assertEqual(saved["voice"], "vi-VN-HoaiMyNeural")
+        self.assertEqual(saved["overrides"]["am_q"], dict(voice="vi-VN-NamMinhNeural"))
+        self.assertEqual(self.row()["params"]["voice"], "vi-VN-NamMinhNeural")
+        restored = self.post("/api/tts/row", dict(id="am_q", voice=data["voice"]))
+        self.assertFalse(restored["needs_regen"])
+        self.assertFalse(restored["overridden"])
+
+    def test_row_unknown_voice_400(self):
+        before = self.settings_path.read_bytes()
+        manifest = (self.manifests / "audio_manifest.json").read_bytes()
+        for voice in ("khác", "", 123, [], None):
+            with self.subTest(voice=voice):
+                status, data = self.request("/api/tts/row", dict(id="am_q", voice=voice))
+                self.assertEqual(status, 400)
+                self.assertIn("error", data)
+                self.assertEqual(self.settings_path.read_bytes(), before)
+                self.assertEqual((self.manifests / "audio_manifest.json").read_bytes(), manifest)
+                self.assertEqual((self.res / "audio/am_q.mp3").read_bytes(), self.old)
+
     def test_generate_then_prev_served(self):
         row = self.post("/api/tts/generate", dict(id="am_q"))
         self.assertEqual(row["status"], "cho_duyet")
@@ -212,7 +244,7 @@ class TtsServerTest(unittest.TestCase):
         html = raw.decode("utf-8")
         for element_id in ("tts-defaults", "tts-batch", "tab-lesson"):
             self.assertIn('id="' + element_id + '"', html)
-        for text in ("tts-row", "/api/tts/job", "/api/chain-notes", "500",
+        for text in ("tts-row", "tts-voice", "/api/tts/job", "/api/chain-notes", "500",
                      "Cách đọc", "Dùng lại bản trước", "Cần tạo lại", "Đã chỉnh tay"):
             self.assertIn(text, html)
 

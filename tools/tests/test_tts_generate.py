@@ -31,6 +31,18 @@ class TempCase(unittest.TestCase):
 
 
 class GenerateTest(TempCase):
+    def test_source_follows_voice(self):
+        for voice, source in (("vi-VN-HoaiMyNeural", "tts_edge_hoaimy"),
+                              ("vi-VN-NamMinhNeural", "tts_edge_namminh")):
+            with self.subTest(voice=voice):
+                set_override(self.s, self.r, voice=voice)
+                engine = FakeEngine()
+                result = generate_one(self.r, self.s, engine, self.audio, self.prev)
+                self.assertEqual(result["source"], source)
+                self.assertEqual(result["tts"]["voice"], voice)
+                self.assertEqual(engine.calls[-1].voice, voice)
+
+
     def test_writes_file_row_and_prev(self):
         before = copy.deepcopy(self.r)
         result = generate_one(self.r, self.s, FakeEngine(), self.audio, self.prev)
@@ -103,6 +115,39 @@ class GenerateTest(TempCase):
 
 
 class RestoreTest(TempCase):
+    def test_restore_previous_restores_other_voice(self):
+        set_override(self.s, self.r, voice="vi-VN-NamMinhNeural", doc="cu", rate=-40,
+                     pitch=2, volume=3)
+        first = generate_one(self.r, self.s, FakeEngine(), self.audio, self.prev)
+        take = self.path.read_bytes()
+        set_override(self.s, first, voice=self.s["voice"], doc="bờ", rate=-30,
+                     pitch=0, volume=0)
+        second = generate_one(first, self.s, FakeEngine(), self.audio, self.prev)
+        restored = restore_previous(second, self.s, self.audio, self.prev)
+        self.assertEqual(self.path.read_bytes(), take)
+        self.assertEqual(restored["tts"], first["tts"])
+        self.assertEqual(restored["source"], "tts_edge_namminh")
+        self.assertEqual(self.s["voice"], "vi-VN-HoaiMyNeural")
+        self.assertEqual(self.s["overrides"]["am_b"], dict(
+            voice="vi-VN-NamMinhNeural", doc="cu", rate=-40, pitch=2, volume=3))
+        self.assertFalse(needs_regen(self.s, restored))
+        self.assertEqual(list(self.prev.iterdir()), [])
+
+    def test_restore_unknown_voice_leaves_everything(self):
+        first = generate_one(self.r, self.s, FakeEngine(), self.audio, self.prev)
+        second = generate_one(first, self.s, FakeEngine(), self.audio, self.prev)
+        metadata = self.prev / "am_b.json"
+        old = json.loads(metadata.read_text(encoding="utf-8"))
+        old["tts"]["voice"] = "khác"
+        metadata.write_text(json.dumps(old), encoding="utf-8")
+        before = copy.deepcopy((second, self.s))
+        files = {p: p.read_bytes() for p in (self.path, *self.prev.iterdir())}
+        with self.assertRaisesRegex(ValueError, "Giọng đọc"):
+            restore_previous(second, self.s, self.audio, self.prev)
+        self.assertEqual((second, self.s), before)
+        self.assertEqual({p: p.read_bytes() for p in files}, files)
+
+
     def test_restore_brings_back_file_and_settings(self):
         set_override(self.s, self.r, doc="cu", rate=-40)
         first = generate_one(self.r, self.s, FakeEngine(), self.audio, self.prev)
@@ -211,6 +256,39 @@ class CliTest(TempCase):
         self.assertEqual(code, 1)
         self.assertIn("am_b", output)
         self.assertIn("Đã tạo 0, lỗi 1", output)
+
+    def test_cli_tts_keeps_reviews_saved_meanwhile(self):
+        # Chủ dự án duyệt trên trang trong lúc lệnh tts chạy: lệnh chỉ ghi dòng vừa tạo vào danh mục mới nhất.
+        manifest = self.root / "manifests" / "audio_manifest.json"
+        rows = [self.r, row("am_c", "cờ"), row("am_d", "dờ", status="dat")]
+        save_rows(manifest, rows)
+        base = FakeEngine()
+
+        class ReviewMeanwhile:
+            def synthesize(self, p):
+                if p.doc == "cờ":
+                    live = json.loads(manifest.read_text(encoding="utf-8"))
+                    for r in live:
+                        if r["id"] == "am_b":
+                            r["status"] = "dat"
+                        if r["id"] == "am_d":
+                            r["ghi_chu"] = "chủ dự án ghi"
+                    save_rows(manifest, live)
+                return base.synthesize(p)
+        out = io.StringIO()
+        with mock.patch.object(cli, "MANIFESTS", manifest.parent), \
+                mock.patch.object(cli, "UNITY_RES", self.root), \
+                mock.patch.object(cli, "TTS_SETTINGS", self.root / "settings.json"), \
+                mock.patch.object(cli, "TTS_PREV", self.prev), redirect_stdout(out), redirect_stderr(out):
+            from tapdoc.tts_settings import save_settings
+            save_settings(self.root / "settings.json", self.s)
+            self.assertEqual(cli.main(["tts"], engine_factory=ReviewMeanwhile), 0, out.getvalue())
+        live = {r["id"]: r for r in json.loads(manifest.read_text(encoding="utf-8"))}
+        self.assertEqual(live["am_b"]["status"], "dat")
+        self.assertEqual(live["am_b"]["source"], "tts_edge_hoaimy")
+        self.assertEqual(live["am_d"]["ghi_chu"], "chủ dự án ghi")
+        self.assertEqual(live["am_c"]["source"], "tts_edge_hoaimy")
+        self.assertEqual(live["am_c"]["status"], "cho_duyet")
 
 
 class EdgeEngineTest(unittest.TestCase):
