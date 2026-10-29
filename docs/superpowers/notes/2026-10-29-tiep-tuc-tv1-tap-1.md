@@ -14,6 +14,30 @@
 
 Âm thanh và tranh đều ở trạng thái `cho_duyet` (tạo theo mặc định, chủ dự án duyệt sau).
 
+## 1b. ĐANG LÀM DỞ — ghi chú cho phụ huynh (dừng theo yêu cầu, 30/10/2026)
+
+**Chủ dự án đã chốt:**
+- Bài học giữ đúng cách dạy của sách: khi đánh vần đọc theo mục Chú ý tr.122 (k "ca", q "cu", gh "gờ kép", ngh "ngờ kép", gi "di", i "i ngắn", y "i dài"). Không đổi sang âm ở Phụ lục.
+- Bài nào có ghi chú thì app hiện ghi chú cho người dùng, gồm cả 3 loại:
+  1. `sach`: chú thích sách in trên trang (dấu \*, ngoặc đơn), ví dụ bài 42 ngan/vịt xiêm, 60 heo nái, 66 cá lóc, 68 vần ec;
+  2. `ten_doc`: tên đọc riêng theo tr.122, **công cụ tự sinh** cho bài dạy chữ đó (2, 5, 10, 14, 20, 25, 26, 28, 29, 35);
+  3. `khac_sach`: chỗ app khác sách (bài 1, 3, 6, 18, 27, 38, 42, 43, 44, 49, 53, 66, 68, 76, 80).
+- Thêm mục "Chú ý và Phụ lục" ở màn Phụ huynh (chép đúng tr.120–122, kèm danh sách điểm app khác sách nói chung); tô phụ âm đầu bài 80; số cột (1)–(7) ở bài 79.
+
+**Đã xong, commit `02d86af`:**
+- Công cụ: `tools/tapdoc/lesson_notes.py`, trường `notes` khi dựng bài, tuỳ chọn `"colour": "onset"` cho bước reading.
+- Dữ liệu: ghi chú trong `content/src` (15 bài), dữ liệu Phụ lục `unity/TapDoc/Assets/Content/Resources/appendix/tv1_t1.json`, 80 bài đã dựng lại.
+- Test Python (Claude viết) đều xanh: 640+ test.
+
+**Chưa commit (cố ý, vì phần giao diện chưa có nên chưa biên dịch được):**
+- Test Unity do Claude viết: `Tests/EditMode/NotesDataTests.cs`, `Tests/PlayMode/LessonNotesTests.cs`, cùng test thêm trong `ParentScreenTests.cs`, `ItemsViewTests.cs`, `RimeGridViewTests.cs`.
+- Phần kết quả Đợt 2 trong mục 15 của bản thiết kế.
+
+**Việc tiếp theo:**
+1. Giao Codex phần giao diện Unity: yêu cầu đã viết sẵn ở `~/.claude/delegate/orders/parent-notes-ui.md`. Chạy `node ~/.claude/delegate/bin/delegate.mjs start --task parent-notes-ui --worker codex --order ~/.claude/delegate/orders/parent-notes-ui.md --repo /c/Source/AURA/APP_TIEU_HOC --write`, **sau khi** commit hoặc chép các file test Unity ở trên vào worktree của Codex. Codex không được sửa test.
+2. Review kỹ code Codex (tránh code rác, hard-code), chạy Unity EditMode và PlayMode, sửa nếu cần, rồi commit.
+3. Chú thích sách (loại 1): một trợ lý đã được giao rà đủ 80 trang bài tìm mọi chú thích có dấu \* hoặc ngoặc đơn. Nếu kết quả chưa được ghi ở đây thì rà lại: ảnh `sach-giao-khoa-viet-nam/Tiếng Việt 1 (tập 1 1990)/004…061`. Thêm chú thích còn thiếu vào `notes` (kind `sach`) của bài tương ứng và vào test `LessonNotesContentTest`.
+
 ## 2. Việc khi ChatGPT mở lại lượt tạo ảnh (sau 14:30 ngày 30/10/2026)
 
 Ngày 29/10 gói Plus báo hết lượt tạo ảnh sau 39 tranh. Còn 6 tranh `chua_co`:
