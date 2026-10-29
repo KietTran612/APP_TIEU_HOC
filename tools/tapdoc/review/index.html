@@ -154,6 +154,17 @@
       font-size: 13px;
       display: none;
     }
+    input[type="number"] { width: 64px; padding: 6px; }
+    [hidden] { display: none !important; }
+    .tts-fields, .chain { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .tts-fields label { display: flex; flex-direction: column; gap: 4px; }
+    .tts-panel, .lesson-chain { padding: 12px; background: white; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 12px; }
+    .tts-panel h2 { margin-top: 0; font-size: 18px; }
+    .tts-default-row { margin: 8px 0; }
+    .tts-stale { display: block; color: #92400e; }
+    .playing { background: #dbeafe; }
+    .actions { flex-wrap: wrap; }
+    .table-wrap { overflow-x: auto; }
   </style>
 </head>
 <body>
@@ -163,6 +174,7 @@
     <div class="tabs">
       <button type="button" id="tab-audio" class="tab-btn active">Âm thanh</button>
       <button type="button" id="tab-images" class="tab-btn">Tranh</button>
+      <button type="button" id="tab-lesson" class="tab-btn">Nghe theo bài</button>
     </div>
 
     <label class="filter-group">
@@ -191,10 +203,31 @@
     <div class="summary" id="summary-text"></div>
   </div>
 
-  <table>
+  <div id="tts-filters" class="toolbar">
+    <label>Loại: <select id="filter-kind"><option value="">Tất cả</option></select></label>
+    <label><input type="checkbox" id="filter-regen"> Cần tạo lại</label>
+    <label><input type="checkbox" id="filter-overridden"> Đã chỉnh tay</label>
+    <label>Mã: <input type="text" id="filter-id" placeholder="Lọc đúng mã"></label>
+  </div>
+  <section id="tts-defaults" class="tts-panel">
+    <h2>Mặc định theo loại</h2>
+    <div id="tts-default-rows"></div>
+    <p id="tts-regen-count"></p>
+    <button type="button" id="tts-batch" class="btn">Tạo lại các mã cần tạo lại</button>
+    <label><input type="checkbox" id="tts-include-approved"> Gồm mã đã duyệt</label>
+    <progress id="tts-progress" value="0" max="1"></progress>
+    <span id="tts-job" role="status"></span>
+    <div id="tts-errors" role="alert"></div>
+  </section>
+  <section id="lesson-panel" class="tts-panel" hidden>
+    <label>Chọn bài: <select id="lesson-select"></select></label>
+    <button type="button" id="lesson-stop" class="btn">Dừng nghe</button>
+    <div id="lesson-chains"></div>
+  </section>
+  <div class="table-wrap" id="review-table"><table>
     <thead id="table-head"></thead>
     <tbody id="table-body"></tbody>
-  </table>
+  </table></div>
 
   <div class="toast" id="toast"></div>
 
@@ -203,6 +236,12 @@
       let currentTab = "audio";
       let state = { audio: [], images: [] };
       const rowElements = new Map();
+      let ttsAvailable = false;
+      let ttsDefaults = {};
+      let jobTimer;
+      let playback = null;
+      let lessonRequest = 0;
+      const byId = (id) => document.getElementById(id);
 
       const tabAudioBtn = document.getElementById("tab-audio");
       const tabImagesBtn = document.getElementById("tab-images");
@@ -265,8 +304,12 @@
           return;
         }
         const updated = await resp.json();
-        row.status = updated.status;
-        row.ghi_chu = updated.ghi_chu;
+        Object.assign(row, updated);
+        if (manifest === "audio") {
+          if (newStatus === "dat") row.has_prev = false;
+          row.needs_regen = row.status !== "dat" && Boolean(row.differs);
+          updateTtsRow(row);
+        }
         const els = rowElements.get(row);
         if (els) {
           els.sBadge.className = "badge status-" + row.status;
@@ -280,6 +323,11 @@
         showToast("Đã lưu " + row.id);
       }
 
+      function submitReview(manifest, row, status, note) {
+        if (manifest === "audio") return queueRow(row, () => saveReview(manifest, row, status, note));
+        return saveReview(manifest, row, status, note).catch(error => showToast(error.message));
+      }
+
       function filteredRows() {
         const list = currentTab === "audio" ? state.audio : state.images;
         const st = filterStatus.value;
@@ -289,11 +337,33 @@
           if (st && row.status !== st) return false;
           if (bai && !(row.bai || []).includes(bai)) return false;
           if (carefulOnly && !row.can_nghe_ky) return false;
+          if (currentTab === "audio") {
+            if (byId("filter-kind").value && row.kind !== byId("filter-kind").value) return false;
+            if (byId("filter-id").value && row.id !== byId("filter-id").value.trim()) return false;
+            if (byId("filter-regen").checked && !row.needs_regen) return false;
+            if (byId("filter-overridden").checked && !row.overridden) return false;
+          }
           return true;
         });
       }
 
       function render() {
+        stopPlayback();
+        const isLesson = currentTab === "lesson";
+        byId("lesson-panel").hidden = !isLesson;
+        byId("review-table").hidden = isLesson;
+        byId("tts-defaults").hidden = currentTab !== "audio";
+        byId("tts-filters").hidden = currentTab !== "audio";
+        byId("tab-lesson").classList.toggle("active", isLesson);
+        filterStatus.parentElement.hidden = isLesson;
+        filterBai.parentElement.hidden = isLesson;
+        if (isLesson) {
+          tabAudioBtn.classList.remove("active");
+          tabImagesBtn.classList.remove("active");
+          carefulWrap.style.display = "none";
+          summaryText.textContent = "Nghe từng mảnh, nghỉ 0,5 giây giữa các mảnh";
+          return;
+        }
         carefulWrap.style.display = currentTab === "audio" ? "flex" : "none";
         tabAudioBtn.classList.toggle("active", currentTab === "audio");
         tabImagesBtn.classList.toggle("active", currentTab === "images");
@@ -301,7 +371,7 @@
         tableHead.textContent = "";
         const headRow = document.createElement("tr");
         const headers = currentTab === "audio"
-          ? ["Mã", "Lời đọc", "Loại", "Bài", "Nghe thử", "Trạng thái", "Duyệt", "Ghi chú"]
+          ? ["Mã", "Lời đọc", "Loại", "Bài", "Nghe thử", "Trạng thái", "Duyệt", "Ghi chú", "Chỉnh giọng đọc"]
           : ["Mã", "Mô tả", "Bài", "Ảnh (160 px)", "Trạng thái", "Duyệt", "Ghi chú"];
         for (const h of headers) {
           const th = document.createElement("th");
@@ -318,6 +388,7 @@
         rowElements.clear();
         for (const row of rows) {
           const tr = document.createElement("tr");
+          if (currentTab === "audio") tr.className = "tts-row";
 
           const tdId = document.createElement("td");
           tdId.className = "code-id";
@@ -389,16 +460,17 @@
           noteInput.value = row.ghi_chu || "";
           noteInput.placeholder = "Ghi chú...";
 
+          const manifest = currentTab;
           btnOk.addEventListener("click", () => {
-            saveReview(currentTab, row, "dat", noteInput.value);
+            submitReview(manifest, row, "dat", noteInput.value);
           });
           btnBad.addEventListener("click", () => {
-            saveReview(currentTab, row, "khong_dat", noteInput.value);
+            submitReview(manifest, row, "khong_dat", noteInput.value);
           });
           noteInput.addEventListener("blur", () => {
             if (noteInput.value !== (row.ghi_chu || "")) {
               const targetStatus = row.status === "chua_co" ? "cho_duyet" : row.status;
-              saveReview(currentTab, row, targetStatus, noteInput.value);
+              submitReview(manifest, row, targetStatus, noteInput.value);
             }
           });
 
@@ -419,6 +491,7 @@
             noteInput: noteInput
           });
 
+          if (currentTab === "audio") addTtsControls(row, tr);
           tableBody.appendChild(tr);
         }
       }
@@ -435,11 +508,376 @@
       filterBai.addEventListener("change", render);
       filterCareful.addEventListener("change", render);
 
-      async function loadData() {
-        const resp = await fetch("/api/data");
-        state = await resp.json();
-        populateLessonFilter();
+      async function api(path, payload) {
+        const response = await fetch(path, payload === undefined ? {} : {
+          method: "POST",
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Không thực hiện được yêu cầu");
+        return result;
+      }
+
+      function button(text, action) {
+        const el = document.createElement("button");
+        el.type = "button";
+        el.className = "btn";
+        el.textContent = text;
+        el.addEventListener("click", action);
+        return el;
+      }
+
+      function parameterInput(parent, label, key, value) {
+        const wrap = document.createElement("label");
+        wrap.textContent = label;
+        const input = document.createElement("input");
+        input.type = key === "doc" ? "text" : "number";
+        input.value = value;
+        input.setAttribute("aria-label", label);
+        if (key !== "doc") {
+          const limits = { rate: [-60, 30], pitch: [-30, 30], volume: [-50, 50] }[key];
+          input.min = limits[0];
+          input.max = limits[1];
+          input.step = 1;
+        }
+        wrap.appendChild(input);
+        parent.appendChild(wrap);
+        return input;
+      }
+
+      function inputValues(inputs) {
+        const values = {};
+        for (const [key, input] of Object.entries(inputs)) {
+          if (!input.checkValidity() || (key !== "doc" && !input.value.trim())) {
+            input.reportValidity();
+            throw new Error("Thông số phải nằm trong giới hạn cho phép");
+          }
+          values[key] = key === "doc" ? input.value : Number(input.value);
+        }
+        return values;
+      }
+
+      function updateRegenCount() {
+        byId("tts-regen-count").textContent = state.audio.filter(r => r.needs_regen).length + " mã cần tạo lại";
+      }
+
+      function updateTtsRow(row, reloadAudio = false) {
+        const els = rowElements.get(row);
+        if (!els) return;
+        els.sBadge.className = "badge status-" + row.status;
+        els.sBadge.textContent = row.status;
+        els.btnOk.classList.toggle("selected", row.status === "dat");
+        els.btnBad.classList.toggle("selected", row.status === "khong_dat");
+        if (document.activeElement !== els.noteInput) els.noteInput.value = row.ghi_chu || "";
+        if (els.tts) {
+          for (const [key, input] of Object.entries(els.tts.inputs)) {
+            if (document.activeElement !== input) input.value = (row.params || {})[key] ?? (key === "doc" ? row.text : 0);
+          }
+          els.tts.badge.textContent = row.needs_regen ? "cần tạo lại" : row.differs ? "khác mặc định mới" : "";
+          els.tts.previous.hidden = !row.has_prev;
+          els.tts.restore.hidden = !row.has_prev;
+          if (reloadAudio) {
+            const audio = els.tr.querySelector("audio");
+            if (audio) {
+              audio.src = "/media/audio/" + encodeURIComponent(row.id) + ".mp3?v=" + Date.now();
+              audio.load();
+            }
+          }
+        }
+        updateRegenCount();
+      }
+
+      function queueRow(row, operation) {
+        // Lưu cách đọc trước khi tạo; thao tác trên cùng mã theo đúng thứ tự bấm.
+        row._pending = (row._pending || Promise.resolve()).then(operation).catch(error => {
+          showToast(error.message);
+        });
+        return row._pending;
+      }
+
+      function addTtsControls(row, tr) {
+        const td = document.createElement("td");
+        const fields = document.createElement("div");
+        fields.className = "tts-fields";
+        const params = row.params || { doc: row.text, rate: 0, pitch: 0, volume: 0 };
+        const inputs = {};
+        for (const [key, label] of [["doc", "Cách đọc"], ["rate", "Tốc độ (%)"], ["pitch", "Cao độ (Hz)"], ["volume", "Âm lượng (%)"]]) {
+          inputs[key] = parameterInput(fields, label, key, params[key]);
+          inputs[key].disabled = !ttsAvailable;
+          inputs[key].addEventListener("change", () => {
+            let values;
+            try { values = inputValues(inputs); } catch (error) { showToast(error.message); return; }
+            queueRow(row, async () => {
+              Object.assign(row, await api("/api/tts/row", { id: row.id, ...values }));
+              updateTtsRow(row);
+            });
+          });
+        }
+        const actions = document.createElement("div");
+        actions.className = "actions";
+        const play = (previous) => {
+          stopPlayback();
+          const audio = new Audio((previous ? "/media/prev/" : "/media/audio/") + encodeURIComponent(row.id) + ".mp3?v=" + Date.now());
+          playback = { audio };
+          audio.play().catch(error => showToast("Không nghe được " + row.id + ": " + error.message));
+        };
+        const generate = button("Tạo lại", () => queueRow(row, async () => {
+          generate.disabled = true;
+          try {
+            Object.assign(row, await api("/api/tts/generate", { id: row.id }));
+            updateTtsRow(row, true);
+            showToast("Đã tạo " + row.id);
+          } finally { generate.disabled = false; }
+        }));
+        generate.disabled = !ttsAvailable;
+        const listen = button("Nghe", () => play(false));
+        const previous = button("Nghe bản trước", () => play(true));
+        const restore = button("Dùng lại bản trước", () => queueRow(row, async () => {
+          Object.assign(row, await api("/api/tts/restore", { id: row.id }));
+          updateTtsRow(row, true);
+          showToast("Đã dùng lại bản trước " + row.id);
+        }));
+        actions.append(generate, listen, previous, restore);
+        const badge = document.createElement("span");
+        badge.className = "tts-stale";
+        td.append(fields, actions, badge);
+        tr.appendChild(td);
+        rowElements.get(row).tts = { inputs, badge, previous, restore };
+        updateTtsRow(row);
+      }
+
+      async function refreshTts(reloadAudio = false) {
+        const data = await api("/api/tts");
+        ttsDefaults = data.defaults;
+        for (const updated of data.rows) {
+          const row = state.audio.find(r => r.id === updated.id);
+          if (row) {
+            const changedAudio = JSON.stringify(row.tts) !== JSON.stringify(updated.tts);
+            Object.assign(row, updated);
+            updateTtsRow(row, reloadAudio && changedAudio);
+          }
+        }
+        updateRegenCount();
+      }
+
+      function buildDefaults() {
+        const container = byId("tts-default-rows");
+        container.textContent = "";
+        for (const [kind, params] of Object.entries(ttsDefaults)) {
+          const option = document.createElement("option");
+          option.value = kind;
+          option.textContent = kind;
+          byId("filter-kind").appendChild(option);
+          const line = document.createElement("div");
+          line.className = "tts-fields tts-default-row";
+          const title = document.createElement("strong");
+          title.textContent = kind;
+          line.appendChild(title);
+          const inputs = {};
+          for (const [key, label] of [["rate", "Tốc độ (%)"], ["pitch", "Cao độ (Hz)"], ["volume", "Âm lượng (%)"]]) {
+            inputs[key] = parameterInput(line, label, key, params[key]);
+          }
+          const save = button("Lưu", async () => {
+            try {
+              const values = inputValues(inputs);
+              save.disabled = true;
+              const result = await api("/api/tts/defaults", { kind, ...values });
+              await refreshTts();
+              showToast("Đã lưu " + kind + "; " + result.needs_regen + " mã cần tạo lại");
+            } catch (error) { showToast(error.message); }
+            finally { save.disabled = false; }
+          });
+          line.appendChild(save);
+          container.appendChild(line);
+        }
+        updateRegenCount();
+      }
+
+      let lastJob = "";
+      async function pollJob() {
+        clearTimeout(jobTimer);
+        try {
+          const job = await api("/api/tts/job");
+          byId("tts-batch").disabled = job.running || !ttsAvailable;
+          byId("tts-progress").max = Math.max(1, job.total);
+          byId("tts-progress").value = job.done + Object.keys(job.failed).length;
+          byId("tts-job").textContent = (job.running ? "Đang tạo " : "Đã tạo ") + job.done + "/" + job.total + (job.current ? " — " + job.current : "");
+          byId("tts-errors").textContent = Object.entries(job.failed).map(([id, message]) => id + ": " + message).join("; ");
+          const signature = JSON.stringify(job);
+          if (signature !== lastJob && ttsAvailable) await refreshTts(true);
+          lastJob = signature;
+        } catch (error) { showToast(error.message); }
+        finally { jobTimer = setTimeout(pollJob, 1000); }
+      }
+
+      byId("tts-batch").addEventListener("click", async () => {
+        try {
+          byId("tts-batch").disabled = true;
+          const payload = { include_approved: byId("tts-include-approved").checked };
+          if (filterBai.value) payload.lesson = filterBai.value;
+          if (byId("filter-kind").value) payload.kind = byId("filter-kind").value;
+          await api("/api/tts/batch", payload);
+          await pollJob();
+        } catch (error) { showToast(error.message); byId("tts-batch").disabled = false; }
+      });
+      for (const id of ["filter-kind", "filter-regen", "filter-overridden", "filter-id"]) {
+        byId(id).addEventListener("change", render);
+      }
+
+      function stopPlayback() {
+        if (!playback) return;
+        const active = playback;
+        playback = null;
+        active.audio.pause();
+        clearTimeout(active.timer);
+        if (active.finish) active.finish();
+      }
+
+      async function playChain(parts, buttons) {
+        stopPlayback();
+        const active = { audio: new Audio(), timer: null, finish: null };
+        playback = active;
+        try {
+          for (let i = 0; i < parts.length && playback === active; i++) {
+            buttons[i].classList.add("playing");
+            try {
+              await new Promise((resolve, reject) => {
+                active.finish = resolve;
+                active.audio.onended = resolve;
+                active.audio.onerror = () => reject(new Error("Chưa nghe được " + parts[i].audio));
+                active.audio.src = "/media/audio/" + encodeURIComponent(parts[i].audio) + ".mp3?v=" + Date.now();
+                active.audio.play().catch(reject);
+              });
+            } finally { buttons[i].classList.remove("playing"); }
+            if (i + 1 < parts.length && playback === active) {
+              await new Promise(resolve => {
+                active.finish = resolve;
+                active.timer = setTimeout(resolve, 500);
+              });
+            }
+          }
+        } catch (error) { showToast(error.message); }
+        finally {
+          if (playback === active) playback = null;
+          active.audio.pause();
+          buttons.forEach(b => b.classList.remove("playing"));
+        }
+      }
+
+      function jumpToAudio(id) {
+        stopPlayback();
+        currentTab = "audio";
+        filterStatus.value = "";
+        filterBai.value = "";
+        filterCareful.checked = false;
+        byId("filter-kind").value = "";
+        byId("filter-regen").checked = false;
+        byId("filter-overridden").checked = false;
+        byId("filter-id").value = id;
         render();
+      }
+
+      function lessonChain(lesson, where, chain, parts, notes) {
+        parts = parts.filter(part => part.audio);
+        if (!parts.length) return;
+        const panel = document.createElement("div");
+        panel.className = "lesson-chain";
+        const title = document.createElement("p");
+        title.textContent = where + " — " + chain;
+        const line = document.createElement("div");
+        line.className = "chain";
+        const pieces = parts.map(part => {
+          const b = button(part.text || part.audio, () => jumpToAudio(part.audio));
+          b.title = part.audio + " — mở mã âm thanh";
+          return b;
+        });
+        line.append(button("▶ Nghe chuỗi", () => playChain(parts, pieces)), ...pieces);
+        const note = document.createElement("input");
+        note.type = "text";
+        note.className = "note-input";
+        note.placeholder = "Ghi chú chuỗi đánh vần...";
+        note.setAttribute("aria-label", "Ghi chú " + chain);
+        let saved = (notes.find(n => n.lesson === lesson && n.where === where && n.chain === chain) || {}).note || "";
+        note.value = saved;
+        let saving = Promise.resolve();
+        note.addEventListener("change", () => {
+          const value = note.value;
+          saving = saving.then(async () => {
+            if (value === saved) return;
+            await api("/api/chain-notes", { lesson, where, chain, note: value });
+            saved = value;
+            showToast("Đã lưu ghi chú chuỗi");
+          }).catch(error => showToast(error.message));
+        });
+        panel.append(title, line, note);
+        byId("lesson-chains").appendChild(panel);
+      }
+
+      async function loadLesson() {
+        stopPlayback();
+        const request = ++lessonRequest;
+        const id = byId("lesson-select").value;
+        byId("lesson-chains").textContent = "Đang đọc bài...";
+        if (!id) return;
+        try {
+          const [lesson, notes] = await Promise.all([api("/api/lesson/" + encodeURIComponent(id)), api("/api/chain-notes")]);
+          if (request !== lessonRequest) return;
+          byId("lesson-chains").textContent = "";
+          (lesson.part1 || []).forEach((step, index) => {
+            const where = "part1[" + index + "]";
+            if (step.spell && step.spell.parts) {
+              const parts = [...step.spell.parts];
+              if (step.then_audio) parts.push({ audio: step.then_audio, text: step.then_text });
+              lessonChain(id, where + ".spell", step.spell.target, parts, notes);
+            }
+            if (step.audio) lessonChain(id, where, step.text || step.type, [{ audio: step.audio, text: step.text }], notes);
+            if (step.type === "sentence") {
+              lessonChain(id, where + ".items", step.text, step.items || [], notes);
+            }
+            (step.items || []).forEach((item, itemIndex) => {
+              // Phát như app: nối mảnh của mọi tiếng rồi đọc cả mục (ItemsView.OnReadingTapped).
+              const parts = (item.spells || []).flatMap(spell => spell.parts || []);
+              if (!parts.length) return;
+              if (item.audio && parts[parts.length - 1].audio !== item.audio) parts.push({ audio: item.audio, text: item.text });
+              lessonChain(id, where + ".items[" + itemIndex + "]", item.text, parts, notes);
+            });
+          });
+          if (!byId("lesson-chains").children.length) byId("lesson-chains").textContent = "Bài chưa có chuỗi âm thanh.";
+        } catch (error) { if (request === lessonRequest) byId("lesson-chains").textContent = error.message; }
+      }
+
+      async function loadLessons() {
+        try {
+          const lessons = await api("/api/lessons");
+          for (const lesson of lessons) {
+            const option = document.createElement("option");
+            option.value = lesson.lesson_id;
+            option.textContent = "Bài " + lesson.lesson_no + " — " + lesson.title;
+            byId("lesson-select").appendChild(option);
+          }
+          await loadLesson();
+        } catch (error) { byId("lesson-chains").textContent = error.message; }
+      }
+      byId("lesson-select").addEventListener("change", loadLesson);
+      byId("lesson-stop").addEventListener("click", stopPlayback);
+      byId("tab-lesson").addEventListener("click", () => { currentTab = "lesson"; render(); });
+
+      async function loadData() {
+        try {
+          state = await api("/api/data");
+          try {
+            const data = await api("/api/tts");
+            state.audio = data.rows;
+            ttsDefaults = data.defaults;
+            ttsAvailable = true;
+            buildDefaults();
+          } catch (error) { showToast(error.message); }
+          populateLessonFilter();
+          render();
+          await loadLessons();
+          pollJob();
+        } catch (error) { showToast(error.message); }
       }
 
       loadData();

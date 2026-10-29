@@ -150,7 +150,11 @@ def _cmd_validate(args: argparse.Namespace) -> int:
 
 
 def _cmd_review(args: argparse.Namespace) -> int:
-    server = make_server(args.port, MANIFESTS, UNITY_RES)
+    server = make_server(args.port, MANIFESTS, UNITY_RES,
+                         settings_path=TTS_SETTINGS, prev_dir=TTS_PREV,
+                         lessons_dir=UNITY_RES / "lessons",
+                         notes_path=ROOT / "content/review/chain_notes.json",
+                         engine_factory=getattr(args, "engine_factory", None))
     print(f"Mở http://127.0.0.1:{server.server_address[1]}/")  # cổng thật, kể cả khi --port 0
     try:
         server.serve_forever()
