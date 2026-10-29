@@ -162,6 +162,21 @@
     .tts-panel h2 { margin-top: 0; font-size: 18px; }
     .tts-default-row { margin: 10px 0; }
     .tts-kind { display: block; margin-bottom: 4px; }
+    #tts-default-rows { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 0 24px; }
+    .pager { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin: 8px 0; }
+    .pager > span, #pager-bottom { display: flex; gap: 8px; align-items: center; }
+    #pager-bottom { justify-content: flex-end; }
+    #search { padding: 6px 8px; min-width: 240px; }
+    .bai-more { background: none; border: 0; padding: 0; color: #1d4ed8; cursor: pointer; white-space: nowrap; font: inherit; text-decoration: underline dotted; }
+    #bai-popup { position: absolute; z-index: 50; width: 320px; max-height: 260px; overflow: auto; background: white;
+                 border: 1px solid #d1d5db; border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, .15); padding: 10px 12px; }
+    .bai-popup-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .bai-popup-head .btn { padding: 0 8px; }
+    .bai-popup-body { line-height: 1.6; }
+    .tts-row td:last-child { min-width: 440px; }
+    .tts-row audio { width: 230px; }
+    .tts-row .note-input { width: 150px; min-width: 150px; }
+    .tts-row .tts-fields input[type="text"] { width: 130px; padding: 6px; }
     .tts-default-row .tts-fields { align-items: flex-end; }
     .tts-stale { display: block; color: #92400e; }
     .playing { background: #dbeafe; }
@@ -197,6 +212,11 @@
       </select>
     </label>
 
+    <label class="filter-group" id="search-wrap">
+      <span>Tìm:</span>
+      <input type="search" id="search" placeholder="Mã, lời đọc, cách đọc, ghi chú…" aria-label="Tìm">
+    </label>
+
     <label class="filter-group" id="careful-filter-wrap">
       <input type="checkbox" id="filter-careful">
       <span>chỉ file cần nghe kỹ</span>
@@ -209,7 +229,7 @@
     <label>Loại: <select id="filter-kind"><option value="">Tất cả</option></select></label>
     <label><input type="checkbox" id="filter-regen"> Cần tạo lại</label>
     <label><input type="checkbox" id="filter-overridden"> Đã chỉnh tay</label>
-    <label>Mã: <input type="text" id="filter-id" placeholder="Lọc đúng mã"></label>
+    <label>Giọng: <select id="filter-voice"><option value="">Tất cả</option><option value="cu">Bản cũ (chưa tạo lại)</option></select></label>
   </div>
   <section id="tts-defaults" class="tts-panel">
     <h2>Mặc định theo loại</h2>
@@ -227,12 +247,18 @@
     <button type="button" id="lesson-stop" class="btn">Dừng nghe</button>
     <div id="lesson-chains"></div>
   </section>
+  <div class="pager" id="pager-top-wrap">
+    <span id="pager-top"></span>
+    <label>Mỗi trang: <select id="page-size"><option>20</option><option>50</option><option>100</option></select></label>
+  </div>
   <div class="table-wrap" id="review-table"><table>
     <thead id="table-head"></thead>
     <tbody id="table-body"></tbody>
   </table></div>
+  <div class="pager" id="pager-bottom"></div>
 
   <div class="toast" id="toast"></div>
+  <div id="bai-popup" role="dialog" aria-label="Các bài dùng mã này" hidden></div>
 
   <script>
     (function () {
@@ -246,6 +272,10 @@
       let jobTimer;
       let playback = null;
       let lessonRequest = 0;
+      let currentPage = 1;
+      let pageSize = 20;
+      let lastFilterKey = "";
+      let searchTimer;
       const byId = (id) => document.getElementById(id);
 
       const tabAudioBtn = document.getElementById("tab-audio");
@@ -333,24 +363,110 @@
         return saveReview(manifest, row, status, note).catch(error => showToast(error.message));
       }
 
+      // Bỏ dấu để gõ "san" vẫn tìm ra "sàn"; gõ có dấu thì tìm đúng dấu.
+      const fold = (text) => String(text || "").normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .replace(/[đĐ]/g, "d").toLowerCase();
+
+      function rowVoice(row) {
+        return String(row.source || "").startsWith("tts_edge_") && row.tts ? row.tts.voice : "cu";
+      }
+
       function filteredRows() {
         const list = currentTab === "audio" ? state.audio : state.images;
         const st = filterStatus.value;
         const bai = filterBai.value;
         const carefulOnly = currentTab === "audio" && filterCareful.checked;
+        const query = byId("search").value.trim().normalize("NFC");
+        const exactId = query && list.some(row => row.id === query);
+        const marked = fold(query) !== query.toLowerCase();
         return list.filter((row) => {
           if (st && row.status !== st) return false;
           if (bai && !(row.bai || []).includes(bai)) return false;
           if (carefulOnly && !row.can_nghe_ky) return false;
+          if (exactId && row.id !== query) return false;
+          if (query && !exactId) {
+            const hay = [row.id, row.text, row.mo_ta, row.params && row.params.doc, row.ghi_chu].filter(Boolean).join(" ");
+            if (marked ? !hay.toLowerCase().includes(query.toLowerCase()) : !fold(hay).includes(fold(query))) return false;
+          }
           if (currentTab === "audio") {
             if (byId("filter-kind").value && row.kind !== byId("filter-kind").value) return false;
-            if (byId("filter-id").value && row.id !== byId("filter-id").value.trim()) return false;
+            if (byId("filter-voice").value && rowVoice(row) !== byId("filter-voice").value) return false;
             if (byId("filter-regen").checked && !row.needs_regen) return false;
             if (byId("filter-overridden").checked && !row.overridden) return false;
           }
           return true;
         });
       }
+
+      function renderPager(pages) {
+        for (const id of ["pager-top", "pager-bottom"]) {
+          const el = byId(id);
+          el.textContent = "";
+          const prev = button("‹ Trước", () => goPage(currentPage - 1, id === "pager-bottom"));
+          prev.disabled = currentPage <= 1;
+          const info = document.createElement("span");
+          info.textContent = "Trang " + currentPage + " / " + pages;
+          const next = button("Sau ›", () => goPage(currentPage + 1, id === "pager-bottom"));
+          next.disabled = currentPage >= pages;
+          el.append(prev, info, next);
+        }
+      }
+
+      function goPage(page, scroll) {
+        currentPage = page;
+        render();
+        if (scroll) byId("pager-top-wrap").scrollIntoView({ block: "start" });
+      }
+
+      function baiCell(td, bai) {
+        const short = bai.map(b => b.replace(/^tv1_t1_/, ""));
+        if (short.length <= 3) {
+          td.textContent = short.join(", ");
+          return;
+        }
+        // Mã dùng ở nhiều bài: ô chỉ ghi gọn một dòng, bấm mở khung nhỏ ghi đủ để không vỡ cột.
+        const more = document.createElement("button");
+        more.type = "button";
+        more.className = "bai-more";
+        more.textContent = short.slice(0, 2).join(", ") + " … +" + (short.length - 2);
+        more.title = "Xem đủ " + short.length + " bài";
+        more.addEventListener("click", (event) => {
+          event.stopPropagation();
+          showBaiPopup(more, short);
+        });
+        td.appendChild(more);
+      }
+
+      function showBaiPopup(anchor, short) {
+        const popup = byId("bai-popup");
+        popup.textContent = "";
+        const head = document.createElement("div");
+        head.className = "bai-popup-head";
+        const title = document.createElement("strong");
+        title.textContent = "Dùng trong " + short.length + " bài";
+        const close = button("×", hideBaiPopup);
+        close.setAttribute("aria-label", "Đóng");
+        head.append(title, close);
+        const body = document.createElement("div");
+        body.className = "bai-popup-body";
+        body.textContent = short.join(", ");
+        popup.append(head, body);
+        popup.hidden = false;
+        const rect = anchor.getBoundingClientRect();
+        const left = Math.min(rect.left + window.scrollX, window.scrollX + document.documentElement.clientWidth - popup.offsetWidth - 16);
+        popup.style.left = Math.max(8, left) + "px";
+        popup.style.top = (rect.bottom + window.scrollY + 4) + "px";
+      }
+
+      function hideBaiPopup() {
+        byId("bai-popup").hidden = true;
+      }
+      document.addEventListener("click", (event) => {
+        if (!byId("bai-popup").contains(event.target)) hideBaiPopup();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") hideBaiPopup();
+      });
 
       function render() {
         stopPlayback();
@@ -362,6 +478,9 @@
         byId("tab-lesson").classList.toggle("active", isLesson);
         filterStatus.parentElement.hidden = isLesson;
         filterBai.parentElement.hidden = isLesson;
+        byId("search-wrap").hidden = isLesson;
+        byId("pager-top-wrap").hidden = isLesson;
+        byId("pager-bottom").hidden = isLesson;
         if (isLesson) {
           tabAudioBtn.classList.remove("active");
           tabImagesBtn.classList.remove("active");
@@ -387,11 +506,22 @@
 
         const rows = filteredRows();
         const total = (currentTab === "audio" ? state.audio : state.images).length;
-        summaryText.textContent = "Đang hiện " + rows.length + " / " + total + " mục";
+        // Đổi tab, bộ lọc, ô tìm hay cỡ trang thì quay về trang 1.
+        const filterKey = JSON.stringify([currentTab, filterStatus.value, filterBai.value, filterCareful.checked,
+          byId("filter-kind").value, byId("filter-voice").value, byId("filter-regen").checked,
+          byId("filter-overridden").checked, byId("search").value.trim(), pageSize]);
+        if (filterKey !== lastFilterKey) {
+          currentPage = 1;
+          lastFilterKey = filterKey;
+        }
+        const pages = Math.max(1, Math.ceil(rows.length / pageSize));
+        currentPage = Math.min(Math.max(1, currentPage), pages);
+        summaryText.textContent = "Khớp " + rows.length + " / " + total + " mục";
+        renderPager(pages);
 
         tableBody.textContent = "";
         rowElements.clear();
-        for (const row of rows) {
+        for (const row of rows.slice((currentPage - 1) * pageSize, currentPage * pageSize)) {
           const tr = document.createElement("tr");
           if (currentTab === "audio") tr.className = "tts-row";
 
@@ -417,7 +547,7 @@
           }
 
           const tdBai = document.createElement("td");
-          tdBai.textContent = (row.bai || []).join(", ");
+          baiCell(tdBai, row.bai || []);
           tr.appendChild(tdBai);
 
           const tdMedia = document.createElement("td");
@@ -540,6 +670,8 @@
         input.type = key === "doc" ? "text" : "number";
         input.value = value;
         input.setAttribute("aria-label", label);
+        // Âm lượng là mức chỉnh thêm so với gốc, 0 không phải tắt tiếng.
+        if (key === "volume") wrap.title = "0 = giữ độ to gốc của giọng; -50 = nhỏ một nửa; +50 = to hơn 50%";
         if (key !== "doc") {
           const limits = { rate: [-60, 30], pitch: [-30, 30], volume: [-50, 50] }[key];
           input.min = limits[0];
@@ -760,9 +892,17 @@
           await pollJob();
         } catch (error) { showToast(error.message); byId("tts-batch").disabled = false; }
       });
-      for (const id of ["filter-kind", "filter-regen", "filter-overridden", "filter-id"]) {
+      for (const id of ["filter-kind", "filter-voice", "filter-regen", "filter-overridden"]) {
         byId(id).addEventListener("change", render);
       }
+      byId("search").addEventListener("input", () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(render, 250);
+      });
+      byId("page-size").addEventListener("change", () => {
+        pageSize = Number(byId("page-size").value);
+        render();
+      });
 
       function stopPlayback() {
         if (!playback) return;
@@ -813,7 +953,8 @@
         byId("filter-kind").value = "";
         byId("filter-regen").checked = false;
         byId("filter-overridden").checked = false;
-        byId("filter-id").value = id;
+        byId("filter-voice").value = "";
+        byId("search").value = id;
         render();
       }
 
@@ -913,6 +1054,13 @@
             ttsVoice = data.voice;
             byId("tts-default-voice").textContent = "Giọng mặc định: " + (ttsVoices.find(v => v.id === ttsVoice)?.label || ttsVoice);
             ttsAvailable = true;
+            const oldOption = byId("filter-voice").querySelector('option[value="cu"]');
+            for (const item of ttsVoices) {
+              const option = document.createElement("option");
+              option.value = item.id;
+              option.textContent = item.label;
+              byId("filter-voice").insertBefore(option, oldOption);
+            }
             buildDefaults();
           } catch (error) { showToast(error.message); }
           populateLessonFilter();
