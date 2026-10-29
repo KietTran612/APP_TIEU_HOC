@@ -26,7 +26,8 @@ namespace TapDoc
             for (var j = 0; j < items.Count; j++)
             {
                 var index = j;
-                var tile = AddTile(items[j].text, new Vector2(widths[j], 190f), centers[j] + new Vector2(0f, 115f), 110f);
+                // Bài vần: tô vần mới như sách (dữ liệu chỉ có hl ở bài vần).
+                var tile = AddTile(TextStyler.Apply(items[j].text, items[j].hl), new Vector2(widths[j], 190f), centers[j] + new Vector2(0f, 115f), 110f);
                 tile.Tapped += () => OnTokenTapped(index);
                 _tokens.Add(tile);
             }

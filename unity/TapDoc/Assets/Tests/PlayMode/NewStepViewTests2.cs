@@ -216,5 +216,108 @@ namespace TapDoc.Tests
 
         private static int RuleIndex(string lid) => LessonRepository.Load(lid).part1.FindIndex(s => s.type == "rule");
         private static int MatchIndex(string lid) => LessonRepository.Load(lid).part2.FindIndex(r => r.kind == "match_case");
+
+        private static Step Rimes(int count = 10)
+        {
+            var rimes = new[] { "an", "ăn", "ân", "on", "ôn", "ơn", "en", "ên", "in", "un", "am", "em", "im", "um" };
+            var step = new Step { type = "rime_table" };
+            for (var i = 0; i < count; i++)
+            {
+                var rime = rimes[i];
+                step.items.Add(new Item
+                {
+                    role = "rime", row = i, text = rime, audio = "van_" + rime,
+                    spells = new List<Spell>
+                    {
+                        new() { parts = new List<Part>
+                        {
+                            new() { text = rime.Substring(0, 1), audio = "van_" + rime.Substring(0, 1) },
+                            new() { text = rime.Substring(1), audio = "am_" + rime.Substring(1) },
+                            new() { text = rime, audio = "van_" + rime }
+                        } }
+                    }
+                });
+                step.items.Add(new Item
+                {
+                    role = "word", row = i, text = i == 0 ? "nhà sàn" : "vần " + rime,
+                    audio = i == 0 ? "tu_nhaf_sanf" : "tu_" + i,
+                    hl = new List<Span> { new() { s = i == 0 ? 5 : 4, n = 2 } }
+                });
+            }
+            return step;
+        }
+
+        [UnityTest]
+        public IEnumerator RimeTable_RowSpellsThenReadsWord()
+        {
+            var v = CreateTrackedStep(Rimes());
+            TileWithText(v, "an\na – n").SimulateTap();
+            yield return new WaitForSeconds(.5f);
+            CollectionAssert.AreEqual(new[] { "van_a", "am_n", "van_an", "tu_nhaf_sanf" },
+                Ctx.Speech.History.Skip(Ctx.Speech.History.Count - 4).ToArray());
+            Assert.IsFalse(Done(v));
+        }
+
+        [UnityTest]
+        public IEnumerator RimeTable_AllRowsTapped()
+        {
+            var v = CreateTrackedStep(Rimes());
+            yield return ((ITestCompletable)v).CompleteForTest();
+            Assert.IsTrue(Done(v));
+        }
+
+        [UnityTest]
+        public IEnumerator RimeTable_Paging()
+        {
+            var v = (RimeTableView)CreateTrackedStep(Rimes(14));
+            Assert.AreEqual(2, v.PageCount);
+            Assert.AreEqual(0, v.Page);
+            Assert.AreEqual(16, RootOf(v).GetComponentsInChildren<Tile>(false).Length);
+            Assert.IsFalse(ButtonWithText(v, UiText.PagePrev).gameObject.activeSelf);
+            ButtonWithText(v, UiText.PageNext).onClick.Invoke();
+            Assert.AreEqual(1, v.Page);
+            Assert.AreEqual(12, RootOf(v).GetComponentsInChildren<Tile>(false).Length);
+            Assert.IsFalse(ButtonWithText(v, UiText.PageNext).gameObject.activeSelf);
+            yield return ((ITestCompletable)v).CompleteForTest();
+            Assert.IsTrue(Done(v));
+        }
+
+        [UnityTest]
+        public IEnumerator RimeTable_LayoutFits_2048x1536()
+        {
+            Cam.targetTexture = null;
+            Object.Destroy(TargetTex);
+            TargetTex = new RenderTexture(2048, 1536, 24);
+            Cam.targetTexture = TargetTex;
+            var v = CreateTrackedStep(Rimes());
+            yield return null;
+            LayoutProbe.AssertFits(Canvas);
+            Object.Destroy(RootOf(v));
+            yield return null;
+            var paged = CreateTrackedStep(Rimes(14));
+            yield return null;
+            LayoutProbe.AssertFits(Canvas);
+            ButtonWithText(paged, UiText.PageNext).onClick.Invoke();
+            yield return null;
+            LayoutProbe.AssertFits(Canvas);
+        }
+
+        [UnityTest] public IEnumerator RimeTable_Lesson48() { var v = Bind("tv1_t1_b48", RimeIndex("tv1_t1_b48")); yield return ((ITestCompletable)v).CompleteForTest(); Assert.IsTrue(Done(v)); }
+
+        private static int RimeIndex(string lid) => LessonRepository.Load(lid).part1.FindIndex(s => s.type == "rime_table");
+
+        /// <summary>Câu ở bài vần tô vần mới như sách (bài 45 "Cô hôn bé.": tô "ôn"); tiếng không có vần mới giữ màu thường.</summary>
+        [UnityTest]
+        public IEnumerator Sentence_ColoursNewRime()
+        {
+            var lesson = LessonRepository.Load("tv1_t1_b45");
+            var index = lesson.part1.FindIndex(s => s.type == "sentence" && s.text == "Cô hôn bé.");
+            var v = Bind("tv1_t1_b45", index);
+            yield return null;
+            var hon = RootOf(v).GetComponentsInChildren<Tile>(true).Single(t => t.PlainText == "hôn");
+            Assert.That(hon.GetComponentInChildren<TMP_Text>().text, Does.Contain("<color="));
+            var co = RootOf(v).GetComponentsInChildren<Tile>(true).Single(t => t.PlainText == "Cô");
+            Assert.That(co.GetComponentInChildren<TMP_Text>().text, Does.Not.Contain("<color="));
+        }
     }
 }
