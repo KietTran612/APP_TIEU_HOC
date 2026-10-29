@@ -487,7 +487,7 @@ Không đưa vào app: tranh mở đầu, trang kí hiệu, phụ lục bảng c
 
 **Âm thanh.** Tiếp tục giọng tạm vi-sgn+f3 cho cả quyển. Sau này thay giọng tốt hơn theo mã, không phải sửa code (mục 2, mục tiêu 4).
 
-## 17. Giọng đọc mới bằng edge-tts và công cụ chỉnh âm thanh [Đề xuất 29/10/2026, chờ chủ dự án duyệt bản viết]
+## 17. Giọng đọc mới bằng edge-tts và công cụ chỉnh âm thanh [Chốt 29/10/2026]
 
 **Vì sao.** Chủ dự án nghe các file tạm (ChatGPT, bộ đọc eSpeak vi-sgn+f3) và thấy không file nào dùng được:
 - đọc quá nhanh, khó nghe;
@@ -558,6 +558,11 @@ Bản nghe thử ngày 29/10 dùng gói Python `edge-tts` (giọng `vi-VN-HoaiMy
 - giao diện cụ thể của công cụ;
 - cách lưu bản trước;
 - cách nhận biết "thông số đã đổi" (ví dụ băm cách đọc và thông số).
+
+**Chọn bộ đọc [Chốt 29/10/2026].** Đã nghe so sánh cùng 18 mẫu khó trên các gói miễn phí: edge-tts, VieNeu-TTS v3 Turbo (4 giọng nữ miền Nam, mã nguồn mở, chạy trên máy), Piper, gTTS. Chủ dự án chọn **edge-tts giọng HoaiMy**.
+- VieNeu đọc trùng các cặp tr/ch, x/s, gi/d vì bộ chuyển chữ sang âm của nó gộp các cặp này.
+- Piper đọc chữ đơn quá ngắn.
+- VieNeu vẫn là phương án dự phòng nếu edge-tts ngừng chạy.
 
 **Quyết định thêm sau khi soát bản viết [Claude chọn; chủ dự án đổi được]**
 1. **Mặc định theo loại sửa được ngay trong công cụ.**
