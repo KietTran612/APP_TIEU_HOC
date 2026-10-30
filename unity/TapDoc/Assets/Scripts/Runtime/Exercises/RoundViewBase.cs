@@ -74,7 +74,8 @@ namespace TapDoc
                 if (!IsAlive) return;
             }
             OptionTiles.TryGetValue(Round.answer, out var answerTile);
-            if (!await Feedback.Handle(correct, answerTile)) return;
+            OptionTiles.TryGetValue(option, out var chosenTile);
+            if (!await Feedback.Handle(correct, answerTile, chosenTile)) return;
             if (!IsAlive || _completed) return;
             _completed = true;
             ReportFinished();

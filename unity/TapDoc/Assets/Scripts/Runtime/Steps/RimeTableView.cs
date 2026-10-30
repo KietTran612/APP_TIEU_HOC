@@ -59,7 +59,7 @@ namespace TapDoc
                 _tiles.Add(rimeTile);
                 _tiles.Add(wordTile);
             }
-            if (PageCount > 1) _pager = new PageButtons(Root.transform, () => ShowPage(Page - 1), () => ShowPage(Page + 1));
+            if (PageCount > 1) _pager = new PageButtons(Root.transform, Ctx.Assets, () => ShowPage(Page - 1), () => ShowPage(Page + 1));
             ShowPage(0);
         }
 

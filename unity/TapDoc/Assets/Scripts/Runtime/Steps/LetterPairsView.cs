@@ -36,7 +36,7 @@ namespace TapDoc
                 tile.Tapped += () => OnTapped(index);
                 _tiles.Add(tile);
             }
-            if (PageCount > 1) _pager = new PageButtons(Root.transform, () => ShowPage(Page - 1), () => ShowPage(Page + 1));
+            if (PageCount > 1) _pager = new PageButtons(Root.transform, Ctx.Assets, () => ShowPage(Page - 1), () => ShowPage(Page + 1));
             ShowPage(0);
         }
 

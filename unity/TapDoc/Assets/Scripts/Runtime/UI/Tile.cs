@@ -35,6 +35,9 @@ namespace TapDoc
         private const float GlyphMaxInk = 0.7f;
         private const float GlyphMaxGrow = 4f;
 
+        /// <summary>Cỡ của thẻ khi đang được đọc tới.</summary>
+        public const float HighlightScale = 1.1f;
+
         internal void Setup(Image background, Image picture, TextMeshProUGUI label, string richText, Sprite sprite, string imageId = null)
         {
             _background = background;
@@ -149,14 +152,19 @@ namespace TapDoc
             _label.fontSize = max;
         }
 
+        /// <summary>Thẻ đang được đọc tới: nền cam nhạt và phồng lên một chút.</summary>
         public void SetHighlighted(bool highlighted)
         {
+            if (_isHighlighted != highlighted) _ = Motion.ScaleTo(transform, highlighted ? HighlightScale : 1f, .12f);
             _isHighlighted = highlighted;
             RefreshColors();
         }
 
+        /// <summary>Thẻ gợi ý (bé sai lần hai): nền vàng và nhún nhẹ lặp lại cho tới khi tắt gợi ý.</summary>
         public void SetHint(bool hint)
         {
+            if (hint) Pulse.StartOn(transform);
+            else if (IsHinted) Pulse.StopOn(transform);
             IsHinted = hint;
             RefreshColors();
         }

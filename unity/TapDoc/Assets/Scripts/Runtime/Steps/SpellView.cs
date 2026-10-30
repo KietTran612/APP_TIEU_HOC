@@ -13,6 +13,7 @@ namespace TapDoc
     {
         private const float TileSize = 220f;
         private const float TileGap = 30f;
+        private const float MergeSeconds = .3f;
 
         private readonly Dictionary<int, Tile> _tiles = new();
         private List<Part> _parts;
@@ -74,7 +75,7 @@ namespace TapDoc
         private async void RunDemo()
         {
             var ids = _parts.Select(p => p.audio).ToList();
-            await Ctx.Speech.PlaySequenceAsync(ids, ShowPart);
+            await Ctx.Speech.PlaySequenceAsync(ids, ShowPart, onGap: BeforePart);
             if (!IsAlive) return;
             if (!await Play(SystemAudio.hd_danh_van_theo)) return;
 
@@ -90,7 +91,7 @@ namespace TapDoc
             if (!IsAlive || i < 0 || i >= _parts.Count) return;
             if (_parts[i].kind == "join")
             {
-                _result.SetText(_parts[i].text);
+                ShowJoin(i);
                 return;
             }
             foreach (var t in _tiles.Values) t.SetHighlighted(false);
@@ -124,6 +125,7 @@ namespace TapDoc
             var result = _practice.Act(i, out var auto);
             if (result == TapResult.WrongOrder)
             {
+                if (_tiles.TryGetValue(i, out var tapped)) Ctx.Fx?.Wrong((RectTransform)tapped.transform);
                 if (_tiles.TryGetValue(_practice.Expected, out var expected)) expected.SetHint(true);
                 return;
             }
@@ -145,9 +147,48 @@ namespace TapDoc
             {
                 if (!IsAlive) return;
                 var k = indices[n];
-                if (_parts[k].kind == "join") _result.SetText(_parts[k].text);
-            });
+                if (_parts[k].kind == "join") ShowJoin(k);
+            }, onGap: n => BeforePart(indices[n]));
             return finished && IsAlive;
+        }
+
+        /// <summary>Mảnh ghép (join) bắt đầu đọc: hiện chữ ghép ở vùng kết quả và cho vùng kết quả nảy lên.</summary>
+        private void ShowJoin(int i)
+        {
+            _result.SetText(_parts[i].text);
+            _ = Motion.Punch(_result.transform, 1.15f, .25f);
+        }
+
+        /// <summary>
+        /// Khoảng nghỉ ngay trước mảnh <paramref name="i"/>: nếu đó là mảnh ghép thì các thẻ của chuỗi vừa đọc nhập vào
+        /// vùng kết quả (bản sao bay tới rồi mờ đi) kèm tiếng "bụp", để tiếng động không chen vào lời đánh vần.
+        /// </summary>
+        private void BeforePart(int i)
+        {
+            if (!IsAlive || i < 0 || i >= _parts.Count || _parts[i].kind != "join") return;
+            Ctx.Fx?.Merge();
+            var resultRt = (RectTransform)_result.transform;
+            for (var k = i - 1; k >= 0 && _parts[k].kind != "join"; k--)
+            {
+                if (_tiles.TryGetValue(k, out var tile)) FlyGhost(tile, resultRt.anchoredPosition);
+            }
+        }
+
+        private async void FlyGhost(Tile tile, Vector2 target)
+        {
+            var ghost = Object.Instantiate(tile.gameObject, Root.transform);
+            ghost.name = "MergeGhost";
+            // Bản sao chỉ để nhìn: bỏ ngay phần nhận chạm (kéo trước, vì DragTile cần Tile), để test và bé không chạm nhầm.
+            var drag = ghost.GetComponent<DragTile>();
+            if (drag != null) Object.DestroyImmediate(drag);
+            Object.DestroyImmediate(ghost.GetComponent<TapFeedback>());
+            Object.DestroyImmediate(ghost.GetComponent<Tile>());
+            var group = ghost.AddComponent<CanvasGroup>();
+            group.blocksRaycasts = false;
+            var rt = (RectTransform)ghost.transform;
+            _ = Motion.Fade(group, 0f, MergeSeconds);
+            await Motion.MoveTo(rt, target, MergeSeconds);
+            if (ghost != null) Object.Destroy(ghost);
         }
 
         private async void Finish()
@@ -159,10 +200,12 @@ namespace TapDoc
                 await Ctx.Speech.PlayAsync(Step.then_audio);
                 if (!IsAlive) return;
             }
+            Ctx.Fx?.Correct((RectTransform)_result.transform);
             if (_imageTile != null)
             {
                 _imageTile.gameObject.SetActive(true);
                 _imageTile.SetSprite(Ctx.Assets.Image(Step.image), Step.image);
+                _ = Motion.Wiggle(_imageTile.transform, 3f, .4f);
             }
             Complete();
         }

@@ -11,6 +11,8 @@ namespace TapDoc
     /// </summary>
     public class SentenceView : StepViewBase
     {
+        private const float BigButton = 180f;
+
         private readonly List<Tile> _tokens = new();
         private Button _doneButton;
         private int _listenGeneration;
@@ -32,10 +34,13 @@ namespace TapDoc
                 _tokens.Add(tile);
             }
 
-            var listen = UiKit.CreateButton(Root.transform, UiText.ListenSentence, OnListen);
-            Place(listen, new Vector2(-240f, -180f), new Vector2(420f, UiKit.MinTouch));
-            _doneButton = UiKit.CreateButton(Root.transform, UiText.DoneReading, Complete);
-            Place(_doneButton, new Vector2(240f, -180f), new Vector2(420f, UiKit.MinTouch));
+            // Nút loa to ngay dưới câu (chạm là nghe ngay, không có tiếng tách); nút "Con đọc xong rồi" có dấu tích, nền cam.
+            var listen = UiKit.CreateIconButton(Root.transform, Ctx.Assets, SystemIcons.Speaker, UiText.ListenSentence, OnListen);
+            Place(listen, new Vector2(-120f, -180f), new Vector2(BigButton, BigButton));
+            _doneButton = UiKit.CreateIconButton(Root.transform, Ctx.Assets, SystemIcons.Check, UiText.DoneReading, Complete,
+                Palette.Orange);
+            _doneButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
+            Place(_doneButton, new Vector2(120f, -180f), new Vector2(BigButton, BigButton));
         }
 
         private static void Place(Button b, Vector2 pos, Vector2 size)

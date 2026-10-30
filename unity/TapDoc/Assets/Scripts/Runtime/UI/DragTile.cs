@@ -8,6 +8,9 @@ namespace TapDoc
     [RequireComponent(typeof(Tile))]
     public class DragTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
+        /// <summary>Cỡ của thẻ trong lúc bé kéo.</summary>
+        public const float DragScale = 1.1f;
+
         private RectTransform _rect;
         private Vector2 _startAnchoredPos;
         private Transform _startParent;
@@ -30,6 +33,8 @@ namespace TapDoc
             _canvas = GetComponentInParent<Canvas>();
             // Vẽ thẻ đang kéo lên trên các thẻ cùng cha; trả lại thứ tự cũ khi thẻ về chỗ.
             transform.SetAsLastSibling();
+            _ = Motion.ScaleTo(transform, DragScale, .1f);
+            if (SfxPlayer.Instance != null) SfxPlayer.Instance.Play(SystemSfx.Tap);
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -53,6 +58,7 @@ namespace TapDoc
                 }
             }
 
+            _ = Motion.ScaleTo(transform, 1f, .1f);
             if (hitSlot != null)
             {
                 ResetPosition();
@@ -60,7 +66,8 @@ namespace TapDoc
             }
             else
             {
-                ResetPosition();
+                // Thả trượt: thẻ bay về chỗ cũ.
+                ResetPosition(animate: true);
             }
         }
 
@@ -77,7 +84,7 @@ namespace TapDoc
             ResetPosition();
         }
 
-        private void ResetPosition()
+        private void ResetPosition(bool animate = false)
         {
             if (_rect == null) _rect = GetComponent<RectTransform>();
             if (_startParent == null) return; // chưa từng kéo: thẻ vẫn ở chỗ cũ
@@ -86,10 +93,9 @@ namespace TapDoc
                 transform.SetParent(_startParent, false);
             }
             transform.SetSiblingIndex(_startSiblingIndex);
-            if (_rect != null)
-            {
-                _rect.anchoredPosition = _startAnchoredPos;
-            }
+            if (_rect == null) return;
+            if (animate) _ = Motion.MoveTo(_rect, _startAnchoredPos, .2f);
+            else _rect.anchoredPosition = _startAnchoredPos;
         }
     }
 }

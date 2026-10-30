@@ -76,7 +76,7 @@ namespace TapDoc
                 if (_cells.All(c => c.page != p)) _progress.Tap(p);
 
             if (PageCount > 1)
-                _pager = new PageButtons(Root.transform, () => ShowPage(Page - 1), () => ShowPage(Page + 1), ButtonX, ButtonW);
+                _pager = new PageButtons(Root.transform, Ctx.Assets, () => ShowPage(Page - 1), () => ShowPage(Page + 1), ButtonX);
             ShowPage(0);
         }
 

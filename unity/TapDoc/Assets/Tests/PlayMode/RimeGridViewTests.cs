@@ -251,7 +251,7 @@ namespace TapDoc.Tests
                 var rects = new List<(string name, Rect rect)>();
                 foreach (var t in ActiveTiles(v)) rects.Add(("ô " + t.PlainText, RectIn(stage, (RectTransform)t.transform)));
                 foreach (var b in RootOf(v).GetComponentsInChildren<UnityEngine.UI.Button>(false))
-                    if (b.GetComponent<Tile>() == null) rects.Add(("nút " + b.GetComponentInChildren<TMP_Text>().text, RectIn(stage, (RectTransform)b.transform)));
+                    if (b.GetComponent<Tile>() == null) rects.Add(("nút " + b.name, RectIn(stage, (RectTransform)b.transform))); // nút biểu tượng không có chữ
                 foreach (var label in RootOf(v).GetComponentsInChildren<TMP_Text>(false))
                     if (label.transform.parent == root) rects.Add(("nhãn " + label.text, RectIn(stage, label.rectTransform)));
                 var bounds = stage.rect;
