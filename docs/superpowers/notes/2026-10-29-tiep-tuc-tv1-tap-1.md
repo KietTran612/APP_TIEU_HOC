@@ -1,4 +1,4 @@
-# Ghi chú tiếp tục — TV1 Tập 1 (cập nhật 29/10/2026, tối)
+# Ghi chú tiếp tục — TV1 Tập 1 (cập nhật 30/10/2026, sáng)
 
 Đọc file này trước khi làm tiếp. Kế hoạch gốc: [2026-10-29-hoan-thanh-tv1-tap-1.md](../plans/2026-10-29-hoan-thanh-tv1-tap-1.md); giọng đọc: mục 17 của [bản thiết kế](../specs/2026-10-28-app-tap-doc-mvp-design.md).
 
@@ -10,33 +10,27 @@
 | Đợt 2 (bài 42–64) | Xong nội dung, 154 tranh, giọng HoaiMy cho 1.317 mã, công cụ duyệt. **Chờ chủ dự án thử app rồi nói "phát hành"** |
 | Đợt 3 (bài 65–80) | Xong code, nội dung 16 bài, 585 âm thanh, **39/45 tranh**. Còn 6 tranh (mục 2) |
 | Review code | 8 lỗi đã sửa ở `cc172f6` (test viết trước, đỏ rồi xanh) |
-| Test | Python 631 đạt. Unity: chạy riêng các màn mới đạt (31/31); **chưa chạy trọn 80 bài** |
+| Test | Python 653 đạt. Unity 30/10: EditMode 83/84, PlayMode 264/276 — lỗi còn lại chỉ do thiếu 6 tranh |
+
+Giao diện và hiệu ứng (30/10): đang thảo luận với chủ dự án ở một session riêng ("Thảo luận UI và hiệu ứng cho app tập đọc"); bản thiết kế sẽ lưu ở `docs/superpowers/specs/…-ui-hieu-ung-design.md`.
 
 Âm thanh và tranh đều ở trạng thái `cho_duyet` (tạo theo mặc định, chủ dự án duyệt sau).
 
-## 1b. ĐANG LÀM DỞ — ghi chú cho phụ huynh (dừng theo yêu cầu, 30/10/2026)
+## 1b. XONG — ghi chú cho phụ huynh (30/10/2026)
 
 **Chủ dự án đã chốt:**
 - Bài học giữ đúng cách dạy của sách: khi đánh vần đọc theo mục Chú ý tr.122 (k "ca", q "cu", gh "gờ kép", ngh "ngờ kép", gi "di", i "i ngắn", y "i dài"). Không đổi sang âm ở Phụ lục.
-- Bài nào có ghi chú thì app hiện ghi chú cho người dùng, gồm cả 3 loại:
-  1. `sach`: chú thích sách in trên trang (dấu \*, ngoặc đơn), ví dụ bài 42 ngan/vịt xiêm, 60 heo nái, 66 cá lóc, 68 vần ec;
-  2. `ten_doc`: tên đọc riêng theo tr.122, **công cụ tự sinh** cho bài dạy chữ đó (2, 5, 10, 14, 20, 25, 26, 28, 29, 35);
-  3. `khac_sach`: chỗ app khác sách (bài 1, 3, 6, 18, 27, 38, 42, 43, 44, 49, 53, 66, 68, 76, 80).
-- Thêm mục "Chú ý và Phụ lục" ở màn Phụ huynh (chép đúng tr.120–122, kèm danh sách điểm app khác sách nói chung); tô phụ âm đầu bài 80; số cột (1)–(7) ở bài 79.
+- Bài nào có ghi chú thì app hiện nút "Ghi chú" (góc trên phải), gồm 3 loại:
+  1. `sach` (Sách ghi): chú thích, lời dặn in trên trang — rà đủ 80 trang, chỉ bài 11, 27, 42, 60, 66, 68. Lời dặn "theo mẫu" bài 39, 40, 80 và khung luật chính tả bài 40 là nội dung bài. Câu "Các bài ôn sau cũng vậy" (bài 11) chỉ hiện ở bài 11, đúng chỗ sách in;
+  2. `ten_doc` (Cách đọc theo sách): tên đọc riêng theo tr.122, **công cụ tự sinh** cho bài dạy chữ đó (2, 5, 10, 14, 20, 25, 26, 28, 29, 35);
+  3. `khac_sach` (App khác sách): bài 1, 3, 6, 18, 27, 38, 42, 43, 44, 49, 53, 66, 68, 76, 80.
+- Màn Phụ huynh có mục "Chú ý và Phụ lục" (tr.120–122 và các điểm app khác sách); bài 80 tô phụ âm đầu; bảng nhóm vần bài 79 có số cột (1)–(7).
 
-**Đã xong, commit `02d86af`:**
-- Công cụ: `tools/tapdoc/lesson_notes.py`, trường `notes` khi dựng bài, tuỳ chọn `"colour": "onset"` cho bước reading.
-- Dữ liệu: ghi chú trong `content/src` (15 bài), dữ liệu Phụ lục `unity/TapDoc/Assets/Content/Resources/appendix/tv1_t1.json`, 80 bài đã dựng lại.
-- Test Python (Claude viết) đều xanh: 640+ test.
+**Commit:** `02d86af` (công cụ, dữ liệu), `e9f1f90` (sửa cắt MP3, âm "tô"), `74ce1ef` (giao diện Unity — Codex viết theo test của Claude, Claude review và sửa), `ac71105` (chú thích bài 11, 27), `6b64a77` (.meta 39 tranh bài 65–80).
+- Phụ lục đặt tên theo mã sách: `Resources/appendix/tv1_t1_1990.json`; `index.json` có trường `book` cho từng bài.
+- Test: Python 653 đạt. Unity EditMode 83/84, PlayMode 264/276 — mọi lỗi còn lại chỉ do thiếu 6 tranh (mục 2).
 
-**Chưa commit (cố ý, vì phần giao diện chưa có nên chưa biên dịch được):**
-- Test Unity do Claude viết: `Tests/EditMode/NotesDataTests.cs`, `Tests/PlayMode/LessonNotesTests.cs`, cùng test thêm trong `ParentScreenTests.cs`, `ItemsViewTests.cs`, `RimeGridViewTests.cs`.
-- Phần kết quả Đợt 2 trong mục 15 của bản thiết kế.
-
-**Việc tiếp theo:**
-1. Giao Codex phần giao diện Unity: yêu cầu đã viết sẵn ở `~/.claude/delegate/orders/parent-notes-ui.md`. Chạy `node ~/.claude/delegate/bin/delegate.mjs start --task parent-notes-ui --worker codex --order ~/.claude/delegate/orders/parent-notes-ui.md --repo /c/Source/AURA/APP_TIEU_HOC --write`, **sau khi** commit hoặc chép các file test Unity ở trên vào worktree của Codex. Codex không được sửa test.
-2. Review kỹ code Codex (tránh code rác, hard-code), chạy Unity EditMode và PlayMode, sửa nếu cần, rồi commit.
-3. Chú thích sách (loại 1): một trợ lý đã được giao rà đủ 80 trang bài tìm mọi chú thích có dấu \* hoặc ngoặc đơn. Nếu kết quả chưa được ghi ở đây thì rà lại: ảnh `sach-giao-khoa-viet-nam/Tiếng Việt 1 (tập 1 1990)/004…061`. Thêm chú thích còn thiếu vào `notes` (kind `sach`) của bài tương ứng và vào test `LessonNotesContentTest`.
+**Âm "tô" (`tieng_too`) — đã sửa:** FMOD của Unity không nhập được file vì khung MP3 đầu của file đã cắt mượn dữ liệu (bit reservoir) của khung đã bị bỏ. `trim_mp3` giờ lùi điểm bắt đầu tới khung không mượn dữ liệu. 1.237/1.902 file cũ cũng mở đầu bằng khung như vậy nhưng Unity vẫn nhập được; file nào tạo lại (công cụ duyệt hay lệnh `tts`) sẽ tự cắt theo cách mới. Nếu sau này Unity báo "Thiếu âm thanh" mà file vẫn có thì tạo lại riêng mã đó.
 
 ## 2. Việc khi ChatGPT mở lại lượt tạo ảnh (sau 14:30 ngày 30/10/2026)
 
