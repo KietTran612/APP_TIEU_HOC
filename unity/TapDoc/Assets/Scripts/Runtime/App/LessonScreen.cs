@@ -21,6 +21,22 @@ namespace TapDoc
         public Button NotesButton { get; private set; }
         public GameObject NotesPanel { get; private set; }
 
+        /// <summary>Hàng chấm tiến độ của bài.</summary>
+        public ProgressDots Dots { get; private set; }
+
+        /// <summary>Bạn gà con, cạnh nút "Tiếp".</summary>
+        public Mascot Mascot { get; private set; }
+
+        /// <summary>Vùng học (các bước đặt trong đây).</summary>
+        internal RectTransform Stage => _stage;
+
+        /// <summary>Trang của bước trước đang lật đi; <c>null</c> khi không lật.</summary>
+        internal GameObject TurningPage { get; private set; }
+
+        private const float Margin = 20f;
+        private const float PageTurnSeconds = .4f;
+        private LessonFx _fx;
+
         /// <summary>
         /// Mở bài <paramref name="lesson"/>. <paramref name="review"/> khác <c>null</c> khi đây là phiên "Ôn lại"
         /// (<paramref name="lesson"/> là <see cref="ReviewSession.Lesson"/>).
@@ -32,32 +48,41 @@ namespace TapDoc
             _review = review;
             Flow = new LessonFlow(lesson);
 
-            BackButton = UiKit.CreateButton(transform, UiText.Back, OnBackClicked);
-            var backRt = BackButton.GetComponent<RectTransform>();
-            backRt.anchorMin = new Vector2(0f, 1f);
-            backRt.anchorMax = new Vector2(0f, 1f);
-            backRt.pivot = new Vector2(0f, 1f);
-            backRt.sizeDelta = new Vector2(220f, UiKit.MinTouch);
-            backRt.anchoredPosition = new Vector2(20f, -20f);
+            BackButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Home, UiText.Back, OnBackClicked);
+            Corner(BackButton, new Vector2(0f, 1f), new Vector2(Margin, -Margin));
+            BackButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
 
-            ReplayButton = UiKit.CreateButton(transform, UiText.Replay, OnReplayClicked);
-            var replayRt = ReplayButton.GetComponent<RectTransform>();
-            replayRt.anchorMin = new Vector2(0f, 0f);
-            replayRt.anchorMax = new Vector2(0f, 0f);
-            replayRt.pivot = new Vector2(0f, 0f);
-            replayRt.sizeDelta = new Vector2(260f, UiKit.MinTouch);
-            replayRt.anchoredPosition = new Vector2(20f, 20f);
+            // Nút loa làm giọng đọc phát ngay: không có tiếng chạm; nhún theo nhịp khi giọng đọc đang phát.
+            ReplayButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Speaker, UiText.Replay, OnReplayClicked);
+            Corner(ReplayButton, Vector2.zero, new Vector2(Margin, Margin));
+            ReplayButton.gameObject.AddComponent<SpeakingBob>().Init(app.Speech);
 
-            NextButton = UiKit.CreateButton(transform, UiText.Next, OnNextClicked);
-            var nextRt = NextButton.GetComponent<RectTransform>();
-            nextRt.anchorMin = new Vector2(1f, 0f);
-            nextRt.anchorMax = new Vector2(1f, 0f);
-            nextRt.pivot = new Vector2(1f, 0f);
-            nextRt.sizeDelta = new Vector2(260f, UiKit.MinTouch);
-            nextRt.anchoredPosition = new Vector2(-20f, 20f);
+            // Nút "Tiếp" dùng tiếng lật trang của bước mới, không có tiếng chạm riêng.
+            NextButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Forward, UiText.Next, OnNextClicked,
+                Palette.Orange);
+            Corner(NextButton, new Vector2(1f, 0f), new Vector2(-Margin, Margin));
             NextButton.gameObject.SetActive(false);
 
             _stage = UiKit.CreateStage((RectTransform)transform);
+
+            Dots = ProgressDots.Create(transform, Flow.TotalCount);
+            var dotsRt = (RectTransform)Dots.transform;
+            dotsRt.anchorMin = dotsRt.anchorMax = new Vector2(.5f, 1f);
+            dotsRt.anchoredPosition = new Vector2(0f, -UiKit.StageTopInset / 2f);
+
+            Mascot = Mascot.Create(transform, app.Assets);
+            var mascotRt = (RectTransform)Mascot.transform;
+            mascotRt.anchorMin = mascotRt.anchorMax = mascotRt.pivot = new Vector2(1f, 0f);
+            mascotRt.anchoredPosition = new Vector2(-(2f * Margin + UiKit.MinTouch), Margin);
+
+            var overlay = new GameObject("FxOverlay", typeof(RectTransform));
+            overlay.transform.SetParent(transform, false);
+            var overlayRt = (RectTransform)overlay.transform;
+            overlayRt.anchorMin = Vector2.zero;
+            overlayRt.anchorMax = Vector2.one;
+            overlayRt.offsetMin = Vector2.zero;
+            overlayRt.offsetMax = Vector2.zero;
+            _fx = new LessonFx(overlayRt, app.Assets, app.Sfx, Mascot);
 
             if (lesson.notes != null && lesson.notes.Count > 0)
             {
@@ -68,7 +93,14 @@ namespace TapDoc
                 notesRt.anchoredPosition = new Vector2(-20f, -20f);
             }
 
-            PresentCurrent();
+            PresentCurrent(turnPage: false);
+        }
+
+        private static void Corner(Button button, Vector2 corner, Vector2 offset)
+        {
+            var rt = (RectTransform)button.transform;
+            rt.anchorMin = rt.anchorMax = rt.pivot = corner;
+            rt.anchoredPosition = offset;
         }
 
         private void OpenNotes()
@@ -78,7 +110,7 @@ namespace TapDoc
             NotesPanel.SetActive(true);
         }
 
-        private void PresentCurrent()
+        private void PresentCurrent(bool turnPage)
         {
             _stepToken++;
             var token = _stepToken;
@@ -89,7 +121,9 @@ namespace TapDoc
                 NextButton.gameObject.SetActive(false);
             }
 
-            ClearCurrentView();
+            if (turnPage) TurnCurrentPage();
+            else ClearCurrentView();
+            if (Dots != null) Dots.SetCurrent(Flow.Position);
 
             if (Flow.Phase == Phase.Done)
             {
@@ -103,6 +137,7 @@ namespace TapDoc
                 Speech = _app.Speech,
                 Assets = _app.Assets,
                 Stage = _stage,
+                Fx = _fx,
                 RoundFinished = OnRoundFinished
             };
 
@@ -144,6 +179,7 @@ namespace TapDoc
                 if (NextButton != null)
                 {
                     NextButton.gameObject.SetActive(true);
+                    ShowNextButton();
                 }
             }
             else if (Flow.Phase == Phase.Part2 && !_advancing)
@@ -187,6 +223,7 @@ namespace TapDoc
                 return;
             }
             _advancing = true;
+            Pulse.StopOn(NextButton.transform);
             NextButton.gameObject.SetActive(false);
             _app.Speech.Stop();
             AdvanceFlow();
@@ -201,7 +238,7 @@ namespace TapDoc
             }
             else
             {
-                PresentCurrent();
+                PresentCurrent(turnPage: true);
             }
         }
 
@@ -223,6 +260,49 @@ namespace TapDoc
             _app.Speech.Stop();
             ClearCurrentView();
             _app.ShowLessonList();
+        }
+
+        /// <summary>Nút "Tiếp" phóng lên, nảy nhẹ rồi nhún chậm mời bé bấm.</summary>
+        private async void ShowNextButton()
+        {
+            var t = NextButton.transform;
+            t.localScale = Vector3.one * .4f;
+            await Motion.Punch(t, 1.15f, .25f);
+            if (NextButton != null && NextButton.gameObject.activeSelf && !_advancing) Pulse.StartOn(t);
+        }
+
+        /// <summary>
+        /// Sang bước mới như lật trang sách: trang của bước cũ không nhận chạm nữa, lật quanh mép trái rồi bị huỷ; bước
+        /// mới được dựng ngay bên dưới. Kèm tiếng lật trang.
+        /// </summary>
+        private async void TurnCurrentPage()
+        {
+            if (TurningPage != null) Destroy(TurningPage);
+            TurningPage = null;
+            var root = CurrentView switch
+            {
+                IStepView sv => sv.Root,
+                IRoundView rv => rv.Root,
+                _ => null
+            };
+            CurrentView = null;
+            if (root == null) return;
+            if (_app.Sfx != null) _app.Sfx.Play(SystemSfx.PageFlip);
+            if (Motion.Scale <= 0f)
+            {
+                root.SetActive(false);
+                Destroy(root);
+                return;
+            }
+
+            var group = root.GetComponent<CanvasGroup>();
+            if (group == null) group = root.AddComponent<CanvasGroup>();
+            group.blocksRaycasts = false;
+            root.transform.SetAsLastSibling();
+            TurningPage = root;
+            await Motion.PageTurn((RectTransform)root.transform, PageTurnSeconds);
+            if (root != null) Destroy(root);
+            if (this != null && TurningPage == root) TurningPage = null;
         }
 
         private void ClearCurrentView()

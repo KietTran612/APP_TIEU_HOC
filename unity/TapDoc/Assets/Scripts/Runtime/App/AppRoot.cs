@@ -40,6 +40,8 @@ namespace TapDoc
 
         private GameObject _currentScreen;
 
+        private const float ScreenFadeSeconds = .25f;
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void OnAfterSceneLoad()
         {
@@ -250,10 +252,14 @@ namespace TapDoc
             Speech.Stop();
             ClearCurrentScreen();
 
-            var go = new GameObject(typeof(T).Name, typeof(RectTransform), typeof(T));
+            var go = new GameObject(typeof(T).Name, typeof(RectTransform), typeof(CanvasGroup), typeof(T));
             go.transform.SetParent(SafeRoot, false);
             Stretch(go.GetComponent<RectTransform>());
             _currentScreen = go;
+            // Màn mới mờ sang rõ (tắt hiệu ứng thì hiện ngay).
+            var group = go.GetComponent<CanvasGroup>();
+            group.alpha = 0f;
+            _ = Motion.Fade(group, 1f, ScreenFadeSeconds);
             return go.GetComponent<T>();
         }
 
