@@ -55,14 +55,25 @@ SYSTEM_IMAGES: dict[str, str] = {
 
 # Tiếng động khi tương tác: tách hẳn khỏi âm thanh phát âm (`SYSTEM_AUDIO`). Mã luôn bắt đầu bằng `sfx_`,
 # file nằm ở `Resources/sfx/` (không phải `audio/`), không vào danh mục âm thanh hay lệnh `tts`.
-# Chỉ dùng file CC0. Hiện là tiếng mặc định tự tạo (`python -m tapdoc sfx-default`); khi thay bằng file CC0
-# chính thức thì sửa `nguon` của mã đó.
+# Chỉ dùng file CC0 (chủ dự án nghe chọn ngày 30/10/2026; ghi công ở docs/credits-am-thanh.md). Mã chưa có file
+# CC0 dùng tiếng mặc định tự tạo (`python -m tapdoc sfx-default`).
 DEFAULT_SFX_SOURCE = "mặc định tự tạo: python -m tapdoc sfx-default"
 SYSTEM_SFX: dict[str, dict] = {
-    "sfx_cham": {"mo_ta": "\"tách\" nhỏ, ngắn khi chạm nút hoặc nhấc thẻ", "nguon": DEFAULT_SFX_SOURCE, "giay_phep": "CC0"},
-    "sfx_dung": {"mo_ta": "\"ting\" trong, vui khi bé làm đúng", "nguon": DEFAULT_SFX_SOURCE, "giay_phep": "CC0"},
-    "sfx_nhap": {"mo_ta": "\"bụp\" nhẹ khi các thẻ nhập thành tiếng", "nguon": DEFAULT_SFX_SOURCE, "giay_phep": "CC0"},
-    "sfx_hoa_bay": {"mo_ta": "\"vút\" nhẹ khi bông hoa bay vào sổ", "nguon": DEFAULT_SFX_SOURCE, "giay_phep": "CC0"},
-    "sfx_dong_dau": {"mo_ta": "\"cộp\" khi đóng dấu Bé ngoan", "nguon": DEFAULT_SFX_SOURCE, "giay_phep": "CC0"},
-    "sfx_lat_trang": {"mo_ta": "\"sột\" giấy khi lật trang sổ hoặc sang bước mới", "nguon": DEFAULT_SFX_SOURCE, "giay_phep": "CC0"},
+    "sfx_cham": {"mo_ta": "\"tách\" nhỏ, ngắn khi chạm nút hoặc nhấc thẻ",
+                 "nguon": DEFAULT_SFX_SOURCE, "giay_phep": "CC0"},
+    "sfx_dung": {"mo_ta": "\"ting\" trong, vui khi bé làm đúng",
+                 "nguon": "Kenney Interface Sounds 1.0: confirmation_001.ogg (opengameart.org/content/interface-sounds)",
+                 "giay_phep": "CC0"},
+    "sfx_nhap": {"mo_ta": "\"bụp\" nhẹ khi các thẻ nhập thành tiếng",
+                 "nguon": "OpenGameArt \"Pop sounds\" (cogitollc): pop1.ogg (opengameart.org/content/pop-sounds)",
+                 "giay_phep": "CC0"},
+    "sfx_hoa_bay": {"mo_ta": "\"vút\" nhẹ khi bông hoa bay vào sổ",
+                    "nguon": "Kenney Interface Sounds 1.0: maximize_008.ogg (opengameart.org/content/interface-sounds)",
+                    "giay_phep": "CC0"},
+    "sfx_dong_dau": {"mo_ta": "\"cộp\" khi đóng dấu Bé ngoan",
+                     "nguon": "Kenney RPG Audio: bookPlace1.ogg (opengameart.org/content/50-rpg-sound-effects)",
+                     "giay_phep": "CC0"},
+    "sfx_lat_trang": {"mo_ta": "\"sột\" giấy khi lật trang sổ hoặc sang bước mới",
+                      "nguon": "Kenney RPG Audio: bookFlip2.ogg (opengameart.org/content/50-rpg-sound-effects)",
+                      "giay_phep": "CC0"},
 }
