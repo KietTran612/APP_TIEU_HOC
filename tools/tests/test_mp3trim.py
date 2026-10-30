@@ -1,7 +1,8 @@
 import math
 import unittest
 
-from tapdoc.mp3trim import trim_mp3
+from tapdoc.mp3trim import _frames, trim_mp3
+from tapdoc.paths import UNITY_RES
 from tests.tts_fakes import fake_mp3
 
 
@@ -55,3 +56,10 @@ class TrimTest(unittest.TestCase):
         trimmed, ok = trim_mp3(data, 0.5, 0.7)
         self.assertTrue(ok)
         self.assertEqual(trimmed, data[:math.ceil(0.8 / 0.024) * 144])
+
+
+class ShippedAudioTest(unittest.TestCase):
+    def test_every_clip_starts_on_a_frame_that_borrows_nothing(self):
+        # Khung đầu có main_data_begin > 0 thì thiếu dữ liệu: FMOD của Unity có thể không nhập được (tieng_too).
+        borrowing = sorted(p.stem for p in (UNITY_RES / "audio").glob("*.mp3") if _frames(p.read_bytes())[0][4])
+        self.assertEqual(borrowing, [], f"{len(borrowing)} file cần tạo lại, ví dụ {borrowing[:5]}")
