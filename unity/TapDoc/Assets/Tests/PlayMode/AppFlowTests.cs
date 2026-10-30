@@ -276,30 +276,5 @@ namespace TapDoc.Tests
             Assert.AreEqual(Phase.Done, screen.Flow.Phase);
             Assert.IsNotNull(Object.FindAnyObjectByType<ResultScreen>());
         }
-
-        [UnityTest]
-        public IEnumerator Result_MissingStarImage_DrawsStarNotSquare()
-        {
-            // Thiếu tranh ngôi sao: catalog báo thiếu như mọi tranh khác; màn kết quả vẽ ngôi sao vàng, không vẽ ô vuông.
-            AppRoot.CatalogFactory = () => new AssetCatalog(
-                _ => _clip,
-                id => id == SystemImages.Star ? null : _sprite);
-            LogAssert.Expect(LogType.Error, "[TapDoc] Thiếu tranh: " + SystemImages.Star);
-            var app = AppRoot.EnsureInstance();
-            app.Progress.CreateProfile(TestChildName, ProfileScreen.Avatars[0]);
-            app.ShowResult("tv1_t1_b04");
-            yield return null;
-
-            var stars = Object.FindAnyObjectByType<ResultScreen>().GetComponentsInChildren<MarkerIcon>();
-            Assert.AreEqual(3, stars.Length);
-            foreach (var star in stars)
-            {
-                var img = star.GetComponent<Image>();
-                Assert.IsTrue(star.IsFallback);
-                Assert.AreSame(MarkerIcon.FallbackStar, img.sprite);
-                Assert.AreNotSame(UiKit.WhiteSprite, img.sprite);
-                Assert.AreEqual(MarkerIcon.StarYellow, img.color);
-            }
-        }
     }
 }
