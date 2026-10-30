@@ -419,6 +419,13 @@ class LessonNotesContentTest(unittest.TestCase):
     """Ghi chú cho phụ huynh: chú thích sách, tên đọc riêng (tr.122), chỗ app khác sách."""
 
     def test_book_footnotes(self):
+        # Rà đủ 80 trang bài (30/10/2026): chỉ 6 bài có chú thích hay lời dặn cho người lớn. Lời dặn làm bài
+        # của bài 39, 40, 80 ("theo mẫu") là nội dung bài, không phải ghi chú.
+        with_notes = {no for no in range(1, 81) if notes_by_kind(no, "sach")}
+        self.assertEqual(with_notes, {11, 27, 42, 60, 66, 68})
+        self.assertIn("Bài ôn: Học sinh giỏi có thể ghép thêm dấu thanh. Các bài ôn sau cũng vậy.",
+                      notes_by_kind(11, "sach"))
+        self.assertIn("Ghép thêm dấu thanh để tạo tiếng mới ở nhà.", notes_by_kind(27, "sach"))
         self.assertTrue(any("vịt xiêm" in t for t in notes_by_kind(42, "sach")))
         self.assertIn("heo nái: lợn nái.", notes_by_kind(60, "sach"))
         self.assertIn("cá lóc: cá quả.", notes_by_kind(66, "sach"))
