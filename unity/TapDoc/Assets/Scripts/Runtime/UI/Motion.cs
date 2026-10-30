@@ -64,14 +64,14 @@ namespace TapDoc
                 Quaternion.Euler(0f, 0f, p >= 1f ? 0f : degrees * Mathf.Sin(p * Mathf.PI * 4f) * (1f - p)));
 
         /// <summary>
-        /// Lật trang sách: trang co dần về mép trái (mép trái đứng yên), tối dần. Xong thì để nguyên trạng thái đã lật;
-        /// người gọi tự huỷ trang.
+        /// Lật trang sách: trang co dần về phía gáy (mép trái khi <paramref name="hingeLeft"/>, mép phải khi lật lùi),
+        /// mép gáy đứng yên, trang tối dần. Xong thì để nguyên trạng thái đã lật; người gọi tự huỷ trang.
         /// </summary>
-        public static Awaitable PageTurn(RectTransform page, float seconds)
+        public static Awaitable PageTurn(RectTransform page, float seconds, bool hingeLeft = true)
         {
-            // Dời pivot về mép trái mà không dịch hình.
+            // Dời pivot về mép gáy mà không dịch hình.
             var size = page.rect.size;
-            var pivot = new Vector2(0f, page.pivot.y);
+            var pivot = new Vector2(hingeLeft ? 0f : 1f, page.pivot.y);
             var shift = pivot - page.pivot;
             page.pivot = pivot;
             page.anchoredPosition += new Vector2(shift.x * size.x * page.localScale.x, shift.y * size.y * page.localScale.y);

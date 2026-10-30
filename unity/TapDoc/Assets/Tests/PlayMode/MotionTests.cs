@@ -133,6 +133,21 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator PageTurn_HingeRight_KeepsRightEdge()
+        {
+            var rt = Box(new Vector2(400f, 300f));
+            var corners = new Vector3[4];
+            rt.GetWorldCorners(corners);
+            var rightBefore = corners[3];
+            var turn = Motion.PageTurn(rt, .2f, hingeLeft: false);
+            yield return new WaitForSecondsRealtime(.08f);
+            rt.GetWorldCorners(corners);
+            Assert.That(Vector3.Distance(corners[3], rightBefore), Is.LessThan(.01f), "Lật lùi: mép phải đứng yên");
+            yield return Wait(turn);
+            Assert.AreEqual(0f, rt.localScale.x);
+        }
+
+        [UnityTest]
         public IEnumerator Pulse_StopRestoresScale()
         {
             var rt = Box(new Vector2(100f, 100f));

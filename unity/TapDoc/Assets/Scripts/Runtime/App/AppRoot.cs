@@ -209,6 +209,18 @@ namespace TapDoc
             Present<ResultScreen>().Build(this, lessonId);
         }
 
+        /// <summary>Màn Sổ bé ngoan của bé đang học. Chưa chọn bé thì về màn chọn bé.</summary>
+        public void ShowBook()
+        {
+            InitIfNeeded();
+            if (Progress.Current == null)
+            {
+                ShowProfiles();
+                return;
+            }
+            Present<BookScreen>().Build(this);
+        }
+
         /// <summary>Màn phụ huynh: khóa phép tính trước, mở khóa xong mới xem tiến độ và chữ hay nhầm của từng bé.</summary>
         public void ShowParent()
         {
