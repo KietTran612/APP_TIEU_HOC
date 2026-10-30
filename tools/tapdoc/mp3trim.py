@@ -38,7 +38,10 @@ def _frames(data):
         if pos + length > len(data):
             raise ValueError("Khung MP3 thiếu dữ liệu")
         duration = (1152 if version == 3 else 576) / sample_rate
-        frames.append((pos, pos + length, elapsed, elapsed + duration))
+        # main_data_begin (đầu side info, sau 2 byte CRC nếu có): số byte khung này mượn của các khung trước.
+        side = pos + 4 + (0 if (h >> 16) & 1 else 2)
+        borrowed = (data[side] << 1 | data[side + 1] >> 7) if version == 3 else data[side]
+        frames.append((pos, pos + length, elapsed, elapsed + duration, borrowed))
         elapsed += duration
         pos += length
     if not frames:
@@ -48,7 +51,9 @@ def _frames(data):
 
 def trim_mp3(data: bytes, speech_start: float, speech_end: float,
              pad: float = 0.1) -> tuple[bytes, bool]:
-    """Giữ các khung giao vùng lời đọc và một khung trước đó cho bit reservoir.
+    """Giữ các khung giao vùng lời đọc, mở đầu bằng một khung không mượn dữ liệu của khung trước.
+
+    Khung đầu có main_data_begin > 0 trỏ vào dữ liệu đã bị cắt: FMOD của Unity có thể không nhập được file.
 
     Mốc không hợp lệ hoặc file không đọc được thì giữ nguyên và trả cờ False.
     """
@@ -60,10 +65,12 @@ def trim_mp3(data: bytes, speech_start: float, speech_end: float,
         if speech_start >= frames[-1][3]:
             return data, False
         start, end = max(0, speech_start - pad), min(frames[-1][3], speech_end + pad)
-        kept = [i for i, (_, _, a, b) in enumerate(frames) if b > start and a < end]
+        kept = [i for i, (_, _, a, b, _) in enumerate(frames) if b > start and a < end]
         if not kept:
             return data, False
         first, last = max(0, kept[0] - 1), kept[-1]
+        while first > 0 and frames[first][4]:
+            first -= 1
         return data[frames[first][0]:frames[last][1]], True
     except (ValueError, TypeError, OverflowError):
         return data, False

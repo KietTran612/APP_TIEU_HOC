@@ -40,3 +40,18 @@ class TrimTest(unittest.TestCase):
             self.assertTrue(ok)
             self.assertLess(len(result), len(data))
             self.assertEqual(len(result) % length, 0)
+
+    def test_starts_where_bit_reservoir_is_empty(self):
+        # Khung MPEG-2 lớp III: byte 4 là main_data_begin. Khung có giá trị > 0 mượn dữ liệu của khung trước;
+        # cắt ngay đó thì bộ giải mã của Unity (FMOD) có thể không nhập được file (đã gặp với tieng_too).
+        frames = [b"\xff\xf3\x64\xc0" + bytes([200 if 14 <= k <= 17 else 0]) + bytes(139) for k in range(50)]
+        data = b"".join(frames)
+        trimmed, ok = trim_mp3(data, 0.5, 0.7)
+        self.assertTrue(ok)
+        self.assertEqual(trimmed, data[13 * 144:math.ceil(0.8 / 0.024) * 144])
+
+    def test_reservoir_never_empty_keeps_file_start(self):
+        data = (b"\xff\xf3\x64\xc0" + bytes([200]) + bytes(139)) * 50
+        trimmed, ok = trim_mp3(data, 0.5, 0.7)
+        self.assertTrue(ok)
+        self.assertEqual(trimmed, data[:math.ceil(0.8 / 0.024) * 144])
