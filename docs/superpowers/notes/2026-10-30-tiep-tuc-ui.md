@@ -21,7 +21,7 @@ Bản thiết kế: [2026-10-30-ui-hieu-ung-design.md](../specs/2026-10-30-ui-hi
 1. **Test all** khi chủ dự án yêu cầu (quy tắc: chỉ chạy test của phần đang làm; bộ đầy đủ chỉ khi chủ dự án nói "test all"):
    - `python tools/run_unity_tests.py editmode` và `playmode`.
    - Lần chạy đầy đủ gần nhất (sau Task 3) chỉ hỏng 8 test do 6 tranh bài 75–80 chưa vẽ (có từ trước). Từ Task 5 trở đi chưa chạy lại bộ đầy đủ.
-2. **Hình chính thức** (Task 13, hoãn): hoa `img_chung_hoa_be_ngoan`, gà con `img_chung_ga_con`, biểu tượng `img_ui_*`. Khi ChatGPT tạo ảnh lại được: vẽ, hỏi chủ dự án trước khi tải, `python -m tapdoc import-image <file> <mã>`. Không cần sửa code.
+2. **Hình chính thức** (Task 13): đã vẽ bằng ChatGPT Kiet_1 ngày 30/10 (cuộc trò chuyện "Tạo tranh hoa bé ngoan") và nhập cả 14 hình (hoa, gà con, 12 biểu tượng), trạng thái `cho_duyet`. Muốn vẽ lại hình nào: vẽ, hỏi chủ dự án trước khi tải, `python -m tapdoc import-image <file> <mã>`. **Không chạy `python -m tapdoc ui-icons --force`** (sẽ ghi đè biểu tượng chính thức bằng hình mặc định).
 3. **Tiếng chạm** `sfx_cham` vẫn là tiếng mặc định tự tạo (chủ dự án chọn giữ).
 4. **Lỗi nhỏ để sau** (từ review, ghi trong sổ tiến độ dòng `minor (deferred)`):
    - Pulse và Motion cùng ghi cỡ thẻ;
