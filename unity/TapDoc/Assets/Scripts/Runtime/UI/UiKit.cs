@@ -93,7 +93,8 @@ namespace TapDoc
         /// </summary>
         public static Tile CreateTile(Transform parent, string richText, Sprite image = null)
         {
-            var go = new GameObject("Tile", typeof(RectTransform), typeof(Image), typeof(LayoutElement), typeof(Tile));
+            var go = new GameObject("Tile", typeof(RectTransform), typeof(Image), typeof(LayoutElement), typeof(Tile),
+                typeof(TapFeedback));
             go.transform.SetParent(parent, false);
 
             var rt = go.GetComponent<RectTransform>();
@@ -155,7 +156,7 @@ namespace TapDoc
             Action onClick, Color? fill = null)
         {
             var go = new GameObject($"Button_{label}", typeof(RectTransform), typeof(Image), typeof(Button),
-                typeof(LayoutElement), typeof(IconButton));
+                typeof(LayoutElement), typeof(IconButton), typeof(TapFeedback));
             go.transform.SetParent(parent, false);
             ((RectTransform)go.transform).sizeDelta = new Vector2(MinTouch, MinTouch);
 
@@ -225,7 +226,8 @@ namespace TapDoc
         private static Button CreateTextButton(Transform parent, string label, Action onClick, Color fillColor,
             Color textColor, bool withShadow)
         {
-            var go = new GameObject($"Button_{label}", typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
+            var go = new GameObject($"Button_{label}", typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement),
+                typeof(TapFeedback));
             go.transform.SetParent(parent, false);
 
             var rt = go.GetComponent<RectTransform>();

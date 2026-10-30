@@ -25,6 +25,7 @@ namespace TapDoc.Tests
         [SetUp]
         public virtual void SetUp()
         {
+            Motion.Scale = 0f; // tắt hiệu ứng; test hiệu ứng tự bật lại
             _completedViews.Clear();
             StepViewRegistry.RegisterAll();
             _dummyTex = new Texture2D(4, 4, TextureFormat.RGBA32, false);
@@ -90,6 +91,7 @@ namespace TapDoc.Tests
         [TearDown]
         public virtual void TearDown()
         {
+            Motion.Scale = 1f;
             if (Ctx?.Speech != null)
             {
                 Ctx.Speech.Stop();

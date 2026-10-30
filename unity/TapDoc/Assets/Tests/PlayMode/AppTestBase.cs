@@ -31,6 +31,7 @@ namespace TapDoc.Tests
         [SetUp]
         public void SetUpProgressStore()
         {
+            Motion.Scale = 0f; // tắt hiệu ứng: test chạy nhanh, ảnh chụp ổn định; test hiệu ứng tự bật lại
             StorePath = Path.Combine(Path.GetTempPath(), $"tapdoc_app_test_{Guid.NewGuid():N}.json");
             var path = StorePath;
             AppRoot.StoreFactory = () => ProgressStore.Load(path);
@@ -41,6 +42,7 @@ namespace TapDoc.Tests
         {
             yield return DestroyApp();
             AppRoot.StoreFactory = null;
+            Motion.Scale = 1f;
             if (_stubSprite != null || _stubClip != null)
             {
                 AppRoot.CatalogFactory = null;
