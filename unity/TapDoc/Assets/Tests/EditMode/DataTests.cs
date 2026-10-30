@@ -134,5 +134,16 @@ namespace TapDoc.Tests
                 FontProvider.Main.HasCharacters(text, out uint[] missing, false, true),
                 "Thiếu: " + string.Concat((missing ?? System.Array.Empty<uint>()).Select(c => char.ConvertFromUtf32((int)c))));
         }
+
+        [Test]
+        public void AllSfxExist()
+        {
+            // Tiếng động nằm ở sfx/, tách khỏi âm thanh phát âm ở audio/.
+            foreach (var id in SystemSfx.All)
+            {
+                Assert.IsNotNull(Resources.Load<AudioClip>("sfx/" + id), $"Thiếu tiếng động {id}");
+                Assert.IsNull(Resources.Load<AudioClip>("audio/" + id), $"Tiếng động {id} không được nằm trong audio/");
+            }
+        }
     }
 }

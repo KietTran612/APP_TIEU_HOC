@@ -947,5 +947,6 @@ class SfxSeparationTest(unittest.TestCase):
     def test_registries_keep_prefixes(self):
         from tapdoc.system_assets import SYSTEM_AUDIO, SYSTEM_SFX
         self.assertEqual(len(SYSTEM_SFX), 6)
+        self.assertTrue(all(v["giay_phep"] == "CC0" for v in SYSTEM_SFX.values()))
         self.assertTrue(all(k.startswith("sfx_") for k in SYSTEM_SFX))
         self.assertFalse(any(k.startswith("sfx_") for k in SYSTEM_AUDIO))
