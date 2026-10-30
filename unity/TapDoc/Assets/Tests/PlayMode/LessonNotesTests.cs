@@ -61,6 +61,21 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator Notes_OpeningStopsSpeech()
+        {
+            // Phụ huynh mở ghi chú để đọc: giọng đọc của bước đang học phải dừng.
+            yield return LoadMainWithProfile(unlockAll: true);
+            var s = Open("tv1_t1_b20");
+            yield return null;
+            Press(s.ReplayButton);
+            yield return null;
+            Assert.IsTrue(AppRoot.Instance.Speech.IsBusy, "Bấm Nghe lại mà không có giọng đọc");
+            Press(s.NotesButton);
+            yield return null;
+            Assert.IsFalse(AppRoot.Instance.Speech.IsBusy);
+        }
+
+        [UnityTest]
         public IEnumerator Notes_ReadingNamesShownForLetterLesson()
         {
             yield return LoadMainWithProfile(unlockAll: true);

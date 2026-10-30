@@ -105,6 +105,7 @@ namespace TapDoc
 
         private void OpenNotes()
         {
+            _app.Speech.Stop();
             if (NotesPanel == null) NotesPanel = TapDoc.NotesPanel.ForLesson(transform, _lesson);
             NotesPanel.transform.SetAsLastSibling();
             NotesPanel.SetActive(true);
