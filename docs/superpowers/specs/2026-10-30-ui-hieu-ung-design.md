@@ -161,7 +161,7 @@ Mọi màu khai báo một chỗ, ví dụ một lớp `Palette` [Builder: tên,
 | Kéo thả (dấu, âm, vần) | Thẻ đang kéo to lên khoảng 110% và có bóng. Thả trúng chỗ: thẻ hút vào chỗ trống. Thả trượt: thẻ bay về chỗ cũ |
 | Nút "Nghe lại" | Nhún nhẹ theo nhịp trong lúc giọng đọc đang phát |
 | Nút "Tiếp" hiện ra | Phóng từ nhỏ lên, nảy nhẹ, rồi nhún chậm lặp lại để mời bé bấm |
-| Sang bước mới | Nội dung cũ mờ đi, nội dung mới trượt nhẹ từ phải vào và hiện rõ, tổng khoảng 0,3 giây |
+| Sang bước mới | **Lật trang sách** [Chốt 30/10/2026]: nội dung bước cũ như một trang giấy lật từ phải sang trái quanh mép trái, tối dần khi lật, để lộ bước mới nằm bên dưới. Khoảng 0,4 giây, kèm `sfx_lat_trang`. Nút "Tiếp" khi đó không phát thêm `sfx_cham`. Trong lúc lật, bé chạm được ngay vào bước mới |
 | Chuyển giữa các màn (danh sách, bài, sổ…) | Mờ dần sang màn mới, khoảng 0,25 giây |
 | Danh sách bài | Bài đang học tới có nền cam nhạt và nhún chậm lặp lại |
 
@@ -186,7 +186,7 @@ Hiệu ứng là lớp trang trí. **Không đổi cách chấm đúng sai, th�
 | `sfx_nhap` | Các thẻ nhập thành tiếng | "bụp" nhẹ |
 | `sfx_hoa_bay` | Bông hoa bay vào sổ | "vút" nhẹ |
 | `sfx_dong_dau` | Con dấu "Bé ngoan" đóng xuống | "cộp" |
-| `sfx_lat_trang` | Lật trang sổ | "sột" giấy |
+| `sfx_lat_trang` | Lật trang sổ, sang bước mới trong bài | "sột" giấy |
 
 - **Bé chọn sai: không có tiếng động riêng.** Chỉ giọng đọc mời thử lại như hiện nay [Chốt: giữ nhẹ nhàng].
 - **Kéo thả** dùng `sfx_cham` khi nhấc thẻ lên. Thả trúng chỗ thì dùng `sfx_nhap` [Đề xuất].
@@ -217,11 +217,17 @@ Chỉ dùng file **CC0**. Đã tìm ngày 30/10/2026:
   1. Claude hỏi chủ dự án một lần trước khi tải cả lô (tên gói, nguồn, dung lượng).
   2. Claude nghe, chọn mỗi mã một file, cắt hoặc chỉnh âm lượng nếu cần.
   3. Chủ dự án nghe duyệt.
-- **Sau khi chọn:**
-  - File đặt cùng chỗ với âm thanh của app, đặt tên theo mã. Định dạng [Builder].
-  - Danh mục âm thanh có dòng cho từng mã, loại (`kind`) mới là `sfx`, ghi nguồn và giấy phép trong `source` / `ghi_chu`.
-  - Thêm một file ghi công trong repo (ví dụ `docs/credits-am-thanh.md`), dù CC0 không bắt buộc ghi công.
-- **Kiểm tra dữ liệu** (`validate`) biết loại `sfx`. Công cụ tạo giọng đọc (`tts`) **bỏ qua** loại này, không bao giờ ghi đè file tiếng động.
+- **Tách hẳn khỏi âm thanh phát âm [Chốt 30/10/2026: "âm thanh hiệu ứng không liên quan tới audio phát âm, phải phân biệt rõ ràng, tránh dùng sai dữ liệu"]:**
+  - Thư mục riêng `Resources/sfx/`, không nằm trong `Resources/audio/`. Giữ định dạng gốc (ogg/wav).
+  - Mã luôn bắt đầu bằng `sfx_`. Âm thanh phát âm không bao giờ có mã `sfx_`.
+  - Không vào danh mục âm thanh phát âm (`audio_manifest.json`), không vào công cụ duyệt giọng đọc, không vào lệnh `tts`. Danh sách tiếng động, nguồn và giấy phép ghi riêng trong `SYSTEM_SFX` (công cụ Python).
+  - Trong app: lớp phát riêng (`SfxPlayer`), hàm nạp riêng (`AssetCatalog.Sfx`). `SpeechPlayer` không phát được mã `sfx_`, `SfxPlayer` không phát được mã không có `sfx_`.
+  - `validate` báo lỗi khi:
+    - thư mục `audio/` có file `sfx_*`;
+    - danh mục âm thanh có mã `sfx_*`;
+    - thư mục `sfx/` có file không nằm trong `SYSTEM_SFX`;
+    - tiếng động thiếu file hoặc giấy phép không phải CC0.
+- Thêm một file ghi công trong repo (ví dụ `docs/credits-am-thanh.md`), dù CC0 không bắt buộc ghi công.
 - **Nếu không tìm được file CC0 vừa ý** cho một mã: Claude báo chủ dự án. Phương án dự phòng là tự tạo tiếng đó bằng công cụ Python trong repo.
 
 ## 8. Sổ bé ngoan
@@ -288,7 +294,7 @@ Thêm:
   - viền mực đen rõ, có điểm sáng;
   - nền trong suốt hoặc giấy ngà, không chữ, không khung, tỉ lệ vuông.
 - Ảnh sổ bé ngoan chủ dự án gửi chỉ để tham khảo ý tưởng, không đưa vào ChatGPT để chép, không vào repo.
-- Chưa có hình thì app vẽ tạm một bông hoa đơn giản bằng code và báo lỗi thiếu tranh trong chế độ phát triển, như cách đang làm với ngôi sao (`MarkerIcon`) [Đề xuất].
+- **Hình mặc định trước, hình chính thức sau [Chốt 30/10/2026]:** ChatGPT chưa tạo ảnh tiếp được, nên làm giao diện với hình mặc định. Hoa, gà con và các biểu tượng dùng file PNG mặc định do công cụ Python trong repo sinh ra (gà con chép từ hình đại diện số 4). Khi có hình chính thức thì ghi đè file cùng mã, không sửa code.
 
 ## 9. Các màn
 

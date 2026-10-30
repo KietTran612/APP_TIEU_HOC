@@ -1,6 +1,6 @@
 # Giao diện, hiệu ứng, tiếng động và Sổ bé ngoan — Kế hoạch triển khai
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. Chủ dự án cho phép tối đa 1 subagent chạy song song. Việc code đơn giản có thể giao Codex/Antigravity qua skill `delegate` (task đánh dấu **[có thể giao]**, hỏi chủ dự án trước khi giao). Claude luôn tự viết test, tự review diff và tự chạy test.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking. **Chủ dự án chốt (30/10/2026): Claude tự làm toàn bộ, không giao Codex/Antigravity**, vì giao diện là một trong những yếu tố sống còn của app. Tối đa 1 subagent, chỉ để review.
 
 **Mục tiêu:** đổi toàn bộ giao diện sang phong cách tranh SGK 1990 (hướng A). Thêm hiệu ứng, tiếng động CC0, bạn gà con và Sổ bé ngoan (mỗi trang một bài, 3 bông hoa thay 3 ngôi sao).
 
@@ -36,8 +36,13 @@
 
 **Quyết định của kế hoạch (khác hoặc chi tiết hơn bản thiết kế):**
 - Biểu tượng `img_ui_*`, hoa tạm `img_chung_hoa_be_ngoan` và gà con `img_chung_ga_con` là **file PNG do lệnh `python -m tapdoc ui-icons` sinh ra**. App không tự vẽ hình thay khi thiếu; thiếu thì nút vẫn bấm được, chỉ không có hình. Đây là cách làm của mục "vẽ tạm bằng code" trong bản thiết kế.
-- Tiếng động nằm ở `Resources/sfx/`, giữ định dạng gốc (ogg/wav), vì máy không có công cụ chuyển sang mp3. Tiếng động **không** vào `audio_manifest.json` (danh mục đó giả định `.mp3` và là chỗ lệnh `tts` đọc). Danh sách tiếng, nguồn và giấy phép ghi trong `SYSTEM_SFX` của `tools/tapdoc/system_assets.py`. `validate` kiểm tra file và giấy phép. Nhờ vậy `tts` không bao giờ thấy tiếng động.
-- Chuyển bước: nội dung cũ bỏ ngay, nội dung mới mờ sang rõ và trượt từ phải vào trong 0,3 giây. Không làm hiệu ứng mờ dần cho nội dung cũ.
+- **Tiếng động tách hẳn khỏi âm thanh phát âm** (chủ dự án chốt: hai loại phải phân biệt rõ, tránh dùng sai dữ liệu; bản thiết kế 7.3):
+  - thư mục riêng `Resources/sfx/`, giữ định dạng gốc (ogg/wav); mã luôn bắt đầu bằng `sfx_`;
+  - không vào `audio_manifest.json`, công cụ duyệt giọng đọc hay lệnh `tts`; danh sách, nguồn, giấy phép ghi trong `SYSTEM_SFX` (`tools/tapdoc/system_assets.py`);
+  - trong app: `SfxPlayer` và `AssetCatalog.Sfx` riêng; `SpeechPlayer` từ chối mã `sfx_`, `SfxPlayer` từ chối mã không có `sfx_` (báo lỗi, không phát);
+  - `validate` chặn mọi chỗ lẫn (Task 1).
+- **Hình mặc định trước, hình chính thức sau** (chủ dự án chốt): hoa, gà con, biểu tượng là PNG mặc định do `python -m tapdoc ui-icons` sinh. Vẽ hình chính thức bằng ChatGPT là việc để sau, không nằm trong lần làm này (Task 13 hoãn).
+- **Chuyển bước như lật trang sách** (chủ dự án chốt): Root của bước cũ được giữ lại 0,4 giây, không nhận chạm, lật quanh mép trái (co `scale.x` từ 1 về 0 với pivot ở mép trái, tối dần) rồi bị huỷ; bước mới đã dựng sẵn bên dưới và nhận chạm ngay. Kèm `sfx_lat_trang`. `BookSpread.FlipTo` dùng cùng hàm `Motion.PageTurn`.
 
 ## Review Focus
 
@@ -63,7 +68,7 @@
 
 ## Giai đoạn A — Nền móng
 
-### Task 1: Tài nguyên hệ thống mới và lệnh `ui-icons` [có thể giao]
+### Task 1: Tài nguyên hệ thống mới và lệnh `ui-icons`
 
 **Files:**
 - Modify: `tools/tapdoc/system_assets.py` (thêm mục vào `SYSTEM_IMAGES`, thêm `SYSTEM_SFX`)
@@ -93,6 +98,14 @@
     - nếu có file thì `giay_phep == "CC0"`.
 
     `allow_missing` bỏ qua lỗi thiếu file.
+  - `validate.check_sfx_separation(res_dir, audio_rows) -> list[Issue]`. Báo lỗi khi tiếng động lẫn với âm thanh phát âm:
+    - `audio/` có file tên bắt đầu `sfx_`;
+    - `audio_rows` có mã bắt đầu `sfx_`;
+    - `sfx/` có file (trừ `.meta`) mà mã không nằm trong `SYSTEM_SFX`;
+    - `SYSTEM_SFX` có mã không bắt đầu `sfx_`;
+    - `SYSTEM_AUDIO` có mã bắt đầu `sfx_`.
+
+    Luôn chạy, kể cả với `allow_missing`.
 
 - [ ] **Step 1: Viết test hỏng**
 
@@ -122,6 +135,14 @@ class SfxCheckTest(unittest.TestCase):
     def test_missing_file_reported_unless_allowed(self): ...
     def test_non_cc0_reported(self): ...      # file có, giay_phep "CC-BY" → lỗi
     def test_two_formats_same_id_reported(self): ...
+
+class SfxSeparationTest(unittest.TestCase):
+    def test_sfx_file_in_audio_dir_reported(self): ...      # audio/sfx_cham.mp3 → lỗi
+    def test_sfx_id_in_audio_manifest_reported(self): ...   # dòng {"id": "sfx_dung"} → lỗi
+    def test_unknown_file_in_sfx_dir_reported(self): ...    # sfx/tieng_ca.ogg → lỗi
+    def test_registries_keep_prefixes(self):
+        self.assertTrue(all(k.startswith("sfx_") for k in SYSTEM_SFX))
+        self.assertFalse(any(k.startswith("sfx_") for k in SYSTEM_AUDIO))
 ```
 
 - [ ] **Step 2: Chạy, thấy đỏ:** `cd tools && python -m unittest tests.test_ui_icons tests.test_validate -v`. Kết quả mong đợi: lỗi import `ui_icons` và `check_sfx`.
@@ -133,7 +154,7 @@ class SfxCheckTest(unittest.TestCase):
     - `("circle", cx, cy, r, fill, stroke_width)`.
   - Màu lấy theo bảng màu của bản thiết kế 4.1.
   - Lệnh `python -m tapdoc ui-icons [--force]` gọi `write_all(UNITY_RES / "images")` và in các mã đã ghi.
-  - `validate_all` gọi `check_sfx(UNITY_RES, allow_missing)`.
+  - `validate_all` gọi `check_sfx(UNITY_RES, allow_missing)` và `check_sfx_separation(UNITY_RES, audio_rows)`.
 - [ ] **Step 4: Chạy, thấy xanh:** chạy lại lệnh ở Step 2, rồi chạy cả bộ test Python.
 - [ ] **Step 5: Sinh file thật và cập nhật danh mục:**
   - `cd tools && python -m tapdoc ui-icons`;
@@ -204,7 +225,7 @@ class SfxCheckTest(unittest.TestCase):
 - [ ] **Step 5: Chạy PlayMode đầy đủ:** `python tools/run_unity_tests.py playmode`. Chỉ được đỏ ở test kiểm tra ngôi sao (sẽ sửa ở Task 9–10); ghi lại tên các test đó.
 - [ ] **Step 6: Commit** cả code, test và file `.meta` Unity sinh cho PNG. Lời commit: `feat(ui): bảng màu, khung viền mực, nút biểu tượng`.
 
-### Task 3: Bộ chạy hiệu ứng `Motion` [có thể giao]
+### Task 3: Bộ chạy hiệu ứng `Motion`
 
 **Files:**
 - Create: `Scripts/Runtime/UI/Motion.cs`, `UI/Pulse.cs`, `UI/TapFeedback.cs`
@@ -222,7 +243,8 @@ class SfxCheckTest(unittest.TestCase):
       - `Shake(RectTransform t, float amplitude, float seconds)` (lắc ngang, về đúng chỗ cũ);
       - `MoveTo(RectTransform t, Vector2 anchored, float seconds)`;
       - `Fade(CanvasGroup g, float to, float seconds)`;
-      - `Wiggle(Transform t, float degrees, float seconds)` (xoay qua lại, về 0).
+      - `Wiggle(Transform t, float degrees, float seconds)` (xoay qua lại, về 0);
+      - `PageTurn(RectTransform page, float seconds)`: lật trang sách. Đặt pivot về mép trái mà không dịch hình, co `scale.x` từ 1 về 0 (ease-in), phủ một lớp màu mực tối dần từ 0 lên 0,35 độ đậm. Xong thì để nguyên trạng thái đã lật; người gọi tự huỷ trang.
     - Mỗi đối tượng có 4 kênh riêng: cỡ, vị trí, độ trong, góc xoay. Hiệu ứng mới trên cùng kênh thì huỷ hiệu ứng cũ.
     - Đối tượng bị huỷ giữa chừng thì hàm thoát êm, không ném lỗi.
   - `Pulse` (MonoBehaviour):
@@ -240,6 +262,7 @@ class SfxCheckTest(unittest.TestCase):
   - `NewAnimation_CancelsOld_EndsExact` (Review Focus 2): chạy `ScaleTo(t, 1.5f, .3f)`; sau 0,05 giây chạy `ScaleTo(t, 1f, .05f)`; chờ 0,4 giây thì cỡ đúng bằng 1.
   - `Shake_EndsAtStart`.
   - `DestroyedTarget_NoException`: huỷ đối tượng giữa lúc `MoveTo`; `LogAssert.NoUnexpectedReceived()`.
+  - `PageTurn_KeepsLeftEdge_EndsFolded`: góc dưới trái của trang (toạ độ thế giới) không đổi trong lúc lật; xong thì `localScale.x == 0`.
   - `Pulse_StopRestoresScale`.
   - `TapFeedback_PressShrinks_ReleaseRestores`: giả `OnPointerDown`/`OnPointerUp` với `PointerEventData`.
 - [ ] **Step 2: Chạy, thấy đỏ:** `python tools/run_unity_tests.py playmode --filter TapDoc.Tests.MotionTests`.
@@ -249,7 +272,7 @@ class SfxCheckTest(unittest.TestCase):
 - [ ] **Step 4: Chạy, thấy xanh:** test ở Step 2, rồi cả PlayMode. Mọi test cũ vẫn xanh, trừ các test sao đã ghi ở Task 2.
 - [ ] **Step 5: Commit:** `feat(ui): bộ chạy hiệu ứng Motion, nhún khi chạm`.
 
-### Task 4: Kênh tiếng động, công tắc lưu trong tiến độ, khoảng nghỉ của chuỗi đọc [có thể giao]
+### Task 4: Kênh tiếng động, công tắc lưu trong tiến độ, khoảng nghỉ của chuỗi đọc
 
 **Files:**
 - Create: `Scripts/Runtime/Audio/SfxPlayer.cs`
@@ -268,6 +291,8 @@ class SfxCheckTest(unittest.TestCase):
     - `void Init(AssetCatalog catalog, SpeechPlayer speech)`;
     - `void Play(string id)`: bỏ qua khi `!Enabled`; dùng `AudioSource` riêng và `PlayOneShot`;
     - `void PlayUnlessSpeaking(string id)`: bỏ qua thêm khi `speech.IsBusy`.
+    - Mã không bắt đầu `sfx_` thì không phát, báo `LogError("[TapDoc] Không phải mã tiếng động: " + id)`.
+  - `SpeechPlayer.PlayAsync` / `PlaySequenceAsync` gặp mã bắt đầu `sfx_` thì không phát mảnh đó, báo `LogError("[TapDoc] Mã tiếng động không phát bằng giọng đọc: " + id)`.
   - `AppRoot.Sfx` (`SfxPlayer`): tạo sau `Speech`; `Enabled = Progress.SfxEnabled`.
   - `SpeechPlayer.PlaySequenceAsync(IReadOnlyList<string> ids, Action<int> onPart = null, float gap = SequenceTimeline.DefaultGap, Action<int> onGap = null)`: gọi `onGap(i + 1)` khi bắt đầu khoảng nghỉ trước mảnh `i + 1`. Không gọi khi `gap <= 0` hoặc khi chuỗi bị cắt.
 
@@ -276,6 +301,9 @@ class SfxCheckTest(unittest.TestCase):
   - `ProgressStoreTests.OldFile_SfxOnAndFlowersKept` (Review Focus 1): JSON cũ không có `sfx_off`, có bài `completed: true, stars: 3`. Kết quả: `SfxEnabled == true` và `StarsFor(...) == 3`.
   - `SfxPlayerTests.Disabled_PlaysNothing`: `History` rỗng.
   - `SfxPlayerTests.PlayUnlessSpeaking_SkipsWhileBusy`: phát một clip dài bằng `SpeechPlayer`, gọi `PlayUnlessSpeaking(Tap)`; `History` không có `sfx_cham`.
+  - `SfxPlayerTests.RejectsSpeechIds`: `Play("tieng_ca")` báo lỗi như Interfaces, `History` rỗng.
+  - `SpeechPlayerTests.RejectsSfxIds`: `PlayAsync("sfx_dung")` báo lỗi, không có clip nào phát.
+  - `SfxPlayerTests.CatalogLoadsFromSfxFolderOnly`: loader mặc định của `AssetCatalog.Sfx` dùng đường dẫn `sfx/<mã>`, còn `Audio` dùng `audio/<mã>`. Kiểm bằng loader giả ghi lại đường dẫn được hỏi.
   - `SfxPlayerTests.DoesNotInterruptSpeech`: đang đọc thì `Play(Correct)`; `Speech.IsBusy` vẫn `true`, và clip của `Speech` vẫn đang phát.
   - `SfxPlayerTests.MissingClip_WarningOnly`.
   - `SpeechPlayerTests.OnGap_CalledBeforeNextPart`: ba mã, `gap = .1f`; `onGap` được gọi với 1 rồi 2, mỗi lần đều trước `onPart` của mảnh đó.
@@ -320,10 +348,16 @@ class SfxCheckTest(unittest.TestCase):
   - `LessonScreen`:
     - `BackButton` = `CreateIconButton(Home, UiText.Back)`;
     - `ReplayButton` = `CreateIconButton(Speaker, UiText.Replay)`, nhún theo nhịp khi `Speech.IsBusy`;
-    - `NextButton` = `CreateIconButton(Forward, UiText.Next, fill: Palette.Orange)`, `TapFeedback.Sound = SystemSfx.Tap`. Khi hiện thì `Punch` 1,15 rồi `Pulse.Start`;
+    - `NextButton` = `CreateIconButton(Forward, UiText.Next, fill: Palette.Orange)`, **không** có `TapFeedback.Sound` (tiếng lật trang thay cho tiếng chạm). Khi hiện thì `Punch` 1,15 rồi `Pulse.Start`;
     - `NotesButton` giữ là nút của người lớn;
     - thêm `Dots` (`ProgressDots`, ở giữa phía trên) và `Mascot` (cạnh trái `NextButton`, nằm trong dải 200 đơn vị ở đáy màn, ngoài Stage).
-    - `PresentCurrent()` gọi `Dots.SetCurrent(Flow.Position)`. Root của màn bước mới mờ sang rõ và trượt từ +60 về 0 trong 0,3 giây.
+    - `PresentCurrent()` gọi `Dots.SetCurrent(Flow.Position)`.
+    - **Chuyển bước như lật trang sách:**
+      - Root của bước cũ không bị huỷ ngay. Nó được gắn `CanvasGroup { blocksRaycasts = false }`, đưa lên trên cùng của Stage, chạy `Motion.PageTurn(root, .4f)`, rồi mới bị huỷ.
+      - Bước mới được dựng ngay bên dưới và nhận chạm luôn.
+      - `Sfx?.Play(SystemSfx.PageFlip)` khi bắt đầu lật. Bước đầu tiên của bài không lật.
+      - `internal GameObject TurningPage`: trang đang lật, `null` khi không có.
+      - Bấm "Tiếp" khi trang trước còn đang lật thì trang đó bị huỷ ngay.
 
 - [ ] **Step 1: Viết test hỏng** `LessonChromeTests` (mở app bằng `LoadMainWithProfile(unlockAll: true)`, vào `tv1_t1_b13`):
   - `Buttons_AreIconButtons`: `IconButton.IconId` của Back, Replay, Next là `Home`, `Speaker`, `Forward`.
@@ -331,6 +365,12 @@ class SfxCheckTest(unittest.TestCase):
   - `Dots_BarWhenTooMany`: `ProgressDots.Create(parent, 40).IsBar == true`; `Create(parent, 20).IsBar == false`.
   - `NextTwice_AdvancesOnce` (Review Focus 2): làm xong bước 0, gọi `NextButton.onClick.Invoke()` hai lần trong cùng khung hình; `Flow.Position == 1`.
   - `Mascot_OutsideStageAndButtons_BothSizes`: ở 2400×1080 và 2048×1536, khung của gà con không giao với khung Stage và khung các nút; `LayoutProbe.AssertFits` xanh.
+  - `Next_TurnsPageLikeBook`: `Motion.Scale = 1`. Ngay sau "Tiếp":
+    - `TurningPage != null`, `blocksRaycasts == false`, bước mới đã là `CurrentView`;
+    - `Sfx.History` có `sfx_lat_trang` và không có `sfx_cham`.
+
+    Sau 0,6 giây thì `TurningPage == null` và Root cũ đã bị huỷ.
+  - `Next_ScaleZero_NoLeftoverPage`: `Motion.Scale = 0`; sau "Tiếp" thì `TurningPage == null` trong khung hình kế tiếp.
 - [ ] **Step 2: Chạy, thấy đỏ.**
 - [ ] **Step 3: Viết code** theo Interfaces.
 - [ ] **Step 4: Chạy, thấy xanh:** `LessonChromeTests` và cả PlayMode. `MvpEndToEndTests` chạy trọn 80 bài vẫn xanh (hiệu ứng tắt trong test).
@@ -391,7 +431,7 @@ class SfxCheckTest(unittest.TestCase):
 
 ## Giai đoạn C — Sổ bé ngoan
 
-### Task 7: Phần tính toán của sổ [có thể giao]
+### Task 7: Phần tính toán của sổ
 
 **Files:**
 - Create: `Scripts/Runtime/Progress/FlowerBook.cs`
@@ -441,7 +481,7 @@ class SfxCheckTest(unittest.TestCase):
     - `void ShowPage(int page)`: hiện cặp trang bắt đầu từ `SpreadStart(page)`; bài cuối lẻ thì trang phải để trống;
     - `int LeftPage`, `int PageCount`;
     - `BookPage PageFor(string lessonId)` (`null` khi trang không đang hiện);
-    - `Awaitable FlipTo(int page)`: hiệu ứng lật trang 0,35 giây kèm `sfx_lat_trang`; `Motion.Scale == 0` thì đổi ngay.
+    - `Awaitable FlipTo(int page)`: lật trang như sách bằng `Motion.PageTurn` (0,4 giây) kèm `sfx_lat_trang`; `Motion.Scale == 0` thì đổi ngay.
 
     Quyển sổ có viền mực và bóng gạch chéo, nằm giữa vùng an toàn, chừa 200 đơn vị ở trên cho thanh tiêu đề.
   - `BookScreen` (MonoBehaviour), `void Build(AppRoot app)`:
@@ -592,7 +632,9 @@ class SfxCheckTest(unittest.TestCase):
 - [ ] **Step 7: Nhờ chủ dự án nghe 6 tiếng** (gửi đường dẫn file). Đổi file nếu chủ dự án không ưng.
 - [ ] **Step 8: Commit:** `content: tiếng động CC0 (Kenney, OpenGameArt, Freesound)`.
 
-### Task 13: Hình bông hoa bé ngoan bằng ChatGPT
+### Task 13: Hình chính thức bằng ChatGPT — HOÃN
+
+> Chủ dự án chốt 30/10/2026: ChatGPT chưa tạo ảnh tiếp được, nên lần này làm giao diện với hình mặc định của Task 1. Task này chỉ làm khi chủ dự án báo đã tạo ảnh được. Ngoài bông hoa, có thể làm lại cả gà con và các biểu tượng theo cùng cách (ghi đè file cùng mã).
 
 **Files:** `unity/TapDoc/Assets/Content/Resources/images/img_chung_hoa_be_ngoan.png` (ghi đè hoa tạm), `content/manifests/image_manifest.json`
 
