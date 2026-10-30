@@ -30,7 +30,9 @@ Giao diện và hiệu ứng (30/10): đang thảo luận với chủ dự án �
 - Phụ lục đặt tên theo mã sách: `Resources/appendix/tv1_t1_1990.json`; `index.json` có trường `book` cho từng bài.
 - Test: Python 653 đạt. Unity EditMode 83/84, PlayMode 264/276 — mọi lỗi còn lại chỉ do thiếu 6 tranh (mục 2).
 
-**Âm "tô" (`tieng_too`) — đã sửa:** FMOD của Unity không nhập được file vì khung MP3 đầu của file đã cắt mượn dữ liệu (bit reservoir) của khung đã bị bỏ. `trim_mp3` giờ lùi điểm bắt đầu tới khung không mượn dữ liệu. 1.237/1.902 file cũ cũng mở đầu bằng khung như vậy nhưng Unity vẫn nhập được; file nào tạo lại (công cụ duyệt hay lệnh `tts`) sẽ tự cắt theo cách mới. Nếu sau này Unity báo "Thiếu âm thanh" mà file vẫn có thì tạo lại riêng mã đó.
+**Âm "tô" (`tieng_too`) — đã sửa:** FMOD của Unity không nhập được file vì khung MP3 đầu của file đã cắt mượn dữ liệu (bit reservoir) của khung đã bị bỏ. `trim_mp3` giờ lùi điểm bắt đầu tới khung không mượn dữ liệu. Review độc lập (30/10 chiều) chỉ ra 1.236 file khác cùng lỗi: đã tạo lại hết với đúng thông số cũ (`269ebde`, không đụng `content/tts/prev`), test `ShippedAudioTest` kiểm mọi file. Giọng đọc edge-tts chỉ có khung 0 là không mượn dữ liệu, nên bước cắt giờ giữ nguyên phần lặng đầu (khoảng 1–2 khung), chỉ cắt phần lặng cuối.
+
+**Review độc lập phần ghi chú cho phụ huynh (30/10 chiều):** không có lỗi nghiêm trọng. Đã sửa: âm thanh (ở trên), mở khung Ghi chú thì dừng giọng đọc (`6e503b8`). **Chờ chủ dự án quyết:** nút "Ghi chú" đang nằm ngay màn bài của bé, chữ không có biểu tượng; bé chạm vào sẽ gặp trang chữ. Có thể giữ nguyên, hoặc chỉ hiện ghi chú sau khoá phụ huynh. Lỗi nhỏ để sau: nút Ghi chú sát dãy chấm tiến độ ở màn 4:3; nút Phụ lục im lặng khi thiếu dữ liệu và chỉ theo một quyển; tên âm và số trang trong `lesson_notes.py` ghi cứng (nên lấy từ dữ liệu Phụ lục); test mp3trim chưa có mẫu MPEG-1 và CRC; chưa có test khung ghi chú chặn chạm xuống bài; loại ghi chú lạ bị bỏ qua; lượt Phần 2 tự chuyển có thể đóng khung đang mở; màu nền khung trùng `Palette.Paper`.
 
 ## 2. XONG — 6 tranh còn thiếu (vẽ bằng ChatGPT chiều 30/10; giữ lại các bước để lần sau vẽ tranh mới)
 
