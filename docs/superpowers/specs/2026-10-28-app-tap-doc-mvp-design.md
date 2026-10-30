@@ -444,6 +444,29 @@ Kế hoạch: [2026-10-29-hoan-thanh-tv1-tap-1.md](../plans/2026-10-29-hoan-than
 - **Kết quả test:** Python đều đạt; EditMode 79 đạt; PlayMode 176 đạt, gồm chạy trọn 41 bài và kiểm tra bố cục ở 2 khung hình; `validate` bản đầy đủ báo `OK`.
 - **Việc trau chuốt để sau:** như bản đầu tiên, cộng thêm: tranh từ khoá vẽ thêm cho các từ không có tranh trong sách đều gắn `can_duyet`.
 
+### Đợt 2 bài 42–64: đã làm (29/10/2026)
+
+Kế hoạch: [2026-10-29-hoan-thanh-tv1-tap-1.md](../plans/2026-10-29-hoan-thanh-tv1-tap-1.md), Task 2.1–2.8; giọng đọc: mục 17 và [2026-10-29-cong-cu-giong-doc.md](../plans/2026-10-29-cong-cu-giong-doc.md).
+
+- **Nội dung:** 23 bài chép từ trang sách (ảnh 024–045), đều `page_verified`: 19 bài vần mới và 4 bài ôn vần (48, 54, 59, 64).
+  - Tranh cảnh không chữ ở trang phải thành bước tranh có lời dẫn, gắn `can_duyet`; từ dùng trong lượt nghe chọn tranh mà sách không có tranh thì vẽ thêm.
+- **Màn mới:** bảng ôn vần (vần, các mảnh đánh vần và từ ứng dụng; quá 8 hàng thì chia trang); câu ở bài vần tô màu vần mới như sách, bài âm thì không.
+- **Kiểm tra dữ liệu:** bỏ ngoặc kép cong và gạch đầu dòng lời thoại khi tách tiếng để đọc, chữ trên màn vẫn giữ như sách.
+- **Giọng đọc:** chủ dự án nghe lô eSpeak và không dùng được. Toàn bộ 1.317 mã bài 1–64 được tạo lại bằng edge-tts giọng HoaiMy (nữ), cắt khoảng lặng, `cho_duyet`.
+  - Công cụ duyệt (`MoCongCuDuyet.cmd`): nghe từng mã, sửa cách đọc, tốc độ, cao độ, âm lượng, chọn giọng HoaiMy/NamMinh; tạo lại, nghe và dùng lại bản trước; nghe chuỗi đánh vần theo bài; cột chữ hiển thị trong app; tìm kiếm, lọc, phân trang.
+- **Tài nguyên tạm:** thêm 58 tranh (tổng 154), `cho_duyet`.
+- **Kết quả test:** Python đều đạt; Unity: xem kết quả chung ở Đợt 3.
+
+### Đợt 3 bài 65–80: đã làm (29–30/10/2026)
+
+Kế hoạch: [2026-10-29-hoan-thanh-tv1-tap-1.md](../plans/2026-10-29-hoan-thanh-tv1-tap-1.md), Đợt 3 Task 1–5.
+
+- **Nội dung:** 16 bài chép từ trang sách (vần có âm cuối c, t, p và các bài ôn cuối học kì), đều `page_verified`.
+- **Màn mới:** bảng nhóm vần bài 79 (như tr.118, có số cột (1)…(7), nút trang dùng chung); lượt câu đố nghe rồi chọn tranh ở bài 80; bài 80 tô màu phụ âm đầu ở trang "Tìm tiếng có vần đã học".
+- **Ghi chú cho phụ huynh (cả quyển):** nút "Ghi chú" trong bài có 3 loại (Sách ghi, Cách đọc theo sách, App khác sách) và mục "Chú ý và Phụ lục" ở màn Phụ huynh (chép tr.120–122). Rà đủ 80 trang: chú thích sách chỉ có ở bài 11, 27, 42, 60, 66, 68.
+- **Tài nguyên:** 585 mã âm thanh HoaiMy và 45 tranh mới (tổng 1.902 âm thanh, 199 tranh), đều `cho_duyet`. Cách cắt khoảng lặng MP3 sửa để Unity luôn nhập được (lỗi gặp ở âm "tô").
+- **Kết quả test (30/10):** Python 653 đạt; `validate` bản đầy đủ báo `OK`; EditMode 105/105. PlayMode chạy trọn 80 bài ở 2 khung hình sáng 30/10: 264/276, cả 12 lỗi chỉ do thiếu 6 tranh lúc đó; sau khi đủ tranh chưa chạy trọn lại (chạy khi chủ dự án yêu cầu).
+
 ## 16. Hoàn thành TV1 Tập 1: bài 18–80 [Đề xuất, chờ chủ dự án duyệt]
 
 Đây là bước 3 ở mục 12, phần còn lại của quyển. Mọi điều ở mục 2–11 vẫn giữ nguyên. Riêng mục 2 có một thay đổi: phần Vần (bài 42–80) nay nằm trong phạm vi.

@@ -1,4 +1,4 @@
-# Ghi chú tiếp tục — TV1 Tập 1 (cập nhật 30/10/2026, sáng)
+# Ghi chú tiếp tục — TV1 Tập 1 (cập nhật 30/10/2026, chiều)
 
 Đọc file này trước khi làm tiếp. Kế hoạch gốc: [2026-10-29-hoan-thanh-tv1-tap-1.md](../plans/2026-10-29-hoan-thanh-tv1-tap-1.md); giọng đọc: mục 17 của [bản thiết kế](../specs/2026-10-28-app-tap-doc-mvp-design.md).
 
@@ -8,9 +8,9 @@
 |---|---|
 | Đợt 1 (bài 1–41) | Đã phát hành: `fc4510c` |
 | Đợt 2 (bài 42–64) | Xong nội dung, 154 tranh, giọng HoaiMy cho 1.317 mã, công cụ duyệt. **Chờ chủ dự án thử app rồi nói "phát hành"** |
-| Đợt 3 (bài 65–80) | Xong code, nội dung 16 bài, 585 âm thanh, **39/45 tranh**. Còn 6 tranh (mục 2) |
+| Đợt 3 (bài 65–80) | Xong code, nội dung 16 bài, 585 âm thanh, đủ 45 tranh (6 tranh cuối vẽ chiều 30/10, `7808597`). **Chờ chủ dự án thử app rồi nói "phát hành"** |
 | Review code | 8 lỗi đã sửa ở `cc172f6` (test viết trước, đỏ rồi xanh) |
-| Test | Python 653 đạt. Unity 30/10: EditMode 83/84, PlayMode 264/276 — lỗi còn lại chỉ do thiếu 6 tranh |
+| Test | Python 653 đạt. EditMode 105/105 (30/10 chiều, gồm kiểm tra đủ tài nguyên). PlayMode trọn 80 bài chạy lần cuối sáng 30/10: 264/276, lỗi chỉ do thiếu 6 tranh nay đã có; chạy lại khi chủ dự án yêu cầu "test all" |
 
 Giao diện và hiệu ứng (30/10): đang thảo luận với chủ dự án ở một session riêng ("Thảo luận UI và hiệu ứng cho app tập đọc"); bản thiết kế sẽ lưu ở `docs/superpowers/specs/…-ui-hieu-ung-design.md`.
 
@@ -32,7 +32,7 @@ Giao diện và hiệu ứng (30/10): đang thảo luận với chủ dự án �
 
 **Âm "tô" (`tieng_too`) — đã sửa:** FMOD của Unity không nhập được file vì khung MP3 đầu của file đã cắt mượn dữ liệu (bit reservoir) của khung đã bị bỏ. `trim_mp3` giờ lùi điểm bắt đầu tới khung không mượn dữ liệu. 1.237/1.902 file cũ cũng mở đầu bằng khung như vậy nhưng Unity vẫn nhập được; file nào tạo lại (công cụ duyệt hay lệnh `tts`) sẽ tự cắt theo cách mới. Nếu sau này Unity báo "Thiếu âm thanh" mà file vẫn có thì tạo lại riêng mã đó.
 
-## 2. Việc khi ChatGPT mở lại lượt tạo ảnh (sau 14:30 ngày 30/10/2026)
+## 2. XONG — 6 tranh còn thiếu (vẽ bằng ChatGPT chiều 30/10; giữ lại các bước để lần sau vẽ tranh mới)
 
 Ngày 29/10 gói Plus báo hết lượt tạo ảnh sau 39 tranh. Còn 6 tranh `chua_co`:
 
@@ -57,7 +57,7 @@ Các bước:
 
 ## 3. Sau khi đủ 45 tranh
 
-1. Chạy trọn Unity: `python tools/run_unity_tests.py editmode` và `python tools/run_unity_tests.py playmode` (MvpEndToEndTests đi hết 80 bài ở 2 khung hình, bố cục, bảng nhóm vần bài 79, câu đố bài 80).
+1. **Chỉ khi chủ dự án yêu cầu "test all"** mới chạy trọn Unity PlayMode (`python tools/run_unity_tests.py playmode`, khoảng 25–30 phút, MvpEndToEndTests đi hết 80 bài ở 2 khung hình). Bình thường chỉ chạy test liên quan (Python, EditMode, hoặc PlayMode có `--filter`).
 2. Commit các file `.meta` Unity tạo cho tranh mới.
 3. Điền số liệu test vào mục 15 của bản thiết kế (phần "Đợt 2" đã viết sẵn, **chưa commit**, dòng Unity để trống); viết phần "Đợt 3" và nghiệm thu cả quyển (mục 15, 16).
 4. Review cả kế hoạch bằng một người review mới (1 subagent), sửa phát hiện quan trọng (test trước).
@@ -82,6 +82,7 @@ Chủ dự án push tiếp lúc 18:05 tới `a277098`. Xem phần chưa push b�
 
 - Chỉ branch `main`; không build bản thử, chỉ commit.
 - Claude viết và review mọi test; Codex/Antigravity chỉ viết code cho test của Claude chạy xanh. Review kỹ, tránh code rác và hard-code.
+- Chỉ chạy test liên quan tới thay đổi (unit test, EditMode, PlayMode có `--filter`). Không chạy trọn PlayMode ("test all") khi chủ dự án chưa yêu cầu (30/10).
 - Trình duyệt: chỉ Edge trên máy này. Hỏi trước khi tải file (một lần cho mỗi lô).
 - Âm thanh tạo theo mặc định (HoaiMy nữ); chủ dự án duyệt sau.
 - Trả lời bằng tiếng Việt.
