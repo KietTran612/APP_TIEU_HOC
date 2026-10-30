@@ -81,7 +81,7 @@
 - Produces (Python):
   - `SYSTEM_IMAGES` có thêm:
     - `img_chung_hoa_be_ngoan`, `img_chung_ga_con`;
-    - 12 biểu tượng: `img_ui_nha`, `img_ui_loa`, `img_ui_tiep`, `img_ui_lui`, `img_ui_so`, `img_ui_on_lai`, `img_ui_xong`, `img_ui_khoa`, `img_ui_trang_truoc`, `img_ui_trang_sau`, `img_ui_sao_giay`, `img_ui_canh_hoa`.
+    - 12 biểu tượng: `img_ui_nha`, `img_ui_loa`, `img_ui_tiep`, `img_ui_lui`, `img_ui_so`, `img_ui_on_lai`, `img_ui_xong`, `img_ui_khoa`, `img_ui_lat_truoc`, `img_ui_lat_sau`, `img_ui_sao_giay`, `img_ui_canh_hoa`.
 
     Mỗi mã có mô tả để vẽ lại bằng ChatGPT sau này.
   - `SYSTEM_SFX: dict[str, dict]`: mã → `{"mo_ta", "nguon", "giay_phep"}`. Có 6 mã: `sfx_cham`, `sfx_dung`, `sfx_nhap`, `sfx_hoa_bay`, `sfx_dong_dau`, `sfx_lat_trang`. Ban đầu `nguon`, `giay_phep` rỗng.

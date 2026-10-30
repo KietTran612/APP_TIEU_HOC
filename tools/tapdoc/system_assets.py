@@ -33,4 +33,34 @@ SYSTEM_IMAGES: dict[str, str] = {
     "img_chung_avatar_04": "Hình đại diện: chú gà con lông vàng tròn xoe, mỏ nhỏ, đứng nhìn thẳng",
     "img_chung_avatar_05": "Hình đại diện: con cá vàng tròn trịa, vây đuôi xòe, bơi nghiêng mỉm cười",
     "img_chung_avatar_06": "Hình đại diện: mặt con voi con tươi cười, tai to, vòi cong lên",
+    # Sổ bé ngoan và bạn đồng hành. Hiện là hình mặc định (`python -m tapdoc ui-icons`); tranh chính thức
+    # vẽ sau bằng ChatGPT rồi ghi đè file cùng mã.
+    "img_chung_hoa_be_ngoan": "Bông hoa bé ngoan: một bông hồng hồng tươi có lá xanh và cuống, viền mực đen rõ, "
+                              "có điểm sáng, rực rỡ bắt mắt, nền trong suốt",
+    "img_chung_ga_con": "Bạn gà con đồng hành: chú gà con lông vàng tròn xoe, đứng nhìn thẳng, vui vẻ",
+    # Biểu tượng trên nút của bé: nét mực đen, tô giấy sáng, nền trong suốt, nằm giữa khung.
+    "img_ui_nha": "Biểu tượng về danh sách: ngôi nhà nhỏ mái nhọn, cửa đen",
+    "img_ui_loa": "Biểu tượng nghe lại: cái loa với hai làn sóng âm",
+    "img_ui_tiep": "Biểu tượng đi tiếp: mũi tên to chỉ sang phải",
+    "img_ui_lui": "Biểu tượng quay lại: mũi tên to chỉ sang trái",
+    "img_ui_so": "Biểu tượng Sổ bé ngoan: quyển sổ mở, có bông hoa nhỏ ở trang trái",
+    "img_ui_on_lai": "Biểu tượng ôn lại: mũi tên vòng tròn",
+    "img_ui_xong": "Biểu tượng con đọc xong rồi: dấu tích",
+    "img_ui_khoa": "Biểu tượng bài chưa mở: ổ khoá nhỏ màu nhạt",
+    "img_ui_lat_truoc": "Biểu tượng trang trước: tờ giấy gấp góc, mũi tên nhỏ chỉ sang trái",
+    "img_ui_lat_sau": "Biểu tượng trang sau: tờ giấy gấp góc, mũi tên nhỏ chỉ sang phải",
+    "img_ui_sao_giay": "Ngôi sao giấy màu vàng viền mực, bung ra khi bé làm đúng",
+    "img_ui_canh_hoa": "Cánh hoa hồng hình giọt nước viền mực, rơi ra khi dán hoa vào sổ",
+}
+
+# Tiếng động khi tương tác: tách hẳn khỏi âm thanh phát âm (`SYSTEM_AUDIO`). Mã luôn bắt đầu bằng `sfx_`,
+# file nằm ở `Resources/sfx/` (không phải `audio/`), không vào danh mục âm thanh hay lệnh `tts`.
+# Chỉ dùng file CC0; `nguon` và `giay_phep` điền khi đã chọn file.
+SYSTEM_SFX: dict[str, dict] = {
+    "sfx_cham": {"mo_ta": "\"tách\" nhỏ, ngắn khi chạm nút hoặc nhấc thẻ", "nguon": "", "giay_phep": ""},
+    "sfx_dung": {"mo_ta": "\"ting\" trong, vui khi bé làm đúng", "nguon": "", "giay_phep": ""},
+    "sfx_nhap": {"mo_ta": "\"bụp\" nhẹ khi các thẻ nhập thành tiếng", "nguon": "", "giay_phep": ""},
+    "sfx_hoa_bay": {"mo_ta": "\"vút\" nhẹ khi bông hoa bay vào sổ", "nguon": "", "giay_phep": ""},
+    "sfx_dong_dau": {"mo_ta": "\"cộp\" khi đóng dấu Bé ngoan", "nguon": "", "giay_phep": ""},
+    "sfx_lat_trang": {"mo_ta": "\"sột\" giấy khi lật trang sổ hoặc sang bước mới", "nguon": "", "giay_phep": ""},
 }

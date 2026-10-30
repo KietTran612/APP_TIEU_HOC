@@ -13,6 +13,7 @@ from .manifest import (ManifestError, keep_concurrent_tts, load_rows, save_rows,
                        update_image_manifest)
 from .paths import CONTENT_SRC, MANIFESTS, REQUESTS_DIR, ROOT, STYLE_FILE, UNITY_RES
 from .review_server import make_server
+from .ui_icons import write_all as write_ui_icons
 from .validate import release_warnings, validate_all
 from .viet import nfc
 
@@ -136,6 +137,15 @@ def _cmd_import_image(args: argparse.Namespace) -> int:
         print(f"Lỗi ghi file tranh {args.id}: {e}", file=sys.stderr)
         return 1
     print(f"Đã nhập tranh {args.id} vào {image_dir / (args.id + '.png')} (chờ duyệt)")
+    return 0
+
+
+def _cmd_ui_icons(args: argparse.Namespace) -> int:
+    image_dir = UNITY_RES / "images"
+    written = write_ui_icons(image_dir, force=args.force)
+    for image_id in written:
+        print(f"Đã ghi {image_dir / (image_id + '.png')}")
+    print(f"Hình mặc định: ghi {len(written)} file" if written else "Hình mặc định: đã đủ, không ghi gì")
     return 0
 
 
@@ -272,6 +282,9 @@ def main(argv: list[str] | None = None, *, engine_factory=None) -> int:
     image_cmd.add_argument("file", help="đường dẫn file PNG")
     image_cmd.add_argument("id", help="mã tranh trong danh mục (ví dụ img_b13_cais_ddu)")
     image_cmd.set_defaults(func=_cmd_import_image)
+    icons_cmd = commands.add_parser("ui-icons", help="sinh biểu tượng giao diện, hoa và gà con mặc định còn thiếu")
+    icons_cmd.add_argument("--force", action="store_true", help="vẽ lại mọi biểu tượng (không đụng hoa và gà con)")
+    icons_cmd.set_defaults(func=_cmd_ui_icons)
     validate_cmd = commands.add_parser("validate", help="kiểm tra file bài đã dựng, danh mục và project Unity")
     validate_cmd.add_argument("--allow-missing", action="store_true",
                               help="bỏ qua việc kiểm tra file âm thanh/tranh còn thiếu")

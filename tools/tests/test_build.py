@@ -646,7 +646,12 @@ class SystemAssetsTest(unittest.TestCase):
 
     def test_system_images(self):
         avatars = {f"img_chung_avatar_{n:02d}" for n in range(1, 7)}  # hình đại diện cho bé chọn (MVP Task 5)
-        self.assertEqual(set(SYSTEM_IMAGES), {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap"} | avatars)
+        # Giao diện mới: hoa bé ngoan, gà con và 12 biểu tượng trên nút (hình mặc định của `ui-icons`).
+        ui = {"img_chung_hoa_be_ngoan", "img_chung_ga_con"} | {
+            f"img_ui_{n}" for n in ("nha", "loa", "tiep", "lui", "so", "on_lai", "xong", "khoa",
+                                    "lat_truoc", "lat_sau", "sao_giay", "canh_hoa")}
+        self.assertEqual(set(SYSTEM_IMAGES),
+                         {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap"} | avatars | ui)
         self.assertIn("con mèo", SYSTEM_IMAGES["img_chung_avatar_01"])
         self.assertTrue(all(unicodedata.is_normalized("NFC", v) for v in SYSTEM_IMAGES.values()))
 

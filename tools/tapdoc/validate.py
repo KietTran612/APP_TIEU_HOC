@@ -15,6 +15,7 @@ from .curriculum import Learned, is_learned_text, learned_until, load_curriculum
 from .ids import CONSONANT_NAMES
 from .manifest import STATUS_NONE, STATUS_PENDING, ManifestError, load_rows
 from .paths import LESSON_INDEX, MANIFESTS, UNITY_ASSETS, UNITY_RES
+from .system_assets import SYSTEM_AUDIO, SYSTEM_SFX
 from .viet import is_nfc, nfc, split_syllable, syllables
 
 GLOBAL = "-"  # `lesson` của lỗi không thuộc một bài nào
@@ -315,6 +316,58 @@ def _scan_reasons(name: str, in_images_dir: bool) -> list[str]:
     return reasons
 
 
+# ---- tiếng động (tách hẳn khỏi âm thanh phát âm) ----
+
+SFX_PREFIX = "sfx_"
+SFX_DIR = "sfx"
+SFX_EXTENSIONS = (".ogg", ".wav", ".mp3")
+SFX_LICENSE = "CC0"
+
+
+def _sfx_files(sfx_dir: Path) -> list[Path]:
+    return sorted(p for p in sfx_dir.iterdir() if p.is_file() and p.suffix != ".meta")         if sfx_dir.is_dir() else []
+
+
+def check_sfx(res_dir, allow_missing: bool = False) -> list[Issue]:
+    """Mỗi mã trong `SYSTEM_SFX` có đúng một file `sfx/<mã>.(ogg|wav|mp3)`, giấy phép CC0."""
+    files = _sfx_files(Path(res_dir) / SFX_DIR)
+    issues = []
+    for sfx_id, info in SYSTEM_SFX.items():
+        found = [p for p in files if p.stem == sfx_id and p.suffix in SFX_EXTENSIONS]
+        if not found:
+            if not allow_missing:
+                issues.append(Issue(GLOBAL, sfx_id, f"không có file {SFX_DIR}/{sfx_id}.(ogg|wav|mp3)"))
+        elif len(found) > 1:
+            issues.append(Issue(GLOBAL, sfx_id, "có nhiều file cùng mã: " + ", ".join(p.name for p in found)))
+        elif info.get("giay_phep") != SFX_LICENSE:
+            issues.append(Issue(GLOBAL, sfx_id, f"giấy phép phải là {SFX_LICENSE}, đang là {info.get('giay_phep')!r}"))
+    return issues
+
+
+def check_sfx_separation(res_dir, audio_rows: list[dict]) -> list[Issue]:
+    """Tiếng động không được lẫn với âm thanh phát âm: thư mục, danh mục và mã đều tách riêng."""
+    res_dir = Path(res_dir)
+    issues = []
+    audio_dir = res_dir / "audio"
+    if audio_dir.is_dir():
+        for p in sorted(audio_dir.iterdir()):
+            if p.is_file() and p.name.startswith(SFX_PREFIX):
+                issues.append(Issue(GLOBAL, p.name, f"file tiếng động nằm trong audio/, phải ở {SFX_DIR}/"))
+    for row in audio_rows:
+        if str(row.get("id", "")).startswith(SFX_PREFIX):
+            issues.append(Issue(GLOBAL, row["id"], "mã tiếng động không được nằm trong danh mục âm thanh phát âm"))
+    for p in _sfx_files(res_dir / SFX_DIR):
+        if p.stem not in SYSTEM_SFX:
+            issues.append(Issue(GLOBAL, p.name, f"file trong {SFX_DIR}/ không có trong SYSTEM_SFX"))
+    for sfx_id in SYSTEM_SFX:
+        if not sfx_id.startswith(SFX_PREFIX):
+            issues.append(Issue(GLOBAL, sfx_id, f"mã tiếng động phải bắt đầu bằng {SFX_PREFIX}"))
+    for audio_id in SYSTEM_AUDIO:
+        if audio_id.startswith(SFX_PREFIX):
+            issues.append(Issue(GLOBAL, audio_id, f"mã âm thanh phát âm không được bắt đầu bằng {SFX_PREFIX}"))
+    return issues
+
+
 def check_no_scans(unity_assets_dir) -> list[Issue]:
     root = Path(unity_assets_dir)
     issues = []
@@ -445,5 +498,7 @@ def validate_all(allow_missing: bool = False, release: bool = False) -> list[Iss
     if not allow_missing:
         issues += check_files(audio_rows, UNITY_RES)
         issues += check_files(image_rows, UNITY_RES)
+    issues += check_sfx(UNITY_RES, allow_missing)
+    issues += check_sfx_separation(UNITY_RES, audio_rows)
     issues += check_no_scans(UNITY_ASSETS)
     return issues

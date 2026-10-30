@@ -599,6 +599,10 @@ class ValidateAllTest(unittest.TestCase):
             patcher = mock.patch.object(validate, name, value)
             patcher.start()
             self.addCleanup(patcher.stop)
+        # Tiếng động thật chưa chọn file (giay_phep rỗng): bài kiểm tra dùng một mã CC0 giả.
+        patcher = mock.patch.object(validate, "SYSTEM_SFX", {"sfx_cham": {"mo_ta": "", "nguon": "", "giay_phep": "CC0"}})
+        patcher.start()
+        self.addCleanup(patcher.stop)
 
     def write_json(self, path, data):
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -620,6 +624,8 @@ class ValidateAllTest(unittest.TestCase):
             path = self.res / row["file"]
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(b"x")
+        (self.res / "sfx").mkdir(parents=True, exist_ok=True)
+        (self.res / "sfx" / "sfx_cham.ogg").write_bytes(b"x")
         return result
 
     def test_built_lesson_with_files_is_clean(self):
@@ -851,3 +857,95 @@ class CliTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SfxCheckTest(unittest.TestCase):
+    """Tiếng động: mỗi mã trong `SYSTEM_SFX` có đúng một file ở `sfx/`, giấy phép CC0."""
+
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.res = Path(self._tmp.name)
+        (self.res / "sfx").mkdir()
+        self.registry = {"sfx_cham": {"mo_ta": "tách", "nguon": "Kenney", "giay_phep": "CC0"}}
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def check(self, allow_missing=False):
+        with mock.patch.object(validate, "SYSTEM_SFX", self.registry):
+            return validate.check_sfx(self.res, allow_missing)
+
+    def test_ok_with_one_cc0_file(self):
+        (self.res / "sfx" / "sfx_cham.ogg").write_bytes(b"o")
+        self.assertEqual(self.check(), [])
+
+    def test_missing_file_reported_unless_allowed(self):
+        issues = self.check()
+        self.assertEqual([i.where for i in issues], ["sfx_cham"])
+        self.assertEqual(self.check(allow_missing=True), [])
+
+    def test_non_cc0_reported(self):
+        (self.res / "sfx" / "sfx_cham.wav").write_bytes(b"w")
+        self.registry["sfx_cham"]["giay_phep"] = "CC-BY"
+        issues = self.check()
+        self.assertEqual(len(issues), 1)
+        self.assertIn("CC0", issues[0].message)
+
+    def test_two_formats_same_id_reported(self):
+        (self.res / "sfx" / "sfx_cham.ogg").write_bytes(b"o")
+        (self.res / "sfx" / "sfx_cham.wav").write_bytes(b"w")
+        self.assertEqual(len(self.check()), 1)
+
+
+class SfxSeparationTest(unittest.TestCase):
+    """Tiếng động tách hẳn khỏi âm thanh phát âm: không lẫn thư mục, danh mục hay mã."""
+
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.res = Path(self._tmp.name)
+        (self.res / "audio").mkdir()
+        (self.res / "sfx").mkdir()
+        (self.res / "audio" / "tieng_ca.mp3").write_bytes(b"a")
+        (self.res / "audio" / "tieng_ca.mp3.meta").write_bytes(b"m")
+        (self.res / "sfx" / "sfx_cham.ogg").write_bytes(b"o")
+        (self.res / "sfx" / "sfx_cham.ogg.meta").write_bytes(b"m")
+        self.rows = [{"id": "tieng_ca"}]
+        self.sfx = {"sfx_cham": {"mo_ta": "tách", "nguon": "", "giay_phep": ""}}
+        self.audio = {"khen_01": "Đúng rồi!"}
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def check(self):
+        with mock.patch.object(validate, "SYSTEM_SFX", self.sfx), \
+                mock.patch.object(validate, "SYSTEM_AUDIO", self.audio):
+            return validate.check_sfx_separation(self.res, self.rows)
+
+    def test_clean_layout_ok(self):
+        self.assertEqual(self.check(), [])
+
+    def test_sfx_file_in_audio_dir_reported(self):
+        (self.res / "audio" / "sfx_cham.mp3").write_bytes(b"a")
+        self.assertEqual(len(self.check()), 1)
+
+    def test_sfx_id_in_audio_manifest_reported(self):
+        self.rows.append({"id": "sfx_dung"})
+        self.assertEqual(len(self.check()), 1)
+
+    def test_unknown_file_in_sfx_dir_reported(self):
+        (self.res / "sfx" / "tieng_ca.ogg").write_bytes(b"o")
+        self.assertEqual(len(self.check()), 1)
+
+    def test_registry_without_prefix_reported(self):
+        self.sfx["cham"] = {"mo_ta": "", "nguon": "", "giay_phep": ""}
+        self.assertEqual(len(self.check()), 1)
+
+    def test_speech_registry_with_sfx_prefix_reported(self):
+        self.audio["sfx_khen"] = "Giỏi lắm!"
+        self.assertEqual(len(self.check()), 1)
+
+    def test_registries_keep_prefixes(self):
+        from tapdoc.system_assets import SYSTEM_AUDIO, SYSTEM_SFX
+        self.assertEqual(len(SYSTEM_SFX), 6)
+        self.assertTrue(all(k.startswith("sfx_") for k in SYSTEM_SFX))
+        self.assertFalse(any(k.startswith("sfx_") for k in SYSTEM_AUDIO))
