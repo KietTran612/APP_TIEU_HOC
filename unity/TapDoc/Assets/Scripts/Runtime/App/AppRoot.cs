@@ -108,7 +108,7 @@ namespace TapDoc
             camGo.transform.position = new Vector3(0f, 0f, -10f);
             UiCamera = camGo.AddComponent<Camera>();
             UiCamera.clearFlags = CameraClearFlags.SolidColor;
-            UiCamera.backgroundColor = new Color(0.965f, 0.933f, 0.863f, 1f); // #F6EEDC
+            UiCamera.backgroundColor = Palette.Paper;
             UiCamera.orthographic = true;
             UiCamera.orthographicSize = 5f;
             // AudioListener nằm trên camera giao diện (SpeechPlayer không tự tạo listener).
@@ -129,7 +129,7 @@ namespace TapDoc
             bgRt.offsetMax = Vector2.zero;
             var bgImg = bgGo.GetComponent<Image>();
             bgImg.sprite = UiKit.WhiteSprite;
-            bgImg.color = new Color(0.965f, 0.933f, 0.863f, 1f);
+            bgImg.color = Palette.Paper;
             bgImg.raycastTarget = false;
 
             SafeRoot = UiKit.CreateSafeArea(Canvas.transform);

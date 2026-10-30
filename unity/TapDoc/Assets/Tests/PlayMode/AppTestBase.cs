@@ -182,6 +182,11 @@ namespace TapDoc.Tests
                 {
                     var real = Resources.Load<Sprite>($"images/{id}");
                     return real != null ? real : sprite;
+                },
+                id =>
+                {
+                    var real = Resources.Load<AudioClip>($"sfx/{id}");
+                    return real != null ? real : clip;
                 });
         }
 

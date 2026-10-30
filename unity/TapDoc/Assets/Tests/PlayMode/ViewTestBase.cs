@@ -283,8 +283,9 @@ namespace TapDoc.Tests
 
         protected static UnityEngine.UI.Button ButtonWithText(object view, string label)
         {
+            // Nút có chữ: so chữ; nút biểu tượng (không có chữ): so tên Button_<nhãn>.
             var button = RootOf(view).GetComponentsInChildren<UnityEngine.UI.Button>(true)
-                .FirstOrDefault(b => b.GetComponentInChildren<TMP_Text>(true)?.text == label);
+                .FirstOrDefault(b => b.GetComponentInChildren<TMP_Text>(true)?.text == label || b.name == $"Button_{label}");
             Assert.IsNotNull(button, $"Không có nút '{label}'");
             return button;
         }

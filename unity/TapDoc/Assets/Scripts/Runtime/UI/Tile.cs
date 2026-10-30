@@ -176,18 +176,9 @@ namespace TapDoc
         private void RefreshColors()
         {
             if (_background == null) return;
-            if (IsHinted)
-            {
-                _background.color = new Color(1f, 0.92f, 0.45f, 1f);
-            }
-            else if (_isHighlighted)
-            {
-                _background.color = new Color(0.82f, 0.95f, 0.98f, 1f);
-            }
-            else
-            {
-                _background.color = new Color(1f, 0.99f, 0.95f, 1f);
-            }
+            _background.color = IsHinted ? Palette.HintYellow
+                : _isHighlighted ? Palette.OrangeLight
+                : Palette.PaperLight;
         }
     }
 }

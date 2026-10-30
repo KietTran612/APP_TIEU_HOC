@@ -20,6 +20,12 @@ namespace TapDoc
         public const float StageTopInset = 200f;
         public const float StageBottomInset = 200f;
 
+        /// <summary>Độ dày viền mực của thẻ và nút.</summary>
+        public const float BorderWidth = 3f;
+
+        /// <summary>Độ lệch của bóng gạch chéo so với vật (xuống dưới, sang phải).</summary>
+        public static readonly Vector2 ShadowOffset = new(10f, -10f);
+
         private static Sprite _whiteSprite;
 
         public static Sprite WhiteSprite
@@ -81,6 +87,10 @@ namespace TapDoc
             return rt;
         }
 
+        /// <summary>
+        /// Thẻ chữ/tranh: gốc là khung bo góc màu mực (nhận chạm), con <c>Fill</c> thụt vào <see cref="BorderWidth"/>
+        /// là nền giấy, đổi màu theo trạng thái của <see cref="Tile"/>.
+        /// </summary>
         public static Tile CreateTile(Transform parent, string richText, Sprite image = null)
         {
             var go = new GameObject("Tile", typeof(RectTransform), typeof(Image), typeof(LayoutElement), typeof(Tile));
@@ -95,9 +105,8 @@ namespace TapDoc
             le.preferredWidth = 220f;
             le.preferredHeight = 180f;
 
-            var bg = go.GetComponent<Image>();
-            bg.sprite = WhiteSprite;
-            bg.color = new Color(1f, 0.99f, 0.95f, 1f);
+            SetRounded(go.GetComponent<Image>(), Palette.Ink);
+            var fill = AddFill(go.transform, UiShapes.Rounded, Palette.PaperLight);
 
             var picGo = new GameObject("ImageBox", typeof(RectTransform), typeof(Image));
             picGo.transform.SetParent(go.transform, false);
@@ -122,51 +131,82 @@ namespace TapDoc
             tmp.raycastTarget = false;
 
             var tile = go.GetComponent<Tile>();
-            tile.Setup(bg, pic, tmp, richText, image);
+            tile.Setup(fill, pic, tmp, richText, image);
             return tile;
         }
 
-        public static Button CreateButton(Transform parent, string label, Action onClick)
-        {
-            var go = new GameObject($"Button_{label}", typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
-            go.transform.SetParent(parent, false);
+        /// <summary>Nút của người lớn: bo góc, viền mực, nền lam ngọc, chữ trắng. Tên GameObject <c>Button_&lt;nhãn&gt;</c>.</summary>
+        public static Button CreateButton(Transform parent, string label, Action onClick) =>
+            CreateTextButton(parent, label, onClick, Palette.Teal, Color.white, false);
 
-            var rt = go.GetComponent<RectTransform>();
-            rt.sizeDelta = new Vector2(260f, MinTouch);
+        /// <summary>
+        /// Thẻ to (thẻ bé, thẻ bài): nền giấy sáng, chữ màu mực, có bóng gạch chéo. Bóng là con đầu tiên của thẻ,
+        /// nên thẻ đặt được trong layout group mà không thêm ô thừa.
+        /// </summary>
+        public static Button CreateCardButton(Transform parent, string label, Action onClick) =>
+            CreateTextButton(parent, label, onClick, Palette.PaperLight, Palette.Ink, true);
+
+        /// <summary>
+        /// Nút của bé: hình tròn 160×160, viền mực, nền <paramref name="fill"/> (mặc định lam ngọc), ở giữa là biểu tượng
+        /// <paramref name="iconId"/>; không có chữ. <paramref name="label"/> (chữ trong <see cref="UiText"/>) chỉ dùng đặt
+        /// tên GameObject <c>Button_&lt;nhãn&gt;</c> và ghi vào <see cref="IconButton.Label"/>.
+        /// </summary>
+        public static Button CreateIconButton(Transform parent, AssetCatalog assets, string iconId, string label,
+            Action onClick, Color? fill = null)
+        {
+            var go = new GameObject($"Button_{label}", typeof(RectTransform), typeof(Image), typeof(Button),
+                typeof(LayoutElement), typeof(IconButton));
+            go.transform.SetParent(parent, false);
+            ((RectTransform)go.transform).sizeDelta = new Vector2(MinTouch, MinTouch);
 
             var le = go.GetComponent<LayoutElement>();
-            le.minWidth = MinTouch;
-            le.minHeight = MinTouch;
-            le.preferredWidth = 260f;
-            le.preferredHeight = MinTouch;
+            le.minWidth = le.preferredWidth = MinTouch;
+            le.minHeight = le.preferredHeight = MinTouch;
 
-            var img = go.GetComponent<Image>();
-            img.sprite = WhiteSprite;
-            img.color = label == UiText.Next
-                ? new Color(0.22f, 0.65f, 0.32f, 1f)
-                : new Color(0.18f, 0.52f, 0.62f, 1f);
+            var border = go.GetComponent<Image>();
+            border.sprite = UiShapes.Circle;
+            border.color = Palette.Ink;
+            var fillImg = AddFill(go.transform, UiShapes.Circle, fill ?? Palette.Teal);
+
+            var iconGo = new GameObject("Icon", typeof(RectTransform), typeof(Image));
+            iconGo.transform.SetParent(go.transform, false);
+            var irt = (RectTransform)iconGo.transform;
+            irt.anchorMin = new Vector2(0.21f, 0.21f);
+            irt.anchorMax = new Vector2(0.79f, 0.79f);
+            irt.offsetMin = Vector2.zero;
+            irt.offsetMax = Vector2.zero;
+            var icon = iconGo.GetComponent<Image>();
+            icon.sprite = assets?.Image(iconId);
+            icon.preserveAspect = true;
+            icon.raycastTarget = false;
+            icon.enabled = icon.sprite != null;
 
             var btn = go.GetComponent<Button>();
-            btn.targetGraphic = img;
-            if (onClick != null)
-            {
-                btn.onClick.AddListener(() => onClick());
-            }
+            btn.targetGraphic = fillImg;
+            if (onClick != null) btn.onClick.AddListener(() => onClick());
 
-            var lblGo = new GameObject("Text", typeof(RectTransform), typeof(TextMeshProUGUI));
-            lblGo.transform.SetParent(go.transform, false);
-            var lblRt = lblGo.GetComponent<RectTransform>();
-            lblRt.anchorMin = Vector2.zero;
-            lblRt.anchorMax = Vector2.one;
-            lblRt.offsetMin = new Vector2(14f, 10f);
-            lblRt.offsetMax = new Vector2(-14f, -10f);
-
-            var tmp = lblGo.GetComponent<TextMeshProUGUI>();
-            ConfigureText(tmp, label ?? string.Empty, 44f);
-            tmp.color = Color.white;
-            tmp.raycastTarget = false;
-
+            var marker = go.GetComponent<IconButton>();
+            marker.IconId = iconId;
+            marker.Label = label;
             return btn;
+        }
+
+        /// <summary>
+        /// Bóng gạch chéo kiểu tranh SGK cho một vật đặt tự do (khung tranh, quyển sổ): anh em đứng ngay trước
+        /// <paramref name="target"/>, cùng neo và cỡ, lệch <see cref="ShadowOffset"/>, không nhận chạm.
+        /// Vật nằm trong layout group thì dùng <see cref="CreateCardButton"/> (bóng là con của thẻ).
+        /// </summary>
+        public static GameObject AddHatchShadow(RectTransform target)
+        {
+            var shadow = CreateHatch(target.parent, "Shadow");
+            var srt = (RectTransform)shadow.transform;
+            srt.anchorMin = target.anchorMin;
+            srt.anchorMax = target.anchorMax;
+            srt.pivot = target.pivot;
+            srt.sizeDelta = target.sizeDelta;
+            srt.anchoredPosition = target.anchoredPosition + ShadowOffset;
+            shadow.transform.SetSiblingIndex(target.GetSiblingIndex());
+            return shadow;
         }
 
         public static TextMeshProUGUI CreateLabel(Transform parent, string text, float maxSize)
@@ -182,6 +222,118 @@ namespace TapDoc
             return tmp;
         }
 
+        private static Button CreateTextButton(Transform parent, string label, Action onClick, Color fillColor,
+            Color textColor, bool withShadow)
+        {
+            var go = new GameObject($"Button_{label}", typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
+            go.transform.SetParent(parent, false);
+
+            var rt = go.GetComponent<RectTransform>();
+            rt.sizeDelta = new Vector2(260f, MinTouch);
+
+            var le = go.GetComponent<LayoutElement>();
+            le.minWidth = MinTouch;
+            le.minHeight = MinTouch;
+            le.preferredWidth = 260f;
+            le.preferredHeight = MinTouch;
+
+            var root = go.GetComponent<Image>();
+            if (withShadow)
+            {
+                // Gốc trong suốt nhận chạm; bóng và viền là con, bóng đứng đầu nên nằm dưới cùng.
+                SetRounded(root, Color.clear);
+                var shadow = CreateHatch(go.transform, "Shadow");
+                var srt = (RectTransform)shadow.transform;
+                srt.anchorMin = Vector2.zero;
+                srt.anchorMax = Vector2.one;
+                srt.offsetMin = ShadowOffset;
+                srt.offsetMax = ShadowOffset;
+                var borderGo = new GameObject("Border", typeof(RectTransform), typeof(Image));
+                borderGo.transform.SetParent(go.transform, false);
+                Stretch((RectTransform)borderGo.transform, 0f);
+                var border = borderGo.GetComponent<Image>();
+                SetRounded(border, Palette.Ink);
+                border.raycastTarget = false;
+            }
+            else
+            {
+                SetRounded(root, Palette.Ink);
+            }
+            var fill = AddFill(go.transform, UiShapes.Rounded, fillColor);
+
+            var btn = go.GetComponent<Button>();
+            btn.targetGraphic = fill;
+            if (onClick != null)
+            {
+                btn.onClick.AddListener(() => onClick());
+            }
+
+            var lblGo = new GameObject("Text", typeof(RectTransform), typeof(TextMeshProUGUI));
+            lblGo.transform.SetParent(go.transform, false);
+            var lblRt = lblGo.GetComponent<RectTransform>();
+            lblRt.anchorMin = Vector2.zero;
+            lblRt.anchorMax = Vector2.one;
+            lblRt.offsetMin = new Vector2(14f, 10f);
+            lblRt.offsetMax = new Vector2(-14f, -10f);
+
+            var tmp = lblGo.GetComponent<TextMeshProUGUI>();
+            ConfigureText(tmp, label ?? string.Empty, 44f);
+            tmp.color = textColor;
+            tmp.raycastTarget = false;
+
+            return btn;
+        }
+
+        /// <summary>Lớp nền thụt vào <see cref="BorderWidth"/> so với cha, không nhận chạm.</summary>
+        private static Image AddFill(Transform parent, Sprite shape, Color color)
+        {
+            var go = new GameObject("Fill", typeof(RectTransform), typeof(Image));
+            go.transform.SetParent(parent, false);
+            Stretch((RectTransform)go.transform, BorderWidth);
+            var img = go.GetComponent<Image>();
+            img.sprite = shape;
+            img.type = shape == UiShapes.Rounded ? Image.Type.Sliced : Image.Type.Simple;
+            img.color = color;
+            img.raycastTarget = false;
+            return img;
+        }
+
+        /// <summary>Khung bo góc có mặt nạ, bên trong lặp vân gạch chéo; không nhận chạm.</summary>
+        private static GameObject CreateHatch(Transform parent, string name)
+        {
+            var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Mask));
+            go.transform.SetParent(parent, false);
+            var mask = go.GetComponent<Image>();
+            mask.sprite = UiShapes.Rounded;
+            mask.type = Image.Type.Sliced;
+            mask.raycastTarget = false;
+            go.GetComponent<Mask>().showMaskGraphic = false;
+
+            var lines = new GameObject("Lines", typeof(RectTransform), typeof(Image));
+            lines.transform.SetParent(go.transform, false);
+            Stretch((RectTransform)lines.transform, 0f);
+            var img = lines.GetComponent<Image>();
+            img.sprite = UiShapes.Hatch;
+            img.type = Image.Type.Tiled;
+            img.raycastTarget = false;
+            return go;
+        }
+
+        private static void SetRounded(Image img, Color color)
+        {
+            img.sprite = UiShapes.Rounded;
+            img.type = Image.Type.Sliced;
+            img.color = color;
+        }
+
+        private static void Stretch(RectTransform rt, float inset)
+        {
+            rt.anchorMin = Vector2.zero;
+            rt.anchorMax = Vector2.one;
+            rt.offsetMin = new Vector2(inset, inset);
+            rt.offsetMax = new Vector2(-inset, -inset);
+        }
+
         private static void ConfigureText(TextMeshProUGUI tmp, string text, float maxSize)
         {
             tmp.font = FontProvider.Main;
@@ -190,7 +342,7 @@ namespace TapDoc
             tmp.fontSizeMin = Mathf.Min(MinFontSize, maxSize);
             tmp.fontSizeMax = maxSize;
             tmp.fontSize = maxSize;
-            tmp.color = new Color(0.15f, 0.14f, 0.12f, 1f);
+            tmp.color = Palette.Ink;
             tmp.alignment = TextAlignmentOptions.Center;
             tmp.textWrappingMode = TextWrappingModes.Normal;
             tmp.overflowMode = TextOverflowModes.Overflow;

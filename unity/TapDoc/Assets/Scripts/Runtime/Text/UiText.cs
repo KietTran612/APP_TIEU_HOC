@@ -42,6 +42,20 @@ namespace TapDoc
         public const string NoteKindApp = "App khác sách";
         public const string Close = "Đóng";
 
+        // Sổ bé ngoan: nút mở sổ, tiêu đề sổ ({0} tên bé), đầu trang ({0} "Bài", {1} số bài, {2} tên bài), con dấu.
+        public const string Book = "Sổ bé ngoan";
+        public const string BookTitleFormat = "Sổ bé ngoan của {0}";
+        public const string BookPageFormat = "{0} {1} · {2}";
+        public const string StampText = "BÉ NGOAN";
+
+        // Bong bóng của bạn gà con.
+        public const string MascotCorrect = "Đúng rồi!";
+        public const string MascotLessonDone = "Bé ngoan quá!";
+
+        // Công tắc tiếng động ở màn phụ huynh.
+        public const string SfxOn = "Tiếng động: Bật";
+        public const string SfxOff = "Tiếng động: Tắt";
+
         public static readonly string[] All =
         {
             Back,
@@ -76,6 +90,14 @@ namespace TapDoc
             NoteKindReading,
             NoteKindApp,
             Close,
+            Book,
+            BookTitleFormat,
+            BookPageFormat,
+            StampText,
+            MascotCorrect,
+            MascotLessonDone,
+            SfxOn,
+            SfxOff,
         };
     }
 }
