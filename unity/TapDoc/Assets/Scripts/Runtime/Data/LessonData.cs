@@ -16,6 +16,7 @@ namespace TapDoc
         public int lesson_no;
         public string title;
         public string type;
+        public string book;
     }
 
     [Serializable]
@@ -27,11 +28,19 @@ namespace TapDoc
         public int lesson_no;
         public string type;
         public string title;
+        public List<LessonNote> notes = new();
         public List<string> new_units = new();
         public LessonSource source = new();
         public LessonReview review = new();
         public List<Step> part1 = new();
         public List<Round> part2 = new();
+    }
+
+    [Serializable]
+    public class LessonNote
+    {
+        public string kind;
+        public string text;
     }
 
     [Serializable]

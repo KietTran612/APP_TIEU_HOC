@@ -6,7 +6,7 @@ import unittest
 from tapdoc.ids import CONSONANT_NAMES, VOWEL_NAMES
 from tapdoc.paths import UNITY_RES
 
-APPENDIX = UNITY_RES / "appendix" / "tv1_t1.json"
+APPENDIX = UNITY_RES / "appendix" / "tv1_t1_1990.json"
 ALPHABET = "a ă â b c d đ e ê g h i k l m n o ô ơ p q r s t u ư v x y".split()
 
 

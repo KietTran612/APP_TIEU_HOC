@@ -9,6 +9,19 @@ namespace TapDoc.Tests
     public class ItemsViewTests : ViewTestBase
     {
         [UnityTest]
+        public IEnumerator Reading_OnsetColoured_Lesson80()
+        {
+            // Trang "Tìm tiếng có vần đã học" tô phụ âm đầu để làm nổi phần vần.
+            var index = LessonRepository.Load("tv1_t1_b80").part1.FindIndex(s => s.type == "reading");
+            var v = Bind("tv1_t1_b80", index);
+            yield return null;
+            var san = TileWithText(v, "sàn").GetComponentInChildren<TMPro.TMP_Text>().text;
+            Assert.That(san, Does.StartWith("<color=").And.Contains(">s</color>àn"));
+            var oc = TileWithText(v, "ốc").GetComponentInChildren<TMPro.TMP_Text>().text;
+            Assert.That(oc, Does.Not.Contain("<color="));
+        }
+
+        [UnityTest]
         public IEnumerator Words_SpellEachThenRead()
         {
             var v = Bind("tv1_t1_b13", 8);

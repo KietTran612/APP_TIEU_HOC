@@ -25,6 +25,7 @@ namespace TapDoc
         private AppRoot _app;
         private GameObject _gatePanel;
         private GameObject _progressPanel;
+        private GameObject _appendixPanel;
         private TMP_Text _questionLabel;
         private readonly List<Button> _choiceButtons = new();
 
@@ -158,11 +159,25 @@ namespace TapDoc
             scroll.movementType = ScrollRect.MovementType.Clamped;
 
             var ordered = LessonRepository.LoadIndex().lessons.Select(e => e.lesson_id).ToList();
+            var appendix = UiKit.CreateButton(contentGo.transform, UiText.BookAppendix, OpenAppendix);
+            appendix.GetComponent<LayoutElement>().preferredHeight = UiKit.MinTouch;
             var lessons = new Dictionary<string, Lesson>();
             foreach (var profile in _app.Progress.Profiles)
             {
                 BuildRow(contentGo.transform, profile, ordered, lessons);
             }
+        }
+
+        private void OpenAppendix()
+        {
+            if (_appendixPanel == null)
+            {
+                // Mọi bài trong danh sách thuộc cùng một quyển sách: Phụ lục lấy theo mã sách đó.
+                var book = LessonRepository.LoadIndex().lessons.First().book;
+                _appendixPanel = NotesPanel.ForAppendix(transform, AppendixData.Load(book));
+            }
+            _appendixPanel.transform.SetAsLastSibling();
+            _appendixPanel.SetActive(true);
         }
 
         private void BuildRow(Transform content, Profile profile, List<string> ordered, Dictionary<string, Lesson> lessons)

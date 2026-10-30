@@ -91,6 +91,37 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator Parent_AppendixShowsBookPages()
+        {
+            // Mục "Chú ý và Phụ lục": chép đúng tr.120–122 và các điểm app làm khác sách, cuộn được, vừa màn.
+            yield return LoadMainWithProfile();
+            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            {
+                var rt = new RenderTexture(size.x, size.y, 24);
+                AppRoot.Instance.UiCamera.targetTexture = rt;
+                AppRoot.Instance.ShowParent();
+                yield return null;
+                var p = Object.FindAnyObjectByType<ParentScreen>();
+                p.SimulateUnlock();
+                yield return null;
+                var open = p.GetComponentsInChildren<UnityEngine.UI.Button>(false)
+                    .FirstOrDefault(b => b.GetComponentInChildren<TMPro.TMP_Text>(true)?.text == UiText.BookAppendix);
+                Press(open);
+                yield return null;
+                var labels = LabelsUnder(p);
+                Assert.That(labels, Has.Some.Contains("phụ huynh học sinh"));      // Chú ý tr.122
+                Assert.That(labels, Has.Member("ét-sì"));                        // Bảng chữ cái tr.120
+                Assert.That(labels, Has.Member("ngh"));                          // Bảng gọi tên tr.121
+                Assert.That(labels, Has.Member("giờ"));
+                Assert.That(labels, Has.Some.Contains("Phần luyện tập"));        // app khác sách
+                ScreenProbe.Save(AppRoot.Instance.UiCamera, $"TestOutput/screens/{size.x}x{size.y}/app_parent_appendix.png");
+                LayoutProbe.AssertFits(AppRoot.Instance.Canvas);
+                AppRoot.Instance.UiCamera.targetTexture = null;
+                Object.Destroy(rt);
+            }
+        }
+
+        [UnityTest]
         public IEnumerator Parent_FitsPhoneAndTablet()
         {
             yield return LoadMainWithProfile();

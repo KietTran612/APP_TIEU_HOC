@@ -174,6 +174,17 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator RimeGrid_HeaderShowsColumnNumbers()
+        {
+            // Như tr.118: dưới mỗi âm cuối có số cột (1)…(7).
+            var v = (RimeGridView)CreateTrackedStep(Grid());
+            yield return null;
+            var labels = Labels(v);
+            for (var k = 1; k <= 7; k++)
+                Assert.That(labels, Has.Some.Contains($"({k})"), $"thiếu số cột ({k})");
+        }
+
+        [UnityTest]
         public IEnumerator RimeGrid_PageWithoutCellsDoesNotBlockDone()
         {
             // Trang 2 chỉ có hàng "ư" toàn ô trống: không có gì để chạm nên không được chặn việc báo xong.

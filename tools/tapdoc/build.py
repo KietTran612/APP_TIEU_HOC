@@ -683,6 +683,6 @@ def build_all(src_dir, out_dir) -> list[BuildResult]:
     # Bài `in_app: false` (bài mẫu 42) vẫn được dựng để test nạp được, nhưng không hiện trong danh sách bài.
     by_no = sorted((r.lesson for r in results if r.lesson["in_app"]), key=lambda lesson: lesson["lesson_no"])
     index = {"lessons": [{"lesson_id": l["lesson_id"], "lesson_no": l["lesson_no"], "title": l["title"],
-                          "type": l["type"]} for l in by_no]}
+                          "type": l["type"], "book": l["book"]} for l in by_no]}
     _write_json(out / "index.json", index)
     return results

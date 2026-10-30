@@ -685,8 +685,9 @@ class FilesTest(unittest.TestCase):
         self.assertEqual({r.lesson["lesson_id"] for r in results}, {"tv1_t1_b04", "tv1_t1_b13"})
         index = json.loads((out / "index.json").read_text(encoding="utf-8"))
         self.assertEqual(index, {"lessons": [
-            {"lesson_id": "tv1_t1_b04", "lesson_no": 4, "title": "Dấu huyền - Dấu sắc", "type": "dau_thanh"},
-            {"lesson_id": "tv1_t1_b13", "lesson_no": 13, "title": "u ư", "type": "am_moi"},
+            {"lesson_id": "tv1_t1_b04", "lesson_no": 4, "title": "Dấu huyền - Dấu sắc", "type": "dau_thanh",
+             "book": "tv1_t1_1990"},
+            {"lesson_id": "tv1_t1_b13", "lesson_no": 13, "title": "u ư", "type": "am_moi", "book": "tv1_t1_1990"},
         ]})
         built = json.loads((out / "tv1_t1_b13.json").read_text(encoding="utf-8"))
         self.assertEqual(built, build_lesson(SRC13).lesson)

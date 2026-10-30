@@ -14,7 +14,9 @@ namespace TapDoc
         private const float CellSize = 160f;
         private const float Gap = 6f;
         private const float VowelW = 56f;
-        private const float HeaderH = 50f;
+        private const float HeaderH = 92f;
+        // Dưới mỗi âm cuối có số cột (1)…(7) như tr.118, chữ nhỏ hơn âm cuối.
+        private const int ColumnNoSize = 28;
         private const float GridLeft = -695f;
         // 7 cột ô 160 chỉ còn chừa ~170 ở mép phải nên nút trang hẹp hơn mặc định.
         private const float ButtonX = 615f;
@@ -47,7 +49,7 @@ namespace TapDoc
             var col0X = GridLeft + VowelW + Gap + CellSize / 2f;
 
             foreach (var final in finals)
-                Place(UiKit.CreateLabel(Root.transform, final.text, 44f).rectTransform,
+                Place(UiKit.CreateLabel(Root.transform, $"{final.text}\n<size={ColumnNoSize}>({final.col + 1})</size>", 44f).rectTransform,
                     new Vector2(CellSize, HeaderH), new Vector2(ColumnX(col0X, final.col), headerY));
 
             for (var r = 0; r < vowels.Count; r++)

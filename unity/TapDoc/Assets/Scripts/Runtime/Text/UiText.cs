@@ -30,6 +30,17 @@ namespace TapDoc
 
         public const string OftenConfused = "Chữ hay nhầm:";
         public const string NoConfusion = "Chưa có";
+        public const string BookAppendix = "Chú ý và Phụ lục";
+
+        /// <summary>Tiêu đề một mục trong Phụ lục: {0} tên mục, {1} số trang trong sách.</summary>
+        public const string PageFormat = "{0} (tr.{1})";
+
+        // Khung ghi chú trong bài: nút mở, tiêu đề từng loại ghi chú, nút đóng.
+        public const string Notes = "Ghi chú";
+        public const string NoteKindBook = "Sách ghi";
+        public const string NoteKindReading = "Cách đọc theo sách";
+        public const string NoteKindApp = "App khác sách";
+        public const string Close = "Đóng";
 
         public static readonly string[] All =
         {
@@ -58,6 +69,13 @@ namespace TapDoc
             LearnedFormat,
             OftenConfused,
             NoConfusion,
+            BookAppendix,
+            PageFormat,
+            Notes,
+            NoteKindBook,
+            NoteKindReading,
+            NoteKindApp,
+            Close,
         };
     }
 }

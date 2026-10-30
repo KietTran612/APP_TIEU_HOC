@@ -18,6 +18,8 @@ namespace TapDoc
         public Button NextButton { get; private set; }
         public Button ReplayButton { get; private set; }
         public Button BackButton { get; private set; }
+        public Button NotesButton { get; private set; }
+        public GameObject NotesPanel { get; private set; }
 
         /// <summary>
         /// Mở bài <paramref name="lesson"/>. <paramref name="review"/> khác <c>null</c> khi đây là phiên "Ôn lại"
@@ -57,7 +59,23 @@ namespace TapDoc
 
             _stage = UiKit.CreateStage((RectTransform)transform);
 
+            if (lesson.notes != null && lesson.notes.Count > 0)
+            {
+                NotesButton = UiKit.CreateButton(transform, UiText.Notes, OpenNotes);
+                var notesRt = (RectTransform)NotesButton.transform;
+                notesRt.anchorMin = notesRt.anchorMax = notesRt.pivot = Vector2.one;
+                notesRt.sizeDelta = new Vector2(260f, UiKit.MinTouch);
+                notesRt.anchoredPosition = new Vector2(-20f, -20f);
+            }
+
             PresentCurrent();
+        }
+
+        private void OpenNotes()
+        {
+            if (NotesPanel == null) NotesPanel = TapDoc.NotesPanel.ForLesson(transform, _lesson);
+            NotesPanel.transform.SetAsLastSibling();
+            NotesPanel.SetActive(true);
         }
 
         private void PresentCurrent()

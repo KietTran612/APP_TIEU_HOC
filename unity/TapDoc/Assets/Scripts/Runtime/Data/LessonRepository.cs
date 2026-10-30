@@ -38,6 +38,7 @@ namespace TapDoc
                 entry.lesson_id = Nfc(entry.lesson_id);
                 entry.title = Nfc(entry.title);
                 entry.type = Nfc(entry.type);
+                entry.book = Nfc(entry.book);
             }
 
             return index;
@@ -106,7 +107,7 @@ namespace TapDoc
             return lesson;
         }
 
-        private static string Nfc(string value) =>
+        internal static string Nfc(string value) =>
             string.IsNullOrEmpty(value) ? value : value.Normalize(NormalizationForm.FormC);
 
         private static void NormalizeLesson(Lesson lesson)
@@ -115,6 +116,14 @@ namespace TapDoc
             lesson.book = Nfc(lesson.book);
             lesson.type = Nfc(lesson.type);
             lesson.title = Nfc(lesson.title);
+
+            lesson.notes ??= new List<LessonNote>();
+            foreach (var note in lesson.notes)
+            {
+                if (note == null) continue;
+                note.kind = Nfc(note.kind);
+                note.text = Nfc(note.text);
+            }
 
             lesson.new_units ??= new List<string>();
             for (var i = 0; i < lesson.new_units.Count; i++)

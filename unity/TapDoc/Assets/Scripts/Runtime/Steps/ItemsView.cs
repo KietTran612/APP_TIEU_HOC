@@ -109,7 +109,7 @@ namespace TapDoc
                         x += width + ReadingGap;
                         continue;
                     }
-                    var tile = AddTile(item.text, new Vector2(width, ReadingTileH), pos, 76f);
+                    var tile = AddTile(TextStyler.Apply(item.text, item.hl), new Vector2(width, ReadingTileH), pos, 76f);
                     tile.Tapped += () => OnReadingTapped(index);
                     _tiles.Add(tile);
                     x += width + ReadingGap;
