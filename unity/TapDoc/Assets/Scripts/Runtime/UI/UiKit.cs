@@ -300,22 +300,13 @@ namespace TapDoc
             return img;
         }
 
-        /// <summary>Khung bo góc có mặt nạ, bên trong lặp vân gạch chéo; không nhận chạm.</summary>
+        /// <summary>Khung bo góc tô vân gạch chéo (một ảnh lặp, không cần mặt nạ); không nhận chạm.</summary>
         private static GameObject CreateHatch(Transform parent, string name)
         {
-            var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Mask));
+            var go = new GameObject(name, typeof(RectTransform), typeof(Image));
             go.transform.SetParent(parent, false);
-            var mask = go.GetComponent<Image>();
-            mask.sprite = UiShapes.Rounded;
-            mask.type = Image.Type.Sliced;
-            mask.raycastTarget = false;
-            go.GetComponent<Mask>().showMaskGraphic = false;
-
-            var lines = new GameObject("Lines", typeof(RectTransform), typeof(Image));
-            lines.transform.SetParent(go.transform, false);
-            Stretch((RectTransform)lines.transform, 0f);
-            var img = lines.GetComponent<Image>();
-            img.sprite = UiShapes.Hatch;
+            var img = go.GetComponent<Image>();
+            img.sprite = UiShapes.HatchRounded;
             img.type = Image.Type.Tiled;
             img.raycastTarget = false;
             return go;

@@ -64,6 +64,7 @@ namespace TapDoc
             if (hitSlot != null)
             {
                 ResetPosition();
+                if (SfxPlayer.Instance != null) SfxPlayer.Instance.PlayUnlessSpeaking(SystemSfx.Merge);
                 DroppedOn?.Invoke(hitSlot);
             }
             else

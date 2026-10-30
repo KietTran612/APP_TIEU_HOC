@@ -169,5 +169,17 @@ namespace TapDoc.Tests
                 CollectionAssert.Contains(UiText.All, s);
             }
         }
+
+        [Test]
+        public void HatchShadow_UsesTiledSpriteWithoutMask()
+        {
+            var card = UiKit.CreateCardButton(_canvas.transform, "Bông", null);
+            var shadow = card.transform.Find("Shadow");
+            Assert.IsNull(shadow.GetComponentInChildren<Mask>(true), "Không dùng Mask (mỗi Mask làm tăng lệnh vẽ)");
+            var img = shadow.GetComponent<Image>();
+            Assert.AreEqual(Image.Type.Tiled, img.type);
+            Assert.Greater(img.sprite.border.x, 0f, "Sprite có viền để giữ góc bo");
+            Assert.IsFalse(img.raycastTarget);
+        }
     }
 }

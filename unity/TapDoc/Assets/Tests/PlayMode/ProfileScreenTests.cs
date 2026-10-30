@@ -144,5 +144,20 @@ namespace TapDoc.Tests
             Assert.AreEqual(SystemSfx.Tap, card.GetComponent<TapFeedback>().Sound);
             Assert.AreEqual(SystemSfx.Tap, ps.NewChildButton.GetComponent<TapFeedback>().Sound);
         }
+
+        [UnityTest]
+        public IEnumerator PickAvatar_StaysEnlarged_PreviousReturns()
+        {
+            yield return LoadMain();
+            var ps = Object.FindAnyObjectByType<ProfileScreen>();
+            ps.OpenCreate();
+            ps.PickAvatar(ProfileScreen.Avatars[2]);
+            yield return null;
+            Assert.That(ps.AvatarFrame(ProfileScreen.Avatars[2]).transform.localScale.x, Is.EqualTo(ProfileScreen.PickedScale).Within(1e-3f));
+            ps.PickAvatar(ProfileScreen.Avatars[0]);
+            yield return null;
+            Assert.That(ps.AvatarFrame(ProfileScreen.Avatars[0]).transform.localScale.x, Is.EqualTo(ProfileScreen.PickedScale).Within(1e-3f));
+            Assert.That(ps.AvatarFrame(ProfileScreen.Avatars[2]).transform.localScale.x, Is.EqualTo(1f).Within(1e-3f));
+        }
     }
 }

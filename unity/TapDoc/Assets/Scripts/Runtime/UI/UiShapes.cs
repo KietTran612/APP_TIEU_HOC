@@ -15,12 +15,14 @@ namespace TapDoc
         private const int RoundedSize = 64;
         private const int RoundedBorder = 24;
         private const int CircleSize = 128;
-        private const int HatchSize = 12;
+        private const int HatchRoundedSize = 48;
+        private const int HatchRoundedBorder = 16;
+        private const int HatchRoundedPeriod = 8; // chia hết cạnh và viền, để vân nối liền khi lặp
         private const int Samples = 4; // lấy mẫu 4×4 trong mỗi điểm ảnh để viền mịn
 
         private static Sprite _rounded;
         private static Sprite _circle;
-        private static Sprite _hatch;
+        private static Sprite _hatchRounded;
 
         /// <summary>Khung bo góc trắng, 9 mảnh (<c>Image.Type.Sliced</c>): góc giữ nguyên khi kéo giãn.</summary>
         public static Sprite Rounded
@@ -54,23 +56,25 @@ namespace TapDoc
             }
         }
 
-        /// <summary>Vân gạch chéo màu mực trên nền trong suốt, lặp được (<c>Image.Type.Tiled</c>).</summary>
-        public static Sprite Hatch
+        /// <summary>
+        /// Khung bo góc tô vân gạch chéo màu mực, có viền 9 mảnh để dùng kiểu lặp (<c>Image.Type.Tiled</c>): góc giữ bo,
+        /// vân lặp liền ở cạnh và giữa. Dùng cho bóng đổ, không cần mặt nạ (Mask).
+        /// </summary>
+        public static Sprite HatchRounded
         {
             get
             {
-                if (_hatch == null)
+                if (_hatchRounded == null)
                 {
-                    // Nét chéo 45° dày khoảng 2 điểm ảnh, cách nhau HatchSize: khớp mép khi lặp.
-                    var tex = Draw("UiHatch", HatchSize, (x, y) =>
-                    {
-                        var d = Mathf.Repeat(x + y, HatchSize);
-                        return d < 2.2f;
-                    }, Palette.Ink, TextureWrapMode.Repeat);
-                    _hatch = Sprite.Create(tex, new Rect(0, 0, HatchSize, HatchSize), new Vector2(.5f, .5f));
-                    _hatch.name = "UiHatch";
+                    var tex = Draw("UiHatchRounded", HatchRoundedSize, (x, y) =>
+                        InsideRounded(x, y, HatchRoundedSize, CornerRadius) && Mathf.Repeat(x + y, HatchRoundedPeriod) < 1.6f,
+                        Palette.Ink);
+                    _hatchRounded = Sprite.Create(tex, new Rect(0, 0, HatchRoundedSize, HatchRoundedSize), new Vector2(.5f, .5f),
+                        100f, 0, SpriteMeshType.FullRect,
+                        new Vector4(HatchRoundedBorder, HatchRoundedBorder, HatchRoundedBorder, HatchRoundedBorder));
+                    _hatchRounded.name = "UiHatchRounded";
                 }
-                return _hatch;
+                return _hatchRounded;
             }
         }
 

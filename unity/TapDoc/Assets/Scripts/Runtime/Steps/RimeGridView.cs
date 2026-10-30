@@ -18,7 +18,7 @@ namespace TapDoc
         // Dưới mỗi âm cuối có số cột (1)…(7) như tr.118, chữ nhỏ hơn âm cuối.
         private const int ColumnNoSize = 28;
         private const float GridLeft = -695f;
-        // 7 cột ô 160 chỉ còn chừa ~170 ở mép phải nên nút trang hẹp hơn mặc định.
+        // 7 cột ô 160 chỉ còn chừa ~170 ở mép phải: nút trang (nút tròn 160) đặt sát mép phải hơn mặc định.
         private const float ButtonX = 615f;
 
         private readonly List<(Tile tile, Item item, int page)> _cells = new();

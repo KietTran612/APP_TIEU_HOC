@@ -38,6 +38,9 @@ namespace TapDoc
             new(0.98f, 0.70f, 0.85f, 1f),
         };
 
+        /// <summary>Cỡ của hình đại diện đang chọn ở phần tạo bé.</summary>
+        internal const float PickedScale = 1.08f;
+
         private static readonly Color FrameColor = Palette.PaperLight;
         private static readonly Color PickedColor = Palette.Orange;
 
@@ -98,8 +101,6 @@ namespace TapDoc
             if (Array.IndexOf(Avatars, avatarId) < 0) return;
             _avatar = avatarId;
             RefreshAvatarFrames();
-            var picked = AvatarFrame(avatarId);
-            if (picked != null) _ = Motion.Punch(picked.transform, 1.08f, .2f);
             RefreshDone();
         }
 
@@ -323,7 +324,9 @@ namespace TapDoc
         {
             foreach (var pair in _avatarFrames)
             {
-                pair.Value.color = pair.Key == _avatar ? PickedColor : FrameColor;
+                var picked = pair.Key == _avatar;
+                pair.Value.color = picked ? PickedColor : FrameColor;
+                _ = Motion.ScaleTo(pair.Value.transform, picked ? PickedScale : 1f, .15f);
             }
         }
 

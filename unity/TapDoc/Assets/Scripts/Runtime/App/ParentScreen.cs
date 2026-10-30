@@ -19,8 +19,8 @@ namespace TapDoc
         private const float ChipHeight = 90f;
 
         private static readonly Color RowColor = Palette.PaperLight;
-        private static readonly Color ChipColor = new(1f, 0.92f, 0.62f, 1f);
-        private static readonly Color MutedText = new(0.45f, 0.43f, 0.4f, 1f);
+        private static readonly Color ChipColor = Palette.ChipYellow;
+        private static readonly Color MutedText = Palette.MutedInk;
 
         private AppRoot _app;
         private GameObject _gatePanel;

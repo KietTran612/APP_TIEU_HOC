@@ -99,7 +99,16 @@ namespace TapDoc
             _page = Spread.PageFor(lessonId);
             if (_page == null) return;
             _page.SetFlowers(_before);
-            foreach (var slot in _page.Slots) slot.GetComponent<Image>().color = Palette.Orange; // ô sáng viền cam
+            LightEmptySlots();
+        }
+
+        /// <summary>Trong lúc cảnh chạy, các ô còn chờ hoa sáng viền cam.</summary>
+        private void LightEmptySlots()
+        {
+            for (var i = _page.FlowerCount; i < _page.Slots.Count; i++)
+            {
+                _page.Slots[i].GetComponent<Image>().color = Palette.Orange;
+            }
         }
 
         private RectTransform Stretched(string name)
@@ -162,6 +171,7 @@ namespace TapDoc
 
             FlownFlowers++;
             _page.SetFlowers(slot + 1);
+            LightEmptySlots();
             _ = Motion.Punch(target, 1.15f, .2f);
             for (var i = 0; i < PetalsPerFlower; i++) DropPetal(targetPos, i);
         }

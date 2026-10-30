@@ -198,6 +198,18 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator Pulse_StopRestoresScaleBeforePulse()
+        {
+            var rt = Box(new Vector2(100f, 100f));
+            rt.localScale = Vector3.one * 1.1f; // thẻ đang được đọc tới thì phồng 1,1
+            Pulse.StartOn(rt);
+            yield return new WaitForSecondsRealtime(.3f);
+            Pulse.StopOn(rt);
+            Assert.That(Vector3.Distance(rt.localScale, Vector3.one * 1.1f), Is.LessThan(1e-4f),
+                "Tắt nhún thì về cỡ trước khi nhún, không ép về 1");
+        }
+
+        [UnityTest]
         public IEnumerator Pulse_ScaleZero_StaysStill()
         {
             Motion.Scale = 0f;
@@ -267,6 +279,31 @@ namespace TapDoc.Tests
             CollectionAssert.IsEmpty(sfx.History, "Bài chưa mở (nút tắt) không kêu");
             Assert.AreEqual(Vector3.one, tap.transform.localScale, "Nút tắt không lún");
             yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator Mascot_CheerTwice_HopsOnceAtATime()
+        {
+            var mascot = Mascot.Create(_canvas.transform, null);
+            var body = (RectTransform)mascot.transform.Find("Body");
+            mascot.Cheer(UiText.MascotCorrect);
+            yield return new WaitForSecondsRealtime(.05f);
+            mascot.Cheer(UiText.MascotCorrect);
+            var lastY = body.anchoredPosition.y;
+            var reversals = 0;
+            var lastDir = 0;
+            var deadline = Time.realtimeSinceStartup + .7f;
+            while (Time.realtimeSinceStartup < deadline)
+            {
+                yield return null;
+                var y = body.anchoredPosition.y;
+                var dir = y > lastY + 1e-3f ? 1 : y < lastY - 1e-3f ? -1 : 0;
+                if (dir != 0 && lastDir != 0 && dir != lastDir) reversals++;
+                if (dir != 0) lastDir = dir;
+                lastY = y;
+            }
+            Assert.LessOrEqual(reversals, 3, "Hai nhịp nhảy chỉ đổi chiều vài lần, không giật qua lại");
+            Assert.That(body.anchoredPosition.magnitude, Is.LessThan(1e-3f), "Nhảy xong về đúng chỗ");
         }
     }
 }

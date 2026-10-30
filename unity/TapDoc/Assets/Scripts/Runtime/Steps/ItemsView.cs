@@ -151,9 +151,9 @@ namespace TapDoc
             rt.offsetMin = rt.offsetMax = Vector2.zero;
             var bg = overlay.GetComponent<Image>();
             bg.sprite = UiKit.WhiteSprite;
-            bg.color = new Color(0.965f, 0.933f, 0.863f, 1f);
+            bg.color = Palette.Paper;
 
-            var ctx = new LessonContext { Lesson = Ctx.Lesson, Speech = Ctx.Speech, Assets = Ctx.Assets, Stage = rt };
+            var ctx = new LessonContext { Lesson = Ctx.Lesson, Speech = Ctx.Speech, Assets = Ctx.Assets, Stage = rt, Fx = Ctx.Fx };
             var view = new SpellView();
             var done = false;
             view.Completed += () => done = true;

@@ -41,6 +41,12 @@ namespace TapDoc
         /// <summary>Viền và chữ của bài chưa mở.</summary>
         public static readonly Color LockedInk = Hex("#B5AA93");
 
+        /// <summary>Nền vàng nhạt của chữ bé hay nhầm (màn phụ huynh).</summary>
+        public static readonly Color ChipYellow = Hex("#FFEB9E");
+
+        /// <summary>Chữ phụ, mờ (ví dụ "Chưa có").</summary>
+        public static readonly Color MutedInk = Hex("#736E66");
+
         /// <summary>Màu từ chuỗi <c>#RRGGBB</c> (không có alpha thì alpha = 1).</summary>
         public static Color Hex(string hex)
         {

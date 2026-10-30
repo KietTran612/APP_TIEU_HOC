@@ -212,5 +212,50 @@ namespace TapDoc.Tests
             var canvas = rt.GetComponentInParent<Canvas>();
             return canvas != null && canvas.scaleFactor > 0f ? canvas.scaleFactor : 1f;
         }
+
+        [UnityTest]
+        public IEnumerator Drag_DropOnSlot_PlaysMerge()
+        {
+            var view = BindRound(Lesson, ComposeRound);
+            yield return null;
+            Ctx.Speech.Stop();
+            var drag = RootOf(view).GetComponentsInChildren<DragTile>().First();
+            var slot = Slot(view);
+            var center = slot.Area.TransformPoint(slot.Area.rect.center);
+            var screen = RectTransformUtility.WorldToScreenPoint(Cam, center);
+            var data = new PointerEventData(EventSystem.current) { position = screen, delta = Vector2.zero };
+            drag.OnBeginDrag(data);
+            drag.OnEndDrag(data);
+            CollectionAssert.Contains(_sfx.History, SystemSfx.Merge, "Thả thẻ trúng chỗ trống có tiếng bụp");
+        }
+
+        [UnityTest]
+        public IEnumerator WordsOverlay_GetsLessonEffects()
+        {
+            var view = Bind(Lesson, 8);
+            yield return null;
+            Tiles(view)[0].SimulateTap();
+            yield return CompleteOverlaySpell(view);
+            CollectionAssert.Contains(_sfx.History, SystemSfx.Merge, "Lớp đánh vần của từ ứng dụng cũng có tiếng nhập thẻ");
+            CollectionAssert.Contains(_sfx.History, SystemSfx.Correct, "và có khen khi đánh vần xong");
+        }
+
+        [UnityTest]
+        public IEnumerator OverlayDestroyedWhileSparksFly_NoErrors()
+        {
+            Motion.Scale = 1f;
+            _sfx.Enabled = false; // chỉ kiểm sao giấy, không phát âm thanh nào
+            var overlayGo = new GameObject("Overlay", typeof(RectTransform));
+            overlayGo.transform.SetParent(Canvas.transform, false);
+            var fx = new LessonFx((RectTransform)overlayGo.transform, Ctx.Assets, _sfx, _mascot);
+            var tile = UiKit.CreateTile(Ctx.Stage, "u");
+            yield return null;
+            fx.Correct((RectTransform)tile.transform);
+            Assert.Greater(fx.ActiveSparks, 0);
+            Object.Destroy(overlayGo);
+            yield return new WaitForSecondsRealtime(1f);
+            // Lỗi tham chiếu tới đối tượng đã huỷ sẽ là ngoại lệ chưa xử lý: Unity tự đánh hỏng test.
+            Assert.AreEqual(0, fx.ActiveSparks);
+        }
     }
 }

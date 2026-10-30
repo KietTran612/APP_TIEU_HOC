@@ -158,5 +158,27 @@ namespace TapDoc.Tests
                 Object.Destroy(rt);
             }
         }
+
+        [UnityTest]
+        public IEnumerator EmptySlots_StayLitUntilTheirFlowerLands()
+        {
+            yield return LoadMainWithProfile();
+            Motion.Scale = 1f;
+            var id = Ordered()[0];
+            AppRoot.Instance.ShowResult(id);
+            yield return null;
+            var screen = Result();
+            var deadline = Time.realtimeSinceStartup + 3f;
+            while (screen.FlownFlowers < 1 && Time.realtimeSinceStartup < deadline) yield return null;
+            Assert.AreEqual(1, screen.FlownFlowers);
+            var slots = screen.Spread.PageFor(id).Slots;
+            for (var i = 1; i < slots.Count; i++)
+            {
+                Assert.That(Vector4.Distance(slots[i].GetComponent<UnityEngine.UI.Image>().color, Palette.Orange),
+                    Is.LessThan(1e-3f), $"Ô {i} chưa có hoa vẫn sáng viền cam");
+            }
+            screen.SkipScene();
+            yield return null;
+        }
     }
 }
