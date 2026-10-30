@@ -8,9 +8,11 @@ using UnityEngine.UI;
 namespace TapDoc
 {
     /// <summary>
-    /// Danh sách bài của bé đang học, theo thứ tự <c>index.json</c>, xếp 6 cột. Bài bị khóa hiện mờ và không bấm
-    /// được; bài đã học hiện sao. Hai góc trên có nút "Đổi bé" và "Phụ huynh"; dưới cùng là nút "Ôn lại", chỉ bấm
-    /// được khi bé có lượt nhầm.
+    /// Danh sách bài của bé đang học, theo thứ tự <c>index.json</c>, xếp 6 cột, chia phần "Chữ cái và âm" / "Vần"
+    /// (bản thiết kế giao diện mục 9.2). Bài đã học có hàng hoa bé ngoan nhỏ; bài đang học tới nền cam và nhún chậm;
+    /// bài chưa mở có ổ khoá và không bấm được. Góc trên: hình đại diện của bé (đổi bé), nút Sổ bé ngoan, nút "Phụ
+    /// huynh"; góc dưới trái: nút "Ôn lại" (chỉ bấm được khi bé có lượt nhầm); góc dưới phải: bạn gà con.
+    /// Mở màn thì cuộn sẵn tới bài đang học tới.
     /// </summary>
     public class LessonListScreen : MonoBehaviour
     {
@@ -18,16 +20,22 @@ namespace TapDoc
         private const float CardWidth = 216f;
         private const float CardHeight = 210f;
         private const float CardGap = 18f;
-        private const float StarSize = 40f;
-        private const float LockedAlpha = 0.45f;
+        private const float FlowerSize = 40f;
+        private const float LockSize = 56f;
+        private const float Margin = 20f;
+        private const float ParentWidth = 280f;
 
         private readonly Dictionary<string, Button> _lessonButtons = new();
 
         internal Button ReviewButton { get; private set; }
         internal Button ParentButton { get; private set; }
         internal Button SwitchChildButton { get; private set; }
+        internal Button BookButton { get; private set; }
         internal ScrollRect Scroll { get; private set; }
         internal int LessonCount => _lessonButtons.Count;
+
+        /// <summary>Bài đang học tới: bài đầu tiên đã mở mà chưa học xong; <c>null</c> khi đã học hết.</summary>
+        internal string CurrentLessonId { get; private set; }
 
         /// <summary>Thẻ của bài <paramref name="lessonId"/>; <c>null</c> nếu bài không có trong danh sách.</summary>
         internal Button ButtonFor(string lessonId) =>
@@ -37,23 +45,36 @@ namespace TapDoc
         {
             var progress = app.Progress;
 
-            SwitchChildButton = CornerButton(UiText.SwitchChild, 0f, 240f, app.ShowProfiles);
-            ParentButton = CornerButton(UiText.Parent, 1f, 280f, app.ShowParent);
+            SwitchChildButton = UiKit.CreateIconButton(transform, app.Assets, progress.Current?.avatar, UiText.SwitchChild,
+                app.ShowProfiles, Palette.PaperLight);
+            Corner(SwitchChildButton, new Vector2(0f, 1f), new Vector2(Margin, -Margin));
+            SwitchChildButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
+
+            ParentButton = UiKit.CreateButton(transform, UiText.Parent, app.ShowParent);
+            Corner(ParentButton, Vector2.one, new Vector2(-Margin, -Margin));
+            ((RectTransform)ParentButton.transform).sizeDelta = new Vector2(ParentWidth, UiKit.MinTouch);
+
+            BookButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Book, UiText.Book, app.ShowBook,
+                Palette.PaperLight);
+            Corner(BookButton, Vector2.one, new Vector2(-(2f * Margin + ParentWidth), -Margin));
+            BookButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
 
             var header = UiKit.CreateLabel(transform, UiText.AppTitle, 64f);
             var headerRt = header.rectTransform;
             headerRt.anchorMin = new Vector2(0.5f, 1f);
             headerRt.anchorMax = new Vector2(0.5f, 1f);
             headerRt.pivot = new Vector2(0.5f, 1f);
-            headerRt.sizeDelta = new Vector2(800f, UiKit.MinTouch);
-            headerRt.anchoredPosition = new Vector2(0f, -20f);
+            headerRt.sizeDelta = new Vector2(640f, UiKit.MinTouch);
+            headerRt.anchoredPosition = new Vector2(-80f, -Margin);
 
             var scrollGo = new GameObject("LessonScroll", typeof(RectTransform), typeof(ScrollRect), typeof(Image), typeof(RectMask2D));
             scrollGo.transform.SetParent(transform, false);
             var viewport = (RectTransform)scrollGo.transform;
             viewport.anchorMin = new Vector2(0.5f, 0f);
             viewport.anchorMax = new Vector2(0.5f, 1f);
-            viewport.sizeDelta = new Vector2(Columns * CardWidth + (Columns - 1) * CardGap, -2f * (UiKit.MinTouch + 40f));
+            // Thêm chỗ cho bóng gạch chéo của thẻ ở mép phải và mép dưới.
+            viewport.sizeDelta = new Vector2(Columns * CardWidth + (Columns - 1) * CardGap + UiKit.ShadowOffset.x,
+                -2f * (UiKit.MinTouch + 2f * Margin));
             viewport.anchoredPosition = Vector2.zero;
             scrollGo.GetComponent<Image>().color = Color.clear;
             var contentGo = new GameObject("Content", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
@@ -66,6 +87,7 @@ namespace TapDoc
             content.anchoredPosition = Vector2.zero;
             var layout = contentGo.GetComponent<VerticalLayoutGroup>();
             layout.spacing = CardGap;
+            layout.padding = new RectOffset(0, (int)UiKit.ShadowOffset.x, 0, (int)-UiKit.ShadowOffset.y);
             layout.childAlignment = TextAnchor.UpperLeft;
             layout.childControlWidth = true;
             layout.childControlHeight = true;
@@ -81,6 +103,7 @@ namespace TapDoc
 
             var entries = LessonRepository.LoadIndex().lessons;
             var ordered = entries.Select(e => e.lesson_id).ToList();
+            CurrentLessonId = ordered.FirstOrDefault(id => progress.IsUnlocked(ordered, id) && !progress.IsCompleted(id));
             foreach (var part in new[] { false, true })
             {
                 var section = entries.Where(e => part ? e.lesson_no >= 42 : e.lesson_no >= 1 && e.lesson_no <= 41).ToList();
@@ -100,8 +123,9 @@ namespace TapDoc
                 {
                     var lessonId = entry.lesson_id;
                     var label = $"{UiText.LessonPrefix} {entry.lesson_no}\n{entry.title}";
-                    var btn = UiKit.CreateButton(gridGo.transform, label, () => app.ShowLesson(lessonId));
+                    var btn = UiKit.CreateCardButton(gridGo.transform, label, () => app.ShowLesson(lessonId));
                     btn.name = $"Lesson_{lessonId}";
+                    btn.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
                     var text = btn.GetComponentInChildren<TMP_Text>();
                     var textRt = text.rectTransform;
                     textRt.anchorMin = new Vector2(0f, 0.24f);
@@ -109,30 +133,30 @@ namespace TapDoc
                     textRt.offsetMin = new Vector2(8f, 0f);
                     textRt.offsetMax = new Vector2(-8f, -6f);
 
-                    if (!progress.IsUnlocked(ordered, lessonId))
-                    {
-                        btn.interactable = false;
-                        btn.gameObject.AddComponent<CanvasGroup>().alpha = LockedAlpha;
-                    }
+                    if (!progress.IsUnlocked(ordered, lessonId)) Lock(btn, app.Assets);
+                    else if (lessonId == CurrentLessonId) MarkCurrent(btn);
 
-                    var stars = progress.StarsFor(lessonId);
-                    if (stars > 0) AddStars(btn.transform, app.Assets, stars);
+                    var flowers = FlowerBook.FlowersFor(progress, lessonId);
+                    if (flowers > 0) AddFlowers(btn.transform, app.Assets, lessonId, flowers);
 
                     _lessonButtons[lessonId] = btn;
                 }
             }
 
-            ReviewButton = UiKit.CreateButton(transform, UiText.ReviewMistakes, app.ShowReview);
-            var reviewRt = (RectTransform)ReviewButton.transform;
-            reviewRt.anchorMin = new Vector2(0.5f, 0f);
-            reviewRt.anchorMax = new Vector2(0.5f, 0f);
-            reviewRt.pivot = new Vector2(0.5f, 0f);
-            reviewRt.sizeDelta = new Vector2(360f, UiKit.MinTouch);
-            reviewRt.anchoredPosition = new Vector2(0f, 20f);
+            ReviewButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Review, UiText.ReviewMistakes, app.ShowReview);
+            Corner(ReviewButton, Vector2.zero, new Vector2(Margin, Margin));
             ReviewButton.interactable = progress.Mistakes().Count > 0;
+            ReviewButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
+
+            var mascot = Mascot.Create(transform, app.Assets);
+            var mrt = (RectTransform)mascot.transform;
+            mrt.anchorMin = mrt.anchorMax = mrt.pivot = new Vector2(1f, 0f);
+            mrt.anchoredPosition = new Vector2(-Margin, Margin);
+
             Canvas.ForceUpdateCanvases();
             LayoutRebuilder.ForceRebuildLayoutImmediate(content);
             Scroll.verticalNormalizedPosition = 1f;
+            ScrollTo(CurrentLessonId);
         }
 
         /// <summary>Cuộn để thẻ bài nằm trọn trong vùng nhìn; bỏ qua mã bài không có.</summary>
@@ -155,23 +179,46 @@ namespace TapDoc
             Scroll.content.anchoredPosition = position;
         }
 
-        /// <summary>Nút ở góc trên (<paramref name="side"/> 0 là trái, 1 là phải), cao đúng <see cref="UiKit.MinTouch"/>.</summary>
-        private Button CornerButton(string label, float side, float width, Action onClick)
+        private static void Corner(Button button, Vector2 corner, Vector2 offset)
         {
-            var btn = UiKit.CreateButton(transform, label, onClick);
-            var rt = (RectTransform)btn.transform;
-            rt.anchorMin = new Vector2(side, 1f);
-            rt.anchorMax = new Vector2(side, 1f);
-            rt.pivot = new Vector2(side, 1f);
-            rt.sizeDelta = new Vector2(width, UiKit.MinTouch);
-            rt.anchoredPosition = new Vector2(side < 0.5f ? 20f : -20f, -20f);
-            return btn;
+            var rt = (RectTransform)button.transform;
+            rt.anchorMin = rt.anchorMax = rt.pivot = corner;
+            rt.anchoredPosition = offset;
         }
 
-        /// <summary>Hàng <paramref name="count"/> ngôi sao ở đáy thẻ bài.</summary>
-        private static void AddStars(Transform card, AssetCatalog assets, int count)
+        /// <summary>Bài đang học tới: nền cam nhạt, nhún chậm để bé biết bấm vào đâu.</summary>
+        private static void MarkCurrent(Button card)
         {
-            var row = new GameObject("Stars", typeof(RectTransform), typeof(HorizontalLayoutGroup));
+            card.transform.Find("Fill").GetComponent<Image>().color = Palette.OrangeLight;
+            Pulse.StartOn(card.transform);
+        }
+
+        /// <summary>Bài chưa mở: nền và chữ màu khoá, có ổ khoá, không bấm được (giữ màu, không làm xám cả thẻ).</summary>
+        private static void Lock(Button card, AssetCatalog assets)
+        {
+            card.interactable = false;
+            var colors = card.colors;
+            colors.disabledColor = Color.white;
+            card.colors = colors;
+            card.transform.Find("Fill").GetComponent<Image>().color = Palette.LockedFill;
+            card.transform.Find("Border").GetComponent<Image>().color = Palette.LockedInk;
+            card.GetComponentInChildren<TMP_Text>().color = Palette.LockedInk;
+
+            var go = new GameObject("Lock", typeof(RectTransform), typeof(Image));
+            go.transform.SetParent(card.transform, false);
+            var rt = (RectTransform)go.transform;
+            rt.anchorMin = rt.anchorMax = new Vector2(.5f, .14f);
+            rt.sizeDelta = new Vector2(LockSize, LockSize);
+            var img = go.GetComponent<Image>();
+            img.sprite = assets.Image(SystemIcons.Lock);
+            img.preserveAspect = true;
+            img.raycastTarget = false;
+        }
+
+        /// <summary>Hàng <paramref name="count"/> bông hoa bé ngoan nhỏ ở đáy thẻ bài (thay hàng sao cũ).</summary>
+        private static void AddFlowers(Transform card, AssetCatalog assets, string lessonId, int count)
+        {
+            var row = new GameObject("Flowers", typeof(RectTransform), typeof(HorizontalLayoutGroup));
             row.transform.SetParent(card, false);
             var rt = (RectTransform)row.transform;
             rt.anchorMin = new Vector2(0f, 0.03f);
@@ -187,7 +234,13 @@ namespace TapDoc
             hlg.childForceExpandHeight = false;
             for (var i = 0; i < count; i++)
             {
-                MarkerIcon.CreateStar(row.transform, assets, StarSize);
+                var go = new GameObject("Flower", typeof(RectTransform), typeof(Image));
+                go.transform.SetParent(row.transform, false);
+                ((RectTransform)go.transform).sizeDelta = new Vector2(FlowerSize, FlowerSize);
+                var img = go.GetComponent<Image>();
+                img.sprite = assets.Image(FlowerBook.FlowerImage(lessonId, i));
+                img.preserveAspect = true;
+                img.raycastTarget = false;
             }
         }
     }
