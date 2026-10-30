@@ -20,7 +20,6 @@ namespace TapDoc
         private const float GridLeft = -695f;
         // 7 cột ô 160 chỉ còn chừa ~170 ở mép phải nên nút trang hẹp hơn mặc định.
         private const float ButtonX = 615f;
-        private const float ButtonW = 160f;
 
         private readonly List<(Tile tile, Item item, int page)> _cells = new();
         private readonly List<(GameObject go, int page)> _rowLabels = new();

@@ -151,5 +151,39 @@ namespace TapDoc.Tests
                 Object.Destroy(rt);
             }
         }
+
+        [UnityTest]
+        public IEnumerator SfxToggle_FlipsAndPersists()
+        {
+            yield return LoadMainWithProfile();
+            AppRoot.Instance.ShowParent();
+            yield return null;
+            var p = Object.FindAnyObjectByType<ParentScreen>();
+            p.SimulateUnlock();
+            yield return null;
+            var toggle = p.SfxToggle;
+            Assert.IsNotNull(toggle, "Màn phụ huynh có công tắc tiếng động");
+            Assert.AreEqual(UiText.SfxOn, toggle.GetComponentInChildren<TMPro.TMP_Text>().text);
+            Press(toggle);
+            yield return null;
+            Assert.AreEqual(UiText.SfxOff, toggle.GetComponentInChildren<TMPro.TMP_Text>().text);
+            Assert.IsFalse(AppRoot.Instance.Sfx.Enabled, "Tắt thì không phát tiếng động nữa");
+            Assert.IsFalse(ProgressStore.Load(StorePath).SfxEnabled, "Cài đặt được lưu");
+            Press(toggle);
+            Assert.IsTrue(AppRoot.Instance.Sfx.Enabled);
+        }
+
+        [UnityTest]
+        public IEnumerator NoMascotOnAdultScreens()
+        {
+            yield return LoadMainWithProfile();
+            AppRoot.Instance.ShowParent();
+            yield return null;
+            var p = Object.FindAnyObjectByType<ParentScreen>();
+            Assert.IsNull(p.GetComponentInChildren<Mascot>(true), "Khoá phụ huynh không có gà con");
+            p.SimulateUnlock();
+            yield return null;
+            Assert.IsNull(p.GetComponentInChildren<Mascot>(true), "Màn phụ huynh không có gà con");
+        }
     }
 }

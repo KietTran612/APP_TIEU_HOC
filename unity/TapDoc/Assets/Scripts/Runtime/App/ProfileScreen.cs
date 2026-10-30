@@ -38,8 +38,8 @@ namespace TapDoc
             new(0.98f, 0.70f, 0.85f, 1f),
         };
 
-        private static readonly Color FrameColor = new(1f, 0.99f, 0.95f, 1f);
-        private static readonly Color PickedColor = new(1f, 0.78f, 0.1f, 1f);
+        private static readonly Color FrameColor = Palette.PaperLight;
+        private static readonly Color PickedColor = Palette.Orange;
 
         private AppRoot _app;
         private GameObject _pickPanel;
@@ -89,11 +89,17 @@ namespace TapDoc
             RefreshDone();
         }
 
+        /// <summary>Khung của hình đại diện <paramref name="avatarId"/> ở phần tạo bé (cho test).</summary>
+        internal Image AvatarFrame(string avatarId) =>
+            avatarId != null && _avatarFrames.TryGetValue(avatarId, out var frame) ? frame : null;
+
         internal void PickAvatar(string avatarId)
         {
             if (Array.IndexOf(Avatars, avatarId) < 0) return;
             _avatar = avatarId;
             RefreshAvatarFrames();
+            var picked = AvatarFrame(avatarId);
+            if (picked != null) _ = Motion.Punch(picked.transform, 1.08f, .2f);
             RefreshDone();
         }
 
@@ -192,7 +198,8 @@ namespace TapDoc
             foreach (var profile in _app.Progress.Profiles)
             {
                 var id = profile.id;
-                var card = UiKit.CreateButton(gridGo.transform, profile.name, () => Choose(id));
+                var card = UiKit.CreateCardButton(gridGo.transform, profile.name, () => Choose(id));
+                card.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
                 card.name = $"Profile_{id}";
                 var label = card.GetComponentInChildren<TMP_Text>();
                 var lrt = label.rectTransform;
@@ -215,7 +222,8 @@ namespace TapDoc
                 _profileButtons[id] = card;
             }
 
-            NewChildButton = UiKit.CreateButton(gridGo.transform, UiText.AddChild, OpenCreate);
+            NewChildButton = UiKit.CreateCardButton(gridGo.transform, UiText.AddChild, OpenCreate);
+            NewChildButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
             NewChildButton.gameObject.SetActive(_app.Progress.Profiles.Count < MaxProfiles);
         }
 
@@ -286,11 +294,11 @@ namespace TapDoc
                 text.alignment = TextAlignmentOptions.Center;
                 text.fontStyle = FontStyles.Normal;
             }
-            input.textComponent.color = new Color(0.15f, 0.14f, 0.12f, 1f);
+            input.textComponent.color = Palette.Ink;
             if (input.placeholder is TMP_Text placeholder)
             {
                 placeholder.text = UiText.NamePrompt;
-                placeholder.color = new Color(0.55f, 0.53f, 0.5f, 1f);
+                placeholder.color = Palette.LockedInk;
             }
 
             input.onValueChanged.AddListener(_ => RefreshDone());

@@ -117,5 +117,32 @@ namespace TapDoc.Tests
                 Object.Destroy(rt);
             }
         }
+
+        [UnityTest]
+        public IEnumerator PickAvatar_HighlightsOrange()
+        {
+            yield return LoadMain();
+            var ps = Object.FindAnyObjectByType<ProfileScreen>();
+            ps.OpenCreate();
+            ps.PickAvatar(ProfileScreen.Avatars[2]);
+            yield return null;
+            var picked = ps.AvatarFrame(ProfileScreen.Avatars[2]);
+            var other = ps.AvatarFrame(ProfileScreen.Avatars[0]);
+            Assert.That(Vector4.Distance(picked.color, Palette.Orange), Is.LessThan(1e-3f), "Hình đang chọn viền cam");
+            Assert.That(Vector4.Distance(other.color, Palette.PaperLight), Is.LessThan(1e-3f));
+        }
+
+        [UnityTest]
+        public IEnumerator ProfileCards_AreCardsWithTapSound()
+        {
+            yield return LoadMainWithProfile();
+            AppRoot.Instance.ShowProfiles();
+            yield return null;
+            var ps = Object.FindAnyObjectByType<ProfileScreen>();
+            var card = ps.ButtonForProfile(AppRoot.Instance.Progress.Profiles[0].id);
+            Assert.AreEqual("Shadow", card.transform.GetChild(0).name, "Thẻ bé có bóng gạch chéo");
+            Assert.AreEqual(SystemSfx.Tap, card.GetComponent<TapFeedback>().Sound);
+            Assert.AreEqual(SystemSfx.Tap, ps.NewChildButton.GetComponent<TapFeedback>().Sound);
+        }
     }
 }
