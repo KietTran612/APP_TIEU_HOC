@@ -27,6 +27,8 @@ namespace TapDoc
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (_rect == null) _rect = GetComponent<RectTransform>();
+            // Thẻ đang bay về chỗ cũ mà bé chộp lại: dừng lần bay đó, đặt thẻ về chỗ gốc rồi mới bắt đầu kéo.
+            if (_startParent != null) _ = Motion.MoveTo(_rect, _startAnchoredPos, 0f);
             _startAnchoredPos = _rect.anchoredPosition;
             _startParent = transform.parent;
             _startSiblingIndex = transform.GetSiblingIndex();
@@ -34,7 +36,7 @@ namespace TapDoc
             // Vẽ thẻ đang kéo lên trên các thẻ cùng cha; trả lại thứ tự cũ khi thẻ về chỗ.
             transform.SetAsLastSibling();
             _ = Motion.ScaleTo(transform, DragScale, .1f);
-            if (SfxPlayer.Instance != null) SfxPlayer.Instance.Play(SystemSfx.Tap);
+            if (SfxPlayer.Instance != null) SfxPlayer.Instance.PlayUnlessSpeaking(SystemSfx.Tap);
         }
 
         public void OnDrag(PointerEventData eventData)

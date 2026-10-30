@@ -129,14 +129,19 @@ namespace TapDoc.Tests
             Motion.Scale = 1f;
             s.NextButton.onClick.Invoke();
             Assert.IsNotNull(s.TurningPage, "Trang cũ đang lật");
-            Assert.AreSame(oldRoot, s.TurningPage);
+            Assert.AreNotSame(oldRoot, s.TurningPage, "Lật một bản sao để nhìn; bước cũ thật thôi chạy ngay");
             Assert.IsFalse(s.TurningPage.GetComponent<CanvasGroup>().blocksRaycasts, "Trang đang lật không nhận chạm");
-            Assert.AreNotSame(oldRoot, ((IStepView)s.CurrentView).Root, "Bước mới đã dựng bên dưới");
+            var newRoot = ((IStepView)s.CurrentView).Root;
+            Assert.AreNotSame(oldRoot, newRoot, "Bước mới đã dựng bên dưới");
+            Assert.AreEqual(s.Stage.childCount - 1, s.TurningPage.transform.GetSiblingIndex(), "Trang đang lật nằm trên bước mới");
+            Assert.Less(newRoot.transform.GetSiblingIndex(), s.TurningPage.transform.GetSiblingIndex());
+            Assert.IsNotNull(s.TurningPage.GetComponent<Image>(), "Trang đang lật có nền giấy che bước mới");
+            yield return null;
+            Assert.IsTrue(oldRoot == null, "Bước cũ thật bị huỷ ngay, không chờ hết lúc lật");
             CollectionAssert.Contains(AppRoot.Instance.Sfx.History, SystemSfx.PageFlip);
             CollectionAssert.DoesNotContain(AppRoot.Instance.Sfx.History, SystemSfx.Tap);
             yield return new WaitForSecondsRealtime(.6f);
-            Assert.IsNull(s.TurningPage);
-            Assert.IsTrue(oldRoot == null, "Lật xong thì trang cũ bị huỷ");
+            Assert.IsNull(s.TurningPage, "Lật xong thì trang lật bị huỷ");
             LogAssert.NoUnexpectedReceived();
         }
 

@@ -37,17 +37,30 @@ namespace TapDoc
                 : Vector3.LerpUnclamped(top, Vector3.one, EaseOut((p - .5f) * 2f)));
         }
 
-        /// <summary>Lắc ngang quanh chỗ cũ, biên độ nhỏ dần, rồi về đúng chỗ cũ.</summary>
+        /// <summary>
+        /// Lắc ngang quanh chỗ cũ, biên độ nhỏ dần, rồi về đúng chỗ cũ. Lắc chồng lên lần lắc đang chạy (bé chạm sai liên
+        /// tiếp) thì vẫn lấy chỗ gốc của lần đầu, để thẻ không bị lệch.
+        /// </summary>
         public static Awaitable Shake(RectTransform t, float amplitude, float seconds)
         {
-            var home = t.anchoredPosition;
-            return Run(t, MotionChannel.Position, seconds, p => t.anchoredPosition = p >= 1f
-                ? home
-                : home + new Vector2(amplitude * Mathf.Sin(p * Mathf.PI * 6f) * (1f - p), 0f));
+            var state = MotionState.For(t.gameObject);
+            var home = state.ShakeHome ?? t.anchoredPosition;
+            state.ShakeHome = home;
+            return Run(t, MotionChannel.Position, seconds, p =>
+            {
+                if (p >= 1f)
+                {
+                    t.anchoredPosition = home;
+                    state.ShakeHome = null;
+                    return;
+                }
+                t.anchoredPosition = home + new Vector2(amplitude * Mathf.Sin(p * Mathf.PI * 6f) * (1f - p), 0f);
+            });
         }
 
         public static Awaitable MoveTo(RectTransform t, Vector2 anchored, float seconds)
         {
+            MotionState.For(t.gameObject).ShakeHome = null; // dời đi chỗ khác thì bỏ chỗ gốc của lần lắc dở
             var from = t.anchoredPosition;
             return Run(t, MotionChannel.Position, seconds, p => t.anchoredPosition = Vector2.LerpUnclamped(from, anchored, EaseOut(p)));
         }
@@ -69,12 +82,14 @@ namespace TapDoc
         /// </summary>
         public static Awaitable PageTurn(RectTransform page, float seconds, bool hingeLeft = true)
         {
-            // Dời pivot về mép gáy mà không dịch hình.
-            var size = page.rect.size;
-            var pivot = new Vector2(hingeLeft ? 0f : 1f, page.pivot.y);
-            var shift = pivot - page.pivot;
-            page.pivot = pivot;
-            page.anchoredPosition += new Vector2(shift.x * size.x * page.localScale.x, shift.y * size.y * page.localScale.y);
+            // Dời pivot về mép gáy mà không dịch hình: đo góc dưới trái trước và sau khi đổi pivot rồi bù lại (đúng cho
+            // cả khung neo một điểm lẫn khung giãn theo cha).
+            var corners = new Vector3[4];
+            page.GetWorldCorners(corners);
+            var before = corners[0];
+            page.pivot = new Vector2(hingeLeft ? 0f : 1f, page.pivot.y);
+            page.GetWorldCorners(corners);
+            page.position += before - corners[0];
 
             // Không dùng ?. / ?? với đối tượng Unity (đối tượng đã huỷ vẫn khác null với C#).
             var existing = page.Find(PageShadeName);
@@ -145,6 +160,9 @@ namespace TapDoc
     internal sealed class MotionState : MonoBehaviour
     {
         private readonly int[] _generation = new int[4];
+
+        /// <summary>Chỗ gốc của lần lắc đang chạy; <c>null</c> khi không lắc.</summary>
+        public Vector2? ShakeHome;
 
         public static MotionState For(GameObject go)
         {

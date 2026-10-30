@@ -168,16 +168,49 @@ namespace TapDoc.Tests
             var drag = RootOf(view).GetComponentsInChildren<DragTile>().First();
             var rt = (RectTransform)drag.transform;
             var start = rt.anchoredPosition;
+            Ctx.Speech.Stop(); // lời hướng dẫn của lượt đã đọc xong: tiếng tách chỉ phát khi giọng đọc im
             Motion.Scale = 1f;
             var data = new PointerEventData(EventSystem.current) { position = new Vector2(5f, 5f), delta = new Vector2(300f, 200f) };
             drag.OnBeginDrag(data);
-            Assert.That(rt.localScale.x, Is.GreaterThan(1f).Or.EqualTo(1f));
+            yield return new WaitForSecondsRealtime(.15f);
+            Assert.That(rt.localScale.x, Is.EqualTo(DragTile.DragScale).Within(1e-3f), "Đang kéo thì thẻ to lên");
             CollectionAssert.Contains(_sfx.History, SystemSfx.Tap, "Nhấc thẻ lên có tiếng tách");
             drag.OnDrag(data);
             drag.OnEndDrag(data);
             yield return new WaitForSecondsRealtime(.4f);
             Assert.That(Vector2.Distance(rt.anchoredPosition, start), Is.LessThan(.5f), "Thả trượt thì thẻ bay về chỗ cũ");
             Assert.That(rt.localScale.x, Is.EqualTo(1f).Within(1e-3f));
+        }
+
+        [UnityTest]
+        public IEnumerator Drag_GrabWhileFlyingBack_KeepsHome()
+        {
+            var view = BindRound(Lesson, ComposeRound);
+            yield return null;
+            var drag = RootOf(view).GetComponentsInChildren<DragTile>().First();
+            var rt = (RectTransform)drag.transform;
+            var start = rt.anchoredPosition;
+            Motion.Scale = 1f;
+            var data = new PointerEventData(EventSystem.current) { position = new Vector2(5f, 5f), delta = new Vector2(300f, 200f) };
+            drag.OnBeginDrag(data);
+            drag.OnDrag(data);
+            drag.OnEndDrag(data);
+            yield return new WaitForSecondsRealtime(.05f); // đang bay về
+            drag.OnBeginDrag(data);                         // bé chộp lại giữa chừng
+            yield return new WaitForSecondsRealtime(.3f);
+            var held = rt.anchoredPosition;
+            drag.OnDrag(data);
+            Assert.That(Vector2.Distance(rt.anchoredPosition, held + data.delta / AppScale(rt)), Is.LessThan(1f),
+                "Thẻ đi theo ngón tay, không bị kéo về giữa chừng");
+            drag.OnEndDrag(data);
+            yield return new WaitForSecondsRealtime(.4f);
+            Assert.That(Vector2.Distance(rt.anchoredPosition, start), Is.LessThan(.5f), "Vẫn về đúng chỗ ban đầu");
+        }
+
+        private static float AppScale(RectTransform rt)
+        {
+            var canvas = rt.GetComponentInParent<Canvas>();
+            return canvas != null && canvas.scaleFactor > 0f ? canvas.scaleFactor : 1f;
         }
     }
 }

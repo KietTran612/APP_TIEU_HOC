@@ -166,6 +166,8 @@ namespace TapDoc
             }
 
             binding = false;
+            // Trang của bước trước đang lật nằm trên bước mới cho tới khi lật qua.
+            if (TurningPage != null) TurningPage.transform.SetAsLastSibling();
             if (completedDuringBind && this != null && token == _stepToken)
             {
                 HandleViewCompleted();
@@ -288,21 +290,30 @@ namespace TapDoc
             CurrentView = null;
             if (root == null) return;
             if (_app.Sfx != null) _app.Sfx.Play(SystemSfx.PageFlip);
-            if (Motion.Scale <= 0f)
-            {
-                root.SetActive(false);
-                Destroy(root);
-                return;
-            }
 
-            var group = root.GetComponent<CanvasGroup>();
-            if (group == null) group = root.AddComponent<CanvasGroup>();
-            group.blocksRaycasts = false;
-            root.transform.SetAsLastSibling();
-            TurningPage = root;
-            await Motion.PageTurn((RectTransform)root.transform, PageTurnSeconds);
-            if (root != null) Destroy(root);
-            if (this != null && TurningPage == root) TurningPage = null;
+            // Lật một bản sao chỉ để nhìn; bước cũ thật bị huỷ ngay, để việc dở của nó (lời đọc, hiệu ứng) dừng hẳn và
+            // không chen vào bước mới.
+            GameObject page = null;
+            if (Motion.Scale > 0f)
+            {
+                page = Instantiate(root, root.transform.parent);
+                page.name = "TurningPage";
+                var paper = page.GetComponent<Image>();
+                if (paper == null) paper = page.AddComponent<Image>();
+                paper.color = Palette.Paper; // nền giấy che bước mới bên dưới cho tới khi lật qua
+                paper.raycastTarget = false;
+                var group = page.GetComponent<CanvasGroup>();
+                if (group == null) group = page.AddComponent<CanvasGroup>();
+                group.blocksRaycasts = false;
+                TurningPage = page;
+            }
+            root.SetActive(false);
+            Destroy(root);
+            if (page == null) return;
+
+            await Motion.PageTurn((RectTransform)page.transform, PageTurnSeconds);
+            if (page != null) Destroy(page);
+            if (this != null && TurningPage == page) TurningPage = null;
         }
 
         private void ClearCurrentView()
