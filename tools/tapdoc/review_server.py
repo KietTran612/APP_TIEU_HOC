@@ -20,8 +20,9 @@ from .viet import nfc
 
 INDEX_HTML_PATH = Path(__file__).resolve().parent / "review" / "index.html"
 
-_MEDIA_NAME_RE = re.compile(r"^[a-z0-9_]+\.(mp3|png)$")
-_VALID_MANIFESTS = {"audio": "audio_manifest.json", "images": "image_manifest.json"}
+_MEDIA_NAME_RE = re.compile(r"^[a-z0-9_]+\.(mp3|png|mp4)$")
+_VALID_MANIFESTS = {"audio": "audio_manifest.json", "images": "image_manifest.json",
+                    "videos": "video_manifest.json"}
 _VALID_REVIEW_STATUSES = frozenset({"dat", "khong_dat", "cho_duyet"})
 _MAX_BODY_BYTES = 1_000_000
 
@@ -66,7 +67,7 @@ class _ReviewHTTPServer(ThreadingHTTPServer):
 
     def __init__(self, server_address: tuple[str, int], manifests_dir: Path, res_dir: Path,
                  *, settings_path=None, prev_dir=None, lessons_dir=None, notes_path=None,
-                 engine_factory=None):
+                 clips_dir=None, engine_factory=None):
         super().__init__(server_address, _ReviewRequestHandler)
         self.manifests_dir = Path(manifests_dir)
         self.res_dir = Path(res_dir)
@@ -77,6 +78,8 @@ class _ReviewHTTPServer(ThreadingHTTPServer):
         self.prev_dir = Path(prev_dir) if prev_dir is not None else content_dir / "tts/prev"
         self.lessons_dir = Path(lessons_dir) if lessons_dir is not None else self.res_dir / "lessons"
         self.notes_path = Path(notes_path) if notes_path is not None else content_dir / "review/chain_notes.json"
+        # Clip tranh động nằm ngoài git (content/clips), không nằm trong thư mục tài nguyên Unity.
+        self.clips_dir = Path(clips_dir) if clips_dir is not None else content_dir / "clips"
         self.engine_factory = engine_factory or EdgeEngine
         self.job = dict(running=False, total=0, done=0, current=None, failed={})
         self.batch_thread = None
@@ -208,7 +211,8 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
             with self.server.lock:
                 audio = load_rows(self.server.manifests_dir / "audio_manifest.json")
                 images = load_rows(self.server.manifests_dir / "image_manifest.json")
-            self._send_json(200, {"audio": audio, "images": images})
+                videos = load_rows(self.server.manifests_dir / "video_manifest.json")
+            self._send_json(200, {"audio": audio, "images": images, "videos": videos})
             return
 
         if path.startswith("/api/tts") or path in ("/api/lessons", "/api/chain-notes") or path.startswith("/api/lesson/"):
@@ -234,6 +238,10 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
             self._serve_media(path[len("/media/images/"):], "images", ".png", "image/png")
             return
 
+        if path.startswith("/media/clips/"):
+            self._serve_media(path[len("/media/clips/"):], "clips", ".mp4", "video/mp4")
+            return
+
         self._send_json(404, {"error": "Không tìm thấy đường dẫn"})
 
     def _serve_media(self, raw_name: str, folder: str, expected_ext: str, content_type: str) -> None:
@@ -245,7 +253,12 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
         ):
             self._send_json(404, {"error": "Tên file không hợp lệ"})
             return
-        base_dir = (self.server.prev_dir if folder == "prev" else self.server.res_dir / folder).resolve()
+        if folder == "prev":
+            base_dir = self.server.prev_dir.resolve()
+        elif folder == "clips":
+            base_dir = self.server.clips_dir.resolve()
+        else:
+            base_dir = (self.server.res_dir / folder).resolve()
         file_path = (base_dir / name).resolve()
         if file_path.parent != base_dir or not file_path.is_file():
             self._send_json(404, {"error": "Chưa có file"})
@@ -255,7 +268,44 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
         except OSError:
             self._send_json(404, {"error": "Không đọc được file"})
             return
+        if folder == "clips":
+            self._send_ranged(content_type, body)
+            return
         self._send_bytes(200, content_type, body)
+
+    def _send_ranged(self, content_type: str, body: bytes) -> None:
+        """Gửi video, hỗ trợ một khoảng byte để trình duyệt tua và phát lặp."""
+        match = re.fullmatch(r"bytes=(\d*)-(\d*)", self.headers.get("Range", "").strip())
+        if not match or match.groups() == ("", ""):
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Accept-Ranges", "bytes")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        first, last = match.groups()
+        size = len(body)
+        if first == "":  # "bytes=-N": N byte cuối
+            start, end = max(0, size - int(last)), size - 1
+        else:
+            start, end = int(first), min(int(last), size - 1) if last else size - 1
+        if start >= size or start > end:
+            self.send_response(416)
+            self.send_header("Content-Range", f"bytes */{size}")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        chunk = body[start:end + 1]
+        self.send_response(206)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(chunk)))
+        self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+        self.send_header("Accept-Ranges", "bytes")
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(chunk)
 
     def do_POST(self) -> None:
         path = urlsplit(self.path).path
@@ -470,9 +520,9 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
 
 
 def make_server(port: int, manifests_dir, res_dir, *, settings_path=None, prev_dir=None,
-                lessons_dir=None, notes_path=None, engine_factory=None) -> ThreadingHTTPServer:
+                lessons_dir=None, notes_path=None, clips_dir=None, engine_factory=None) -> ThreadingHTTPServer:
     """Tạo máy chủ HTTP chỉ nghe trên 127.0.0.1; đường dẫn phụ có thể thay trong test."""
     return _ReviewHTTPServer(("127.0.0.1", int(port)), Path(manifests_dir), Path(res_dir),
                              settings_path=settings_path, prev_dir=prev_dir,
                              lessons_dir=lessons_dir, notes_path=notes_path,
-                             engine_factory=engine_factory)
+                             clips_dir=clips_dir, engine_factory=engine_factory)

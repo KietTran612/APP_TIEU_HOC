@@ -7,11 +7,11 @@ import webbrowser
 
 from .build import BuildError, build_all
 from .chatgpt_requests import write_request_files
-from .importer import import_audio_zip, import_image
+from .importer import import_audio_zip, import_clips, import_image
 from .launcher import ensure_edge_tts, tool_running
 from .manifest import (ManifestError, keep_concurrent_tts, load_rows, save_rows, update_audio_manifest,
                        update_image_manifest)
-from .paths import CONTENT_SRC, MANIFESTS, REQUESTS_DIR, ROOT, STYLE_FILE, UNITY_RES
+from .paths import CLIPS, CONTENT_SRC, MANIFESTS, REQUESTS_DIR, ROOT, STYLE_FILE, UNITY_RES
 from .review_server import make_server
 from .sfx_default import write_missing as write_default_sfx
 from .ui_icons import write_all as write_ui_icons
@@ -138,6 +138,24 @@ def _cmd_import_image(args: argparse.Namespace) -> int:
         print(f"Lỗi ghi file tranh {args.id}: {e}", file=sys.stderr)
         return 1
     print(f"Đã nhập tranh {args.id} vào {image_dir / (args.id + '.png')} (chờ duyệt)")
+    return 0
+
+
+def _cmd_import_clips(args: argparse.Namespace) -> int:
+    try:
+        report = import_clips(args.folder, CLIPS, MANIFESTS / "video_manifest.json",
+                              MANIFESTS / "image_manifest.json")
+    except ManifestError as e:
+        print(f"Lỗi đọc danh mục: {e}", file=sys.stderr)
+        return 1
+    except OSError as e:
+        print(f"Lỗi ghi clip: {e}", file=sys.stderr)
+        return 1
+    print(f"Đã nhập {len(report.imported)} clip vào {CLIPS} (chờ duyệt)")
+    if report.skipped:
+        print(f"Bỏ qua {len(report.skipped)} file:")
+        for name, reason in report.skipped:
+            print(f"  {_printable(name)}: {_printable(reason)}")
     return 0
 
 
@@ -292,6 +310,9 @@ def main(argv: list[str] | None = None, *, engine_factory=None) -> int:
     image_cmd.add_argument("file", help="đường dẫn file PNG")
     image_cmd.add_argument("id", help="mã tranh trong danh mục (ví dụ img_b13_cais_ddu)")
     image_cmd.set_defaults(func=_cmd_import_image)
+    clips_cmd = commands.add_parser("import-clips", help="nhập clip tranh động <mã tranh>.mp4 trong một thư mục")
+    clips_cmd.add_argument("folder", help="thư mục chứa các file <mã tranh>.mp4")
+    clips_cmd.set_defaults(func=_cmd_import_clips)
     icons_cmd = commands.add_parser("ui-icons", help="sinh biểu tượng giao diện, hoa và gà con mặc định còn thiếu")
     icons_cmd.add_argument("--force", action="store_true", help="vẽ lại mọi biểu tượng (không đụng hoa và gà con)")
     icons_cmd.set_defaults(func=_cmd_ui_icons)
@@ -303,7 +324,7 @@ def main(argv: list[str] | None = None, *, engine_factory=None) -> int:
     validate_cmd.add_argument("--release", action="store_true",
                               help="thêm điều kiện phát hành: bài trong app đã duyệt, âm thanh/tranh đã duyệt")
     validate_cmd.set_defaults(func=_cmd_validate)
-    review_cmd = commands.add_parser("review", help="mở trang web nội bộ để nghe duyệt âm thanh và xem duyệt tranh")
+    review_cmd = commands.add_parser("review", help="mở trang web nội bộ để nghe duyệt âm thanh, xem duyệt tranh và tranh động")
     review_cmd.add_argument("--port", type=int, default=REVIEW_PORT,
                             help=f"cổng lắng nghe trên 127.0.0.1 (mặc định {REVIEW_PORT})")
     review_cmd.set_defaults(func=_cmd_review)

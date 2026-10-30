@@ -8,6 +8,7 @@ CONTENT_SRC = ROOT / "content" / "src"
 MANIFESTS = ROOT / "content" / "manifests"
 STYLE_FILE = ROOT / "content" / "style" / "image_style.txt"
 REQUESTS_DIR = ROOT / "content" / "requests"
+CLIPS = ROOT / "content" / "clips"  # clip tranh động, không đưa vào git
 LESSON_INDEX = ROOT / "docs" / "source-inventory" / "LESSON_INDEX.csv"
 
 UNITY_ASSETS = ROOT / "unity" / "TapDoc" / "Assets"

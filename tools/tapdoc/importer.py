@@ -25,9 +25,13 @@ SOURCE_TEMP = "chatgpt_tam"  # file tạm lấy từ ChatGPT, chờ chủ dự �
 _MB = 1024 * 1024
 MAX_AUDIO_BYTES = 5 * _MB  # trần dung lượng giải nén của một mục âm thanh (chặn zip bomb)
 MAX_IMAGE_BYTES = 20 * _MB
+MAX_CLIP_BYTES = 50 * _MB
+
+SOURCE_CLIP = "flow_veo31_lite"  # clip tranh động tạo trên Google Flow bằng Veo 3.1 Lite
 
 _ID_RE = re.compile(r"[a-z0-9_]+")
 _AUDIO_NAME_RE = re.compile(r"([a-z0-9_]+)\.mp3")  # fullmatch: `$` sẽ chấp nhận cả "\n" ở cuối
+_CLIP_NAME_RE = re.compile(r"([a-z0-9_]+)\.mp4")
 _PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 
 
@@ -161,3 +165,51 @@ def import_image(file_path, image_id, image_dir, manifest_path) -> None:
     row["source"] = SOURCE_TEMP
     row["ghi_chu"] = _without_changed_note(row.get("ghi_chu", ""))
     save_rows(manifest_path, all_rows)
+
+
+def _looks_like_mp4(data: bytes) -> bool:
+    """Hộp đầu tiên của file MP4 là `ftyp`."""
+    return len(data) >= 8 and data[4:8] == b"ftyp"
+
+
+def import_clips(src_dir, clips_dir, video_manifest_path, image_manifest_path) -> ImportReport:
+    """Chép các clip `<mã tranh>.mp4` trong `src_dir` vào `clips_dir`, đánh dấu `cho_duyet`.
+
+    Mã phải có trong danh mục tranh. Nhập lại một clip đã có thì clip quay về chờ duyệt, ghi chú giữ nguyên
+    (thường là lý do phải làm lại).
+    """
+    clips_dir = Path(clips_dir)
+    report = ImportReport()
+    image_ids = {row["id"] for row in load_rows(image_manifest_path)}
+    rows = load_rows(video_manifest_path)
+    by_id = {row["id"]: row for row in rows}
+    for path in sorted(Path(src_dir).glob("*.mp4")):
+        match = _CLIP_NAME_RE.fullmatch(path.name)
+        if not match or match.group(1) not in image_ids:
+            report.skipped.append((path.name, "tên file không phải mã tranh có trong danh mục"))
+            continue
+        clip_id = match.group(1)
+        try:
+            with open(path, "rb") as f:
+                data = f.read(MAX_CLIP_BYTES + 1)
+        except OSError as e:
+            report.skipped.append((path.name, f"không đọc được: {e}"))
+            continue
+        if not _looks_like_mp4(data):
+            report.skipped.append((path.name, "không phải file MP4"))
+            continue
+        if len(data) > MAX_CLIP_BYTES:
+            report.skipped.append((path.name, f"quá lớn (tối đa {MAX_CLIP_BYTES // _MB} MB)"))
+            continue
+        _write_atomic(clips_dir / f"{clip_id}.mp4", data)
+        row = by_id.get(clip_id)
+        if row is None:
+            row = by_id[clip_id] = {"id": clip_id}
+            rows.append(row)
+        row.update(file=f"clips/{clip_id}.mp4", source=SOURCE_CLIP, status=STATUS_PENDING,
+                   ghi_chu=row.get("ghi_chu", ""))
+        report.imported.append(clip_id)
+    if report.imported:
+        rows.sort(key=lambda row: row["id"])
+        save_rows(video_manifest_path, rows)
+    return report

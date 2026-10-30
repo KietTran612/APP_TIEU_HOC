@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Duyệt âm thanh và tranh — Tập đọc</title>
+  <title>Duyệt âm thanh, tranh và tranh động — Tập đọc</title>
   <style>
     :root {
       color-scheme: light;
@@ -106,6 +106,15 @@
       color: #1e40af;
       margin-left: 6px;
     }
+    .clip-pair { display: flex; gap: 8px; align-items: flex-start; }
+    .clip {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #111827;
+    }
+    .clip.full { width: 320px; height: 180px; object-fit: contain; }
     .thumb {
       width: 160px;
       height: 160px;
@@ -187,12 +196,13 @@
   </style>
 </head>
 <body>
-  <h1>Duyệt âm thanh và tranh</h1>
+  <h1>Duyệt âm thanh, tranh và tranh động</h1>
 
   <div class="toolbar">
     <div class="tabs">
       <button type="button" id="tab-audio" class="tab-btn active">Âm thanh</button>
       <button type="button" id="tab-images" class="tab-btn">Tranh</button>
+      <button type="button" id="tab-videos" class="tab-btn">Tranh động</button>
       <button type="button" id="tab-lesson" class="tab-btn">Nghe theo bài</button>
     </div>
 
@@ -222,6 +232,11 @@
     <label class="filter-group" id="careful-filter-wrap">
       <input type="checkbox" id="filter-careful">
       <span>chỉ file cần nghe kỹ</span>
+    </label>
+
+    <label class="filter-group" id="crop-wrap">
+      <input type="checkbox" id="clip-crop" checked>
+      <span>xem cắt vuông như trong app</span>
     </label>
 
     <div class="summary" id="summary-text"></div>
@@ -265,7 +280,7 @@
   <script>
     (function () {
       let currentTab = "audio";
-      let state = { audio: [], images: [] };
+      let state = { audio: [], images: [], videos: [] };
       const rowElements = new Map();
       let ttsAvailable = false;
       let ttsDefaults = {};
@@ -282,6 +297,8 @@
 
       const tabAudioBtn = document.getElementById("tab-audio");
       const tabImagesBtn = document.getElementById("tab-images");
+      const tabVideosBtn = document.getElementById("tab-videos");
+      const listFor = (tab) => tab === "audio" ? state.audio : tab === "videos" ? state.videos : state.images;
       const filterStatus = document.getElementById("filter-status");
       const filterBai = document.getElementById("filter-bai");
       const filterCareful = document.getElementById("filter-careful");
@@ -302,7 +319,7 @@
 
       function populateLessonFilter() {
         const lessons = new Set();
-        for (const list of [state.audio, state.images]) {
+        for (const list of [state.audio, state.images, state.videos]) {
           for (const row of list) {
             for (const b of row.bai || []) {
               lessons.add(b);
@@ -374,7 +391,7 @@
       }
 
       function filteredRows() {
-        const list = currentTab === "audio" ? state.audio : state.images;
+        const list = listFor(currentTab);
         const st = filterStatus.value;
         const bai = filterBai.value;
         const carefulOnly = currentTab === "audio" && filterCareful.checked;
@@ -486,19 +503,25 @@
         if (isLesson) {
           tabAudioBtn.classList.remove("active");
           tabImagesBtn.classList.remove("active");
+          tabVideosBtn.classList.remove("active");
           carefulWrap.style.display = "none";
+          byId("crop-wrap").style.display = "none";
           summaryText.textContent = "Nghe từng mảnh, nghỉ 0,5 giây giữa các mảnh";
           return;
         }
         carefulWrap.style.display = currentTab === "audio" ? "flex" : "none";
         tabAudioBtn.classList.toggle("active", currentTab === "audio");
         tabImagesBtn.classList.toggle("active", currentTab === "images");
+        tabVideosBtn.classList.toggle("active", currentTab === "videos");
+        byId("crop-wrap").style.display = currentTab === "videos" ? "flex" : "none";
 
         tableHead.textContent = "";
         const headRow = document.createElement("tr");
         const headers = currentTab === "audio"
           ? ["Mã", "Hiển thị", "Lời đọc", "Loại", "Bài", "Nghe thử", "Trạng thái", "Duyệt", "Ghi chú", "Chỉnh giọng đọc"]
-          : ["Mã", "Mô tả", "Bài", "Ảnh (160 px)", "Trạng thái", "Duyệt", "Ghi chú"];
+          : currentTab === "videos"
+            ? ["Mã", "Mô tả", "Bài", "Tranh gốc và clip (bấm phát để nghe)", "Trạng thái", "Duyệt", "Ghi chú"]
+            : ["Mã", "Mô tả", "Bài", "Ảnh (160 px)", "Trạng thái", "Duyệt", "Ghi chú"];
         for (const h of headers) {
           const th = document.createElement("th");
           th.textContent = h;
@@ -507,7 +530,7 @@
         tableHead.appendChild(headRow);
 
         const rows = filteredRows();
-        const total = (currentTab === "audio" ? state.audio : state.images).length;
+        const total = listFor(currentTab).length;
         // Đổi tab, bộ lọc, ô tìm hay cỡ trang thì quay về trang 1.
         const filterKey = JSON.stringify([currentTab, filterStatus.value, filterBai.value, filterCareful.checked,
           byId("filter-kind").value, byId("filter-voice").value, byId("filter-regen").checked,
@@ -574,6 +597,27 @@
             audio.preload = "none";
             audio.src = "/media/audio/" + encodeURIComponent(row.id) + ".mp3";
             tdMedia.appendChild(audio);
+          } else if (currentTab === "videos") {
+            const pair = document.createElement("div");
+            pair.className = "clip-pair";
+            const img = document.createElement("img");
+            img.className = "thumb";
+            img.alt = row.id;
+            img.loading = "lazy";
+            img.src = "/media/images/" + encodeURIComponent(row.id) + ".png";
+            const video = document.createElement("video");
+            video.className = "clip" + (byId("clip-crop").checked ? "" : " full");
+            video.controls = true;
+            video.loop = true;
+            video.preload = "none";
+            video.poster = img.src;
+            video.src = "/media/clips/" + encodeURIComponent(row.id) + ".mp4";
+            // Mỗi lúc chỉ một clip phát tiếng.
+            video.addEventListener("play", () => {
+              for (const other of tableBody.querySelectorAll("video")) if (other !== video) other.pause();
+            });
+            pair.append(img, video);
+            tdMedia.appendChild(pair);
           } else {
             const img = document.createElement("img");
             img.className = "thumb";
@@ -655,6 +699,15 @@
       tabImagesBtn.addEventListener("click", () => {
         currentTab = "images";
         render();
+      });
+      tabVideosBtn.addEventListener("click", () => {
+        currentTab = "videos";
+        render();
+      });
+      byId("clip-crop").addEventListener("change", () => {
+        for (const video of tableBody.querySelectorAll("video.clip")) {
+          video.classList.toggle("full", !byId("clip-crop").checked);
+        }
       });
       filterStatus.addEventListener("change", render);
       filterBai.addEventListener("change", render);
@@ -1063,6 +1116,14 @@
       async function loadData() {
         try {
           state = await api("/api/data");
+          // Clip dùng mô tả và danh sách bài của tranh cùng mã.
+          const imageById = new Map(state.images.map(row => [row.id, row]));
+          for (const clip of state.videos || []) {
+            const image = imageById.get(clip.id) || {};
+            clip.mo_ta = image.mo_ta || "";
+            clip.bai = image.bai || [];
+          }
+          state.videos = state.videos || [];
           try {
             const data = await api("/api/tts");
             state.audio = data.rows;
