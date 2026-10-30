@@ -9,6 +9,7 @@ namespace TapDoc.EditorTools
     {
         const string ImagesFolder = "Assets/Content/Resources/images/";
         const string AudioFolder = "Assets/Content/Resources/audio/";
+        const string SfxFolder = "Assets/Content/Resources/sfx/";
 
         void OnPreprocessTexture()
         {
@@ -23,7 +24,9 @@ namespace TapDoc.EditorTools
 
         void OnPreprocessAudio()
         {
-            if (!assetPath.StartsWith(AudioFolder, StringComparison.Ordinal)) return;
+            // Âm thanh phát âm (audio/) và tiếng động (sfx/) nằm ở hai thư mục riêng nhưng nhập cùng một cách.
+            if (!assetPath.StartsWith(AudioFolder, StringComparison.Ordinal) &&
+                !assetPath.StartsWith(SfxFolder, StringComparison.Ordinal)) return;
 
             var importer = (AudioImporter)assetImporter;
             importer.forceToMono = true;

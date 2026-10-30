@@ -42,6 +42,13 @@ namespace TapDoc
 
         public IReadOnlyList<Profile> Profiles => _data.profiles;
 
+        /// <summary>Tiếng động khi tương tác có bật không (giọng đọc luôn bật). Cài đặt cho cả máy.</summary>
+        public bool SfxEnabled
+        {
+            get => !_data.sfx_off;
+            set => _data.sfx_off = !value;
+        }
+
         /// <summary>Kho của app thật: <c>persistentDataPath/tapdoc_progress.json</c>.</summary>
         public static ProgressStore Default() => Load(Path.Combine(Application.persistentDataPath, FileName));
 

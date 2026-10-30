@@ -10,6 +10,12 @@ namespace TapDoc
         public int schema = 1;
         public List<Profile> profiles = new();
         public string current;
+
+        /// <summary>
+        /// Phụ huynh tắt tiếng động (cài đặt cho cả máy, không theo từng bé). File cũ không có trường này thì
+        /// đọc ra <c>false</c>, tức là tiếng động bật.
+        /// </summary>
+        public bool sfx_off;
     }
 
     /// <summary>

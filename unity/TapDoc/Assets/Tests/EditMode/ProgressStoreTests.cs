@@ -101,5 +101,28 @@ namespace TapDoc.Tests
             Assert.IsFalse(File.Exists(P + ".tmp"));
             StringAssert.Contains("\"A\"", File.ReadAllText(P));
         }
+
+        [Test]
+        public void SfxEnabled_DefaultOn_PersistsOff()
+        {
+            var s = new ProgressStore(P);
+            Assert.IsTrue(s.SfxEnabled, "Tiếng động mặc định bật");
+            s.SfxEnabled = false;
+            s.Save();
+            Assert.IsFalse(ProgressStore.Load(P).SfxEnabled);
+        }
+
+        [Test]
+        public void OldFile_SfxOnAndFlowersKept()
+        {
+            // File tiến độ trước bản giao diện mới: không có trường sfx_off, bài đã học có 3 sao.
+            File.WriteAllText(P, "{\"schema\":1,\"profiles\":[{\"id\":\"p1\",\"name\":\"A\",\"avatar\":\"x\"," +
+                                 "\"lessons\":[{\"lesson_id\":\"b01\",\"completed\":true,\"stars\":3}],\"mistakes\":[]}]," +
+                                 "\"current\":\"p1\"}");
+            var s = ProgressStore.Load(P);
+            Assert.IsTrue(s.SfxEnabled);
+            Assert.AreEqual(3, s.StarsFor("b01"));
+            Assert.AreEqual(3, FlowerBook.FlowersFor(s, "b01"));
+        }
     }
 }

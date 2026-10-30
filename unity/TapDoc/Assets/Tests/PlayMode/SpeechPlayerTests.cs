@@ -134,5 +134,43 @@ namespace TapDoc.Tests
             Assert.IsTrue(t.GetAwaiter().GetResult());
             yield return null;
         }
+
+        [UnityTest]
+        public IEnumerator OnGap_CalledBeforeNextPart()
+        {
+            var sp = Speech();
+            var events = new List<string>();
+            var task = sp.PlaySequenceAsync(new[] { "a", "b", "c" }, i => events.Add($"part{i}"), .1f,
+                i => events.Add($"gap{i}"));
+            yield return new WaitUntil(() => task.GetAwaiter().IsCompleted);
+            CollectionAssert.AreEqual(new[] { "part0", "gap1", "part1", "gap2", "part2" }, events);
+        }
+
+        [UnityTest]
+        public IEnumerator OnGap_NotCalledWithoutGap()
+        {
+            var sp = Speech();
+            var gaps = new List<int>();
+            var task = sp.PlaySequenceAsync(new[] { "a", "b" }, null, 0f, gaps.Add);
+            yield return new WaitUntil(() => task.GetAwaiter().IsCompleted);
+            CollectionAssert.IsEmpty(gaps);
+        }
+
+        [UnityTest]
+        public IEnumerator RejectsSfxIds()
+        {
+            var asked = new List<string>();
+            var sp = Speech(id => { asked.Add(id); return AudioClip.Create(id, 4410, 1, 44100, false); });
+            LogAssert.Expect(LogType.Error, "[TapDoc] Mã tiếng động không phát bằng giọng đọc: sfx_dung");
+            var task = sp.PlayAsync("sfx_dung");
+            yield return new WaitUntil(() => task.GetAwaiter().IsCompleted);
+            CollectionAssert.IsEmpty(asked, "Giọng đọc không được nạp mã tiếng động");
+            Assert.IsFalse(sp.IsBusy);
+
+            LogAssert.Expect(LogType.Error, "[TapDoc] Mã tiếng động không phát bằng giọng đọc: sfx_nhap");
+            var seq = sp.PlaySequenceAsync(new[] { "a", "sfx_nhap", "b" }, null, 0f);
+            yield return new WaitUntil(() => seq.GetAwaiter().IsCompleted);
+            CollectionAssert.AreEqual(new[] { "a", "b" }, asked);
+        }
     }
 }

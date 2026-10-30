@@ -53,7 +53,7 @@ namespace TapDoc
                 _audioSource.Stop();
             }
 
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id) || RejectSfx(id))
             {
                 IsBusy = false;
                 return true;
@@ -88,7 +88,8 @@ namespace TapDoc
         }
 
         /// <summary>
-        /// Phát lần lượt các mã, cách nhau <paramref name="gap"/> giây; gọi <paramref name="onPart"/> khi bắt đầu mỗi mảnh.
+        /// Phát lần lượt các mã, cách nhau <paramref name="gap"/> giây; gọi <paramref name="onPart"/> khi bắt đầu mỗi mảnh
+        /// và <paramref name="onGap"/>(i) khi bắt đầu khoảng nghỉ ngay trước mảnh <c>i</c> (chỉ khi <paramref name="gap"/> &gt; 0).
         /// </summary>
         /// <returns>
         /// <c>true</c> khi phát hết chuỗi (mảnh thiếu file được bỏ qua). <c>false</c> khi bị cắt ngang bởi lần
@@ -98,7 +99,8 @@ namespace TapDoc
         public async Awaitable<bool> PlaySequenceAsync(
             IReadOnlyList<string> ids,
             Action<int> onPart = null,
-            float gap = SequenceTimeline.DefaultGap)
+            float gap = SequenceTimeline.DefaultGap,
+            Action<int> onGap = null)
         {
             EnsureInitialized();
             var gen = ++_generation;
@@ -128,7 +130,7 @@ namespace TapDoc
                 }
 
                 var id = ids[i];
-                if (!string.IsNullOrEmpty(id))
+                if (!string.IsNullOrEmpty(id) && !RejectSfx(id))
                 {
                     RecordHistory(id);
                     var clip = _catalog.Audio(id);
@@ -149,6 +151,11 @@ namespace TapDoc
 
                 if (i + 1 < ids.Count && gap > 0f)
                 {
+                    onGap?.Invoke(i + 1);
+                    if (this == null || _generation != gen)
+                    {
+                        return false;
+                    }
                     await WaitRealtimeAsync(gap * WaitScale, gen);
                     if (this == null || _generation != gen)
                     {
@@ -182,6 +189,16 @@ namespace TapDoc
             {
                 Init(_catalog ?? new AssetCatalog());
             }
+        }
+
+        /// <summary>
+        /// Giọng đọc không phát mã tiếng động (<c>sfx_*</c>): hai loại âm thanh tách hẳn nhau. Gặp thì báo lỗi và bỏ qua.
+        /// </summary>
+        private static bool RejectSfx(string id)
+        {
+            if (!SystemSfx.IsSfx(id)) return false;
+            Debug.LogError($"[TapDoc] Mã tiếng động không phát bằng giọng đọc: {id}");
+            return true;
         }
 
         private void RecordHistory(string id)

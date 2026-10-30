@@ -29,6 +29,9 @@ namespace TapDoc
         public Camera UiCamera { get; private set; }
         public Canvas Canvas { get; private set; }
         public SpeechPlayer Speech { get; private set; }
+
+        /// <summary>Kênh tiếng động khi tương tác, tách khỏi giọng đọc.</summary>
+        public SfxPlayer Sfx { get; private set; }
         public AssetCatalog Assets { get; private set; }
         public RectTransform SafeRoot { get; private set; }
 
@@ -147,6 +150,12 @@ namespace TapDoc
             Speech.Init(Assets);
 
             Progress = StoreFactory != null ? StoreFactory() : ProgressStore.Default();
+
+            var sfxGo = new GameObject("SfxPlayer");
+            sfxGo.transform.SetParent(transform, false);
+            Sfx = sfxGo.AddComponent<SfxPlayer>();
+            Sfx.Init(Assets, Speech);
+            Sfx.Enabled = Progress.SfxEnabled;
         }
 
         /// <summary>Màn chọn bé. Chưa có hồ sơ nào thì mở thẳng phần tạo hồ sơ.</summary>
