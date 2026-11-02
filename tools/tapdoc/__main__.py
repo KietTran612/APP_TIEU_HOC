@@ -11,7 +11,8 @@ from .importer import import_audio_zip, import_clips, import_image
 from .launcher import ensure_edge_tts, tool_running
 from .manifest import (ManifestError, keep_concurrent_tts, load_rows, save_rows, update_audio_manifest,
                        update_image_manifest)
-from .paths import CLIPS, CONTENT_SRC, MANIFESTS, REQUESTS_DIR, ROOT, STYLE_FILE, UNITY_RES
+from .media_lock import compare as compare_media, describe as describe_media
+from .paths import CLIPS, CONTENT_SRC, MANIFESTS, MEDIA_LOCK, REQUESTS_DIR, ROOT, STYLE_FILE, UNITY_RES
 from .review_server import make_server
 from .sfx_default import write_missing as write_default_sfx
 from .ui_icons import write_all as write_ui_icons
@@ -186,6 +187,9 @@ def _cmd_validate(args: argparse.Namespace) -> int:
             rows = []  # validate_all đã báo lỗi đọc danh mục
         for warning in release_warnings(rows):
             print(_printable(f"Cảnh báo: {warning}"))
+    media = describe_media(compare_media(UNITY_RES, MEDIA_LOCK))
+    if media:
+        print(_printable(f"Cảnh báo: {media}"))
     for issue in issues:
         print(_printable(f"{issue.lesson} {issue.where}: {issue.message}"))
     if not issues:
