@@ -16,7 +16,12 @@
     "scan_file": "015",
     "verification": "page_verified"
   },
-  "notes": [],
+  "notes": [
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"s\": bài đọc theo âm chuẩn \"sờ\" (Phụ lục, tr.120). Tên chữ cái là \"ét-sì\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
+    }
+  ],
   "review": {
     "status": "chua_duyet",
     "can_duyet": [
@@ -43,6 +48,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "sờ",
+          "audio": "am_s"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "ét-sì",
+          "audio": "tenchu_s"
         }
       ]
     },

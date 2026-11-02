@@ -16,7 +16,12 @@
     "scan_file": "011",
     "verification": "page_verified"
   },
-  "notes": [],
+  "notes": [
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"b\": bài đọc theo âm chuẩn \"bờ\" (Phụ lục, tr.120). Tên chữ cái là \"bê\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
+    }
+  ],
   "review": {
     "status": "chua_duyet",
     "can_duyet": [
@@ -39,6 +44,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "bờ",
+          "audio": "am_b"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "bê",
+          "audio": "tenchu_b"
         }
       ]
     },

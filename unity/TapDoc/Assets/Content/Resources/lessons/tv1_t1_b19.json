@@ -16,7 +16,12 @@
     "scan_file": "013",
     "verification": "page_verified"
   },
-  "notes": [],
+  "notes": [
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"h\": bài đọc theo âm chuẩn \"hờ\" (Phụ lục, tr.120). Tên chữ cái là \"hát\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
+    }
+  ],
   "review": {
     "status": "chua_duyet",
     "can_duyet": [
@@ -35,6 +40,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "hờ",
+          "audio": "am_h"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "hát",
+          "audio": "tenchu_h"
         }
       ]
     },

@@ -17,7 +17,12 @@
     "scan_file": "021",
     "verification": "page_verified"
   },
-  "notes": [],
+  "notes": [
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"p\": bài đọc theo âm chuẩn \"pờ\" (Phụ lục, tr.120). Tên chữ cái là \"pê\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
+    }
+  ],
   "review": {
     "status": "chua_duyet",
     "can_duyet": [
@@ -48,6 +53,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "pờ",
+          "audio": "am_p"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "pê",
+          "audio": "tenchu_p"
         }
       ]
     },

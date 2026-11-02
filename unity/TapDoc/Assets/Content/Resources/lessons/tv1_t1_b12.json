@@ -17,7 +17,16 @@
     "scan_file": "009",
     "verification": "page_verified"
   },
-  "notes": [],
+  "notes": [
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"n\": bài đọc theo âm chuẩn \"nờ\" (Phụ lục, tr.120). Tên chữ cái là \"en-nờ\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
+    },
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"m\": bài đọc theo âm chuẩn \"mờ\" (Phụ lục, tr.120). Tên chữ cái là \"em-mờ\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
+    }
+  ],
   "review": {
     "status": "chua_duyet",
     "can_duyet": [
@@ -56,6 +65,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "nờ",
+          "audio": "am_n"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "en-nờ",
+          "audio": "tenchu_n"
         }
       ]
     },
@@ -140,6 +166,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "mờ",
+          "audio": "am_m"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "em-mờ",
+          "audio": "tenchu_m"
         }
       ]
     },

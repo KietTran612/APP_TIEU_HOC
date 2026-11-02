@@ -16,7 +16,12 @@
     "scan_file": "015",
     "verification": "page_verified"
   },
-  "notes": [],
+  "notes": [
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"x\": bài đọc theo âm chuẩn \"xờ\" (Phụ lục, tr.120). Tên chữ cái là \"ích-xì\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
+    }
+  ],
   "review": {
     "status": "chua_duyet",
     "can_duyet": [
@@ -47,6 +52,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "xờ",
+          "audio": "am_x"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "ích-xì",
+          "audio": "tenchu_x"
         }
       ]
     },

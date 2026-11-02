@@ -16,7 +16,12 @@
     "scan_file": "011",
     "verification": "page_verified"
   },
-  "notes": [],
+  "notes": [
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"l\": bài đọc theo âm chuẩn \"lờ\" (Phụ lục, tr.120). Tên chữ cái là \"e-lờ\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
+    }
+  ],
   "review": {
     "status": "chua_duyet",
     "can_duyet": [
@@ -43,6 +48,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "lờ",
+          "audio": "am_l"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "e-lờ",
+          "audio": "tenchu_l"
         }
       ]
     },

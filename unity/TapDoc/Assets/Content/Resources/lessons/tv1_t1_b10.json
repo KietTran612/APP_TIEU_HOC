@@ -20,7 +20,11 @@
   "notes": [
     {
       "kind": "ten_doc",
-      "text": "Chữ \"i\" đọc là \"i ngắn\": sách dặn đọc riêng để bé phân biệt i và y (mục Chú ý, tr.122). Phụ lục tr.120–121 ghi âm của chữ này là \"i\"."
+      "text": "Chữ \"i\" khi học đọc là \"i ngắn\" để bé phân biệt i và y (sách dặn ở mục Chú ý, tr.122). Âm chuẩn của chữ là \"i\" (Phụ lục, tr.120). \"i ngắn\" cũng là tên chữ cái (Bảng chữ cái, tr.120)."
+    },
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"t\": bài đọc theo âm chuẩn \"tờ\" (Phụ lục, tr.120). Tên chữ cái là \"tê\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
     }
   ],
   "review": {
@@ -73,6 +77,24 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "tenchu"
+          ],
+          "text": "i ngắn",
+          "audio": "van_i",
+          "hint": "để phân biệt i và y"
+        },
+        {
+          "kinds": [
+            "chuan"
+          ],
+          "text": "i",
+          "audio": "ghiam_i"
         }
       ]
     },
@@ -157,6 +179,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "tờ",
+          "audio": "am_t"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "tê",
+          "audio": "tenchu_t"
         }
       ]
     },

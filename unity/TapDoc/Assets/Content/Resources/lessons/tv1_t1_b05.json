@@ -20,7 +20,11 @@
   "notes": [
     {
       "kind": "ten_doc",
-      "text": "Chữ \"d\" đọc là \"dờ\": sách dặn đọc riêng để bé phân biệt d và gi (mục Chú ý, tr.122)."
+      "text": "Chữ \"d\" khi học đọc là \"dờ\" để bé phân biệt d và gi (sách dặn ở mục Chú ý, tr.122). Đây cũng là âm chuẩn của chữ (Phụ lục, tr.120). Tên chữ cái là \"dê\" (Bảng chữ cái, tr.120)."
+    },
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"đ\": bài đọc theo âm chuẩn \"đờ\" (Phụ lục, tr.120). Tên chữ cái là \"đê\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
     }
   ],
   "review": {
@@ -45,6 +49,24 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "dờ",
+          "audio": "am_d",
+          "hint": "để phân biệt d và gi"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "dê",
+          "audio": "tenchu_d"
         }
       ]
     },
@@ -129,6 +151,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "đờ",
+          "audio": "am_dd"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "đê",
+          "audio": "tenchu_dd"
         }
       ]
     },

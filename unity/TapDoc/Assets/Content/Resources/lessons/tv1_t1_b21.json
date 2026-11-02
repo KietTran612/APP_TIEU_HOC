@@ -16,7 +16,12 @@
     "scan_file": "014",
     "verification": "page_verified"
   },
-  "notes": [],
+  "notes": [
+    {
+      "kind": "ten_doc",
+      "text": "Chữ \"r\": bài đọc theo âm chuẩn \"rờ\" (Phụ lục, tr.120). Tên chữ cái là \"e-rờ\" (Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái."
+    }
+  ],
   "review": {
     "status": "chua_duyet",
     "can_duyet": [
@@ -39,6 +44,23 @@
         {
           "s": 0,
           "n": 1
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc",
+            "chuan"
+          ],
+          "text": "rờ",
+          "audio": "am_r"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "e-rờ",
+          "audio": "tenchu_r"
         }
       ]
     },

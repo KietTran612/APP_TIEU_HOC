@@ -20,11 +20,11 @@
   "notes": [
     {
       "kind": "ten_doc",
-      "text": "Chữ \"g\" đọc là \"gờ đơn\": sách dặn đọc riêng để bé phân biệt g và gh (mục Chú ý, tr.122). Phụ lục tr.120–121 ghi âm của chữ này là \"gờ\"."
+      "text": "Chữ \"g\" khi học đọc là \"gờ đơn\" để bé phân biệt g và gh (sách dặn ở mục Chú ý, tr.122). Âm chuẩn của chữ là \"gờ\" (Phụ lục, tr.120). Tên chữ cái là \"giê\" (Bảng chữ cái, tr.120)."
     },
     {
       "kind": "ten_doc",
-      "text": "Chữ \"gh\" đọc là \"gờ kép\": sách dặn đọc riêng để bé phân biệt g và gh (mục Chú ý, tr.122). Phụ lục tr.120–121 ghi âm của chữ này là \"gờ\"."
+      "text": "Chữ \"gh\" khi học đọc là \"gờ kép\" để bé phân biệt g và gh (sách dặn ở mục Chú ý, tr.122). Âm chuẩn của chữ là \"gờ\" (Phụ lục, tr.121)."
     }
   ],
   "review": {
@@ -122,6 +122,30 @@
           "s": 0,
           "n": 1
         }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc"
+          ],
+          "text": "gờ đơn",
+          "audio": "am_g",
+          "hint": "để phân biệt g và gh"
+        },
+        {
+          "kinds": [
+            "chuan"
+          ],
+          "text": "gờ",
+          "audio": "ghiam_g"
+        },
+        {
+          "kinds": [
+            "tenchu"
+          ],
+          "text": "giê",
+          "audio": "tenchu_g"
+        }
       ]
     },
     {
@@ -205,6 +229,23 @@
         {
           "s": 0,
           "n": 2
+        }
+      ],
+      "readings": [
+        {
+          "kinds": [
+            "hoc"
+          ],
+          "text": "gờ kép",
+          "audio": "am_gh",
+          "hint": "để phân biệt g và gh"
+        },
+        {
+          "kinds": [
+            "chuan"
+          ],
+          "text": "gờ",
+          "audio": "ghiam_gh"
         }
       ]
     },
