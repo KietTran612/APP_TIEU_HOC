@@ -432,10 +432,13 @@ class LessonNotesContentTest(unittest.TestCase):
         self.assertTrue(any("Vần ec rất ít gặp" in t for t in notes_by_kind(68, "sach")))
 
     def test_reading_names_only_in_lessons_teaching_those_letters(self):
+        # Bài dạy chữ có nhiều cách đọc (đọc khi học, âm chuẩn, tên chữ cái): ghi chú và nút phát âm đi cùng nhau.
         with_names = {no for no in range(1, 81) if notes_by_kind(no, "ten_doc")}
-        self.assertEqual(with_names, {2, 5, 10, 14, 20, 25, 26, 28, 29, 35})
+        with_buttons = {no for no in range(1, 81) if any("readings" in s for s in steps(no, "unit"))}
+        self.assertEqual(with_names, {2, 5, 10, 12, 14, 15, 16, 18, 19, 20, 21, 23, 24, 25, 26, 28, 29, 35, 36})
+        self.assertEqual(with_buttons, with_names)
         self.assertEqual(len(notes_by_kind(25, "ten_doc")), 2)  # g và gh
-        self.assertTrue(any('"k" đọc là "ca"' in t for t in notes_by_kind(20, "ten_doc")))
+        self.assertTrue(any('"k" khi học đọc là "ca"' in t for t in notes_by_kind(20, "ten_doc")))
         self.assertTrue(any('"qu" đọc là "quờ"' in t for t in notes_by_kind(35, "ten_doc")))
 
     def test_app_differences_noted(self):

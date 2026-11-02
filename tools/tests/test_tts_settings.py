@@ -15,7 +15,10 @@ SETTINGS = Path(__file__).resolve().parents[2] / "content/tts/settings.json"
 
 
 def settings():
-    return load_settings(SETTINGS)
+    # Mặc định thật của dự án nhưng bỏ phần chỉnh riêng từng mã: chủ dự án đang chỉnh trong công cụ duyệt.
+    s = load_settings(SETTINGS)
+    s["overrides"] = {}
+    return s
 
 
 def row(audio_id="am_b", text="bờ", kind="am", status="cho_duyet"):

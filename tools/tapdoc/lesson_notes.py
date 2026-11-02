@@ -1,36 +1,43 @@
-"""Ghi chú cho phụ huynh trong bài: chú thích sách in trên trang, tên đọc riêng (mục Chú ý tr.122), chỗ app khác sách."""
+"""Ghi chú cho phụ huynh trong bài: chú thích sách in trên trang, các cách đọc của chữ (Phụ lục tr.120–122), chỗ app khác sách."""
 
-from .ids import CONSONANT_NAMES, VOWEL_NAMES
+from .ids import CONSONANT_NAMES
+from .readings import DISTINGUISH, appendix, appendix_row, unit_readings
 
-# Loại ghi chú người soạn được viết; "ten_doc" do công cụ tự sinh từ tên đọc trong ids.py.
+# Loại ghi chú người soạn được viết; "ten_doc" do công cụ tự sinh từ các cách đọc trong Phụ lục (readings.py).
 AUTHORED_KINDS = ("sach", "khac_sach")
-
-# Âm có nhiều cách ghi mà sách dặn đọc riêng để trẻ phân biệt (tr.122): nhóm chữ dễ lẫn và âm ghi ở Phụ lục tr.120–121.
-_CONFUSABLE = {
-    "c": ("c, k, q", "cờ"), "k": ("c, k, q", "cờ"), "q": ("c, k, q", "cờ"),
-    "d": ("d và gi", "dờ"), "gi": ("d và gi", "giờ"),
-    "g": ("g và gh", "gờ"), "gh": ("g và gh", "gờ"),
-    "ng": ("ng và ngh", "ngờ"), "ngh": ("ng và ngh", "ngờ"),
-    "i": ("i và y", "i"), "y": ("i và y", "i"),
-}
-# Chỉ bài dạy chữ mới mới cần giải thích tên đọc; bài ôn tập đã có ghi chú ở bài dạy chữ đó.
+# Chỉ bài dạy chữ mới mới cần giải thích cách đọc; bài ôn tập đã có ghi chú ở bài dạy chữ đó.
 _LETTER_LESSON_TYPES = ("am_moi",)
 
 
-def _reading_note(unit: str) -> str | None:
-    name = CONSONANT_NAMES.get(unit) or VOWEL_NAMES.get(unit)
-    if unit == "qu":
-        return f'Chữ "qu" đọc là "{name}" (mục Chú ý, tr.122).'
-    if unit not in _CONFUSABLE or name is None:
+def _reading_note(book: str, unit: str) -> str | None:
+    """Giải thích vì sao chữ có nhiều cách đọc: cách đọc khi học (tr.122), âm chuẩn và tên chữ cái (Phụ lục)."""
+    data = appendix(book)
+    if data is None:
         return None
-    group, sound = _CONFUSABLE[unit]
-    text = f'Chữ "{unit}" đọc là "{name}": sách dặn đọc riêng để bé phân biệt {group} (mục Chú ý, tr.122).'
-    if sound != name:
-        text += f' Phụ lục tr.120–121 ghi âm của chữ này là "{sound}".'
+    chu_y = data["chu_y"]["page"]
+    if unit == "qu":  # Phụ lục không có "qu"; mục Chú ý dặn đọc là "quờ".
+        return f'Chữ "qu" đọc là "{CONSONANT_NAMES[unit]}" (mục Chú ý, tr.{chu_y}).'
+    readings = unit_readings(book, unit)
+    if not readings:
+        return None
+    name, sound, page = appendix_row(book, unit)
+    learn = readings[0]["text"]
+    letters = data["alphabet"]["page"]
+    if unit not in DISTINGUISH:
+        return (f'Chữ "{unit}": bài đọc theo âm chuẩn "{sound}" (Phụ lục, tr.{page}). Tên chữ cái là "{name}" '
+                f'(Bảng chữ cái, tr.{letters}), dùng khi gọi tên chữ trong bảng chữ cái.')
+    text = (f'Chữ "{unit}" khi học đọc là "{learn}" để bé phân biệt {DISTINGUISH[unit]} '
+            f'(sách dặn ở mục Chú ý, tr.{chu_y}).')
+    text += (f' Âm chuẩn của chữ là "{sound}" (Phụ lục, tr.{page}).' if sound != learn
+             else f' Đây cũng là âm chuẩn của chữ (Phụ lục, tr.{page}).')
+    if name == learn:
+        text += f' "{learn}" cũng là tên chữ cái (Bảng chữ cái, tr.{letters}).'
+    elif name is not None and name != sound:
+        text += f' Tên chữ cái là "{name}" (Bảng chữ cái, tr.{letters}).'
     return text
 
 
-def lesson_notes(authored, lesson_type: str, new_units, word_notes) -> list[dict]:
+def lesson_notes(authored, lesson_type: str, new_units, word_notes, book_id: str) -> list[dict]:
     """Thứ tự: chú thích sách (cả chú thích dưới từ), tên đọc riêng, chỗ app khác sách. Lỗi dữ liệu báo ValueError."""
     if not isinstance(authored, list):
         raise ValueError("notes phải là danh sách")
@@ -45,6 +52,6 @@ def lesson_notes(authored, lesson_type: str, new_units, word_notes) -> list[dict
     book = by_kind["sach"] + [n for n in dict.fromkeys(word_notes) if n not in by_kind["sach"]]
     reading = []
     if lesson_type in _LETTER_LESSON_TYPES:
-        reading = [text for text in map(_reading_note, new_units) if text]
+        reading = [text for text in (_reading_note(book_id, u) for u in new_units) if text]
     return ([{"kind": "sach", "text": t} for t in book] + [{"kind": "ten_doc", "text": t} for t in reading]
             + [{"kind": "khac_sach", "text": t} for t in by_kind["khac_sach"]])

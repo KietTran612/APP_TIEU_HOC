@@ -19,15 +19,16 @@ def with_notes(src, notes, lesson_type=None):
 
 class LessonNotesTest(unittest.TestCase):
     def test_lesson_without_notes_has_empty_list(self):
-        self.assertEqual(notes_of(src_of(part1=[{"type": "unit", "text": "b"}], new_units=["b"])), [])
+        self.assertEqual(notes_of(src_of(part1=[{"type": "unit", "text": "ch"}], new_units=["ch"])), [])
 
     def test_book_and_app_notes_kept_in_order(self):
         src = with_notes(src_of(part1=[{"type": "unit", "text": "b"}], new_units=["b"]),
                          [{"kind": "khac_sach", "text": "Bảng chia 2 bước cho vừa màn hình."},
                           {"kind": "sach", "text": "* Vần ec rất ít gặp, không dạy để trẻ bớt khó khăn."}])
-        self.assertEqual(notes_of(src), [
+        self.assertEqual([n for n in notes_of(src) if n["kind"] != "ten_doc"], [
             {"kind": "sach", "text": "* Vần ec rất ít gặp, không dạy để trẻ bớt khó khăn."},
             {"kind": "khac_sach", "text": "Bảng chia 2 bước cho vừa màn hình."}])
+        self.assertEqual([n["kind"] for n in notes_of(src)], ["sach", "ten_doc", "khac_sach"])
 
     def test_word_notes_become_book_notes_once(self):
         words = {"type": "words", "marker": "●", "items": [{"text": "cá lóc", "note": "cá lóc: cá quả."}, {"text": "con cóc"}]}
@@ -40,18 +41,32 @@ class LessonNotesTest(unittest.TestCase):
         notes = notes_of(src_of(part1=[{"type": "unit", "text": "k"}, {"type": "unit", "text": "kh"}],
                                 new_units=["k", "kh"]))
         self.assertEqual([n["kind"] for n in notes], ["ten_doc"])
-        self.assertIn('"k" đọc là "ca"', notes[0]["text"])
-        self.assertIn('"cờ"', notes[0]["text"])
-        self.assertIn("tr.122", notes[0]["text"])
+        self.assertEqual(notes[0]["text"],
+                         'Chữ "k" khi học đọc là "ca" để bé phân biệt c, k, q (sách dặn ở mục Chú ý, tr.122). '
+                         'Âm chuẩn của chữ là "cờ" (Phụ lục, tr.120). "ca" cũng là tên chữ cái (Bảng chữ cái, tr.120).')
 
     def test_reading_name_note_follows_the_app_reading(self):
         notes = notes_of(src_of(part1=[{"type": "unit", "text": "gh"}], new_units=["g", "gh"]))
         texts = " ".join(n["text"] for n in notes)
-        self.assertIn('"g" đọc là "gờ đơn"', texts)
-        self.assertIn('"gh" đọc là "gờ kép"', texts)
+        self.assertIn('"g" khi học đọc là "gờ đơn"', texts)
+        self.assertIn('Tên chữ cái là "giê" (Bảng chữ cái, tr.120)', texts)
+        self.assertIn('"gh" khi học đọc là "gờ kép"', texts)
+        self.assertIn('Âm chuẩn của chữ là "gờ" (Phụ lục, tr.121)', texts)
 
-    def test_no_reading_note_when_name_is_the_sound_and_not_confusable(self):
-        self.assertEqual(notes_of(src_of(part1=[{"type": "unit", "text": "b"}], new_units=["b"])), [])
+    def test_letter_name_note_when_only_the_letter_name_differs(self):
+        notes = notes_of(src_of(part1=[{"type": "unit", "text": "b"}], new_units=["b"]))
+        self.assertEqual(notes, [{"kind": "ten_doc", "text":
+                                  'Chữ "b": bài đọc theo âm chuẩn "bờ" (Phụ lục, tr.120). Tên chữ cái là "bê" '
+                                  '(Bảng chữ cái, tr.120), dùng khi gọi tên chữ trong bảng chữ cái.'}])
+
+    def test_learning_name_that_is_also_the_standard_sound(self):
+        notes = notes_of(src_of(part1=[{"type": "unit", "text": "c"}], new_units=["c"]))
+        self.assertEqual(notes[0]["text"],
+                         'Chữ "c" khi học đọc là "cờ" để bé phân biệt c, k, q (sách dặn ở mục Chú ý, tr.122). '
+                         'Đây cũng là âm chuẩn của chữ (Phụ lục, tr.120). Tên chữ cái là "xê" (Bảng chữ cái, tr.120).')
+
+    def test_no_reading_note_for_digraph_with_one_reading(self):
+        self.assertEqual(notes_of(src_of(part1=[{"type": "unit", "text": "ch"}], new_units=["ch"])), [])
 
     def test_review_lessons_get_no_reading_notes(self):
         src = src_of(part1=[{"type": "unit", "text": "c"}], new_units=["c", "k"])
@@ -59,7 +74,7 @@ class LessonNotesTest(unittest.TestCase):
         self.assertEqual(notes_of(src), [])
 
     def test_bad_note_kind_is_error(self):
-        src = with_notes(src_of(part1=[{"type": "unit", "text": "b"}], new_units=["b"]),
+        src = with_notes(src_of(part1=[{"type": "unit", "text": "ch"}], new_units=["ch"]),
                          [{"kind": "ten_doc", "text": "tự viết"}])
         with self.assertRaises(BuildError):
             build_lesson(src)

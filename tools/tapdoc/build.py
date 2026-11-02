@@ -12,6 +12,7 @@ from pathlib import Path
 
 from .ids import audio_for, text_audio, tone_audio
 from .lesson_notes import lesson_notes
+from .readings import unit_readings
 from .spelling import Part, SpellResult, spell_rime, spell_syllable
 from .viet import TONE_INFO, nfc, split_syllable, strip_tone, syllables, tokens
 
@@ -194,8 +195,15 @@ class _Builder:
 
     def _step_unit(self, step: dict, where: str) -> dict:
         text = step["text"]
-        return {"type": "unit", "text": text, "audio": self._audio(audio_for(text), where),
-                "hl": self._highlights(text)}
+        out = {"type": "unit", "text": text, "audio": self._audio(audio_for(text), where),
+               "hl": self._highlights(text)}
+        readings = unit_readings(self.src["book"], text)
+        if readings:
+            # Chữ có nhiều cách đọc (Phụ lục tr.120–122): mỗi cách đọc một nút phát âm trong bài.
+            out["readings"] = [{"kinds": r["kinds"], "text": r["text"],
+                                "audio": self._register_audio(r["audio"], *r["spoken"], where),
+                                **({"hint": r["hint"]} if "hint" in r else {})} for r in readings]
+        return out
 
     def _step_keyword(self, step: dict, where: str) -> dict:
         text, image = step["text"], step["image"]
@@ -592,7 +600,7 @@ class _Builder:
 
         with self._located("notes"):
             try:
-                notes = lesson_notes(src.get("notes", []), src["type"], src["new_units"], _word_notes(part1))
+                notes = lesson_notes(src.get("notes", []), src["type"], src["new_units"], _word_notes(part1), src["book"])
             except ValueError as e:
                 raise self.error("notes", str(e)) from e
 
