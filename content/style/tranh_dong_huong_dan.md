@@ -49,9 +49,15 @@ Tài liệu để nhớ cách làm clip cho tranh bài học, dùng lại cho c�
 - **Thông số:** Veo 3.1 Lite, chế độ "Khung hình" (Frames), 16:9, x1, 720p, 8 giây, **10 credit mỗi clip**.
 - **Chuẩn bị tranh:** tranh gốc vuông được đệm thành 1280×720 bằng màu giấy lấy ở góc tranh, đặt giữa khung. Khi đưa vào app thì cắt lại hình vuông ở giữa.
 - **Kiểm tra trước khi gửi:** ô soạn phải đúng 2 ảnh và đúng mã tranh. Lỗi đã gặp: khung cuối của lần trước còn sót lại, làm clip đài ra-đi-ô thành "đài → búp sen", mất 10 credit.
-- **Tài khoản:**
+- **Tài khoản** (chủ dự án cho phép tự chuyển giữa các tài khoản đã đăng nhập sẵn; không đăng nhập hay tạo tài khoản mới):
   - Tài khoản 1 (`/u/2`): đặt lại credit ngày 15 hằng tháng, tắt được hình mờ.
   - Tài khoản 2 (`/u/1`): đặt lại ngày 29 hằng tháng. Khu vực bắt buộc "hình mờ nhìn thấy", nhưng file 720p tải về đã kiểm tra không thấy hình mờ ở cả bốn góc.
+  - Ngày 2/11 cả hai tài khoản trên đều có thêm khoảng 50 credit, tức 5 clip mỗi tài khoản.
+  - `/u/3` (chatgpt.hytek): 50 credit, nạp lại mỗi ngày lúc 9:36.
+  - `/u/4` (Đặng Huỳnh Đức): 1.050 credit, đặt lại ngày 29. Dự án "Tháng 11 02 - 09:37".
+  - `/u/0` là tài khoản công ty, bắt buộc hình mờ: không dùng.
+  - Mỗi tài khoản mới phải tải tranh đệm lên và tạo lại ảnh "điểm bắt đầu" (miễn phí). Lần đầu tải ảnh lên có hộp "Quyền sử dụng hình ảnh này"; hỏi chủ dự án trước khi bấm đồng ý.
+  - Dự án mới có thể mở sẵn bảng "Tác nhân" và nút Tác nhân đang bật: tắt cả hai trước khi làm.
   - Ảnh tạo bằng Nano Banana có một dấu lấp lánh nhỏ ở góc phải dưới, nằm ngoài vùng cắt vuông.
 - **Giao diện tiếng Việt** (tài khoản 2): Bắt đầu / Kết thúc / Tìm kiếm thành phần / Thêm vào câu lệnh / Tải nội dung nghe nhìn lên / Bắt đầu tạo. Lần đầu tải ảnh có hộp "Quyền sử dụng hình ảnh này", cần chủ dự án đồng ý.
 - **Lỗi "Audio generation failed":** bấm nút thử lại trên thẻ; Flow hoàn credit cho lần hỏng.
