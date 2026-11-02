@@ -42,6 +42,12 @@ namespace TapDoc
         public const string NoteKindApp = "App khác sách";
         public const string Close = "Đóng";
 
+        // Nút cách đọc ở bước giới thiệu chữ (Phụ lục tr.120–122).
+        public const string ReadingLearn = "Đọc khi học";
+        public const string ReadingStandard = "Âm chuẩn";
+        public const string ReadingLetterName = "Tên chữ cái";
+        public const string Why = "Vì sao?";
+
         // Sổ bé ngoan: nút mở sổ, tiêu đề sổ ({0} tên bé), đầu trang ({0} "Bài", {1} số bài, {2} tên bài), con dấu.
         public const string Book = "Sổ bé ngoan";
         public const string BookTitleFormat = "Sổ bé ngoan của {0}";
@@ -90,6 +96,10 @@ namespace TapDoc
             NoteKindReading,
             NoteKindApp,
             Close,
+            ReadingLearn,
+            ReadingStandard,
+            ReadingLetterName,
+            Why,
             Book,
             BookTitleFormat,
             BookPageFormat,

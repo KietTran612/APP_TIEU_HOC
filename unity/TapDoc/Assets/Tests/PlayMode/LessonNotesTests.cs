@@ -76,6 +76,20 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator Notes_WhyButtonOpensReadingNotes()
+        {
+            // Nút "Vì sao?" dưới các nút cách đọc mở khung Ghi chú có phần "Cách đọc theo sách".
+            yield return LoadMainWithProfile(unlockAll: true);
+            var s = Open("tv1_t1_b25");
+            yield return null;
+            Press(ButtonUnder(s, UiText.Why));
+            yield return null;
+            Assert.IsNotNull(s.NotesPanel);
+            Assert.IsTrue(s.NotesPanel.activeInHierarchy);
+            Assert.That(LabelsUnder(s.NotesPanel.transform), Has.Member(UiText.NoteKindReading));
+        }
+
+        [UnityTest]
         public IEnumerator Notes_ReadingNamesShownForLetterLesson()
         {
             yield return LoadMainWithProfile(unlockAll: true);
@@ -85,7 +99,7 @@ namespace TapDoc.Tests
             yield return null;
             var labels = LabelsUnder(s.NotesPanel.transform);
             Assert.That(labels, Has.Member(UiText.NoteKindReading));
-            Assert.That(labels, Has.Some.Contains("\"gh\" đọc là \"gờ kép\""));
+            Assert.That(labels, Has.Some.Contains("\"gh\" khi học đọc là \"gờ kép\""));
         }
 
         [UnityTest]

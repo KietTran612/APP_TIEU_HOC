@@ -169,6 +169,16 @@ namespace TapDoc
                 foreach (var row in step.rows) NormalizeItem(row);
                 step.items ??= new List<Item>();
                 foreach (var item in step.items) NormalizeItem(item);
+                step.readings ??= new List<Reading>();
+                foreach (var reading in step.readings)
+                {
+                    if (reading == null) continue;
+                    reading.kinds ??= new List<string>();
+                    for (var i = 0; i < reading.kinds.Count; i++) reading.kinds[i] = Nfc(reading.kinds[i]);
+                    reading.text = Nfc(reading.text);
+                    reading.audio = Nfc(reading.audio);
+                    reading.hint = Nfc(reading.hint);
+                }
             }
 
             lesson.part2 ??= new List<Round>();

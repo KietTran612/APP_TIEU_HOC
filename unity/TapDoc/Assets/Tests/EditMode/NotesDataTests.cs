@@ -22,10 +22,32 @@ namespace TapDoc.Tests
         {
             var b20 = LessonRepository.Load("tv1_t1_b20");
             Assert.That(b20.notes.Where(n => n.kind == "ten_doc").Select(n => n.text),
-                Has.Some.Contains("\"k\" đọc là \"ca\""));
+                Has.Some.Contains("\"k\" khi học đọc là \"ca\""));
             var b68 = LessonRepository.Load("tv1_t1_b68");
             Assert.That(b68.notes.Where(n => n.kind == "sach").Select(n => n.text), Has.Some.Contains("Vần ec rất ít gặp"));
             Assert.That(b68.notes.Select(n => n.kind), Has.Member("khac_sach"));
+        }
+
+        [Test]
+        public void UiText_ReadingWording()
+        {
+            Assert.AreEqual("Đọc khi học", UiText.ReadingLearn);
+            Assert.AreEqual("Âm chuẩn", UiText.ReadingStandard);
+            Assert.AreEqual("Tên chữ cái", UiText.ReadingLetterName);
+            Assert.AreEqual("Vì sao?", UiText.Why);
+        }
+
+        [Test]
+        public void Unit_ReadingsParsed()
+        {
+            var g = LessonRepository.Load("tv1_t1_b25").part1[0];
+            Assert.AreEqual(new[] { "am_g", "ghiam_g", "tenchu_g" }, g.readings.Select(r => r.audio).ToArray());
+            Assert.AreEqual(new[] { "hoc" }, g.readings[0].kinds.ToArray());
+            Assert.AreEqual("để phân biệt g và gh", g.readings[0].hint);
+            Assert.AreEqual("giê", g.readings[2].text);
+            var o = LessonRepository.Load("tv1_t1_b01").part1[0];
+            Assert.IsNotNull(o.readings);
+            Assert.AreEqual(0, o.readings.Count);
         }
 
         [Test]

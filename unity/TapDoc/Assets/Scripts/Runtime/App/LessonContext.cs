@@ -18,5 +18,8 @@ namespace TapDoc
         /// <c>Completed</c>. <c>null</c> khi không ai cần ghi (ví dụ trong test màn).
         /// </summary>
         public Action<Round, int> RoundFinished;
+
+        /// <summary>Mở khung Ghi chú của bài (nút "Vì sao?" cạnh các cách đọc); <c>null</c> khi bài không có ghi chú.</summary>
+        public Action OpenNotes;
     }
 }

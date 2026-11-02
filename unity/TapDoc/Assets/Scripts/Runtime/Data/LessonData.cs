@@ -82,6 +82,20 @@ namespace TapDoc
         public List<string> labels = new();
         public List<Item> rows = new();
         public List<Item> items = new();
+        public List<Reading> readings = new();
+    }
+
+    /// <summary>
+    /// Một cách đọc của chữ ở bước giới thiệu chữ (Phụ lục tr.120–122). <see cref="kinds"/>: "hoc" (đọc khi học, để
+    /// phân biệt chữ), "chuan" (âm chuẩn), "tenchu" (tên chữ cái); cách đọc trùng chữ gộp nhiều loại.
+    /// </summary>
+    [Serializable]
+    public class Reading
+    {
+        public List<string> kinds = new();
+        public string text;
+        public string audio;
+        public string hint;
     }
 
     [Serializable]

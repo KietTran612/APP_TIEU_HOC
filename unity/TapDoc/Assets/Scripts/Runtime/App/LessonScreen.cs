@@ -139,7 +139,8 @@ namespace TapDoc
                 Assets = _app.Assets,
                 Stage = _stage,
                 Fx = _fx,
-                RoundFinished = OnRoundFinished
+                RoundFinished = OnRoundFinished,
+                OpenNotes = NotesButton != null ? OpenNotes : null
             };
 
             // Handler gắn trước Bind (qua StepViewFactory). Nếu màn báo xong ngay trong Bind thì ghi nhận
