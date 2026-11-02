@@ -43,6 +43,15 @@ Chủ dự án yêu cầu: chữ nào có nhiều cách đọc thì mỗi cách 
 - Unity: thẻ chữ nhỏ lại, dưới thẻ có nút cho mỗi cách đọc và nút "Vì sao?" mở Ghi chú; bảng chữ cái ở mục Phụ lục (màn Phụ huynh) chạm ô nào nghe ô đó.
 - Commit: `980255b` (công cụ), `1f20cf7` (dữ liệu, âm thanh), `a3351d3` (nút trong bài), `cd068af` (Phụ lục phát âm). Chỉ chạy unit test của tính năng; chưa chạy test all.
 
+## 1d. Tranh và âm thanh ra khỏi git, chuyển sang gói media trên Google Drive (2/11/2026)
+
+- Lý do: repo phình mỗi lần vẽ lại tranh hay tạo lại âm thanh (GitHub khuyên repo dưới khoảng 1 GB). Chủ dự án muốn `.meta` đi cùng file gốc nên dùng `.unitypackage`; giữ nguyên tranh PNG gốc (không thu nhỏ).
+- `Resources/images`, `Resources/audio` và `.meta` của chúng đã gỡ khỏi git (`c373d68`, lịch sử cũ giữ nguyên). Tiếng động, font, dữ liệu bài vẫn trong git.
+- `tools/run_unity_media.py pack` xuất `dist/TapDoc-media-<ngày>.unitypackage` + `dist/TapDoc-clips-<ngày>.zip`, ghi `content/manifests/media_lock.json` (mã kiểm tra từng file); `unpack` nhập gói. `validate` cảnh báo khi media trên máy khác gói.
+- Gói 2026-11-02: đã thử trọn vòng trên bản clone mới (213 tranh, 1.926 âm thanh, 0 lệch mã kiểm tra và GUID). Gói này chứa cả phần âm thanh chủ dự án đang duyệt dở trên máy lúc đóng gói.
+- Thư mục Drive: https://drive.google.com/drive/u/1/folders/1cw5FYmXGkWIwQRS3-BNPbvGfbJzrmT3m (chủ dự án tự kéo thả file lên; công cụ của Claude không tải được file vài trăm MB).
+- Sửa media xong: đóng gói lại, commit `media_lock.json`, đưa gói mới lên Drive.
+
 ## 2. XONG — 6 tranh còn thiếu (vẽ bằng ChatGPT chiều 30/10; giữ lại các bước để lần sau vẽ tranh mới)
 
 Ngày 29/10 gói Plus báo hết lượt tạo ảnh sau 39 tranh. Còn 6 tranh `chua_co`:
