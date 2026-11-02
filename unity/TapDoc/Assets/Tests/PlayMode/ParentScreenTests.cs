@@ -91,6 +91,31 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator Parent_AppendixCellsPlayTheirReading()
+        {
+            // Bảng chữ cái tr.120 và bảng chữ ghép tr.121: chạm ô tên chữ cái hay ô ghi âm thì nghe đúng cách đọc đó.
+            yield return LoadMainWithProfile();
+            AppRoot.Instance.ShowParent();
+            yield return null;
+            var p = Object.FindAnyObjectByType<ParentScreen>();
+            p.SimulateUnlock();
+            yield return null;
+            UnityEngine.UI.Button ButtonFor(string text) => p.GetComponentsInChildren<UnityEngine.UI.Button>(false)
+                .FirstOrDefault(b => b.GetComponentInChildren<TMPro.TMP_Text>(true)?.text == text);
+            Press(ButtonFor(UiText.BookAppendix));
+            yield return null;
+            foreach (var (cell, audio) in new[] { ("ét-sì", "tenchu_s"), ("sờ", "am_s"), ("giê", "tenchu_g"), ("giờ", "ghiam_gi") })
+            {
+                var button = ButtonFor(cell);
+                Assert.IsNotNull(button, $"Ô '{cell}' không bấm được");
+                Press(button);
+                yield return null;
+                Assert.AreEqual(audio, AppRoot.Instance.Speech.History.Last(), cell);
+            }
+            Assert.IsNull(ButtonFor("Tên chữ cái"), "Ô tiêu đề cột không phải nút");
+        }
+
+        [UnityTest]
         public IEnumerator Parent_AppendixShowsBookPages()
         {
             // Mục "Chú ý và Phụ lục": chép đúng tr.120–122 và các điểm app làm khác sách, cuộn được, vừa màn.

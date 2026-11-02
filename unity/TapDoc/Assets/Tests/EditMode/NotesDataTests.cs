@@ -51,6 +51,25 @@ namespace TapDoc.Tests
         }
 
         [Test]
+        public void LetterAudio_FindsEveryReadingOfTheBookTables()
+        {
+            // Mỗi ô "Tên chữ cái"/"Ghi âm" của Phụ lục có file âm thanh lấy từ bước giới thiệu chữ của các bài.
+            var audio = LetterAudio.FromLessons(LessonRepository.LoadIndex().lessons.Select(e => LessonRepository.Load(e.lesson_id)));
+            Assert.AreEqual("tenchu_g", audio.Of("g", LetterAudio.LetterName));
+            Assert.AreEqual("ghiam_g", audio.Of("g", LetterAudio.Sound));
+            Assert.AreEqual("am_k", audio.Of("k", LetterAudio.LetterName));
+            Assert.AreEqual("am_b", audio.Of("b", LetterAudio.Sound));
+            Assert.AreEqual("am_ch", audio.Of("ch", LetterAudio.Sound));
+            Assert.IsNull(audio.Of("iê", LetterAudio.Sound));
+            var a = AppendixData.Load("tv1_t1_1990");
+            foreach (var row in a.alphabet.rows)
+            {
+                Assert.IsNotNull(audio.Of(row.lower, LetterAudio.LetterName), row.lower);
+                Assert.IsNotNull(audio.Of(row.lower, LetterAudio.Sound), row.lower);
+            }
+        }
+
+        [Test]
         public void Lesson_WithoutNotes_HasEmptyList()
         {
             var b13 = LessonRepository.Load("tv1_t1_b13");

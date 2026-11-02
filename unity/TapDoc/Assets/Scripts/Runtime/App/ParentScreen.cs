@@ -188,8 +188,10 @@ namespace TapDoc
             if (_appendixPanel == null)
             {
                 // Mọi bài trong danh sách thuộc cùng một quyển sách: Phụ lục lấy theo mã sách đó.
-                var book = LessonRepository.LoadIndex().lessons.First().book;
-                _appendixPanel = NotesPanel.ForAppendix(transform, AppendixData.Load(book));
+                var lessons = LessonRepository.LoadIndex().lessons;
+                var audio = LetterAudio.FromLessons(lessons.Select(e => LessonRepository.Load(e.lesson_id)));
+                _appendixPanel = NotesPanel.ForAppendix(transform, AppendixData.Load(lessons.First().book), audio,
+                    id => _ = _app.Speech.PlayAsync(id));
             }
             _appendixPanel.transform.SetAsLastSibling();
             _appendixPanel.SetActive(true);

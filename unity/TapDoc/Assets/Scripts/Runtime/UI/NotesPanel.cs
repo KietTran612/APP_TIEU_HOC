@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -13,6 +14,7 @@ namespace TapDoc
     public sealed class NotesPanel
     {
         private static readonly Color Background = new(0.965f, 0.933f, 0.863f, 1f);
+        private static readonly Color TapCell = new(1f, 1f, 1f, 0.6f);
 
         public GameObject Root { get; }
         private readonly RectTransform _content;
@@ -81,20 +83,37 @@ namespace TapDoc
             if (heading) label.fontStyle = FontStyles.Bold;
         }
 
-        public void AddRow(IEnumerable<string> cells)
+        public void AddRow(IEnumerable<string> cells) => AddRow(cells.Select(c => (c, (Action)null)));
+
+        /// <summary>Một hàng bảng; ô có <c>onTap</c> là nút (hàng cao bằng vùng chạm tối thiểu), chạm thì gọi <c>onTap</c>.</summary>
+        public void AddRow(IEnumerable<(string text, Action onTap)> cells)
         {
+            var list = cells.ToList();
             var row = new GameObject("TableRow", typeof(RectTransform), typeof(HorizontalLayoutGroup), typeof(LayoutElement));
             row.transform.SetParent(_content, false);
-            row.GetComponent<LayoutElement>().preferredHeight = 110f;
+            row.GetComponent<LayoutElement>().preferredHeight = list.Any(c => c.onTap != null) ? UiKit.MinTouch : 110f;
             var layout = row.GetComponent<HorizontalLayoutGroup>();
             layout.spacing = 12f;
             layout.childControlWidth = layout.childControlHeight = true;
             layout.childForceExpandWidth = layout.childForceExpandHeight = true;
-            foreach (var cell in cells)
+            foreach (var (text, onTap) in list)
             {
-                var label = UiKit.CreateLabel(row.transform, cell, 36f);
+                // Ô bấm được là một khung nền nhạt (để phụ huynh thấy chạm được) chứa nhãn; ô thường chỉ là nhãn.
+                Transform cell = row.transform;
+                if (onTap != null)
+                {
+                    var go = new GameObject("TableCell", typeof(RectTransform), typeof(Image), typeof(Button));
+                    go.transform.SetParent(row.transform, false);
+                    var hit = go.GetComponent<Image>();
+                    hit.sprite = UiKit.WhiteSprite;
+                    hit.color = TapCell;
+                    go.GetComponent<Button>().onClick.AddListener(() => onTap());
+                    cell = go.transform;
+                }
+                var label = UiKit.CreateLabel(cell, text, 36f);
                 label.richText = false;
-                var size = label.gameObject.AddComponent<LayoutElement>();
+                if (onTap != null) Stretch(label.rectTransform, Vector2.zero, Vector2.zero);
+                var size = (onTap != null ? cell.gameObject : label.gameObject).AddComponent<LayoutElement>();
                 size.minWidth = 0f;
                 size.preferredWidth = 0f;
                 size.flexibleWidth = 1f;
@@ -119,8 +138,18 @@ namespace TapDoc
             return panel.Root;
         }
 
-        public static GameObject ForAppendix(Transform parent, Appendix appendix)
+        /// <summary>
+        /// Mục "Chú ý và Phụ lục". Ô "Tên chữ cái", "Ghi âm" (tr.120) và "Đọc là" (tr.121) có âm thanh trong
+        /// <paramref name="audio"/> thì chạm vào sẽ <paramref name="play"/> đúng cách đọc đó.
+        /// </summary>
+        public static GameObject ForAppendix(Transform parent, Appendix appendix, LetterAudio audio, Action<string> play)
         {
+            (string, Action) Cell(string text, string letter, string kind)
+            {
+                var id = audio?.Of(letter, kind);
+                return (text, id == null || play == null ? null : () => play(id));
+            }
+
             var panel = new NotesPanel(parent, UiText.BookAppendix);
             panel.AddText(appendix.title, true);
             panel.AddText(string.Format(UiText.PageFormat, appendix.chu_y.title, appendix.chu_y.page), true);
@@ -130,14 +159,18 @@ namespace TapDoc
             foreach (var row in appendix.alphabet.rows)
             {
                 if (row == null) continue;
-                panel.AddRow(new[] { row.no.ToString(), row.lower, row.upper, row.name, row.sound });
+                panel.AddRow(new[]
+                {
+                    (row.no.ToString(), null), (row.lower, null), (row.upper, null),
+                    Cell(row.name, row.lower, LetterAudio.LetterName), Cell(row.sound, row.lower, LetterAudio.Sound)
+                });
             }
             panel.AddText(string.Format(UiText.PageFormat, appendix.digraphs.title, appendix.digraphs.page), true);
             panel.AddRow(appendix.digraphs.columns);
             foreach (var row in appendix.digraphs.rows)
             {
                 if (row == null) continue;
-                panel.AddRow(new[] { row.letters, row.reading });
+                panel.AddRow(new[] { (row.letters, null), Cell(row.reading, row.letters, LetterAudio.Sound) });
             }
             panel.AddText(UiText.NoteKindApp, true);
             foreach (var note in appendix.app_notes) panel.AddText(note);
