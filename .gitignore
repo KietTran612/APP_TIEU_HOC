@@ -35,3 +35,10 @@ content/tts/prev/
 
 # Gói media đóng ra để đưa lên Google Drive (run_unity_media.py)
 dist/
+
+# Tranh và âm thanh bài học (cùng .meta, giữ GUID) nằm trong gói media trên Google Drive, không trong git.
+# Đóng gói và nhập gói: tools/run_unity_media.py (xem SETUP-MAY-MOI.md).
+unity/TapDoc/Assets/Content/Resources/images/
+unity/TapDoc/Assets/Content/Resources/images.meta
+unity/TapDoc/Assets/Content/Resources/audio/
+unity/TapDoc/Assets/Content/Resources/audio.meta
