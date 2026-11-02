@@ -1,4 +1,4 @@
-# Ghi chú tiếp tục — TV1 Tập 1 (cập nhật 30/10/2026, chiều)
+# Ghi chú tiếp tục — TV1 Tập 1 (cập nhật 2/11/2026)
 
 Đọc file này trước khi làm tiếp. Kế hoạch gốc: [2026-10-29-hoan-thanh-tv1-tap-1.md](../plans/2026-10-29-hoan-thanh-tv1-tap-1.md); giọng đọc: mục 17 của [bản thiết kế](../specs/2026-10-28-app-tap-doc-mvp-design.md).
 
@@ -33,6 +33,15 @@ Giao diện và hiệu ứng (30/10): đang thảo luận với chủ dự án �
 **Âm "tô" (`tieng_too`) — đã sửa:** FMOD của Unity không nhập được file vì khung MP3 đầu của file đã cắt mượn dữ liệu (bit reservoir) của khung đã bị bỏ. `trim_mp3` giờ lùi điểm bắt đầu tới khung không mượn dữ liệu. Review độc lập (30/10 chiều) chỉ ra 1.236 file khác cùng lỗi: đã tạo lại hết với đúng thông số cũ (`269ebde`, không đụng `content/tts/prev`), test `ShippedAudioTest` kiểm mọi file. Giọng đọc edge-tts chỉ có khung 0 là không mượn dữ liệu, nên bước cắt giờ giữ nguyên phần lặng đầu (khoảng 1–2 khung), chỉ cắt phần lặng cuối.
 
 **Review độc lập phần ghi chú cho phụ huynh (30/10 chiều):** không có lỗi nghiêm trọng. Đã sửa: âm thanh (ở trên), mở khung Ghi chú thì dừng giọng đọc (`6e503b8`). **Chờ chủ dự án quyết:** nút "Ghi chú" đang nằm ngay màn bài của bé, chữ không có biểu tượng; bé chạm vào sẽ gặp trang chữ. Có thể giữ nguyên, hoặc chỉ hiện ghi chú sau khoá phụ huynh. Lỗi nhỏ để sau: nút Ghi chú sát dãy chấm tiến độ ở màn 4:3; nút Phụ lục im lặng khi thiếu dữ liệu và chỉ theo một quyển; tên âm và số trang trong `lesson_notes.py` ghi cứng (nên lấy từ dữ liệu Phụ lục); test mp3trim chưa có mẫu MPEG-1 và CRC; chưa có test khung ghi chú chặn chạm xuống bài; loại ghi chú lạ bị bỏ qua; lượt Phần 2 tự chuyển có thể đóng khung đang mở; màu nền khung trùng `Palette.Paper`.
+
+## 1c. XONG — các cách đọc của chữ (2/11/2026)
+
+Chủ dự án yêu cầu: chữ nào có nhiều cách đọc thì mỗi cách một file âm thanh, trong bài có nút phát từng cách, ghi rõ cách nào để phân biệt chữ, cách nào là âm chuẩn, và giải thích ở Ghi chú. Đã đối chiếu scan tr.120–121: dữ liệu Phụ lục khớp từng ô.
+- Ba cách đọc: **đọc khi học** (mục Chú ý tr.122, để phân biệt chữ: gờ đơn, gờ kép, ca, cu, di, i ngắn, i dài, ngờ đơn, ngờ kép), **âm chuẩn** (cột Ghi âm tr.120 / Đọc là tr.121), **tên chữ cái** (cột Tên chữ cái tr.120). Cách đọc trùng chữ dùng chung một file.
+- `tools/tapdoc/readings.py` lấy các cách đọc từ `Resources/appendix/tv1_t1_1990.json`; bước `unit` có `readings` khi chữ có nhiều cách đọc (19 bài: 2, 5, 10, 12, 14, 15, 16, 18–21, 23–26, 28, 29, 35, 36). Ghi chú "Cách đọc theo sách" giải thích cho mọi chữ đó.
+- 24 file mới (chờ duyệt): `ghiam_<chữ>` (g, gh, gi, i, k, ng, ngh, q, y) và `tenchu_<chữ>` (b, c, d, dd, g, h, l, m, n, p, r, s, t, v, x). `tenchu_t` có cách đọc "Tê" vì edge-tts không trả âm thanh cho "tê" ở tốc độ -30.
+- Unity: thẻ chữ nhỏ lại, dưới thẻ có nút cho mỗi cách đọc và nút "Vì sao?" mở Ghi chú; bảng chữ cái ở mục Phụ lục (màn Phụ huynh) chạm ô nào nghe ô đó.
+- Commit: `980255b` (công cụ), `1f20cf7` (dữ liệu, âm thanh), `a3351d3` (nút trong bài), `cd068af` (Phụ lục phát âm). Chỉ chạy unit test của tính năng; chưa chạy test all.
 
 ## 2. XONG — 6 tranh còn thiếu (vẽ bằng ChatGPT chiều 30/10; giữ lại các bước để lần sau vẽ tranh mới)
 
