@@ -18,7 +18,7 @@ namespace TapDoc.Tests
             s.MarkCompleted(Ordered()[0]);
             s.RecordMistake("tv1_t1_b13", 0);
             AppRoot.Instance.ShowParent();
-            yield return null;
+            yield return WaitPrepared();
             var p = Object.FindAnyObjectByType<ParentScreen>();
             p.SimulateUnlock();
             yield return null;
@@ -33,7 +33,7 @@ namespace TapDoc.Tests
             yield return LoadMainWithProfile();
             AppRoot.Instance.Progress.RecordMistake("tv1_t1_b04", 3);
             AppRoot.Instance.ShowParent();
-            yield return null;
+            yield return WaitPrepared();
             var p = Object.FindAnyObjectByType<ParentScreen>();
             p.SimulateUnlock();
             yield return null;
@@ -46,7 +46,7 @@ namespace TapDoc.Tests
         {
             yield return LoadMainWithProfile();
             AppRoot.Instance.ShowParent();
-            yield return null;
+            yield return WaitPrepared();
             var p = Object.FindAnyObjectByType<ParentScreen>();
             var question = p.Gate.Question;
             var wrong = p.ChoiceButtons.First(b => b.GetComponentInChildren<TMPro.TMP_Text>().text != p.Gate.Expected.ToString());
@@ -62,7 +62,7 @@ namespace TapDoc.Tests
         {
             yield return LoadMainWithProfile();
             Press(Object.FindAnyObjectByType<LessonListScreen>().ParentButton);
-            yield return null;
+            yield return WaitPrepared();
             var p = Object.FindAnyObjectByType<ParentScreen>();
             Assert.IsNotNull(p, "Nút Phụ huynh không mở màn phụ huynh");
             Assert.IsFalse(p.IsUnlocked);
@@ -79,7 +79,7 @@ namespace TapDoc.Tests
             s.MarkCompleted(Ordered()[0]);
             s.CreateProfile("Na", ProfileScreen.Avatars[1]);
             AppRoot.Instance.ShowParent();
-            yield return null;
+            yield return WaitPrepared();
             var p = Object.FindAnyObjectByType<ParentScreen>();
             p.SimulateUnlock();
             yield return null;
@@ -96,7 +96,7 @@ namespace TapDoc.Tests
             // Bảng chữ cái tr.120 và bảng chữ ghép tr.121: chạm ô tên chữ cái hay ô ghi âm thì nghe đúng cách đọc đó.
             yield return LoadMainWithProfile();
             AppRoot.Instance.ShowParent();
-            yield return null;
+            yield return WaitPrepared();
             var p = Object.FindAnyObjectByType<ParentScreen>();
             p.SimulateUnlock();
             yield return null;
@@ -125,7 +125,7 @@ namespace TapDoc.Tests
                 var rt = new RenderTexture(size.x, size.y, 24);
                 AppRoot.Instance.UiCamera.targetTexture = rt;
                 AppRoot.Instance.ShowParent();
-                yield return null;
+                yield return WaitPrepared();
                 var p = Object.FindAnyObjectByType<ParentScreen>();
                 p.SimulateUnlock();
                 yield return null;
@@ -163,7 +163,7 @@ namespace TapDoc.Tests
                 var dir = $"TestOutput/screens/{size.x}x{size.y}";
 
                 AppRoot.Instance.ShowParent();
-                yield return null;
+                yield return WaitPrepared();
                 ScreenProbe.Save(AppRoot.Instance.UiCamera, $"{dir}/app_parent_gate.png");
                 LayoutProbe.AssertFits(AppRoot.Instance.Canvas);
 
@@ -182,7 +182,7 @@ namespace TapDoc.Tests
         {
             yield return LoadMainWithProfile();
             AppRoot.Instance.ShowParent();
-            yield return null;
+            yield return WaitPrepared();
             var p = Object.FindAnyObjectByType<ParentScreen>();
             p.SimulateUnlock();
             yield return null;
@@ -203,7 +203,7 @@ namespace TapDoc.Tests
         {
             yield return LoadMainWithProfile();
             AppRoot.Instance.ShowParent();
-            yield return null;
+            yield return WaitPrepared();
             var p = Object.FindAnyObjectByType<ParentScreen>();
             Assert.IsNull(p.GetComponentInChildren<Mascot>(true), "Khoá phụ huynh không có gà con");
             p.SimulateUnlock();

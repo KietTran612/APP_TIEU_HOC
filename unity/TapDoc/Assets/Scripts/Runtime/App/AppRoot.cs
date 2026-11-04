@@ -229,12 +229,13 @@ namespace TapDoc
         /// <summary>Mở bài: màn chuyển hiện, nạp bài cùng tranh, âm thanh của bài, nạp xong mới hiện màn bài.</summary>
         public void ShowLesson(string lessonId)
         {
-            _ = OpenLessonAsync(null, async () => (await Lessons.LoadAsync(lessonId), null), lessonId);
+            _ = PrepareAndShowAsync(async () => await PrepareLessonAsync(await Lessons.LoadAsync(lessonId), null), "bài " + lessonId);
         }
 
+        /// <summary>Như <see cref="ShowLesson(string)"/> với bài đã có sẵn (không cần nạp chữ).</summary>
         public void ShowLesson(Lesson lesson)
         {
-            _ = OpenLessonAsync(lesson, null, lesson?.lesson_id);
+            _ = PrepareAndShowAsync(() => PrepareLessonAsync(lesson, null), "bài " + lesson?.lesson_id);
         }
 
         /// <summary>
@@ -243,11 +244,30 @@ namespace TapDoc
         /// </summary>
         public void ShowReview()
         {
-            InitIfNeeded();
-            _ = OpenLessonAsync(null, LoadReviewAsync, ReviewSession.LessonId);
+            _ = PrepareAndShowAsync(PrepareReviewAsync, "phiên ôn lại");
         }
 
-        private async Awaitable<(Lesson, ReviewSession)> LoadReviewAsync()
+        /// <summary>
+        /// Màn phụ huynh: khóa phép tính trước, mở khóa xong mới xem tiến độ và chữ hay nhầm của từng bé. Chuẩn bị chữ
+        /// của mọi bài (Phụ lục và chữ hay nhầm cần); âm thanh chỉ nạp khi phụ huynh chạm vào, tính vào bộ của màn.
+        /// </summary>
+        public void ShowParent()
+        {
+            _ = PrepareAndShowAsync(async () =>
+            {
+                await Lessons.LoadAllAsync();
+                var set = await Assets.PrepareAsync(Enumerable.Empty<(ContentKind, string)>());
+                return (set, () => Present<ParentScreen>().Build(this));
+            }, "màn phụ huynh");
+        }
+
+        private async Awaitable<(ContentSet, Action)> PrepareLessonAsync(Lesson lesson, ReviewSession session)
+        {
+            var set = await Assets.PrepareAsync(LessonAssets.ContentIds(lesson));
+            return (set, () => Present<LessonScreen>().Build(this, lesson, session));
+        }
+
+        private async Awaitable<(ContentSet, Action)> PrepareReviewAsync()
         {
             // Nạp trước các bài có lượt cần ôn; bài hỏng hay không còn thì ReviewSession bỏ lượt đó.
             foreach (var lessonId in Progress.Mistakes(int.MaxValue).Select(m => m.lesson_id).Distinct().ToList())
@@ -262,54 +282,43 @@ namespace TapDoc
             }
             var session = ReviewSession.Build(Progress, Lessons.Get);
             SaveProgress();
-            return session.Lesson.part2.Count == 0 ? (null, null) : (session.Lesson, session);
+            if (session.Lesson.part2.Count == 0) return (null, ShowLessonList);
+            return await PrepareLessonAsync(session.Lesson, session);
         }
 
         /// <summary>
-        /// Luồng chung của mở bài và ôn lại. Nạp lỗi (file bài thiếu hay hỏng) thì ở lại màn đang hiện, giữ bộ cũ.
-        /// Bộ cũ chỉ được nhả sau khi bộ mới đã nạp xong, để những gì hai bài dùng chung không bị nhả rồi nạp lại.
+        /// Luồng chung của các màn cần chuẩn bị (bài, ôn lại, phụ huynh): hiện màn chuyển, chạy
+        /// <paramref name="prepare"/> (trả bộ đã giữ và hàm dựng màn), dựng màn rồi giữ bộ mới. Bộ cũ chỉ được nhả sau
+        /// khi bộ mới đã nạp xong, để những gì hai bài dùng chung không bị nhả rồi nạp lại. Nạp lỗi (file bài thiếu
+        /// hay hỏng) thì ở lại màn đang hiện, giữ bộ cũ. Đang chuẩn bị thì bỏ qua lời gọi mới.
         /// </summary>
-        /// <param name="known">Bài đã có sẵn (không cần nạp); <c>null</c> thì lấy bài qua <paramref name="load"/>.</param>
-        private async Awaitable OpenLessonAsync(Lesson known, Func<Awaitable<(Lesson, ReviewSession)>> load, string what)
+        private async Awaitable PrepareAndShowAsync(Func<Awaitable<(ContentSet set, Action show)>> prepare, string what)
         {
             InitIfNeeded();
             if (IsPreparing) return;
             IsPreparing = true;
             Curtain.Show();
 
-            Lesson lesson;
-            ReviewSession session;
-            ContentSet set = null;
+            (ContentSet set, Action show) prepared;
             try
             {
-                (lesson, session) = known != null ? (known, null) : await load();
-                if (this == null) return;
-                if (lesson != null)
-                {
-                    set = await Assets.PrepareAsync(LessonAssets.ContentIds(lesson));
-                    if (this == null)
-                    {
-                        set.Dispose();
-                        return;
-                    }
-                }
+                prepared = await prepare();
             }
             catch (InvalidDataException ex)
             {
                 if (this == null) return;
-                Debug.LogError($"[TapDoc] Không mở được bài {what}: {ex.Message}");
+                Debug.LogError($"[TapDoc] Không mở được {what}: {ex.Message}");
                 await EndPreparingAsync();
+                return;
+            }
+            if (this == null)
+            {
+                prepared.set?.Dispose();
                 return;
             }
 
-            if (lesson == null)
-            {
-                await EndPreparingAsync();
-                if (this != null) ShowLessonList(); // không còn lượt nào để ôn
-                return;
-            }
-            Present<LessonScreen>().Build(this, lesson, session);
-            HoldSet(set);
+            prepared.show();
+            if (prepared.set != null) HoldSet(prepared.set);
             await EndPreparingAsync();
         }
 
@@ -349,14 +358,6 @@ namespace TapDoc
                 return;
             }
             Present<BookScreen>().Build(this);
-        }
-
-        /// <summary>Màn phụ huynh: khóa phép tính trước, mở khóa xong mới xem tiến độ và chữ hay nhầm của từng bé.</summary>
-        public void ShowParent()
-        {
-            InitIfNeeded();
-            ReleaseCurrentSet();
-            Present<ParentScreen>().Build(this);
         }
 
         /// <summary>

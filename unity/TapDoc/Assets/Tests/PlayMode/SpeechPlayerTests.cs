@@ -41,6 +41,28 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator Play_UnheldId_InterruptedDuringLoad_ReturnsFalse()
+        {
+            if (Object.FindAnyObjectByType<AudioListener>() == null)
+            {
+                _created.Add(new GameObject("TestAudioListener", typeof(AudioListener)));
+            }
+            var source = TestCatalog.Source(id => AudioClip.Create(id, 4410, 1, 44100, false));
+            source.DelayFrames = 3;
+            var go = new GameObject("TestSpeechPlayer");
+            _created.Add(go);
+            var sp = go.AddComponent<SpeechPlayer>();
+            sp.Init(new AssetCatalog(source));
+
+            var task = sp.PlayAsync("x");
+            yield return null;
+            sp.Stop();
+            yield return new WaitUntil(() => task.GetAwaiter().IsCompleted);
+            Assert.IsFalse(task.GetAwaiter().GetResult(), "Bị dừng trong lúc nạp mà vẫn báo phát xong");
+            Assert.IsFalse(go.GetComponent<AudioSource>().isPlaying, "Bị dừng trong lúc nạp mà vẫn phát");
+        }
+
+        [UnityTest]
         public IEnumerator PlaySequence_CallsOnPartInOrder()
         {
             var sp = Speech();

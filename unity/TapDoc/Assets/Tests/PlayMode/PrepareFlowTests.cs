@@ -232,6 +232,50 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator Parent_PreparesLessonTexts_ReadsOnce()
+        {
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            app.ShowParent();
+            Assert.IsTrue(app.IsPreparing);
+            yield return WaitPrepared();
+            Assert.IsNotNull(Object.FindAnyObjectByType<ParentScreen>());
+            app.ShowLessonList();
+            yield return null;
+            app.ShowParent();
+            yield return WaitPrepared();
+            Assert.AreEqual(1, _source.LoadCount(ContentKind.Lesson, "tv1_t1_b01"));
+            Assert.AreEqual(1, _source.LoadCount(ContentKind.Lesson, "tv1_t1_b80"));
+        }
+
+        [UnityTest]
+        public IEnumerator Parent_AppendixTap_LoadsAudioWithoutWarning_ReleasedOnLeave()
+        {
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            app.ShowParent();
+            yield return WaitPrepared();
+            var p = Object.FindAnyObjectByType<ParentScreen>();
+            p.SimulateUnlock();
+            yield return null;
+            Press(ButtonUnder(p, UiText.BookAppendix));
+            yield return null;
+            Press(ButtonUnder(p, "sờ"));
+            for (var i = 0; i < 10; i++) yield return null;
+            Assert.AreEqual("am_s", app.Speech.History.Last());
+            LogAssert.NoUnexpectedReceived();
+
+            app.ShowLessonList();
+            yield return null;
+            Assert.AreEqual(1, _source.LoadCount(ContentKind.Speech, "am_s"));
+            Assert.AreEqual(1, _source.ReleaseCount(ContentKind.Speech, "am_s"), "Âm thanh nạp lẻ ở màn Phụ huynh chưa được nhả");
+        }
+
+        private static Button ButtonUnder(Component root, string text) =>
+            root.GetComponentsInChildren<Button>(false)
+                .FirstOrDefault(b => b.GetComponentInChildren<TMPro.TMP_Text>(true)?.text == text);
+
+        [UnityTest]
         public IEnumerator Review_PreparesRoundsFromSeveralLessons()
         {
             yield return LoadMainWithProfile(unlockAll: true);
