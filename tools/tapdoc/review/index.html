@@ -193,6 +193,14 @@
     .playing { background: #dbeafe; }
     .actions { flex-wrap: wrap; }
     .table-wrap { overflow-x: auto; }
+    #bylesson-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    #bylesson-select { font-size: 16px; padding: 4px; max-width: 420px; }
+    .media-kind { font-weight: 600; white-space: nowrap; }
+    .media-kind.kind-audio { color: #1d4ed8; }
+    .media-kind.kind-images { color: #047857; }
+    .media-kind.kind-videos { color: #7c3aed; }
+    .desc { min-width: 220px; max-width: 320px; }
+    .read-as { color: #4b5563; font-size: 13px; margin-top: 2px; }
   </style>
 </head>
 <body>
@@ -200,7 +208,8 @@
 
   <div class="toolbar">
     <div class="tabs">
-      <button type="button" id="tab-audio" class="tab-btn active">Âm thanh</button>
+      <button type="button" id="tab-bylesson" class="tab-btn active">Duyệt theo bài</button>
+      <button type="button" id="tab-audio" class="tab-btn">Âm thanh</button>
       <button type="button" id="tab-images" class="tab-btn">Tranh</button>
       <button type="button" id="tab-videos" class="tab-btn">Tranh động</button>
       <button type="button" id="tab-lesson" class="tab-btn">Nghe theo bài</button>
@@ -259,6 +268,12 @@
     <span id="tts-job" role="status"></span>
     <div id="tts-errors" role="alert"></div>
   </section>
+  <section id="bylesson-bar" class="tts-panel">
+    <button type="button" id="bylesson-prev" class="btn">‹ Bài trước</button>
+    <select id="bylesson-select" aria-label="Bài cần duyệt"></select>
+    <button type="button" id="bylesson-next" class="btn">Bài sau ›</button>
+    <span class="read-as">Âm thanh, tranh và tranh động xếp theo đúng thứ tự bé gặp trong bài.</span>
+  </section>
   <section id="lesson-panel" class="tts-panel" hidden>
     <label>Chọn bài: <select id="lesson-select"></select></label>
     <button type="button" id="lesson-stop" class="btn">Dừng nghe</button>
@@ -279,7 +294,9 @@
 
   <script>
     (function () {
-      let currentTab = "audio";
+      let currentTab = "bylesson";
+      const lessonItems = new Map();
+      let byLessonRequest = 0;
       let state = { audio: [], images: [], videos: [] };
       const rowElements = new Map();
       let ttsAvailable = false;
@@ -487,47 +504,46 @@
         if (event.key === "Escape") hideBaiPopup();
       });
 
+      const MEDIA_LABELS = { audio: "Âm thanh", images: "Tranh", videos: "Tranh động" };
+
+      function setTabActive() {
+        for (const [tab, btn] of [["bylesson", byId("tab-bylesson")], ["audio", tabAudioBtn], ["images", tabImagesBtn],
+                                  ["videos", tabVideosBtn], ["lesson", byId("tab-lesson")]]) {
+          btn.classList.toggle("active", currentTab === tab);
+        }
+      }
+
       function render() {
         stopPlayback();
+        setTabActive();
         const isLesson = currentTab === "lesson";
+        const byLesson = currentTab === "bylesson";
         byId("lesson-panel").hidden = !isLesson;
+        byId("bylesson-bar").hidden = !byLesson;
         byId("review-table").hidden = isLesson;
         byId("tts-defaults").hidden = currentTab !== "audio";
         byId("tts-filters").hidden = currentTab !== "audio";
-        byId("tab-lesson").classList.toggle("active", isLesson);
         filterStatus.parentElement.hidden = isLesson;
-        filterBai.parentElement.hidden = isLesson;
-        byId("search-wrap").hidden = isLesson;
-        byId("pager-top-wrap").hidden = isLesson;
-        byId("pager-bottom").hidden = isLesson;
+        filterBai.parentElement.hidden = isLesson || byLesson;
+        byId("search-wrap").hidden = isLesson || byLesson;
+        byId("pager-top-wrap").hidden = isLesson || byLesson;
+        byId("pager-bottom").hidden = isLesson || byLesson;
+        carefulWrap.style.display = currentTab === "audio" ? "flex" : "none";
+        byId("crop-wrap").style.display = currentTab === "videos" || byLesson ? "flex" : "none";
         if (isLesson) {
-          tabAudioBtn.classList.remove("active");
-          tabImagesBtn.classList.remove("active");
-          tabVideosBtn.classList.remove("active");
-          carefulWrap.style.display = "none";
-          byId("crop-wrap").style.display = "none";
           summaryText.textContent = "Nghe từng mảnh, nghỉ 0,5 giây giữa các mảnh";
           return;
         }
-        carefulWrap.style.display = currentTab === "audio" ? "flex" : "none";
-        tabAudioBtn.classList.toggle("active", currentTab === "audio");
-        tabImagesBtn.classList.toggle("active", currentTab === "images");
-        tabVideosBtn.classList.toggle("active", currentTab === "videos");
-        byId("crop-wrap").style.display = currentTab === "videos" ? "flex" : "none";
+        if (byLesson) {
+          renderByLesson();
+          return;
+        }
 
-        tableHead.textContent = "";
-        const headRow = document.createElement("tr");
-        const headers = currentTab === "audio"
+        setHeaders(currentTab === "audio"
           ? ["Mã", "Hiển thị", "Lời đọc", "Loại", "Bài", "Nghe thử", "Trạng thái", "Duyệt", "Ghi chú", "Chỉnh giọng đọc"]
           : currentTab === "videos"
             ? ["Mã", "Mô tả", "Bài", "Tranh gốc và clip (bấm phát để nghe)", "Trạng thái", "Duyệt", "Ghi chú"]
-            : ["Mã", "Mô tả", "Bài", "Ảnh (160 px)", "Trạng thái", "Duyệt", "Ghi chú"];
-        for (const h of headers) {
-          const th = document.createElement("th");
-          th.textContent = h;
-          headRow.appendChild(th);
-        }
-        tableHead.appendChild(headRow);
+            : ["Mã", "Mô tả", "Bài", "Ảnh (160 px)", "Trạng thái", "Duyệt", "Ghi chú"]);
 
         const rows = filteredRows();
         const total = listFor(currentTab).length;
@@ -547,64 +563,143 @@
         tableBody.textContent = "";
         rowElements.clear();
         for (const row of rows.slice((currentPage - 1) * pageSize, currentPage * pageSize)) {
-          const tr = document.createElement("tr");
-          if (currentTab === "audio") tr.className = "tts-row";
+          tableBody.appendChild(buildRow(row, currentTab, false));
+        }
+      }
 
-          const tdId = document.createElement("td");
-          tdId.className = "code-id";
-          tdId.textContent = row.id;
-          tr.appendChild(tdId);
+      function setHeaders(headers) {
+        tableHead.textContent = "";
+        const headRow = document.createElement("tr");
+        for (const h of headers) {
+          const th = document.createElement("th");
+          th.textContent = h;
+          headRow.appendChild(th);
+        }
+        tableHead.appendChild(headRow);
+      }
 
-          if (currentTab === "audio") {
+      // Một bài: âm thanh, tranh và clip xếp chung theo thứ tự bé gặp trong bài (máy chủ tính từ file bài).
+      async function renderByLesson() {
+        const request = ++byLessonRequest;
+        const lessonId = byId("bylesson-select").value;
+        setHeaders(["Loại", "Mã", "Nội dung", "Nghe / xem", "Trạng thái", "Duyệt", "Ghi chú", "Chỉnh giọng đọc"]);
+        tableBody.textContent = "";
+        rowElements.clear();
+        if (!lessonId) {
+          summaryText.textContent = "Chưa có danh sách bài";
+          return;
+        }
+        let items = lessonItems.get(lessonId);
+        if (!items) {
+          summaryText.textContent = "Đang đọc bài...";
+          try {
+            items = await api("/api/lesson-media/" + encodeURIComponent(lessonId));
+          } catch (error) {
+            if (request === byLessonRequest) summaryText.textContent = error.message;
+            return;
+          }
+          lessonItems.set(lessonId, items);
+        }
+        if (request !== byLessonRequest || currentTab !== "bylesson") return;
+        const st = filterStatus.value;
+        const counts = { audio: 0, images: 0, videos: 0 };
+        let waiting = 0;
+        let shown = 0;
+        for (const item of items) {
+          const row = listFor(item.manifest).find(r => r.id === item.id);
+          if (!row) continue;
+          counts[item.manifest]++;
+          if (row.status !== "dat") waiting++;
+          if (st && row.status !== st) continue;
+          tableBody.appendChild(buildRow(row, item.manifest, true));
+          shown++;
+        }
+        summaryText.textContent = counts.audio + " âm thanh, " + counts.images + " tranh, " + counts.videos
+          + " tranh động; " + waiting + " mục chưa đạt" + (st ? "; đang hiện " + shown : "");
+      }
+
+      function stepLesson(delta) {
+        const select = byId("bylesson-select");
+        const index = select.selectedIndex + delta;
+        if (index < 0 || index >= select.options.length) return;
+        select.selectedIndex = index;
+        rememberLesson();
+        render();
+        window.scrollTo({ top: 0 });
+      }
+
+      function rememberLesson() {
+        try { localStorage.setItem("duyet-theo-bai", byId("bylesson-select").value); } catch (error) { /* không lưu được thì thôi */ }
+      }
+
+      function buildRow(row, kind, mixed) {
+        const tr = document.createElement("tr");
+        if (kind === "audio") tr.className = "tts-row";
+        const cell = (text, className) => {
+          const td = document.createElement("td");
+          if (className) td.className = className;
+          if (text !== undefined) td.textContent = text;
+          tr.appendChild(td);
+          return td;
+        };
+
+        if (mixed) cell(MEDIA_LABELS[kind], "media-kind kind-" + kind);
+        cell(row.id, "code-id");
+
+        const carefulBadge = (td) => {
+          if (kind !== "audio" || !row.can_nghe_ky) return;
+          const badge = document.createElement("span");
+          badge.className = "badge careful-badge";
+          badge.textContent = "cần nghe kỹ";
+          td.appendChild(badge);
+        };
+        const shownList = row.hien_thi || [];
+        if (mixed) {
+          const td = cell(undefined, kind === "audio" ? "shown-text" : "desc");
+          if (kind === "audio") {
+            td.textContent = shownList.length ? shownList.join(" · ") : "—";
+            const readAs = document.createElement("div");
+            readAs.className = "read-as";
+            readAs.textContent = "đọc: " + row.text + (row.kind ? " · " + (KIND_LABELS[row.kind] || row.kind) : "");
+            td.appendChild(readAs);
+            carefulBadge(td);
+          } else {
+            td.textContent = row.mo_ta || "";
+          }
+        } else {
+          if (kind === "audio") {
             // Chữ bé nhìn thấy trong app khi mã này được đọc.
-            const tdShown = document.createElement("td");
-            tdShown.className = "shown-text";
-            const shownList = row.hien_thi || [];
+            const tdShown = cell(undefined, "shown-text");
             if (shownList.length) {
-              tdShown.textContent = shownList.join(" · ");  // không tách "d · D" sang hai dòng
+              tdShown.textContent = shownList.join(" · ");  // không tách "d · D" sang hai dòng
             } else {
               tdShown.textContent = "—";
               tdShown.classList.add("muted");
               tdShown.title = "Chỉ đọc, không hiện chữ (lời hướng dẫn, lời khen, câu hỏi chọn tranh)";
             }
-            tr.appendChild(tdShown);
           }
+          const tdText = cell(kind === "audio" ? row.text : row.mo_ta);
+          carefulBadge(tdText);
+          if (kind === "audio") cell(row.kind || "");
+          baiCell(cell(), row.bai || []);
+        }
 
-          const tdText = document.createElement("td");
-          tdText.textContent = currentTab === "audio" ? row.text : row.mo_ta;
-          if (currentTab === "audio" && row.can_nghe_ky) {
-            const cBadge = document.createElement("span");
-            cBadge.className = "badge careful-badge";
-            cBadge.textContent = "cần nghe kỹ";
-            tdText.appendChild(cBadge);
-          }
-          tr.appendChild(tdText);
-
-          if (currentTab === "audio") {
-            const tdKind = document.createElement("td");
-            tdKind.textContent = row.kind || "";
-            tr.appendChild(tdKind);
-          }
-
-          const tdBai = document.createElement("td");
-          baiCell(tdBai, row.bai || []);
-          tr.appendChild(tdBai);
-
-          const tdMedia = document.createElement("td");
-          if (currentTab === "audio") {
-            const audio = document.createElement("audio");
-            audio.controls = true;
-            audio.preload = "none";
-            audio.src = "/media/audio/" + encodeURIComponent(row.id) + ".mp3";
-            tdMedia.appendChild(audio);
-          } else if (currentTab === "videos") {
+        const tdMedia = cell();
+        if (kind === "audio") {
+          const audio = document.createElement("audio");
+          audio.controls = true;
+          audio.preload = "none";
+          audio.src = "/media/audio/" + encodeURIComponent(row.id) + ".mp3";
+          tdMedia.appendChild(audio);
+        } else {
+          const img = document.createElement("img");
+          img.className = "thumb";
+          img.alt = row.id;
+          img.loading = "lazy";
+          img.src = "/media/images/" + encodeURIComponent(row.id) + ".png";
+          if (kind === "videos") {
             const pair = document.createElement("div");
             pair.className = "clip-pair";
-            const img = document.createElement("img");
-            img.className = "thumb";
-            img.alt = row.id;
-            img.loading = "lazy";
-            img.src = "/media/images/" + encodeURIComponent(row.id) + ".png";
             const video = document.createElement("video");
             video.className = "clip" + (byId("clip-crop").checked ? "" : " full");
             video.controls = true;
@@ -616,80 +711,56 @@
             video.addEventListener("play", () => {
               for (const other of tableBody.querySelectorAll("video")) if (other !== video) other.pause();
             });
-            pair.append(img, video);
+            // Theo bài thì tranh gốc nằm ngay hàng trên, chỉ cần clip.
+            if (!mixed) pair.appendChild(img);
+            pair.appendChild(video);
             tdMedia.appendChild(pair);
           } else {
-            const img = document.createElement("img");
-            img.className = "thumb";
-            img.alt = row.id;
-            img.loading = "lazy";
-            img.src = "/media/images/" + encodeURIComponent(row.id) + ".png";
             tdMedia.appendChild(img);
           }
-          tr.appendChild(tdMedia);
-
-          const tdStatus = document.createElement("td");
-          const sBadge = document.createElement("span");
-          sBadge.className = "badge status-" + row.status;
-          sBadge.textContent = row.status;
-          tdStatus.appendChild(sBadge);
-          tr.appendChild(tdStatus);
-
-          const tdActions = document.createElement("td");
-          const actWrap = document.createElement("div");
-          actWrap.className = "actions";
-
-          const btnOk = document.createElement("button");
-          btnOk.type = "button";
-          btnOk.className = "btn btn-ok" + (row.status === "dat" ? " selected" : "");
-          btnOk.textContent = "Đạt";
-
-          const btnBad = document.createElement("button");
-          btnBad.type = "button";
-          btnBad.className = "btn btn-bad" + (row.status === "khong_dat" ? " selected" : "");
-          btnBad.textContent = "Không đạt";
-
-          const tdNote = document.createElement("td");
-          const noteInput = document.createElement("input");
-          noteInput.type = "text";
-          noteInput.className = "note-input";
-          noteInput.value = row.ghi_chu || "";
-          noteInput.placeholder = "Ghi chú...";
-
-          const manifest = currentTab;
-          btnOk.addEventListener("click", () => {
-            submitReview(manifest, row, "dat", noteInput.value);
-          });
-          btnBad.addEventListener("click", () => {
-            submitReview(manifest, row, "khong_dat", noteInput.value);
-          });
-          noteInput.addEventListener("blur", () => {
-            if (noteInput.value !== (row.ghi_chu || "")) {
-              const targetStatus = row.status === "chua_co" ? "cho_duyet" : row.status;
-              submitReview(manifest, row, targetStatus, noteInput.value);
-            }
-          });
-
-          actWrap.appendChild(btnOk);
-          actWrap.appendChild(btnBad);
-          tdActions.appendChild(actWrap);
-          tr.appendChild(tdActions);
-
-          tdNote.appendChild(noteInput);
-          tr.appendChild(tdNote);
-
-          rowElements.set(row, {
-            tr: tr,
-            tdStatus: tdStatus,
-            sBadge: sBadge,
-            btnOk: btnOk,
-            btnBad: btnBad,
-            noteInput: noteInput
-          });
-
-          if (currentTab === "audio") addTtsControls(row, tr);
-          tableBody.appendChild(tr);
         }
+
+        const tdStatus = cell();
+        const sBadge = document.createElement("span");
+        sBadge.className = "badge status-" + row.status;
+        sBadge.textContent = row.status;
+        tdStatus.appendChild(sBadge);
+
+        const tdActions = cell();
+        const actWrap = document.createElement("div");
+        actWrap.className = "actions";
+        const btnOk = document.createElement("button");
+        btnOk.type = "button";
+        btnOk.className = "btn btn-ok" + (row.status === "dat" ? " selected" : "");
+        btnOk.textContent = "Đạt";
+        const btnBad = document.createElement("button");
+        btnBad.type = "button";
+        btnBad.className = "btn btn-bad" + (row.status === "khong_dat" ? " selected" : "");
+        btnBad.textContent = "Không đạt";
+        actWrap.append(btnOk, btnBad);
+        tdActions.appendChild(actWrap);
+
+        const tdNote = cell();
+        const noteInput = document.createElement("input");
+        noteInput.type = "text";
+        noteInput.className = "note-input";
+        noteInput.value = row.ghi_chu || "";
+        noteInput.placeholder = "Ghi chú...";
+        tdNote.appendChild(noteInput);
+
+        btnOk.addEventListener("click", () => submitReview(kind, row, "dat", noteInput.value));
+        btnBad.addEventListener("click", () => submitReview(kind, row, "khong_dat", noteInput.value));
+        noteInput.addEventListener("blur", () => {
+          if (noteInput.value !== (row.ghi_chu || "")) {
+            const targetStatus = row.status === "chua_co" ? "cho_duyet" : row.status;
+            submitReview(kind, row, targetStatus, noteInput.value);
+          }
+        });
+
+        rowElements.set(row, { tr, tdStatus, sBadge, btnOk, btnBad, noteInput });
+        if (kind === "audio") addTtsControls(row, tr);
+        else if (mixed) cell();
+        return tr;
       }
 
       tabAudioBtn.addEventListener("click", () => {
@@ -1105,13 +1176,25 @@
             option.value = lesson.lesson_id;
             option.textContent = "Bài " + lesson.lesson_no + " — " + lesson.title;
             byId("lesson-select").appendChild(option);
+            byId("bylesson-select").appendChild(option.cloneNode(true));
           }
+          let remembered = "";
+          try { remembered = localStorage.getItem("duyet-theo-bai") || ""; } catch (error) { /* bỏ qua */ }
+          if (lessons.some(lesson => lesson.lesson_id === remembered)) byId("bylesson-select").value = remembered;
+          if (currentTab === "bylesson") render();
           await loadLesson();
-        } catch (error) { byId("lesson-chains").textContent = error.message; }
+        } catch (error) {
+          byId("lesson-chains").textContent = error.message;
+          summaryText.textContent = error.message;
+        }
       }
       byId("lesson-select").addEventListener("change", loadLesson);
       byId("lesson-stop").addEventListener("click", stopPlayback);
       byId("tab-lesson").addEventListener("click", () => { currentTab = "lesson"; render(); });
+      byId("tab-bylesson").addEventListener("click", () => { currentTab = "bylesson"; render(); });
+      byId("bylesson-select").addEventListener("change", () => { rememberLesson(); render(); });
+      byId("bylesson-prev").addEventListener("click", () => stepLesson(-1));
+      byId("bylesson-next").addEventListener("click", () => stepLesson(1));
 
       async function loadData() {
         try {

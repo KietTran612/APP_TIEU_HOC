@@ -61,6 +61,48 @@ def shown_in_app(lessons_dir) -> dict[str, list[str]]:
             for audio_id in main.keys() | practice.keys()}
 
 
+def lesson_media(lesson, lesson_id, audio_rows, image_rows, video_rows) -> list[dict]:
+    """Âm thanh, tranh và tranh động của một bài theo thứ tự xuất hiện trong file bài, mỗi mục một lần.
+
+    Clip đứng ngay sau tranh cùng mã. Mã không có trong danh mục bị bỏ qua; mã danh mục ghi dùng ở bài này mà
+    không thấy trong file bài thì xếp cuối (âm thanh trước, tranh sau).
+    """
+    audio_ids = {row["id"] for row in audio_rows}
+    image_ids = {row["id"] for row in image_rows}
+    video_ids = {row["id"] for row in video_rows}
+    items, seen = [], set()
+
+    def add(manifest, item_id):
+        if (manifest, item_id) not in seen:
+            seen.add((manifest, item_id))
+            items.append({"manifest": manifest, "id": item_id})
+
+    def walk(node):
+        if isinstance(node, dict):
+            for key, value in node.items():
+                if isinstance(value, str):
+                    if key.endswith("audio") and value in audio_ids:
+                        add("audio", value)
+                    elif key == "image" and value in image_ids:
+                        add("images", value)
+                        if value in video_ids:
+                            add("videos", value)
+                else:
+                    walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+
+    walk(lesson)
+    for manifest, rows in (("audio", audio_rows), ("images", image_rows)):
+        for row in rows:
+            if lesson_id in (row.get("bai") or []):
+                add(manifest, row["id"])
+                if manifest == "images" and row["id"] in video_ids:
+                    add("videos", row["id"])
+    return items
+
+
 class _ReviewHTTPServer(ThreadingHTTPServer):
     # Trên Windows SO_REUSEADDR cho máy chủ thứ hai cùng nghe cổng đang dùng mà không báo lỗi.
     allow_reuse_address = sys.platform != "win32"
@@ -215,7 +257,8 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
             self._send_json(200, {"audio": audio, "images": images, "videos": videos})
             return
 
-        if path.startswith("/api/tts") or path in ("/api/lessons", "/api/chain-notes") or path.startswith("/api/lesson/"):
+        if path.startswith("/api/tts") or path in ("/api/lessons", "/api/chain-notes") or path.startswith(
+                ("/api/lesson/", "/api/lesson-media/")):
             try:
                 with self.server.lock:
                     result = self._get_tool(path)
@@ -415,15 +458,23 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
         if path == "/api/lessons":
             index = json.loads((server.lessons_dir / "index.json").read_text(encoding="utf-8"))
             return index["lessons"]
-        if path.startswith("/api/lesson/"):
-            lesson_id = path[len("/api/lesson/"):]
+        for prefix in ("/api/lesson/", "/api/lesson-media/"):
+            if not path.startswith(prefix):
+                continue
+            lesson_id = path[len(prefix):]
             if not re.fullmatch(r"[a-z0-9_]+", lesson_id) or lesson_id == "index":
                 raise ValueError("Mã bài không hợp lệ")
             base = server.lessons_dir.resolve()
             lesson_path = (base / (lesson_id + ".json")).resolve()
             if lesson_path.parent != base:
                 raise ValueError("Đường dẫn bài không hợp lệ")
-            return json.loads(lesson_path.read_text(encoding="utf-8"))
+            lesson = json.loads(lesson_path.read_text(encoding="utf-8"))
+            if prefix == "/api/lesson/":
+                return lesson
+            manifests = server.manifests_dir
+            videos = manifests / "video_manifest.json"
+            return lesson_media(lesson, lesson_id, server.audio_rows(), load_rows(manifests / "image_manifest.json"),
+                                load_rows(videos) if videos.exists() else [])
         raise LookupError(path)
 
     def _post_tool(self, path, payload):
