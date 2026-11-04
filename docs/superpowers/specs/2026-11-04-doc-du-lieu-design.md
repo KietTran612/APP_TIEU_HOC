@@ -1,6 +1,6 @@
 # Thiết kế: Dọn cách app đọc dữ liệu (chuẩn bị cho Addressables)
 
-> **Ngày:** 04/11/2026 · **Trạng thái:** chờ chủ dự án duyệt · Repo: https://github.com/KietTran612/APP_TIEU_HOC, chỉ dùng branch `main`, giữ nguyên lịch sử
+> **Ngày:** 04/11/2026 · **Trạng thái:** chủ dự án đã duyệt ngày 04/11/2026 · Repo: https://github.com/KietTran612/APP_TIEU_HOC, chỉ dùng branch `main`, giữ nguyên lịch sử
 > **Thiết kế gốc của app:** [2026-10-28-app-tap-doc-mvp-design.md](2026-10-28-app-tap-doc-mvp-design.md). Mọi điều ở đó vẫn giữ, trừ những chỗ tài liệu này nói rõ là thay.
 >
 > Cách đánh dấu:
