@@ -23,7 +23,7 @@ LESSON = {
         {"type": "picture", "image": "img_b13_ki", "text": "kì", "audio": "tu_ki"},
     ],
     "part2": [
-        {"type": "pick", "prompt_audio": "hd_chon", "items": [
+        {"kind": "listen_picture", "prompt_audio": "hd_chon", "items": [
             {"image": "img_b13_ke", "audio": "tu_ke"},
             {"image": "img_khong_co", "audio": "tu_khong_co"},
         ], "then_audio": "khen_gioi"},
@@ -46,20 +46,33 @@ def _image_rows():
 class LessonMediaOrderTest(unittest.TestCase):
     def test_items_follow_lesson_order_with_clip_after_its_picture(self):
         items = lesson_media(LESSON, "tv1_t1_b13", _audio_rows(), _image_rows(), [{"id": "img_b13_ke"}])
-        self.assertEqual(items, [
-            {"manifest": "audio", "id": "am_k"},
-            {"manifest": "audio", "id": "ghiam_k"},
-            {"manifest": "images", "id": "img_b13_ke"},
-            {"manifest": "videos", "id": "img_b13_ke"},
-            {"manifest": "audio", "id": "tu_ke"},
-            {"manifest": "images", "id": "img_b13_ki"},
-            {"manifest": "audio", "id": "tu_ki"},
-            {"manifest": "audio", "id": "hd_chon"},
-            {"manifest": "audio", "id": "khen_gioi"},
+        self.assertEqual([(i["manifest"], i["id"]) for i in items], [
+            ("audio", "am_k"),
+            ("audio", "ghiam_k"),
+            ("images", "img_b13_ke"),
+            ("videos", "img_b13_ke"),
+            ("audio", "tu_ke"),
+            ("images", "img_b13_ki"),
+            ("audio", "tu_ki"),
+            ("audio", "hd_chon"),
+            ("audio", "khen_gioi"),
             # Có trong danh mục, ghi dùng ở bài này nhưng không thấy trong file bài: xếp cuối.
-            {"manifest": "audio", "id": "tieng_ke"},
-            {"manifest": "images", "id": "img_b13_le"},
+            ("audio", "tieng_ke"),
+            ("images", "img_b13_le"),
         ])
+
+    def test_items_carry_the_step_they_first_appear_in(self):
+        items = lesson_media(LESSON, "tv1_t1_b13", _audio_rows(), _image_rows(), [{"id": "img_b13_ke"}])
+        group = {(i["manifest"], i["id"]): (i["part"], i["step"], i["label"]) for i in items}
+        self.assertEqual(group[("audio", "am_k")], ("part1", 1, "Âm, vần mới: k"))
+        self.assertEqual(group[("audio", "ghiam_k")], ("part1", 1, "Âm, vần mới: k"))
+        self.assertEqual(group[("images", "img_b13_ke")], ("part1", 2, "Tranh: kẻ"))
+        self.assertEqual(group[("videos", "img_b13_ke")], ("part1", 2, "Tranh: kẻ"))
+        self.assertEqual(group[("audio", "tu_ki")], ("part1", 3, "Tranh: kì"))
+        # tu_ke đã có ở bước 2 nên không lặp lại ở câu luyện tập.
+        self.assertEqual(group[("audio", "hd_chon")], ("part2", 1, "Nghe chọn tranh"))
+        self.assertEqual(group[("audio", "khen_gioi")], ("part2", 1, "Nghe chọn tranh"))
+        self.assertEqual(group[("audio", "tieng_ke")], ("khac", 0, "Danh mục ghi dùng ở bài này nhưng file bài không dùng"))
 
     def test_each_item_listed_once_and_unknown_ids_skipped(self):
         items = lesson_media(LESSON, "tv1_t1_b13", _audio_rows(), _image_rows(), [])

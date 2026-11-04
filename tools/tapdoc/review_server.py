@@ -63,21 +63,52 @@ def shown_in_app(lessons_dir) -> dict[str, list[str]]:
             for audio_id in main.keys() | practice.keys()}
 
 
+STEP_LABELS = {
+    "unit": "Âm, vần mới", "keyword": "Từ khoá", "analyze": "Phân tích tiếng", "spell": "Đánh vần",
+    "sentence": "Câu ứng dụng", "reading": "Đọc thêm", "picture": "Tranh", "words": "Từ ngữ",
+    "letter_grid": "Bảng chữ", "combine_table": "Bảng ghép", "rime_table": "Bảng ôn vần",
+    "tone_table": "Bảng dấu thanh", "tone_intro": "Dấu thanh mới", "tone_attach": "Ghép dấu thanh",
+    "rule": "Luật chính tả", "letter_pairs": "Cặp chữ", "rime_grid": "Bảng nhóm vần",
+}
+PRACTICE_LABELS = {
+    "listen_choose": "Nghe chọn chữ", "listen_picture": "Nghe chọn tranh", "compose": "Ghép chữ",
+    "look_tone": "Nhìn chọn dấu", "match_case": "Nối chữ thường với chữ hoa",
+}
+OTHER_GROUP = "Danh mục ghi dùng ở bài này nhưng file bài không dùng"
+
+
+def _step_label(step) -> str:
+    """Tên bước cho người duyệt: loại bước, kèm chữ chính của bước nếu có."""
+    if not isinstance(step, dict):
+        return ""
+    if "type" in step:
+        name = STEP_LABELS.get(step["type"], step["type"])
+    else:
+        kind = step.get("kind")
+        name = PRACTICE_LABELS.get(kind, kind or "Luyện tập")
+    spell = step.get("spell")
+    text = (step.get("text") or step.get("then_text") or (spell.get("target") if isinstance(spell, dict) else None)
+            or "")
+    return f"{name}: {text}" if isinstance(text, str) and text.strip() else name
+
+
 def lesson_media(lesson, lesson_id, audio_rows, image_rows, video_rows) -> list[dict]:
     """Âm thanh, tranh và tranh động của một bài theo thứ tự xuất hiện trong file bài, mỗi mục một lần.
 
+    Mỗi mục ghi bước đầu tiên dùng nó (``part`` là part1/part2, ``step`` đếm từ 1, ``label`` là tên bước).
     Clip đứng ngay sau tranh cùng mã. Mã không có trong danh mục bị bỏ qua; mã danh mục ghi dùng ở bài này mà
-    không thấy trong file bài thì xếp cuối (âm thanh trước, tranh sau).
+    không thấy trong file bài thì xếp cuối (âm thanh trước, tranh sau) trong nhóm ``khac``.
     """
     audio_ids = {row["id"] for row in audio_rows}
     image_ids = {row["id"] for row in image_rows}
     video_ids = {row["id"] for row in video_rows}
     items, seen = [], set()
+    group = {"part": "khac", "step": 0, "label": OTHER_GROUP}
 
     def add(manifest, item_id):
         if (manifest, item_id) not in seen:
             seen.add((manifest, item_id))
-            items.append({"manifest": manifest, "id": item_id})
+            items.append({"manifest": manifest, "id": item_id, **group})
 
     def walk(node):
         if isinstance(node, dict):
@@ -95,7 +126,13 @@ def lesson_media(lesson, lesson_id, audio_rows, image_rows, video_rows) -> list[
             for value in node:
                 walk(value)
 
-    walk(lesson)
+    if isinstance(lesson, dict):
+        for part in ("part1", "part2"):
+            for number, step in enumerate(lesson.get(part) or [], start=1):
+                group = {"part": part, "step": number, "label": _step_label(step)}
+                walk(step)
+        group = {"part": "khac", "step": 0, "label": OTHER_GROUP}
+        walk({k: v for k, v in lesson.items() if k not in ("part1", "part2")})
     for manifest, rows in (("audio", audio_rows), ("images", image_rows)):
         for row in rows:
             if lesson_id in (row.get("bai") or []):

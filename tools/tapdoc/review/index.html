@@ -199,11 +199,29 @@
     .media-kind.kind-audio { color: #1d4ed8; }
     .media-kind.kind-images { color: #047857; }
     .media-kind.kind-videos { color: #7c3aed; }
-    .desc { min-width: 220px; max-width: 320px; }
+    .desc { min-width: 200px; max-width: 280px; }
     #scan-panel summary { cursor: pointer; font-weight: 600; }
-    #scan-panel img { display: block; max-width: min(100%, 900px); margin-top: 8px; border: 1px solid #e5e7eb; cursor: zoom-in; }
-    #scan-panel img.zoom { max-width: none; cursor: zoom-out; }
-    #scan-wrap { overflow-x: auto; }
+    #scan-panel .scan-tools { display: flex; gap: 12px; align-items: center; margin-top: 6px; font-size: 13px; }
+    #scan-wrap { margin-top: 8px; border: 1px solid #e5e7eb; overflow: hidden; }
+    #scan-wrap img { display: block; width: 100%; }
+    /* Trang đôi: chỉ hiện nửa có bài (trang chẵn bên trái, trang lẻ bên phải). */
+    #scan-wrap.half img { width: 200%; }
+    #scan-wrap.half.right img { margin-left: -100%; }
+    /* Màn rộng: bảng bên trái, trang sách đứng yên bên phải khi cuộn. */
+    #review-main.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 31%); gap: 12px; align-items: start; }
+    #review-main.split #scan-panel { order: 2; position: sticky; top: 8px; max-height: calc(100vh - 16px); overflow: auto; margin: 0; }
+    @media (max-width: 1250px) { #review-main.split { display: block; } #review-main.split #scan-panel { position: static; max-height: none; } }
+    .group-row td { background: #eef2ff; font-weight: 600; color: #1e3a8a; border-top: 2px solid #c7d2fe; }
+    .part-row td { background: #1e3a8a; color: white; font-weight: 700; letter-spacing: 0.02em; }
+    .group-row .group-count { font-weight: 400; color: #4b5563; margin-left: 8px; }
+    tr.mixed.done td { background: #f0fdf4; }
+    tr.mixed.bad td { background: #fef2f2; }
+    tr.mixed .code-id { font-size: 11px; color: #9ca3af; margin-top: 4px; }
+    tr.mixed td:last-child { min-width: 0; }
+    tr.mixed audio { width: 200px; }
+    tr.mixed .note-input { width: 130px; min-width: 130px; }
+    tr.mixed details.tts-more[open] { min-width: 440px; }
+    tr.mixed details.tts-more summary { cursor: pointer; color: #1d4ed8; white-space: nowrap; }
     .read-as { color: #4b5563; font-size: 13px; margin-top: 2px; }
   </style>
 </head>
@@ -276,13 +294,9 @@
     <button type="button" id="bylesson-prev" class="btn">‹ Bài trước</button>
     <select id="bylesson-select" aria-label="Bài cần duyệt"></select>
     <button type="button" id="bylesson-next" class="btn">Bài sau ›</button>
-    <span class="read-as">Âm thanh, tranh và tranh động xếp theo đúng thứ tự bé gặp trong bài.</span>
+    <label><input type="checkbox" id="bylesson-hide-done"> Ẩn mục đã đạt</label>
+    <span class="read-as">Chia theo từng bước của bài, đúng thứ tự bé gặp; trong mỗi bước tranh đứng trước âm thanh.</span>
   </section>
-  <details id="scan-panel" class="tts-panel" open>
-    <summary>Trang sách gốc <span id="scan-pages" class="read-as"></span></summary>
-    <div id="scan-wrap"><img id="scan-img" alt="Trang sách gốc của bài"></div>
-    <p id="scan-missing" class="read-as" hidden>Máy này chưa có ảnh scan của bài (thư mục sach-giao-khoa-viet-nam ngoài git).</p>
-  </details>
   <section id="lesson-panel" class="tts-panel" hidden>
     <label>Chọn bài: <select id="lesson-select"></select></label>
     <button type="button" id="lesson-stop" class="btn">Dừng nghe</button>
@@ -292,10 +306,21 @@
     <span id="pager-top"></span>
     <label>Mỗi trang: <select id="page-size"><option>20</option><option>50</option><option>100</option></select></label>
   </div>
+  <div id="review-main">
+  <details id="scan-panel" class="tts-panel" open>
+    <summary>Trang sách gốc <span id="scan-pages" class="read-as"></span></summary>
+    <div class="scan-tools">
+      <label><input type="checkbox" id="scan-full"> Xem cả trang đôi</label>
+      <a id="scan-open" href="#" target="_blank" rel="noopener">Mở ảnh cỡ thật</a>
+    </div>
+    <div id="scan-wrap"><img id="scan-img" alt="Trang sách gốc của bài"></div>
+    <p id="scan-missing" class="read-as" hidden>Máy này chưa có ảnh scan của bài (thư mục sach-giao-khoa-viet-nam ngoài git).</p>
+  </details>
   <div class="table-wrap" id="review-table"><table>
     <thead id="table-head"></thead>
     <tbody id="table-body"></tbody>
   </table></div>
+  </div>
   <div class="pager" id="pager-bottom"></div>
 
   <div class="toast" id="toast"></div>
@@ -393,7 +418,7 @@
         const els = rowElements.get(row);
         if (els) {
           els.sBadge.className = "badge status-" + row.status;
-          els.sBadge.textContent = row.status;
+          els.sBadge.textContent = statusText(row.status); markRow(els.tr, row);
           els.btnOk.classList.toggle("selected", row.status === "dat");
           els.btnBad.classList.toggle("selected", row.status === "khong_dat");
           if (document.activeElement !== els.noteInput) {
@@ -514,6 +539,10 @@
       });
 
       const MEDIA_LABELS = { audio: "Âm thanh", images: "Tranh", videos: "Tranh động" };
+      const STATUS_LABELS = { cho_duyet: "chờ duyệt", dat: "đạt", khong_dat: "không đạt", chua_co: "chưa có" };
+      const statusText = (status) => STATUS_LABELS[status] || status;
+      const PART_LABELS = { part1: "Phần học (theo sách)", part2: "Phần luyện tập", khac: "Khác" };
+      const MEDIA_ORDER = { images: 0, videos: 1, audio: 2 };
 
       function setTabActive() {
         for (const [tab, btn] of [["bylesson", byId("tab-bylesson")], ["audio", tabAudioBtn], ["images", tabImagesBtn],
@@ -530,6 +559,7 @@
         byId("lesson-panel").hidden = !isLesson;
         byId("bylesson-bar").hidden = !byLesson;
         byId("scan-panel").hidden = !byLesson;
+        byId("review-main").classList.toggle("split", byLesson);
         byId("review-table").hidden = isLesson;
         byId("tts-defaults").hidden = currentTab !== "audio";
         byId("tts-filters").hidden = currentTab !== "audio";
@@ -592,7 +622,7 @@
       async function renderByLesson() {
         const request = ++byLessonRequest;
         const lessonId = byId("bylesson-select").value;
-        setHeaders(["Loại", "Mã", "Nội dung", "Nghe / xem", "Trạng thái", "Duyệt", "Ghi chú", "Chỉnh giọng đọc"]);
+        setHeaders(["Loại", "Nội dung", "Nghe / xem", "Trạng thái", "Duyệt", "Ghi chú", "Giọng đọc"]);
         tableBody.textContent = "";
         rowElements.clear();
         if (!lessonId) {
@@ -613,23 +643,61 @@
         }
         if (request !== byLessonRequest || currentTab !== "bylesson") return;
         const st = filterStatus.value;
+        const hideDone = byId("bylesson-hide-done").checked;
         const counts = { audio: 0, images: 0, videos: 0 };
         let waiting = 0;
         let shown = 0;
+        // Gom theo bước; trong một bước tranh và clip đứng trước âm thanh.
+        const groups = [];
         for (const item of items) {
           const row = listFor(item.manifest).find(r => r.id === item.id);
           if (!row) continue;
           counts[item.manifest]++;
           if (row.status !== "dat") waiting++;
-          if (st && row.status !== st) continue;
-          tableBody.appendChild(buildRow(row, item.manifest, true));
-          shown++;
+          if ((st && row.status !== st) || (hideDone && row.status === "dat")) continue;
+          const key = item.part + ":" + item.step;
+          let group = groups[groups.length - 1];
+          if (!group || group.key !== key) groups.push(group = { key, part: item.part, step: item.step, label: item.label, entries: [] });
+          group.entries.push({ row, kind: item.manifest });
         }
+        const columns = 7;
+        const headerRow = (className, text, extra) => {
+          const tr = document.createElement("tr");
+          tr.className = className;
+          const td = document.createElement("td");
+          td.colSpan = columns;
+          td.textContent = text;
+          if (extra) {
+            const span = document.createElement("span");
+            span.className = "group-count";
+            span.textContent = extra;
+            td.appendChild(span);
+          }
+          tr.appendChild(td);
+          return tr;
+        };
+        let part = null;
+        for (const group of groups) {
+          if (group.part !== part) {
+            part = group.part;
+            tableBody.appendChild(headerRow("part-row", PART_LABELS[part] || part));
+          }
+          const prefix = group.part === "part1" ? "Bước " + group.step + " · " : group.part === "part2" ? "Câu " + group.step + " · " : "";
+          const left = group.entries.filter(e => e.row.status !== "dat").length;
+          tableBody.appendChild(headerRow("group-row", prefix + group.label,
+            group.entries.length + " mục" + (left ? ", " + left + " chưa đạt" : ", đã đạt hết")));
+          group.entries.sort((a, b) => MEDIA_ORDER[a.kind] - MEDIA_ORDER[b.kind]);
+          for (const entry of group.entries) {
+            tableBody.appendChild(buildRow(entry.row, entry.kind, true));
+            shown++;
+          }
+        }
+        if (!shown) tableBody.appendChild(headerRow("group-row", "Không còn mục nào cần duyệt với bộ lọc này."));
         summaryText.textContent = counts.audio + " âm thanh, " + counts.images + " tranh, " + counts.videos
-          + " tranh động; " + waiting + " mục chưa đạt" + (st ? "; đang hiện " + shown : "");
+          + " tranh động; " + waiting + " mục chưa đạt" + (st || hideDone ? "; đang hiện " + shown : "");
       }
 
-      // Ảnh trang đôi trong sách gốc (chỉ đọc trên máy, không nằm trong repo hay app). Bấm ảnh để phóng to.
+      // Ảnh trang đôi trong sách gốc (chỉ đọc trên máy, không nằm trong repo hay app).
       function showScan(lessonId) {
         const img = byId("scan-img");
         const src = "/media/scan/" + encodeURIComponent(lessonId) + ".jpg";
@@ -637,19 +705,35 @@
         img.dataset.lesson = lessonId;
         img.hidden = false;
         byId("scan-missing").hidden = true;
-        img.classList.remove("zoom");
         img.src = src;
+        byId("scan-open").href = src;
         byId("scan-pages").textContent = "";
+        scanSide = "";
+        applyScanCrop();
         api("/api/lesson/" + encodeURIComponent(lessonId)).then(lesson => {
           const pages = (lesson.source || {}).pages || [];
-          if (img.dataset.lesson === lessonId && pages.length) byId("scan-pages").textContent = "— tr." + pages.join("–");
+          if (img.dataset.lesson !== lessonId || !pages.length) return;
+          byId("scan-pages").textContent = "— tr." + pages.join("–");
+          // Ảnh là trang đôi: trang chẵn bên trái, trang lẻ bên phải. Bài nằm gọn một bên thì chỉ hiện bên đó.
+          const sides = new Set(pages.map(page => page % 2 === 0 ? "left" : "right"));
+          scanSide = sides.size === 1 ? [...sides][0] : "";
+          applyScanCrop();
         }).catch(() => {});
       }
+
+      let scanSide = "";
+      function applyScanCrop() {
+        const half = Boolean(scanSide) && !byId("scan-full").checked;
+        byId("scan-wrap").classList.toggle("half", half);
+        byId("scan-wrap").classList.toggle("right", half && scanSide === "right");
+        byId("scan-full").parentElement.hidden = !scanSide;
+      }
+      byId("scan-full").addEventListener("change", applyScanCrop);
       byId("scan-img").addEventListener("error", () => {
         byId("scan-img").hidden = true;
+        byId("scan-full").parentElement.hidden = true;
         byId("scan-missing").hidden = false;
       });
-      byId("scan-img").addEventListener("click", () => byId("scan-img").classList.toggle("zoom"));
 
       function stepLesson(delta) {
         const select = byId("bylesson-select");
@@ -668,6 +752,7 @@
       function buildRow(row, kind, mixed) {
         const tr = document.createElement("tr");
         if (kind === "audio") tr.className = "tts-row";
+        if (mixed) tr.classList.add("mixed", ...(row.status === "dat" ? ["done"] : row.status === "khong_dat" ? ["bad"] : []));
         const cell = (text, className) => {
           const td = document.createElement("td");
           if (className) td.className = className;
@@ -677,7 +762,7 @@
         };
 
         if (mixed) cell(MEDIA_LABELS[kind], "media-kind kind-" + kind);
-        cell(row.id, "code-id");
+        else cell(row.id, "code-id");
 
         const carefulBadge = (td) => {
           if (kind !== "audio" || !row.can_nghe_ky) return;
@@ -699,6 +784,10 @@
           } else {
             td.textContent = row.mo_ta || "";
           }
+          const code = document.createElement("div");
+          code.className = "code-id";
+          code.textContent = row.id;
+          td.appendChild(code);
         } else {
           if (kind === "audio") {
             // Chữ bé nhìn thấy trong app khi mã này được đọc.
@@ -756,7 +845,7 @@
         const tdStatus = cell();
         const sBadge = document.createElement("span");
         sBadge.className = "badge status-" + row.status;
-        sBadge.textContent = row.status;
+        sBadge.textContent = statusText(row.status);
         tdStatus.appendChild(sBadge);
 
         const tdActions = cell();
@@ -791,8 +880,20 @@
         });
 
         rowElements.set(row, { tr, tdStatus, sBadge, btnOk, btnBad, noteInput });
-        if (kind === "audio") addTtsControls(row, tr);
-        else if (mixed) cell();
+        if (kind === "audio") {
+          addTtsControls(row, tr);
+          if (mixed) {
+            // Theo bài thì phần chỉnh giọng thu gọn, bấm mới mở, để mỗi dòng thấp và dễ dò.
+            const td = tr.lastElementChild;
+            const more = document.createElement("details");
+            more.className = "tts-more";
+            const summary = document.createElement("summary");
+            summary.textContent = "Chỉnh giọng";
+            more.appendChild(summary);
+            while (td.firstChild) more.appendChild(td.firstChild);
+            td.appendChild(more);
+          }
+        } else if (mixed) cell();
         return tr;
       }
 
@@ -869,6 +970,12 @@
         return values;
       }
 
+      function markRow(tr, row) {
+        if (!tr.classList.contains("mixed")) return;
+        tr.classList.toggle("done", row.status === "dat");
+        tr.classList.toggle("bad", row.status === "khong_dat");
+      }
+
       function updateRegenCount() {
         byId("tts-regen-count").textContent = state.audio.filter(r => r.needs_regen).length + " mã cần tạo lại";
       }
@@ -877,7 +984,7 @@
         const els = rowElements.get(row);
         if (!els) return;
         els.sBadge.className = "badge status-" + row.status;
-        els.sBadge.textContent = row.status;
+        els.sBadge.textContent = statusText(row.status); markRow(els.tr, row);
         els.btnOk.classList.toggle("selected", row.status === "dat");
         els.btnBad.classList.toggle("selected", row.status === "khong_dat");
         if (document.activeElement !== els.noteInput) els.noteInput.value = row.ghi_chu || "";
@@ -1227,6 +1334,7 @@
       byId("tab-bylesson").addEventListener("click", () => { currentTab = "bylesson"; render(); });
       byId("bylesson-select").addEventListener("change", () => { rememberLesson(); render(); });
       byId("bylesson-prev").addEventListener("click", () => stepLesson(-1));
+      byId("bylesson-hide-done").addEventListener("change", render);
       byId("bylesson-next").addEventListener("click", () => stepLesson(1));
 
       async function loadData() {
