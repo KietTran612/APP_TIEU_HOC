@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace TapDoc.Tests
@@ -163,6 +164,71 @@ namespace TapDoc.Tests
             Object.Destroy(AppRoot.Instance.gameObject);
             for (var i = 0; i < 8; i++) yield return null;
             LogAssert.NoUnexpectedReceived();
+        }
+
+        [UnityTest]
+        public IEnumerator Curtain_ShowsMascot()
+        {
+            var mascot = FakeContentSource.NewSprite("ga_con");
+            _source.Put(ContentKind.Image, SystemImages.Mascot, mascot);
+            yield return LoadMainWithProfile(unlockAll: true);
+            AppRoot.Instance.ShowLesson("tv1_t1_b01");
+            yield return null;
+            var curtain = AppRoot.Instance.Curtain;
+            Assert.IsTrue(curtain.IsShowing);
+            Assert.IsTrue(curtain.GetComponentsInChildren<Image>().Any(i => i.sprite == mascot), "Màn chuyển không có gà con");
+            yield return WaitPrepared();
+        }
+
+        [UnityTest]
+        public IEnumerator Curtain_MinDuration_WhenMotionOn()
+        {
+            yield return LoadMainWithProfile(unlockAll: true);
+            _source.DelayFrames = 0;
+            Motion.Scale = 1f;
+            AppRoot.Instance.ShowLesson("tv1_t1_b01");
+            yield return new WaitForSecondsRealtime(.2f);
+            Assert.IsTrue(AppRoot.Instance.Curtain.IsShowing, "Màn chuyển tắt trước thời gian tối thiểu");
+            yield return new WaitForSecondsRealtime(.8f);
+            Assert.IsFalse(AppRoot.Instance.Curtain.IsShowing, "Màn chuyển không tắt");
+            Assert.IsFalse(AppRoot.Instance.IsPreparing);
+        }
+
+        [UnityTest]
+        public IEnumerator Curtain_FitsBothFrames()
+        {
+            // Ảnh chụp cho chủ dự án xem: dùng tranh gà con thật.
+            _source.Put(ContentKind.Image, SystemImages.Mascot,
+                new ResourcesContentSource().Load(ContentKind.Image, SystemImages.Mascot));
+            yield return LoadMainWithProfile(unlockAll: true);
+            var app = AppRoot.Instance;
+            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            {
+                var rt = new RenderTexture(size.x, size.y, 24);
+                app.UiCamera.targetTexture = rt;
+                app.Curtain.Show();
+                yield return null;
+                Canvas.ForceUpdateCanvases();
+                var mascot = app.Curtain.GetComponentInChildren<Mascot>();
+                Assert.IsNotNull(mascot, "Màn chuyển không có gà con");
+                AssertInside(app.SafeRoot, (RectTransform)mascot.transform, size);
+                LayoutProbe.AssertFits(app.Canvas);
+                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.x}x{size.y}/app_prepare_curtain.png");
+                app.Curtain.Hide();
+                app.UiCamera.targetTexture = null;
+                Object.Destroy(rt);
+            }
+        }
+
+        private static void AssertInside(RectTransform outer, RectTransform inner, Vector2Int size)
+        {
+            var o = new Vector3[4];
+            var i = new Vector3[4];
+            outer.GetWorldCorners(o);
+            inner.GetWorldCorners(i);
+            const float eps = .01f;
+            Assert.IsTrue(i[0].x >= o[0].x - eps && i[0].y >= o[0].y - eps && i[2].x <= o[2].x + eps && i[2].y <= o[2].y + eps,
+                $"Gà con tràn khỏi vùng an toàn ở khung {size.x}×{size.y}");
         }
 
         [UnityTest]

@@ -43,8 +43,13 @@ namespace TapDoc
         /// <summary>Hồ sơ bé và tiến độ học; <c>Progress.Current</c> là bé đang học.</summary>
         public ProgressStore Progress { get; private set; }
 
-        /// <summary>Màn chuyển phủ lên trong lúc chuẩn bị bài, ôn lại, màn Phụ huynh.</summary>
-        public PrepareCurtain Curtain { get; private set; }
+        /// <summary>
+        /// Màn chuyển phủ lên trong lúc chuẩn bị bài, ôn lại, màn Phụ huynh. Dựng lần đầu khi cần (sau khi bộ chung đã
+        /// nạp, để hình gà con có sẵn).
+        /// </summary>
+        public PrepareCurtain Curtain => _curtain != null ? _curtain : _curtain = PrepareCurtain.Create(SafeRoot, Assets);
+
+        private PrepareCurtain _curtain;
 
         /// <summary><c>true</c> trong lúc đang chuẩn bị một màn; mọi lời mở màn có chuẩn bị khác bị bỏ qua.</summary>
         public bool IsPreparing { get; private set; }
@@ -176,7 +181,6 @@ namespace TapDoc
             bgImg.raycastTarget = false;
 
             SafeRoot = UiKit.CreateSafeArea(Canvas.transform);
-            Curtain = PrepareCurtain.Create(SafeRoot);
 
             if (Object.FindAnyObjectByType<EventSystem>() == null)
             {
@@ -294,25 +298,26 @@ namespace TapDoc
             {
                 if (this == null) return;
                 Debug.LogError($"[TapDoc] Không mở được bài {what}: {ex.Message}");
-                EndPreparing();
+                await EndPreparingAsync();
                 return;
             }
 
             if (lesson == null)
             {
-                EndPreparing();
-                ShowLessonList(); // không còn lượt nào để ôn
+                await EndPreparingAsync();
+                if (this != null) ShowLessonList(); // không còn lượt nào để ôn
                 return;
             }
             Present<LessonScreen>().Build(this, lesson, session);
             HoldSet(set);
-            EndPreparing();
+            await EndPreparingAsync();
         }
 
-        private void EndPreparing()
+        /// <summary>Màn chuyển mờ ra (sau thời gian tối thiểu); xong mới nhận lời mở màn khác.</summary>
+        private async Awaitable EndPreparingAsync()
         {
-            Curtain.Hide();
-            IsPreparing = false;
+            await Curtain.HideAsync();
+            if (this != null) IsPreparing = false;
         }
 
         /// <summary>Giữ <paramref name="set"/> làm bộ hiện tại; nhả bộ cũ rồi nhờ nguồn dọn.</summary>
