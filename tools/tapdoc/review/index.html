@@ -200,6 +200,10 @@
     .media-kind.kind-images { color: #047857; }
     .media-kind.kind-videos { color: #7c3aed; }
     .desc { min-width: 220px; max-width: 320px; }
+    #scan-panel summary { cursor: pointer; font-weight: 600; }
+    #scan-panel img { display: block; max-width: min(100%, 900px); margin-top: 8px; border: 1px solid #e5e7eb; cursor: zoom-in; }
+    #scan-panel img.zoom { max-width: none; cursor: zoom-out; }
+    #scan-wrap { overflow-x: auto; }
     .read-as { color: #4b5563; font-size: 13px; margin-top: 2px; }
   </style>
 </head>
@@ -274,6 +278,11 @@
     <button type="button" id="bylesson-next" class="btn">Bài sau ›</button>
     <span class="read-as">Âm thanh, tranh và tranh động xếp theo đúng thứ tự bé gặp trong bài.</span>
   </section>
+  <details id="scan-panel" class="tts-panel" open>
+    <summary>Trang sách gốc <span id="scan-pages" class="read-as"></span></summary>
+    <div id="scan-wrap"><img id="scan-img" alt="Trang sách gốc của bài"></div>
+    <p id="scan-missing" class="read-as" hidden>Máy này chưa có ảnh scan của bài (thư mục sach-giao-khoa-viet-nam ngoài git).</p>
+  </details>
   <section id="lesson-panel" class="tts-panel" hidden>
     <label>Chọn bài: <select id="lesson-select"></select></label>
     <button type="button" id="lesson-stop" class="btn">Dừng nghe</button>
@@ -520,6 +529,7 @@
         const byLesson = currentTab === "bylesson";
         byId("lesson-panel").hidden = !isLesson;
         byId("bylesson-bar").hidden = !byLesson;
+        byId("scan-panel").hidden = !byLesson;
         byId("review-table").hidden = isLesson;
         byId("tts-defaults").hidden = currentTab !== "audio";
         byId("tts-filters").hidden = currentTab !== "audio";
@@ -589,6 +599,7 @@
           summaryText.textContent = "Chưa có danh sách bài";
           return;
         }
+        showScan(lessonId);
         let items = lessonItems.get(lessonId);
         if (!items) {
           summaryText.textContent = "Đang đọc bài...";
@@ -617,6 +628,28 @@
         summaryText.textContent = counts.audio + " âm thanh, " + counts.images + " tranh, " + counts.videos
           + " tranh động; " + waiting + " mục chưa đạt" + (st ? "; đang hiện " + shown : "");
       }
+
+      // Ảnh trang đôi trong sách gốc (chỉ đọc trên máy, không nằm trong repo hay app). Bấm ảnh để phóng to.
+      function showScan(lessonId) {
+        const img = byId("scan-img");
+        const src = "/media/scan/" + encodeURIComponent(lessonId) + ".jpg";
+        if (img.dataset.lesson === lessonId) return;
+        img.dataset.lesson = lessonId;
+        img.hidden = false;
+        byId("scan-missing").hidden = true;
+        img.classList.remove("zoom");
+        img.src = src;
+        byId("scan-pages").textContent = "";
+        api("/api/lesson/" + encodeURIComponent(lessonId)).then(lesson => {
+          const pages = (lesson.source || {}).pages || [];
+          if (img.dataset.lesson === lessonId && pages.length) byId("scan-pages").textContent = "— tr." + pages.join("–");
+        }).catch(() => {});
+      }
+      byId("scan-img").addEventListener("error", () => {
+        byId("scan-img").hidden = true;
+        byId("scan-missing").hidden = false;
+      });
+      byId("scan-img").addEventListener("click", () => byId("scan-img").classList.toggle("zoom"));
 
       function stepLesson(delta) {
         const select = byId("bylesson-select");

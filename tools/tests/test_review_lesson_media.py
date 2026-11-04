@@ -13,6 +13,8 @@ from tapdoc.review_server import lesson_media, make_server
 
 LESSON = {
     "lesson_id": "tv1_t1_b13",
+    "book": "tv1_t1_1990",
+    "source": {"pages": [18], "scan_file": "010"},
     "part1": [
         {"type": "unit", "text": "k", "audio": "am_k",
          "readings": [{"kinds": ["hoc"], "text": "ca", "audio": "am_k"},
@@ -81,7 +83,16 @@ class LessonMediaEndpointTest(unittest.TestCase):
         save_rows(manifests / "audio_manifest.json", _audio_rows())
         save_rows(manifests / "image_manifest.json", _image_rows())
         save_rows(manifests / "video_manifest.json", [{"id": "img_b13_ki"}])
-        self.server = make_server(0, manifests, res)
+        no_source = {k: v for k, v in LESSON.items() if k != "source"}
+        (res / "lessons" / "tv1_t1_b14.json").write_text(json.dumps(no_source), encoding="utf-8")
+        (res / "lessons" / "tv1_t1_b15.json").write_text(
+            json.dumps({**LESSON, "source": {"pages": [20], "scan_file": "011"}}), encoding="utf-8")
+        book_dir = root / "scans" / "Tiếng Việt 1 (tập 1 1990)"
+        book_dir.mkdir(parents=True)
+        self.scan_bytes = bytes([0xFF, 0xD8, 0xFF]) + b"-fake-jpeg"
+        (book_dir / "010_Tiếng_Việt_1_(tập_1_1990)_-_Trang_10.jpg").write_bytes(self.scan_bytes)
+        (book_dir / "100_Tiếng_Việt_1_(tập_1_1990)_-_Trang_100.jpg").write_bytes(b"other")
+        self.server = make_server(0, manifests, res, scans_dir=root / "scans")
         thread = threading.Thread(target=self.server.serve_forever, daemon=True)
         thread.start()
 
@@ -110,6 +121,23 @@ class LessonMediaEndpointTest(unittest.TestCase):
         self.assertIn("Duyệt theo bài", html)
         self.assertIn("/api/lesson-media/", html)
         self.assertIn('let currentTab = "bylesson"', html)
+        self.assertIn("/media/scan/", html)
+        self.assertIn("Trang sách gốc", html)
+
+    def test_serves_book_scan_of_lesson(self):
+        with urllib.request.urlopen(self.base + "/media/scan/tv1_t1_b13.jpg", timeout=5) as resp:
+            self.assertEqual(resp.status, 200)
+            self.assertEqual(resp.headers["Content-Type"], "image/jpeg")
+            self.assertEqual(resp.read(), self.scan_bytes)
+
+    def test_scan_missing_or_invalid_is_404(self):
+        # b14 không ghi trang sách, b15 ghi ảnh 011 mà máy chưa có, còn lại là tên không hợp lệ.
+        for name in ("tv1_t1_b14.jpg", "tv1_t1_b15.jpg", "tv1_t1_b99.jpg", "index.jpg", "..%2Fsecret.jpg", "tv1_t1_b13.png"):
+            with self.subTest(name=name):
+                with self.assertRaises(urllib.error.HTTPError) as caught:
+                    urllib.request.urlopen(self.base + "/media/scan/" + name, timeout=5)
+                caught.exception.close()
+                self.assertEqual(caught.exception.code, 404)
 
     def test_rejects_bad_or_missing_lesson(self):
         for path in ("/api/lesson-media/..%2Fsecret", "/api/lesson-media/index", "/api/lesson-media/tv1_t1_b99"):

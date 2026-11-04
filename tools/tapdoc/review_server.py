@@ -25,6 +25,8 @@ _VALID_MANIFESTS = {"audio": "audio_manifest.json", "images": "image_manifest.js
                     "videos": "video_manifest.json"}
 _VALID_REVIEW_STATUSES = frozenset({"dat", "khong_dat", "cho_duyet"})
 _MAX_BODY_BYTES = 1_000_000
+# Thư mục ảnh scan của từng quyển trong bản clone sách gốc (ngoài git, chỉ để đối chiếu trên máy).
+SCAN_BOOK_DIRS = {"tv1_t1_1990": "Tiếng Việt 1 (tập 1 1990)", "tv1_t2_1996": "Tiếng Việt 1 (tập 2 1996)"}
 
 
 def _collect_shown(node, found) -> None:
@@ -109,7 +111,7 @@ class _ReviewHTTPServer(ThreadingHTTPServer):
 
     def __init__(self, server_address: tuple[str, int], manifests_dir: Path, res_dir: Path,
                  *, settings_path=None, prev_dir=None, lessons_dir=None, notes_path=None,
-                 clips_dir=None, engine_factory=None):
+                 clips_dir=None, scans_dir=None, engine_factory=None):
         super().__init__(server_address, _ReviewRequestHandler)
         self.manifests_dir = Path(manifests_dir)
         self.res_dir = Path(res_dir)
@@ -122,6 +124,8 @@ class _ReviewHTTPServer(ThreadingHTTPServer):
         self.notes_path = Path(notes_path) if notes_path is not None else content_dir / "review/chain_notes.json"
         # Clip tranh động nằm ngoài git (content/clips), không nằm trong thư mục tài nguyên Unity.
         self.clips_dir = Path(clips_dir) if clips_dir is not None else content_dir / "clips"
+        # Ảnh scan sách gốc không bao giờ vào repo hay app; trang duyệt chỉ đọc từ bản clone trên máy.
+        self.scans_dir = Path(scans_dir) if scans_dir is not None else content_dir.parent / "sach-giao-khoa-viet-nam"
         self.engine_factory = engine_factory or EdgeEngine
         self.job = dict(running=False, total=0, done=0, current=None, failed={})
         self.batch_thread = None
@@ -134,6 +138,22 @@ class _ReviewHTTPServer(ThreadingHTTPServer):
         if key != self._shown[0]:
             self._shown = (key, shown_in_app(self.lessons_dir))
         return self._shown[1]
+
+    def scan_path(self, lesson_id):
+        """Ảnh trang đôi trong sách gốc chứa bài; ``None`` khi bài không ghi trang hoặc máy chưa có ảnh."""
+        if not re.fullmatch(r"[a-z0-9_]+", lesson_id) or lesson_id == "index":
+            return None
+        lesson_path = self.lessons_dir / (lesson_id + ".json")
+        try:
+            lesson = json.loads(lesson_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return None
+        scan = (lesson.get("source") or {}).get("scan_file") if isinstance(lesson, dict) else None
+        folder = SCAN_BOOK_DIRS.get(lesson.get("book")) if isinstance(lesson, dict) else None
+        if not isinstance(scan, str) or not re.fullmatch(r"\d{3}", scan) or folder is None:
+            return None
+        matches = sorted((self.scans_dir / folder).glob(scan + "_*.jpg"))
+        return matches[0] if matches else None
 
     def audio_rows(self):
         return load_rows(self.manifests_dir / "audio_manifest.json")
@@ -279,6 +299,15 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
 
         if path.startswith("/media/images/"):
             self._serve_media(path[len("/media/images/"):], "images", ".png", "image/png")
+            return
+
+        if path.startswith("/media/scan/"):
+            name = path[len("/media/scan/"):]
+            scan = self.server.scan_path(name[:-len(".jpg")]) if name.endswith(".jpg") else None
+            if scan is None:
+                self._send_json(404, {"error": "Máy này chưa có ảnh trang sách của bài"})
+            else:
+                self._send_bytes(200, "image/jpeg", scan.read_bytes())
             return
 
         if path.startswith("/media/clips/"):
@@ -571,9 +600,10 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
 
 
 def make_server(port: int, manifests_dir, res_dir, *, settings_path=None, prev_dir=None,
-                lessons_dir=None, notes_path=None, clips_dir=None, engine_factory=None) -> ThreadingHTTPServer:
+                lessons_dir=None, notes_path=None, clips_dir=None, scans_dir=None,
+                engine_factory=None) -> ThreadingHTTPServer:
     """Tạo máy chủ HTTP chỉ nghe trên 127.0.0.1; đường dẫn phụ có thể thay trong test."""
     return _ReviewHTTPServer(("127.0.0.1", int(port)), Path(manifests_dir), Path(res_dir),
                              settings_path=settings_path, prev_dir=prev_dir,
                              lessons_dir=lessons_dir, notes_path=notes_path,
-                             clips_dir=clips_dir, engine_factory=engine_factory)
+                             clips_dir=clips_dir, scans_dir=scans_dir, engine_factory=engine_factory)
