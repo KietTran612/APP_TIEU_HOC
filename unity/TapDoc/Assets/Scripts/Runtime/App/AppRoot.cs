@@ -65,9 +65,32 @@ namespace TapDoc
         private static void TryBootMainScene(Scene scene)
         {
             if (scene.name != "Main") return;
-            var app = EnsureInstance();
+            _ = EnsureInstance().BootAsync();
+        }
+
+        /// <summary><c>true</c> khi đã nạp xong bộ chung, danh sách bài và Phụ lục (khởi động xong).</summary>
+        public bool IsReady { get; private set; }
+
+        /// <summary>Nạp bộ chung, danh sách bài và Phụ lục của sách rồi mới hiện màn chọn bé.</summary>
+        private async Awaitable BootAsync()
+        {
+            try
+            {
+                await Assets.PrepareCommonAsync();
+                if (this == null) return;
+                var index = await Lessons.LoadIndexAsync();
+                if (this == null) return;
+                if (index.lessons.Count > 0) await Lessons.LoadAppendixAsync(index.lessons[0].book);
+                if (this == null) return;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"[TapDoc] Không khởi động được: {ex.Message}");
+                return;
+            }
+            IsReady = true;
             // Chưa có hồ sơ thì màn chọn bé mở thẳng phần tạo hồ sơ; có rồi thì cho chọn bé.
-            app.ShowProfiles();
+            ShowProfiles();
         }
 
         public static AppRoot EnsureInstance()

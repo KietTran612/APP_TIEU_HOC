@@ -14,7 +14,8 @@ namespace TapDoc.Tests
             Assert.AreEqual("Assets/Scenes/Main.unity", EditorBuildSettings.scenes[0].path);
         }
 
-        [Test] public void AndikaFontLoads() => Assert.IsNotNull(Resources.Load<Font>("fonts/Andika-Regular"));
+        [Test] public void AndikaFontLoads() =>
+            Assert.IsNotNull(new ResourcesContentSource().Load(ContentKind.Font, FontProvider.MainFontId) as Font);
 
         [Test] public void LandscapeOnly()
         {

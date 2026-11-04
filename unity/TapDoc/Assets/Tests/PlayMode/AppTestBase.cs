@@ -109,8 +109,10 @@ namespace TapDoc.Tests
         {
             SceneManager.LoadScene("Main");
             yield return null;
-            yield return null;
             Assert.IsNotNull(AppRoot.Instance, "AppRoot chưa khởi động trong scene Main");
+            for (var i = 0; i < 300 && !AppRoot.Instance.IsReady; i++) yield return null;
+            Assert.IsTrue(AppRoot.Instance.IsReady, "AppRoot nạp bộ chung không xong");
+            yield return null;
         }
 
         /// <summary>Mã bài theo thứ tự trong <c>index.json</c>.</summary>
