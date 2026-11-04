@@ -304,7 +304,7 @@ namespace TapDoc
             {
                 prepared = await prepare();
             }
-            catch (InvalidDataException ex)
+            catch (Exception ex)
             {
                 if (this == null) return;
                 Debug.LogError($"[TapDoc] Không mở được {what}: {ex.Message}");
@@ -317,7 +317,21 @@ namespace TapDoc
                 return;
             }
 
-            prepared.show();
+            // Thứ màn mới hỏi lúc dựng mà chưa chuẩn bị thì tính vào bộ mới, không vào bộ cũ sắp bị nhả.
+            if (prepared.set != null) Assets.CurrentHolder = prepared.set;
+            try
+            {
+                prepared.show();
+            }
+            catch (Exception ex)
+            {
+                // Màn cũ đã bị thay: về danh sách bài để bé vẫn còn chỗ bấm.
+                Debug.LogError($"[TapDoc] Không mở được {what}: {ex.Message}");
+                prepared.set?.Dispose();
+                ShowLessonList();
+                await EndPreparingAsync();
+                return;
+            }
             if (prepared.set != null) HoldSet(prepared.set);
             await EndPreparingAsync();
         }

@@ -99,7 +99,8 @@ namespace TapDoc.Tests
             _sprite = Sprite.Create(_tex, new Rect(0, 0, 4, 4), new Vector2(0.5f, 0.5f));
             AppRoot.SourceFactory = () => TestCatalog.Source(
                 id => id == MissingAudio ? null : _clip,
-                _ => _sprite);
+                _ => _sprite,
+                _ => _clip);
         }
 
         [UnityTearDown]
@@ -131,6 +132,9 @@ namespace TapDoc.Tests
             StepViewFactory.RegisterRound(SyncType, () => new SyncCompleteView());
 
             var app = AppRoot.EnsureInstance();
+            // Không qua scene Main nên tự chuẩn bị bộ chung và danh sách bài như lúc khởi động (nguồn giả: xong ngay).
+            AwaitableTestUtil.RunNow(app.Assets.PrepareCommonAsync());
+            AwaitableTestUtil.RunNow(app.Lessons.LoadIndexAsync());
             app.Speech.WaitScale = 0.05f;
             // Bé phải có hồ sơ mới vào được bài (nút "Về" đưa về danh sách bài của bé đó).
             if (app.Progress.Current == null) app.Progress.CreateProfile(TestChildName, ProfileScreen.Avatars[0]);

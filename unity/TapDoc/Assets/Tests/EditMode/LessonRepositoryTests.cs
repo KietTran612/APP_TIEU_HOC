@@ -1,7 +1,9 @@
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 namespace TapDoc.Tests
 {
@@ -79,6 +81,22 @@ namespace TapDoc.Tests
             Assert.AreEqual("Phụ lục".Normalize(NormalizationForm.FormC), appendix.title);
             Assert.AreSame(appendix, _repo.Appendix("sach"));
             Assert.AreEqual(1, _source.LoadCount(ContentKind.Appendix, "sach"));
+        }
+
+        [Test]
+        public void LoadAll_SkipsBrokenLesson()
+        {
+            PutText(ContentKind.LessonIndex, null,
+                "{\"lessons\":[{\"lesson_id\":\"a\",\"lesson_no\":1},{\"lesson_id\":\"b\",\"lesson_no\":2}]}");
+            PutText(ContentKind.Lesson, "a", "{ hỏng");
+            PutText(ContentKind.Lesson, "b", LessonJson.Replace("TITLE", "o"));
+            LogAssert.Expect(LogType.Error, new Regex("^\\[TapDoc\\] Bài a: "));
+
+            var all = _repo.LoadAllAsync().GetAwaiter();
+            Assert.IsTrue(all.IsCompleted, "Nguồn giả không chậm thì phải xong ngay");
+            all.GetResult();
+            Assert.AreEqual(1, _source.LoadCount(ContentKind.Lesson, "b"));
+            Assert.AreEqual("b", _repo.Get("b").lesson_id);
         }
 
         [Test]

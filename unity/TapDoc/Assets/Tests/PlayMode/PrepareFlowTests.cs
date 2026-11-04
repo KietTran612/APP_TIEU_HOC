@@ -231,6 +231,92 @@ namespace TapDoc.Tests
                 $"Gà con tràn khỏi vùng an toàn ở khung {size.x}×{size.y}");
         }
 
+        /// <summary>Màn bước thử: <c>Bind</c> hỏi một tranh không có trong bài, hoặc ném lỗi.</summary>
+        private sealed class ProbeStepView : IStepView
+        {
+            public const string AsksImage = "test_hoi_tranh";
+            public const string Throws = "test_nem_loi";
+            public const string ExtraImage = "img_test_ngoai_bai";
+
+            public GameObject Root { get; private set; }
+            public event System.Action Completed;
+
+            public void Bind(Step step, LessonContext ctx)
+            {
+                if (step.type == Throws) throw new System.InvalidOperationException("màn thử hỏng");
+                Root = new GameObject("ProbeStepView", typeof(RectTransform));
+                Root.transform.SetParent(ctx.Stage, false);
+                ctx.Assets.Image(ExtraImage);
+                Completed?.Invoke();
+            }
+
+            public void Replay() { }
+        }
+
+        private static Lesson Synthetic(string stepType) => new()
+        {
+            lesson_id = "tv1_t1_b04",
+            lesson_no = 4,
+            title = "Bài thử",
+            part1 = new List<Step> { new() { type = stepType } },
+            part2 = new List<Round>(),
+        };
+
+        [UnityTest]
+        public IEnumerator OtherError_WhilePreparing_DoesNotFreeze()
+        {
+            var inner = _source.Fallback;
+            _source.Fallback = (kind, id) => kind == ContentKind.Lesson && id == "tv1_t1_b17"
+                ? throw new System.InvalidOperationException("nguồn hỏng")
+                : inner(kind, id);
+            yield return LoadMainWithProfile(unlockAll: true);
+            LogAssert.Expect(LogType.Error, new Regex("Không mở được bài tv1_t1_b17"));
+            AppRoot.Instance.ShowLesson("tv1_t1_b17");
+            yield return WaitPrepared();
+            Assert.IsFalse(AppRoot.Instance.Curtain.IsShowing, "Màn chuyển kẹt lại, bé không chạm được gì");
+            Assert.IsNotNull(Object.FindAnyObjectByType<LessonListScreen>());
+        }
+
+        [UnityTest]
+        public IEnumerator ScreenBuildThrows_FallsBackToList()
+        {
+            StepViewFactory.Register(ProbeStepView.Throws, () => new ProbeStepView());
+            try
+            {
+                yield return LoadMainWithProfile(unlockAll: true);
+                LogAssert.Expect(LogType.Error, new Regex("Không mở được bài"));
+                AppRoot.Instance.ShowLesson(Synthetic(ProbeStepView.Throws));
+                yield return WaitPrepared();
+                Assert.IsFalse(AppRoot.Instance.Curtain.IsShowing, "Màn chuyển kẹt lại, bé không chạm được gì");
+                Assert.IsNotNull(Object.FindAnyObjectByType<LessonListScreen>(), "Dựng màn bài lỗi thì phải về danh sách bài");
+            }
+            finally
+            {
+                StepViewFactory.Unregister(ProbeStepView.Throws);
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator UnpreparedAskDuringBuild_CountsIntoNewSet()
+        {
+            StepViewFactory.Register(ProbeStepView.AsksImage, () => new ProbeStepView());
+            try
+            {
+                yield return LoadMainWithProfile(unlockAll: true);
+                AppRoot.Instance.ShowLesson("tv1_t1_b01");
+                yield return WaitPrepared();
+                LogAssert.Expect(LogType.Warning, "[TapDoc] Chưa chuẩn bị trước: " + ProbeStepView.ExtraImage);
+                AppRoot.Instance.ShowLesson(Synthetic(ProbeStepView.AsksImage));
+                yield return WaitPrepared();
+                Assert.AreEqual(0, _source.ReleaseCount(ContentKind.Image, ProbeStepView.ExtraImage),
+                    "Tranh màn mới hỏi lúc dựng bị tính vào bộ cũ và bị nhả ngay");
+            }
+            finally
+            {
+                StepViewFactory.Unregister(ProbeStepView.AsksImage);
+            }
+        }
+
         [UnityTest]
         public IEnumerator Parent_PreparesLessonTexts_ReadsOnce()
         {
@@ -238,6 +324,9 @@ namespace TapDoc.Tests
             var app = AppRoot.Instance;
             app.ShowParent();
             Assert.IsTrue(app.IsPreparing);
+            var frames = 0;
+            for (; frames < 300 && app.IsPreparing; frames++) yield return null;
+            Assert.Less(frames, 40, "Nạp chữ các bài lần lượt từng bài một, quá chậm");
             yield return WaitPrepared();
             Assert.IsNotNull(Object.FindAnyObjectByType<ParentScreen>());
             app.ShowLessonList();

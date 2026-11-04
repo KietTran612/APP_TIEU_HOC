@@ -62,13 +62,28 @@ namespace TapDoc
             return _lessons[lessonId] = ParseLesson(asset, lessonId);
         }
 
-        /// <summary>Nạp đủ các bài trong danh sách (màn Phụ huynh cần chữ của cả quyển).</summary>
+        /// <summary>
+        /// Nạp đủ các bài trong danh sách, cùng lúc (màn Phụ huynh cần chữ của cả quyển). Bài thiếu hay hỏng thì báo lỗi
+        /// rồi bỏ qua, không chặn các bài khác.
+        /// </summary>
         public async Awaitable LoadAllAsync()
         {
             var index = await LoadIndexAsync();
+            var pending = new List<Awaitable<Lesson>>();
             foreach (var entry in index.lessons)
             {
-                if (entry != null) await LoadAsync(entry.lesson_id);
+                if (entry != null && !_lessons.ContainsKey(entry.lesson_id)) pending.Add(LoadAsync(entry.lesson_id));
+            }
+            foreach (var load in pending)
+            {
+                try
+                {
+                    await load;
+                }
+                catch (InvalidDataException ex)
+                {
+                    Debug.LogError($"[TapDoc] {ex.Message}");
+                }
             }
         }
 

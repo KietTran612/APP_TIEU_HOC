@@ -19,6 +19,7 @@ namespace TapDoc.Tests
         private GameObject _rootGo;
         private Func<string, AudioClip> _audioLoader;
         private Func<string, Sprite> _imageLoader;
+        private Func<string, Sprite> _stockImageLoader;
         private Texture2D _dummyTex;
         private readonly HashSet<object> _completedViews = new();
 
@@ -36,6 +37,7 @@ namespace TapDoc.Tests
 
             _audioLoader = id => AudioClip.Create(id, 4410, 1, 44100, false);
             _imageLoader = _ => Sprite.Create(_dummyTex, new Rect(0, 0, 4, 4), new Vector2(0.5f, 0.5f));
+            _stockImageLoader = _imageLoader;
 
             _rootGo = new GameObject("ViewTestRoot");
             TargetTex = new RenderTexture(1920, 1080, 24);
@@ -76,7 +78,7 @@ namespace TapDoc.Tests
             var spGo = new GameObject("SpeechPlayer");
             spGo.transform.SetParent(_rootGo.transform, false);
             var sp = spGo.AddComponent<SpeechPlayer>();
-            var assets = TestCatalog.FromLoaders(_audioLoader, _imageLoader);
+            var assets = NewCatalog();
             sp.Init(assets);
             sp.WaitScale = 0.05f;
 
@@ -116,6 +118,7 @@ namespace TapDoc.Tests
         /// </summary>
         protected IStepView CreateTrackedStep(Step step)
         {
+            Prepare(new Lesson { part1 = new List<Step> { step } });
             var tracker = TrackView();
             var view = StepViewFactory.CreateStep(step, Ctx, tracker.OnCompleted);
             tracker.Attach(view);
@@ -125,11 +128,30 @@ namespace TapDoc.Tests
         /// <summary>Như <see cref="CreateTrackedStep"/>, cho lượt Phần 2.</summary>
         protected IRoundView CreateTrackedRound(Round round)
         {
+            Prepare(new Lesson { part2 = new List<Round> { round } });
             var tracker = TrackView();
             var view = StepViewFactory.CreateRound(round, Ctx, tracker.OnCompleted);
             tracker.Attach(view);
             return view;
         }
+
+        /// <summary>
+        /// Catalog trên nguồn giả, đã chuẩn bị bộ chung như lúc app khởi động (nguồn giả: xong ngay). Tranh chung luôn
+        /// có; loader tranh của test (<see cref="UseImageLoader"/>) chỉ áp cho tranh bài.
+        /// </summary>
+        private AssetCatalog NewCatalog()
+        {
+            var lessonImages = _imageLoader;
+            var stock = _stockImageLoader;
+            var common = new HashSet<string>(SystemImages.All);
+            var catalog = TestCatalog.FromLoaders(_audioLoader, id => common.Contains(id) ? stock(id) : lessonImages(id));
+            AwaitableTestUtil.RunNow(catalog.PrepareCommonAsync());
+            return catalog;
+        }
+
+        /// <summary>Chuẩn bị tranh, âm thanh của màn sắp dựng như app chuẩn bị bài trước khi mở.</summary>
+        private void Prepare(Lesson lesson) =>
+            AwaitableTestUtil.RunNow(Ctx.Assets.PrepareAsync(LessonAssets.ContentIds(lesson)));
 
         /// <summary>
         /// Bộ theo dõi Completed cho một màn: truyền <see cref="ViewTracker.OnCompleted"/> làm handler cho
@@ -182,7 +204,7 @@ namespace TapDoc.Tests
         protected void UseImageLoader(Func<string, Sprite> loader)
         {
             _imageLoader = loader;
-            Ctx.Assets = TestCatalog.FromLoaders(_audioLoader, _imageLoader);
+            Ctx.Assets = NewCatalog();
             Ctx.Speech.Init(Ctx.Assets);
         }
 

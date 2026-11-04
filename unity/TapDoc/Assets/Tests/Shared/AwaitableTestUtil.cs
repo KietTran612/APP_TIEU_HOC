@@ -21,6 +21,22 @@ namespace TapDoc.Tests
             awaiter.GetResult(); // ném lại lỗi (nếu có) ra test
         }
 
+        /// <summary>Awaitable phải xong ngay (nguồn giả không chậm); ném lại lỗi nếu có.</summary>
+        public static void RunNow(Awaitable awaitable)
+        {
+            var awaiter = awaitable.GetAwaiter();
+            if (!awaiter.IsCompleted) throw new InvalidOperationException("Awaitable chưa xong ngay");
+            awaiter.GetResult();
+        }
+
+        /// <summary>Như <see cref="RunNow(Awaitable)"/>, trả kết quả.</summary>
+        public static T RunNow<T>(Awaitable<T> awaitable)
+        {
+            var awaiter = awaitable.GetAwaiter();
+            if (!awaiter.IsCompleted) throw new InvalidOperationException("Awaitable chưa xong ngay");
+            return awaiter.GetResult();
+        }
+
         public static IEnumerator Wait<T>(Awaitable<T> awaitable, Action<T> done)
         {
             var awaiter = awaitable.GetAwaiter();
