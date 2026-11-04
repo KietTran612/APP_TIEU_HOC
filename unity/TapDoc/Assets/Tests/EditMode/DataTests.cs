@@ -11,6 +11,33 @@ namespace TapDoc.Tests
     public class DataTests
     {
         [Test]
+        public void AudioIds_IncludesReadings()
+        {
+            var step = new Step { type = "unit", text = "a", audio = "van_a" };
+            step.readings.Add(new Reading { audio = "r1" });
+            step.readings.Add(new Reading { audio = "r2" });
+            var lesson = new Lesson { part1 = new List<Step> { step } };
+
+            var ids = LessonAssets.AudioIds(lesson).ToList();
+            CollectionAssert.Contains(ids, "r1");
+            CollectionAssert.Contains(ids, "r2");
+        }
+
+        [Test]
+        public void ContentIds_IsUnionOfAudioAndImage()
+        {
+            var json = ((TextAsset)new ResourcesContentSource().Load(ContentKind.Lesson, "tv1_t1_b17")).text;
+            var lesson = LessonRepository.Parse(json);
+
+            var expected = LessonAssets.AudioIds(lesson).Select(id => (ContentKind.Speech, id))
+                .Concat(LessonAssets.ImageIds(lesson).Select(id => (ContentKind.Image, id)))
+                .ToList();
+            var actual = LessonAssets.ContentIds(lesson).ToList();
+            CollectionAssert.AreEquivalent(expected, actual);
+            Assert.AreEqual(actual.Count, actual.Distinct().Count(), "ContentIds có mã trùng");
+        }
+
+        [Test]
         public void Load_Lesson13()
         {
             var l = LessonRepository.Load("tv1_t1_b13");

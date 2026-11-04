@@ -5,6 +5,11 @@ namespace TapDoc
 {
     public static class LessonAssets
     {
+        /// <summary>Mọi tranh và âm thanh phát âm bài dùng, kèm loại: là bộ cần chuẩn bị trước khi mở bài.</summary>
+        public static IEnumerable<(ContentKind kind, string id)> ContentIds(Lesson lesson) =>
+            AudioIds(lesson).Select(id => (ContentKind.Speech, id))
+                .Concat(ImageIds(lesson).Select(id => (ContentKind.Image, id)));
+
         public static IEnumerable<string> AudioIds(Lesson lesson)
         {
             if (lesson == null) yield break;
@@ -20,6 +25,13 @@ namespace TapDoc
                         if (step == null) continue;
                         yield return step.audio;
                         yield return step.then_audio;
+                        if (step.readings != null)
+                        {
+                            foreach (var reading in step.readings)
+                            {
+                                if (reading != null) yield return reading.audio;
+                            }
+                        }
                         foreach (var a in SpellAudio(step.spell)) yield return a;
                         if (step.rows != null)
                         {
