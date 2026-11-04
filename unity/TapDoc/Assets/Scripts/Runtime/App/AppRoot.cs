@@ -14,11 +14,11 @@ namespace TapDoc
         public static AppRoot Instance { get; private set; }
 
         /// <summary>
-        /// Móc cho test: tạo <see cref="AssetCatalog"/> với loader giả. <c>null</c> (mặc định, và luôn luôn
-        /// trong app thật) nghĩa là dùng <c>new AssetCatalog()</c> nạp từ Resources; thiếu file thì catalog
-        /// báo lỗi rõ trong Console, không có âm thanh hay tranh thay thế.
+        /// Móc cho test: nguồn dữ liệu giả. <c>null</c> (mặc định, và luôn luôn trong app thật) nghĩa là đọc từ
+        /// Resources (<see cref="ResourcesContentSource"/>); thiếu file thì catalog báo lỗi rõ trong Console, không có
+        /// âm thanh hay tranh thay thế.
         /// </summary>
-        internal static Func<AssetCatalog> CatalogFactory;
+        internal static Func<IContentSource> SourceFactory;
 
         /// <summary>
         /// Móc cho test: tạo kho tiến độ trỏ tới file tạm. <c>null</c> (mặc định, và luôn luôn trong app thật)
@@ -39,6 +39,7 @@ namespace TapDoc
         public ProgressStore Progress { get; private set; }
 
         private GameObject _currentScreen;
+        private IContentSource _source;
 
         private const float ScreenFadeSeconds = .25f;
 
@@ -145,7 +146,8 @@ namespace TapDoc
                 esGo.transform.SetParent(transform, false);
             }
 
-            Assets = CatalogFactory != null ? CatalogFactory() : new AssetCatalog();
+            _source = SourceFactory?.Invoke() ?? new ResourcesContentSource();
+            Assets = new AssetCatalog(_source);
             var spGo = new GameObject("SpeechPlayer");
             spGo.transform.SetParent(transform, false);
             Speech = spGo.AddComponent<SpeechPlayer>();

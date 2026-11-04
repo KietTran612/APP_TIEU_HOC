@@ -23,7 +23,7 @@ namespace TapDoc
 
         public void Init(AssetCatalog catalog)
         {
-            _catalog = catalog ?? new AssetCatalog();
+            _catalog = catalog ?? throw new ArgumentNullException(nameof(catalog));
             if (_audioSource == null)
             {
                 _audioSource = GetComponent<AudioSource>();
@@ -60,7 +60,11 @@ namespace TapDoc
             }
 
             RecordHistory(id);
-            var clip = _catalog.Audio(id);
+            var clip = await ClipAsync(id);
+            if (this == null || _generation != gen)
+            {
+                return false;
+            }
             if (clip == null)
             {
                 if (_generation == gen)
@@ -133,7 +137,11 @@ namespace TapDoc
                 if (!string.IsNullOrEmpty(id) && !RejectSfx(id))
                 {
                     RecordHistory(id);
-                    var clip = _catalog.Audio(id);
+                    var clip = await ClipAsync(id);
+                    if (this == null || _generation != gen)
+                    {
+                        return false;
+                    }
                     if (clip != null)
                     {
                         if (_audioSource != null)
@@ -183,12 +191,20 @@ namespace TapDoc
             Stop();
         }
 
+        /// <summary>
+        /// Âm thanh đã chuẩn bị thì lấy ngay; chưa có thì nạp lẻ có chờ vào bộ hiện tại của catalog (thiếu file thì
+        /// catalog báo lỗi và trả <c>null</c>).
+        /// </summary>
+        private async Awaitable<AudioClip> ClipAsync(string id)
+        {
+            if (_catalog.IsLoaded(ContentKind.Speech, id)) return _catalog.Audio(id);
+            return await _catalog.AudioAsync(id, _catalog.CurrentHolder);
+        }
+
         private void EnsureInitialized()
         {
-            if (_catalog == null || _audioSource == null)
-            {
-                Init(_catalog ?? new AssetCatalog());
-            }
+            if (_catalog == null) throw new InvalidOperationException("SpeechPlayer chưa được Init với AssetCatalog");
+            if (_audioSource == null) Init(_catalog);
         }
 
         /// <summary>

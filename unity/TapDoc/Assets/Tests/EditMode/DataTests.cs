@@ -82,7 +82,7 @@ namespace TapDoc.Tests
         [Test]
         public void AssetCatalog_Missing_LogsOnceAndReturnsNull()
         {
-            var c = new AssetCatalog();
+            var c = new AssetCatalog(new ResourcesContentSource());
             LogAssert.Expect(LogType.Error, "[TapDoc] Thiếu âm thanh: khong_co");
             Assert.IsNull(c.Audio("khong_co"));
             Assert.IsNull(c.Audio("khong_co"));
@@ -116,7 +116,7 @@ namespace TapDoc.Tests
 
             // Kiểm tra thật bằng AssetCatalog mặc định (Resources), không loader giả. Mã nào thiếu thì
             // catalog ghi lỗi một lần: báo trước cho LogAssert để danh sách thiếu là thông điệp lỗi duy nhất.
-            var c = new AssetCatalog();
+            var c = new AssetCatalog(new ResourcesContentSource());
             var missing = new List<string>();
             foreach (var id in audioIds)
             {

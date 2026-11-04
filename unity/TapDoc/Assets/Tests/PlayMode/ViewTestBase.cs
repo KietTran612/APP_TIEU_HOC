@@ -76,7 +76,7 @@ namespace TapDoc.Tests
             var spGo = new GameObject("SpeechPlayer");
             spGo.transform.SetParent(_rootGo.transform, false);
             var sp = spGo.AddComponent<SpeechPlayer>();
-            var assets = new AssetCatalog(_audioLoader, _imageLoader);
+            var assets = TestCatalog.FromLoaders(_audioLoader, _imageLoader);
             sp.Init(assets);
             sp.WaitScale = 0.05f;
 
@@ -182,7 +182,7 @@ namespace TapDoc.Tests
         protected void UseImageLoader(Func<string, Sprite> loader)
         {
             _imageLoader = loader;
-            Ctx.Assets = new AssetCatalog(_audioLoader, _imageLoader);
+            Ctx.Assets = TestCatalog.FromLoaders(_audioLoader, _imageLoader);
             Ctx.Speech.Init(Ctx.Assets);
         }
 

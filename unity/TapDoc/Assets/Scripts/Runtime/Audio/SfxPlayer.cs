@@ -29,7 +29,7 @@ namespace TapDoc
 
         public void Init(AssetCatalog catalog, SpeechPlayer speech)
         {
-            _catalog = catalog ?? new AssetCatalog();
+            _catalog = catalog ?? throw new System.ArgumentNullException(nameof(catalog));
             _speech = speech;
             if (_source == null)
             {

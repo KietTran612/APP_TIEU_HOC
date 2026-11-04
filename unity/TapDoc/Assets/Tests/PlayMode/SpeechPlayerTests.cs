@@ -36,7 +36,7 @@ namespace TapDoc.Tests
             _created.Add(go);
             var sp = go.AddComponent<SpeechPlayer>();
             var loader = audioLoader ?? (id => AudioClip.Create(id, 4410, 1, 44100, false));
-            sp.Init(new AssetCatalog(loader));
+            sp.Init(TestCatalog.FromLoaders(loader));
             return sp;
         }
 

@@ -5,6 +5,9 @@ namespace TapDoc
 {
     public static class FontProvider
     {
+        /// <summary>Mã font chính (Andika), nạp trong bộ chung của <see cref="AssetCatalog"/>.</summary>
+        public const string MainFontId = "Andika-Regular";
+
         private static TMP_FontAsset _main;
 
         public static TMP_FontAsset Main

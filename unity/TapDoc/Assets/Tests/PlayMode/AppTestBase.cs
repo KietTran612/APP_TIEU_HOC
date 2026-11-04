@@ -45,7 +45,7 @@ namespace TapDoc.Tests
             Motion.Scale = 1f;
             if (_stubSprite != null || _stubClip != null)
             {
-                AppRoot.CatalogFactory = null;
+                AppRoot.SourceFactory = null;
                 if (_stubSprite != null) Object.Destroy(_stubSprite);
                 if (_stubTex != null) Object.Destroy(_stubTex);
                 if (_stubClip != null) Object.Destroy(_stubClip);
@@ -174,22 +174,16 @@ namespace TapDoc.Tests
             _stubClip = AudioClip.Create("stub", 4410, 1, 44100, false);
             var sprite = _stubSprite;
             var clip = _stubClip;
-            AppRoot.CatalogFactory = () => new AssetCatalog(
-                id =>
+            var real = new ResourcesContentSource();
+            AppRoot.SourceFactory = () => new FakeContentSource
+            {
+                Fallback = (kind, id) => real.Load(kind, id) ?? kind switch
                 {
-                    var real = Resources.Load<AudioClip>($"audio/{id}");
-                    return real != null ? real : clip;
+                    ContentKind.Image => sprite,
+                    ContentKind.Speech or ContentKind.Sfx => clip,
+                    _ => null,
                 },
-                id =>
-                {
-                    var real = Resources.Load<Sprite>($"images/{id}");
-                    return real != null ? real : sprite;
-                },
-                id =>
-                {
-                    var real = Resources.Load<AudioClip>($"sfx/{id}");
-                    return real != null ? real : clip;
-                });
+            };
         }
 
         private void DeleteStoreFiles()

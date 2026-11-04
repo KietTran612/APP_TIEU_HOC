@@ -237,7 +237,7 @@ namespace TapDoc.Tests
         private (TapFeedback tap, SfxPlayer sfx, SpeechPlayer speech) TapWithSound(float speechSeconds = 1f)
         {
             if (Object.FindAnyObjectByType<AudioListener>() == null) new GameObject("Listener", typeof(AudioListener)).transform.SetParent(_canvas.transform);
-            var catalog = new AssetCatalog(id => AudioClip.Create(id, (int)(44100 * speechSeconds), 1, 44100, false), _ => null,
+            var catalog = TestCatalog.FromLoaders(id => AudioClip.Create(id, (int)(44100 * speechSeconds), 1, 44100, false), _ => null,
                 id => AudioClip.Create(id, 441, 1, 44100, false));
             var audio = new GameObject("Audio");
             audio.transform.SetParent(_canvas.transform);

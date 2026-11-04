@@ -123,9 +123,10 @@ namespace TapDoc.Tests
         public IEnumerator MissingFlowerImage_ReportsErrorAndFinishes()
         {
             var clip = AudioClip.Create("stub", 441, 1, 44100, false);
-            AppRoot.CatalogFactory = () => new AssetCatalog(
+            var real = new ResourcesContentSource();
+            AppRoot.SourceFactory = () => TestCatalog.Source(
                 _ => clip,
-                imageId => imageId == SystemImages.Flower ? null : Resources.Load<Sprite>($"images/{imageId}"));
+                imageId => imageId == SystemImages.Flower ? null : real.Load(ContentKind.Image, imageId) as Sprite);
             try
             {
                 LogAssert.Expect(LogType.Error, "[TapDoc] Thiếu tranh: " + SystemImages.Flower);
@@ -136,7 +137,7 @@ namespace TapDoc.Tests
             }
             finally
             {
-                AppRoot.CatalogFactory = null;
+                AppRoot.SourceFactory = null;
                 Object.Destroy(clip);
             }
         }

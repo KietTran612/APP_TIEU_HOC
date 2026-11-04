@@ -30,7 +30,7 @@ namespace TapDoc.Tests
             {
                 _created.Add(new GameObject("TestAudioListener", typeof(AudioListener)));
             }
-            var catalog = new AssetCatalog(
+            var catalog = TestCatalog.FromLoaders(
                 id => AudioClip.Create(id, (int)(44100 * speechSeconds), 1, 44100, false),
                 _ => null,
                 sfxLoader ?? (id => AudioClip.Create(id, 2205, 1, 44100, false)));
@@ -113,7 +113,7 @@ namespace TapDoc.Tests
         [Test]
         public void CatalogLoadsFromSfxFolderOnly()
         {
-            var catalog = new AssetCatalog();
+            var catalog = new AssetCatalog(new ResourcesContentSource());
             LogAssert.Expect(LogType.Warning, "[TapDoc] Thiếu tiếng động: sfx_khong_co");
             Assert.IsNull(catalog.Sfx("sfx_khong_co"));
             // Mã giọng đọc có thật không nạp được qua kênh tiếng động (khác thư mục).

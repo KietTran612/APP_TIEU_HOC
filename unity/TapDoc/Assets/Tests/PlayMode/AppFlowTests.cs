@@ -97,7 +97,7 @@ namespace TapDoc.Tests
             _clip = AudioClip.Create("test_clip", 4410, 1, 44100, false);
             _tex = new Texture2D(4, 4, TextureFormat.RGBA32, false);
             _sprite = Sprite.Create(_tex, new Rect(0, 0, 4, 4), new Vector2(0.5f, 0.5f));
-            AppRoot.CatalogFactory = () => new AssetCatalog(
+            AppRoot.SourceFactory = () => TestCatalog.Source(
                 id => id == MissingAudio ? null : _clip,
                 _ => _sprite);
         }
@@ -110,7 +110,7 @@ namespace TapDoc.Tests
                 if (AppRoot.Instance.Speech != null) AppRoot.Instance.Speech.Stop();
                 Object.Destroy(AppRoot.Instance.gameObject);
             }
-            AppRoot.CatalogFactory = null;
+            AppRoot.SourceFactory = null;
             StepViewFactory.Unregister(TapType);
             StepViewFactory.Unregister(SyncType);
             yield return null; // để Destroy chạy xong trước test sau

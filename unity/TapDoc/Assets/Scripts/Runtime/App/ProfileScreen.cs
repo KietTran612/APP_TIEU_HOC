@@ -114,13 +114,12 @@ namespace TapDoc
         }
 
         /// <summary>
-        /// Tranh đại diện, hoặc <c>null</c> khi chưa có file. Kiểm tra trong Resources trước khi hỏi catalog, để hình
+        /// Tranh đại diện, hoặc <c>null</c> khi chưa có file. Hỏi <see cref="AssetCatalog.HasImage"/> trước, để hình
         /// đại diện chưa nhập chỉ hiện ô màu mà không báo lỗi thiếu tranh.
         /// </summary>
         internal static Sprite AvatarSprite(AssetCatalog assets, string avatarId)
         {
-            if (assets == null || string.IsNullOrEmpty(avatarId)) return null;
-            if (Resources.Load<Sprite>($"images/{avatarId}") == null) return null;
+            if (assets == null || !assets.HasImage(avatarId)) return null;
             return assets.Image(avatarId);
         }
 

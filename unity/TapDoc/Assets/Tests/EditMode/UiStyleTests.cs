@@ -41,7 +41,7 @@ namespace TapDoc.Tests
         [Test]
         public void IconButton_IsRoundWithIconAndNoText()
         {
-            var catalog = new AssetCatalog(_ => null, _ => null, _ => null);
+            var catalog = TestCatalog.FromLoaders();
             LogAssert.ignoreFailingMessages = true; // thiếu tranh trong catalog giả: không phải điều đang kiểm
             var button = UiKit.CreateIconButton(_canvas.transform, catalog, SystemIcons.Home, UiText.Back, null);
             LogAssert.ignoreFailingMessages = false;
@@ -60,7 +60,7 @@ namespace TapDoc.Tests
         [Test]
         public void IconButton_CustomFill()
         {
-            var catalog = new AssetCatalog(_ => null, _ => null, _ => null);
+            var catalog = TestCatalog.FromLoaders();
             LogAssert.ignoreFailingMessages = true;
             var button = UiKit.CreateIconButton(_canvas.transform, catalog, SystemIcons.Forward, UiText.Next, null, Palette.Orange);
             LogAssert.ignoreFailingMessages = false;
@@ -129,12 +129,12 @@ namespace TapDoc.Tests
         public void Catalog_MissingSfx_WarnsOnce()
         {
             var asked = new System.Collections.Generic.List<string>();
-            var catalog = new AssetCatalog(_ => null, _ => null, id => { asked.Add(id); return null; });
+            var catalog = TestCatalog.FromLoaders(sfx: id => { asked.Add(id); return null; });
             LogAssert.Expect(LogType.Warning, "[TapDoc] Thiếu tiếng động: khong_co");
             Assert.IsNull(catalog.Sfx("khong_co"));
             Assert.IsNull(catalog.Sfx("khong_co"));
             LogAssert.NoUnexpectedReceived();
-            Assert.AreEqual(2, asked.Count);
+            Assert.AreEqual(1, asked.Count, "Mã thiếu chỉ hỏi nguồn một lần");
         }
 
         [Test]

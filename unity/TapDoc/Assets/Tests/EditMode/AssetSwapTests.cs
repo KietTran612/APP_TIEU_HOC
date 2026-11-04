@@ -16,14 +16,14 @@ namespace TapDoc.Tests
         public void SwapImageAndAudio_SameId_UsesNewFile()
         {
             WritePng(ImagePath, 1);
-            Assert.AreEqual(1, new AssetCatalog().Image("img_test_swap").texture.width);
+            Assert.AreEqual(1, new AssetCatalog(new ResourcesContentSource()).Image("img_test_swap").texture.width);
             WritePng(ImagePath, 2);
-            Assert.AreEqual(2, new AssetCatalog().Image("img_test_swap").texture.width);
+            Assert.AreEqual(2, new AssetCatalog(new ResourcesContentSource()).Image("img_test_swap").texture.width);
 
             WriteWav(AudioPath, .1f);
-            var a = new AssetCatalog().Audio("aud_test_swap").length;
+            var a = new AssetCatalog(new ResourcesContentSource()).Audio("aud_test_swap").length;
             WriteWav(AudioPath, .3f);
-            var b = new AssetCatalog().Audio("aud_test_swap").length;
+            var b = new AssetCatalog(new ResourcesContentSource()).Audio("aud_test_swap").length;
             Assert.Greater(b, a + .1f);
         }
 
