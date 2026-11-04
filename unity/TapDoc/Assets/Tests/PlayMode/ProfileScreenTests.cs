@@ -50,7 +50,7 @@ namespace TapDoc.Tests
             yield return LoadMainWithProfile();
             AppRoot.Instance.Speech.WaitScale = .02f;
             AppRoot.Instance.ShowLesson(Ordered()[0]);
-            yield return null;
+            yield return WaitPrepared();
             var screen = Object.FindAnyObjectByType<LessonScreen>();
             // làm sai một lần ở lượt đầu Phần 2, rồi đi hết bài
             yield return WalkWithOneMistake(screen);

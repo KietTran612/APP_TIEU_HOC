@@ -46,6 +46,11 @@ namespace TapDoc.Tests
             _releases[(kind, id)] = ReleaseCount(kind, id) + 1;
         }
 
+        /// <summary>Số lần được nhờ dọn (<see cref="IContentSource.ReleaseUnused"/>).</summary>
+        public int ReleaseUnusedCount { get; private set; }
+
+        public void ReleaseUnused() => ReleaseUnusedCount++;
+
         /// <summary>Tranh trơn 4×4 dùng cho test.</summary>
         public static Sprite NewSprite(string name = "test_sprite")
         {

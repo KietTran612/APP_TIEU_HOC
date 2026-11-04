@@ -18,7 +18,7 @@ namespace TapDoc.Tests
             yield return LoadMainWithProfile(unlockAll: true);
             AppRoot.Instance.Speech.WaitScale = .02f;
             AppRoot.Instance.ShowLesson("tv1_t1_b17");
-            yield return null;
+            yield return WaitPrepared();
             var problems = new List<string>();
             var metrics = new List<string>();
             AppRoot.Instance.UiCamera.targetTexture = new RenderTexture(2048, 1536, 24);

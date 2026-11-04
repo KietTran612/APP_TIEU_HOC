@@ -21,7 +21,7 @@ namespace TapDoc.Tests
             yield return LoadMainWithProfile(unlockAll: true);
             AppRoot.Instance.Speech.WaitScale = .02f;
             AppRoot.Instance.ShowLesson(LessonId);
-            yield return null;
+            yield return WaitPrepared();
         }
 
         private static LessonScreen Screen() => Object.FindAnyObjectByType<LessonScreen>();
@@ -104,7 +104,7 @@ namespace TapDoc.Tests
                 var rt = new RenderTexture(size.x, size.y, 24);
                 app.UiCamera.targetTexture = rt;
                 app.ShowLesson(LessonId);
-                yield return null;
+                yield return WaitPrepared();
                 var s = Screen();
                 var mascot = CanvasRect((RectTransform)s.Mascot.transform);
                 Assert.IsFalse(mascot.Overlaps(CanvasRect(s.Stage)), "Gà con không đè vùng học");

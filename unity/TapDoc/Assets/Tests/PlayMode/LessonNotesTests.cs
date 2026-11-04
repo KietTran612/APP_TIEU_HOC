@@ -12,11 +12,15 @@ namespace TapDoc.Tests
     /// <summary>Nút "Ghi chú" trong màn bài: chỉ hiện khi bài có ghi chú; khung ghi chú chia theo loại, đóng lại được.</summary>
     public class LessonNotesTests : AppTestBase
     {
-        private static LessonScreen Open(string lessonId)
+        /// <summary>Mở bài và chờ chuẩn bị xong; <see cref="Opened"/> là màn bài vừa mở.</summary>
+        private IEnumerator Open(string lessonId)
         {
             AppRoot.Instance.ShowLesson(lessonId);
-            return Object.FindAnyObjectByType<LessonScreen>();
+            yield return WaitPrepared();
+            Opened = Object.FindAnyObjectByType<LessonScreen>();
         }
+
+        private LessonScreen Opened { get; set; }
 
         private static Button ButtonUnder(Component root, string label) =>
             root.GetComponentsInChildren<Button>(false)
@@ -26,13 +30,15 @@ namespace TapDoc.Tests
         public IEnumerator Notes_ButtonOnlyWhenLessonHasNotes()
         {
             yield return LoadMainWithProfile(unlockAll: true);
-            var withNotes = Open("tv1_t1_b20");
+            yield return Open("tv1_t1_b20");
+            var withNotes = Opened;
             yield return null;
             Assert.IsNotNull(withNotes.NotesButton);
             Assert.IsTrue(withNotes.NotesButton.gameObject.activeInHierarchy);
             Assert.AreEqual(UiText.Notes, withNotes.NotesButton.GetComponentInChildren<TMP_Text>().text);
 
-            var without = Open("tv1_t1_b13");
+            yield return Open("tv1_t1_b13");
+            var without = Opened;
             yield return null;
             Assert.IsTrue(without.NotesButton == null || !without.NotesButton.gameObject.activeInHierarchy,
                 "Bài 13 không có ghi chú mà vẫn hiện nút Ghi chú");
@@ -42,7 +48,8 @@ namespace TapDoc.Tests
         public IEnumerator Notes_OpenShowsGroupedTextsAndCloses()
         {
             yield return LoadMainWithProfile(unlockAll: true);
-            var s = Open("tv1_t1_b68");
+            yield return Open("tv1_t1_b68");
+            var s = Opened;
             yield return null;
             Press(s.NotesButton);
             yield return null;
@@ -65,7 +72,8 @@ namespace TapDoc.Tests
         {
             // Phụ huynh mở ghi chú để đọc: giọng đọc của bước đang học phải dừng.
             yield return LoadMainWithProfile(unlockAll: true);
-            var s = Open("tv1_t1_b20");
+            yield return Open("tv1_t1_b20");
+            var s = Opened;
             yield return null;
             Press(s.ReplayButton);
             yield return null;
@@ -80,7 +88,8 @@ namespace TapDoc.Tests
         {
             // Nút "Vì sao?" dưới các nút cách đọc mở khung Ghi chú có phần "Cách đọc theo sách".
             yield return LoadMainWithProfile(unlockAll: true);
-            var s = Open("tv1_t1_b25");
+            yield return Open("tv1_t1_b25");
+            var s = Opened;
             yield return null;
             Press(ButtonUnder(s, UiText.Why));
             yield return null;
@@ -93,7 +102,8 @@ namespace TapDoc.Tests
         public IEnumerator Notes_ReadingNamesShownForLetterLesson()
         {
             yield return LoadMainWithProfile(unlockAll: true);
-            var s = Open("tv1_t1_b25");
+            yield return Open("tv1_t1_b25");
+            var s = Opened;
             yield return null;
             Press(s.NotesButton);
             yield return null;
@@ -110,7 +120,8 @@ namespace TapDoc.Tests
             {
                 var rt = new RenderTexture(size.x, size.y, 24);
                 AppRoot.Instance.UiCamera.targetTexture = rt;
-                var s = Open("tv1_t1_b80"); // bài có nhiều ghi chú dài nhất
+                yield return Open("tv1_t1_b80"); // bài có nhiều ghi chú dài nhất
+                var s = Opened;
                 yield return null;
                 Press(s.NotesButton);
                 yield return null;

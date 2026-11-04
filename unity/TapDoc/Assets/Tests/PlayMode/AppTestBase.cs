@@ -115,6 +115,14 @@ namespace TapDoc.Tests
             yield return null;
         }
 
+        /// <summary>Chờ đến khi app chuẩn bị xong (mở bài, ôn lại, màn Phụ huynh), rồi thêm một khung.</summary>
+        protected static IEnumerator WaitPrepared()
+        {
+            for (var i = 0; i < 300 && AppRoot.Instance != null && AppRoot.Instance.IsPreparing; i++) yield return null;
+            Assert.IsFalse(AppRoot.Instance != null && AppRoot.Instance.IsPreparing, "Chuẩn bị không xong");
+            yield return null;
+        }
+
         /// <summary>Mã bài theo thứ tự trong <c>index.json</c>.</summary>
         protected static string[] Ordered() =>
             TestLessons.Real.Index.lessons.Select(e => e.lesson_id).ToArray();

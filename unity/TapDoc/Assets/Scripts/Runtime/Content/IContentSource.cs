@@ -17,5 +17,10 @@ namespace TapDoc
 
         /// <summary>Báo nguồn rằng không còn ai giữ <paramref name="asset"/>.</summary>
         void Release(ContentKind kind, string id, Object asset);
+
+        /// <summary>
+        /// Dọn những gì không còn ai giữ, gọi sau khi nhả một bộ và màn cũ đã bị huỷ (không gọi giữa lúc bé đang học).
+        /// </summary>
+        void ReleaseUnused();
     }
 }

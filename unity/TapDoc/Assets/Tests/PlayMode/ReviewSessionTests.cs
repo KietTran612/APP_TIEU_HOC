@@ -18,7 +18,7 @@ namespace TapDoc.Tests
             s.RecordMistake("tv1_t1_b04", 3);
             AppRoot.Instance.Speech.WaitScale = .02f;
             AppRoot.Instance.ShowReview();
-            yield return null;
+            yield return WaitPrepared();
             var screen = Object.FindAnyObjectByType<LessonScreen>();
             Assert.AreEqual(2, screen.Flow.TotalCount);
             yield return WalkAll(screen);
@@ -48,7 +48,7 @@ namespace TapDoc.Tests
             s.RecordMistake("tv1_t1_b13", 0);
             AppRoot.Instance.Speech.WaitScale = .02f;
             AppRoot.Instance.ShowReview();
-            yield return null;
+            yield return WaitPrepared();
             yield return WalkWithOneMistake(Object.FindAnyObjectByType<LessonScreen>());
             var m = s.Mistakes().Single();
             Assert.AreEqual(("tv1_t1_b13", 0, 2), (m.lesson_id, m.round, m.count));
@@ -64,7 +64,7 @@ namespace TapDoc.Tests
             AppRoot.Instance.ShowLessonList();
             yield return null;
             Press(Object.FindAnyObjectByType<LessonListScreen>().ReviewButton);
-            yield return null;
+            yield return WaitPrepared();
 
             var screen = Object.FindAnyObjectByType<LessonScreen>();
             Assert.IsNotNull(screen, "Nút Ôn lại không mở phiên ôn");

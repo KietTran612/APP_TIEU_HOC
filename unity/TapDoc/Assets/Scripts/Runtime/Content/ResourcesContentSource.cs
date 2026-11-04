@@ -19,5 +19,7 @@ namespace TapDoc
         public void Release(ContentKind kind, string id, Object asset)
         {
         }
+
+        public void ReleaseUnused() => Resources.UnloadUnusedAssets();
     }
 }

@@ -21,7 +21,7 @@ namespace TapDoc.Tests
             app.Speech.WaitScale = .02f;
             if (size.HasValue) app.UiCamera.targetTexture = new RenderTexture(size.Value.x, size.Value.y, 24);
             app.ShowLesson(id);
-            yield return null;
+            yield return WaitPrepared();
         }
 
         [UnityTest]

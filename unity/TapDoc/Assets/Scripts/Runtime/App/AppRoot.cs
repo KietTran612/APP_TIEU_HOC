@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
@@ -41,8 +43,17 @@ namespace TapDoc
         /// <summary>Hồ sơ bé và tiến độ học; <c>Progress.Current</c> là bé đang học.</summary>
         public ProgressStore Progress { get; private set; }
 
+        /// <summary>Màn chuyển phủ lên trong lúc chuẩn bị bài, ôn lại, màn Phụ huynh.</summary>
+        public PrepareCurtain Curtain { get; private set; }
+
+        /// <summary><c>true</c> trong lúc đang chuẩn bị một màn; mọi lời mở màn có chuẩn bị khác bị bỏ qua.</summary>
+        public bool IsPreparing { get; private set; }
+
         private GameObject _currentScreen;
         private IContentSource _source;
+
+        /// <summary>Bộ tranh, âm thanh của màn hiện tại (bài, ôn lại, Phụ huynh); bộ chung nằm riêng trong catalog.</summary>
+        private ContentSet _currentSet;
 
         private const float ScreenFadeSeconds = .25f;
 
@@ -165,6 +176,7 @@ namespace TapDoc
             bgImg.raycastTarget = false;
 
             SafeRoot = UiKit.CreateSafeArea(Canvas.transform);
+            Curtain = PrepareCurtain.Create(SafeRoot);
 
             if (Object.FindAnyObjectByType<EventSystem>() == null)
             {
@@ -192,6 +204,8 @@ namespace TapDoc
         /// <summary>Màn chọn bé. Chưa có hồ sơ nào thì mở thẳng phần tạo hồ sơ.</summary>
         public void ShowProfiles()
         {
+            InitIfNeeded();
+            ReleaseCurrentSet();
             Present<ProfileScreen>().Build(this);
         }
 
@@ -199,6 +213,7 @@ namespace TapDoc
         public void ShowLessonList()
         {
             InitIfNeeded();
+            ReleaseCurrentSet();
             if (Progress.Current == null)
             {
                 ShowProfiles();
@@ -207,15 +222,15 @@ namespace TapDoc
             Present<LessonListScreen>().Build(this);
         }
 
+        /// <summary>Mở bài: màn chuyển hiện, nạp bài cùng tranh, âm thanh của bài, nạp xong mới hiện màn bài.</summary>
         public void ShowLesson(string lessonId)
         {
-            var lesson = Lessons.Get(lessonId);
-            ShowLesson(lesson);
+            _ = OpenLessonAsync(null, async () => (await Lessons.LoadAsync(lessonId), null), lessonId);
         }
 
         public void ShowLesson(Lesson lesson)
         {
-            Present<LessonScreen>().Build(this, lesson);
+            _ = OpenLessonAsync(lesson, null, lesson?.lesson_id);
         }
 
         /// <summary>
@@ -225,15 +240,93 @@ namespace TapDoc
         public void ShowReview()
         {
             InitIfNeeded();
+            _ = OpenLessonAsync(null, LoadReviewAsync, ReviewSession.LessonId);
+        }
+
+        private async Awaitable<(Lesson, ReviewSession)> LoadReviewAsync()
+        {
+            // Nạp trước các bài có lượt cần ôn; bài hỏng hay không còn thì ReviewSession bỏ lượt đó.
+            foreach (var lessonId in Progress.Mistakes(int.MaxValue).Select(m => m.lesson_id).Distinct().ToList())
+            {
+                try
+                {
+                    await Lessons.LoadAsync(lessonId);
+                }
+                catch (InvalidDataException)
+                {
+                }
+            }
             var session = ReviewSession.Build(Progress, Lessons.Get);
             SaveProgress();
-            if (session.Lesson.part2.Count == 0)
+            return session.Lesson.part2.Count == 0 ? (null, null) : (session.Lesson, session);
+        }
+
+        /// <summary>
+        /// Luồng chung của mở bài và ôn lại. Nạp lỗi (file bài thiếu hay hỏng) thì ở lại màn đang hiện, giữ bộ cũ.
+        /// Bộ cũ chỉ được nhả sau khi bộ mới đã nạp xong, để những gì hai bài dùng chung không bị nhả rồi nạp lại.
+        /// </summary>
+        /// <param name="known">Bài đã có sẵn (không cần nạp); <c>null</c> thì lấy bài qua <paramref name="load"/>.</param>
+        private async Awaitable OpenLessonAsync(Lesson known, Func<Awaitable<(Lesson, ReviewSession)>> load, string what)
+        {
+            InitIfNeeded();
+            if (IsPreparing) return;
+            IsPreparing = true;
+            Curtain.Show();
+
+            Lesson lesson;
+            ReviewSession session;
+            ContentSet set = null;
+            try
             {
-                ShowLessonList();
+                (lesson, session) = known != null ? (known, null) : await load();
+                if (this == null) return;
+                if (lesson != null)
+                {
+                    set = await Assets.PrepareAsync(LessonAssets.ContentIds(lesson));
+                    if (this == null)
+                    {
+                        set.Dispose();
+                        return;
+                    }
+                }
+            }
+            catch (InvalidDataException ex)
+            {
+                if (this == null) return;
+                Debug.LogError($"[TapDoc] Không mở được bài {what}: {ex.Message}");
+                EndPreparing();
                 return;
             }
-            Present<LessonScreen>().Build(this, session.Lesson, session);
+
+            if (lesson == null)
+            {
+                EndPreparing();
+                ShowLessonList(); // không còn lượt nào để ôn
+                return;
+            }
+            Present<LessonScreen>().Build(this, lesson, session);
+            HoldSet(set);
+            EndPreparing();
         }
+
+        private void EndPreparing()
+        {
+            Curtain.Hide();
+            IsPreparing = false;
+        }
+
+        /// <summary>Giữ <paramref name="set"/> làm bộ hiện tại; nhả bộ cũ rồi nhờ nguồn dọn.</summary>
+        private void HoldSet(ContentSet set)
+        {
+            var old = _currentSet;
+            _currentSet = set;
+            Assets.CurrentHolder = set;
+            if (old == null) return;
+            old.Dispose();
+            _source.ReleaseUnused();
+        }
+
+        private void ReleaseCurrentSet() => HoldSet(null);
 
         public void ShowResult(string lessonId)
         {
@@ -244,6 +337,7 @@ namespace TapDoc
         public void ShowBook()
         {
             InitIfNeeded();
+            ReleaseCurrentSet();
             if (Progress.Current == null)
             {
                 ShowProfiles();
@@ -255,6 +349,8 @@ namespace TapDoc
         /// <summary>Màn phụ huynh: khóa phép tính trước, mở khóa xong mới xem tiến độ và chữ hay nhầm của từng bé.</summary>
         public void ShowParent()
         {
+            InitIfNeeded();
+            ReleaseCurrentSet();
             Present<ParentScreen>().Build(this);
         }
 
