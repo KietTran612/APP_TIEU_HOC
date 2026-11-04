@@ -220,8 +220,11 @@
     tr.mixed td:last-child { min-width: 0; }
     tr.mixed audio { width: 200px; }
     tr.mixed .note-input { width: 130px; min-width: 130px; }
-    tr.mixed details.tts-more[open] { min-width: 440px; }
-    tr.mixed details.tts-more summary { cursor: pointer; color: #1d4ed8; white-space: nowrap; }
+    tr.mixed .tts-toggle { white-space: nowrap; }
+    tr.mixed .tts-toggle.open { background: #dbeafe; border-color: #93c5fd; }
+    /* Phần chỉnh giọng mở ra ở một hàng riêng ngay dưới, trải hết bề ngang bảng. */
+    tr.tts-detail td { background: #f8fafc; border-top: 0; padding: 8px 12px 12px 12px; }
+    tr.tts-detail .tts-fields, tr.tts-detail .actions { flex-wrap: wrap; }
     .read-as { color: #4b5563; font-size: 13px; margin-top: 2px; }
   </style>
 </head>
@@ -881,18 +884,26 @@
 
         rowElements.set(row, { tr, tdStatus, sBadge, btnOk, btnBad, noteInput });
         if (kind === "audio") {
-          addTtsControls(row, tr);
-          if (mixed) {
-            // Theo bài thì phần chỉnh giọng thu gọn, bấm mới mở, để mỗi dòng thấp và dễ dò.
-            const td = tr.lastElementChild;
-            const more = document.createElement("details");
-            more.className = "tts-more";
-            const summary = document.createElement("summary");
-            summary.textContent = "Chỉnh giọng";
-            more.appendChild(summary);
-            while (td.firstChild) more.appendChild(td.firstChild);
-            td.appendChild(more);
+          if (!mixed) {
+            addTtsControls(row, tr);
+            return tr;
           }
+          // Theo bài: nút "Chỉnh giọng" mở phần chỉnh ở hàng riêng ngay dưới, rộng cả bảng, để không vỡ cột.
+          const detail = document.createElement("tr");
+          detail.className = "tts-detail";
+          detail.hidden = true;
+          addTtsControls(row, detail);
+          detail.lastElementChild.colSpan = 7;
+          const toggle = button("Chỉnh giọng ▾", () => {
+            detail.hidden = !detail.hidden;
+            toggle.classList.toggle("open", !detail.hidden);
+            toggle.textContent = detail.hidden ? "Chỉnh giọng ▾" : "Đóng chỉnh giọng ▴";
+          });
+          toggle.classList.add("tts-toggle");
+          cell().appendChild(toggle);
+          const pair = document.createDocumentFragment();
+          pair.append(tr, detail);
+          return pair;
         } else if (mixed) cell();
         return tr;
       }
