@@ -41,7 +41,7 @@ namespace TapDoc.Tests
             var list = Object.FindAnyObjectByType<LessonListScreen>();
             var labels = list.GetComponentsInChildren<TMP_Text>().Select(t => t.text).ToList();
             Assert.That(labels, Has.Member(UiText.PartLetters));
-            if (!LessonRepository.LoadIndex().lessons.Any(e => e.lesson_no >= 42))
+            if (!TestLessons.Real.Index.lessons.Any(e => e.lesson_no >= 42))
                 Assert.That(labels, Has.No.Member(UiText.PartRimes));
         }
 

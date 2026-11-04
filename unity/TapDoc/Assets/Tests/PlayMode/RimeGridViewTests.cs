@@ -297,6 +297,6 @@ namespace TapDoc.Tests
             return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
         }
 
-        private static int GridIndex(string lid) => LessonRepository.Load(lid).part1.FindIndex(s => s.type == "rime_grid");
+        private static int GridIndex(string lid) => TestLessons.Real.Get(lid).part1.FindIndex(s => s.type == "rime_grid");
     }
 }

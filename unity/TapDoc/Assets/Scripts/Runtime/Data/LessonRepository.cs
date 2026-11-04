@@ -6,11 +6,105 @@ using UnityEngine;
 
 namespace TapDoc
 {
-    public static class LessonRepository
+    /// <summary>
+    /// Kho bài: đọc danh sách bài, bài học và Phụ lục qua <see cref="IContentSource"/>, giữ trong bộ nhớ đệm đến khi app
+    /// tắt (chỉ là chữ, rất nhẹ). Bản có chờ (<c>…Async</c>) dùng khi chuẩn bị màn; <see cref="Get"/>,
+    /// <see cref="Index"/>, <see cref="Appendix"/> trả ngay từ bộ nhớ đệm, chưa có thì nạp ngay và cảnh báo một lần.
+    /// </summary>
+    public sealed class LessonRepository
     {
-        public static LessonIndex LoadIndex()
+        private const string IndexName = "lessons/index";
+
+        private readonly IContentSource _source;
+        private readonly Dictionary<string, Lesson> _lessons = new();
+        private readonly Dictionary<string, Appendix> _appendices = new();
+        private readonly HashSet<string> _warned = new();
+        private LessonIndex _index;
+
+        public LessonRepository(IContentSource source)
         {
-            var asset = Resources.Load<TextAsset>("lessons/index");
+            _source = source ?? throw new ArgumentNullException(nameof(source));
+        }
+
+        public LessonIndex Index
+        {
+            get
+            {
+                if (_index == null)
+                {
+                    WarnUnprepared(IndexName);
+                    _index = ParseIndex(_source.Load(ContentKind.LessonIndex, null) as TextAsset);
+                }
+                return _index;
+            }
+        }
+
+        public async Awaitable<LessonIndex> LoadIndexAsync()
+        {
+            _index ??= ParseIndex(await _source.LoadAsync(ContentKind.LessonIndex, null) as TextAsset);
+            return _index;
+        }
+
+        public Lesson Get(string lessonId)
+        {
+            CheckId(lessonId);
+            if (_lessons.TryGetValue(lessonId, out var lesson)) return lesson;
+            WarnUnprepared(lessonId);
+            return _lessons[lessonId] = ParseLesson(_source.Load(ContentKind.Lesson, lessonId) as TextAsset, lessonId);
+        }
+
+        public async Awaitable<Lesson> LoadAsync(string lessonId)
+        {
+            CheckId(lessonId);
+            if (_lessons.TryGetValue(lessonId, out var lesson)) return lesson;
+            var asset = await _source.LoadAsync(ContentKind.Lesson, lessonId) as TextAsset;
+            if (_lessons.TryGetValue(lessonId, out lesson)) return lesson; // một lời gọi khác đã nạp xong trước
+            return _lessons[lessonId] = ParseLesson(asset, lessonId);
+        }
+
+        /// <summary>Nạp đủ các bài trong danh sách (màn Phụ huynh cần chữ của cả quyển).</summary>
+        public async Awaitable LoadAllAsync()
+        {
+            var index = await LoadIndexAsync();
+            foreach (var entry in index.lessons)
+            {
+                if (entry != null) await LoadAsync(entry.lesson_id);
+            }
+        }
+
+        /// <summary>Phụ lục cuối sách của <paramref name="book"/>.</summary>
+        public Appendix Appendix(string book)
+        {
+            if (string.IsNullOrWhiteSpace(book)) throw new InvalidDataException("Mã sách rỗng");
+            if (_appendices.TryGetValue(book, out var appendix)) return appendix;
+            WarnUnprepared(book);
+            return _appendices[book] = AppendixData.Parse(_source.Load(ContentKind.Appendix, book) as TextAsset, book);
+        }
+
+        public async Awaitable<Appendix> LoadAppendixAsync(string book)
+        {
+            if (string.IsNullOrWhiteSpace(book)) throw new InvalidDataException("Mã sách rỗng");
+            if (_appendices.TryGetValue(book, out var appendix)) return appendix;
+            var asset = await _source.LoadAsync(ContentKind.Appendix, book) as TextAsset;
+            if (_appendices.TryGetValue(book, out appendix)) return appendix;
+            return _appendices[book] = AppendixData.Parse(asset, book);
+        }
+
+        private void WarnUnprepared(string id)
+        {
+            if (_warned.Add(id)) Debug.LogWarning($"[TapDoc] Chưa chuẩn bị trước: {id}");
+        }
+
+        private static void CheckId(string lessonId)
+        {
+            if (string.IsNullOrWhiteSpace(lessonId))
+            {
+                throw new InvalidDataException($"Mã bài học rỗng: {lessonId}");
+            }
+        }
+
+        private static LessonIndex ParseIndex(TextAsset asset)
+        {
             if (asset == null || string.IsNullOrWhiteSpace(asset.text))
             {
                 throw new InvalidDataException("Không tìm thấy hoặc hỏng lessons/index.json");
@@ -44,14 +138,8 @@ namespace TapDoc
             return index;
         }
 
-        public static Lesson Load(string lessonId)
+        private static Lesson ParseLesson(TextAsset asset, string lessonId)
         {
-            if (string.IsNullOrWhiteSpace(lessonId))
-            {
-                throw new InvalidDataException($"Mã bài học rỗng: {lessonId}");
-            }
-
-            var asset = Resources.Load<TextAsset>($"lessons/{lessonId}");
             if (asset == null || string.IsNullOrWhiteSpace(asset.text))
             {
                 throw new InvalidDataException($"Không tìm thấy bài học: {lessonId}");

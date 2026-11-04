@@ -47,7 +47,7 @@ namespace TapDoc
             brt.anchorMax = Vector2.one;
             brt.offsetMin = new Vector2(Margin, BottomBand);
             brt.offsetMax = new Vector2(-Margin, -TopBand);
-            var entries = LessonRepository.LoadIndex().lessons;
+            var entries = app.Lessons.Index.lessons;
             Spread = BookSpread.Create(brt, entries, app.Progress, app.Assets);
             Spread.ShowPage(FlowerBook.StartPage(app.Progress, entries.Select(e => e.lesson_id).ToList()));
 

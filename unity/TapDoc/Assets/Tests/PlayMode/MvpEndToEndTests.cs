@@ -13,7 +13,7 @@ namespace TapDoc.Tests
     /// </summary>
     public class MvpEndToEndTests : AppTestBase
     {
-        private static IEnumerable<string> Lessons() => LessonRepository.LoadIndex().lessons.Select(e => e.lesson_id);
+        private static IEnumerable<string> Lessons() => TestLessons.Real.Index.lessons.Select(e => e.lesson_id);
 
         /// <summary>Mở app với một bé đã mở mọi bài, rồi vào thẳng bài <paramref name="id"/> (nạp theo mã).</summary>
         private IEnumerator OpenLesson(string id, Vector2Int? size = null)

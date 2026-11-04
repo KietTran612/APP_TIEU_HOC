@@ -161,7 +161,7 @@ namespace TapDoc
             scroll.vertical = true;
             scroll.movementType = ScrollRect.MovementType.Clamped;
 
-            var ordered = LessonRepository.LoadIndex().lessons.Select(e => e.lesson_id).ToList();
+            var ordered = _app.Lessons.Index.lessons.Select(e => e.lesson_id).ToList();
             var appendix = UiKit.CreateButton(contentGo.transform, UiText.BookAppendix, OpenAppendix);
             appendix.GetComponent<LayoutElement>().preferredHeight = UiKit.MinTouch;
             SfxToggle = UiKit.CreateButton(contentGo.transform, SfxLabel(), ToggleSfx);
@@ -188,9 +188,9 @@ namespace TapDoc
             if (_appendixPanel == null)
             {
                 // Mọi bài trong danh sách thuộc cùng một quyển sách: Phụ lục lấy theo mã sách đó.
-                var lessons = LessonRepository.LoadIndex().lessons;
-                var audio = LetterAudio.FromLessons(lessons.Select(e => LessonRepository.Load(e.lesson_id)));
-                _appendixPanel = NotesPanel.ForAppendix(transform, AppendixData.Load(lessons.First().book), audio,
+                var lessons = _app.Lessons.Index.lessons;
+                var audio = LetterAudio.FromLessons(lessons.Select(e => _app.Lessons.Get(e.lesson_id)));
+                _appendixPanel = NotesPanel.ForAppendix(transform, _app.Lessons.Appendix(lessons.First().book), audio,
                     id => _ = _app.Speech.PlayAsync(id));
             }
             _appendixPanel.transform.SetAsLastSibling();
@@ -257,7 +257,7 @@ namespace TapDoc
         /// Tối đa 5 chữ bé hay nhầm: đáp án đúng của các lượt bé nhầm, gộp chữ trùng nhau, nhầm nhiều trước rồi mới
         /// nhầm trước. Lượt lỗi thời (bài không nạp được, chỉ số lượt hay đáp án không còn) bị bỏ qua.
         /// </summary>
-        private static List<string> Confusions(Profile profile, Dictionary<string, Lesson> lessons)
+        private List<string> Confusions(Profile profile, Dictionary<string, Lesson> lessons)
         {
             var totals = new Dictionary<string, (int count, long last)>();
             foreach (var mistake in ProgressStore.MistakesOf(profile, int.MaxValue))
@@ -275,13 +275,13 @@ namespace TapDoc
                 .ToList();
         }
 
-        private static string AnswerText(Mistake mistake, Dictionary<string, Lesson> lessons)
+        private string AnswerText(Mistake mistake, Dictionary<string, Lesson> lessons)
         {
             if (!lessons.TryGetValue(mistake.lesson_id, out var lesson))
             {
                 try
                 {
-                    lesson = LessonRepository.Load(mistake.lesson_id);
+                    lesson = _app.Lessons.Get(mistake.lesson_id);
                 }
                 catch (Exception)
                 {

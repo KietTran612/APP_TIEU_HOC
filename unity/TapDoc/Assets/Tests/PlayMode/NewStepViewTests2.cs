@@ -214,8 +214,8 @@ namespace TapDoc.Tests
             return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
         }
 
-        private static int RuleIndex(string lid) => LessonRepository.Load(lid).part1.FindIndex(s => s.type == "rule");
-        private static int MatchIndex(string lid) => LessonRepository.Load(lid).part2.FindIndex(r => r.kind == "match_case");
+        private static int RuleIndex(string lid) => TestLessons.Real.Get(lid).part1.FindIndex(s => s.type == "rule");
+        private static int MatchIndex(string lid) => TestLessons.Real.Get(lid).part2.FindIndex(r => r.kind == "match_case");
 
         private static Step Rimes(int count = 10)
         {
@@ -304,13 +304,13 @@ namespace TapDoc.Tests
 
         [UnityTest] public IEnumerator RimeTable_Lesson48() { var v = Bind("tv1_t1_b48", RimeIndex("tv1_t1_b48")); yield return ((ITestCompletable)v).CompleteForTest(); Assert.IsTrue(Done(v)); }
 
-        private static int RimeIndex(string lid) => LessonRepository.Load(lid).part1.FindIndex(s => s.type == "rime_table");
+        private static int RimeIndex(string lid) => TestLessons.Real.Get(lid).part1.FindIndex(s => s.type == "rime_table");
 
         /// <summary>Câu ở bài vần tô vần mới như sách (bài 45 "Cô hôn bé.": tô "ôn"); tiếng không có vần mới giữ màu thường.</summary>
         [UnityTest]
         public IEnumerator Sentence_ColoursNewRime()
         {
-            var lesson = LessonRepository.Load("tv1_t1_b45");
+            var lesson = TestLessons.Real.Get("tv1_t1_b45");
             var index = lesson.part1.FindIndex(s => s.type == "sentence" && s.text == "Cô hôn bé.");
             var v = Bind("tv1_t1_b45", index);
             yield return null;

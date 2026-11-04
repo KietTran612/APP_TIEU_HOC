@@ -40,7 +40,7 @@ namespace TapDoc.Tests
         [Test]
         public void Load_Lesson13()
         {
-            var l = LessonRepository.Load("tv1_t1_b13");
+            var l = TestLessons.Real.Get("tv1_t1_b13");
             Assert.AreEqual("u ư", l.title);
             Assert.AreEqual(11, l.part1.Count);
             Assert.AreEqual("tieng_cuwr", l.part1[7].spell.parts[4].audio);
@@ -53,10 +53,10 @@ namespace TapDoc.Tests
         {
             // Danh sách bài đi liền từ bài 1 theo thứ tự sách (mỗi đợt thêm bài). Bài 42 nạp được theo mã kể cả khi
             // chưa nằm trong danh sách.
-            var numbers = LessonRepository.LoadIndex().lessons.Select(e => e.lesson_no).ToList();
+            var numbers = TestLessons.Real.Index.lessons.Select(e => e.lesson_no).ToList();
             CollectionAssert.AreEqual(Enumerable.Range(1, numbers.Count), numbers);
             Assert.GreaterOrEqual(numbers.Count, 17);
-            Assert.AreEqual(42, LessonRepository.Load("tv1_t1_b42").lesson_no);
+            Assert.AreEqual(42, TestLessons.Real.Get("tv1_t1_b42").lesson_no);
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace TapDoc.Tests
 
         [Test]
         public void Load_Unknown_Throws() =>
-            Assert.Throws<InvalidDataException>(() => LessonRepository.Load("khong_co"));
+            Assert.Throws<InvalidDataException>(() => TestLessons.Real.Get("khong_co"));
 
         [Test]
         public void TextStyler_Apply()
@@ -92,45 +92,29 @@ namespace TapDoc.Tests
         [Test]
         public void AllReferencedAssetsExist()
         {
-            if (Resources.LoadAll<AudioClip>("audio").Length == 0 && Resources.LoadAll<Sprite>("images").Length == 0)
+            var source = new ResourcesContentSource();
+            if (source.Load(ContentKind.Speech, SystemAudio.khen_01) == null &&
+                source.Load(ContentKind.Image, SystemImages.Star) == null)
             {
-                Assert.Ignore("Chưa nhập tài nguyên (Task 11–12)");
+                Assert.Ignore("Chưa giải gói media (tranh, âm thanh) vào Resources");
             }
 
-            var audioIds = new SortedSet<string>(SystemAudio.All, StringComparer.Ordinal);
-            var imageIds = new SortedSet<string>(SystemImages.All, StringComparer.Ordinal);
-            foreach (var e in LessonRepository.LoadIndex().lessons)
+            // Mã chung khai báo trong code, cộng mọi mã trong các bài.
+            var ids = new SortedSet<(ContentKind kind, string id)>(
+                SystemAudio.All.Select(id => (ContentKind.Speech, id))
+                    .Concat(SystemImages.All.Select(id => (ContentKind.Image, id))));
+            foreach (var e in TestLessons.Real.Index.lessons)
             {
-                var l = LessonRepository.Load(e.lesson_id);
-                foreach (var id in LessonAssets.AudioIds(l))
+                foreach (var key in LessonAssets.ContentIds(TestLessons.Real.Get(e.lesson_id)))
                 {
-                    Assert.IsFalse(string.IsNullOrWhiteSpace(id), $"Bài {e.lesson_id} có mã âm thanh rỗng");
-                    audioIds.Add(id);
-                }
-                foreach (var id in LessonAssets.ImageIds(l))
-                {
-                    Assert.IsFalse(string.IsNullOrWhiteSpace(id), $"Bài {e.lesson_id} có mã tranh rỗng");
-                    imageIds.Add(id);
+                    Assert.IsFalse(string.IsNullOrWhiteSpace(key.id), $"Bài {e.lesson_id} có mã {key.kind} rỗng");
+                    ids.Add(key);
                 }
             }
 
-            // Kiểm tra thật bằng AssetCatalog mặc định (Resources), không loader giả. Mã nào thiếu thì
-            // catalog ghi lỗi một lần: báo trước cho LogAssert để danh sách thiếu là thông điệp lỗi duy nhất.
-            var c = new AssetCatalog(new ResourcesContentSource());
-            var missing = new List<string>();
-            foreach (var id in audioIds)
-            {
-                var exists = Resources.Load<AudioClip>("audio/" + id) != null;
-                if (!exists) LogAssert.Expect(LogType.Error, "[TapDoc] Thiếu âm thanh: " + id);
-                if (c.Audio(id) == null) missing.Add("âm thanh " + id);
-            }
-            foreach (var id in imageIds)
-            {
-                var exists = Resources.Load<Sprite>("images/" + id) != null;
-                if (!exists) LogAssert.Expect(LogType.Error, "[TapDoc] Thiếu tranh: " + id);
-                if (c.Image(id) == null) missing.Add("tranh " + id);
-            }
-
+            var missing = ids.Where(key => source.Load(key.kind, key.id) == null)
+                .Select(key => $"{(key.kind == ContentKind.Image ? "tranh" : "âm thanh")} {key.id}")
+                .ToList();
             Assert.IsEmpty(missing, $"Thiếu {missing.Count} tài nguyên:\n  " + string.Join("\n  ", missing));
         }
 
@@ -153,8 +137,8 @@ namespace TapDoc.Tests
         public void FontCoversAllDisplayText()
         {
             var text = string.Concat(
-                           LessonRepository.LoadIndex().lessons.SelectMany(
-                               e => LessonAssets.DisplayStrings(LessonRepository.Load(e.lesson_id))))
+                           TestLessons.Real.Index.lessons.SelectMany(
+                               e => LessonAssets.DisplayStrings(TestLessons.Real.Get(e.lesson_id))))
                      + string.Concat(UiText.All)
                      + "ˋˊˀ˜.";
             Assert.IsTrue(
@@ -165,11 +149,12 @@ namespace TapDoc.Tests
         [Test]
         public void AllSfxExist()
         {
-            // Tiếng động nằm ở sfx/, tách khỏi âm thanh phát âm ở audio/.
+            // Tiếng động nằm riêng, tách khỏi âm thanh phát âm.
+            var source = new ResourcesContentSource();
             foreach (var id in SystemSfx.All)
             {
-                Assert.IsNotNull(Resources.Load<AudioClip>("sfx/" + id), $"Thiếu tiếng động {id}");
-                Assert.IsNull(Resources.Load<AudioClip>("audio/" + id), $"Tiếng động {id} không được nằm trong audio/");
+                Assert.IsNotNull(source.Load(ContentKind.Sfx, id), $"Thiếu tiếng động {id}");
+                Assert.IsNull(source.Load(ContentKind.Speech, id), $"Tiếng động {id} không được nằm trong thư mục giọng đọc");
             }
         }
     }

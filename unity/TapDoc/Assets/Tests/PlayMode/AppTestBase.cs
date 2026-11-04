@@ -115,7 +115,7 @@ namespace TapDoc.Tests
 
         /// <summary>Mã bài theo thứ tự trong <c>index.json</c>.</summary>
         protected static string[] Ordered() =>
-            LessonRepository.LoadIndex().lessons.Select(e => e.lesson_id).ToArray();
+            TestLessons.Real.Index.lessons.Select(e => e.lesson_id).ToArray();
 
         /// <summary>Đi hết bài bằng <c>CompleteForTest</c>; ở mỗi màn gọi <paramref name="onView"/> trước khi làm xong màn đó.</summary>
         protected static IEnumerator WalkAll(LessonScreen s, Action<LessonScreen, int> onView = null) =>

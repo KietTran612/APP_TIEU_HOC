@@ -59,13 +59,12 @@ namespace TapDoc
         public string reading;
     }
 
-    /// <summary>Phụ lục cuối sách (tr.120–122) cho phụ huynh: <c>Resources/appendix/&lt;mã sách&gt;.json</c>.</summary>
+    /// <summary>Phụ lục cuối sách (tr.120–122) cho phụ huynh, một file JSON cho mỗi mã sách.</summary>
     public static class AppendixData
     {
-        public static Appendix Load(string book)
+        /// <summary>Phân tích và chuẩn hoá NFC Phụ lục của <paramref name="book"/> (file đọc qua <see cref="LessonRepository"/>).</summary>
+        internal static Appendix Parse(TextAsset asset, string book)
         {
-            if (string.IsNullOrWhiteSpace(book)) throw new InvalidDataException("Mã sách rỗng");
-            var asset = Resources.Load<TextAsset>($"appendix/{book}");
             if (asset == null || string.IsNullOrWhiteSpace(asset.text))
                 throw new InvalidDataException($"Không tìm thấy phụ lục: {book}");
             Appendix appendix;

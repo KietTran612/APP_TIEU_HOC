@@ -12,7 +12,7 @@ namespace TapDoc.Tests
         public IEnumerator Reading_OnsetColoured_Lesson80()
         {
             // Trang "Tìm tiếng có vần đã học" tô phụ âm đầu để làm nổi phần vần.
-            var index = LessonRepository.Load("tv1_t1_b80").part1.FindIndex(s => s.type == "reading");
+            var index = TestLessons.Real.Get("tv1_t1_b80").part1.FindIndex(s => s.type == "reading");
             var v = Bind("tv1_t1_b80", index);
             yield return null;
             var san = TileWithText(v, "sàn").GetComponentInChildren<TMPro.TMP_Text>().text;

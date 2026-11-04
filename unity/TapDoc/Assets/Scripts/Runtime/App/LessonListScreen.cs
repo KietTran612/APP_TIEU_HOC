@@ -101,7 +101,7 @@ namespace TapDoc
             Scroll.vertical = true;
             Scroll.movementType = ScrollRect.MovementType.Clamped;
 
-            var entries = LessonRepository.LoadIndex().lessons;
+            var entries = app.Lessons.Index.lessons;
             var ordered = entries.Select(e => e.lesson_id).ToList();
             CurrentLessonId = ordered.FirstOrDefault(id => progress.IsUnlocked(ordered, id) && !progress.IsCompleted(id));
             foreach (var part in new[] { false, true })

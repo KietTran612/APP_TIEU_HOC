@@ -163,7 +163,7 @@ namespace TapDoc.Tests
         /// <summary>Tạo màn cho bước <paramref name="part1Index"/> của bài thật <paramref name="lessonId"/>.</summary>
         protected IStepView Bind(string lessonId, int part1Index)
         {
-            var lesson = LessonRepository.Load(lessonId);
+            var lesson = TestLessons.Real.Get(lessonId);
             Ctx.Lesson = lesson;
             return CreateTrackedStep(lesson.part1[part1Index]);
         }
@@ -171,7 +171,7 @@ namespace TapDoc.Tests
         /// <summary>Tạo màn cho lượt <paramref name="part2Index"/> của bài thật <paramref name="lessonId"/>.</summary>
         protected IRoundView BindRound(string lessonId, int part2Index)
         {
-            var lesson = LessonRepository.Load(lessonId);
+            var lesson = TestLessons.Real.Get(lessonId);
             Ctx.Lesson = lesson;
             return CreateTrackedRound(lesson.part2[part2Index]);
         }

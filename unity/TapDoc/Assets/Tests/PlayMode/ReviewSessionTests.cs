@@ -34,7 +34,7 @@ namespace TapDoc.Tests
             s.RecordMistake("tv1_t1_b13", 99);
             s.RecordMistake("tv1_t1_b99", 0);
             s.RecordMistake("tv1_t1_b13", 1);
-            var r = ReviewSession.Build(s, LessonRepository.Load);
+            var r = ReviewSession.Build(s, TestLessons.Real.Get);
             Assert.AreEqual(1, r.Lesson.part2.Count);
             Assert.AreEqual(1, s.Mistakes().Count);
             Assert.AreEqual(("tv1_t1_b13", 1), r.Sources.Single());

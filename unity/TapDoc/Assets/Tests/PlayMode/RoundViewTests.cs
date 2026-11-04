@@ -64,7 +64,7 @@ namespace TapDoc.Tests
         {
             foreach (var lesson in new[] { "tv1_t1_b04", "tv1_t1_b13", "tv1_t1_b42" })
             {
-                var count = LessonRepository.Load(lesson).part2.Count;
+                var count = TestLessons.Real.Get(lesson).part2.Count;
                 for (var i = 0; i < count; i++)
                 {
                     var r = BindRound(lesson, i);

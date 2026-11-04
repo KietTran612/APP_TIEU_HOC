@@ -179,7 +179,7 @@ namespace TapDoc.Tests
                 .GetComponentsInChildren<TMP_Text>()
                 .Select(t => t.text)
                 .ToList();
-            var entries = LessonRepository.LoadIndex().lessons;
+            var entries = TestLessons.Real.Index.lessons;
             Assert.AreEqual(entries.Count, list.LessonCount);
             foreach (var e in entries)
             {

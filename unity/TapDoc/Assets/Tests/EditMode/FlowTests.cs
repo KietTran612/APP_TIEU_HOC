@@ -54,7 +54,7 @@ namespace TapDoc.Tests
         [Test]
         public void Flow_Lesson13()
         {
-            var l = LessonRepository.Load("tv1_t1_b13");
+            var l = TestLessons.Real.Get("tv1_t1_b13");
             var f = new LessonFlow(l);
             Assert.AreEqual(Phase.Part1, f.Phase);
             for (int i = 0; i < 11; i++) Assert.IsTrue(f.Next());

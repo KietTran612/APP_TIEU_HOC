@@ -76,7 +76,7 @@ namespace TapDoc
             ToListButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Home, UiText.ToList,
                 () => app.ShowLessonList());
             Corner(ToListButton, Vector2.zero, new Vector2(Margin, Margin));
-            var nextLessonId = isLesson ? FindNextLessonId(app.Progress, lessonId) : null;
+            var nextLessonId = isLesson ? FindNextLessonId(app.Lessons, app.Progress, lessonId) : null;
             if (!string.IsNullOrEmpty(nextLessonId))
             {
                 NextLessonButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Forward, UiText.NextLesson,
@@ -93,7 +93,7 @@ namespace TapDoc
             var area = Stretched("BookArea");
             area.offsetMin = new Vector2(Margin, BottomBand);
             area.offsetMax = new Vector2(-Margin, -TopBand);
-            var entries = LessonRepository.LoadIndex().lessons;
+            var entries = _app.Lessons.Index.lessons;
             Spread = BookSpread.Create(area, entries, _app.Progress, _app.Assets);
             Spread.ShowPage(FlowerBook.PageOf(entries.Select(e => e.lesson_id).ToList(), lessonId));
             _page = Spread.PageFor(lessonId);
@@ -254,12 +254,12 @@ namespace TapDoc
         }
 
         /// <summary>Bài đứng sau <paramref name="currentLessonId"/> trong danh sách, nếu bài đó đã mở cho bé.</summary>
-        private static string FindNextLessonId(ProgressStore progress, string currentLessonId)
+        private static string FindNextLessonId(LessonRepository lessons, ProgressStore progress, string currentLessonId)
         {
             if (string.IsNullOrEmpty(currentLessonId)) return null;
             try
             {
-                var ordered = LessonRepository.LoadIndex().lessons.Select(e => e.lesson_id).ToList();
+                var ordered = lessons.Index.lessons.Select(e => e.lesson_id).ToList();
                 var idx = ordered.IndexOf(currentLessonId);
                 if (idx >= 0 && idx + 1 < ordered.Count && progress.IsUnlocked(ordered, ordered[idx + 1]))
                 {

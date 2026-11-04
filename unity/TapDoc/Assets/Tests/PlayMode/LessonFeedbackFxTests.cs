@@ -93,7 +93,7 @@ namespace TapDoc.Tests
             var view = Bind(Lesson, SpellStep);
             yield return WaitPracticeReady(view);
             CollectionAssert.DoesNotContain(_sfx.History, SystemSfx.Tap, "Đang đánh vần mẫu thì không có tiếng tách");
-            var joins = LessonRepository.Load(Lesson).part1[SpellStep].spell.parts.Count(p => p.kind == "join");
+            var joins = TestLessons.Real.Get(Lesson).part1[SpellStep].spell.parts.Count(p => p.kind == "join");
             Assert.Greater(joins, 0);
             Assert.AreEqual(joins, _sfx.History.Count(id => id == SystemSfx.Merge), "Mỗi lần nhập thẻ một tiếng bụp");
         }
@@ -125,7 +125,7 @@ namespace TapDoc.Tests
         [UnityTest]
         public IEnumerator PageButtons_AreIconButtons()
         {
-            var lesson = LessonRepository.Load("tv1_t1_b41");
+            var lesson = TestLessons.Real.Get("tv1_t1_b41");
             var index = lesson.part1.FindIndex(s => s.type == "letter_pairs");
             var view = Bind("tv1_t1_b41", index);
             yield return null;

@@ -33,6 +33,9 @@ namespace TapDoc
         /// <summary>Kênh tiếng động khi tương tác, tách khỏi giọng đọc.</summary>
         public SfxPlayer Sfx { get; private set; }
         public AssetCatalog Assets { get; private set; }
+
+        /// <summary>Kho bài: danh sách bài, bài học và Phụ lục, đọc qua cùng nguồn dữ liệu với <see cref="Assets"/>.</summary>
+        public LessonRepository Lessons { get; private set; }
         public RectTransform SafeRoot { get; private set; }
 
         /// <summary>Hồ sơ bé và tiến độ học; <c>Progress.Current</c> là bé đang học.</summary>
@@ -148,6 +151,7 @@ namespace TapDoc
 
             _source = SourceFactory?.Invoke() ?? new ResourcesContentSource();
             Assets = new AssetCatalog(_source);
+            Lessons = new LessonRepository(_source);
             var spGo = new GameObject("SpeechPlayer");
             spGo.transform.SetParent(transform, false);
             Speech = spGo.AddComponent<SpeechPlayer>();
@@ -182,7 +186,7 @@ namespace TapDoc
 
         public void ShowLesson(string lessonId)
         {
-            var lesson = LessonRepository.Load(lessonId);
+            var lesson = Lessons.Get(lessonId);
             ShowLesson(lesson);
         }
 
@@ -198,7 +202,7 @@ namespace TapDoc
         public void ShowReview()
         {
             InitIfNeeded();
-            var session = ReviewSession.Build(Progress, LessonRepository.Load);
+            var session = ReviewSession.Build(Progress, Lessons.Get);
             SaveProgress();
             if (session.Lesson.part2.Count == 0)
             {
