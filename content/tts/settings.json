@@ -1,16 +1,63 @@
 {
   "voice": "vi-VN-HoaiMyNeural",
   "defaults": {
-    "am": {"rate": -30, "pitch": 0, "volume": 0},
-    "van": {"rate": -30, "pitch": 0, "volume": 0},
-    "dau": {"rate": -30, "pitch": 0, "volume": 0},
-    "tieng": {"rate": -25, "pitch": 0, "volume": 0},
-    "tu": {"rate": -15, "pitch": 0, "volume": 0},
-    "cau": {"rate": -15, "pitch": 0, "volume": 0},
-    "huong_dan": {"rate": -15, "pitch": 0, "volume": 0},
-    "khen": {"rate": -15, "pitch": 0, "volume": 0}
+    "am": {
+      "rate": -30,
+      "pitch": 0,
+      "volume": 0
+    },
+    "van": {
+      "rate": -30,
+      "pitch": 0,
+      "volume": 0
+    },
+    "dau": {
+      "rate": -30,
+      "pitch": 0,
+      "volume": 0
+    },
+    "tieng": {
+      "rate": -25,
+      "pitch": 0,
+      "volume": 0
+    },
+    "tu": {
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0
+    },
+    "cau": {
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0
+    },
+    "huong_dan": {
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0
+    },
+    "khen": {
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0
+    }
   },
   "overrides": {
-    "tenchu_t": {"doc": "Tê"}
+    "am_c": {
+      "pitch": -5
+    },
+    "am_ch": {
+      "pitch": -5
+    },
+    "am_d": {
+      "pitch": -5,
+      "rate": -35
+    },
+    "am_h": {
+      "pitch": -5
+    },
+    "tenchu_t": {
+      "doc": "Tê"
+    }
   }
 }
