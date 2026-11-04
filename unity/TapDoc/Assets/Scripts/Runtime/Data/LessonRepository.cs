@@ -13,7 +13,7 @@ namespace TapDoc
     /// </summary>
     public sealed class LessonRepository
     {
-        private const string IndexName = "lessons/index";
+        private static readonly string IndexName = ContentPaths.PathOf(ContentKind.LessonIndex, null);
 
         private readonly IContentSource _source;
         private readonly Dictionary<string, Lesson> _lessons = new();

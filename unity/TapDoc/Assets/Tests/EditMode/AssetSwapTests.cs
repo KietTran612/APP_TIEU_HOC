@@ -9,8 +9,9 @@ namespace TapDoc.Tests
     /// <summary>Ghi đè file có cùng mã trong project thì app dùng bản mới, không phải sửa code.</summary>
     public class AssetSwapTests
     {
-        private const string ImagePath = "Assets/Content/Resources/images/img_test_swap.png";
-        private const string AudioPath = "Assets/Content/Resources/audio/aud_test_swap.wav";
+        private const string ResourcesFolder = "Assets/Content/Resources/";
+        private static readonly string ImagePath = ResourcesFolder + ContentPaths.PathOf(ContentKind.Image, "img_test_swap") + ".png";
+        private static readonly string AudioPath = ResourcesFolder + ContentPaths.PathOf(ContentKind.Speech, "aud_test_swap") + ".wav";
 
         [Test]
         public void SwapImageAndAudio_SameId_UsesNewFile()
