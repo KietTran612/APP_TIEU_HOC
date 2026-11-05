@@ -64,6 +64,17 @@ def _mirror(shapes):
     return out
 
 
+def _gear_teeth(cx, cy, r_in, r_out, teeth=8, half_deg=11):
+    """Các răng của bánh răng: hình thang nền giấy viền mực, từ ``r_in`` ra ``r_out`` quanh tâm."""
+    shapes = []
+    for i in range(teeth):
+        a = -90 + i * 360 / teeth
+        pts = [(cx + r * math.cos(math.radians(a + d)), cy + r * math.sin(math.radians(a + d)))
+               for r, d in ((r_in, -half_deg), (r_out, -half_deg * 0.7), (r_out, half_deg * 0.7), (r_in, half_deg))]
+        shapes += [("fill", pts, PAPER), ("stroke", pts, 1.3, INK, True)]
+    return shapes
+
+
 _ARROW = _outlined([(5, 12), (17.5, 12)], 3.2) + _outlined([(12, 6.5), (17.8, 12), (12, 17.5)], 3.2)
 # Cánh hoa hình giọt nước, đầu nhọn ở trên.
 _PETAL = [(12 + 5.5 * math.sin(math.radians(a)) * (1 - 0.35 * math.cos(math.radians(a))),
@@ -114,6 +125,8 @@ ICONS: dict[str, list] = {
     "img_ui_sao_giay": [("fill", _star(12, 12.6, 9.5, 4), STAR_YELLOW),
                         ("stroke", _star(12, 12.6, 9.5, 4), 1.4, INK, True)],
     "img_ui_canh_hoa": [("fill", _PETAL, PETAL_PINK), ("stroke", _PETAL, 1.3, INK, True)],
+    # Bánh răng nền giấy viền mực, lỗ giữa để trống (thấy nền nút).
+    "img_ui_cai_dat": _gear_teeth(12, 12, 6.0, 9.8) + _outlined(_arc(12, 12, 5.2, 0, 360, 48), 3.8, closed=True),
 }
 
 FLOWER: list = [

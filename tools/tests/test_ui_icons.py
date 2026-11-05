@@ -64,6 +64,12 @@ class RenderTest(unittest.TestCase):
             self.assertEqual(px[0][0][3], 0, icon_id)
             self.assertTrue(any(a > 200 for row in px for (*_, a) in row), icon_id)
 
+    def test_settings_icon_is_ring_with_hole(self):
+        """Bánh răng: nét mực ở vành, lỗ giữa trong suốt (nhìn ra được là bánh răng, không phải hình tròn đặc)."""
+        px = decode_rgba(ui_icons.render(ui_icons.ICONS["img_ui_cai_dat"], 48))
+        self.assertEqual(px[24][24][3], 0, "lỗ giữa trong suốt")
+        self.assertTrue(any(r < 80 and a > 200 for row in px for (r, _, _, a) in row), "có nét mực")
+
     def test_ink_is_centered(self):
         """Nét vẽ không lệch hẳn về một phía: tâm khối nét nằm trong 1/4 giữa khung."""
         for icon_id, shapes in ui_icons.ICONS.items():
@@ -76,7 +82,8 @@ class RenderTest(unittest.TestCase):
 
     def test_ids_match_system_images(self):
         self.assertTrue(set(ui_icons.ICONS) <= set(SYSTEM_IMAGES))
-        self.assertEqual(len(ui_icons.ICONS), 12)
+        self.assertEqual(len(ui_icons.ICONS), 13)
+        self.assertIn("img_ui_cai_dat", ui_icons.ICONS)
         self.assertIn(FLOWER, SYSTEM_IMAGES)
         self.assertIn(MASCOT, SYSTEM_IMAGES)
 

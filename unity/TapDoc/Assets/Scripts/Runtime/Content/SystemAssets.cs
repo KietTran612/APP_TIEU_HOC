@@ -83,9 +83,12 @@ namespace TapDoc
         public const string PaperStar = "img_ui_sao_giay";
         public const string Petal = "img_ui_canh_hoa";
 
+        /// <summary>Nút bánh răng mở menu Cài đặt.</summary>
+        public const string Settings = "img_ui_cai_dat";
+
         public static readonly string[] All =
         {
-            Home, Speaker, Forward, Backward, Book, Review, Check, Lock, PagePrev, PageNext, PaperStar, Petal,
+            Home, Speaker, Forward, Backward, Book, Review, Check, Lock, PagePrev, PageNext, PaperStar, Petal, Settings,
         };
     }
 

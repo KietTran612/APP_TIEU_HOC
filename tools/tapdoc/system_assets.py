@@ -53,6 +53,7 @@ SYSTEM_IMAGES: dict[str, str] = {
     "img_ui_on_lai": "Biểu tượng ôn lại: mũi tên vòng tròn",
     "img_ui_xong": "Biểu tượng con đọc xong rồi: dấu tích",
     "img_ui_khoa": "Biểu tượng bài chưa mở: ổ khoá nhỏ màu nhạt",
+    "img_ui_cai_dat": "Biểu tượng mở menu Cài đặt: bánh răng",
     "img_ui_lat_truoc": "Biểu tượng trang trước: tờ giấy gấp góc, mũi tên nhỏ chỉ sang trái",
     "img_ui_lat_sau": "Biểu tượng trang sau: tờ giấy gấp góc, mũi tên nhỏ chỉ sang phải",
     "img_ui_sao_giay": "Ngôi sao giấy màu vàng viền mực, bung ra khi bé làm đúng",

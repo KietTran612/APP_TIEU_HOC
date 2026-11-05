@@ -657,7 +657,7 @@ class SystemAssetsTest(unittest.TestCase):
         # Giao diện mới: hoa bé ngoan, gà con và 12 biểu tượng trên nút (hình mặc định của `ui-icons`).
         ui = {"img_chung_hoa_be_ngoan", "img_chung_ga_con"} | {
             f"img_ui_{n}" for n in ("nha", "loa", "tiep", "lui", "so", "on_lai", "xong", "khoa",
-                                    "lat_truoc", "lat_sau", "sao_giay", "canh_hoa")}
+                                    "lat_truoc", "lat_sau", "sao_giay", "canh_hoa", "cai_dat")}
         self.assertEqual(set(SYSTEM_IMAGES),
                          {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap", "img_chung_cau_hoi"} | avatars | ui)
         self.assertIn("con mèo", SYSTEM_IMAGES["img_chung_avatar_01"])
