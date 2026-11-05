@@ -249,33 +249,16 @@ namespace TapDoc
             var header = UiKit.CreateLabel(_createPanel.transform, UiText.NamePrompt, 60f);
             Place(header.rectTransform, new Vector2(0.5f, 1f), new Vector2(900f, 140f), new Vector2(0f, -30f));
 
-            _nameInput = CreateNameInput(_createPanel.transform);
+            _nameInput = CreateNameInput(_createPanel.transform, RefreshDone);
             Place((RectTransform)_nameInput.transform, new Vector2(0.5f, 1f), new Vector2(900f, UiKit.MinTouch), new Vector2(0f, -190f));
 
             const float size = 170f, gap = 30f;
             for (var i = 0; i < Avatars.Length; i++)
             {
                 var id = Avatars[i];
-                var go = new GameObject($"Avatar_{id}", typeof(RectTransform), typeof(Image), typeof(Button));
-                go.transform.SetParent(_createPanel.transform, false);
                 var x = -((Avatars.Length - 1) * (size + gap)) / 2f + i * (size + gap);
-                Place((RectTransform)go.transform, new Vector2(0.5f, 1f), new Vector2(size, size), new Vector2(x, -410f));
-                var frame = go.GetComponent<Image>();
-                frame.sprite = UiKit.WhiteSprite;
-                frame.color = FrameColor;
-                var button = go.GetComponent<Button>();
-                button.targetGraphic = frame;
-                button.onClick.AddListener(() => PickAvatar(id));
-
-                var picGo = new GameObject("AvatarBox", typeof(RectTransform));
-                picGo.transform.SetParent(go.transform, false);
-                var prt = (RectTransform)picGo.transform;
-                prt.anchorMin = Vector2.zero;
-                prt.anchorMax = Vector2.one;
-                prt.offsetMin = new Vector2(14f, 14f);
-                prt.offsetMax = new Vector2(-14f, -14f);
-                AddAvatar(picGo.transform, _app.Assets, id, null);
-
+                var frame = CreateAvatarChoice(_createPanel.transform, _app.Assets, id, () => PickAvatar(id));
+                Place((RectTransform)frame.transform, new Vector2(0.5f, 1f), new Vector2(size, size), new Vector2(x, -410f));
                 _avatarFrames[id] = frame;
             }
 
@@ -283,7 +266,41 @@ namespace TapDoc
             Place((RectTransform)DoneButton.transform, new Vector2(0.5f, 0f), new Vector2(320f, UiKit.MinTouch), new Vector2(0f, 80f));
         }
 
-        private TMP_InputField CreateNameInput(Transform parent)
+        /// <summary>
+        /// Ô chọn một hình đại diện: khung nền (đổi màu khi được chọn, trả về để tô) có nút bấm, hình ở trong. Dùng chung
+        /// cho màn tạo bé và phần sửa hồ sơ của Cài đặt.
+        /// </summary>
+        internal static Image CreateAvatarChoice(Transform parent, AssetCatalog assets, string id, Action onPick)
+        {
+            var go = new GameObject($"Avatar_{id}", typeof(RectTransform), typeof(Image), typeof(Button));
+            go.transform.SetParent(parent, false);
+            var frame = go.GetComponent<Image>();
+            frame.sprite = UiKit.WhiteSprite;
+            frame.color = FrameColor;
+            var button = go.GetComponent<Button>();
+            button.targetGraphic = frame;
+            button.onClick.AddListener(() => onPick?.Invoke());
+
+            var picGo = new GameObject("AvatarBox", typeof(RectTransform));
+            picGo.transform.SetParent(go.transform, false);
+            var prt = (RectTransform)picGo.transform;
+            prt.anchorMin = Vector2.zero;
+            prt.anchorMax = Vector2.one;
+            prt.offsetMin = new Vector2(14f, 14f);
+            prt.offsetMax = new Vector2(-14f, -14f);
+            AddAvatar(picGo.transform, assets, id, null);
+            return frame;
+        }
+
+        /// <summary>Tô khung hình đại diện: đang chọn thì viền cam và phóng nhẹ.</summary>
+        internal static void PaintAvatarChoice(Image frame, bool picked)
+        {
+            frame.color = picked ? PickedColor : FrameColor;
+            _ = Motion.ScaleTo(frame.transform, picked ? PickedScale : 1f, .15f);
+        }
+
+        /// <summary>Ô nhập tên gọi của bé (một dòng, tối đa <see cref="ProgressStore.MaxNameLength"/> ký tự).</summary>
+        internal static TMP_InputField CreateNameInput(Transform parent, Action onChanged)
         {
             var go = TMP_DefaultControls.CreateInputField(new TMP_DefaultControls.Resources());
             go.name = "NameInput";
@@ -310,7 +327,7 @@ namespace TapDoc
                 placeholder.color = Palette.LockedInk;
             }
 
-            input.onValueChanged.AddListener(_ => RefreshDone());
+            input.onValueChanged.AddListener(_ => onChanged?.Invoke());
             return input;
         }
 
@@ -330,12 +347,7 @@ namespace TapDoc
 
         private void RefreshAvatarFrames()
         {
-            foreach (var pair in _avatarFrames)
-            {
-                var picked = pair.Key == _avatar;
-                pair.Value.color = picked ? PickedColor : FrameColor;
-                _ = Motion.ScaleTo(pair.Value.transform, picked ? PickedScale : 1f, .15f);
-            }
+            foreach (var pair in _avatarFrames) PaintAvatarChoice(pair.Value, pair.Key == _avatar);
         }
 
         private void Choose(string profileId)

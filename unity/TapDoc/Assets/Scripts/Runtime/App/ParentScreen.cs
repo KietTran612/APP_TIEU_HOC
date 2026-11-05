@@ -23,14 +23,12 @@ namespace TapDoc
         private static readonly Color MutedText = Palette.MutedInk;
 
         private AppRoot _app;
-        private GameObject _gatePanel;
+        private ParentGatePanel _gatePanel;
         private GameObject _progressPanel;
         private GameObject _appendixPanel;
-        private TMP_Text _questionLabel;
-        private readonly List<Button> _choiceButtons = new();
 
-        internal ParentGate Gate { get; private set; }
-        internal IReadOnlyList<Button> ChoiceButtons => _choiceButtons;
+        internal ParentGate Gate => _gatePanel.Gate;
+        internal IReadOnlyList<Button> ChoiceButtons => _gatePanel.ChoiceButtons;
         internal Button BackButton { get; private set; }
 
         internal bool IsUnlocked => _progressPanel != null && _progressPanel.activeSelf;
@@ -38,7 +36,6 @@ namespace TapDoc
         public void Build(AppRoot app)
         {
             _app = app;
-            Gate = new ParentGate(new System.Random());
 
             BackButton = UiKit.CreateButton(transform, UiText.Back, app.ShowLessonList);
             var backRt = (RectTransform)BackButton.transform;
@@ -51,66 +48,16 @@ namespace TapDoc
             var header = UiKit.CreateLabel(transform, UiText.Parent, 64f);
             Place(header.rectTransform, new Vector2(0.5f, 1f), new Vector2(800f, UiKit.MinTouch), new Vector2(0f, -20f));
 
-            _gatePanel = Panel("GatePanel");
-            BuildGate();
+            _gatePanel = ParentGatePanel.Create(transform, new System.Random(), Unlock);
             _progressPanel = Panel("ProgressPanel");
             _progressPanel.SetActive(false);
         }
 
         /// <summary>Móc cho test: bấm nút đáp án đúng.</summary>
-        internal void SimulateUnlock()
-        {
-            var k = Gate.Choices.ToList().IndexOf(Gate.Expected);
-            _choiceButtons[k].onClick.Invoke();
-        }
-
-        private void BuildGate()
-        {
-            var prompt = UiKit.CreateLabel(_gatePanel.transform, UiText.ParentGatePrompt, 48f);
-            Place(prompt.rectTransform, new Vector2(0.5f, 1f), new Vector2(1000f, 110f), new Vector2(0f, -220f));
-
-            _questionLabel = UiKit.CreateLabel(_gatePanel.transform, Gate.Question, 110f);
-            Place(_questionLabel.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(1000f, 180f), new Vector2(0f, 60f));
-
-            const float width = 280f, gap = 60f;
-            for (var k = 0; k < Gate.Choices.Count; k++)
-            {
-                var index = k;
-                var button = UiKit.CreateButton(_gatePanel.transform, string.Empty, () => OnChoice(index));
-                button.name = $"Choice_{k}";
-                var x = -((Gate.Choices.Count - 1) * (width + gap)) / 2f + k * (width + gap);
-                Place((RectTransform)button.transform, new Vector2(0.5f, 0.5f), new Vector2(width, UiKit.MinTouch), new Vector2(x, -200f));
-                button.GetComponentInChildren<TMP_Text>().fontSizeMax = 64f;
-                _choiceButtons.Add(button);
-            }
-            RefreshGate();
-        }
-
-        private void RefreshGate()
-        {
-            _questionLabel.text = Gate.Question;
-            for (var k = 0; k < _choiceButtons.Count; k++)
-            {
-                _choiceButtons[k].GetComponentInChildren<TMP_Text>().text = Gate.Choices[k].ToString();
-            }
-        }
-
-        private void OnChoice(int index)
-        {
-            if (IsUnlocked || index < 0 || index >= Gate.Choices.Count) return;
-            if (Gate.Answer(Gate.Choices[index]))
-            {
-                Unlock();
-            }
-            else
-            {
-                RefreshGate();
-            }
-        }
+        internal void SimulateUnlock() => _gatePanel.SimulateUnlock();
 
         private void Unlock()
         {
-            _gatePanel.SetActive(false);
             BuildProgress();
             _progressPanel.SetActive(true);
         }

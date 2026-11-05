@@ -470,6 +470,20 @@ namespace TapDoc
             Present<SettingsScreen>().Build(this, back ?? ShowLessonList);
         }
 
+        /// <summary>
+        /// "Xoá toàn bộ dữ liệu": kho về như lúc mới cài (xoá cả file phụ), tiếng động bật; rồi luồng như lần đầu mở
+        /// app: màn tạo bé và popup "Gửi phụ huynh".
+        /// </summary>
+        public void ResetAllData()
+        {
+            InitIfNeeded();
+            Progress.ResetAll();
+            if (Sfx != null) Sfx.Enabled = true;
+            SaveProgress();
+            ShowProfiles();
+            ShowNotice(firstRun: true);
+        }
+
         /// <summary>Màn Sổ bé ngoan của bé đang học. Chưa chọn bé thì về màn chọn bé.</summary>
         public void ShowBook()
         {
