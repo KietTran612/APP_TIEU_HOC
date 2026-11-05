@@ -35,8 +35,8 @@ _VOWELS = frozenset("aăâeêioôơuưy")
 _LETTERS = frozenset("abcdeghiklmnopqrstuvxyăâđêôơư")
 
 # Gạch nối (ra-đi-ô) cũng tách âm tiết; bỏ cả ngoặc kép/đơn cong, gạch lời thoại (– —), dấu ba chấm liền (…)
-# và ngoặc đơn (tập 2: "(quả gì?)", "(Bài đọc thêm)").
-_TOKEN_RE = re.compile(r'[^\s,.?!;:*"“”‘’…–—()-]+')
+# và ngoặc đơn (tập 2: "(quả gì?)", "(Bài đọc thêm)"). Chữ số ("Tiếng Việt 1") không phải tiếng.
+_TOKEN_RE = re.compile(r'[^\s,.?!;:*"“”‘’…–—()0-9-]+')
 
 
 @dataclass(frozen=True)

@@ -79,8 +79,11 @@ def _match(b, match, where: str) -> tuple[str, frozenset[str]]:
 def _hit(kind: str, values: frozenset[str], tok: str) -> dict | None:
     """Vị trí phần được hỏi trong tiếng (tương đối đầu tiếng), hoặc None nếu tiếng không khớp."""
     syl = split_syllable(tok)
-    if kind == "rime" and strip_tone(syl.rime) in values:
-        return {"s": len(syl.onset), "n": len(tok) - len(syl.onset)}
+    # Sách coi chữ u của "qu" là âm đệm của vần: "quyển" có vần uyên, "Quỳnh" có vần uynh.
+    onset, rime = ("q", "u" + syl.rime) if syl.onset == "qu" else (syl.onset, syl.rime)
+    if kind == "rime" and (strip_tone(rime) in values or strip_tone(syl.rime) in values):
+        start = len(onset) if strip_tone(rime) in values else len(syl.onset)
+        return {"s": start, "n": len(tok) - start}
     if kind == "onset" and syl.onset in values:
         return {"s": 0, "n": len(syl.onset)}
     if kind == "tone" and syl.tone in values:
@@ -127,8 +130,11 @@ def step_memorize(b, step: dict, where: str) -> dict:
     for item in items:
         # Tiếng đầu dòng luôn hiện; các tiếng sau lần lượt mức 1, 2, 3 (ẩn dần khoảng 1/3, 2/3, hết).
         item["level"] = 0 if item["col"] == 0 else 1 + (item["col"] - 1) % 3
-    return {"type": "memorize", "marker": step.get("marker", ""), "rows": _sentence_rows(sentences),
-            "items": items}
+    built = {"type": "memorize", "marker": step.get("marker", ""), "rows": _sentence_rows(sentences), "items": items}
+    if step.get("question"):
+        built["text"] = step["question"]
+        built["audio"] = question_audio(b, step["question"], where)
+    return built
 
 
 def step_fill_blank(b, step: dict, where: str) -> dict:

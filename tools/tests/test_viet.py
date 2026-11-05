@@ -55,6 +55,10 @@ class SplitTest(unittest.TestCase):
         self.assertEqual(tokens("(quả gì?)"), [("quả", 1), ("gì", 5)])
         self.assertEqual(syllables("(Bài đọc thêm)"), ["Bài", "đọc", "thêm"])
 
+    def test_digits_are_not_syllables(self):
+        # "sách Tiếng Việt 1" (tr.92): chữ số hiện trên màn, đọc trong câu, nhưng không phải tiếng để chạm.
+        self.assertEqual(syllables("sách Tiếng Việt 1."), ["sách", "Tiếng", "Việt"])
+
     def test_other_book_punctuation_is_dropped(self):
         # Sách còn dùng gạch dài, ngoặc đơn cong và dấu ba chấm liền một ký tự.
         self.assertEqual(syllables("—Ai gọi đó? ‘Ếp ếp’ thật là vui…"),

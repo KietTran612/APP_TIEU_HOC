@@ -120,6 +120,15 @@ class FindWordsTest(unittest.TestCase):
         self.assertEqual(self.targets(st), ["giữa", "Gió"])
         self.assertEqual(st["items"][[it["text"] for it in st["items"]].index("Gió")]["hl"], [{"s": 0, "n": 2}])
 
+    def test_qu_rime_includes_u(self):
+        # Sách coi "quyển" có vần uyên, "Quỳnh" có vần uynh (bài Quyển sách mới, tr.92).
+        st = last_step({"type": "find_words", "question": "Tìm tiếng có vần uyên, uynh.",
+                        "match": {"rime": ["uyên", "uynh"]}},
+                       lines=["Hôm nay cô giáo phát cho Quỳnh quyển sách mới."])
+        self.assertEqual(self.targets(st), ["Quỳnh", "quyển"])
+        quynh = [it for it in st["items"] if it["text"] == "Quỳnh"][0]
+        self.assertEqual(quynh["hl"], [{"s": 1, "n": 4}])  # "uỳnh"
+
     def test_one_match_kind_only(self):
         with self.assertRaises(BuildError):
             self.find(match={"rime": ["ương"], "onset": ["tr"]})
@@ -163,6 +172,11 @@ class MemorizeTest(unittest.TestCase):
         self.assertTrue(0.25 <= level1 <= 0.45, level1)
         self.assertTrue(0.55 <= upto2 <= 0.8, upto2)
         self.assertEqual(max(rest), 3)
+
+    def test_optional_question_text(self):
+        st = last_step({"type": "memorize", "question": "Học thuộc lòng cả bài.", "marker": "?"})
+        self.assertEqual(st["text"], "Học thuộc lòng cả bài.")
+        self.assertTrue(st["audio"].startswith("hoi_b126_"))
 
     def test_deterministic(self):
         self.assertEqual(self.levels()[1], self.levels()[1])
