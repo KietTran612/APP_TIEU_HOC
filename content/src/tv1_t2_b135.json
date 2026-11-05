@@ -1,0 +1,156 @@
+{
+  "lesson_id": "tv1_t2_b135",
+  "book": "tv1_t2_1996",
+  "lesson_no": 135,
+  "type": "tap_doc",
+  "title": "Hai con dê",
+  "week": 28,
+  "td_no": 9,
+  "source": {
+    "pages": [
+      100
+    ],
+    "scan_file": "051",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b135_hai_con_dee": "Dê đen và dê trắng húc đầu vào nhau giữa chiếc cầu gỗ hẹp bắc qua suối, bụi cây hai bên"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Hai con dê"
+    },
+    {
+      "type": "sentence",
+      "text": "Dê đen và dê trắng cùng qua một chiếc cầu hẹp."
+    },
+    {
+      "type": "sentence",
+      "text": "Dê đen đi đằng này lại."
+    },
+    {
+      "type": "sentence",
+      "text": "Dê trắng đi đằng kia sang."
+    },
+    {
+      "type": "sentence",
+      "text": "Con nào cũng muốn tranh sang trước, không con nào chịu nhường con nào."
+    },
+    {
+      "type": "sentence",
+      "text": "Chúng húc nhau, cả hai đều rơi tòm xuống suối."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo truyện ngụ ngôn của LA PHÔNG-TEN"
+    },
+    {
+      "type": "picture",
+      "image": "img_b135_hai_con_dee",
+      "say": "Hai con dê húc nhau trên cầu hẹp.",
+      "word": "hai con dê"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có âm ch, tr đứng đầu.",
+      "match": {
+        "onset": [
+          "ch",
+          "tr"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Em hãy đánh vần và đọc những tiếng trong bài có vần ương, ươc, uông, uôi.",
+      "match": {
+        "rime": [
+          "ương",
+          "ươc",
+          "uông",
+          "uôi"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Vì sao cả hai con dê đều bị rơi xuống suối?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cầu hẹp",
+          "options": [
+            "cầu hẹp",
+            "dê đen",
+            "dê trắng"
+          ]
+        },
+        {
+          "answer": "xuống suối",
+          "options": [
+            "xuống suối",
+            "húc nhau",
+            "nhường"
+          ]
+        },
+        {
+          "answer": "tranh sang",
+          "options": [
+            "tranh sang",
+            "dê đen",
+            "đằng kia"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "chịu",
+          "options": [
+            "chịu",
+            "chiu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "xuống suối",
+      "template": "xuống s_",
+      "answer": "uối",
+      "options": [
+        "uối",
+        "uống",
+        "ười"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "cả",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

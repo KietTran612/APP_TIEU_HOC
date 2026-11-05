@@ -1,0 +1,148 @@
+{
+  "lesson_id": "tv1_t2_b136",
+  "book": "tv1_t2_1996",
+  "lesson_no": 136,
+  "type": "doc_them",
+  "title": "Con quạ thông minh",
+  "week": 28,
+  "td_no": 10,
+  "source": {
+    "pages": [
+      101
+    ],
+    "scan_file": "051",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b136_con_quaj": "Con quạ đen đứng trên gốc cây, ngậm hòn sỏi thả vào cái lọ đựng nước, mấy hòn sỏi bên cạnh"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu văn dài được tách thành hai bước đọc theo dấu phẩy để bé đọc từng phần; ở bước đọc cả bài câu vẫn liền như sách."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b136_con_quaj",
+      "say": "Con quạ gắp sỏi bỏ vào lọ nước.",
+      "word": "con quạ"
+    },
+    {
+      "type": "title",
+      "text": "Con quạ thông minh",
+      "sub": "Bài đọc thêm"
+    },
+    {
+      "type": "sentence",
+      "text": "Một con quạ khát nước."
+    },
+    {
+      "type": "sentence",
+      "text": "Nó tìm thấy một cái lọ có nước."
+    },
+    {
+      "type": "sentence",
+      "text": "Song nước trong lọ ít quá, cổ lọ lại cao,"
+    },
+    {
+      "type": "sentence",
+      "text": "nó không thò mỏ vào uống được."
+    },
+    {
+      "type": "sentence",
+      "text": "Quạ bèn nghĩ ra một cách."
+    },
+    {
+      "type": "sentence",
+      "text": "Nó lấy mỏ gắp từng hòn sỏi bỏ vào trong lọ."
+    },
+    {
+      "type": "sentence",
+      "text": "Một lúc sau nước dâng lên."
+    },
+    {
+      "type": "sentence",
+      "text": "Quạ tha hồ uống."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo LA PHÔNG-TEN"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "con quạ",
+          "options": [
+            "con quạ",
+            "hòn sỏi",
+            "cái lọ"
+          ]
+        },
+        {
+          "answer": "khát nước",
+          "options": [
+            "khát nước",
+            "tha hồ",
+            "nghĩ ra"
+          ]
+        },
+        {
+          "answer": "nước dâng",
+          "options": [
+            "nước dâng",
+            "gắp sỏi",
+            "uống được"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "sỏi",
+          "options": [
+            "sỏi",
+            "sói"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "hòn sỏi",
+      "template": "hòn s_",
+      "answer": "ỏi",
+      "options": [
+        "ỏi",
+        "ổi",
+        "ởi"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nghĩ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

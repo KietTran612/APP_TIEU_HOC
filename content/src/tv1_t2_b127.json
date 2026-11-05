@@ -1,0 +1,159 @@
+{
+  "lesson_id": "tv1_t2_b127",
+  "book": "tv1_t2_1996",
+  "lesson_no": 127,
+  "type": "tap_doc",
+  "title": "Quyển sách mới",
+  "week": 27,
+  "td_no": 2,
+  "source": {
+    "pages": [
+      92
+    ],
+    "scan_file": "047",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b127_quyeenr_sachs_mowis": "Bé gái giơ quyển sách mới khoe với bà đứng cạnh nong thóc, người mẹ ngồi sàng gạo, sân nhà quê"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu văn dài được tách thành hai bước đọc theo dấu phẩy để bé đọc từng phần; ở bước đọc cả bài câu vẫn liền như sách."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b127_quyeenr_sachs_mowis",
+      "say": "Quỳnh khoe quyển sách mới với bà.",
+      "word": "sách mới"
+    },
+    {
+      "type": "title",
+      "text": "Quyển sách mới"
+    },
+    {
+      "type": "sentence",
+      "text": "Hôm nay cô giáo phát cho Quỳnh quyển sách mới: sách Tiếng Việt 1."
+    },
+    {
+      "type": "sentence",
+      "text": "Ra khỏi lớp, Quỳnh chạy một mạch về nhà khoe với bà,"
+    },
+    {
+      "type": "sentence",
+      "text": "với chị rồi giở sách ra xem."
+    },
+    {
+      "type": "sentence",
+      "text": "Ồ! Sách mới tinh, mùi giấy thơm phức, nhiều tranh vẽ rất đẹp..."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo PHONG THU",
+      "breaks": [
+        1
+      ]
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có âm r, v đứng đầu? Em hãy tìm và đọc lên những tiếng đó.",
+      "match": {
+        "onset": [
+          "r",
+          "v"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có vần uyên, uynh.",
+      "match": {
+        "rime": [
+          "uyên",
+          "uynh"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Quyển sách Tiếng Việt 1 có gì đặc biệt làm cho Quỳnh thích thú?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "quyển sách",
+          "options": [
+            "quyển sách",
+            "tranh vẽ",
+            "mùi giấy"
+          ]
+        },
+        {
+          "answer": "thơm phức",
+          "options": [
+            "thơm phức",
+            "mới tinh",
+            "rất đẹp"
+          ]
+        },
+        {
+          "answer": "khoe với bà",
+          "options": [
+            "khoe với bà",
+            "giở sách",
+            "ra khỏi lớp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "giở",
+          "options": [
+            "giở",
+            "giờ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "quyển sách",
+      "template": "q_ sách",
+      "answer": "uyển",
+      "options": [
+        "uyển",
+        "uẩn",
+        "uyến"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vẽ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

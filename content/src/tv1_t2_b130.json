@@ -1,0 +1,132 @@
+{
+  "lesson_id": "tv1_t2_b130",
+  "book": "tv1_t2_1996",
+  "lesson_no": 130,
+  "type": "doc_them",
+  "title": "Tặng cháu",
+  "week": 27,
+  "td_no": 5,
+  "source": {
+    "pages": [
+      95
+    ],
+    "scan_file": "048",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b130_vowr_mowis": "Các bạn nhỏ vui vẻ đứng cạnh nhau, tay cầm những quyển vở mới"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Tranh sách vẽ Bác Hồ với các cháu thiếu nhi; app vẽ các bạn nhỏ cầm vở mới (không vẽ người thật)."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b130_vowr_mowis",
+      "say": "Các bạn nhỏ được tặng vở mới.",
+      "word": "vở mới"
+    },
+    {
+      "type": "title",
+      "text": "Tặng cháu",
+      "sub": "Bài đọc thêm"
+    },
+    {
+      "type": "sentence",
+      "text": "Vở này ta tặng cháu yêu ta"
+    },
+    {
+      "type": "sentence",
+      "text": "Tỏ chút lòng yêu cháu gọi là"
+    },
+    {
+      "type": "sentence",
+      "text": "Mong cháu ra công mà học tập"
+    },
+    {
+      "type": "sentence",
+      "text": "Mai sau cháu giúp nước non nhà."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "HỒ CHÍ MINH"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "học tập",
+          "options": [
+            "học tập",
+            "nước non",
+            "ra công"
+          ]
+        },
+        {
+          "answer": "tặng cháu",
+          "options": [
+            "tặng cháu",
+            "yêu cháu",
+            "mai sau"
+          ]
+        },
+        {
+          "answer": "nước non",
+          "options": [
+            "nước non",
+            "học tập",
+            "chút lòng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "giúp",
+          "options": [
+            "giúp",
+            "gúp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "tặng cháu",
+      "template": "t_ cháu",
+      "answer": "ặng",
+      "options": [
+        "ặng",
+        "ằng",
+        "ậng"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "Tỏ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

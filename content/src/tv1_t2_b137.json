@@ -1,0 +1,175 @@
+{
+  "lesson_id": "tv1_t2_b137",
+  "book": "tv1_t2_1996",
+  "lesson_no": 137,
+  "type": "cau_do",
+  "title": "Câu đố",
+  "week": 28,
+  "source": {
+    "pages": [
+      102
+    ],
+    "scan_file": "052",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b137_hai_banj_ddoos": "Hai bạn nhỏ đứng đố nhau, mỗi bạn giấu một đồ vật sau lưng, phía trên có hai dấu hỏi lớn",
+    "img_b137_cais_taayr": "Cục tẩy (gôm) hình chữ nhật màu hồng, có vết đã tẩy",
+    "img_b137_buts_chif": "Cây bút chì gỗ vót nhọn, ruột chì đen",
+    "img_b137_cais_thuwowcs": "Cái thước kẻ bằng gỗ có vạch chia (không viết số)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1",
+        "note": "tranh cái tẩy, bút chì, thước kẻ vẽ thêm; \"giầy\", \"giây\" chép đúng chữ của sách"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Đáp án câu đố in ở trang \"Trả lời câu đố\" (tr.138); app hiện đáp án ngay sau mỗi câu đố, sau khi bé chọn tranh. Tranh đáp án và tranh để chọn được vẽ thêm."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b137_hai_banj_ddoos",
+      "say": "Hai bạn đố nhau. Con cùng đoán nhé.",
+      "word": "đố nhau"
+    },
+    {
+      "type": "title",
+      "text": "Câu đố"
+    },
+    {
+      "type": "sentence",
+      "text": "Nhỏ như cái kẹo,"
+    },
+    {
+      "type": "sentence",
+      "text": "Dẻo như bánh giầy,"
+    },
+    {
+      "type": "sentence",
+      "text": "Ở đâu mực giây"
+    },
+    {
+      "type": "sentence",
+      "text": "Có em là sạch."
+    },
+    {
+      "type": "sentence",
+      "text": "(là cái gì?)"
+    },
+    {
+      "type": "riddle_answer",
+      "answer": "Cái tẩy",
+      "image": "img_b137_cais_taayr",
+      "options": [
+        {
+          "image": "img_b137_buts_chif",
+          "text": "Bút chì (viết chì)"
+        },
+        {
+          "image": "img_b137_cais_thuwowcs",
+          "text": "cái thước"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "text": "Ruột dài từ mũi đến chân"
+    },
+    {
+      "type": "sentence",
+      "text": "Mũi mòn, ruột cũng dần dần mòn theo."
+    },
+    {
+      "type": "sentence",
+      "text": "(là cái gì?)"
+    },
+    {
+      "type": "riddle_answer",
+      "answer": "Bút chì (viết chì)",
+      "image": "img_b137_buts_chif",
+      "options": [
+        {
+          "image": "img_b137_cais_taayr",
+          "text": "Cái tẩy"
+        },
+        {
+          "image": "img_b137_cais_thuwowcs",
+          "text": "cái thước"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "Cái tẩy",
+          "prompt": "Nhỏ như cái kẹo, dẻo như bánh giầy, ở đâu mực giây, có em là sạch. Là cái gì?",
+          "answer": "img_b137_cais_taayr",
+          "options": [
+            "img_b137_buts_chif",
+            "img_b137_cais_taayr",
+            "img_b137_cais_thuwowcs"
+          ]
+        },
+        {
+          "word": "Bút chì (viết chì)",
+          "prompt": "Ruột dài từ mũi đến chân, mũi mòn, ruột cũng dần dần mòn theo. Là cái gì?",
+          "answer": "img_b137_buts_chif",
+          "options": [
+            "img_b137_cais_thuwowcs",
+            "img_b137_cais_taayr",
+            "img_b137_buts_chif"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cái kẹo",
+          "options": [
+            "cái kẹo",
+            "bánh giầy",
+            "mực giây"
+          ]
+        },
+        {
+          "answer": "dần dần",
+          "options": [
+            "dần dần",
+            "mòn theo",
+            "ruột dài"
+          ]
+        },
+        {
+          "answer": "là sạch",
+          "options": [
+            "là sạch",
+            "ở đâu",
+            "đến chân"
+          ]
+        },
+        {
+          "answer": "mũi mòn",
+          "options": [
+            "mũi mòn",
+            "nhỏ như",
+            "dẻo như"
+          ]
+        }
+      ]
+    }
+  ]
+}

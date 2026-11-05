@@ -1,0 +1,155 @@
+{
+  "lesson_id": "tv1_t2_b134",
+  "book": "tv1_t2_1996",
+  "lesson_no": 134,
+  "type": "hoc_thuoc_long",
+  "title": "Hỏi em đi học",
+  "week": 28,
+  "td_no": 8,
+  "source": {
+    "pages": [
+      99
+    ],
+    "scan_file": "050",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b134_ddi_hocj": "Bốn bạn nhỏ quàng khăn, đeo túi sách vui vẻ đi học trên đường làng, hàng tre, cổng trường phía xa"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Hỏi em đi học",
+      "sub": "Học thuộc lòng"
+    },
+    {
+      "type": "sentence",
+      "text": "Quýt nhà ai chín đỏ cây,"
+    },
+    {
+      "type": "sentence",
+      "text": "Hỏi em đi học hây hây má tròn"
+    },
+    {
+      "type": "sentence",
+      "text": "Trường em mấy tổ trong thôn"
+    },
+    {
+      "type": "sentence",
+      "text": "Ríu ra ríu rít chim non đầu mùa."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "TỐ HỮU"
+    },
+    {
+      "type": "picture",
+      "image": "img_b134_ddi_hocj",
+      "say": "Các bạn vui vẻ đi học.",
+      "word": "đi học"
+    },
+    {
+      "type": "find_words",
+      "question": "Đánh vần và đọc những tiếng trong bài có âm r đứng đầu.",
+      "match": {
+        "onset": [
+          "r"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc lên những tiếng trong bài có vần ai, ây, uyt.",
+      "match": {
+        "rime": [
+          "ai",
+          "ây",
+          "uyt"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Ở hai câu cuối bài, em thấy các bạn đi học vui như thế nào?"
+    },
+    {
+      "type": "memorize",
+      "question": "Học thuộc lòng cả bài."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "đi học",
+          "options": [
+            "đi học",
+            "má tròn",
+            "chim non"
+          ]
+        },
+        {
+          "answer": "ríu rít",
+          "options": [
+            "ríu rít",
+            "hây hây",
+            "đầu mùa"
+          ]
+        },
+        {
+          "answer": "trong thôn",
+          "options": [
+            "trong thôn",
+            "chín đỏ",
+            "nhà ai"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "má",
+          "options": [
+            "má",
+            "mà"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "má tròn",
+      "template": "má tr_",
+      "answer": "òn",
+      "options": [
+        "òn",
+        "ồn",
+        "àn"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "Hỏi",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

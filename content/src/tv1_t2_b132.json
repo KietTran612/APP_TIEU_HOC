@@ -1,0 +1,157 @@
+{
+  "lesson_id": "tv1_t2_b132",
+  "book": "tv1_t2_1996",
+  "lesson_no": 132,
+  "type": "tap_doc",
+  "title": "Cây bàng",
+  "week": 28,
+  "td_no": 6,
+  "source": {
+    "pages": [
+      97
+    ],
+    "scan_file": "049",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b132_caay_bangf": "Cây bàng to sừng sững giữa sân trường, tán lá xanh um tầng tầng, học sinh chơi dưới gốc, góc mái trường"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Cây bàng"
+    },
+    {
+      "type": "sentence",
+      "text": "Ngay giữa sân trường, sừng sững một cây bàng."
+    },
+    {
+      "type": "sentence",
+      "text": "Mùa đông, cây vươn dài những cành khẳng khiu, trụi lá."
+    },
+    {
+      "type": "sentence",
+      "text": "Xuân sang, cành trên, cành dưới chi chít những lộc non mơn mởn."
+    },
+    {
+      "type": "sentence",
+      "text": "Hè về, những tán lá xanh um che mát cả sân trường."
+    },
+    {
+      "type": "sentence",
+      "text": "Thu đến, từng chùm quả chín vàng trong kẽ lá."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo HỮU TƯỞNG",
+      "breaks": [
+        1
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b132_caay_bangf",
+      "say": "Cây bàng giữa sân trường, tán lá xanh um.",
+      "word": "cây bàng"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có âm s, x đứng đầu.",
+      "match": {
+        "onset": [
+          "s",
+          "x"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm trong bài những tiếng có vần iu, ui.",
+      "match": {
+        "rime": [
+          "iu",
+          "ui"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Theo em, cây bàng đẹp nhất vào mùa nào? Vì sao?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cây bàng",
+          "options": [
+            "cây bàng",
+            "sân trường",
+            "lộc non"
+          ]
+        },
+        {
+          "answer": "khẳng khiu",
+          "options": [
+            "khẳng khiu",
+            "xanh um",
+            "chi chít"
+          ]
+        },
+        {
+          "answer": "lộc non",
+          "options": [
+            "lộc non",
+            "kẽ lá",
+            "trụi lá"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "sừng",
+          "options": [
+            "sừng",
+            "sững"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "cây bàng",
+      "template": "cây b_",
+      "answer": "àng",
+      "options": [
+        "àng",
+        "ằng",
+        "ầng"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "kẽ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

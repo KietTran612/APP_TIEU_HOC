@@ -1,0 +1,158 @@
+{
+  "lesson_id": "tv1_t2_b133",
+  "book": "tv1_t2_1996",
+  "lesson_no": 133,
+  "type": "tap_doc",
+  "title": "Dưới ánh trăng",
+  "week": 28,
+  "td_no": 7,
+  "source": {
+    "pages": [
+      98
+    ],
+    "scan_file": "050",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b133_thor_muas": "Đêm trăng tròn trong rừng, đàn thỏ nắm tay nhau múa vòng tròn, hươu nai đứng xem, sóc trên cành"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Dưới ánh trăng"
+    },
+    {
+      "type": "sentence",
+      "text": "Mặt trăng tròn nhô lên từ phía đằng đông."
+    },
+    {
+      "type": "sentence",
+      "text": "Ánh sáng trong xanh tỏa khắp khu rừng."
+    },
+    {
+      "type": "sentence",
+      "text": "Thỏ mẹ cùng đàn con nắm tay nhau vui múa."
+    },
+    {
+      "type": "sentence",
+      "text": "Chân Thỏ nhịp nhàng lướt theo nhịp trống."
+    },
+    {
+      "type": "sentence",
+      "text": "Trong khu rừng vắng, Hươu, Nai yên lặng ngắm nhìn;"
+    },
+    {
+      "type": "sentence",
+      "text": "Chim, Sóc cũng chuyền cành xuống trông cho rõ."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "NC - NB"
+    },
+    {
+      "type": "picture",
+      "image": "img_b133_thor_muas",
+      "say": "Đêm trăng, đàn thỏ nắm tay nhau múa.",
+      "word": "thỏ múa"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có âm tr đứng đầu và đọc lên những tiếng đó.",
+      "match": {
+        "onset": [
+          "tr"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm trong bài những tiếng có vần ươu, ươt, uyên.",
+      "match": {
+        "rime": [
+          "ươu",
+          "ươt",
+          "uyên"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Mẹ con Thỏ múa vào lúc nào? Ở đâu?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ánh trăng",
+          "options": [
+            "ánh trăng",
+            "khu rừng",
+            "nhịp trống"
+          ]
+        },
+        {
+          "answer": "vui múa",
+          "options": [
+            "vui múa",
+            "ngắm nhìn",
+            "yên lặng"
+          ]
+        },
+        {
+          "answer": "đàn con",
+          "options": [
+            "đàn con",
+            "nắm tay",
+            "khu rừng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "trăng",
+          "options": [
+            "trăng",
+            "trắng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "lướt theo",
+      "template": "l_ theo",
+      "answer": "ướt",
+      "options": [
+        "ướt",
+        "ướu",
+        "ưới"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "Thỏ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

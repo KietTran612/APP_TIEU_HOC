@@ -1,0 +1,167 @@
+{
+  "lesson_id": "tv1_t2_b126",
+  "book": "tv1_t2_1996",
+  "lesson_no": 126,
+  "type": "tap_doc",
+  "title": "Trường em",
+  "week": 27,
+  "td_no": 1,
+  "source": {
+    "pages": [
+      91
+    ],
+    "scan_file": "046",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b126_truwowngf_em": "Ngôi trường tiểu học mái ngói đỏ giữa hàng cây xanh, lá cờ đỏ sao vàng trên cột cờ, các bạn học sinh đi vào cổng trường (không viết chữ trên cổng)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[0]",
+        "note": "tranh vẽ lại theo tranh sách, bỏ chữ trên cổng trường"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi về chữ (tìm tiếng có vần, âm, dấu) làm bằng cách chạm vào tiếng trong bài. Câu hỏi hiểu bài bé trả lời miệng cùng bố mẹ, app không chấm."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b126_truwowngf_em",
+      "say": "Đây là ngôi trường của các bạn nhỏ.",
+      "word": "ngôi trường"
+    },
+    {
+      "type": "title",
+      "text": "Trường em"
+    },
+    {
+      "type": "sentence",
+      "text": "Trường em ngói mới đỏ hồng"
+    },
+    {
+      "type": "sentence",
+      "text": "Mọc lên tươi thắm giữa đồng lúa xanh."
+    },
+    {
+      "type": "sentence",
+      "text": "Gió về đồng lúa reo quanh"
+    },
+    {
+      "type": "sentence",
+      "text": "Vẫy chào những bước chân nhanh tới trường."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "NGUYỄN BÙI VỢI"
+    },
+    {
+      "type": "find_words",
+      "question": "Trong hai câu đầu, tiếng nào có vần ương, tiếng nào có vần ươi?",
+      "match": {
+        "rime": [
+          "ương",
+          "ươi"
+        ]
+      },
+      "marker": "?",
+      "in": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "find_words",
+      "question": "Đánh vần và đọc những tiếng có thanh ngã (~) ở câu cuối bài.",
+      "match": {
+        "tone": [
+          "ngã"
+        ]
+      },
+      "in": [
+        3
+      ]
+    },
+    {
+      "type": "question",
+      "text": "Ngôi trường nói trong bài nằm ở đâu? Vì sao em biết?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "trường",
+          "options": [
+            "trường",
+            "tươi",
+            "xanh"
+          ]
+        },
+        {
+          "answer": "đồng lúa",
+          "options": [
+            "đồng lúa",
+            "bước chân",
+            "ngói mới"
+          ]
+        },
+        {
+          "answer": "đỏ hồng",
+          "options": [
+            "đỏ hồng",
+            "reo quanh",
+            "tươi thắm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "ngói",
+          "options": [
+            "ngói",
+            "ngối"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "tươi thắm",
+      "template": "t_ thắm",
+      "answer": "ươi",
+      "options": [
+        "ươi",
+        "ương",
+        "ươu"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "Vẫy",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

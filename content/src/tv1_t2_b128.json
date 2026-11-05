@@ -1,0 +1,179 @@
+{
+  "lesson_id": "tv1_t2_b128",
+  "book": "tv1_t2_1996",
+  "lesson_no": 128,
+  "type": "hoc_thuoc_long",
+  "title": "Cô dạy",
+  "week": 27,
+  "td_no": 3,
+  "source": {
+    "pages": [
+      93
+    ],
+    "scan_file": "047",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b128_ruwar_tay": "Bé gái mặc áo chấm bi đứng rửa tay trong chậu nước, giàn hoa phía trên"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Bài học thuộc lòng có thêm nút \"Ẩn bớt\": mỗi lần bấm, app che bớt một số tiếng để bé tập đọc thuộc; chạm vào ô bị che thì tiếng hiện lại."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b128_ruwar_tay",
+      "say": "Bé rửa tay cho sạch.",
+      "word": "rửa tay"
+    },
+    {
+      "type": "title",
+      "text": "Cô dạy",
+      "sub": "Học thuộc lòng"
+    },
+    {
+      "type": "sentence",
+      "text": "Mẹ, mẹ ơi! Cô dạy:"
+    },
+    {
+      "type": "sentence",
+      "text": "Phải giữ sạch đôi tay,"
+    },
+    {
+      "type": "sentence",
+      "text": "Bàn tay mà giây bẩn,"
+    },
+    {
+      "type": "sentence",
+      "text": "Sách, áo cũng bẩn ngay."
+    },
+    {
+      "type": "sentence",
+      "text": "Mẹ, mẹ ơi! Cô dạy:"
+    },
+    {
+      "type": "sentence",
+      "text": "Cãi nhau là không vui,"
+    },
+    {
+      "type": "sentence",
+      "text": "Cái miệng nó xinh thế"
+    },
+    {
+      "type": "sentence",
+      "text": "Chỉ nói điều hay thôi."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "PHẠM HỔ",
+      "breaks": [
+        4
+      ]
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đánh vần những tiếng trong bài có âm gi đứng đầu.",
+      "match": {
+        "onset": [
+          "gi"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc lên những tiếng trong bài có vần ay, ai.",
+      "match": {
+        "rime": [
+          "ay",
+          "ai"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Trong bài này, cô giáo dạy em những điều gì?"
+    },
+    {
+      "type": "memorize",
+      "question": "Học thuộc lòng cả bài."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "đôi tay",
+          "options": [
+            "đôi tay",
+            "giữ sạch",
+            "điều hay"
+          ]
+        },
+        {
+          "answer": "cãi nhau",
+          "options": [
+            "cãi nhau",
+            "cái miệng",
+            "không vui"
+          ]
+        },
+        {
+          "answer": "điều hay",
+          "options": [
+            "điều hay",
+            "đôi tay",
+            "bẩn ngay"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "giữ",
+          "options": [
+            "giữ",
+            "gửi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "bàn tay",
+      "template": "bàn t_",
+      "answer": "ay",
+      "options": [
+        "ay",
+        "ai",
+        "ây"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "bẩn",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

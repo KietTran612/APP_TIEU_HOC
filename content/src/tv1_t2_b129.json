@@ -1,0 +1,152 @@
+{
+  "lesson_id": "tv1_t2_b129",
+  "book": "tv1_t2_1996",
+  "lesson_no": 129,
+  "type": "tap_doc",
+  "title": "Chim non chăm học",
+  "week": 27,
+  "td_no": 4,
+  "source": {
+    "pages": [
+      94
+    ],
+    "scan_file": "048",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b129_chim_non": "Ba chú chim non trên cành cây trước tổ, một chú cầm quyển sách đọc to, các bạn chim nghe theo"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Chim non chăm học"
+    },
+    {
+      "type": "sentence",
+      "text": "Sáng nào, Chim non cũng dậy sớm học bài."
+    },
+    {
+      "type": "sentence",
+      "text": "Chim non đã chăm học lại có giọng đọc rất hay."
+    },
+    {
+      "type": "sentence",
+      "text": "Khi Chim non cất giọng đọc, các bạn khác cũng dậy đọc theo."
+    },
+    {
+      "type": "sentence",
+      "text": "Cuối năm học, Chim non được thưởng chiếc áo hoa đẹp nhất."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo THANH MAI",
+      "breaks": [
+        3
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b129_chim_non",
+      "say": "Chim non đọc bài, các bạn chim đọc theo.",
+      "word": "chim non"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có âm ch đứng đầu.",
+      "match": {
+        "onset": [
+          "ch"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có vần ao, oa? Em hãy tìm và đọc lên những tiếng ấy.",
+      "match": {
+        "rime": [
+          "ao",
+          "oa"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Vì sao cuối năm học, Chim non được thưởng chiếc áo hoa đẹp nhất?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chăm học",
+          "options": [
+            "chăm học",
+            "dậy sớm",
+            "giọng đọc"
+          ]
+        },
+        {
+          "answer": "áo hoa",
+          "options": [
+            "áo hoa",
+            "cuối năm",
+            "đẹp nhất"
+          ]
+        },
+        {
+          "answer": "dậy sớm",
+          "options": [
+            "dậy sớm",
+            "học bài",
+            "đọc theo"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "thưởng",
+          "options": [
+            "thưởng",
+            "thương"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "áo hoa",
+      "template": "áo h_",
+      "answer": "oa",
+      "options": [
+        "oa",
+        "ao",
+        "oe"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "thưởng",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}
