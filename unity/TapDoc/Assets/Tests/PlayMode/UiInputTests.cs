@@ -51,6 +51,62 @@ namespace TapDoc.Tests
             Assert.AreEqual(home, first.GetComponent<RectTransform>().anchoredPosition);
         }
 
+        private Vector2 ScreenCenter(RectTransform rt) =>
+            RectTransformUtility.WorldToScreenPoint(Cam, rt.TransformPoint(rt.rect.center));
+
+        [UnityTest]
+        public IEnumerator DragTile_FollowsFinger_InScaledStage()
+        {
+            Ctx.Stage.localScale = Vector3.one * 1.4f;
+            var tile = UiKit.CreateTile(Ctx.Stage, "a");
+            var drag = tile.gameObject.AddComponent<DragTile>();
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+
+            var rt = (RectTransform)tile.transform;
+            var start = ScreenCenter(rt);
+            var ped = new PointerEventData(EventSystem.current) { position = start, delta = Vector2.zero };
+            ExecuteEvents.Execute(drag.gameObject, ped, ExecuteEvents.beginDragHandler);
+            ped.delta = new Vector2(100f, 0f);
+            ped.position = start + ped.delta;
+            ExecuteEvents.Execute(drag.gameObject, ped, ExecuteEvents.dragHandler);
+
+            var moved = ScreenCenter(rt) - start;
+            Assert.AreEqual(100f, moved.x, 1f, "Thẻ phải bám ngón tay khi phần học phóng to");
+            Assert.AreEqual(0f, moved.y, 1f);
+            ped.position = new Vector2(-10000f, -10000f);
+            ExecuteEvents.Execute(drag.gameObject, ped, ExecuteEvents.endDragHandler);
+        }
+
+        [UnityTest]
+        public IEnumerator DragTile_ResizeMidDrag_TileStaysInStage()
+        {
+            var tile = UiKit.CreateTile(Ctx.Stage, "a");
+            var drag = tile.gameObject.AddComponent<DragTile>();
+            var rt = (RectTransform)tile.transform;
+            var home = rt.anchoredPosition;
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+
+            var start = ScreenCenter(rt);
+            var ped = new PointerEventData(EventSystem.current) { position = start, delta = Vector2.zero };
+            ExecuteEvents.Execute(drag.gameObject, ped, ExecuteEvents.beginDragHandler);
+            ped.delta = new Vector2(60f, 20f);
+            ped.position = start + ped.delta;
+            ExecuteEvents.Execute(drag.gameObject, ped, ExecuteEvents.dragHandler);
+
+            Ctx.Stage.localScale = Vector3.one * 1.4f; // máy xoay, phần học phóng to giữa lúc kéo
+            yield return null;
+            ped.delta = new Vector2(40f, 0f);
+            ped.position += ped.delta;
+            ExecuteEvents.Execute(drag.gameObject, ped, ExecuteEvents.dragHandler);
+            ped.position = new Vector2(-10000f, -10000f); // thả ngoài mọi ô
+            ExecuteEvents.Execute(drag.gameObject, ped, ExecuteEvents.endDragHandler);
+
+            Assert.AreSame(Ctx.Stage, tile.transform.parent, "Thẻ vẫn ở trong phần học");
+            Assert.AreEqual(home, rt.anchoredPosition, "Thả ngoài ô thì thẻ về chỗ cũ");
+        }
+
         [UnityTest]
         public IEnumerator Stage_SameSizeAsLessonScreen()
         {

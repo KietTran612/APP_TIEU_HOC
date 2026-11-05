@@ -42,6 +42,16 @@ namespace TapDoc
         public void OnDrag(PointerEventData eventData)
         {
             if (_rect == null) return;
+            // Đổi quãng ngón tay vừa đi ra toạ độ của cha thẻ: tính cả canvas lẫn phần học đang phóng to trên màn rộng.
+            var parent = _rect.parent as RectTransform;
+            var cam = _canvas != null && _canvas.renderMode != RenderMode.ScreenSpaceOverlay ? _canvas.worldCamera : null;
+            if (parent != null &&
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(parent, eventData.position, cam, out var now) &&
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(parent, eventData.position - eventData.delta, cam, out var before))
+            {
+                _rect.anchoredPosition += now - before;
+                return;
+            }
             var scale = _canvas != null && _canvas.scaleFactor > 0f ? _canvas.scaleFactor : 1f;
             _rect.anchoredPosition += eventData.delta / scale;
         }

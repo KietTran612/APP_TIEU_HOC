@@ -78,14 +78,15 @@ namespace TapDoc
         /// </summary>
         public static RectTransform CreateStage(RectTransform parent)
         {
-            var go = new GameObject("Stage", typeof(RectTransform));
+            // Vùng StageArea co giãn với lề cũ; Stage là khối cỡ thiết kế 1400×680 phóng to đều cho vừa vùng (FitBox).
+            var go = new GameObject("StageArea", typeof(RectTransform));
             go.transform.SetParent(parent, false);
-            var rt = go.GetComponent<RectTransform>();
-            rt.anchorMin = Vector2.zero;
-            rt.anchorMax = Vector2.one;
-            rt.offsetMin = new Vector2(StageSideInset, StageBottomInset);
-            rt.offsetMax = new Vector2(-StageSideInset, -StageTopInset);
-            return rt;
+            var area = go.GetComponent<RectTransform>();
+            area.anchorMin = Vector2.zero;
+            area.anchorMax = Vector2.one;
+            area.offsetMin = new Vector2(StageSideInset, StageBottomInset);
+            area.offsetMax = new Vector2(-StageSideInset, -StageTopInset);
+            return FitBox.Create(area, "Stage", ScreenLayout.StageSize);
         }
 
         /// <summary>
