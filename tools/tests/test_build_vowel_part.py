@@ -37,7 +37,7 @@ class RimeTableTest(unittest.TestCase):
 
     def test_rime_that_cannot_be_spelled_is_an_error(self):
         with self.assertRaises(BuildError):
-            step_of({"type": "rime_table", "rows": [{"rime": "uôi", "word": "con muỗi"}]})
+            step_of({"type": "rime_table", "rows": [{"rime": "iêmm", "word": "con muỗi"}]})
 
     def test_all_matching_syllables_and_marker(self):
         st = step_of({"type": "rime_table", "marker": "●", "rows": [

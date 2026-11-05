@@ -18,6 +18,15 @@ _FINALS = ("ch", "ng", "nh", "c", "m", "n", "p", "t")
 _SINGLE_VOWELS = frozenset(VOWEL_NAMES)
 
 _GI_NOTE = "gi + vần có i: không đánh vần thẳng được, cần duyệt"
+_QU_Y_NOTE = "qu + vần bắt đầu bằng y: tách âm đầu và vần chưa chắc, cần duyệt"
+
+# Tập 2 (thiết kế tập 2, mục 5): sách không in cách đánh vần, app chọn tạm; mọi chuỗi gắn nhãn để chủ dự án duyệt.
+_VOWEL_DIGRAPHS = ("iê", "yê", "uô", "ươ")
+_RULE_DIGRAPH = "quy tắc tạm: nguyên âm đôi"
+_RULE_GLIDE = "quy tắc tạm: âm đệm"
+_RULE_OO = "quy tắc tạm: oo"
+# Âm đệm: o đứng trước a, ă, e; u đứng trước â, ê, y, ơ.
+_GLIDES = {"o": frozenset("aăe"), "u": frozenset("âêyơ")}
 
 
 @dataclass
@@ -102,27 +111,52 @@ def spell_syllable(s: str) -> SpellResult:
     notes.extend(_vowel_notes(parts))
     if syl.onset == "gi" and syl.rime[0] in ("i", "ê"):
         notes.append(_GI_NOTE)
+    if syl.onset == "qu" and syl.rime.startswith("y") and len(syl.rime) > 1:
+        notes.append(_QU_Y_NOTE)
     return SpellResult(word, parts, notes)
 
 
-def spell_rime(rime: str) -> SpellResult:
-    """Đánh vần một vần: [nguyên âm, âm cuối hoặc nguyên âm thứ hai, vần].
+def _second_of(rest: str) -> Part | None:
+    """Mảnh thứ hai của vần sau nguyên âm đầu: âm cuối, hoặc một nguyên âm đơn."""
+    if rest in _FINALS:
+        return _final(rest)
+    if len(rest) == 1 and rest in _SINGLE_VOWELS:
+        return _unit(rest)
+    return None
 
-    Hỗ trợ một nguyên âm + âm cuối (c, ch, m, n, ng, nh, p, t) và hai nguyên âm đơn đi liền nhau.
+
+def spell_rime(rime: str) -> SpellResult:
+    """Đánh vần một vần thành 3 mảnh: [đầu, sau, vần].
+
+    - Tập 1: nguyên âm + âm cuối (c, ch, m, n, ng, nh, p, t), hoặc hai nguyên âm đơn ("a – o – ao", "i – a – ia").
+    - Tập 2, quy tắc tạm (gắn nhãn cần duyệt), xét theo thứ tự:
+      1. chữ ghép nguyên âm iê, yê, uô, ươ, oo ở đầu, rồi âm cuối hoặc nguyên âm: "iê – nờ – iên";
+      2. âm đệm (o trước a/ă/e, u trước â/ê/y/ơ), rồi phần còn lại làm một khối: "o – an – oan", "u – yên – uyên".
     """
     target = nfc(rime).lower()
-    second = None  # mảnh thứ hai: âm cuối hoặc nguyên âm
-    if len(target) >= 2 and target[0] in _SINGLE_VOWELS:
-        for final in _FINALS:
-            if target[1:] == final:
-                second = _final(final)
-                break
-        else:
-            if len(target) == 2 and target[1] in _SINGLE_VOWELS:
-                second = _unit(target[1])
+    first = second = None
+    rule = None
+    head = target[:2]
+    if head in _VOWEL_DIGRAPHS or head == "oo":
+        second = _second_of(target[2:])
+        if second is not None:
+            first, rule = _unit(head), (_RULE_OO if head == "oo" else _RULE_DIGRAPH)
+    elif len(target) >= 2 and target[1] in _GLIDES.get(target[0], ()):
+        rest = target[1:]
+        if len(rest) == 1:
+            first, second = _unit(target[0]), _unit(rest)
+        elif spell_rime(rest).parts:
+            first, second = _unit(target[0]), _unit(rest)
+        if first is not None:
+            rule = _RULE_GLIDE
+    elif len(target) >= 2 and target[0] in _SINGLE_VOWELS:
+        second = _second_of(target[1:])
+        if second is not None:
+            first = _unit(target[0])
 
-    if second is None:
+    if first is None or second is None:
         return SpellResult(target, [], [f"chưa có quy tắc đánh vần cho vần '{target}'"])
 
-    parts = [_unit(target[0]), second, _part("join", target, unit_audio(target))]
-    return SpellResult(target, parts, _vowel_notes(parts))
+    parts = [first, second, _part("join", target, unit_audio(target))]
+    notes = ([rule] if rule else []) + _vowel_notes(parts)
+    return SpellResult(target, parts, notes)

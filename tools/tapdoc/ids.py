@@ -50,6 +50,15 @@ VOWEL_NAMES: dict[str, str] = {
     "y": "i dài",
 }
 
+# Chữ ghép nguyên âm, đọc theo cột "Đọc là" tr.121 (tập 1); "oo" (oong, ooc) đọc như o kéo dài.
+VOWEL_DIGRAPH_NAMES: dict[str, str] = {
+    "iê": "i ê",
+    "yê": "i ê",
+    "uô": "u ô",
+    "ươ": "ư ơ",
+    "oo": "o",
+}
+
 _LETTER_TELEX = {
     "ă": "aw",
     "â": "aa",
@@ -109,6 +118,8 @@ def unit_audio(unit: str) -> Audio:
         audio = (f"am_{_ascii(unit)}", CONSONANT_NAMES[unit], "am")
     elif unit in VOWEL_NAMES:
         audio = (f"van_{_ascii(unit)}", VOWEL_NAMES[unit], "van")
+    elif unit in VOWEL_DIGRAPH_NAMES:
+        audio = (f"van_{_ascii(unit)}", VOWEL_DIGRAPH_NAMES[unit], "van")
     else:
         # Vần nhiều chữ được đọc đúng như chữ viết.
         syl = split_syllable(unit)

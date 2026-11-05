@@ -157,7 +157,7 @@ class SpellRimeTest(unittest.TestCase):
     def test_rime(self):
         self.assertEqual(triples(spell_rime("an")), [("unit", "a", "van_a"), ("unit", "n", "am_n"), ("join", "an", "van_an")])
         self.assertEqual(triples(spell_rime("ia")), [("unit", "i", "van_i"), ("unit", "a", "van_a"), ("join", "ia", "van_ia")])
-        r = spell_rime("uôn")
+        r = spell_rime("iêmm")  # chưa có quy tắc: sau chữ ghép nguyên âm không phải âm cuối
         self.assertEqual(r.parts, [])
         self.assertTrue(r.can_duyet)
 
@@ -200,7 +200,7 @@ class SpellRimeTest(unittest.TestCase):
         self.assertEqual(spell_rime("ua").can_duyet, [])
 
     def test_unsupported_shapes(self):
-        for rime in ["uôn", "iêng", "ươn", "a", "ng", "anhh", "", "ach t"]:
+        for rime in ["iêmm", "oanhh", "a", "ng", "anhh", "", "ach t"]:
             r = spell_rime(rime)
             self.assertEqual(r.parts, [], rime)
             self.assertEqual(len(r.can_duyet), 1, rime)
@@ -237,3 +237,58 @@ class PartJsonTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Tap2RimeTest(unittest.TestCase):
+    """Vần tập 2 (thiết kế tập 2, mục 5): nguyên âm đôi, âm đệm, "oo" — quy tắc tạm, cần duyệt."""
+
+    CASES = {
+        "anh": ["a", "nh", "anh"], "ia": ["i", "a", "ia"], "ưa": ["ư", "a", "ưa"],
+        "iên": ["iê", "n", "iên"], "yêu": ["yê", "u", "yêu"], "ươi": ["ươ", "i", "ươi"],
+        "uông": ["uô", "ng", "uông"],
+        "oa": ["o", "a", "oa"], "uy": ["u", "y", "uy"], "oan": ["o", "an", "oan"],
+        "oăng": ["o", "ăng", "oăng"], "uyên": ["u", "yên", "uyên"], "oay": ["o", "ay", "oay"],
+        "uân": ["u", "ân", "uân"], "oong": ["oo", "ng", "oong"],
+    }
+
+    def texts(self, result):
+        return [p.text for p in result.parts]
+
+    def test_table(self):
+        for rime, expected in self.CASES.items():
+            with self.subTest(rime=rime):
+                self.assertEqual(self.texts(spell_rime(rime)), expected)
+
+    def test_not_glide(self):
+        for rime in ("ong", "ông", "ua", "uôi", "oi", "ui"):
+            with self.subTest(rime=rime):
+                result = spell_rime(rime)
+                self.assertTrue(result.parts, rime)
+                self.assertFalse([n for n in result.can_duyet if "âm đệm" in n], rime)
+
+    def test_rule_flags(self):
+        def flags(rime):
+            return [n for n in spell_rime(rime).can_duyet if n.startswith("quy tắc tạm")]
+        self.assertEqual(flags("iên"), ["quy tắc tạm: nguyên âm đôi"])
+        self.assertEqual(flags("oan"), ["quy tắc tạm: âm đệm"])
+        self.assertEqual(flags("oong"), ["quy tắc tạm: oo"])
+        self.assertEqual(flags("anh"), [])
+        self.assertEqual(flags("ia"), [])
+
+    def test_digraph_reading(self):
+        parts = spell_rime("iên").parts
+        self.assertEqual((parts[0].audio, parts[0].say), ("van_iee", "i ê"))
+        self.assertEqual(spell_rime("uông").parts[0].say, "u ô")
+        self.assertEqual(spell_rime("ươi").parts[0].say, "ư ơ")
+        self.assertEqual(spell_rime("oan").parts[1].audio, "van_an")
+
+    def test_syllables(self):
+        def texts(word):
+            return [p.text for p in spell_syllable(word).parts]
+        self.assertEqual(texts("loa"), ["l", "oa", "loa"])
+        khoe = spell_syllable("khỏe").parts
+        self.assertEqual([p.text for p in khoe[:3]] + [khoe[4].text], ["kh", "oe", "khoe", "khỏe"])
+        self.assertEqual((khoe[3].kind, khoe[3].tone), ("tone", "hoi"))
+        self.assertEqual(texts("quê"), ["qu", "ê", "quê"])
+        self.assertTrue([n for n in spell_syllable("quyển").can_duyet if "qu" in n])
+        self.assertFalse([n for n in spell_syllable("quý").can_duyet if "qu +" in n])  # tập 1 bài 35 giữ nguyên
