@@ -26,7 +26,7 @@
 | book_id | Quyển | Ảnh | Thông tin in (đọc từ trang sách) | Mục lục | Thuộc hệ sách cũ? | Mức xác minh |
 |---|---|---|---|---|---|---|
 | `tv1_t1_1990` | Tiếng Việt 1 – Tập một (Chữ cái và Vần) | 64 | Vụ Giáo dục phổ thông – Bộ Giáo dục; NXB Giáo dục 1990, in lần thứ hai. Biên tập: Phạm Bích Hợp; minh họa: Hồng Kỳ – Phạm Ngọc Tới | Có, tr.123–124 (80 bài) | Có | `toc_verified`; 22 bài và các trang phụ `page_verified` |
-| `tv1_t2_1996` | Tiếng Việt 1 – Tập hai (Vần – Tập đọc) | 72 | Bộ GD&ĐT; NXB Giáo dục; in lần thứ 8, chỉnh lí năm 1994; ghi chú tay "1996" | Có, tr.139–140 | Có | `toc_verified` |
+| `tv1_t2_1996` | Tiếng Việt 1 – Tập hai (Vần – Tập đọc) | 72 | Bộ GD&ĐT; NXB Giáo dục; in lần thứ 8, chỉnh lí năm 1994; ghi chú tay "1996" | Có, tr.139–140 | Có | `page_verified` cả 91 mục (5/11/2026); không có Phụ lục bảng chữ cái, dùng của tập 1 |
 | `tv2_t1_2001` | Tiếng Việt 2 – Tập một | 66 | Bộ GD&ĐT; Trịnh Mạnh – Đinh Tấn Ký – Đỗ Quang Lưu; tái bản lần thứ hai mươi | Có, khoảng tr.125–127 (theo tuần, phân môn) | Có | `metadata_verified` |
 | `tv2_t2_2002` | Tiếng Việt 2 – Tập hai | 65 | Mã số 1H202T2; in xong và nộp lưu chiểu tháng 1/2002; bìa sau ghi "Tái bản" | Chưa tìm | Có: in 01/2002 dưới dạng tái bản, trong khi sách lớp 2 mới đến năm 2003 mới dùng | `metadata_verified` |
 | `truyen_doc_1_2000` | Truyện đọc 1 | 44 | Chưa xem | — | Chưa xác minh | `unverified` |
@@ -45,6 +45,7 @@
 3. **TV2 T1:** có hai ảnh cùng tên `Trang_29` (`029`, `030`). Chưa kiểm xem có trùng trang hay không.
 4. **TV2 T2:** thứ tự ảnh bị xáo trộn, mỗi tên `Trang_N` lặp lại 2–3 lần (ví dụ ảnh `001` chứa tr.18–19). Phải sắp lại theo số trang in trên sách.
 5. **TV1 T1 (1990) và TV1 T2 (chỉnh lí 1994)** thuộc hai lần in khác nhau. Số bài nối tiếp nhau (80 → 81), nhưng chưa kiểm xem bản chỉnh lí 1994 có sửa nội dung Tập 1 hay không.
+6. **TV1 T2:** công thức trang đôi (ảnh `NNN` chứa trang `2·NNN−2` và `2·NNN−1`) đúng cho cả 72 ảnh, đã đối chiếu từng trang khi chép bài (5/11/2026). Tr.2 có thêm kí hiệu **[?] Câu hỏi**. Tr.138 "Trả lời câu đố" là đáp án của ba trang Câu đố (tr.102, 115, 128). Mục lục ghi bài 34 là "Chị Võ Thị Sáu", trang 133 in "Võ Thị Sáu".
 
 ## 5. Trang tham chiếu quan trọng (TV1 T1)
 

@@ -28,7 +28,7 @@
 | | | `on_tap_van` | 8 |
 | | | `van_it_dung` vần ít dùng | 2 |
 | | | `on_luyen` ôn luyện | 3 |
-| **Tập đọc** | TV1 T2 tuần 27–33 | `tap_doc` 22, `hoc_thuoc_long` 6, `doc_them` 8, `cau_do` 3, `tap_chep_chinh_ta` 7, `tra_loi_cau_do` 1 | 47 mục |
+| **Tập đọc** | TV1 T2 tuần 27–33 | `tap_doc` 21, `hoc_thuoc_long` 7, `doc_them` 8, `cau_do` 3, `tap_chep_chinh_ta` 7, `tra_loi_cau_do` 1 | 47 mục |
 
 ---
 
@@ -133,15 +133,27 @@ Gồm TV1 T1 bài 48, 54, 59, 64, 68, 73, 78 và TV1 T2 bài 85, 90, 95, 99, 103
 - **Tr.118:** bảng "Nhóm vần đã học". Hàng là âm chính (a ă â o ô ơ e ê i u ư); cột là âm cuối (n, m, c, t, p, i-y, o-u).
 - **Tr.119:** "Tìm tiếng có vần đã học (theo mẫu)", gồm bảng tiếng chia theo 7 nhóm, và ⌂ một câu đố ("Đố em").
 
-### `van_it_dung`, `on_luyen` (TV1 T2 bài 121–125)
+### `van_it_dung` — Vần ít dùng (TV1 T2 bài 121, 122)
 
-Chưa xem trang.
+Trang đã xem: tr.84–87.
+
+- Tiêu đề "Giới thiệu những vần ít dùng có o ở đầu" (bài 121) / "... có u ở đầu" (bài 122).
+- ● Bảng hai cột **Vần | Câu**: mỗi hàng một vần và một câu có tiếng chứa vần đó, ví dụ "oay — Không nên viết ngoáy.", "uynh — Phụ huynh đi họp.". Bài 121 có 10 vần (oay, oam, oao, oăc, oăm, oen, oeo, oet, oong, ooc), bài 122 có 8 vần (uya, uyu, uyt, uynh, uych, uâng, uênh, uêch).
+- ▨ Em viết.
+
+### `on_luyen` — Ôn luyện (TV1 T2 bài 123–125)
+
+Trang đã xem: tr.88–90, mỗi bài một trang: tranh và một bài đọc ● ("Tổ quốc Việt Nam", "Năm điều Bác Hồ dạy", "Bài ca về trái đất"). Không có câu hỏi.
+
+### Sơ đồ vần ở bảng ôn TV1 T2
+
+Bảng ôn bài 103, 108 (uô, ươ + âm cuối), 115 (vần có o ở đầu) và 120 (vần có u ở đầu) vẽ sơ đồ cấu trúc vần: "uô < i, m", "o–a < i, n", "o–ă – n, t, ng", "u–â – n, t, y", "u–yê < n, t". App dùng sơ đồ này để đánh vần vần có âm đệm: khối âm đệm + âm chính rồi đến âm cuối ("oa – nờ – oan").
 
 ---
 
 ## Phần TẬP ĐỌC (TV1 T2, tuần 27–33)
 
-Chưa xem trang. Theo mục lục, phần này gồm các loại:
+Trang đã xem: tr.91–138 (cả phần). Theo mục lục, phần này gồm các loại:
 
 | Mã | Ý nghĩa |
 |---|---|
@@ -151,6 +163,15 @@ Chưa xem trang. Theo mục lục, phần này gồm các loại:
 | `cau_do` | Câu đố |
 | `tra_loi_cau_do` | Trả lời câu đố |
 | `tap_chep_chinh_ta` | Tập chép – chính tả (ngoài phạm vi vì chưa làm phần viết) |
+
+**Bài tập đọc, học thuộc lòng, đọc thêm** (mỗi bài một trang; bài 36 "Gửi lời chào lớp Một" trải hai trang):
+- "Tuần N" ở đầu trang của bài đầu tuần; số và tên bài in hoa; dòng "(Học thuộc lòng)" hoặc "(Bài đọc thêm)".
+- Một tranh lớn; bài văn (1–3 đoạn) hoặc thơ (1–3 khổ); tên tác giả ("Theo PHONG THU", "TỐ HỮU", "(Đồng dao)", "(Ca dao cổ)"). Có bài có chú thích sao dưới tranh ("Phì: béo, mập", "Na: các tỉnh phía Nam gọi là mãng cầu").
+- **[?]** 2–4 câu hỏi: tìm tiếng có vần, âm đầu hoặc dấu thanh trong bài; đọc / đánh vần một danh sách từ; câu hỏi hiểu bài; "Học thuộc lòng cả bài" (bài HTL). Bài đọc thêm không có câu hỏi.
+
+**Câu đố** (tr.102, 115, 128): 2–3 câu đố thơ, đáp án ở tr.138.
+
+**Tập chép – Chính tả** (tr.96, 103, 109, 116, 122, 129, 137): hai phần "TẬP CHÉP (Nhìn bảng)" và "CHÍNH TẢ (Nghe đọc)", mỗi phần có tên bài (một bài tập đọc trước đó) và ba mục: 1. Bài chép / Bài viết (đoạn nào); 2. Viết đúng (một dòng từ); 3. Luyện tập (tìm tiếng có vần, âm và viết ra; điền vào chỗ trống "l hoặc n", "s hoặc x", "ua hay au"...; thêm dấu hỏi, ngã vào chữ in nghiêng; sửa chữ viết sai; viết tên bạn).
 
 ---
 

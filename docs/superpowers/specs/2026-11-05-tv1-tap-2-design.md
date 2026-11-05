@@ -251,3 +251,11 @@ Mỗi đợt một hoặc vài commit rõ ràng trên `main`, `git add` theo đ�
 - Đọc to và chấm bằng micro cho câu hỏi hiểu bài.
 - Tranh động cho tranh tập 2 (session tranh động làm theo lịch của nó).
 - Truyện đọc 1, lớp 2.
+
+## 16. Kết quả (5/11/2026)
+
+- **Nội dung:** đủ 91 mục `page_verified` (45 bài vần, 46 mục Tập đọc), chép từ ảnh 003–069. Mục lục ghi "Chị Võ Thị Sáu" nhưng trang in "Võ Thị Sáu"; bài "Chim sâu" là bài học thuộc lòng (trang in "(Học thuộc lòng)", CSV ghi sai `tap_doc`, đã sửa).
+- **Quy tắc vần có âm đệm** đổi theo sơ đồ của chính sách (mục 5): "oa – nờ – oan".
+- **Khác kế hoạch:** Phần 2 của bài tập đọc có 6 lượt (không phải 5–8) để giữ một luật chung cho cả app; câu "tìm tiếng... và viết ra" mà bài không đủ tiếng thì thành câu hỏi trả lời miệng; bài sửa chữ viết sai (tr.122) thành các bước điền chỗ trống.
+- **Test:** Python đều đạt, trừ 2 test CLI của `validate` (cảnh báo media khác gói do chủ dự án đang tạo lại âm thanh tập 1); test hồi quy: dựng lại 80 bài tập 1 ra file y hệt. Unity EditMode 129/129; PlayMode chạy lọc theo lớp của các màn mới (danh sách bài, Phụ huynh, các màn Tập đọc, bảng vần) đều đạt; chưa chạy trọn PlayMode.
+- **Còn lại:** âm thanh HoaiMy đang tạo; tranh do session gốc vẽ; đóng gói media sau khi đủ.
