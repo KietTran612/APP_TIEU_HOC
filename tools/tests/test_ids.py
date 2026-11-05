@@ -18,6 +18,13 @@ class IdsTest(unittest.TestCase):
         self.assertEqual(telex("bàn ghế"), "banf_ghees")
         self.assertEqual(telex("má có củ từ."), "mas_cos_cur_tuwf")
 
+    def test_plain_double_o_differs_from_o_circumflex(self):
+        # Telex gõ "oo" ra "ô", nên chữ "oo" thật (oong, ooc, goòng) viết "ooo" để không trùng với "ông".
+        self.assertNotEqual(unit_audio("oong")[0], unit_audio("ông")[0])
+        self.assertEqual(unit_audio("oong")[0], "van_ooong")
+        self.assertEqual(text_audio("goòng")[0], "tieng_gooongf")
+        self.assertEqual(unit_audio("ông")[0], "van_oong")
+
     def test_telex_gi_does_not_double_i(self):
         self.assertEqual(telex("gì"), "gif")
         self.assertEqual(telex("giữ gìn"), "giuwx_ginf")

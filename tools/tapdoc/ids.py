@@ -81,8 +81,20 @@ Audio = tuple[str, str, str]  # (id, chữ đọc, loại)
 
 
 def _ascii(s: str) -> str:
-    """Đổi từng chữ sang Telex, chưa xét dấu thanh."""
-    return "".join(_LETTER_TELEX.get(ch, ch) for ch in s)
+    """Đổi từng chữ sang Telex, chưa xét dấu thanh.
+
+    Như khi gõ Telex, chữ "oo" thật (oong, ooc, goòng) viết "ooo" để không trùng với "ô" ("oo").
+    """
+    out = []
+    i = 0
+    while i < len(s):
+        if s.startswith("oo", i):
+            out.append("ooo")
+            i += 2
+        else:
+            out.append(_LETTER_TELEX.get(s[i], s[i]))
+            i += 1
+    return "".join(out)
 
 
 def _require_ascii(code: str) -> str:
