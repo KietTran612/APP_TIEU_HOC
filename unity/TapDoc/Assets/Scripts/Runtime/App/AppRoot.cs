@@ -59,7 +59,7 @@ namespace TapDoc
         /// Màn chuyển phủ lên trong lúc chuẩn bị bài, ôn lại, màn Phụ huynh. Dựng lần đầu khi cần (sau khi bộ chung đã
         /// nạp, để hình gà con có sẵn).
         /// </summary>
-        public PrepareCurtain Curtain => _curtain != null ? _curtain : _curtain = PrepareCurtain.Create(SafeRoot, Assets);
+        public PrepareCurtain Curtain => _curtain != null ? _curtain : _curtain = PrepareCurtain.Create(Canvas.transform, Assets); // phủ cả màn: chặn chạm ở hai dải mép của điện thoại
 
         private PrepareCurtain _curtain;
 

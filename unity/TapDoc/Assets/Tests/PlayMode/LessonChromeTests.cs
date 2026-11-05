@@ -172,6 +172,30 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator Wide_EveryStep_NotSmallerThanTablet()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile(unlockAll: true);
+            var app = AppRoot.Instance;
+            app.Speech.WaitScale = .02f;
+            var rt = ScreenSizes.Apply(app, ScreenSizes.Phone20x9);
+            app.ShowLesson("tv1_t1_b15"); // bài đánh vần: các bước gọn trong khung, phải to hết cỡ
+            yield return WaitPrepared();
+            var s = Screen();
+            for (var n = 0; n < 6 && s.Flow.Phase == Phase.Part1; n++)
+            {
+                Assert.GreaterOrEqual(s.StageFit.Scale, 1f - .001f, $"Bước {n}: thẻ không nhỏ hơn máy tính bảng");
+                Assert.AreEqual(ScreenLayout.WideStageScale(app.KidRoot.rect.size), s.StageFit.Scale, .01f,
+                    $"Bước {n}: bước gọn trong khung thì to hết cỡ (không đo lẫn bước cũ đang chờ huỷ)");
+                LayoutProbe.AssertFits(app.Canvas);
+                yield return CompleteStep(s);
+                s.NextButton.onClick.Invoke();
+                yield return null;
+            }
+            ScreenSizes.Reset(app, rt);
+        }
+
+        [UnityTest]
         public IEnumerator Resize_MidStep_NoRebuildNoReplay()
         {
             UseStubsForMissingAssets();

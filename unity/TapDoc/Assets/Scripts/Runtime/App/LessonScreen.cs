@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -147,7 +148,9 @@ namespace TapDoc
 
         /// <summary>
         /// Kiểu góc: vùng học đúng cỡ thiết kế. Kiểu mép: phóng to tối đa mà vẫn vừa cả phần nội dung bước đang hiện vẽ
-        /// ra ngoài khung 1400×680 (ví dụ bảng đọc nhiều hàng); bước gọn trong khung thì to hết cỡ.
+        /// ra ngoài khung 1400×680 (ví dụ bảng đọc nhiều hàng); bước gọn trong khung thì to hết cỡ. Không bao giờ nhỏ
+        /// hơn máy tính bảng (mức 1), để vùng chạm luôn ≥ 160. Chỉ đo bước hiện tại (kể cả phần đang ẩn, sẽ hiện sau),
+        /// không đo bước cũ đang chờ huỷ hay trang đang lật.
         /// </summary>
         private void FitStage()
         {
@@ -157,21 +160,45 @@ namespace TapDoc
                 StageFit.Fit();
                 return;
             }
+            var root = CurrentView switch
+            {
+                IStepView sv => sv.Root,
+                IRoundView rv => rv.Root,
+                _ => null
+            };
+            if (root == null)
+            {
+                StageFit.Fit();
+                return;
+            }
             Canvas.ForceUpdateCanvases();
             var bounds = new Rect(-ScreenLayout.StageSize / 2f, ScreenLayout.StageSize);
             var corners = new Vector3[4];
-            foreach (var g in _stage.GetComponentsInChildren<Graphic>(false))
+            void Add(Vector3 world)
             {
-                if (TurningPage != null && g.transform.IsChildOf(TurningPage.transform)) continue;
-                g.rectTransform.GetWorldCorners(corners);
-                foreach (var c in corners)
-                {
-                    var p = (Vector2)_stage.InverseTransformPoint(c);
-                    bounds = Rect.MinMaxRect(Mathf.Min(bounds.xMin, p.x), Mathf.Min(bounds.yMin, p.y),
-                        Mathf.Max(bounds.xMax, p.x), Mathf.Max(bounds.yMax, p.y));
-                }
+                var p = (Vector2)_stage.InverseTransformPoint(world);
+                bounds = Rect.MinMaxRect(Mathf.Min(bounds.xMin, p.x), Mathf.Min(bounds.yMin, p.y),
+                    Mathf.Max(bounds.xMax, p.x), Mathf.Max(bounds.yMax, p.y));
             }
-            StageFit.FitBounds(bounds);
+            foreach (var g in root.GetComponentsInChildren<Graphic>(true))
+            {
+                if (g is TMP_Text text)
+                {
+                    // Chữ: đo từng ký tự vẽ ra; khung RectTransform của nhãn (ví dụ nhãn dấu thanh) có thể cao hơn nhiều.
+                    text.ForceMeshUpdate();
+                    var info = text.textInfo;
+                    for (var i = 0; i < info.characterCount; i++)
+                    {
+                        if (!info.characterInfo[i].isVisible) continue;
+                        Add(text.transform.TransformPoint(info.characterInfo[i].bottomLeft));
+                        Add(text.transform.TransformPoint(info.characterInfo[i].topRight));
+                    }
+                    continue;
+                }
+                g.rectTransform.GetWorldCorners(corners);
+                foreach (var c in corners) Add(c);
+            }
+            StageFit.FitBounds(bounds, 1f);
         }
 
         private static void Corner(Button button, Vector2 corner, Vector2 offset)

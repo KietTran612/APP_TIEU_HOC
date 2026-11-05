@@ -42,17 +42,19 @@ namespace TapDoc
         /// <summary>
         /// Như <see cref="Fit"/> nhưng cho vừa cả phần nội dung vẽ ra ngoài cỡ thiết kế: <paramref name="bounds"/> tính
         /// theo toạ độ của khối (gốc ở tâm), gộp với khung thiết kế; khối vẫn nằm giữa vùng. Vùng đổi cỡ thì tính lại
-        /// với khung này.
+        /// với khung này. Mức phóng to không nhỏ hơn <paramref name="minScale"/>.
         /// </summary>
-        public void FitBounds(Rect bounds)
+        public void FitBounds(Rect bounds, float minScale = 0f)
         {
             _bounds = bounds;
+            _minScale = minScale;
             _hasBounds = true;
             Apply();
         }
 
         private bool _hasBounds;
         private Rect _bounds;
+        private float _minScale;
 
         private void Apply()
         {
@@ -67,6 +69,7 @@ namespace TapDoc
                 halfH = Mathf.Max(halfH, Mathf.Abs(_bounds.yMin), Mathf.Abs(_bounds.yMax));
             }
             Scale = Mathf.Min(size.x / (2f * halfW), size.y / (2f * halfH));
+            if (_hasBounds) Scale = Mathf.Max(Scale, _minScale);
             Content.localScale = new Vector3(Scale, Scale, 1f);
         }
 

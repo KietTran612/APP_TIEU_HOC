@@ -218,6 +218,37 @@ namespace TapDoc.Tests
             }
         }
 
+        [UnityTest]
+        public IEnumerator Curtain_CoversWholeScreen_BlocksSideButtons()
+        {
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            var rt = ScreenSizes.Apply(app, ScreenSizes.Phone20x9);
+            app.ShowLessonList();
+            yield return null;
+            var list = Object.FindAnyObjectByType<LessonListScreen>();
+            app.Curtain.Show();
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+
+            var canvasRect = ((RectTransform)app.Canvas.transform).rect;
+            var curtainRect = ((RectTransform)app.Curtain.transform).rect;
+            Assert.AreEqual(canvasRect.width, curtainRect.width, .5f, "Màn chuyển phủ hết chiều ngang màn");
+            Assert.AreEqual(canvasRect.height, curtainRect.height, .5f);
+
+            // Nút "Đổi bé" ở mép trái (ngoài khung 1440 giữa): chạm vào đó phải trúng màn chuyển, không trúng nút.
+            var button = (RectTransform)list.SwitchChildButton.transform;
+            var screenPoint = RectTransformUtility.WorldToScreenPoint(app.UiCamera, button.TransformPoint(button.rect.center));
+            var hits = new System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult>();
+            UnityEngine.EventSystems.EventSystem.current.RaycastAll(
+                new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current) { position = screenPoint }, hits);
+            Assert.IsNotEmpty(hits);
+            Assert.IsTrue(hits[0].gameObject.transform.IsChildOf(app.Curtain.transform),
+                $"Chạm ở mép trúng '{hits[0].gameObject.name}' thay vì màn chuyển");
+            app.Curtain.Hide();
+            ScreenSizes.Reset(app, rt);
+        }
+
         private static void AssertInside(RectTransform outer, RectTransform inner, ScreenSize size)
         {
             var o = new Vector3[4];
