@@ -131,7 +131,7 @@ def _cmd_import_image(args: argparse.Namespace) -> int:
         return 1
     image_dir = UNITY_RES / "images"
     try:
-        import_image(args.file, args.id, image_dir, manifest_path)
+        import_image(args.file, args.id, image_dir, manifest_path, scan_placeholder=args.scan_tam)
     except ValueError as e:
         print(f"Lỗi nhập tranh: {e}", file=sys.stderr)
         return 1
@@ -313,6 +313,8 @@ def main(argv: list[str] | None = None, *, engine_factory=None) -> int:
     image_cmd = commands.add_parser("import-image", help="nhập một tranh PNG đã tải về từ ChatGPT")
     image_cmd.add_argument("file", help="đường dẫn file PNG")
     image_cmd.add_argument("id", help="mã tranh trong danh mục (ví dụ img_b13_cais_ddu)")
+    image_cmd.add_argument("--scan-tam", action="store_true",
+                           help="tranh cắt tạm từ ảnh scan sách (chủ dự án cho dùng tạm); bản phát hành sẽ bị chặn")
     image_cmd.set_defaults(func=_cmd_import_image)
     clips_cmd = commands.add_parser("import-clips", help="nhập clip tranh động <mã tranh>.mp4 trong một thư mục")
     clips_cmd.add_argument("folder", help="thư mục chứa các file <mã tranh>.mp4")

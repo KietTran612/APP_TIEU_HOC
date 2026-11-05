@@ -310,7 +310,8 @@ def _scan_reasons(name: str, in_images_dir: bool) -> list[str]:
     reasons = []
     if lower.endswith((".jpg", ".jpeg")):
         reasons.append("file .jpg/.jpeg (ảnh scan không được nằm trong project Unity)")
-    if "trang_" in lower or "thuongmaitruongxua" in lower:
+    # Ảnh scan tên "…_Trang_18.jpg"; "trang_" đứng trước chữ (img_b86_trang_sachs: "trang sách") không phải scan.
+    if re.search(r"trang_\d", lower) or "thuongmaitruongxua" in lower:
         reasons.append("tên giống ảnh scan sách")
     if in_images_dir and not lower.endswith(".meta") and not name.startswith("img_"):
         reasons.append("tranh trong Content/Resources/images phải có tên bắt đầu bằng img_")
@@ -430,9 +431,13 @@ def check_release_lesson(lesson: dict) -> list[Issue]:
 
 
 def check_release_rows(rows: list[dict], label: str) -> list[Issue]:
-    """Âm thanh/tranh phải đã có file và đã nghe/xem; `khong_dat` vẫn được dùng tạm."""
-    return [Issue(GLOBAL, str(row.get("id", "?")), f"{label} chưa duyệt (status = {row.get('status')})")
-            for row in rows if row.get("status") in (STATUS_NONE, STATUS_PENDING)]
+    """Âm thanh/tranh phải đã có file và đã nghe/xem; `khong_dat` vẫn được dùng tạm. Ảnh cắt tạm từ scan sách
+    (`source` = `scan_tam`) luôn bị chặn, kể cả khi đã duyệt."""
+    issues = [Issue(GLOBAL, str(row.get("id", "?")), f"{label} chưa duyệt (status = {row.get('status')})")
+              for row in rows if row.get("status") in (STATUS_NONE, STATUS_PENDING)]
+    issues += [Issue(GLOBAL, str(row.get("id", "?")), f"{label} là ảnh scan sách dùng tạm, phải thay trước khi phát hành")
+               for row in rows if row.get("source") == "scan_tam"]
+    return issues
 
 
 _RELEASE_WARN_LIST = 5  # quá số này thì chỉ in một dòng tóm tắt

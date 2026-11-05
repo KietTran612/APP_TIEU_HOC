@@ -41,6 +41,11 @@ class ImportReport:
     skipped: list[tuple[str, str]] = field(default_factory=list)  # (tên mục trong ZIP, lý do bỏ qua)
 
 
+# Tranh cắt tạm từ ảnh scan sách: chỉ dùng khi thử, phải vẽ lại trước khi phát hành.
+SOURCE_SCAN_TEMP = "scan_tam"
+SCAN_TEMP_NOTE = "ảnh cắt tạm từ scan sách, phải thay trước khi phát hành"
+
+
 def _looks_like_mp3(data: bytes) -> bool:
     """Bắt đầu bằng thẻ ID3, hoặc bằng byte đồng bộ khung MPEG (0xFF rồi 3 bit cao của byte sau đều là 1)."""
     if data.startswith(b"ID3"):
@@ -141,8 +146,11 @@ def import_audio_zip(zip_path, audio_dir, manifest_path) -> ImportReport:
     return report
 
 
-def import_image(file_path, image_id, image_dir, manifest_path) -> None:
-    """Chép tranh PNG thành `image_dir/<image_id>.png` và đánh dấu `cho_duyet`; sai thì báo `ValueError`."""
+def import_image(file_path, image_id, image_dir, manifest_path, scan_placeholder: bool = False) -> None:
+    """Chép tranh PNG thành `image_dir/<image_id>.png` và đánh dấu `cho_duyet`; sai thì báo `ValueError`.
+
+    `scan_placeholder`: tranh cắt tạm từ ảnh scan sách; nguồn ghi `scan_tam` để `validate --release` chặn.
+    """
     file_path = Path(file_path)
     image_dir = Path(image_dir)
     if not file_path.is_file():
@@ -162,8 +170,11 @@ def import_image(file_path, image_id, image_dir, manifest_path) -> None:
         raise ValueError(f"{file_path.name} quá lớn (tối đa {MAX_IMAGE_BYTES // _MB} MB)")
     _write_atomic(image_dir / f"{image_id}.png", data)
     row["status"] = STATUS_PENDING
-    row["source"] = SOURCE_TEMP
-    row["ghi_chu"] = _without_changed_note(row.get("ghi_chu", ""))
+    row["source"] = SOURCE_SCAN_TEMP if scan_placeholder else SOURCE_TEMP
+    note = _without_changed_note(row.get("ghi_chu", ""))
+    if scan_placeholder and SCAN_TEMP_NOTE not in note:
+        note = f"{note}; {SCAN_TEMP_NOTE}" if note else SCAN_TEMP_NOTE
+    row["ghi_chu"] = note
     save_rows(manifest_path, all_rows)
 
 

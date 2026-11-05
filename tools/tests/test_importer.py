@@ -586,6 +586,13 @@ class ImportCliTest(TempDirCase):
         self.assertEqual(field_of(self.image_manifest, "img_b13_cais_ddu", "status"), "cho_duyet")
         self.assertEqual(field_of(self.image_manifest, "img_b13_cais_ddu", "source"), "chatgpt_tam")
 
+    def test_import_image_scan_placeholder(self):
+        # Tranh cắt tạm từ ảnh scan sách (chủ dự án cho phép dùng tạm): đánh dấu để bản phát hành bị chặn.
+        code, out, err = self.run_cli(["import-image", "--scan-tam", str(self.png), "img_b13_cais_ddu"])
+        self.assertEqual(code, 0, err)
+        self.assertEqual(field_of(self.image_manifest, "img_b13_cais_ddu", "source"), "scan_tam")
+        self.assertIn("scan", field_of(self.image_manifest, "img_b13_cais_ddu", "ghi_chu"))
+
     def test_import_image_not_png_exits_1(self):
         jpeg = self.root / "tranh.jpg"
         jpeg.write_bytes(JPEG)

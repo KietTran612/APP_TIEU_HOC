@@ -519,6 +519,11 @@ class ScansTest(unittest.TestCase):
         for name in ("x/page_Trang_18.png", "x/TRANG_05.png", "y/thuongmaitruongxua_01.png", "z/ThuongMaiTruongXua.pdf"):
             self.assertEqual(len(self.flagged(name)), 1, name)
 
+    def test_word_trang_in_picture_id_is_not_scan(self):
+        # "trang sách" (bài 86) và "trăng" viết Telex là "trang_...": không phải tên ảnh scan "Trang_<số>".
+        self.assertEqual(self.flagged("Content/Resources/images/img_b86_trang_sachs.png"), [])
+        self.assertEqual(self.flagged("Content/Resources/images/img_b109_ddenf_trang_x.png"), [])
+
     def test_png_images_dir_rules(self):
         self.assertEqual(self.flagged("Content/Resources/images/img_b13_a.png"), [])
         self.assertEqual(len(self.flagged("Content/Resources/images/random.png")), 1)
@@ -771,6 +776,13 @@ class ReleaseTest(ValidateAllTest):
         self.build_all_good()
         self.set_status("da_duyet", "dat", bad_ids=(self.audio_rows[0]["id"],))  # khong_dat vẫn dùng tạm
         self.assertEqual(validate_all(release=True), [])
+
+    def test_release_rejects_scan_placeholder_even_if_reviewed(self):
+        from tapdoc.validate import check_release_rows
+        rows = [{"id": "img_b97_banr_ddoof_vieetj_nam", "status": "dat", "source": "scan_tam"}]
+        issues = check_release_rows(rows, "tranh")
+        self.assertEqual(len(issues), 1)
+        self.assertIn("ảnh scan", issues[0].message)
 
     def test_release_rejects_unreviewed(self):
         self.build_all_good()
