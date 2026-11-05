@@ -62,3 +62,33 @@ Ghi chú: `img_b87_lawng_bacs` vẽ lăng Bác (công trình có thật) theo n�
 
 Chưa vẽ, chờ chủ dự án quyết: tranh **bản đồ Việt Nam** của bài 97 ("Đẹp thay sông núi Việt Nam"). Bản đồ do AI vẽ dễ sai hình và thiếu quần đảo Hoàng Sa, Trường Sa, nên nên dùng bản đồ chuẩn hoặc chủ dự án duyệt kỹ.
 Gắn `can_duyet`: `img_b97_yeets_kieeu` (nhân vật lịch sử, tranh chỉ vẽ thuyền).
+
+## Đợt 2a (bài 100–108)
+
+| Bài | Mã | Mô tả |
+|---|---|---|
+| 100 | `img_b100_quar_chuoois` | Nải chuối chín vàng |
+| 100 | `img_b100_canhs_buoomf` | Chiếc thuyền buồm căng gió trên mặt nước |
+| 100 | `img_b100_dduooir_bawts_caof_caof` | Ba bạn nhỏ đuổi bắt cào cào, châu chấu trên đồng cỏ xanh |
+| 101 | `img_b101_cais_cuoocs` | Cái cuốc cán gỗ dựng trên đất |
+| 101 | `img_b101_tuoots_luas` | Hai cô nông dân tuốt lúa bằng máy tuốt lúa đạp chân |
+| 101 | `img_b101_meof_dduooir_chuootj` | Các bạn nhỏ nắm tay nhau thành vòng tròn chơi trò mèo đuổi chuột |
+| 102 | `img_b102_chuoonf_chuoonf` | Con chuồn chuồn đậu trên ngọn cỏ bên mặt nước |
+| 102 | `img_b102_cais_chuoong` | Chiếc chuông đồng treo, có hoa văn |
+| 102 | `img_b102_con_vitj` | Hai con vịt bơi trên ao, dưới nước có cá (đáp án câu đố "Con gì có cánh mà lại biết bơi") |
+| 103 | `img_b103_meof_treof_caay_cau` | Con mèo trèo lên cây cau; xa xa chú chuột đội nón, xách giỏ đi chợ |
+| 104 | `img_b104_quar_buwowir` | Quả bưởi tròn có cuống và lá |
+| 104 | `img_b104_con_huwowu` | Con hươu sao có sừng đứng trên bãi cỏ |
+| 104 | `img_b104_ddanf_huwowu` | Đàn hươu ăn cỏ bên bờ suối trong rừng, chim khướu đậu trên cành |
+| 105 | `img_b105_ruwowcs_ddenf` | Các bạn nhỏ cầm đèn ông sao, đèn cá chép đi rước đèn trung thu |
+| 105 | `img_b105_caauf_truwowtj` | Hai bạn nhỏ chơi cầu trượt ở sân chơi |
+| 105 | `img_b105_ca_noo` | Chiếc ca nô chạy trên hồ kéo người lướt ván phía sau, nước tung trắng |
+| 106 | `img_b106_con_buwowms` | Con bướm xoè cánh có hoa văn |
+| 106 | `img_b106_quar_muwowps` | Quả mướp dài treo trên giàn, có lá và tua cuốn |
+| 106 | `img_b106_hoof_guwowm` | Hồ Gươm có Tháp Rùa giữa hồ, cây phượng đỏ, người và xe đi lại quanh hồ |
+| 107 | `img_b107_con_vuwownj` | Con vượn đu trên cành cây |
+| 107 | `img_b107_soi_guwowng` | Bé gái đứng soi gương, chải tóc |
+| 108 | `img_b108_giotj_moof_hooi` | Bác nông dân cày ruộng, lúa xanh tốt; bên cạnh vườn dâu và ao cá |
+
+Chưa vẽ, chờ chủ dự án quyết: tranh **Bác Hồ ngắm trăng** của bài 107 ("Trung thu trăng sáng như gương, Bác Hồ ngắm cảnh nhớ thương nhi đồng"). Vẽ chân dung lãnh tụ bằng AI dễ sai và nhạy cảm.
+Gắn `can_duyet`: `img_b106_hoof_guwowm` (Hồ Gươm, Tháp Rùa có thật).
