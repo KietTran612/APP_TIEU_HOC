@@ -27,6 +27,8 @@ namespace TapDoc
         public string id;
         public string name;
         public string avatar;
+        /// <summary>Phụ huynh bật "Mở mọi bài" cho bé này (bé đã học phần trước ở trường). File cũ không có thì tắt.</summary>
+        public bool unlock_all;
         public List<LessonProgress> lessons = new();
         public List<Mistake> mistakes = new();
     }

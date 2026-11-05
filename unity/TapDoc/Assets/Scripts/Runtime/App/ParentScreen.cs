@@ -173,6 +173,21 @@ namespace TapDoc
             }
         }
 
+        private const float UnlockWidth = 380f;
+        private readonly Dictionary<string, Button> _unlockToggles = new();
+
+        /// <summary>Nút "Mở mọi bài" của bé <paramref name="profileId"/> (cho test).</summary>
+        internal Button UnlockToggleFor(string profileId) => _unlockToggles.TryGetValue(profileId, out var b) ? b : null;
+
+        private static string UnlockLabel(Profile profile) => profile.unlock_all ? UiText.UnlockAllOn : UiText.UnlockAllOff;
+
+        private void ToggleUnlockAll(Profile profile, Button button)
+        {
+            profile.unlock_all = !profile.unlock_all;
+            _app.Progress.Save();
+            button.GetComponentInChildren<TMPro.TMP_Text>().text = UnlockLabel(profile);
+        }
+
         private string SfxLabel() => _app.Progress.SfxEnabled ? UiText.SfxOn : UiText.SfxOff;
 
         private void ToggleSfx()
@@ -219,7 +234,17 @@ namespace TapDoc
 
             var learned = ordered.Count(id => ProgressStore.IsCompleted(profile, id));
             var progress = LeftLabel(row.transform, string.Format(UiText.LearnedFormat, learned, ordered.Count), 44f);
-            PlaceLeft(progress.rectTransform, 1f, new Vector2(680f, -14f), new Vector2(620f, 100f));
+            PlaceLeft(progress.rectTransform, 1f, new Vector2(680f, -14f), new Vector2(420f, 100f));
+
+            // "Mở mọi bài" theo từng bé: bé đã học phần trước ở trường vào thẳng bài sau; tắt lại không mất tiến độ.
+            var unlock = UiKit.CreateButton(row.transform, UnlockLabel(profile), null);
+            unlock.name = $"UnlockAll_{profile.id}";
+            var unlockRt = (RectTransform)unlock.transform;
+            unlockRt.anchorMin = unlockRt.anchorMax = unlockRt.pivot = new Vector2(1f, 1f);
+            unlockRt.anchoredPosition = new Vector2(-20f, -14f);
+            unlockRt.sizeDelta = new Vector2(UnlockWidth, UiKit.MinTouch);
+            unlock.onClick.AddListener(() => ToggleUnlockAll(profile, unlock));
+            _unlockToggles[profile.id] = unlock;
 
             var confusedLabel = LeftLabel(row.transform, UiText.OftenConfused, 36f);
             PlaceLeft(confusedLabel.rectTransform, 0f, new Vector2(20f, 12f), new Vector2(300f, ChipHeight));

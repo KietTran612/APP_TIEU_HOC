@@ -20,6 +20,7 @@ namespace TapDoc
         private const float CardWidth = 216f;
         private const float CardHeight = 210f;
         private const float CardGap = 18f;
+        private const float MinCardFont = 26f;
         private const float FlowerSize = 40f;
         private const float LockSize = 56f;
         private const float Margin = 20f;
@@ -104,42 +105,24 @@ namespace TapDoc
             var entries = app.Lessons.Index.lessons;
             var ordered = entries.Select(e => e.lesson_id).ToList();
             CurrentLessonId = ordered.FirstOrDefault(id => progress.IsUnlocked(ordered, id) && !progress.IsCompleted(id));
-            foreach (var part in new[] { false, true })
+            foreach (var (part, title) in Parts)
             {
-                var section = entries.Where(e => part ? e.lesson_no >= 42 : e.lesson_no >= 1 && e.lesson_no <= 41).ToList();
+                var section = entries.Where(e => PartOf(e) == part).ToList();
                 if (section.Count == 0) continue;
-                var sectionHeader = UiKit.CreateLabel(content, part ? UiText.PartRimes : UiText.PartLetters, 44f);
+                var sectionHeader = UiKit.CreateLabel(content, title, 44f);
                 sectionHeader.alignment = TextAlignmentOptions.Left;
                 sectionHeader.gameObject.AddComponent<LayoutElement>().preferredHeight = 64f;
-                var gridGo = new GameObject("LessonButtons", typeof(RectTransform), typeof(GridLayoutGroup));
-                gridGo.transform.SetParent(content, false);
-                var grid = gridGo.GetComponent<GridLayoutGroup>();
-                grid.cellSize = new Vector2(CardWidth, CardHeight);
-                grid.spacing = new Vector2(CardGap, CardGap);
-                grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-                grid.constraintCount = Columns;
-                grid.childAlignment = TextAnchor.UpperLeft;
-                foreach (var entry in section)
+                // Phần Tập đọc chia nhóm theo tuần như mục lục sách; hai phần kia là một lưới.
+                foreach (var group in section.GroupBy(e => part == ReadingPart ? e.week : 0))
                 {
-                    var lessonId = entry.lesson_id;
-                    var label = $"{UiText.LessonPrefix} {entry.lesson_no}\n{entry.title}";
-                    var btn = UiKit.CreateCardButton(gridGo.transform, label, () => app.ShowLesson(lessonId));
-                    btn.name = $"Lesson_{lessonId}";
-                    btn.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
-                    var text = btn.GetComponentInChildren<TMP_Text>();
-                    var textRt = text.rectTransform;
-                    textRt.anchorMin = new Vector2(0f, 0.24f);
-                    textRt.anchorMax = Vector2.one;
-                    textRt.offsetMin = new Vector2(8f, 0f);
-                    textRt.offsetMax = new Vector2(-8f, -6f);
-
-                    if (!progress.IsUnlocked(ordered, lessonId)) Lock(btn, app.Assets);
-                    else if (lessonId == CurrentLessonId) MarkCurrent(btn);
-
-                    var flowers = FlowerBook.FlowersFor(progress, lessonId);
-                    if (flowers > 0) AddFlowers(btn.transform, app.Assets, lessonId, flowers);
-
-                    _lessonButtons[lessonId] = btn;
+                    if (part == ReadingPart && group.Key > 0)
+                    {
+                        var weekHeader = UiKit.CreateLabel(content, string.Format(UiText.WeekFormat, group.Key), 34f);
+                        weekHeader.alignment = TextAlignmentOptions.Left;
+                        weekHeader.gameObject.AddComponent<LayoutElement>().preferredHeight = 48f;
+                    }
+                    var grid = CreateGrid(content);
+                    foreach (var entry in group) AddCard(grid, entry, ordered, progress, app);
                 }
             }
 
@@ -157,6 +140,66 @@ namespace TapDoc
             LayoutRebuilder.ForceRebuildLayoutImmediate(content);
             Scroll.verticalNormalizedPosition = 1f;
             ScrollTo(CurrentLessonId);
+        }
+
+        private const string ReadingPart = "tap_doc";
+
+        private static readonly (string part, string title)[] Parts =
+        {
+            ("chu_cai", UiText.PartLetters),
+            ("van", UiText.PartRimes),
+            (ReadingPart, UiText.PartReading),
+        };
+
+        /// <summary>Phần của bài theo <c>index.json</c>; index cũ chưa ghi phần thì chia theo số bài như trước.</summary>
+        private static string PartOf(LessonEntry entry)
+        {
+            if (!string.IsNullOrEmpty(entry.part)) return entry.part;
+            return entry.lesson_no >= 42 ? "van" : "chu_cai";
+        }
+
+        /// <summary>Nhãn trên thẻ: lấy từ <c>index.json</c>, không có thì "Bài N".</summary>
+        internal static string LabelOf(LessonEntry entry) =>
+            string.IsNullOrEmpty(entry.label) ? $"{UiText.LessonPrefix} {entry.lesson_no}" : entry.label;
+
+        private static Transform CreateGrid(Transform content)
+        {
+            var gridGo = new GameObject("LessonButtons", typeof(RectTransform), typeof(GridLayoutGroup));
+            gridGo.transform.SetParent(content, false);
+            var grid = gridGo.GetComponent<GridLayoutGroup>();
+            grid.cellSize = new Vector2(CardWidth, CardHeight);
+            grid.spacing = new Vector2(CardGap, CardGap);
+            grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            grid.constraintCount = Columns;
+            grid.childAlignment = TextAnchor.UpperLeft;
+            return gridGo.transform;
+        }
+
+        private void AddCard(Transform grid, LessonEntry entry, List<string> ordered, ProgressStore progress, AppRoot app)
+        {
+            var lessonId = entry.lesson_id;
+            var label = LabelOf(entry) + "\n" + entry.title;
+            var btn = UiKit.CreateCardButton(grid, label, () => app.ShowLesson(lessonId));
+            btn.name = $"Lesson_{lessonId}";
+            btn.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
+            var text = btn.GetComponentInChildren<TMP_Text>();
+            var textRt = text.rectTransform;
+            textRt.anchorMin = new Vector2(0f, 0.24f);
+            textRt.anchorMax = Vector2.one;
+            textRt.offsetMin = new Vector2(8f, 0f);
+            textRt.offsetMax = new Vector2(-8f, -6f);
+            // Tên bài tập đọc dài ("Người nông dân và con gấu"): cho chữ tự thu nhỏ trong thẻ, không tràn.
+            text.enableAutoSizing = true;
+            text.fontSizeMax = text.fontSize;
+            text.fontSizeMin = Mathf.Min(text.fontSize, MinCardFont);
+
+            if (!progress.IsUnlocked(ordered, lessonId)) Lock(btn, app.Assets);
+            else if (lessonId == CurrentLessonId) MarkCurrent(btn);
+
+            var flowers = FlowerBook.FlowersFor(progress, lessonId);
+            if (flowers > 0) AddFlowers(btn.transform, app.Assets, lessonId, flowers);
+
+            _lessonButtons[lessonId] = btn;
         }
 
         /// <summary>Cuộn để thẻ bài nằm trọn trong vùng nhìn; bỏ qua mã bài không có.</summary>

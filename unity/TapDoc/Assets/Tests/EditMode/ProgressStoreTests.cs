@@ -124,5 +124,53 @@ namespace TapDoc.Tests
             Assert.AreEqual(3, s.StarsFor("b01"));
             Assert.AreEqual(3, FlowerBook.FlowersFor(s, "b01"));
         }
+
+        private static readonly string[] Order = { "tv1_t1_b01", "tv1_t1_b02", "tv1_t2_b81" };
+
+        [Test]
+        public void UnlockAll_On_OpensEveryLesson()
+        {
+            var s = new ProgressStore(P);
+            s.CreateProfile("Bông", "img_chung_avatar_01");
+            s.UnlockAll = true;
+            Assert.IsTrue(Order.All(id => s.IsUnlocked(Order, id)));
+            Assert.IsFalse(s.IsUnlocked(Order, "khong_co"));
+        }
+
+        [Test]
+        public void UnlockAll_Off_KeepsSequentialRule()
+        {
+            var s = new ProgressStore(P);
+            s.CreateProfile("Bông", "img_chung_avatar_01");
+            s.MarkCompleted("tv1_t1_b01");
+            s.UnlockAll = true;
+            s.UnlockAll = false;
+            Assert.IsTrue(s.IsUnlocked(Order, "tv1_t1_b02"));
+            Assert.IsFalse(s.IsUnlocked(Order, "tv1_t2_b81"));
+            Assert.IsTrue(s.IsCompleted("tv1_t1_b01"));
+        }
+
+        [Test]
+        public void UnlockAll_SavedPerProfile()
+        {
+            var s = new ProgressStore(P);
+            var a = s.CreateProfile("A", "img_chung_avatar_01");
+            s.UnlockAll = true;
+            var b = s.CreateProfile("B", "img_chung_avatar_02");
+            s.Save();
+            var t = ProgressStore.Load(P);
+            t.Select(a.id);
+            Assert.IsTrue(t.UnlockAll);
+            t.Select(b.id);
+            Assert.IsFalse(t.UnlockAll);
+        }
+
+        [Test]
+        public void UnlockAll_OldFileWithoutField_IsOff()
+        {
+            File.WriteAllText(P, "{\"profiles\":[{\"id\":\"x\",\"name\":\"Cũ\",\"avatar\":\"a\",\"lessons\":[],\"mistakes\":[]}],\"current\":\"x\"}");
+            var t = ProgressStore.Load(P);
+            Assert.IsFalse(t.UnlockAll);
+        }
     }
 }

@@ -6,7 +6,18 @@ namespace TapDoc
     [Serializable]
     public class LessonIndex
     {
+        /// <summary>Các quyển theo thứ tự học (content/books.json); index cũ không có thì rỗng.</summary>
+        public List<BookEntry> books = new();
         public List<LessonEntry> lessons = new();
+    }
+
+    [Serializable]
+    public class BookEntry
+    {
+        public string book_id;
+        public string title;
+        /// <summary>Mã sách có Phụ lục dùng cho quyển này (tập 2 dùng Phụ lục của tập 1).</summary>
+        public string appendix;
     }
 
     [Serializable]
@@ -17,6 +28,12 @@ namespace TapDoc
         public string title;
         public string type;
         public string book;
+        /// <summary>Phần của danh sách bài: <c>chu_cai</c>, <c>van</c>, <c>tap_doc</c>.</summary>
+        public string part;
+        /// <summary>Nhãn trên thẻ bài ("Bài 81", "Bài 4", "Câu đố", "Chính tả").</summary>
+        public string label;
+        /// <summary>Tuần (chỉ phần Tập đọc), 0 nếu không có.</summary>
+        public int week;
     }
 
     [Serializable]

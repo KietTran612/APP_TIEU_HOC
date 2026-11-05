@@ -49,6 +49,16 @@ namespace TapDoc
             set => _data.sfx_off = !value;
         }
 
+        /// <summary>"Mở mọi bài" của bé đang học; chưa chọn bé thì luôn tắt. Tắt lại không xoá tiến độ.</summary>
+        public bool UnlockAll
+        {
+            get => Current?.unlock_all ?? false;
+            set
+            {
+                if (Current != null) Current.unlock_all = value;
+            }
+        }
+
         /// <summary>Kho của app thật: <c>persistentDataPath/tapdoc_progress.json</c>.</summary>
         public static ProgressStore Default() => Load(Path.Combine(Application.persistentDataPath, FileName));
 
@@ -110,7 +120,7 @@ namespace TapDoc
                 }
             }
             if (k < 0) return false;
-            if (k == 0) return true;
+            if (k == 0 || UnlockAll) return true;
             return IsCompleted(lessonId) || IsCompleted(orderedLessonIds[k - 1]);
         }
 

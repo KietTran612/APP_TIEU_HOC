@@ -91,6 +91,7 @@ namespace TapDoc
         public Appendix Appendix(string book)
         {
             if (string.IsNullOrWhiteSpace(book)) throw new InvalidDataException("Mã sách rỗng");
+            book = AppendixSource(book);
             if (_appendices.TryGetValue(book, out var appendix)) return appendix;
             WarnUnprepared(book);
             return _appendices[book] = AppendixData.Parse(_source.Load(ContentKind.Appendix, book) as TextAsset, book);
@@ -99,10 +100,25 @@ namespace TapDoc
         public async Awaitable<Appendix> LoadAppendixAsync(string book)
         {
             if (string.IsNullOrWhiteSpace(book)) throw new InvalidDataException("Mã sách rỗng");
+            book = AppendixSource(book);
             if (_appendices.TryGetValue(book, out var appendix)) return appendix;
             var asset = await _source.LoadAsync(ContentKind.Appendix, book) as TextAsset;
             if (_appendices.TryGetValue(book, out appendix)) return appendix;
             return _appendices[book] = AppendixData.Parse(asset, book);
+        }
+
+        /// <summary>
+        /// Mã sách có Phụ lục dùng cho <paramref name="book"/>, theo <c>books</c> của danh sách bài đã nạp (tập 2 không
+        /// in Phụ lục, dùng của tập 1). Danh sách chưa nạp hoặc không ghi thì là chính quyển đó.
+        /// </summary>
+        private string AppendixSource(string book)
+        {
+            if (_index?.books == null) return book;
+            foreach (var entry in _index.books)
+            {
+                if (entry != null && entry.book_id == book && !string.IsNullOrWhiteSpace(entry.appendix)) return entry.appendix;
+            }
+            return book;
         }
 
         private void WarnUnprepared(string id)
@@ -141,6 +157,14 @@ namespace TapDoc
             }
 
             index.lessons ??= new List<LessonEntry>();
+            index.books ??= new List<BookEntry>();
+            foreach (var book in index.books)
+            {
+                if (book == null) continue;
+                book.book_id = Nfc(book.book_id);
+                book.title = Nfc(book.title);
+                book.appendix = Nfc(book.appendix);
+            }
             foreach (var entry in index.lessons)
             {
                 if (entry == null) continue;
@@ -148,6 +172,8 @@ namespace TapDoc
                 entry.title = Nfc(entry.title);
                 entry.type = Nfc(entry.type);
                 entry.book = Nfc(entry.book);
+                entry.part = Nfc(entry.part);
+                entry.label = Nfc(entry.label);
             }
 
             return index;

@@ -99,6 +99,47 @@ namespace TapDoc.Tests
             Assert.AreEqual("b", _repo.Get("b").lesson_id);
         }
 
+        private const string TwoBooksIndex =
+            "{\"books\":[{\"book_id\":\"t1\",\"title\":\"Tập một\",\"appendix\":\"t1\"}," +
+            "{\"book_id\":\"t2\",\"title\":\"Tập hai\",\"appendix\":\"t1\"}]," +
+            "\"lessons\":[{\"lesson_id\":\"a\",\"lesson_no\":42,\"title\":\"an\",\"type\":\"van_moi\",\"book\":\"t1\"," +
+            "\"part\":\"van\",\"label\":\"Bài 42\",\"week\":0}," +
+            "{\"lesson_id\":\"b\",\"lesson_no\":126,\"title\":\"Trường em\",\"type\":\"tap_doc\",\"book\":\"t2\"," +
+            "\"part\":\"tap_doc\",\"label\":\"Bài 1\",\"week\":27}]}";
+
+        [Test]
+        public void Index_ParsesBooksPartsLabels()
+        {
+            PutText(ContentKind.LessonIndex, null, TwoBooksIndex);
+            var index = _repo.Index;
+            Assert.AreEqual(2, index.books.Count);
+            Assert.AreEqual("t1", index.books[1].appendix);
+            Assert.AreEqual("tap_doc", index.lessons[1].part);
+            Assert.AreEqual("Bài 1", index.lessons[1].label);
+            Assert.AreEqual(27, index.lessons[1].week);
+        }
+
+        [Test]
+        public void Appendix_BookWithoutOwn_UsesListedAppendix()
+        {
+            PutText(ContentKind.LessonIndex, null, TwoBooksIndex);
+            PutText(ContentKind.Appendix, "t1", "{\"book\":\"t1\",\"title\":\"Phụ lục\"}");
+            AwaitableTestUtil.RunNow(_repo.LoadIndexAsync());
+            AwaitableTestUtil.RunNow(_repo.LoadAppendixAsync("t2"));
+            Assert.AreSame(_repo.Appendix("t1"), _repo.Appendix("t2"));
+            Assert.AreEqual(1, _source.LoadCount(ContentKind.Appendix, "t1"));
+            Assert.AreEqual(0, _source.LoadCount(ContentKind.Appendix, "t2"));
+        }
+
+        [Test]
+        public void Appendix_OldIndexWithoutBooks_UsesOwnBook()
+        {
+            PutText(ContentKind.LessonIndex, null, "{\"lessons\":[]}");
+            PutText(ContentKind.Appendix, "sach", "{\"book\":\"sach\",\"title\":\"x\"}");
+            AwaitableTestUtil.RunNow(_repo.LoadIndexAsync());
+            Assert.AreEqual("sach", _repo.Appendix("sach").book);
+        }
+
         [Test]
         public void Appendix_Missing_ThrowsOldMessage()
         {

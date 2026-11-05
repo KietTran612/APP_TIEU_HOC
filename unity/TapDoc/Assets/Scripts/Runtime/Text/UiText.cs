@@ -62,6 +62,12 @@ namespace TapDoc
         public const string SfxOn = "Tiếng động: Bật";
         public const string SfxOff = "Tiếng động: Tắt";
 
+        // Phần Tập đọc (tập 2) trong danh sách bài, nhóm theo tuần; công tắc mở mọi bài của từng bé (màn Phụ huynh).
+        public const string PartReading = "Tập đọc";
+        public const string WeekFormat = "Tuần {0}";
+        public const string UnlockAllOn = "Mở mọi bài: Bật";
+        public const string UnlockAllOff = "Mở mọi bài: Tắt";
+
         public static readonly string[] All =
         {
             Back,
@@ -108,6 +114,10 @@ namespace TapDoc
             MascotLessonDone,
             SfxOn,
             SfxOff,
+            PartReading,
+            WeekFormat,
+            UnlockAllOn,
+            UnlockAllOff,
         };
     }
 }

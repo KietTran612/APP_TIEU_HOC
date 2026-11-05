@@ -96,7 +96,12 @@ namespace TapDoc
                 if (this == null) return;
                 var index = await Lessons.LoadIndexAsync();
                 if (this == null) return;
-                if (index.lessons.Count > 0) await Lessons.LoadAppendixAsync(index.lessons[0].book);
+                // Mỗi quyển dùng Phụ lục ghi trong `books` (tập 2 dùng của tập 1); kho bài tự quy về một file.
+                foreach (var book in index.lessons.Select(e => e.book).Where(b => !string.IsNullOrWhiteSpace(b)).Distinct())
+                {
+                    await Lessons.LoadAppendixAsync(book);
+                    if (this == null) return;
+                }
                 if (this == null) return;
             }
             catch (Exception ex)
