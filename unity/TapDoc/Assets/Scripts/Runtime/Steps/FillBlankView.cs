@@ -120,9 +120,10 @@ namespace TapDoc
             var full = AddTile(item.text, new Vector2(Mathf.Max(UiKit.MinTouch, 64f * item.text.Length + 60f), PartH),
                 new Vector2(0f, 90f), 110f);
             _row.Add(full.gameObject);
-            var played = await Play(item.audio);
+            // Âm thanh từ có thể bị cắt ngang ("Nghe lại"): điền đúng rồi thì vẫn sang mục sau.
+            await Ctx.Speech.PlayAsync(item.audio);
+            if (!IsAlive) return;
             _busy = false;
-            if (!played) return;
             if (Current + 1 < _items.Count)
             {
                 ShowItem(Current + 1);

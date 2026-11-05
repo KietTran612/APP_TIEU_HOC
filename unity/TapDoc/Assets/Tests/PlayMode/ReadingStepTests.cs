@@ -201,6 +201,19 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator FillBlank_ReplayDuringWord_StillAdvances()
+        {
+            var v = (FillBlankView)CreateTrackedStep(Fill(false));
+            yield return null;
+            TileWithText(v, "l").SimulateTap();
+            // Chờ tới lúc app đọc cả từ rồi bấm "Nghe lại" cắt ngang.
+            for (var i = 0; i < 200 && !Ctx.Speech.History.Contains("tu_chayj_lon_ton"); i++) yield return null;
+            v.Replay();
+            for (var i = 0; i < 200 && v.Current == 0; i++) yield return null;
+            Assert.AreEqual(1, v.Current, "Điền đúng mà không sang mục sau");
+        }
+
+        [UnityTest]
         public IEnumerator FillBlank_DragWrong_StaysAndHintsAfterTwo()
         {
             var v = (FillBlankView)CreateTrackedStep(Fill(false));
@@ -432,6 +445,20 @@ namespace TapDoc.Tests
             yield return null;
             Assert.AreEqual("trường", v.HintWord);
             Assert.That(v.Text.RenderedText, Does.Contain("FFE08A"));
+        }
+
+        [UnityTest]
+        public IEnumerator LastWord_ReplayDuringSpelling_StillCompletes()
+        {
+            // Bấm "Nghe lại" khi app đang đánh vần tiếng cuối: âm thanh bị cắt nhưng bước vẫn phải xong.
+            var step = ReadingFixtures.FindRime();
+            var v = (FindWordsView)CreateTrackedStep(step);
+            yield return null;
+            v.Text.SimulateTapWord(0);
+            yield return new WaitForSeconds(.3f);
+            v.Text.SimulateTapWord(step.items.FindIndex(i => i.text == "tươi"));
+            v.Replay();
+            yield return WaitCompleted(v);
         }
 
         [UnityTest]

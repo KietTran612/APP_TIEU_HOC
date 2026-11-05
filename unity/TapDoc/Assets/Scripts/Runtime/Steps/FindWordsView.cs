@@ -87,13 +87,11 @@ namespace TapDoc
             if (isNew) Ctx.Fx?.Correct((RectTransform)_text.transform);
             var ids = word.spells.SelectMany(s => s.parts).Select(p => p.audio).ToList();
             if (ids.Count == 0 || ids[ids.Count - 1] != word.audio) ids.Add(word.audio);
-            var finished = await Ctx.Speech.PlaySequenceAsync(ids);
-            if (!IsAlive || !finished || IsCompleted) return;
-            if (_found.Count >= Need)
-            {
-                await Ctx.Speech.PlayAsync(SystemAudio.khen_01);
-                Complete();
-            }
+            // Âm thanh có thể bị cắt ngang (bé chạm tiếng khác, bấm "Nghe lại"): tìm đủ thì vẫn xong bước.
+            await Ctx.Speech.PlaySequenceAsync(ids);
+            if (!IsAlive || IsCompleted || _found.Count < Need) return;
+            await Ctx.Speech.PlayAsync(SystemAudio.khen_01);
+            if (IsAlive) Complete();
         }
 
         /// <summary>Tô vàng tiếng đúng đầu tiên chưa tìm, mở trang có tiếng đó.</summary>
