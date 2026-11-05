@@ -41,6 +41,9 @@ namespace TapDoc
         /// <summary>Khung chuẩn 1440 trong vùng an toàn của máy: màn người lớn, màn chuẩn bị.</summary>
         public RectTransform SafeRoot { get; private set; }
 
+        /// <summary>Màn mở đầu của lần khởi động này.</summary>
+        public SplashScreen Splash { get; private set; }
+
         /// <summary>Popup "Gửi phụ huynh" đang mở; <c>null</c> khi không mở.</summary>
         public NoticePopup Notice { get; private set; }
 
@@ -105,8 +108,14 @@ namespace TapDoc
         /// <summary>Nạp bộ chung, danh sách bài và Phụ lục của sách rồi mới hiện màn chọn bé.</summary>
         private async Awaitable BootAsync()
         {
+            // Màn mở đầu hiện ngay; gà con gắn vào khi hình của nó đã nạp (không hỏi tranh chưa chuẩn bị).
+            Splash = SplashScreen.Create(Canvas.transform, Assets);
+            ContentSet mascotSet = null;
             try
             {
+                mascotSet = await Assets.PrepareAsync(new[] { (ContentKind.Image, SystemImages.Mascot) });
+                if (this == null) return;
+                Splash.AttachMascot(Assets);
                 await Assets.PrepareCommonAsync();
                 if (this == null) return;
                 var index = await Lessons.LoadIndexAsync();
@@ -122,13 +131,21 @@ namespace TapDoc
             catch (Exception ex)
             {
                 Debug.LogError($"[TapDoc] Không khởi động được: {ex.Message}");
+                if (this != null && Splash != null) Splash.ShowError(UiText.BootError);
                 return;
+            }
+            finally
+            {
+                // Bộ chung đã giữ gà con: nhả bộ riêng của màn mở đầu.
+                mascotSet?.Dispose();
             }
             IsReady = true;
             // Chưa có hồ sơ thì màn chọn bé mở thẳng phần tạo hồ sơ; có rồi thì cho chọn bé.
             ShowProfiles();
             // Lần đầu (hoặc nội dung cảnh báo mới hơn lần đã xem): popup "Gửi phụ huynh" đè lên màn chọn bé.
             if (Progress.NoticeVersion < UiText.NoticeVersion) ShowNotice(firstRun: true);
+            // Màn mở đầu nằm trên cùng (che màn chọn bé, popup) rồi mờ ra.
+            await Splash.HideAsync();
         }
 
         public static AppRoot EnsureInstance()

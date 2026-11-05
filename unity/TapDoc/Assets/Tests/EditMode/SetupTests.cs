@@ -17,6 +17,9 @@ namespace TapDoc.Tests
         [Test] public void AndikaFontLoads() =>
             Assert.IsNotNull(new ResourcesContentSource().Load(ContentKind.Font, FontProvider.MainFontId) as Font);
 
+        /// <summary>App có màn mở đầu riêng; tắt màn "Made with Unity" (Unity 6 cho tắt ở mọi gói giấy phép).</summary>
+        [Test] public void UnitySplashScreenOff() => Assert.IsFalse(PlayerSettings.SplashScreen.show);
+
         [Test] public void LandscapeOnly()
         {
             Assert.IsFalse(PlayerSettings.allowedAutorotateToPortrait);
