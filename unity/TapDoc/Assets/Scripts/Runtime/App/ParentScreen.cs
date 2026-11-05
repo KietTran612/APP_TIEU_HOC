@@ -33,8 +33,6 @@ namespace TapDoc
         internal IReadOnlyList<Button> ChoiceButtons => _choiceButtons;
         internal Button BackButton { get; private set; }
 
-        /// <summary>Công tắc tiếng động (cài đặt cho cả máy); giọng đọc luôn bật.</summary>
-        internal Button SfxToggle { get; private set; }
         internal bool IsUnlocked => _progressPanel != null && _progressPanel.activeSelf;
 
         public void Build(AppRoot app)
@@ -164,8 +162,6 @@ namespace TapDoc
             var ordered = _app.Lessons.Index.lessons.Select(e => e.lesson_id).ToList();
             var appendix = UiKit.CreateButton(contentGo.transform, UiText.BookAppendix, OpenAppendix);
             appendix.GetComponent<LayoutElement>().preferredHeight = UiKit.MinTouch;
-            SfxToggle = UiKit.CreateButton(contentGo.transform, SfxLabel(), ToggleSfx);
-            SfxToggle.GetComponent<LayoutElement>().preferredHeight = UiKit.MinTouch;
             var lessons = new Dictionary<string, Lesson>();
             foreach (var profile in _app.Progress.Profiles)
             {
@@ -186,16 +182,6 @@ namespace TapDoc
             profile.unlock_all = !profile.unlock_all;
             _app.Progress.Save();
             button.GetComponentInChildren<TMPro.TMP_Text>().text = UnlockLabel(profile);
-        }
-
-        private string SfxLabel() => _app.Progress.SfxEnabled ? UiText.SfxOn : UiText.SfxOff;
-
-        private void ToggleSfx()
-        {
-            _app.Progress.SfxEnabled = !_app.Progress.SfxEnabled;
-            if (_app.Sfx != null) _app.Sfx.Enabled = _app.Progress.SfxEnabled;
-            _app.SaveProgress();
-            SfxToggle.GetComponentInChildren<TMPro.TMP_Text>().text = SfxLabel();
         }
 
         private void OpenAppendix()

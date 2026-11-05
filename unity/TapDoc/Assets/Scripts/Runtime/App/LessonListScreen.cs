@@ -32,6 +32,8 @@ namespace TapDoc
         internal Button ParentButton { get; private set; }
         internal Button SwitchChildButton { get; private set; }
         internal Button BookButton { get; private set; }
+        internal Button SettingsButton { get; private set; }
+        internal TMP_Text Header { get; private set; }
         internal ScrollRect Scroll { get; private set; }
 
         /// <summary>Số cột thẻ bài hiện tại (6 trên máy tính bảng, nhiều hơn trên màn rộng).</summary>
@@ -70,13 +72,21 @@ namespace TapDoc
             Corner(BookButton, Vector2.one, new Vector2(-(2f * Margin + ParentWidth), -Margin));
             BookButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
 
+            // Bánh răng mở menu Cài đặt, bên trái nút Sổ bé ngoan.
+            SettingsButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Settings, UiText.Settings,
+                () => app.ShowSettings(app.ShowLessonList), Palette.PaperLight);
+            Corner(SettingsButton, Vector2.one, new Vector2(-(3f * Margin + ParentWidth + UiKit.MinTouch), -Margin));
+            SettingsButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
+
             var header = UiKit.CreateLabel(transform, UiText.AppTitle, 64f);
+            Header = header;
             var headerRt = header.rectTransform;
             headerRt.anchorMin = new Vector2(0.5f, 1f);
             headerRt.anchorMax = new Vector2(0.5f, 1f);
             headerRt.pivot = new Vector2(0.5f, 1f);
-            headerRt.sizeDelta = new Vector2(640f, UiKit.MinTouch);
-            headerRt.anchoredPosition = new Vector2(-80f, -Margin);
+            // Giữa nút Đổi bé (trái) và hàng nút bánh răng, Sổ, Phụ huynh (phải).
+            headerRt.sizeDelta = new Vector2(540f, UiKit.MinTouch);
+            headerRt.anchoredPosition = new Vector2(-240f, -Margin);
 
             var scrollGo = new GameObject("LessonScroll", typeof(RectTransform), typeof(ScrollRect), typeof(Image), typeof(RectMask2D));
             scrollGo.transform.SetParent(transform, false);

@@ -459,6 +459,17 @@ namespace TapDoc
             Present<ResultScreen>().Build(this, lessonId);
         }
 
+        /// <summary>
+        /// Menu Cài đặt; <paramref name="back"/> là màn mở nó (danh sách bài hay màn chọn bé). Chạy được cả khi chưa chọn
+        /// bé nào.
+        /// </summary>
+        public void ShowSettings(Action back)
+        {
+            InitIfNeeded();
+            ReleaseCurrentSet();
+            Present<SettingsScreen>().Build(this, back ?? ShowLessonList);
+        }
+
         /// <summary>Màn Sổ bé ngoan của bé đang học. Chưa chọn bé thì về màn chọn bé.</summary>
         public void ShowBook()
         {

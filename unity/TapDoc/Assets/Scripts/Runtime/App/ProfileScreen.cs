@@ -55,6 +55,9 @@ namespace TapDoc
         internal Button DoneButton { get; private set; }
         internal Button NewChildButton { get; private set; }
 
+        /// <summary>Bánh răng mở menu Cài đặt (ở cả phần chọn lẫn phần tạo bé).</summary>
+        internal Button SettingsButton { get; private set; }
+
         /// <summary>Nút "Về" ở phần tạo hồ sơ (chỉ hiện khi đã có hồ sơ để quay về chọn).</summary>
         internal Button CancelButton { get; private set; }
 
@@ -65,6 +68,12 @@ namespace TapDoc
             BuildPick();
             _createPanel = Panel("CreatePanel");
             BuildCreate();
+
+            SettingsButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Settings, UiText.Settings,
+                () => app.ShowSettings(app.ShowProfiles), Palette.PaperLight);
+            Place((RectTransform)SettingsButton.transform, Vector2.one, new Vector2(UiKit.MinTouch, UiKit.MinTouch),
+                new Vector2(-20f, -20f));
+            SettingsButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
 
             if (_app.Progress.Profiles.Count == 0) OpenCreate();
             else ShowPick();

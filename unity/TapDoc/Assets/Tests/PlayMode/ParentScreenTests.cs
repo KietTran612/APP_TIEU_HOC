@@ -174,7 +174,7 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
-        public IEnumerator SfxToggle_FlipsAndPersists()
+        public IEnumerator Parent_NoSfxToggle_MovedToSettings()
         {
             yield return LoadMainWithProfile();
             AppRoot.Instance.ShowParent();
@@ -182,16 +182,9 @@ namespace TapDoc.Tests
             var p = Object.FindAnyObjectByType<ParentScreen>();
             p.SimulateUnlock();
             yield return null;
-            var toggle = p.SfxToggle;
-            Assert.IsNotNull(toggle, "Màn phụ huynh có công tắc tiếng động");
-            Assert.AreEqual(UiText.SfxOn, toggle.GetComponentInChildren<TMPro.TMP_Text>().text);
-            Press(toggle);
-            yield return null;
-            Assert.AreEqual(UiText.SfxOff, toggle.GetComponentInChildren<TMPro.TMP_Text>().text);
-            Assert.IsFalse(AppRoot.Instance.Sfx.Enabled, "Tắt thì không phát tiếng động nữa");
-            Assert.IsFalse(ProgressStore.Load(StorePath).SfxEnabled, "Cài đặt được lưu");
-            Press(toggle);
-            Assert.IsTrue(AppRoot.Instance.Sfx.Enabled);
+            var labels = p.GetComponentsInChildren<TMPro.TMP_Text>(true).Select(t => t.text).ToList();
+            CollectionAssert.DoesNotContain(labels, UiText.SfxOn, "Công tắc tiếng động đã chuyển sang Cài đặt");
+            CollectionAssert.DoesNotContain(labels, UiText.SfxOff);
         }
 
         [UnityTest]
