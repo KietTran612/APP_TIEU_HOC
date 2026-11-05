@@ -14,6 +14,11 @@ namespace TapDoc
         public const string khen_01 = "khen_01";
         public const string khen_02 = "khen_02";
         public const string khen_hoan_thanh = "khen_hoan_thanh";
+        // Phần Tập đọc (tập 2). Điền chữ dùng lại hd_keo_vao_cho_trong.
+        public const string hd_tim_tieng = "hd_tim_tieng";
+        public const string hd_tra_loi_mieng = "hd_tra_loi_mieng";
+        public const string hd_hoc_thuoc = "hd_hoc_thuoc";
+        public const string hd_doan_do = "hd_doan_do";
 
         public static readonly string[] All =
         {
@@ -27,6 +32,10 @@ namespace TapDoc
             khen_01,
             khen_02,
             khen_hoan_thanh,
+            hd_tim_tieng,
+            hd_tra_loi_mieng,
+            hd_hoc_thuoc,
+            hd_doan_do,
         };
     }
 
@@ -36,13 +45,16 @@ namespace TapDoc
         public const string EmDoc = "img_chung_em_doc";
         public const string LuyenTap = "img_chung_luyen_tap";
 
+        /// <summary>Kí hiệu "Câu hỏi" của sách tập 2 (ô vuông có dấu ?).</summary>
+        public const string CauHoi = "img_chung_cau_hoi";
+
         /// <summary>Bông hoa bé ngoan (hiện là hình mặc định, sau thay bằng tranh chính thức cùng mã).</summary>
         public const string Flower = "img_chung_hoa_be_ngoan";
 
         /// <summary>Bạn gà con đồng hành.</summary>
         public const string Mascot = "img_chung_ga_con";
 
-        public static readonly string[] All = new[] { Star, EmDoc, LuyenTap, Flower, Mascot }
+        public static readonly string[] All = new[] { Star, EmDoc, LuyenTap, CauHoi, Flower, Mascot }
             .Concat(SystemIcons.All).ToArray();
 
         public static string ForMarker(string marker)
@@ -50,6 +62,7 @@ namespace TapDoc
             if (string.IsNullOrEmpty(marker)) return null;
             if (marker.Contains('\u25cf')) return EmDoc;      // ●
             if (marker.Contains('\u2302')) return LuyenTap;   // ⌂
+            if (marker.Contains('?')) return CauHoi;          // [?] Câu hỏi (tập 2)
             return null;
         }
     }

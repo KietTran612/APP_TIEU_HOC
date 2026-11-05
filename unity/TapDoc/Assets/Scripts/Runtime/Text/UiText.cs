@@ -68,6 +68,15 @@ namespace TapDoc
         public const string UnlockAllOn = "Mở mọi bài: Bật";
         public const string UnlockAllOff = "Mở mọi bài: Tắt";
 
+        // Các màn Tập đọc (tập 2): đọc cả bài, câu hỏi, tìm tiếng, học thuộc lòng.
+        public const string ListenAll = "Nghe cả bài";
+        public const string AnswerWithParent = "Con trả lời cùng bố mẹ nhé.";
+        public const string Answered = "Con trả lời rồi";
+        public const string FoundFormat = "Đã tìm {0}/{1}";
+        public const string HideMore = "Ẩn bớt";
+        public const string ShowAll = "Hiện hết";
+        public const string Memorized = "Con thuộc rồi";
+
         public static readonly string[] All =
         {
             Back,
@@ -118,6 +127,13 @@ namespace TapDoc
             WeekFormat,
             UnlockAllOn,
             UnlockAllOff,
+            ListenAll,
+            AnswerWithParent,
+            Answered,
+            FoundFormat,
+            HideMore,
+            ShowAll,
+            Memorized,
         };
     }
 }

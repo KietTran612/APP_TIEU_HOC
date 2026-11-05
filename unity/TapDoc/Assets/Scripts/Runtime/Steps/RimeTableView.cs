@@ -7,15 +7,18 @@ namespace TapDoc
     /// <summary>Bảng ôn vần và từ ứng dụng. Chạm đủ các hàng trên mọi trang thì báo xong.</summary>
     public class RimeTableView : StepViewBase
     {
-        private int PerPage => _rimes.Count > 12 ? 8 : 12;
+        // Bảng vần ít dùng (tập 2) có câu thay cho từ: một cột mỗi trang, ô câu rộng, chữ nhỏ hơn.
+        private int PerPage => _sentences ? RowsPerColumn : _rimes.Count > 12 ? 8 : 12;
         private const int RowsPerColumn = 4;
         private const float RimeW = 160f;
-        private const float WordW = 262f;
+        private float WordW => _sentences ? 900f : 262f;
+        private float WordFont => _sentences ? 50f : 64f;
         private const float CardH = 160f;
         private const float TileGap = 8f;
         private const float ColumnGap = 35f;
         private const float RowGap = 12f;
-        private const float UnitW = RimeW + TileGap + WordW;
+        private float UnitW => RimeW + TileGap + WordW;
+        private bool _sentences;
 
         private readonly List<Item> _rimes = new();
         private readonly List<Item> _words = new();
@@ -29,10 +32,11 @@ namespace TapDoc
 
         protected override void Build()
         {
+            _sentences = Step.items.Any(i => i.role == "sentence");
             foreach (var rime in Step.items.Where(i => i.role == "rime").OrderBy(i => i.row))
             {
                 _rimes.Add(rime);
-                _words.Add(Step.items.First(i => i.role == "word" && i.row == rime.row));
+                _words.Add(Step.items.First(i => (i.role == "word" || i.role == "sentence") && i.row == rime.row));
             }
             _progress = new TapProgress(_rimes.Count);
             var shift = PageCount > 1 ? -120f : 0f;
@@ -53,7 +57,7 @@ namespace TapDoc
                 var rimeTile = AddTile(text, new Vector2(RimeW, CardH),
                     new Vector2(x - UnitW / 2f + RimeW / 2f, y), 76f);
                 var wordTile = AddTile(TextStyler.Apply(_words[j].text, _words[j].hl),
-                    new Vector2(WordW, CardH), new Vector2(x + UnitW / 2f - WordW / 2f, y), 64f);
+                    new Vector2(WordW, CardH), new Vector2(x + UnitW / 2f - WordW / 2f, y), WordFont);
                 rimeTile.Tapped += () => OnTapped(index);
                 wordTile.Tapped += () => OnTapped(index);
                 _tiles.Add(rimeTile);

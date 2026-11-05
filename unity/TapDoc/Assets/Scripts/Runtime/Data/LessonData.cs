@@ -99,6 +99,8 @@ namespace TapDoc
         public List<string> labels = new();
         public List<Item> rows = new();
         public List<Item> items = new();
+        /// <summary>Số tiếng cần tìm ở bước <c>find_words</c>.</summary>
+        public int need;
         public List<Reading> readings = new();
     }
 
@@ -125,6 +127,10 @@ namespace TapDoc
         public string note;
         public int row;
         public int col;
+        /// <summary>Mức ẩn khi học thuộc lòng (<c>memorize</c>): 0 luôn hiện, 1–3 ẩn từ mức đó.</summary>
+        public int level;
+        /// <summary>Đáp án điền vào chỗ trống (<c>fill_blank</c>): chữ hoặc tên dấu.</summary>
+        public string answer;
         public string role;   // letter, tone, onset, vowel, base, form, cell, blocked, pair, line (khung chữ, bảng ghép, bảng dấu, quy tắc)
         public string tone;
         public string glyph;

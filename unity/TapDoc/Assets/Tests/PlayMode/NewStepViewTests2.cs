@@ -217,6 +217,60 @@ namespace TapDoc.Tests
         private static int RuleIndex(string lid) => TestLessons.Real.Get(lid).part1.FindIndex(s => s.type == "rule");
         private static int MatchIndex(string lid) => TestLessons.Real.Get(lid).part2.FindIndex(r => r.kind == "match_case");
 
+        /// <summary>Bảng vần ít dùng (tập 2 bài 121): hàng là vần và một câu; chạm hàng thì đánh vần vần rồi đọc câu.</summary>
+        private static Step RareRimes(int count = 10)
+        {
+            var step = new Step { type = "rime_table" };
+            for (var i = 0; i < count; i++)
+            {
+                var rime = "oay";
+                step.items.Add(new Item
+                {
+                    role = "rime", row = i, text = rime, audio = "van_oay",
+                    spells = new List<Spell>
+                    {
+                        new() { parts = new List<Part>
+                        {
+                            new() { text = "o", audio = "van_o" }, new() { text = "ay", audio = "van_ay" },
+                            new() { text = rime, audio = "van_oay" }
+                        } }
+                    }
+                });
+                step.items.Add(new Item
+                {
+                    role = "sentence", row = i, text = "Cần cẩu ngoạm kiện hàng dài dài.", audio = $"cau_b121_{i + 1:00}",
+                    hl = new List<Span> { new() { s = 9, n = 3 } }
+                });
+            }
+            return step;
+        }
+
+        [UnityTest]
+        public IEnumerator RimeTable_SentenceRow_TapPlaysSentence()
+        {
+            var v = CreateTrackedStep(RareRimes());
+            TileWithText(v, "oay\no – ay").SimulateTap();
+            yield return new WaitForSeconds(.5f);
+            CollectionAssert.AreEqual(new[] { "van_o", "van_ay", "van_oay", "cau_b121_01" },
+                Ctx.Speech.History.Skip(Ctx.Speech.History.Count - 4).ToArray());
+        }
+
+        [UnityTest]
+        public IEnumerator RimeTable_SentenceRows_OneColumnPerPage_Fits()
+        {
+            var v = (RimeTableView)CreateTrackedStep(RareRimes());
+            yield return null;
+            Assert.AreEqual(3, v.PageCount);
+            LayoutProbe.AssertFits(Canvas);
+            foreach (var text in RootOf(v).GetComponentsInChildren<TMP_Text>(false))
+            {
+                text.ForceMeshUpdate();
+                Assert.IsFalse(text.isTextOverflowing, $"Chữ tràn: {text.text}");
+            }
+            yield return ((ITestCompletable)v).CompleteForTest();
+            Assert.IsTrue(Done(v));
+        }
+
         private static Step Rimes(int count = 10)
         {
             var rimes = new[] { "an", "ăn", "ân", "on", "ôn", "ơn", "en", "ên", "in", "un", "am", "em", "im", "um" };

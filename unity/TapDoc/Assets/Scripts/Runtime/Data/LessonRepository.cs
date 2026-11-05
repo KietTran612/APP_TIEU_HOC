@@ -340,6 +340,7 @@ namespace TapDoc
             item.audio = Nfc(item.audio);
             item.image = Nfc(item.image);
             item.note = Nfc(item.note);
+            item.answer = Nfc(item.answer);
             item.hl ??= new List<Span>();
             item.spells ??= new List<Spell>();
             foreach (var spell in item.spells) NormalizeSpell(spell);

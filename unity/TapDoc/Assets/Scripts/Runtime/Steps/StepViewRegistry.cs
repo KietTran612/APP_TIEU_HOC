@@ -22,6 +22,14 @@ namespace TapDoc
             StepViewFactory.Register("rule", () => new RuleView());
             StepViewFactory.Register("tone_table", () => new ToneTableView());
             StepViewFactory.Register("combine_table", () => new CombineTableView());
+            // Phần Tập đọc (tập 2).
+            StepViewFactory.Register("title", () => new TitleView());
+            StepViewFactory.Register("question", () => new QuestionView());
+            StepViewFactory.Register("passage", () => new PassageView());
+            StepViewFactory.Register("find_words", () => new FindWordsView());
+            StepViewFactory.Register("memorize", () => new MemorizeView());
+            StepViewFactory.Register("fill_blank", () => new FillBlankView());
+            StepViewFactory.Register("riddle_answer", () => new RiddleAnswerView());
 
             StepViewFactory.RegisterRound("listen_choose", () => new ListenChooseView());
             StepViewFactory.RegisterRound("match_case", () => new MatchCaseView());
