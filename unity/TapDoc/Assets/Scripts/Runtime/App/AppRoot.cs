@@ -38,7 +38,19 @@ namespace TapDoc
 
         /// <summary>Kho bài: danh sách bài, bài học và Phụ lục, đọc qua cùng nguồn dữ liệu với <see cref="Assets"/>.</summary>
         public LessonRepository Lessons { get; private set; }
+        /// <summary>Khung chuẩn 1440 trong vùng an toàn của máy: màn người lớn, màn chuẩn bị.</summary>
         public RectTransform SafeRoot { get; private set; }
+
+        /// <summary>Khung các màn của bé: rộng hết vùng an toàn trên điện thoại, 1440 trên máy tính bảng.</summary>
+        public RectTransform KidRoot { get; private set; }
+
+        /// <summary>Các khung màn hiện tại, theo cỡ đích vẽ và lề an toàn của máy.</summary>
+        public ScreenFrames Frames { get; private set; }
+
+        /// <summary>Số lần đã đặt lại hai gốc màn (test dùng để biết cỡ không đổi thì không đặt lại).</summary>
+        internal int FramesApplied { get; private set; }
+
+        private bool _framesSet;
 
         /// <summary>Hồ sơ bé và tiến độ học; <c>Progress.Current</c> là bé đang học.</summary>
         public ProgressStore Progress { get; private set; }
@@ -185,7 +197,9 @@ namespace TapDoc
             bgImg.color = Palette.Paper;
             bgImg.raycastTarget = false;
 
-            SafeRoot = UiKit.CreateSafeArea(Canvas.transform);
+            KidRoot = CreateRoot("KidRoot");
+            SafeRoot = CreateRoot("SafeArea");
+            RefreshFrames();
 
             if (Object.FindAnyObjectByType<EventSystem>() == null)
             {
@@ -208,6 +222,44 @@ namespace TapDoc
             Sfx = sfxGo.AddComponent<SfxPlayer>();
             Sfx.Init(Assets, Speech);
             Sfx.Enabled = Progress.SfxEnabled;
+        }
+
+        private void Update()
+        {
+            RefreshFrames();
+        }
+
+        /// <summary>
+        /// Tính lại khung màn theo cỡ đích vẽ của camera giao diện và lề an toàn của máy; khác lần trước thì đặt lại
+        /// hai gốc màn. Màn đang hiện không bị dựng lại: chúng neo theo gốc và tự chỉnh khi cỡ đổi.
+        /// </summary>
+        public void RefreshFrames()
+        {
+            if (UiCamera == null || KidRoot == null) return;
+            var pixels = new Vector2Int(UiCamera.pixelWidth, UiCamera.pixelHeight);
+            if (pixels.x <= 0 || pixels.y <= 0) return;
+            var frames = ScreenLayout.Compute(pixels, DeviceSafeArea.For(pixels));
+            if (_framesSet && frames.Same(Frames)) return;
+            _framesSet = true;
+            Frames = frames;
+            Place(KidRoot, frames.Kid);
+            Place(SafeRoot, frames.Standard);
+            FramesApplied++;
+        }
+
+        private RectTransform CreateRoot(string name)
+        {
+            var go = new GameObject(name, typeof(RectTransform));
+            go.transform.SetParent(Canvas.transform, false);
+            var rt = (RectTransform)go.transform;
+            rt.anchorMin = rt.anchorMax = rt.pivot = Vector2.zero;
+            return rt;
+        }
+
+        private static void Place(RectTransform root, Rect frame)
+        {
+            root.anchoredPosition = frame.position;
+            root.sizeDelta = frame.size;
         }
 
         /// <summary>Màn chọn bé. Chưa có hồ sơ nào thì mở thẳng phần tạo hồ sơ.</summary>
@@ -262,7 +314,7 @@ namespace TapDoc
             {
                 await Lessons.LoadAllAsync();
                 var set = await Assets.PrepareAsync(Enumerable.Empty<(ContentKind, string)>());
-                return (set, () => Present<ParentScreen>().Build(this));
+                return (set, () => Present<ParentScreen>(kid: false).Build(this));
             }, "màn phụ huynh");
         }
 
@@ -395,15 +447,19 @@ namespace TapDoc
             }
         }
 
-        /// <summary>Dừng tiếng, bỏ màn đang hiện và tạo màn <typeparamref name="T"/> phủ kín vùng an toàn.</summary>
-        private T Present<T>() where T : MonoBehaviour
+        /// <summary>
+        /// Dừng tiếng, bỏ màn đang hiện và tạo màn <typeparamref name="T"/> phủ kín khung của bé
+        /// (<paramref name="kid"/>) hay khung chuẩn 1440 (màn người lớn).
+        /// </summary>
+        private T Present<T>(bool kid = true) where T : MonoBehaviour
         {
             InitIfNeeded();
             Speech.Stop();
             ClearCurrentScreen();
+            RefreshFrames();
 
             var go = new GameObject(typeof(T).Name, typeof(RectTransform), typeof(CanvasGroup), typeof(T));
-            go.transform.SetParent(SafeRoot, false);
+            go.transform.SetParent(kid ? KidRoot : SafeRoot, false);
             Stretch(go.GetComponent<RectTransform>());
             _currentScreen = go;
             // Màn mới mờ sang rõ (tắt hiệu ứng thì hiện ngay).

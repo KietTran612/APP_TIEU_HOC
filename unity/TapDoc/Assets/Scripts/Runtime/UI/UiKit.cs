@@ -9,7 +9,8 @@ namespace TapDoc
     {
         public const float MinTouch = 160f;
         public const float SafeWidth = 1440f;
-        public static readonly Vector2 Reference = new(1920f, 1080f);
+        /// <summary>Cỡ chuẩn của canvas: canvas mở rộng quanh khung này (<see cref="ScreenLayout.Frame"/>).</summary>
+        public static readonly Vector2 Reference = ScreenLayout.Frame;
 
         /// <summary>Chữ tự co nhưng không nhỏ hơn cỡ này (đơn vị canvas 1920×1080).</summary>
         public const float MinFontSize = 28f;
@@ -52,8 +53,8 @@ namespace TapDoc
             var scaler = go.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = Reference;
-            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-            scaler.matchWidthOrHeight = 1f;
+            // Màn rộng: canvas cao 1080, rộng theo màn. Màn hẹp hơn 4:3 (máy tính bảng xoay dọc): rộng 1440, cao theo màn.
+            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
 
             return canvas;
         }

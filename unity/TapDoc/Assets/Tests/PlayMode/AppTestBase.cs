@@ -41,6 +41,7 @@ namespace TapDoc.Tests
         public IEnumerator TearDownApp()
         {
             yield return DestroyApp();
+            DeviceSafeArea.Override = null;
             AppRoot.StoreFactory = null;
             Motion.Scale = 1f;
             if (_stubSprite != null || _stubClip != null)

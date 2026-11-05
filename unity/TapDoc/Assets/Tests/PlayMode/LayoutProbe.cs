@@ -9,7 +9,8 @@ namespace TapDoc.Tests
     {
         /// <summary>
         /// Mọi vùng bé chạm được (Selectable, Tile, DropSlot) đang bật phải nằm trọn trong canvas và có cạnh
-        /// nhỏ nhất ≥ <see cref="UiKit.MinTouch"/>; mọi chữ TMP đang bật không được tràn.
+        /// nhỏ nhất ≥ <see cref="UiKit.MinTouch"/>; mọi chữ TMP đang bật không được tràn. Với canvas của app, vùng
+        /// chạm và chữ (ngoài vùng cuộn) còn phải nằm trong vùng an toàn của máy (<see cref="AppRoot.Frames"/>).
         /// </summary>
         public static void AssertFits(Canvas c)
         {
@@ -17,20 +18,27 @@ namespace TapDoc.Tests
             Canvas.ForceUpdateCanvases();
 
             var canvasRect = c.GetComponent<RectTransform>();
+            var bounds = canvasRect.rect;
+            var app = AppRoot.Instance;
+            if (app != null && app.Canvas == c)
+            {
+                var safe = app.Frames.Safe;
+                bounds = new Rect(bounds.xMin + safe.x, bounds.yMin + safe.y, safe.width, safe.height);
+            }
 
             foreach (var sel in c.GetComponentsInChildren<Selectable>(false))
             {
-                AssertTouchTarget(canvasRect, sel, "Selectable");
+                AssertTouchTarget(canvasRect, bounds, sel, "Selectable");
             }
 
             foreach (var tile in c.GetComponentsInChildren<Tile>(false))
             {
-                AssertTouchTarget(canvasRect, tile, "Tile");
+                AssertTouchTarget(canvasRect, bounds, tile, "Tile");
             }
 
             foreach (var slot in c.GetComponentsInChildren<DropSlot>(false))
             {
-                AssertTouchTarget(canvasRect, slot, "DropSlot");
+                AssertTouchTarget(canvasRect, bounds, slot, "DropSlot");
             }
 
             foreach (var tmp in c.GetComponentsInChildren<TMP_Text>(false))
@@ -40,16 +48,35 @@ namespace TapDoc.Tests
                 Assert.IsFalse(
                     tmp.isTextOverflowing,
                     $"Chữ bị tràn trên '{tmp.name}': \"{tmp.text}\"");
+                AssertTextInside(canvasRect, bounds, tmp);
             }
         }
 
-        private static void AssertTouchTarget(RectTransform canvasRect, Component target, string kind)
+        /// <summary>Phần chữ thật sự hiện (không tính khung trống) nằm trong <paramref name="bounds"/>.</summary>
+        private static void AssertTextInside(RectTransform canvasRect, Rect bounds, TMP_Text tmp)
+        {
+            if (string.IsNullOrWhiteSpace(tmp.text) || tmp.textInfo.characterCount == 0) return;
+            if (tmp.GetComponentInParent<ScrollRect>() != null) return;
+            var tb = tmp.textBounds;
+            var t = tmp.rectTransform;
+            var min = new Vector2(float.MaxValue, float.MaxValue);
+            var max = new Vector2(float.MinValue, float.MinValue);
+            foreach (var p in new[] { tb.min, tb.max, new Vector3(tb.min.x, tb.max.y), new Vector3(tb.max.x, tb.min.y) })
+            {
+                var local = (Vector2)canvasRect.InverseTransformPoint(t.TransformPoint(p));
+                min = Vector2.Min(min, local);
+                max = Vector2.Max(max, local);
+            }
+            Assert.IsTrue(min.x >= bounds.xMin - 1f && max.x <= bounds.xMax + 1f && min.y >= bounds.yMin - 1f && max.y <= bounds.yMax + 1f,
+                $"Chữ '{tmp.name}' (\"{tmp.text}\") ra ngoài vùng an toàn: {min}..{max} ngoài {bounds}");
+        }
+
+        private static void AssertTouchTarget(RectTransform canvasRect, Rect cBounds, Component target, string kind)
         {
             if (!target.gameObject.activeInHierarchy) return;
             var rt = target.GetComponent<RectTransform>();
             if (rt == null) return;
 
-            var cBounds = canvasRect.rect;
             var corners = new Vector3[4];
             rt.GetWorldCorners(corners);
             float minX = float.MaxValue, minY = float.MaxValue;
@@ -74,7 +101,7 @@ namespace TapDoc.Tests
             var scroll = target.GetComponentInParent<ScrollRect>();
             if (scroll != null && scroll.transform != target.transform)
             {
-                AssertInsideScroll(canvasRect, rt, scroll, kind);
+                AssertInsideScroll(canvasRect, cBounds, rt, scroll, kind);
                 return;
             }
 
@@ -85,7 +112,7 @@ namespace TapDoc.Tests
         }
 
         /// <summary>Kiểm tra vùng nhìn trong canvas và thẻ còn hiện, cho phép cắt dọc theo trục cuộn.</summary>
-        private static void AssertInsideScroll(RectTransform canvasRect, RectTransform target, ScrollRect scroll, string kind)
+        private static void AssertInsideScroll(RectTransform canvasRect, Rect bounds, RectTransform target, ScrollRect scroll, string kind)
         {
             var viewport = scroll.viewport;
             var corners = new Vector3[4];
@@ -93,8 +120,8 @@ namespace TapDoc.Tests
             foreach (var corner in corners)
             {
                 var local = canvasRect.InverseTransformPoint(corner);
-                Assert.That(local.x, Is.InRange(canvasRect.rect.xMin - 1f, canvasRect.rect.xMax + 1f), "Vùng cuộn tràn canvas");
-                Assert.That(local.y, Is.InRange(canvasRect.rect.yMin - 1f, canvasRect.rect.yMax + 1f), "Vùng cuộn tràn canvas");
+                Assert.That(local.x, Is.InRange(bounds.xMin - 1f, bounds.xMax + 1f), "Vùng cuộn tràn vùng an toàn");
+                Assert.That(local.y, Is.InRange(bounds.yMin - 1f, bounds.yMax + 1f), "Vùng cuộn tràn vùng an toàn");
             }
             target.GetWorldCorners(corners);
             var min = new Vector2(float.MaxValue, float.MaxValue);
