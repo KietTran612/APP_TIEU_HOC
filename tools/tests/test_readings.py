@@ -68,3 +68,10 @@ class UnitStepReadingsTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Tap2Test(unittest.TestCase):
+    def test_appendix_falls_back_to_tap1(self):
+        from tapdoc.readings import appendix_row
+        self.assertEqual(appendix_row("tv1_t2_1996", "iê"), appendix_row("tv1_t1_1990", "iê"))
+        self.assertIsNotNone(appendix_row("tv1_t2_1996", "iê"))

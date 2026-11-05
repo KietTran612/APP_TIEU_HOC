@@ -10,6 +10,7 @@ STYLE_FILE = ROOT / "content" / "style" / "image_style.txt"
 REQUESTS_DIR = ROOT / "content" / "requests"
 CLIPS = ROOT / "content" / "clips"  # clip tranh động, không đưa vào git
 MEDIA_LOCK = ROOT / "content" / "manifests" / "media_lock.json"  # mã kiểm tra gói tranh, âm thanh (media_lock.py)
+BOOKS_FILE = ROOT / "content" / "books.json"  # các quyển và Phụ lục dùng cho từng quyển (books.py)
 LESSON_INDEX = ROOT / "docs" / "source-inventory" / "LESSON_INDEX.csv"
 
 UNITY_ASSETS = ROOT / "unity" / "TapDoc" / "Assets"

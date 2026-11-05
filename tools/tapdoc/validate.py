@@ -11,7 +11,8 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from .curriculum import Learned, is_learned_text, learned_until, load_curriculum
+from .books import load_books
+from .curriculum import Learned, is_learned_text, learned_until, load_program
 from .ids import CONSONANT_NAMES
 from .manifest import STATUS_NONE, STATUS_PENDING, ManifestError, load_rows
 from .paths import LESSON_INDEX, MANIFESTS, UNITY_ASSETS, UNITY_RES
@@ -396,21 +397,21 @@ def _load_lesson(path: Path):
 
 
 def _learned_for(lesson: dict, curricula: dict) -> tuple[Learned | None, Issue | None]:
-    """Những gì bé đã học tới bài này, theo giáo trình của sách trong `LESSON_INDEX`."""
+    """Những gì bé đã học tới bài này, theo giáo trình cả chương trình (mọi quyển trong books.json) trong `LESSON_INDEX`."""
     lid = _lid(lesson)
     book, lesson_no = lesson.get("book"), lesson.get("lesson_no")
     if not isinstance(book, str) or not book:
         return None, Issue(lid, "book", "thiếu trường 'book'")
     if isinstance(lesson_no, bool) or not isinstance(lesson_no, int):
         return None, Issue(lid, "lesson_no", "thiếu trường 'lesson_no' (số nguyên)")
-    if book not in curricula:
+    if book not in {b["book_id"] for b in load_books()}:
+        return None, Issue(lid, "book", f"sách {book!r} không có trong content/books.json")
+    if "program" not in curricula:
         try:
-            curricula[book] = load_curriculum(LESSON_INDEX, book)
+            curricula["program"] = load_program(LESSON_INDEX)
         except (OSError, KeyError, ValueError) as e:
             return None, Issue(lid, "(giáo trình)", f"không đọc được giáo trình {Path(LESSON_INDEX).name}: {e!r}")
-    cur = curricula[book]
-    if not cur:
-        return None, Issue(lid, "book", f"sách {book!r} không có trong giáo trình {Path(LESSON_INDEX).name}")
+    cur = curricula["program"]
     try:
         return learned_until(cur, lesson_no), None
     except ValueError as e:

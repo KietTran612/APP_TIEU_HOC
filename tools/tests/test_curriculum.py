@@ -67,3 +67,20 @@ class IsLearnedTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ProgramTest(unittest.TestCase):
+    """Chữ đã học tính liền cả chương trình: bài 81 (tập 2) đã học mọi thứ của tập 1."""
+
+    def test_tap2_lesson_knows_tap1(self):
+        from tapdoc.curriculum import load_program
+        learned = learned_until(load_program(LESSON_INDEX), 81)
+        self.assertIn("an", learned.rimes)   # bài 42, tập 1
+        self.assertIn("anh", learned.rimes)  # bài 81, tập 2
+        self.assertNotIn("ach", learned.rimes)  # bài 83 chưa học
+
+    def test_reading_rows_skipped(self):
+        from tapdoc.curriculum import load_program
+        program = load_program(LESSON_INDEX)
+        self.assertEqual(max(program), 125)
+        self.assertEqual(program[80], cur[80])

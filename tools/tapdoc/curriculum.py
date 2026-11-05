@@ -32,6 +32,19 @@ def load_curriculum(csv_path: Path, book_id: str = DEFAULT_BOOK) -> dict[int, tu
     return result
 
 
+def load_program(csv_path: Path) -> dict[int, tuple[str, str]]:
+    """Gộp giáo trình mọi quyển trong books.json (số bài chạy liền cả chương trình); trùng số bài thì ValueError."""
+    from .books import load_books
+
+    program: dict[int, tuple[str, str]] = {}
+    for book in load_books():
+        for no, row in load_curriculum(csv_path, book["book_id"]).items():
+            if no in program:
+                raise ValueError(f"bài {no} có ở hai quyển ({book['book_id']})")
+            program[no] = row
+    return program
+
+
 def learned_until(cur: dict[int, tuple[str, str]], lesson_no: int) -> Learned:
     """Gộp những gì các bài 1..lesson_no đã dạy."""
     letters: set[str] = set()

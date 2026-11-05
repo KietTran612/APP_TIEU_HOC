@@ -10,6 +10,7 @@ Cách đọc trùng chữ thì dùng chung một file âm thanh; chữ chỉ có
 import json
 from functools import cache
 
+from .books import appendix_book
 from .ids import _ascii, unit_audio
 from .paths import UNITY_RES
 from .viet import nfc
@@ -28,8 +29,11 @@ DISTINGUISH = {
 
 @cache
 def appendix(book: str) -> dict | None:
-    """Phụ lục của sách (chuẩn hóa NFC); sách chưa có Phụ lục thì trả None."""
-    path = UNITY_RES / "appendix" / f"{book}.json"
+    """Phụ lục dùng cho quyển `book` (theo books.json, chuẩn hóa NFC); quyển không có Phụ lục thì trả None."""
+    source = appendix_book(book)
+    if source is None:
+        return None
+    path = UNITY_RES / "appendix" / f"{source}.json"
     if not path.is_file():
         return None
     return json.loads(nfc(path.read_text(encoding="utf-8")))
