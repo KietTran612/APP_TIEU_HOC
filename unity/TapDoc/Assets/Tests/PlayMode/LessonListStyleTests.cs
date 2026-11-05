@@ -117,24 +117,83 @@ namespace TapDoc.Tests
             }
         }
 
-        [UnityTest]
-        public IEnumerator Layout_BothSizes()
+        [Test]
+        public void ColumnsFor_Values()
         {
-            yield return LoadMainWithProfile();
-            AppRoot.Instance.Progress.MarkCompleted(Ordered()[0]);
-            AppRoot.Instance.Progress.RecordMistake(Ordered()[0], 0);
+            Assert.AreEqual(6, LessonListScreen.ColumnsFor(1440f), "Máy tính bảng: 6 cột như cũ");
+            Assert.AreEqual(10, LessonListScreen.ColumnsFor(2400f));
+            Assert.AreEqual(8, LessonListScreen.ColumnsFor(2017.1f));
+            Assert.AreEqual(6, LessonListScreen.ColumnsFor(1000f), "Không ít hơn 6 cột");
+        }
+
+        private static Rect CanvasRect(RectTransform rt)
+        {
+            var corners = new Vector3[4];
+            rt.GetWorldCorners(corners);
+            var canvas = (RectTransform)AppRoot.Instance.Canvas.transform;
+            Vector2 min = canvas.InverseTransformPoint(corners[0]), max = canvas.InverseTransformPoint(corners[2]);
+            return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
+        }
+
+        [UnityTest]
+        public IEnumerator Columns_FollowFrame_AllSizes()
+        {
+            UseStubsForMissingAssets(); // chỉ kiểm bố cục; tranh tập 2 chưa nhập không phải điều đang kiểm
+            yield return LoadMainWithProfile(unlockAll: true);
             var app = AppRoot.Instance;
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            app.Progress.RecordMistake(Ordered()[0], 0);
+            foreach (var size in ScreenSizes.All)
             {
-                var rt = new RenderTexture(size.x, size.y, 24);
-                app.UiCamera.targetTexture = rt;
-                List();
+                var rt = ScreenSizes.Apply(app, size);
+                var list = List();
                 yield return null;
-                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.x}x{size.y}/app_lesson_list.png");
+                Canvas.ForceUpdateCanvases();
+                Assert.AreEqual(LessonListScreen.ColumnsFor(app.KidRoot.rect.width), list.Columns, $"{size}: số cột");
+                foreach (var grid in list.Scroll.content.GetComponentsInChildren<GridLayoutGroup>())
+                {
+                    Assert.AreEqual(list.Columns, grid.constraintCount, $"{size}: mọi lưới cùng số cột");
+                }
+                var view = CanvasRect(list.Scroll.viewport);
+                foreach (var b in new[] { list.SwitchChildButton, list.BookButton, list.ParentButton, list.ReviewButton })
+                {
+                    Assert.IsFalse(view.Overlaps(CanvasRect((RectTransform)b.transform)), $"{size}: vùng cuộn đè nút {b.name}");
+                }
+                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.Name}/app_lesson_list.png");
                 LayoutProbe.AssertFits(app.Canvas);
-                app.UiCamera.targetTexture = null;
-                Object.Destroy(rt);
+                ScreenSizes.Reset(app, rt);
             }
+        }
+
+        [UnityTest]
+        public IEnumerator Resize_KeepsScrollPosition()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            var rt = ScreenSizes.Apply(app, ScreenSizes.IPad43);
+            var list = List();
+            yield return null;
+            var ordered = Ordered();
+            var target = ordered[60];
+            list.ScrollTo(target);
+            Canvas.ForceUpdateCanvases();
+            var scroll = list.Scroll;
+
+            var phone = ScreenSizes.Apply(app, ScreenSizes.Phone20x9);
+            yield return null;
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+            Assert.AreSame(scroll, list.Scroll, "Đổi cỡ không dựng lại danh sách");
+            Assert.AreEqual(10, list.Columns);
+            var corners = new Vector3[4];
+            ((RectTransform)list.ButtonFor(target).transform).GetWorldCorners(corners);
+            var view = list.Scroll.viewport.rect;
+            foreach (var c in corners)
+            {
+                var local = list.Scroll.viewport.InverseTransformPoint(c);
+                Assert.That(local.y, Is.InRange(view.yMin - 1f, view.yMax + 1f), "Bài đang xem vẫn nằm trong vùng nhìn sau khi đổi cỡ");
+            }
+            ScreenSizes.Reset(app, phone); // rt cũ đã bị Apply huỷ
         }
     }
 }

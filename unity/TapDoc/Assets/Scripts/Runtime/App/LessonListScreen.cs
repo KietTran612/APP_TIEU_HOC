@@ -16,11 +16,11 @@ namespace TapDoc
     /// </summary>
     public class LessonListScreen : MonoBehaviour
     {
-        private const int Columns = 6;
+        private const int MinColumns = 6;
         private const float CardWidth = 216f;
         private const float CardHeight = 210f;
         private const float CardGap = 18f;
-        private const float MinCardFont = 26f;
+        private const float MinCardFont = 22f; // tên bài chính tả tập 2 dài nhất ("Chim non chăm học – Dưới ánh trăng") vừa 4 dòng
         private const float FlowerSize = 40f;
         private const float LockSize = 56f;
         private const float Margin = 20f;
@@ -33,6 +33,16 @@ namespace TapDoc
         internal Button SwitchChildButton { get; private set; }
         internal Button BookButton { get; private set; }
         internal ScrollRect Scroll { get; private set; }
+
+        /// <summary>Số cột thẻ bài hiện tại (6 trên máy tính bảng, nhiều hơn trên màn rộng).</summary>
+        internal int Columns { get; private set; } = MinColumns;
+
+        /// <summary>Số cột vừa khung rộng <paramref name="width"/>, không ít hơn 6.</summary>
+        internal static int ColumnsFor(float width) =>
+            Mathf.Max(MinColumns, Mathf.FloorToInt((width - 2f * Margin + CardGap) / (CardWidth + CardGap)));
+
+        private static float ViewportWidth(int columns) =>
+            columns * CardWidth + (columns - 1) * CardGap + UiKit.ShadowOffset.x;
         internal int LessonCount => _lessonButtons.Count;
 
         /// <summary>Bài đang học tới: bài đầu tiên đã mở mà chưa học xong; <c>null</c> khi đã học hết.</summary>
@@ -74,8 +84,8 @@ namespace TapDoc
             viewport.anchorMin = new Vector2(0.5f, 0f);
             viewport.anchorMax = new Vector2(0.5f, 1f);
             // Thêm chỗ cho bóng gạch chéo của thẻ ở mép phải và mép dưới.
-            viewport.sizeDelta = new Vector2(Columns * CardWidth + (Columns - 1) * CardGap + UiKit.ShadowOffset.x,
-                -2f * (UiKit.MinTouch + 2f * Margin));
+            Columns = ColumnsFor(((RectTransform)transform).rect.width);
+            viewport.sizeDelta = new Vector2(ViewportWidth(Columns), -2f * (UiKit.MinTouch + 2f * Margin));
             viewport.anchoredPosition = Vector2.zero;
             scrollGo.GetComponent<Image>().color = Color.clear;
             var contentGo = new GameObject("Content", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
@@ -121,7 +131,7 @@ namespace TapDoc
                         weekHeader.alignment = TextAlignmentOptions.Left;
                         weekHeader.gameObject.AddComponent<LayoutElement>().preferredHeight = 48f;
                     }
-                    var grid = CreateGrid(content);
+                    var grid = CreateGrid(content, Columns);
                     foreach (var entry in group) AddCard(grid, entry, ordered, progress, app);
                 }
             }
@@ -140,6 +150,54 @@ namespace TapDoc
             LayoutRebuilder.ForceRebuildLayoutImmediate(content);
             Scroll.verticalNormalizedPosition = 1f;
             ScrollTo(CurrentLessonId);
+
+            // Xoay máy, đổi cỡ cửa sổ: đổi số cột tại chỗ, giữ bài đang xem trong vùng nhìn.
+            FrameWatcher.On(gameObject).Changed += size => ApplyColumns(size.x);
+        }
+
+        /// <summary>Đặt lại số cột theo khung rộng <paramref name="width"/>; bài đang ở đầu vùng nhìn vẫn ở đầu.</summary>
+        private void ApplyColumns(float width)
+        {
+            var columns = ColumnsFor(width);
+            if (columns == Columns) return;
+            var anchor = TopVisibleLesson();
+            Columns = columns;
+            var viewport = Scroll.viewport;
+            viewport.sizeDelta = new Vector2(ViewportWidth(columns), viewport.sizeDelta.y);
+            foreach (var grid in Scroll.content.GetComponentsInChildren<GridLayoutGroup>()) grid.constraintCount = columns;
+            Canvas.ForceUpdateCanvases();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(Scroll.content);
+            if (anchor != null) ScrollToTop(anchor);
+        }
+
+        /// <summary>Bài đầu tiên (theo thứ tự) có đỉnh thẻ nằm trong vùng nhìn.</summary>
+        private string TopVisibleLesson()
+        {
+            var view = Scroll.viewport.rect;
+            var corners = new Vector3[4];
+            foreach (var pair in _lessonButtons)
+            {
+                ((RectTransform)pair.Value.transform).GetWorldCorners(corners);
+                var top = Scroll.viewport.InverseTransformPoint(corners[1]).y;
+                if (top <= view.yMax + 1f && top >= view.yMin) return pair.Key;
+            }
+            return null;
+        }
+
+        /// <summary>Cuộn để đỉnh thẻ bài <paramref name="lessonId"/> nằm ở đỉnh vùng nhìn (trong giới hạn cuộn).</summary>
+        private void ScrollToTop(string lessonId)
+        {
+            var button = ButtonFor(lessonId);
+            if (button == null) return;
+            var corners = new Vector3[4];
+            ((RectTransform)button.transform).GetWorldCorners(corners);
+            var top = Scroll.viewport.InverseTransformPoint(corners[1]).y;
+            var view = Scroll.viewport.rect;
+            var position = Scroll.content.anchoredPosition;
+            position.y += view.yMax - top;
+            position.y = Mathf.Clamp(position.y, 0f, Mathf.Max(0f, Scroll.content.rect.height - view.height));
+            Scroll.StopMovement();
+            Scroll.content.anchoredPosition = position;
         }
 
         private const string ReadingPart = "tap_doc";
@@ -162,7 +220,7 @@ namespace TapDoc
         internal static string LabelOf(LessonEntry entry) =>
             string.IsNullOrEmpty(entry.label) ? $"{UiText.LessonPrefix} {entry.lesson_no}" : entry.label;
 
-        private static Transform CreateGrid(Transform content)
+        private static Transform CreateGrid(Transform content, int columns)
         {
             var gridGo = new GameObject("LessonButtons", typeof(RectTransform), typeof(GridLayoutGroup));
             gridGo.transform.SetParent(content, false);
@@ -170,7 +228,7 @@ namespace TapDoc
             grid.cellSize = new Vector2(CardWidth, CardHeight);
             grid.spacing = new Vector2(CardGap, CardGap);
             grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-            grid.constraintCount = Columns;
+            grid.constraintCount = columns;
             grid.childAlignment = TextAnchor.UpperLeft;
             return gridGo.transform;
         }
