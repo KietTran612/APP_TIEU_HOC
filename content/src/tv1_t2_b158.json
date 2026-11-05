@@ -1,0 +1,193 @@
+{
+  "lesson_id": "tv1_t2_b158",
+  "book": "tv1_t2_1996",
+  "lesson_no": 158,
+  "type": "tap_doc",
+  "title": "Nhà máy",
+  "week": 32,
+  "td_no": 26,
+  "source": {
+    "pages": [
+      123
+    ],
+    "scan_file": "062",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b158_nhaf_mays": "Xưởng sửa chữa ô tô: nhiều máy lớn nhỏ, xe tải đang sửa, các bạn học sinh đi tham quan"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1",
+        "note": "\"huýt huýt\", \"xuyt xuyt\": tiếng tượng thanh, nghe kĩ giọng đọc"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Nhà máy"
+    },
+    {
+      "type": "sentence",
+      "text": "Vào xem nhà máy"
+    },
+    {
+      "type": "sentence",
+      "text": "Sửa chữa ô tô"
+    },
+    {
+      "type": "sentence",
+      "text": "Ở vùng ngoại ô"
+    },
+    {
+      "type": "sentence",
+      "text": "Mới vừa kiến thiết,"
+    },
+    {
+      "type": "sentence",
+      "text": "Tôi thấy la liệt"
+    },
+    {
+      "type": "sentence",
+      "text": "Máy nhỏ, máy to..."
+    },
+    {
+      "type": "sentence",
+      "text": "Cái quay ro ro,"
+    },
+    {
+      "type": "sentence",
+      "text": "Cái kêu huýt huýt,"
+    },
+    {
+      "type": "sentence",
+      "text": "Cái thổi xuyt xuyt,"
+    },
+    {
+      "type": "sentence",
+      "text": "Cái thét ào ào."
+    },
+    {
+      "type": "sentence",
+      "text": "Rầm rập, xôn xao"
+    },
+    {
+      "type": "sentence",
+      "text": "Nhịp nhàng, răm rắp."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "VÕ QUẢNG",
+      "breaks": [
+        6
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b158_nhaf_mays",
+      "say": "Các bạn đi xem nhà máy sửa chữa ô tô.",
+      "word": "nhà máy"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có âm v, r, x đứng đầu.",
+      "match": {
+        "onset": [
+          "v",
+          "r",
+          "x"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có vần oai, iên, iêt, uyt? Em hãy tìm và đọc lên những tiếng đó.",
+      "match": {
+        "rime": [
+          "oai",
+          "iên",
+          "iêt",
+          "uyt"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Khổ thơ thứ hai có những từ nào tả tiếng máy kêu?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nhà máy",
+          "options": [
+            "nhà máy",
+            "ô tô",
+            "ngoại ô"
+          ]
+        },
+        {
+          "answer": "ro ro",
+          "options": [
+            "ro ro",
+            "ào ào",
+            "xôn xao"
+          ]
+        },
+        {
+          "answer": "nhịp nhàng",
+          "options": [
+            "nhịp nhàng",
+            "rầm rập",
+            "răm rắp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "thét",
+          "options": [
+            "thét",
+            "thép"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "ngoại ô",
+      "template": "ng_ ô",
+      "answer": "oại",
+      "options": [
+        "oại",
+        "oạn",
+        "ại"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "chữa",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

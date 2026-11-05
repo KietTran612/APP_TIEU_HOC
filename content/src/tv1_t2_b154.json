@@ -1,0 +1,163 @@
+{
+  "lesson_id": "tv1_t2_b154",
+  "book": "tv1_t2_1996",
+  "lesson_no": 154,
+  "type": "hoc_thuoc_long",
+  "title": "Quê em",
+  "week": 31,
+  "td_no": 23,
+  "source": {
+    "pages": [
+      119
+    ],
+    "scan_file": "060",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b154_quee_em": "Làng quê: dòng sông uốn quanh có thuyền chở lúa, cầu nhỏ, hàng dừa xanh, đồng lúa và nương dâu"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1",
+        "note": "tên tác giả in là \"NGUYÊN HỒ\" (soát lại trên bản in rõ hơn)"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Quê em",
+      "sub": "Học thuộc lòng"
+    },
+    {
+      "type": "sentence",
+      "text": "Quê em đồng lúa, nương dâu"
+    },
+    {
+      "type": "sentence",
+      "text": "Bên dòng sông nhỏ nhịp cầu bắc ngang."
+    },
+    {
+      "type": "sentence",
+      "text": "Dừa xanh tỏa mát đường làng"
+    },
+    {
+      "type": "sentence",
+      "text": "Ngân nga giọng hát, rộn ràng tiếng thoi."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "NGUYÊN HỒ"
+    },
+    {
+      "type": "picture",
+      "image": "img_b154_quee_em",
+      "say": "Quê em có đồng lúa, dòng sông, hàng dừa.",
+      "word": "quê em"
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có âm r, d, gi đứng đầu? Em hãy tìm và đọc lên những tiếng đó.",
+      "match": {
+        "onset": [
+          "r",
+          "d",
+          "gi"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có vần ip, ăc, ên, at.",
+      "match": {
+        "rime": [
+          "ip",
+          "ăc",
+          "ên",
+          "at"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Quê em có những cảnh gì đẹp?"
+    },
+    {
+      "type": "memorize",
+      "question": "Học thuộc lòng cả bài."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nương dâu",
+          "options": [
+            "nương dâu",
+            "đồng lúa",
+            "đường làng"
+          ]
+        },
+        {
+          "answer": "nhịp cầu",
+          "options": [
+            "nhịp cầu",
+            "dòng sông",
+            "tiếng thoi"
+          ]
+        },
+        {
+          "answer": "rộn ràng",
+          "options": [
+            "rộn ràng",
+            "ngân nga",
+            "giọng hát"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "dừa",
+          "options": [
+            "dừa",
+            "dứa"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "bắc ngang",
+      "template": "b_ ngang",
+      "answer": "ắc",
+      "options": [
+        "ắc",
+        "ấc",
+        "ác"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "tỏa",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

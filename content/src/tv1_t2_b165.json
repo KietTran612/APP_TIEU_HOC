@@ -1,0 +1,194 @@
+{
+  "lesson_id": "tv1_t2_b165",
+  "book": "tv1_t2_1996",
+  "lesson_no": 165,
+  "type": "tap_doc",
+  "title": "Cháu đi vào mỏ",
+  "week": 33,
+  "td_no": 31,
+  "source": {
+    "pages": [
+      130
+    ],
+    "scan_file": "066",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b165_thowj_mor": "Chú thợ mỏ đội mũ có đèn, mặc quần áo bảo hộ, dắt tay cháu nhỏ đi dọc đường ray goòng chở than"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Cháu đi vào mỏ"
+    },
+    {
+      "type": "sentence",
+      "text": "Ngầm trong lòng đất,"
+    },
+    {
+      "type": "sentence",
+      "text": "Vào mãi hầm sâu,"
+    },
+    {
+      "type": "sentence",
+      "text": "Ơi chú thợ mỏ"
+    },
+    {
+      "type": "sentence",
+      "text": "Chú đi về đâu?"
+    },
+    {
+      "type": "sentence",
+      "text": "Ở sâu dưới đất,"
+    },
+    {
+      "type": "sentence",
+      "text": "Chú có mỏi mắt,"
+    },
+    {
+      "type": "sentence",
+      "text": "Chú có mỏi người,"
+    },
+    {
+      "type": "sentence",
+      "text": "Mà sao cháu thấy"
+    },
+    {
+      "type": "sentence",
+      "text": "Các chú vẫn cười?"
+    },
+    {
+      "type": "sentence",
+      "text": "Mai lớn lên rồi,"
+    },
+    {
+      "type": "sentence",
+      "text": "Cháu cũng làm thợ,"
+    },
+    {
+      "type": "sentence",
+      "text": "Trên đầu đèn soi,"
+    },
+    {
+      "type": "sentence",
+      "text": "Cháu đi vào mỏ."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "NGÔ VIẾT DINH",
+      "breaks": [
+        4,
+        9
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b165_thowj_mor",
+      "say": "Chú thợ mỏ dắt cháu đi bên đường ray.",
+      "word": "thợ mỏ"
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có vần âu, ươi? Em hãy tìm và đọc lên những tiếng đó.",
+      "match": {
+        "rime": [
+          "âu",
+          "ươi"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có thanh hỏi (?), thanh ngã (~)? Em hãy tìm và đọc lên những tiếng đó.",
+      "match": {
+        "tone": [
+          "hỏi",
+          "ngã"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Tìm trong bài những câu có dấu chấm hỏi (?) và đọc lên những câu đó."
+    },
+    {
+      "type": "question",
+      "text": "Chú thợ mỏ làm việc ở đâu? Câu nào cho em biết dù làm việc vất vả nhưng chú vẫn vui?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "thợ mỏ",
+          "options": [
+            "thợ mỏ",
+            "hầm sâu",
+            "lòng đất"
+          ]
+        },
+        {
+          "answer": "mỏi mắt",
+          "options": [
+            "mỏi mắt",
+            "mỏi người",
+            "đèn soi"
+          ]
+        },
+        {
+          "answer": "lớn lên",
+          "options": [
+            "lớn lên",
+            "làm thợ",
+            "đi về"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "mỏ",
+          "options": [
+            "mỏ",
+            "mở"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "hầm sâu",
+      "template": "hầm s_",
+      "answer": "âu",
+      "options": [
+        "âu",
+        "au",
+        "âm"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "mãi",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -256,5 +256,40 @@ class Tap2Reading139To151(Tap2TestCase):
         tones = [s for s in steps(144, "fill_blank") if set(s["labels"]) <= {"huyền", "sắc", "hỏi", "ngã", "nặng"}]
         self.assertEqual([it["answer"] for it in tones[0]["items"]], ["ngã", "hỏi", "ngã", "hỏi"])
 
+
+class Tap2Reading152To171(Tap2TestCase):
+    def test_basics(self):
+        for no in range(152, 172):
+            with self.subTest(no=no):
+                self.assert_lesson_basics(no)
+
+    def test_every_reading_lesson_has_title_and_passage(self):
+        for no in range(126, 172):
+            ltype = L[lid_of(no)]["type"]
+            if ltype in ("tap_doc", "hoc_thuoc_long", "doc_them"):
+                with self.subTest(no=no):
+                    self.assertEqual(len(steps(no, "passage")), 1)
+                    self.assertTrue(steps(no, "title"))
+
+    def test_hoc_thuoc_long_have_memorize(self):
+        hoc_thuoc = [no for no in range(126, 172) if L[lid_of(no)]["type"] == "hoc_thuoc_long"]
+        self.assertEqual(hoc_thuoc, [128, 134, 142, 147, 154, 161, 168])
+        for no in hoc_thuoc:
+            self.assertEqual(len(steps(no, "memorize")), 1, no)
+
+    def test_last_page_poem(self):
+        self.assertEqual(texts(170, "sentence")[-1], "Gửi lời chào tiến bước!")
+        self.assertEqual(len(texts(170, "sentence")), 16)
+
+    def test_riddles_page_128(self):
+        self.assertEqual([s["text"] for s in steps(163, "riddle_answer")], ["Lưỡi cày", "Hòn gạch"])
+
+    def test_vo_thi_sau_title_from_page(self):
+        self.assertEqual(L[lid_of(168)]["title"], "Võ Thị Sáu")
+
+    def test_tone_fill_from_page_137(self):
+        fills = steps(171, "fill_blank")
+        self.assertEqual([it["answer"] for it in fills[-1]["items"]], ["hỏi", "hỏi", "ngã", "sắc", "nặng", "nặng"])
+
 if __name__ == "__main__":
     unittest.main()

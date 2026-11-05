@@ -1,0 +1,191 @@
+{
+  "lesson_id": "tv1_t2_b169",
+  "book": "tv1_t2_1996",
+  "lesson_no": 169,
+  "type": "doc_them",
+  "title": "Người nông dân và con gấu",
+  "week": 33,
+  "td_no": 35,
+  "source": {
+    "pages": [
+      134
+    ],
+    "scan_file": "068",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b169_nguwowif_noong_daan": "Người nông dân đứng bên đống lá củ cải, chỉ tay về phía con gấu đen to lớn đang đứng trong rừng"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1",
+        "note": "bài không in tên tác giả"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b169_nguwowif_noong_daan",
+      "say": "Người nông dân để phần lá cho gấu.",
+      "word": "nông dân"
+    },
+    {
+      "type": "title",
+      "text": "Người nông dân và con gấu",
+      "sub": "Bài đọc thêm"
+    },
+    {
+      "type": "sentence",
+      "text": "Ngày xưa, có một người nông dân nghèo đói."
+    },
+    {
+      "type": "sentence",
+      "text": "Anh ta phải bỏ làng vào rừng vỡ hoang, trồng trỉa."
+    },
+    {
+      "type": "sentence",
+      "text": "Một hôm anh đang gieo hạt cải củ."
+    },
+    {
+      "type": "sentence",
+      "text": "Bỗng có một con gấu to ở đâu chạy đến quát lớn:"
+    },
+    {
+      "type": "sentence",
+      "text": "- Anh kia! Ai cho phép anh vào rừng của ta?"
+    },
+    {
+      "type": "sentence",
+      "text": "Người nông dân bình tĩnh đáp lại:"
+    },
+    {
+      "type": "sentence",
+      "text": "- Ông Gấu ơi! Ông để cho tôi gieo ít cải."
+    },
+    {
+      "type": "sentence",
+      "text": "Khi cải lớn, tôi chỉ lấy gốc thôi."
+    },
+    {
+      "type": "sentence",
+      "text": "Còn tất cả thuộc về phần ông."
+    },
+    {
+      "type": "sentence",
+      "text": "Gấu nghe bùi tai, nói:"
+    },
+    {
+      "type": "sentence",
+      "text": "- Thế cũng được."
+    },
+    {
+      "type": "sentence",
+      "text": "Nhưng anh phải giữ đúng lời hứa."
+    },
+    {
+      "type": "sentence",
+      "text": "Nếu không, ta sẽ xé xác."
+    },
+    {
+      "type": "sentence",
+      "text": "Cải củ lớn."
+    },
+    {
+      "type": "sentence",
+      "text": "Người nông dân đào lấy củ đem về ăn."
+    },
+    {
+      "type": "sentence",
+      "text": "Còn ngọn để lại cho gấu."
+    },
+    {
+      "type": "sentence",
+      "text": "Gấu ăn thấy đắng, tức lắm, nhưng không làm gì được."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "",
+      "breaks": [
+        4,
+        5,
+        6,
+        9,
+        10,
+        13
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nông dân",
+          "options": [
+            "nông dân",
+            "con gấu",
+            "cải củ"
+          ]
+        },
+        {
+          "answer": "vỡ hoang",
+          "options": [
+            "vỡ hoang",
+            "trồng trỉa",
+            "gieo hạt"
+          ]
+        },
+        {
+          "answer": "lời hứa",
+          "options": [
+            "lời hứa",
+            "bùi tai",
+            "bình tĩnh"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "đắng",
+          "options": [
+            "đắng",
+            "đằng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "con gấu",
+      "template": "con g_",
+      "answer": "ấu",
+      "options": [
+        "ấu",
+        "âu",
+        "au"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "trỉa",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

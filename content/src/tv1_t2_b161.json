@@ -1,0 +1,197 @@
+{
+  "lesson_id": "tv1_t2_b161",
+  "book": "tv1_t2_1996",
+  "lesson_no": 161,
+  "type": "hoc_thuoc_long",
+  "title": "Chim sâu",
+  "week": 32,
+  "td_no": 29,
+  "source": {
+    "pages": [
+      126
+    ],
+    "scan_file": "064",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b161_chim_saau": "Chú chim sâu nhỏ đậu trên cành cây nhiều lá xanh, mỏ đang mổ sâu, hàng rào tre phía dưới"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Cặp từ \"chim sâu / xâu cá\", \"xinh xinh / học sinh\", \"mỏ chim / gõ mõ\" để luyện đọc đúng s/x, hỏi/ngã: giọng đọc miền Bắc của app phân biệt được, phụ huynh nhắc bé đọc rõ."
+    }
+  ],
+  "part1": [
+    {
+      "type": "title",
+      "text": "Chim sâu",
+      "sub": "Học thuộc lòng"
+    },
+    {
+      "type": "sentence",
+      "text": "Chim sâu nho nhỏ,"
+    },
+    {
+      "type": "sentence",
+      "text": "Cái mỏ xinh xinh,"
+    },
+    {
+      "type": "sentence",
+      "text": "Chăm nhặt, chăm tìm"
+    },
+    {
+      "type": "sentence",
+      "text": "Bắt sâu cho lá."
+    },
+    {
+      "type": "sentence",
+      "text": "Cây yêu chim quá!"
+    },
+    {
+      "type": "sentence",
+      "text": "Cây vẫy, cây vui,"
+    },
+    {
+      "type": "sentence",
+      "text": "Búp nở, hoa cười"
+    },
+    {
+      "type": "sentence",
+      "text": "Chào chim sâu đấy."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "PHONG THU"
+    },
+    {
+      "type": "picture",
+      "image": "img_b161_chim_saau",
+      "say": "Chim sâu bắt sâu cho lá.",
+      "word": "chim sâu"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có vần ăt, ươi, im.",
+      "match": {
+        "rime": [
+          "ăt",
+          "ươi",
+          "im"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "title",
+      "text": "Đọc thật đúng các từ sau: chim sâu / xâu cá; xinh xinh / học sinh; mỏ chim / gõ mõ.",
+      "instruction": true
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "chim sâu"
+        },
+        {
+          "text": "xâu cá"
+        },
+        {
+          "text": "xinh xinh"
+        },
+        {
+          "text": "học sinh"
+        },
+        {
+          "text": "mỏ chim"
+        },
+        {
+          "text": "gõ mõ"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "text": "Chim sâu giúp cây việc gì? Cây đối với chim sâu thế nào?"
+    },
+    {
+      "type": "memorize",
+      "question": "Học thuộc lòng cả bài."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chim sâu",
+          "options": [
+            "chim sâu",
+            "cái mỏ",
+            "búp nở"
+          ]
+        },
+        {
+          "answer": "xinh xinh",
+          "options": [
+            "xinh xinh",
+            "nho nhỏ",
+            "hoa cười"
+          ]
+        },
+        {
+          "answer": "bắt sâu",
+          "options": [
+            "bắt sâu",
+            "chăm tìm",
+            "cây vui"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "mỏ",
+          "options": [
+            "mỏ",
+            "mở"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "chăm nhặt",
+      "template": "chăm nh_",
+      "answer": "ặt",
+      "options": [
+        "ặt",
+        "ật",
+        "ạt"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vẫy",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

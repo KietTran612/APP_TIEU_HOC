@@ -1,0 +1,190 @@
+{
+  "lesson_id": "tv1_t2_b152",
+  "book": "tv1_t2_1996",
+  "lesson_no": 152,
+  "type": "tap_doc",
+  "title": "Em yêu mùa hè",
+  "week": 31,
+  "td_no": 21,
+  "source": {
+    "pages": [
+      117
+    ],
+    "scan_file": "059",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b152_muaf_hef": "Đồi quê mùa hè: hai bạn nhỏ hái sim tím, bạn khác thả diều, đàn trâu gặm cỏ, nắng chiều"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Em yêu mùa hè"
+    },
+    {
+      "type": "sentence",
+      "text": "Em yêu mùa hè"
+    },
+    {
+      "type": "sentence",
+      "text": "Có hoa sim tím"
+    },
+    {
+      "type": "sentence",
+      "text": "Mọc trên đồi quê"
+    },
+    {
+      "type": "sentence",
+      "text": "Rung rinh bướm lượn."
+    },
+    {
+      "type": "sentence",
+      "text": "Thong thả dắt trâu"
+    },
+    {
+      "type": "sentence",
+      "text": "Trong chiều nắng xế,"
+    },
+    {
+      "type": "sentence",
+      "text": "Em hái sim ăn."
+    },
+    {
+      "type": "sentence",
+      "text": "Trời, sao ngọt thế!"
+    },
+    {
+      "type": "sentence",
+      "text": "Gió mát lưng đồi,"
+    },
+    {
+      "type": "sentence",
+      "text": "Ve ngân ra rả."
+    },
+    {
+      "type": "sentence",
+      "text": "Trên cao lưng trời"
+    },
+    {
+      "type": "sentence",
+      "text": "Diều ai vừa thả."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "NGUYỄN THANH TOÀN",
+      "breaks": [
+        4,
+        8
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b152_muaf_hef",
+      "say": "Các bạn hái sim, thả diều trên đồi.",
+      "word": "mùa hè"
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có âm v, d, gi, r đứng đầu? Em hãy tìm và đọc lên những tiếng ấy.",
+      "match": {
+        "onset": [
+          "v",
+          "d",
+          "gi",
+          "r"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có vần im, iêu, ot, oc.",
+      "match": {
+        "rime": [
+          "im",
+          "iêu",
+          "ot",
+          "oc"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Vì sao em yêu mùa hè?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "hoa sim",
+          "options": [
+            "hoa sim",
+            "đồi quê",
+            "bướm lượn"
+          ]
+        },
+        {
+          "answer": "dắt trâu",
+          "options": [
+            "dắt trâu",
+            "nắng xế",
+            "lưng đồi"
+          ]
+        },
+        {
+          "answer": "ra rả",
+          "options": [
+            "ra rả",
+            "thong thả",
+            "rung rinh"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "tím",
+          "options": [
+            "tím",
+            "tìm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "bướm lượn",
+      "template": "bướm l_",
+      "answer": "ượn",
+      "options": [
+        "ượn",
+        "ượm",
+        "ợn"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "thả",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

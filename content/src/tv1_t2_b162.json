@@ -1,0 +1,157 @@
+{
+  "lesson_id": "tv1_t2_b162",
+  "book": "tv1_t2_1996",
+  "lesson_no": 162,
+  "type": "doc_them",
+  "title": "Trăng sáng sân nhà em",
+  "week": 32,
+  "td_no": 30,
+  "source": {
+    "pages": [
+      127
+    ],
+    "scan_file": "064",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b162_trawng_sangs": "Đêm trăng tròn, hai bạn nhỏ ngồi ngoài sân ngắm trăng, hàng cau và bụi chuối in bóng"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b162_trawng_sangs",
+      "say": "Hai bạn ngồi ngắm trăng sáng ngoài sân.",
+      "word": "trăng sáng"
+    },
+    {
+      "type": "title",
+      "text": "Trăng sáng sân nhà em",
+      "sub": "Bài đọc thêm"
+    },
+    {
+      "type": "sentence",
+      "text": "Ông trăng tròn sáng tỏ"
+    },
+    {
+      "type": "sentence",
+      "text": "Soi rõ sân nhà em,"
+    },
+    {
+      "type": "sentence",
+      "text": "Trăng khuya sáng hơn đèn,"
+    },
+    {
+      "type": "sentence",
+      "text": "Ơi ông trăng sáng tỏ"
+    },
+    {
+      "type": "sentence",
+      "text": "Soi rõ sân nhà em..."
+    },
+    {
+      "type": "sentence",
+      "text": "Hàng cây cau lặng đứng,"
+    },
+    {
+      "type": "sentence",
+      "text": "Hàng cây chuối đứng im,"
+    },
+    {
+      "type": "sentence",
+      "text": "Con chim quên không kêu,"
+    },
+    {
+      "type": "sentence",
+      "text": "Con sâu quên không kêu,"
+    },
+    {
+      "type": "sentence",
+      "text": "Chỉ có trăng sáng tỏ"
+    },
+    {
+      "type": "sentence",
+      "text": "Soi rõ sân nhà em."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "TRẦN ĐĂNG KHOA",
+      "breaks": [
+        5
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "trăng khuya",
+          "options": [
+            "trăng khuya",
+            "sáng tỏ",
+            "sân nhà"
+          ]
+        },
+        {
+          "answer": "cây cau",
+          "options": [
+            "cây cau",
+            "cây chuối",
+            "con chim"
+          ]
+        },
+        {
+          "answer": "đứng im",
+          "options": [
+            "đứng im",
+            "lặng đứng",
+            "quên không kêu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "rõ",
+          "options": [
+            "rõ",
+            "rọ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "trăng khuya",
+      "template": "trăng kh_",
+      "answer": "uya",
+      "options": [
+        "uya",
+        "uyu",
+        "ia"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "tỏ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

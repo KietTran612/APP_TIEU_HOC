@@ -1,0 +1,192 @@
+{
+  "lesson_id": "tv1_t2_b168",
+  "book": "tv1_t2_1996",
+  "lesson_no": 168,
+  "type": "hoc_thuoc_long",
+  "title": "Võ Thị Sáu",
+  "week": 33,
+  "td_no": 34,
+  "source": {
+    "pages": [
+      133
+    ],
+    "scan_file": "067",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b168_hangf_duwowng": "Bãi biển Côn Đảo yên bình: hàng dương xanh bên bờ cát, sóng biển, một bông hoa trắng đặt dưới gốc dương"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[0]",
+        "note": "tranh thay cho tranh sách (người thật, cảnh hành quyết): cần duyệt"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Tranh sách vẽ chị Võ Thị Sáu bị giặc dẫn đi; app vẽ hàng dương bên bờ biển, không vẽ cảnh lính và súng (không vẽ người thật). Tên bài trong mục lục là \"Chị Võ Thị Sáu\", trên trang in \"Võ Thị Sáu\"; app theo trang."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b168_hangf_duwowng",
+      "say": "Hàng dương bên bờ biển.",
+      "word": "gốc dương"
+    },
+    {
+      "type": "title",
+      "text": "Võ Thị Sáu",
+      "sub": "Học thuộc lòng"
+    },
+    {
+      "type": "sentence",
+      "text": "Người con gái trẻ măng"
+    },
+    {
+      "type": "sentence",
+      "text": "Giặc đem ra bãi bắn,"
+    },
+    {
+      "type": "sentence",
+      "text": "Đi giữa hai hàng lính"
+    },
+    {
+      "type": "sentence",
+      "text": "Vẫn ung dung mỉm cười."
+    },
+    {
+      "type": "sentence",
+      "text": "Ngắt một đóa hoa tươi,"
+    },
+    {
+      "type": "sentence",
+      "text": "Chị gài lên mái tóc,"
+    },
+    {
+      "type": "sentence",
+      "text": "Đầu ngẩng cao bất khuất"
+    },
+    {
+      "type": "sentence",
+      "text": "Ngay trong phút hi sinh."
+    },
+    {
+      "type": "sentence",
+      "text": "Bây giờ dưới gốc dương"
+    },
+    {
+      "type": "sentence",
+      "text": "Chị nằm nghe biển hát."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "PHAN THỊ THANH NHÀN"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có âm ng, v, d đứng đầu.",
+      "match": {
+        "onset": [
+          "ng",
+          "v",
+          "d"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có vần ươi, ương, iên.",
+      "match": {
+        "rime": [
+          "ươi",
+          "ương",
+          "iên"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Chị Sáu đi giữa hai hàng lính vẫn tỏ thái độ như thế nào?"
+    },
+    {
+      "type": "memorize",
+      "question": "Học thuộc lòng cả bài."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "trẻ măng",
+          "options": [
+            "trẻ măng",
+            "hoa tươi",
+            "mái tóc"
+          ]
+        },
+        {
+          "answer": "bất khuất",
+          "options": [
+            "bất khuất",
+            "hi sinh",
+            "ung dung"
+          ]
+        },
+        {
+          "answer": "gốc dương",
+          "options": [
+            "gốc dương",
+            "biển hát",
+            "mỉm cười"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "gài",
+          "options": [
+            "gài",
+            "gái"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "ung dung",
+      "template": "ung d_",
+      "answer": "ung",
+      "options": [
+        "ung",
+        "ưng",
+        "ong"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "mỉm",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "lesson_id": "tv1_t2_b155",
+  "book": "tv1_t2_1996",
+  "lesson_no": 155,
+  "type": "tap_doc",
+  "title": "Sau cơn mưa",
+  "week": 31,
+  "td_no": 24,
+  "source": {
+    "pages": [
+      120
+    ],
+    "scan_file": "061",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b155_sau_cown_muwa": "Sau mưa trong vườn: lá khoai nước đọng giọt, mẹ gà dẫn đàn gà con quanh vũng nước, trời xanh có mây"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Sau cơn mưa"
+    },
+    {
+      "type": "sentence",
+      "text": "Sau trận mưa rào, mọi vật đều sáng và tươi."
+    },
+    {
+      "type": "sentence",
+      "text": "Những đóa râm bụt thêm đỏ chói."
+    },
+    {
+      "type": "sentence",
+      "text": "Bầu trời xanh bóng như vừa được giội rửa."
+    },
+    {
+      "type": "sentence",
+      "text": "Mấy đám mây bông trôi nhởn nhơ, sáng rực lên trong ánh mặt trời."
+    },
+    {
+      "type": "sentence",
+      "text": "Mẹ gà mừng rỡ \"tục tục\" dắt bầy con quây quanh vũng nước đọng trong vườn."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo VŨ TÚ NAM",
+      "breaks": [
+        4
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b155_sau_cown_muwa",
+      "say": "Sau mưa, mẹ gà dẫn đàn con dạo quanh vườn.",
+      "word": "sau cơn mưa"
+    },
+    {
+      "type": "title",
+      "text": "Điền vào chỗ trống gi, d hoặc r rồi đọc lên.",
+      "instruction": true,
+      "marker": "?"
+    },
+    {
+      "type": "fill_blank",
+      "mode": "letter",
+      "choices": [
+        "gi",
+        "d",
+        "r"
+      ],
+      "items": [
+        {
+          "word": "mưa rào",
+          "blank": "rào",
+          "fill": "r"
+        },
+        {
+          "word": "râm bụt",
+          "blank": "râm",
+          "fill": "r"
+        },
+        {
+          "word": "giội rửa",
+          "blank": "giội",
+          "fill": "gi"
+        },
+        {
+          "word": "giội rửa",
+          "blank": "rửa",
+          "fill": "r"
+        },
+        {
+          "word": "sáng rực",
+          "blank": "rực",
+          "fill": "r"
+        },
+        {
+          "word": "mừng rỡ",
+          "blank": "rỡ",
+          "fill": "r"
+        },
+        {
+          "word": "dắt bầy con",
+          "blank": "dắt",
+          "fill": "d"
+        }
+      ]
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có vần ươi, ưc, ươn, êu.",
+      "match": {
+        "rime": [
+          "ươi",
+          "ưc",
+          "ươn",
+          "êu"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Sau trận mưa rào, bầu trời đẹp như thế nào?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "mưa rào",
+          "options": [
+            "mưa rào",
+            "râm bụt",
+            "đỏ chói"
+          ]
+        },
+        {
+          "answer": "nhởn nhơ",
+          "options": [
+            "nhởn nhơ",
+            "sáng rực",
+            "mây bông"
+          ]
+        },
+        {
+          "answer": "vũng nước",
+          "options": [
+            "vũng nước",
+            "trong vườn",
+            "bầy con"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "rỡ",
+          "options": [
+            "rỡ",
+            "rợ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "mừng rỡ",
+      "template": "m_ rỡ",
+      "answer": "ừng",
+      "options": [
+        "ừng",
+        "ằng",
+        "ồng"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "rửa",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

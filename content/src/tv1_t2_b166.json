@@ -1,0 +1,181 @@
+{
+  "lesson_id": "tv1_t2_b166",
+  "book": "tv1_t2_1996",
+  "lesson_no": 166,
+  "type": "tap_doc",
+  "title": "Cua đồng thức giấc",
+  "week": 33,
+  "td_no": 32,
+  "source": {
+    "pages": [
+      131
+    ],
+    "scan_file": "066",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b166_cua_ddoongf": "Bờ ruộng: hai con cua bò ra khỏi hang, con cá rô phi nhảy lên mặt nước, bác trâu cười, máy cày chạy trên ruộng xa"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1",
+        "note": "bài không in tên tác giả"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Cua đồng thức giấc"
+    },
+    {
+      "type": "sentence",
+      "text": "Lũ Cua con đang ngủ bỗng choàng dậy gọi:"
+    },
+    {
+      "type": "sentence",
+      "text": "- Mẹ ơi! Mẹ ơi! Bao nhiêu là ông mặt trời mẹ ạ!"
+    },
+    {
+      "type": "sentence",
+      "text": "Cua mẹ bò ra xem."
+    },
+    {
+      "type": "sentence",
+      "text": "Ồ! Lạ nhỉ?"
+    },
+    {
+      "type": "sentence",
+      "text": "Lại có tiếng gì ầm ầm vang khắp cánh đồng."
+    },
+    {
+      "type": "sentence",
+      "text": "Chú Rô phi liền bảo:"
+    },
+    {
+      "type": "sentence",
+      "text": "- Máy cày và đèn điện đấy."
+    },
+    {
+      "type": "sentence",
+      "text": "Mẹ con nhà Cua vẫn giương mắt lên ngơ ngác."
+    },
+    {
+      "type": "sentence",
+      "text": "Còn bác Trâu thì khoái chí lăn ra cười."
+    },
+    {
+      "type": "sentence",
+      "text": "Có máy cày, bác ấy đỡ vất vả."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "",
+      "breaks": [
+        1,
+        2,
+        6,
+        7
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b166_cua_ddoongf",
+      "say": "Cua con thức dậy, bác trâu cười vui.",
+      "word": "cua đồng"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có vần oang, oai, ương, ươi.",
+      "match": {
+        "rime": [
+          "oang",
+          "oai",
+          "ương",
+          "ươi"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "question",
+      "text": "Em hãy tìm trong bài và đọc lên câu nói của cua con và rô phi."
+    },
+    {
+      "type": "question",
+      "text": "Vì sao bác trâu lại khoái chí, lăn ra cười?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cua con",
+          "options": [
+            "cua con",
+            "rô phi",
+            "bác trâu"
+          ]
+        },
+        {
+          "answer": "máy cày",
+          "options": [
+            "máy cày",
+            "đèn điện",
+            "cánh đồng"
+          ]
+        },
+        {
+          "answer": "ngơ ngác",
+          "options": [
+            "ngơ ngác",
+            "khoái chí",
+            "vất vả"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "cày",
+          "options": [
+            "cày",
+            "cài"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "khoái chí",
+      "template": "kh_ chí",
+      "answer": "oái",
+      "options": [
+        "oái",
+        "oáng",
+        "ái"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "bỗng",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

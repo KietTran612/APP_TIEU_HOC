@@ -1,0 +1,163 @@
+{
+  "lesson_id": "tv1_t2_b159",
+  "book": "tv1_t2_1996",
+  "lesson_no": 159,
+  "type": "tap_doc",
+  "title": "Tây Nguyên giàu đẹp",
+  "week": 32,
+  "td_no": 27,
+  "source": {
+    "pages": [
+      124
+    ],
+    "scan_file": "063",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b159_taay_nguyeen": "Rừng Tây Nguyên: voi, tê giác, trâu rừng, nai, gấu đen giữa cây cỏ rậm, đồi núi phía xa"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Tây Nguyên giàu đẹp"
+    },
+    {
+      "type": "sentence",
+      "text": "Tây Nguyên đẹp lắm."
+    },
+    {
+      "type": "sentence",
+      "text": "Mùa xuân và mùa thu ở đây trời mát dịu, hương rừng thoang thoảng đưa."
+    },
+    {
+      "type": "sentence",
+      "text": "Bầu trời trong xanh, tuyệt đẹp."
+    },
+    {
+      "type": "sentence",
+      "text": "Bên bờ suối, những khóm hoa đủ màu sắc đua nở."
+    },
+    {
+      "type": "sentence",
+      "text": "Rừng Tây Nguyên còn là quê hương của nhiều giống thú quý và hiếm:"
+    },
+    {
+      "type": "sentence",
+      "text": "cọp, voi, trâu rừng, tê giác, nai, hươu sao, gấu đen..."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "NC - NB",
+      "breaks": [
+        4
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b159_taay_nguyeen",
+      "say": "Rừng Tây Nguyên có voi, tê giác, nai, gấu.",
+      "word": "Tây Nguyên"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có âm x, s đứng đầu.",
+      "match": {
+        "onset": [
+          "x",
+          "s"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có vần uyên, oang, iêm, ươu.",
+      "match": {
+        "rime": [
+          "uyên",
+          "oang",
+          "iêm",
+          "ươu"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Trời Tây Nguyên mát dịu vào mùa nào? Rừng Tây Nguyên có những con thú nào quý và hiếm?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tê giác",
+          "options": [
+            "tê giác",
+            "trâu rừng",
+            "hươu sao"
+          ]
+        },
+        {
+          "answer": "thoang thoảng",
+          "options": [
+            "thoang thoảng",
+            "mát dịu",
+            "tuyệt đẹp"
+          ]
+        },
+        {
+          "answer": "khóm hoa",
+          "options": [
+            "khóm hoa",
+            "bờ suối",
+            "màu sắc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "hiếm",
+          "options": [
+            "hiếm",
+            "hiềm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "hươu sao",
+      "template": "h_ sao",
+      "answer": "ươu",
+      "options": [
+        "ươu",
+        "ươi",
+        "uôi"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "thoảng",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

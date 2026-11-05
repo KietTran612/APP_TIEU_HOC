@@ -1,0 +1,156 @@
+{
+  "lesson_id": "tv1_t2_b153",
+  "book": "tv1_t2_1996",
+  "lesson_no": 153,
+  "type": "tap_doc",
+  "title": "Chim sơn ca",
+  "week": 31,
+  "td_no": 22,
+  "source": {
+    "pages": [
+      118
+    ],
+    "scan_file": "060",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b153_chim_sown_ca": "Đàn chim sơn ca bay vút lên trời xanh trên sườn đồi cỏ, núi xa"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Chim sơn ca"
+    },
+    {
+      "type": "sentence",
+      "text": "Trưa mùa hè, nắng vàng như mật ong trải nhẹ trên khắp các cánh đồng cỏ."
+    },
+    {
+      "type": "sentence",
+      "text": "Những con sơn ca đang nhảy nhót trên sườn đồi."
+    },
+    {
+      "type": "sentence",
+      "text": "Chúng bay lên cao và cất tiếng hót."
+    },
+    {
+      "type": "sentence",
+      "text": "Tiếng hót lúc trầm, lúc bổng, lảnh lót vang mãi đi xa."
+    },
+    {
+      "type": "sentence",
+      "text": "Bỗng dưng lũ sơn ca không hót nữa mà bay vút lên nền trời xanh thẳm."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo PHƯỢNG VŨ"
+    },
+    {
+      "type": "picture",
+      "image": "img_b153_chim_sown_ca",
+      "say": "Chim sơn ca bay vút lên trời.",
+      "word": "chim sơn ca"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có thanh hỏi (?) và thanh ngã (~). Chú ý đọc thật đúng tiếng bổng (lúc trầm, lúc bổng) và tiếng bỗng (bỗng dưng).",
+      "match": {
+        "tone": [
+          "hỏi",
+          "ngã"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có vần ut, ăp, ât, ên? Em hãy tìm và đọc lên những tiếng đó.",
+      "match": {
+        "rime": [
+          "ut",
+          "ăp",
+          "ât",
+          "ên"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Chim sơn ca nhảy nhót ở đâu? Tiếng hót của chúng như thế nào?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "sơn ca",
+          "options": [
+            "sơn ca",
+            "mật ong",
+            "sườn đồi"
+          ]
+        },
+        {
+          "answer": "lảnh lót",
+          "options": [
+            "lảnh lót",
+            "nhảy nhót",
+            "xanh thẳm"
+          ]
+        },
+        {
+          "answer": "bay vút",
+          "options": [
+            "bay vút",
+            "cất tiếng",
+            "đi xa"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "trầm",
+          "options": [
+            "trầm",
+            "tràm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "mật ong",
+      "template": "m_ ong",
+      "answer": "ật",
+      "options": [
+        "ặt",
+        "ật",
+        "ợt"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "bổng",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

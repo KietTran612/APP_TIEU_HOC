@@ -1,0 +1,173 @@
+{
+  "lesson_id": "tv1_t2_b160",
+  "book": "tv1_t2_1996",
+  "lesson_no": 160,
+  "type": "tap_doc",
+  "title": "Ông Ké",
+  "week": 32,
+  "td_no": 28,
+  "source": {
+    "pages": [
+      125
+    ],
+    "scan_file": "063",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b160_bowf_suoois": "Chiếc máng gỗ đầy nước bên bờ suối giữa núi rừng Việt Bắc, các cháu nhỏ đứng chờ tắm"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1",
+        "note": "\"loỏng\": giải nghĩa do app viết, sách không chú thích"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Tranh sách vẽ Bác Hồ tắm cho các cháu bên suối; app vẽ chiếc loỏng đầy nước và các cháu bên suối (không vẽ người thật)."
+    },
+    {
+      "kind": "sach",
+      "text": "\"loỏng\": máng gỗ khoét từ thân cây (từ dùng ở Việt Bắc), chép đúng chữ của sách."
+    }
+  ],
+  "part1": [
+    {
+      "type": "title",
+      "text": "Ông Ké"
+    },
+    {
+      "type": "sentence",
+      "text": "Một buổi chiều hè, trời nắng to, ông Ké nhờ mấy người khiêng chiếc loỏng ra suối."
+    },
+    {
+      "type": "sentence",
+      "text": "Ông cọ sạch rồi múc nước đổ đầy vào."
+    },
+    {
+      "type": "sentence",
+      "text": "Một lát sau, ông Ké dắt theo sau một đàn cháu nhỏ."
+    },
+    {
+      "type": "sentence",
+      "text": "Tự tay ông múc nước tắm cho từng cháu."
+    },
+    {
+      "type": "sentence",
+      "text": "Ông Ké đó là Bác Hồ muôn vàn kính yêu của chúng ta."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo \"BÁC HỒ VỚI VIỆT BẮC\"",
+      "breaks": [
+        4
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b160_bowf_suoois",
+      "say": "Chiếc loỏng đầy nước bên bờ suối.",
+      "word": "bờ suối"
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có vần oong, iêng, uôi? Em hãy tìm và đọc lên những tiếng đó.",
+      "match": {
+        "rime": [
+          "oong",
+          "iêng",
+          "uôi"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Đọc các tiếng có thanh hỏi (?), thanh nặng (.) trong bài.",
+      "match": {
+        "tone": [
+          "hỏi",
+          "nặng"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Ông Ké làm việc gì ở suối? Ông Ké đó là ai?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "bờ suối",
+          "options": [
+            "bờ suối",
+            "buổi chiều",
+            "múc nước"
+          ]
+        },
+        {
+          "answer": "đàn cháu",
+          "options": [
+            "đàn cháu",
+            "ông Ké",
+            "kính yêu"
+          ]
+        },
+        {
+          "answer": "khiêng",
+          "options": [
+            "khiêng",
+            "loỏng",
+            "cọ sạch"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "tắm",
+          "options": [
+            "tắm",
+            "tấm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "buổi chiều",
+      "template": "b_ chiều",
+      "answer": "uổi",
+      "options": [
+        "uổi",
+        "ổi",
+        "ưởi"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "loỏng",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

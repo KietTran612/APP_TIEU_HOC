@@ -1,0 +1,157 @@
+{
+  "lesson_id": "tv1_t2_b156",
+  "book": "tv1_t2_1996",
+  "lesson_no": 156,
+  "type": "doc_them",
+  "title": "Đôi bạn",
+  "week": 31,
+  "td_no": 25,
+  "source": {
+    "pages": [
+      121
+    ],
+    "scan_file": "061",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b156_ddooi_banj": "Trong rừng: một người trèo lên cây, một người nằm giả chết, con gấu đen ngửi mặt; bên cạnh hai bạn đứng nói chuyện"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b156_ddooi_banj",
+      "say": "Gặp gấu, một người trèo lên cây, một người nằm im.",
+      "word": "đôi bạn"
+    },
+    {
+      "type": "title",
+      "text": "Đôi bạn",
+      "sub": "Bài đọc thêm"
+    },
+    {
+      "type": "sentence",
+      "text": "Đôi bạn rủ nhau vào rừng chơi."
+    },
+    {
+      "type": "sentence",
+      "text": "Đang đi, hai người bỗng gặp một con gấu."
+    },
+    {
+      "type": "sentence",
+      "text": "Họ sợ quá."
+    },
+    {
+      "type": "sentence",
+      "text": "Một người bỏ mặc bạn, chạy trốn, trèo tót lên cây cao."
+    },
+    {
+      "type": "sentence",
+      "text": "Người kia, bí quá, vội nằm lăn xuống đất, nín thở, giả vờ chết."
+    },
+    {
+      "type": "sentence",
+      "text": "Gấu ngửi ngửi vào mặt người nằm nín thở, tưởng là đã chết bèn bỏ đi."
+    },
+    {
+      "type": "sentence",
+      "text": "Người ở trên cây tụt xuống, hỏi:"
+    },
+    {
+      "type": "sentence",
+      "text": "- Gấu nói gì vào tai cậu thế?"
+    },
+    {
+      "type": "sentence",
+      "text": "Bạn kia mỉm cười trả lời:"
+    },
+    {
+      "type": "sentence",
+      "text": "- Gấu bảo: Ai bỏ bạn lúc gặp nguy là người không tốt."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "LÉP TÔN-XTÔI",
+      "breaks": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "con gấu",
+          "options": [
+            "con gấu",
+            "đôi bạn",
+            "cây cao"
+          ]
+        },
+        {
+          "answer": "nín thở",
+          "options": [
+            "nín thở",
+            "giả vờ",
+            "chạy trốn"
+          ]
+        },
+        {
+          "answer": "mỉm cười",
+          "options": [
+            "mỉm cười",
+            "trả lời",
+            "gặp nguy"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "trèo",
+          "options": [
+            "trèo",
+            "treo"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "con gấu",
+      "template": "con g_",
+      "answer": "ấu",
+      "options": [
+        "ấu",
+        "ất",
+        "âu"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "giả",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

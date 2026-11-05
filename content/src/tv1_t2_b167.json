@@ -1,0 +1,167 @@
+{
+  "lesson_id": "tv1_t2_b167",
+  "book": "tv1_t2_1996",
+  "lesson_no": 167,
+  "type": "tap_doc",
+  "title": "Buổi sáng trên đất bãi",
+  "week": 33,
+  "td_no": 33,
+  "source": {
+    "pages": [
+      132
+    ],
+    "scan_file": "067",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b167_ddaats_baix": "Bình minh trên bãi sông: dòng sông uốn quanh, hàng dừa, mái nhà, thuyền buồm, mây ở chân trời"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b167_ddaats_baix",
+      "say": "Trời sắp sáng trên bãi sông.",
+      "word": "đất bãi"
+    },
+    {
+      "type": "title",
+      "text": "Buổi sáng trên đất bãi"
+    },
+    {
+      "type": "sentence",
+      "text": "Trời sắp sáng."
+    },
+    {
+      "type": "sentence",
+      "text": "Phía chân trời đằng đông có những đám mây đen, hình thù kì quái."
+    },
+    {
+      "type": "sentence",
+      "text": "Chúng như từ trong lòng đất ùn lên."
+    },
+    {
+      "type": "sentence",
+      "text": "Một thoáng sau, những đám mây đen ấy liền chuyển màu."
+    },
+    {
+      "type": "sentence",
+      "text": "Từ màu đen sang màu tím, sang màu vàng nhợt, rồi màu da cam."
+    },
+    {
+      "type": "sentence",
+      "text": "Sau cùng là màu đỏ thẫm."
+    },
+    {
+      "type": "sentence",
+      "text": "Lúc này cảnh vật cũng dần dần hiện ra rất rõ trong một màu xám trắng."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo VŨ THỊ THƯỜNG",
+      "breaks": [
+        1,
+        6
+      ]
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có âm ch, tr đứng đầu.",
+      "match": {
+        "onset": [
+          "ch",
+          "tr"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có vần oang, uyên, iên.",
+      "match": {
+        "rime": [
+          "oang",
+          "uyên",
+          "iên"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Khi trời sắp sáng, những đám mây từ màu đen chuyển sang những màu gì?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chân trời",
+          "options": [
+            "chân trời",
+            "đằng đông",
+            "đám mây"
+          ]
+        },
+        {
+          "answer": "da cam",
+          "options": [
+            "da cam",
+            "đỏ thẫm",
+            "vàng nhợt"
+          ]
+        },
+        {
+          "answer": "xám trắng",
+          "options": [
+            "xám trắng",
+            "dần dần",
+            "cảnh vật"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "tím",
+          "options": [
+            "tím",
+            "tìm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "đất bãi",
+      "template": "đ_ bãi",
+      "answer": "ất",
+      "options": [
+        "ất",
+        "ắt",
+        "át"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "thẫm",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

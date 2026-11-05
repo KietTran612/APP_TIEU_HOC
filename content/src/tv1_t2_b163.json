@@ -1,0 +1,183 @@
+{
+  "lesson_id": "tv1_t2_b163",
+  "book": "tv1_t2_1996",
+  "lesson_no": 163,
+  "type": "cau_do",
+  "title": "Câu đố",
+  "week": 32,
+  "source": {
+    "pages": [
+      128
+    ],
+    "scan_file": "065",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b163_ddoos_nhau": "Chị đứng bên bàn học ra câu đố, em gái ngồi chống cằm suy nghĩ, cửa sổ phía sau",
+    "img_b163_luwowix_caayf": "Chiếc cày có lưỡi cày bằng gang sáng bóng, cán gỗ",
+    "img_b163_hofn_gachj": "Mấy viên gạch đỏ hình hộp chữ nhật xếp chồng lên nhau",
+    "img_b163_cais_xeengr": "Cái xẻng sắt cán gỗ dựng bên đống đất"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Đáp án câu đố in ở trang \"Trả lời câu đố\" (tr.138); app hiện đáp án ngay sau mỗi câu đố, sau khi bé chọn tranh. Tranh đáp án và tranh để chọn được vẽ thêm."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b163_ddoos_nhau",
+      "say": "Chị đố em. Con cùng đoán nhé.",
+      "word": "đố nhau"
+    },
+    {
+      "type": "title",
+      "text": "Câu đố"
+    },
+    {
+      "type": "sentence",
+      "text": "Cái gì mà lưỡi bằng gang,"
+    },
+    {
+      "type": "sentence",
+      "text": "Xới lên mặt đất những hàng thẳng băng,"
+    },
+    {
+      "type": "sentence",
+      "text": "Giúp nhà có gạo để ăn,"
+    },
+    {
+      "type": "sentence",
+      "text": "Siêng làm thì lưỡi sáng bằng mặt gương?"
+    },
+    {
+      "type": "riddle_answer",
+      "answer": "Lưỡi cày",
+      "image": "img_b163_luwowix_caayf",
+      "options": [
+        {
+          "image": "img_b163_hofn_gachj",
+          "text": "Hòn gạch"
+        },
+        {
+          "image": "img_b163_cais_xeengr",
+          "text": "cái xẻng"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "text": "Hòn gì bằng đất nặn ra,"
+    },
+    {
+      "type": "sentence",
+      "text": "Xếp vào lò lửa nung ba bốn ngày,"
+    },
+    {
+      "type": "sentence",
+      "text": "Khi ra da đỏ hây hây,"
+    },
+    {
+      "type": "sentence",
+      "text": "Thân hình vuông vắn đem xây cửa nhà?"
+    },
+    {
+      "type": "riddle_answer",
+      "answer": "Hòn gạch",
+      "image": "img_b163_hofn_gachj",
+      "options": [
+        {
+          "image": "img_b163_luwowix_caayf",
+          "text": "Lưỡi cày"
+        },
+        {
+          "image": "img_b163_cais_xeengr",
+          "text": "cái xẻng"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "Lưỡi cày",
+          "prompt": "Cái gì mà lưỡi bằng gang, xới lên mặt đất những hàng thẳng băng, giúp nhà có gạo để ăn, siêng làm thì lưỡi sáng bằng mặt gương?",
+          "answer": "img_b163_luwowix_caayf",
+          "options": [
+            "img_b163_hofn_gachj",
+            "img_b163_luwowix_caayf",
+            "img_b163_cais_xeengr"
+          ]
+        },
+        {
+          "word": "Hòn gạch",
+          "prompt": "Hòn gì bằng đất nặn ra, xếp vào lò lửa nung ba bốn ngày, khi ra da đỏ hây hây, thân hình vuông vắn đem xây cửa nhà?",
+          "answer": "img_b163_hofn_gachj",
+          "options": [
+            "img_b163_cais_xeengr",
+            "img_b163_luwowix_caayf",
+            "img_b163_hofn_gachj"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "lưỡi cày",
+          "options": [
+            "lưỡi cày",
+            "hòn gạch",
+            "lò lửa"
+          ]
+        },
+        {
+          "answer": "thẳng băng",
+          "options": [
+            "thẳng băng",
+            "vuông vắn",
+            "hây hây"
+          ]
+        },
+        {
+          "answer": "mặt gương",
+          "options": [
+            "mặt gương",
+            "mặt đất",
+            "cửa nhà"
+          ]
+        },
+        {
+          "answer": "xới lên",
+          "options": [
+            "xới lên",
+            "nặn ra",
+            "đem xây"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "gang",
+          "options": [
+            "gang",
+            "găng"
+          ]
+        }
+      ]
+    }
+  ]
+}
