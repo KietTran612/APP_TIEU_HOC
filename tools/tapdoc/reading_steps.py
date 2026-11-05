@@ -46,7 +46,9 @@ def _current_reading(b, where: str) -> list[dict]:
 
 
 def step_title(b, step: dict, where: str) -> dict:
-    b.reading = []
+    # Tên bài (hoặc tên phần trang chính tả) mở một bài đọc mới; câu lệnh giữa các câu hỏi ("instruction") thì không.
+    if not step.get("instruction"):
+        b.reading = []
     sub = step.get("sub", "")
     return {"type": "title", "marker": step.get("marker", ""), "text": step["text"],
             "audio": b._sentence_audio(step["text"], where), "labels": [sub] if sub else []}

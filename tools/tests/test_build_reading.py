@@ -39,6 +39,15 @@ class TitleTest(unittest.TestCase):
         self.assertEqual(st["labels"], [])
 
 
+class InstructionTitleTest(unittest.TestCase):
+    def test_instruction_keeps_reading(self):
+        # "Đánh vần và đọc những tiếng: cho, chợ..." (bài Cái bống) đứng giữa các câu hỏi, trước bước học thuộc lòng.
+        st = last_step({"type": "title", "text": "Đánh vần và đọc những tiếng: cho, chợ.", "instruction": True},
+                       {"type": "memorize"})
+        self.assertEqual(st["type"], "memorize")
+        self.assertEqual(len(st["rows"]), len(TRUONG_EM))
+
+
 class PassageTest(unittest.TestCase):
     def test_reuses_sentence_audio(self):
         r = built({"type": "passage", "layout": "poem", "author": "NGUYỄN BÙI VỢI"})
