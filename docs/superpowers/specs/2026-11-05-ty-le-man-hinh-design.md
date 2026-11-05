@@ -44,7 +44,8 @@ App "Tập đọc lớp 1" ra bản **Android (APK) và iOS trước**, chạy t
 
 **Điều cấm** (làm ra như vậy là hỏng, dù chạy được)
 - Vùng chạm nhỏ hơn 160 đơn vị canvas, hoặc chữ bị tràn, trên bất kỳ cỡ màn nào trong mục 7.
-- Nút nhảy chỗ hay phần học đổi cỡ giữa các bước của cùng một bài trên cùng một máy. Bé phải thấy nút ở chỗ quen.
+- Nút nhảy chỗ giữa các bước của cùng một bài trên cùng một máy. Bé phải thấy nút ở chỗ quen.
+- Phần học nhỏ hơn trên máy tính bảng (vùng chạm dưới 160) ở bất kỳ bước nào.
 - Đổi cỡ cửa sổ hay xoay máy làm bước học chạy lại từ đầu, phát lại giọng đọc, mất tiến độ hay mất thẻ đang kéo dở.
 - Khoảng trống lớn chỉ dồn về một bên khiến màn trông lệch. Nội dung giữ cân giữa màn.
 
@@ -96,7 +97,9 @@ App "Tập đọc lớp 1" ra bản **Android (APK) và iOS trước**, chạy t
 - Màn 16:9 nằm gần ngưỡng [Builder: ngưỡng và cách tính].
 - Ngay ở ngưỡng, hai kiểu cho phần học gần bằng nhau, nên không có cú nhảy cỡ lớn.
 
-**Không đổi kiểu giữa chừng:** kiểu và mức phóng to chỉ tính lại khi kích thước màn hay vùng an toàn thật sự đổi (xoay dọc trên máy tính bảng, đổi cỡ cửa sổ). Không tính lại khi sang bước.
+**Không đổi kiểu giữa chừng:** kiểu và mức phóng to chỉ tính lại khi kích thước màn hay vùng an toàn thật sự đổi (xoay dọc trên máy tính bảng, đổi cỡ cửa sổ). Khi sang bước, kiểu (vị trí nút) giữ nguyên; riêng mức phóng to của phần học được tính theo nội dung của bước (xem dưới).
+
+**Cỡ phần học theo từng bước [Chốt 05/11/2026]:** chủ dự án đồng ý mỗi bước to khác nhau, miễn hợp lý cho việc học. Ở kiểu mép, bước gọn trong khung 1400×680 to hết cỡ; bước có nội dung vượt khung (ví dụ bảng đọc nhiều hàng) to ít hơn cho vừa màn, nhưng không nhỏ hơn mức 1 (máy tính bảng).
 
 **Hiệu ứng vẫn đúng chỗ ở cả hai kiểu:** lật trang, sao giấy bung ra, thẻ bay về chỗ, kéo thả, thẻ sáng theo giọng đọc. Ví dụ: kéo thẻ trong phần học đã phóng to thì thẻ vẫn bám ngón tay.
 
@@ -199,7 +202,7 @@ Mỗi cỡ kiểm:
 
 **Test hành vi:**
 - Chọn đúng kiểu góc/mép theo cỡ màn.
-- Kiểu và cỡ phần học không đổi khi sang bước.
+- Kiểu (vị trí nút) không đổi khi sang bước; mức phóng to của mỗi bước ≥ 1 và bước gọn trong khung thì to hết cỡ.
 - Đổi cỡ màn giữa bước thì bước không chạy lại, giọng đọc không phát lại.
 - Kéo thả và hiệu ứng đúng chỗ khi phần học đang phóng to.
 

@@ -23,7 +23,7 @@
    - Chỉ đo bước đang hiện, kể cả phần đang ẩn sẽ hiện sau. Chữ đo theo từng ký tự vẽ ra.
    - Lý do: vài bước (bảng đọc nhiều hàng như bài 80) cao hơn khung 680. Nếu phóng to theo khung, thẻ sẽ ra khỏi màn.
    - Hệ quả: các bước này to ít hơn các bước khác.
-   - Điểm này lệch với bản thiết kế ("phần học không đổi cỡ giữa các bước"). Chủ dự án quyết. Muốn đổi thì sửa ở `LessonScreen.FitStage`.
+   - Chủ dự án đã chốt ngày 05/11/2026: "mỗi bước có thể tùy chỉnh to khác nhau nhưng cần hợp lý và thích hợp để học tập". Bản thiết kế đã sửa theo.
 2. **Gốc khung Ghi chú phủ kín màn**, để các nút ở hai mép không bấm được khi khung đang mở.
 3. **Chữ thẻ bài tự co tới 22 (trước là 26)**, vì tên bài chính tả tập 2 bài 138 tràn.
 4. **Test đi hết mọi bài chỉ chạy 5 cỡ.** Ba cỡ còn lại (16:10, xoay dọc, gập) có cùng khung 1440×1080 như iPad 4:3.
