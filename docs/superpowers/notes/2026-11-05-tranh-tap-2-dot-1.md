@@ -31,3 +31,34 @@ Session tập 2 dùng đúng mã và mô tả dưới đây trong `images` của
 | 90 | `img_b90_ddaamf_sen` | Đầm sen hoa hồng nở giữa lá xanh, cô gái ngồi thuyền thúng hái sen |
 
 Ghi chú: `img_b87_lawng_bacs` vẽ lăng Bác (công trình có thật) theo nét tranh sách, gắn `can_duyet` khi đưa vào bài.
+
+## Đợt 1b (bài 91–99)
+
+| Bài | Mã | Mô tả |
+|---|---|---|
+| 91 | `img_b91_caay_mias` | Cây mía, thân có đốt, lá dài |
+| 91 | `img_b91_con_ruaf` | Con rùa bò, mai có vân |
+| 91 | `img_b91_duwa_haaus` | Quả dưa hấu xanh, bên cạnh một miếng dưa bổ ra ruột đỏ |
+| 91 | `img_b91_thowj_mor` | Anh thợ mỏ đội mũ có đèn, đeo túi, đi trong lò than, ánh đèn chiếu vào vỉa than |
+| 92 | `img_b92_rapj_xieecs` | Rạp xiếc: nghệ sĩ đi dây giữa sân khấu, khán giả ngồi quanh xem |
+| 92 | `img_b92_thieepj_mowif` | Tấm thiệp mời gấp đôi trang trí hoa (không có chữ) |
+| 92 | `img_b92_xem_xieecs` | Buổi xiếc: chú voi đá bóng, khỉ đi xe đạp, chú hề, khán giả ngồi xem |
+| 93 | `img_b93_ddenf_ddieenj` | Chiếc đèn điện treo có chụp, toả sáng |
+| 93 | `img_b93_yeen_nguwaj` | Con ngựa trên lưng có yên ngựa, đang cúi ăn cỏ |
+| 93 | `img_b93_tauf_ra_khowi` | Con tàu đánh cá ra khơi trên biển lặng, chim hải âu bay |
+| 94 | `img_b94_bao_dieem` | Bao diêm (hộp diêm) có mấy que diêm đầu đỏ, không có chữ trên vỏ |
+| 94 | `img_b94_chieecs_yeems` | Bé gái nhỏ mặc chiếc yếm, ngồi chơi |
+| 94 | `img_b94_ddanf_kieens` | Đàn kiến chăm chỉ tha mồi (lá, xác côn trùng) về tổ |
+| 95 | `img_b95_cof_ddi_ddons_muwa` | Con cò trắng bay giữa trời mưa trên cánh đồng quê, mây đen |
+| 96 | `img_b96_canhs_dieeuf` | Cánh diều bay trên trời giữa mây |
+| 96 | `img_b96_yeeu_bes` | Mẹ ôm bé vào lòng âu yếm |
+| 96 | `img_b96_coo_giaos_dayj_hocj` | Cô giáo cúi xuống chỉ bài cho các bạn học sinh đang ngồi viết trong lớp |
+| 97 | `img_b97_taapj_vieets` | Cậu bé ngồi chăm chú tập viết vào vở |
+| 97 | `img_b97_yeets_kieeu` | Chiếc thuyền buồm gỗ thời xưa trên mặt sông (gợi tích Yết Kiêu) |
+| 98 | `img_b98_saauf_rieeng` | Hai quả sầu riêng vỏ nhiều gai |
+| 98 | `img_b98_con_yeengr` | Con yểng (chim nhồng) lông đen, mỏ vàng đậu trên cành |
+| 98 | `img_b98_kieengf_ba_chaan` | Một bạn nhỏ đứng vững, tay chống hông, mấy bạn khác chụm đầu thì thầm bàn tán bên cạnh |
+| 99 | `img_b99_canhs_dieeuf_no_gios` | Cậu bé thả diều trên cánh đồng, cánh diều bay cao giữa mây, hàng dừa |
+
+Chưa vẽ, chờ chủ dự án quyết: tranh **bản đồ Việt Nam** của bài 97 ("Đẹp thay sông núi Việt Nam"). Bản đồ do AI vẽ dễ sai hình và thiếu quần đảo Hoàng Sa, Trường Sa, nên nên dùng bản đồ chuẩn hoặc chủ dự án duyệt kỹ.
+Gắn `can_duyet`: `img_b97_yeets_kieeu` (nhân vật lịch sử, tranh chỉ vẽ thuyền).
