@@ -1,0 +1,209 @@
+{
+  "lesson_id": "tv1_t2_b92",
+  "book": "tv1_t2_1996",
+  "lesson_no": 92,
+  "type": "van_moi",
+  "title": "iêc iêp",
+  "source": {
+    "pages": [
+      26,
+      27
+    ],
+    "scan_file": "014",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "iêc",
+    "iêp"
+  ],
+  "images": {
+    "img_b92_rapj_xieecs": "Rạp xiếc tròn, cô diễn viên đi trên dây, khán giả ngồi kín xung quanh",
+    "img_b92_thieeps_mowif": "Tấm thiếp mời gấp đôi có hoa trang trí (không viết chữ)",
+    "img_b92_xem_xieecs": "Rạp xiếc: chú voi đá bóng, khỉ đi xe đạp, chú hề, khán giả vỗ tay"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Vần có iê/yê (iêc, iêp, iên, yên…): sách không in cách đánh vần, app tạm đánh vần chữ ghép iê đọc là \"i-ê\" theo bảng gọi tên chữ ghép (tập một, tr.121) rồi đến âm cuối, ví dụ \"iê – cờ – iêc\". Các vần uô, ươ ở bài sau làm tương tự. Chuỗi đánh vần này cần phụ huynh, giáo viên duyệt."
+    }
+  ],
+  "part1": [
+    {
+      "type": "unit",
+      "text": "iêc"
+    },
+    {
+      "type": "keyword",
+      "text": "rạp xiếc",
+      "image": "img_b92_rapj_xieecs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "rạp xiếc",
+        "xiếc",
+        "iêc"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "iêc",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "xiếc",
+      "drag_tone": true,
+      "then": "rạp xiếc"
+    },
+    {
+      "type": "unit",
+      "text": "iêp"
+    },
+    {
+      "type": "keyword",
+      "text": "thiếp mời",
+      "image": "img_b92_thieeps_mowif"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "thiếp mời",
+        "thiếp",
+        "iêp"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "iêp",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "thiếp",
+      "drag_tone": true,
+      "then": "thiếp mời"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "xanh biếc"
+        },
+        {
+          "text": "mỏ thiếc"
+        },
+        {
+          "text": "xí nghiệp"
+        },
+        {
+          "text": "tiếp khách"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b92_xem_xieecs",
+      "say": "Ở rạp xiếc, voi đá bóng, khỉ đi xe đạp.",
+      "word": "xem xiếc"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Chủ nhật, ba má dẫn Hồng đi xem xiếc."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Hồng rất thích xem khỉ đi xe đạp, chó làm tính, voi đá bóng."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "iêc",
+          "options": [
+            "iêc",
+            "iêp",
+            "êch"
+          ]
+        },
+        {
+          "answer": "iêp",
+          "options": [
+            "iêp",
+            "iêc",
+            "êp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "thiếc",
+          "options": [
+            "thiếc",
+            "thiếp"
+          ]
+        },
+        {
+          "answer": "tiếp",
+          "options": [
+            "tiếp",
+            "tếp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "thiếp mời",
+      "template": "th_ mời",
+      "answer": "iếp",
+      "options": [
+        "iếp",
+        "iếc",
+        "ếp"
+      ],
+      "image": "img_b92_thieeps_mowif"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "rạp xiếc",
+          "answer": "img_b92_rapj_xieecs",
+          "options": [
+            "img_b92_rapj_xieecs",
+            "img_b92_thieeps_mowif",
+            "img_b92_xem_xieecs"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "thiếp mời",
+          "answer": "img_b92_thieeps_mowif",
+          "options": [
+            "img_b92_thieeps_mowif",
+            "img_b92_rapj_xieecs",
+            "img_b92_xem_xieecs"
+          ]
+        }
+      ]
+    }
+  ]
+}

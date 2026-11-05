@@ -1,0 +1,262 @@
+{
+  "lesson_id": "tv1_t2_b91",
+  "book": "tv1_t2_1996",
+  "lesson_no": 91,
+  "type": "van_moi",
+  "title": "ia ua ưa",
+  "source": {
+    "pages": [
+      24,
+      25
+    ],
+    "scan_file": "013",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ia",
+    "ua",
+    "ưa"
+  ],
+  "images": {
+    "img_b91_caay_mias": "Khóm cây mía đứng thẳng, lá dài xoè ra",
+    "img_b91_con_ruaf": "Con rùa mai có vân, thò đầu bò trên mặt đất",
+    "img_b91_duwa_haaus": "Quả dưa hấu vỏ xanh, bên cạnh có miếng dưa bổ ra ruột đỏ",
+    "img_b91_thowj_mor": "Người thợ mỏ đội mũ có đèn, đeo túi, cầm xẻng đi trong hầm than sáng đèn"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "sach",
+      "text": "\"trái dừa (quả dừa)\": sách ghi cả hai cách gọi."
+    }
+  ],
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ia"
+    },
+    {
+      "type": "keyword",
+      "text": "cây mía",
+      "image": "img_b91_caay_mias"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cây mía",
+        "mía",
+        "ia"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ia",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "mía",
+      "drag_tone": true,
+      "then": "cây mía"
+    },
+    {
+      "type": "unit",
+      "text": "ua"
+    },
+    {
+      "type": "keyword",
+      "text": "con rùa",
+      "image": "img_b91_con_ruaf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con rùa",
+        "rùa",
+        "ua"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ua",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "rùa",
+      "drag_tone": true,
+      "then": "con rùa"
+    },
+    {
+      "type": "unit",
+      "text": "ưa"
+    },
+    {
+      "type": "keyword",
+      "text": "dưa hấu",
+      "image": "img_b91_duwa_haaus"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "dưa hấu",
+        "dưa",
+        "ưa"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ưa",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "dưa",
+      "then": "dưa hấu"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "tia chớp"
+        },
+        {
+          "text": "bìa sách"
+        },
+        {
+          "text": "con cua"
+        },
+        {
+          "text": "múa lân"
+        },
+        {
+          "text": "trái dừa (quả dừa)"
+        },
+        {
+          "text": "con ngựa"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b91_thowj_mor",
+      "say": "Anh thợ mỏ đi vào hầm lấy than.",
+      "word": "thợ mỏ"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Vỉa than đen óng ánh"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Những hòn than đua rơi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bàn tay anh thợ mỏ"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đem lửa về khắp nơi."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ia",
+          "options": [
+            "ia",
+            "ua",
+            "ưa"
+          ]
+        },
+        {
+          "answer": "ưa",
+          "options": [
+            "ưa",
+            "ua",
+            "ia"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "dưa",
+          "options": [
+            "dưa",
+            "dừa"
+          ]
+        },
+        {
+          "answer": "múa",
+          "options": [
+            "múa",
+            "mía"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "con rùa",
+      "template": "con r_",
+      "answer": "ùa",
+      "options": [
+        "ùa",
+        "ừa",
+        "ìa"
+      ],
+      "image": "img_b91_con_ruaf"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cây mía",
+          "answer": "img_b91_caay_mias",
+          "options": [
+            "img_b91_caay_mias",
+            "img_b91_con_ruaf",
+            "img_b91_duwa_haaus"
+          ]
+        },
+        {
+          "word": "dưa hấu",
+          "answer": "img_b91_duwa_haaus",
+          "options": [
+            "img_b91_duwa_haaus",
+            "img_b91_caay_mias",
+            "img_b91_thowj_mor"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vỉa",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

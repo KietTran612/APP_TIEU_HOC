@@ -1,0 +1,220 @@
+{
+  "lesson_id": "tv1_t2_b93",
+  "book": "tv1_t2_1996",
+  "lesson_no": 93,
+  "type": "van_moi",
+  "title": "iên yên",
+  "source": {
+    "pages": [
+      28,
+      29
+    ],
+    "scan_file": "015",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "iên",
+    "yên"
+  ],
+  "images": {
+    "img_b93_ddenf_ddieenj": "Cái đèn điện có chao đèn treo, bóng đèn toả sáng",
+    "img_b93_yeen_nguwaj": "Con ngựa đang cúi ăn cỏ, trên lưng có cái yên",
+    "img_b93_tauf_ra_khowi": "Con tàu đánh cá rẽ sóng ra khơi, chim hải âu bay trên trời"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "iên"
+    },
+    {
+      "type": "keyword",
+      "text": "đèn điện",
+      "image": "img_b93_ddenf_ddieenj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "đèn điện",
+        "điện",
+        "iên"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "iên",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "điện",
+      "drag_tone": true,
+      "then": "đèn điện"
+    },
+    {
+      "type": "unit",
+      "text": "yên"
+    },
+    {
+      "type": "keyword",
+      "text": "yên ngựa",
+      "image": "img_b93_yeen_nguwaj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "yên ngựa",
+        "yên",
+        "yên"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "yên",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "yên",
+      "then": "yên ngựa"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "công viên"
+        },
+        {
+          "text": "kiến lửa"
+        },
+        {
+          "text": "chim yến"
+        },
+        {
+          "text": "yên xe"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b93_tauf_ra_khowi",
+      "say": "Tàu ra khơi đánh cá.",
+      "word": "tàu ra khơi"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Trời yên biển lặng"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Tàu ta ra khơi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đi tìm bãi cá"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nhanh nhanh, tàu ơi!"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "iên",
+          "options": [
+            "iên",
+            "iêc",
+            "iêp"
+          ]
+        },
+        {
+          "answer": "yên",
+          "options": [
+            "yên",
+            "iêp",
+            "iêc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "điện",
+          "options": [
+            "điện",
+            "điền"
+          ]
+        },
+        {
+          "answer": "yến",
+          "options": [
+            "yến",
+            "yên"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "đèn điện",
+      "template": "đèn đ_",
+      "answer": "iện",
+      "options": [
+        "iện",
+        "iệc",
+        "iệp"
+      ],
+      "image": "img_b93_ddenf_ddieenj"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "yên ngựa",
+          "answer": "img_b93_yeen_nguwaj",
+          "options": [
+            "img_b93_yeen_nguwaj",
+            "img_b93_ddenf_ddieenj",
+            "img_b93_tauf_ra_khowi"
+          ]
+        },
+        {
+          "word": "đèn điện",
+          "answer": "img_b93_ddenf_ddieenj",
+          "options": [
+            "img_b93_ddenf_ddieenj",
+            "img_b93_yeen_nguwaj",
+            "img_b93_tauf_ra_khowi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "biển",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

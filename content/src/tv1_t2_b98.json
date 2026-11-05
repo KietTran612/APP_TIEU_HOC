@@ -1,0 +1,217 @@
+{
+  "lesson_id": "tv1_t2_b98",
+  "book": "tv1_t2_1996",
+  "lesson_no": 98,
+  "type": "van_moi",
+  "title": "iêng yêng",
+  "source": {
+    "pages": [
+      38,
+      39
+    ],
+    "scan_file": "020",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "iêng",
+    "yêng"
+  ],
+  "images": {
+    "img_b98_quar_saauf_rieeng": "Hai quả sầu riêng vỏ xanh nhiều gai nhọn",
+    "img_b98_con_yeengr": "Con yểng (chim nhồng) lông đen bóng, đậu trên cành",
+    "img_b98_khoong_nghe_xui": "Cậu bé đứng chống nạnh, quay đi, không nghe mấy bạn đứng xa thì thầm rủ rê"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[11]",
+        "note": "tranh cảnh không có từ trên trang; chữ \"vững lòng\" và lời dẫn do Claude đề xuất"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "kind": "sach",
+      "text": "\"siêng học (chăm học)\": sách giải nghĩa \"siêng\" là \"chăm\"."
+    }
+  ],
+  "part1": [
+    {
+      "type": "unit",
+      "text": "iêng"
+    },
+    {
+      "type": "keyword",
+      "text": "quả sầu riêng",
+      "image": "img_b98_quar_saauf_rieeng"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả sầu riêng",
+        "riêng",
+        "iêng"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "iêng",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "riêng",
+      "then": "quả sầu riêng"
+    },
+    {
+      "type": "unit",
+      "text": "yêng"
+    },
+    {
+      "type": "keyword",
+      "text": "con yểng",
+      "image": "img_b98_con_yeengr"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con yểng",
+        "yểng",
+        "yêng"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "yêng",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "yểng",
+      "drag_tone": true,
+      "then": "con yểng"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "siêng học (chăm học)"
+        },
+        {
+          "text": "tiếng Việt"
+        },
+        {
+          "text": "chim yểng học nói"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b98_khoong_nghe_xui",
+      "say": "Bạn nhỏ không nghe lời rủ rê của các bạn.",
+      "word": "vững lòng"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Dù ai nói ngả nói nghiêng"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Lòng ta vẫn vững như kiềng ba chân."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "iêng",
+          "options": [
+            "iêng",
+            "iêu",
+            "iêm"
+          ]
+        },
+        {
+          "answer": "yêng",
+          "options": [
+            "yêng",
+            "yêu",
+            "yêm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "tiếng",
+          "options": [
+            "tiếng",
+            "tiếc"
+          ]
+        },
+        {
+          "answer": "kiềng",
+          "options": [
+            "kiềng",
+            "kiều"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "sầu riêng",
+      "template": "sầu r_",
+      "answer": "iêng",
+      "options": [
+        "iêng",
+        "iêu",
+        "iêm"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "quả sầu riêng",
+          "answer": "img_b98_quar_saauf_rieeng",
+          "options": [
+            "img_b98_quar_saauf_rieeng",
+            "img_b98_con_yeengr",
+            "img_b98_khoong_nghe_xui"
+          ]
+        },
+        {
+          "word": "con yểng",
+          "answer": "img_b98_con_yeengr",
+          "options": [
+            "img_b98_con_yeengr",
+            "img_b98_quar_saauf_rieeng",
+            "img_b98_khoong_nghe_xui"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vẫn",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

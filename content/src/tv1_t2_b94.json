@@ -1,0 +1,210 @@
+{
+  "lesson_id": "tv1_t2_b94",
+  "book": "tv1_t2_1996",
+  "lesson_no": 94,
+  "type": "van_moi",
+  "title": "iêm yêm",
+  "source": {
+    "pages": [
+      30,
+      31
+    ],
+    "scan_file": "016",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "iêm",
+    "yêm"
+  ],
+  "images": {
+    "img_b94_bao_dieem": "Bao diêm (hộp diêm) hình hộp chữ nhật, mấy que diêm đầu đỏ (không có chữ)",
+    "img_b94_chieecs_yeems": "Em bé gái buộc nơ trên tóc, mặc chiếc yếm đỏ, ngồi chơi",
+    "img_b94_ddanf_kieens": "Đàn kiến xếp hàng tha mồi, mấy con khiêng chiếc lá và con châu chấu về tổ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "iêm"
+    },
+    {
+      "type": "keyword",
+      "text": "bao diêm",
+      "image": "img_b94_bao_dieem"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bao diêm",
+        "diêm",
+        "iêm"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "iêm",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "diêm",
+      "then": "bao diêm"
+    },
+    {
+      "type": "unit",
+      "text": "yêm"
+    },
+    {
+      "type": "keyword",
+      "text": "chiếc yếm",
+      "image": "img_b94_chieecs_yeems"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "chiếc yếm",
+        "yếm",
+        "yêm"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "yêm",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "yếm",
+      "drag_tone": true,
+      "then": "chiếc yếm"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "lúa chiêm"
+        },
+        {
+          "text": "cái liềm"
+        },
+        {
+          "text": "âu yếm"
+        },
+        {
+          "text": "bé đeo yếm dãi"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b94_ddanf_kieens",
+      "say": "Đàn kiến tha mồi về tổ.",
+      "word": "đàn kiến"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đàn kiến chăm chỉ đi kiếm mồi."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Chúng tha mồi về tổ để làm của chung."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "iêm",
+          "options": [
+            "iêm",
+            "iêp",
+            "iêc"
+          ]
+        },
+        {
+          "answer": "yêm",
+          "options": [
+            "yêm",
+            "iêp",
+            "iêc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "liềm",
+          "options": [
+            "liềm",
+            "liễm"
+          ]
+        },
+        {
+          "answer": "kiếm",
+          "options": [
+            "kiếm",
+            "kiệm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "bao diêm",
+      "template": "bao d_",
+      "answer": "iêm",
+      "options": [
+        "iêm",
+        "iêp",
+        "iêc"
+      ],
+      "image": "img_b94_bao_dieem"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "chiếc yếm",
+          "answer": "img_b94_chieecs_yeems",
+          "options": [
+            "img_b94_chieecs_yeems",
+            "img_b94_bao_dieem",
+            "img_b94_ddanf_kieens"
+          ]
+        },
+        {
+          "word": "bao diêm",
+          "answer": "img_b94_bao_dieem",
+          "options": [
+            "img_b94_bao_dieem",
+            "img_b94_chieecs_yeems",
+            "img_b94_ddanf_kieens"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "dãi",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

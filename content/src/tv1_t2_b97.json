@@ -1,0 +1,225 @@
+{
+  "lesson_id": "tv1_t2_b97",
+  "book": "tv1_t2_1996",
+  "lesson_no": 97,
+  "type": "van_moi",
+  "title": "iêt yêt",
+  "source": {
+    "pages": [
+      36,
+      37
+    ],
+    "scan_file": "019",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "iêt",
+    "yêt"
+  ],
+  "images": {
+    "img_b97_taapj_vieets": "Cậu bé ngồi bàn chăm chú tập viết vào vở",
+    "img_b97_tauf_yeets_kieeu": "Con tàu thuỷ lớn có cột buồm và cabin đang chạy trên biển (tàu Yết Kiêu, không viết chữ)",
+    "img_b97_banr_ddoof_vieetj_nam": "Bản đồ hình dáng nước Việt Nam, có ngôi sao ở chỗ Hà Nội, biển xanh bao quanh, các đảo nhỏ (không viết chữ)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[6]",
+        "note": "Yết Kiêu: tên riêng (tên con tàu trên tranh sách, đặt theo tên người)"
+      },
+      {
+        "where": "part1[11]",
+        "note": "tranh bản đồ Việt Nam: cần soát hình dáng và các đảo"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "iêt"
+    },
+    {
+      "type": "keyword",
+      "text": "tập viết",
+      "image": "img_b97_taapj_vieets"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "tập viết",
+        "viết",
+        "iêt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "iêt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "viết",
+      "drag_tone": true,
+      "then": "tập viết"
+    },
+    {
+      "type": "unit",
+      "text": "yêt"
+    },
+    {
+      "type": "keyword",
+      "text": "Yết Kiêu",
+      "image": "img_b97_tauf_yeets_kieeu"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "Yết Kiêu",
+        "Yết",
+        "yêt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "yêt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "Yết",
+      "drag_tone": true,
+      "then": "Yết Kiêu"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "Việt Nam"
+        },
+        {
+          "text": "tình bạn thắm thiết"
+        },
+        {
+          "text": "yết hầu"
+        },
+        {
+          "text": "niêm yết"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b97_banr_ddoof_vieetj_nam",
+      "say": "Đây là bản đồ nước Việt Nam.",
+      "word": "Việt Nam"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đẹp thay sông núi Việt Nam"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Biển Đông một dải xanh lam cõi bờ."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "iêt",
+          "options": [
+            "iêt",
+            "iêm",
+            "iêu"
+          ]
+        },
+        {
+          "answer": "yêt",
+          "options": [
+            "yêt",
+            "yêu",
+            "yêm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "viết",
+          "options": [
+            "viết",
+            "viện"
+          ]
+        },
+        {
+          "answer": "thiết",
+          "options": [
+            "thiết",
+            "thiếu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "tập viết",
+      "template": "tập v_",
+      "answer": "iết",
+      "options": [
+        "iết",
+        "iếu",
+        "iếm"
+      ],
+      "image": "img_b97_taapj_vieets"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "tập viết",
+          "answer": "img_b97_taapj_vieets",
+          "options": [
+            "img_b97_taapj_vieets",
+            "img_b97_tauf_yeets_kieeu",
+            "img_b97_banr_ddoof_vieetj_nam"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "Việt Nam",
+          "answer": "img_b97_banr_ddoof_vieetj_nam",
+          "options": [
+            "img_b97_banr_ddoof_vieetj_nam",
+            "img_b97_taapj_vieets",
+            "img_b97_tauf_yeets_kieeu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "dải",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

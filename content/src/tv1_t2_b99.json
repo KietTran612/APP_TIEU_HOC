@@ -1,0 +1,196 @@
+{
+  "lesson_id": "tv1_t2_b99",
+  "book": "tv1_t2_1996",
+  "lesson_no": 99,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      40,
+      41
+    ],
+    "scan_file": "021",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "iêu",
+    "yêu",
+    "iêt",
+    "yêt",
+    "iêng",
+    "yêng"
+  ],
+  "images": {
+    "img_b99_tha_dieeuf": "Cậu bé thả diều trên bãi cỏ, cánh diều bay cao giữa mây, hàng cau bên cạnh"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "marker": "●",
+      "rows": [
+        {
+          "rime": "iêu",
+          "word": "chiếc chiếu"
+        },
+        {
+          "rime": "yêu",
+          "word": "yêu quý"
+        },
+        {
+          "rime": "iêt",
+          "word": "viết đẹp"
+        },
+        {
+          "rime": "yêt",
+          "word": "yết hầu"
+        },
+        {
+          "rime": "iêng",
+          "word": "cái chiêng"
+        },
+        {
+          "rime": "yêng",
+          "word": "con yểng"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b99_tha_dieeuf",
+      "say": "Bạn nhỏ thả diều, diều bay lên cao.",
+      "word": "thả diều"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Cánh diều no gió"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Sáo nó thổi vang"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Sao trời trôi qua"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Diều thành trăng vàng..."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cánh diều no gió"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Tiếng nó chơi vơi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Diều là hạt cau"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Phơi trên nong trời."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "iêt",
+          "options": [
+            "iêt",
+            "iêu",
+            "iêng"
+          ]
+        },
+        {
+          "answer": "yêu",
+          "options": [
+            "yêu",
+            "yêng",
+            "yêt"
+          ]
+        },
+        {
+          "answer": "iêng",
+          "options": [
+            "iêng",
+            "iêu",
+            "iêt"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "chiếu",
+          "options": [
+            "chiếu",
+            "chiếc"
+          ]
+        },
+        {
+          "answer": "chiêng",
+          "options": [
+            "chiêng",
+            "chiều"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "viết đẹp",
+      "template": "v_ đẹp",
+      "answer": "iết",
+      "options": [
+        "iết",
+        "iếu",
+        "iếng"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "con yểng",
+          "options": [
+            "con yểng",
+            "yết hầu",
+            "yêu quý"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "thổi",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

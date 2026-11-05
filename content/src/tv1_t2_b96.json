@@ -1,0 +1,220 @@
+{
+  "lesson_id": "tv1_t2_b96",
+  "book": "tv1_t2_1996",
+  "lesson_no": 96,
+  "type": "van_moi",
+  "title": "iêu yêu",
+  "source": {
+    "pages": [
+      34,
+      35
+    ],
+    "scan_file": "018",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "iêu",
+    "yêu"
+  ],
+  "images": {
+    "img_b96_canhs_dieeuf": "Cánh diều bay giữa trời có mây trắng, dây diều kéo xuống",
+    "img_b96_yeeu_bes": "Mẹ âu yếm ôm em bé vào lòng",
+    "img_b96_coo_giaos": "Cô giáo cúi xuống cầm tay chỉ bé tập viết trong lớp học, các bạn ngồi viết bài"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "iêu"
+    },
+    {
+      "type": "keyword",
+      "text": "cánh diều",
+      "image": "img_b96_canhs_dieeuf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cánh diều",
+        "diều",
+        "iêu"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "iêu",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "diều",
+      "drag_tone": true,
+      "then": "cánh diều"
+    },
+    {
+      "type": "unit",
+      "text": "yêu"
+    },
+    {
+      "type": "keyword",
+      "text": "yêu bé",
+      "image": "img_b96_yeeu_bes"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "yêu bé",
+        "yêu",
+        "yêu"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "yêu",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "yêu",
+      "then": "yêu bé"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "chiếc chiếu"
+        },
+        {
+          "text": "thiếu niên"
+        },
+        {
+          "text": "yêu quý cha mẹ"
+        },
+        {
+          "text": "kính yêu ông bà"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b96_coo_giaos",
+      "say": "Cô giáo dạy các bạn tập viết.",
+      "word": "cô giáo"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Em yêu cô giáo"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Chăm chỉ sớm chiều"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Dạy bảo mọi điều"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cho em khôn lớn."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "iêu",
+          "options": [
+            "iêu",
+            "iêm",
+            "iêp"
+          ]
+        },
+        {
+          "answer": "yêu",
+          "options": [
+            "yêu",
+            "yêm",
+            "iêp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "diều",
+          "options": [
+            "diều",
+            "điều"
+          ]
+        },
+        {
+          "answer": "chiếu",
+          "options": [
+            "chiếu",
+            "chiều"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "cánh diều",
+      "template": "cánh d_",
+      "answer": "iều",
+      "options": [
+        "iều",
+        "iềm",
+        "ìu"
+      ],
+      "image": "img_b96_canhs_dieeuf"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cánh diều",
+          "answer": "img_b96_canhs_dieeuf",
+          "options": [
+            "img_b96_canhs_dieeuf",
+            "img_b96_yeeu_bes",
+            "img_b96_coo_giaos"
+          ]
+        },
+        {
+          "word": "cô giáo",
+          "answer": "img_b96_coo_giaos",
+          "options": [
+            "img_b96_coo_giaos",
+            "img_b96_canhs_dieeuf",
+            "img_b96_yeeu_bes"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "bảo",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

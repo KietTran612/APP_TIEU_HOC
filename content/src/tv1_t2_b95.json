@@ -1,0 +1,191 @@
+{
+  "lesson_id": "tv1_t2_b95",
+  "book": "tv1_t2_1996",
+  "lesson_no": 95,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      32,
+      33
+    ],
+    "scan_file": "017",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ia",
+    "ua",
+    "ưa",
+    "iêc",
+    "iêp",
+    "iên",
+    "yên",
+    "iêm",
+    "yêm"
+  ],
+  "images": {
+    "img_b95_cof_ddi_mua": "Cánh đồng chiều mưa gió, mây đen vần vũ, con cò trắng bay về"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "marker": "●",
+      "rows": [
+        {
+          "rime": "ia",
+          "word": "cây mía"
+        },
+        {
+          "rime": "ua",
+          "word": "con cua"
+        },
+        {
+          "rime": "ưa",
+          "word": "bếp lửa"
+        },
+        {
+          "rime": "iêc",
+          "word": "rạp xiếc"
+        },
+        {
+          "rime": "iêp",
+          "word": "thiếp mời"
+        },
+        {
+          "rime": "iên",
+          "word": "đèn điện"
+        },
+        {
+          "rime": "yên",
+          "word": "yên xe"
+        },
+        {
+          "rime": "iêm",
+          "word": "bao diêm"
+        },
+        {
+          "rime": "yêm",
+          "word": "yếm dãi"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b95_cof_ddi_mua",
+      "say": "Trời mưa, cái cò bay về.",
+      "word": "cái cò"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Cái cò đi đón cơn mưa"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Tối tăm mù mịt ai đưa cò về?"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cò về thăm quán cùng quê"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Thăm cha, thăm mẹ, cò về thăm anh."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ua",
+          "options": [
+            "ua",
+            "ưa",
+            "ia"
+          ]
+        },
+        {
+          "answer": "iêp",
+          "options": [
+            "iêp",
+            "iêc",
+            "iêm"
+          ]
+        },
+        {
+          "answer": "yên",
+          "options": [
+            "yên",
+            "yêm",
+            "iêc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "lửa",
+          "options": [
+            "lửa",
+            "lừa"
+          ]
+        },
+        {
+          "answer": "mía",
+          "options": [
+            "mía",
+            "múa"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "thiếp mời",
+      "template": "th_ mời",
+      "answer": "iếp",
+      "options": [
+        "iếp",
+        "iếc",
+        "iếm"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "đèn điện",
+          "options": [
+            "đèn điện",
+            "bao diêm",
+            "rạp xiếc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "lửa",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

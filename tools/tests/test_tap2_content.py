@@ -99,5 +99,37 @@ class Tap2Lessons81To90(Tap2TestCase):
         self.assertTrue([n for n in L[lid_of(87)]["review"]["can_duyet"] if "lăng Bác" in n["note"]])
 
 
+
+class Tap2Lessons91To99(Tap2TestCase):
+    def test_basics(self):
+        for no in range(91, 100):
+            with self.subTest(no=no):
+                self.assert_lesson_basics(no)
+
+    def test_keywords(self):
+        self.assertEqual(texts(91, "keyword"), ["cây mía", "con rùa", "dưa hấu"])
+        self.assertEqual(texts(93, "keyword"), ["đèn điện", "yên ngựa"])
+        self.assertEqual(texts(97, "keyword"), ["tập viết", "Yết Kiêu"])
+        self.assertEqual(texts(98, "keyword"), ["quả sầu riêng", "con yểng"])
+
+    def test_digraph_spelling_keeps_ie_as_one_piece(self):
+        rime = steps(92, "spell")[0]["spell"]
+        self.assertEqual([p["text"] for p in rime["parts"]], ["iê", "c", "iêc"])
+        notes = [n["note"] for n in L[lid_of(92)]["review"]["can_duyet"]]
+        self.assertIn("quy tắc tạm: nguyên âm đôi", notes)
+
+    def test_first_digraph_lesson_explains_rule_to_parents(self):
+        app_notes = [n["text"] for n in L[lid_of(92)]["notes"] if n["kind"] == "khac_sach"]
+        self.assertTrue([t for t in app_notes if "i-ê" in t])
+
+    def test_book_glosses(self):
+        sach = [n["text"] for n in L[lid_of(98)]["notes"] if n["kind"] == "sach"]
+        self.assertTrue([t for t in sach if "chăm học" in t])
+
+    def test_review_tables(self):
+        b95 = steps(95, "rime_table")[0]
+        self.assertEqual(len([it for it in b95["items"] if it["role"] == "rime"]), 9)
+        self.assertEqual(texts(99, "sentence")[-1], "Phơi trên nong trời.")
+
 if __name__ == "__main__":
     unittest.main()
