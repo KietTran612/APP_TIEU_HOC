@@ -41,6 +41,9 @@ namespace TapDoc
         /// <summary>Khung chuẩn 1440 trong vùng an toàn của máy: màn người lớn, màn chuẩn bị.</summary>
         public RectTransform SafeRoot { get; private set; }
 
+        /// <summary>Popup "Gửi phụ huynh" đang mở; <c>null</c> khi không mở.</summary>
+        public NoticePopup Notice { get; private set; }
+
         /// <summary>Khung các màn của bé: rộng hết vùng an toàn trên điện thoại, 1440 trên máy tính bảng.</summary>
         public RectTransform KidRoot { get; private set; }
 
@@ -124,6 +127,8 @@ namespace TapDoc
             IsReady = true;
             // Chưa có hồ sơ thì màn chọn bé mở thẳng phần tạo hồ sơ; có rồi thì cho chọn bé.
             ShowProfiles();
+            // Lần đầu (hoặc nội dung cảnh báo mới hơn lần đã xem): popup "Gửi phụ huynh" đè lên màn chọn bé.
+            if (Progress.NoticeVersion < UiText.NoticeVersion) ShowNotice(firstRun: true);
         }
 
         public static AppRoot EnsureInstance()
@@ -260,6 +265,25 @@ namespace TapDoc
         {
             root.anchoredPosition = frame.position;
             root.sizeDelta = frame.size;
+        }
+
+        /// <summary>
+        /// Mở popup "Gửi phụ huynh". <paramref name="firstRun"/>: nút là "Đã hiểu" và bấm thì ghi nhớ đã xem; ngược lại
+        /// (mở lại từ Cài đặt) nút là "Đóng" và không đổi gì.
+        /// </summary>
+        public void ShowNotice(bool firstRun)
+        {
+            InitIfNeeded();
+            if (Notice != null) return;
+            Notice = NoticePopup.Show(Canvas.transform, Assets, firstRun, () =>
+            {
+                if (firstRun)
+                {
+                    Progress.NoticeVersion = UiText.NoticeVersion;
+                    SaveProgress();
+                }
+                Notice = null;
+            });
         }
 
         /// <summary>Màn chọn bé. Chưa có hồ sơ nào thì mở thẳng phần tạo hồ sơ.</summary>

@@ -289,7 +289,7 @@ namespace TapDoc
         }
 
         /// <summary>Lớp nền thụt vào <see cref="BorderWidth"/> so với cha, không nhận chạm.</summary>
-        private static Image AddFill(Transform parent, Sprite shape, Color color)
+        internal static Image AddFill(Transform parent, Sprite shape, Color color)
         {
             var go = new GameObject("Fill", typeof(RectTransform), typeof(Image));
             go.transform.SetParent(parent, false);
@@ -314,7 +314,7 @@ namespace TapDoc
             return go;
         }
 
-        private static void SetRounded(Image img, Color color)
+        internal static void SetRounded(Image img, Color color)
         {
             img.sprite = UiShapes.Rounded;
             img.type = Image.Type.Sliced;

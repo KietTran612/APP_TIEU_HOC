@@ -34,8 +34,21 @@ namespace TapDoc.Tests
             Motion.Scale = 0f; // tắt hiệu ứng: test chạy nhanh, ảnh chụp ổn định; test hiệu ứng tự bật lại
             StorePath = Path.Combine(Path.GetTempPath(), $"tapdoc_app_test_{Guid.NewGuid():N}.json");
             var path = StorePath;
-            AppRoot.StoreFactory = () => ProgressStore.Load(path);
+            NoticeSeen = true;
+            AppRoot.StoreFactory = () =>
+            {
+                var store = ProgressStore.Load(path);
+                // Test cũ không nói về popup "Gửi phụ huynh": coi như đã xem để luồng khởi động như trước.
+                if (NoticeSeen && store.NoticeVersion < UiText.NoticeVersion) store.NoticeVersion = UiText.NoticeVersion;
+                return store;
+            };
         }
+
+        /// <summary>
+        /// Mặc định <c>true</c>: kho được đánh dấu đã xem popup "Gửi phụ huynh". Test của popup đặt <c>false</c> trước
+        /// khi nạp app.
+        /// </summary>
+        protected bool NoticeSeen { get; set; } = true;
 
         [UnityTearDown]
         public IEnumerator TearDownApp()
@@ -80,6 +93,12 @@ namespace TapDoc.Tests
         protected IEnumerator LoadMain()
         {
             DeleteStoreFiles();
+            yield return LoadMainScene();
+        }
+
+        /// <summary>Nạp scene <c>Main</c> với file tiến độ đang có (không xoá trước).</summary>
+        protected static IEnumerator LoadMainKeepingStore()
+        {
             yield return LoadMainScene();
         }
 

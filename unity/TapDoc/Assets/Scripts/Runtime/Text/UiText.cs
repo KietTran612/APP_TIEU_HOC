@@ -77,6 +77,13 @@ namespace TapDoc
         public const string ShowAll = "Hiện hết";
         public const string Memorized = "Con thuộc rồi";
 
+        // Popup "Gửi phụ huynh" (hiện một lần sau khởi động; xem lại trong Cài đặt). Sửa nội dung mà muốn mọi máy
+        // thấy lại một lần thì tăng NoticeVersion.
+        public const int NoticeVersion = 1;
+        public const string NoticeTitle = "Gửi phụ huynh";
+        public const string NoticeAccept = "Đã hiểu";
+        public const string NoticeBody = "<b>Lưu ý về ứng dụng</b>\n1. Ứng dụng chỉ mang tính chất tham khảo, hỗ trợ bé tập đọc; không thay thế việc học ở trường và hướng dẫn của thầy cô.\n2. Ứng dụng tham khảo cách dạy tập đọc từ các sách giáo khoa cũ, không dựa hoàn toàn vào một nguồn sách nào, và không liên kết với nhà xuất bản hay cơ quan quản lý giáo dục nào.\n3. Ứng dụng không chứa và không cổ xúy bất kỳ hành vi vi phạm pháp luật nào.\n4. Hình ảnh trong ứng dụng được vẽ để minh họa học tập, không liên quan đến bất kỳ cá nhân, tổ chức nào và có thể không giống thực tế.\n5. Âm thanh và cách phát âm trong ứng dụng có thể chưa chuẩn. Nếu thấy chưa chuẩn, phụ huynh hãy đọc lại hoặc phát âm lại cho bé.\n\n<b>Dữ liệu của bé</b>\nTên gọi, hình đại diện và tiến độ học của bé chỉ được lưu trên máy này; ứng dụng không gửi các thông tin này đi đâu. Xin chỉ nhập tên gọi ở nhà của bé. Phụ huynh có thể đổi hoặc xoá hồ sơ của bé trong phần Cài đặt.\n\n<b>Lời khuyên</b>\nPhụ huynh nên ngồi cùng bé khi học, mỗi lần học ngắn, để âm lượng vừa phải và giữ khoảng cách mắt với màn hình.";
+
         public static readonly string[] All =
         {
             Back,
@@ -134,6 +141,9 @@ namespace TapDoc
             HideMore,
             ShowAll,
             Memorized,
+            NoticeTitle,
+            NoticeAccept,
+            NoticeBody,
         };
     }
 }
