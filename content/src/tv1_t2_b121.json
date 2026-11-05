@@ -1,0 +1,172 @@
+{
+  "lesson_id": "tv1_t2_b121",
+  "book": "tv1_t2_1996",
+  "lesson_no": 121,
+  "type": "van_it_dung",
+  "title": "Vần ít dùng",
+  "source": {
+    "pages": [
+      84,
+      85
+    ],
+    "scan_file": "043",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "oay",
+    "oam",
+    "oao",
+    "oăc",
+    "oăm",
+    "oen",
+    "oeo",
+    "oet",
+    "oong",
+    "ooc"
+  ],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Vần \"oo\" (oong, ooc): app tạm đánh vần \"oo – ngờ – oong\", \"oo – cờ – ooc\", trong đó \"oo\" đọc như o kéo dài. Cần phụ huynh, giáo viên duyệt."
+    }
+  ],
+  "part1": [
+    {
+      "type": "rime_table",
+      "marker": "●",
+      "rows": [
+        {
+          "rime": "oay",
+          "sentence": "Không nên viết ngoáy."
+        },
+        {
+          "rime": "oam",
+          "sentence": "Cần cẩu ngoạm kiện hàng."
+        },
+        {
+          "rime": "oao",
+          "sentence": "Mèo kêu ngoao ngoao."
+        },
+        {
+          "rime": "oăc",
+          "sentence": "Cái đầu ngúc ngoắc."
+        },
+        {
+          "rime": "oăm",
+          "sentence": "Giếng khoan sâu hoắm."
+        },
+        {
+          "rime": "oen",
+          "sentence": "Bé nhoẻn miệng cười."
+        },
+        {
+          "rime": "oeo",
+          "sentence": "Con đường ngoằn ngoèo."
+        },
+        {
+          "rime": "oet",
+          "sentence": "Máy cưa chạy xoèn xoẹt."
+        },
+        {
+          "rime": "oong",
+          "sentence": "Xe goòng chở than."
+        },
+        {
+          "rime": "ooc",
+          "sentence": "Bé mặc quần soóc."
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "oay",
+          "options": [
+            "oay",
+            "oai",
+            "oeo"
+          ]
+        },
+        {
+          "answer": "oong",
+          "options": [
+            "oong",
+            "ong",
+            "oăm"
+          ]
+        },
+        {
+          "answer": "oeo",
+          "options": [
+            "oeo",
+            "oay",
+            "oăc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "ngoắc",
+          "options": [
+            "ngoắc",
+            "ngoác"
+          ]
+        },
+        {
+          "answer": "soóc",
+          "options": [
+            "soóc",
+            "sóc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "xe goòng",
+      "template": "xe g_",
+      "answer": "oòng",
+      "options": [
+        "oòng",
+        "òng",
+        "oàng"
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "ngoằn ngoèo",
+      "template": "ngoằn ng_",
+      "answer": "oèo",
+      "options": [
+        "oèo",
+        "èo",
+        "oài"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "nhoẻn",
+          "options": [
+            "nhoẻn",
+            "ngoáy",
+            "hoắm"
+          ]
+        }
+      ]
+    }
+  ]
+}

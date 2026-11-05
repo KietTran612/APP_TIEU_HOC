@@ -1,0 +1,210 @@
+{
+  "lesson_id": "tv1_t2_b114",
+  "book": "tv1_t2_1996",
+  "lesson_no": 114,
+  "type": "van_moi",
+  "title": "oang oăng",
+  "source": {
+    "pages": [
+      70,
+      71
+    ],
+    "scan_file": "036",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "oang",
+    "oăng"
+  ],
+  "images": {
+    "img_b114_khai_hoang": "Hai người nông dân cầm cuốc, dao phát cỏ khai hoang mảnh đất đồi",
+    "img_b114_con_hoawngx": "Con hoẵng (một loài hươu nhỏ) đang nhảy vọt qua bụi cỏ",
+    "img_b114_thuyeenf_cas": "Thuyền đánh cá cập bờ, khoang thuyền đầy cá, mấy người khiêng thúng cá xuống"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "oang"
+    },
+    {
+      "type": "keyword",
+      "text": "khai hoang",
+      "image": "img_b114_khai_hoang"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "khai hoang",
+        "hoang",
+        "oang"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oang",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "hoang",
+      "then": "khai hoang"
+    },
+    {
+      "type": "unit",
+      "text": "oăng"
+    },
+    {
+      "type": "keyword",
+      "text": "con hoẵng",
+      "image": "img_b114_con_hoawngx"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con hoẵng",
+        "hoẵng",
+        "oăng"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oăng",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "hoẵng",
+      "drag_tone": true,
+      "then": "con hoẵng"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "khoang tàu"
+        },
+        {
+          "text": "nhìn loáng thoáng"
+        },
+        {
+          "text": "dài ngoẵng"
+        },
+        {
+          "text": "chạy loăng quăng"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b114_thuyeenf_cas",
+      "say": "Thuyền về đầy cá trong khoang.",
+      "word": "khoang thuyền"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Khi đi buồm nhẹ cánh bay"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Khi về ăm ắp cá đầy trong khoang."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "oang",
+          "options": [
+            "oang",
+            "oăng",
+            "oanh"
+          ]
+        },
+        {
+          "answer": "oăng",
+          "options": [
+            "oăng",
+            "oang",
+            "oanh"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "hoẵng",
+          "options": [
+            "hoẵng",
+            "hoãng"
+          ]
+        },
+        {
+          "answer": "thoáng",
+          "options": [
+            "thoáng",
+            "tháng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "khai hoang",
+      "template": "khai h_",
+      "answer": "oang",
+      "options": [
+        "oang",
+        "oăng",
+        "oanh"
+      ],
+      "image": "img_b114_khai_hoang"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con hoẵng",
+          "answer": "img_b114_con_hoawngx",
+          "options": [
+            "img_b114_con_hoawngx",
+            "img_b114_khai_hoang",
+            "img_b114_thuyeenf_cas"
+          ]
+        },
+        {
+          "word": "khai hoang",
+          "answer": "img_b114_khai_hoang",
+          "options": [
+            "img_b114_khai_hoang",
+            "img_b114_con_hoawngx",
+            "img_b114_thuyeenf_cas"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "ngoẵng",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

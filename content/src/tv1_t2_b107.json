@@ -1,0 +1,216 @@
+{
+  "lesson_id": "tv1_t2_b107",
+  "book": "tv1_t2_1996",
+  "lesson_no": 107,
+  "type": "van_moi",
+  "title": "ươn ương",
+  "source": {
+    "pages": [
+      56,
+      57
+    ],
+    "scan_file": "029",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ươn",
+    "ương"
+  ],
+  "images": {
+    "img_b107_con_vuwownj": "Con vượn lông sẫm, đuôi dài, ngồi trên cành cây cầm quả",
+    "img_b107_soi_guwowng": "Bạn nhỏ đứng soi gương, vuốt tóc",
+    "img_b107_trawng_trung_thu": "Đêm trung thu trăng tròn sáng như gương chiếu xuống hiên nhà sàn giữa rừng tre, trên bàn có ấm chén"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Tranh sách vẽ Bác Hồ ngắm trăng; app thay bằng tranh trăng trung thu chiếu xuống hiên nhà (không vẽ người thật)."
+    }
+  ],
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ươn"
+    },
+    {
+      "type": "keyword",
+      "text": "con vượn",
+      "image": "img_b107_con_vuwownj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con vượn",
+        "vượn",
+        "ươn"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ươn",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "vượn",
+      "drag_tone": true,
+      "then": "con vượn"
+    },
+    {
+      "type": "unit",
+      "text": "ương"
+    },
+    {
+      "type": "keyword",
+      "text": "soi gương",
+      "image": "img_b107_soi_guwowng"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "soi gương",
+        "gương",
+        "ương"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ương",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "gương",
+      "then": "soi gương"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "xương sườn"
+        },
+        {
+          "text": "vườn rau"
+        },
+        {
+          "text": "giọt sương"
+        },
+        {
+          "text": "mái trường"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b107_trawng_trung_thu",
+      "say": "Trăng trung thu sáng như gương.",
+      "word": "trăng sáng"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Trung thu trăng sáng như gương"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bác Hồ ngắm cảnh nhớ thương nhi đồng."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ươn",
+          "options": [
+            "ươn",
+            "ươm",
+            "ươi"
+          ]
+        },
+        {
+          "answer": "ương",
+          "options": [
+            "ương",
+            "ươm",
+            "ươi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "vườn",
+          "options": [
+            "vườn",
+            "vờn"
+          ]
+        },
+        {
+          "answer": "sương",
+          "options": [
+            "sương",
+            "sườn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "soi gương",
+      "template": "soi g_",
+      "answer": "ương",
+      "options": [
+        "ương",
+        "ươm",
+        "ươi"
+      ],
+      "image": "img_b107_soi_guwowng"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con vượn",
+          "answer": "img_b107_con_vuwownj",
+          "options": [
+            "img_b107_con_vuwownj",
+            "img_b107_soi_guwowng",
+            "img_b107_trawng_trung_thu"
+          ]
+        },
+        {
+          "word": "soi gương",
+          "answer": "img_b107_soi_guwowng",
+          "options": [
+            "img_b107_soi_guwowng",
+            "img_b107_con_vuwownj",
+            "img_b107_trawng_trung_thu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "cảnh",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

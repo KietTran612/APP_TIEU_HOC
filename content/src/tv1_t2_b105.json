@@ -1,0 +1,221 @@
+{
+  "lesson_id": "tv1_t2_b105",
+  "book": "tv1_t2_1996",
+  "lesson_no": 105,
+  "type": "van_moi",
+  "title": "ươc ươt",
+  "source": {
+    "pages": [
+      52,
+      53
+    ],
+    "scan_file": "027",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ươc",
+    "ươt"
+  ],
+  "images": {
+    "img_b105_ruwowcs_ddenf": "Các bạn nhỏ cầm đèn ông sao, đèn cá đi rước đèn đêm trung thu",
+    "img_b105_caauf_truwowtj": "Hai em bé chơi cầu trượt ở sân chơi, một em đang trượt xuống",
+    "img_b105_vans_luwowts": "Ca nô chạy trên mặt hồ kéo cô gái đứng trên ván lướt, nước tung trắng"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ươc"
+    },
+    {
+      "type": "keyword",
+      "text": "rước đèn",
+      "image": "img_b105_ruwowcs_ddenf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "rước đèn",
+        "rước",
+        "ươc"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ươc",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "rước",
+      "drag_tone": true,
+      "then": "rước đèn"
+    },
+    {
+      "type": "unit",
+      "text": "ươt"
+    },
+    {
+      "type": "keyword",
+      "text": "cầu trượt",
+      "image": "img_b105_caauf_truwowtj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cầu trượt",
+        "trượt",
+        "ươt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ươt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "trượt",
+      "drag_tone": true,
+      "then": "cầu trượt"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "bông thược dược"
+        },
+        {
+          "text": "nước chảy cuồn cuộn"
+        },
+        {
+          "text": "vượt suối trèo non"
+        },
+        {
+          "text": "ướt lướt thướt"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b105_vans_luwowts",
+      "say": "Ca nô kéo ván lướt trên mặt hồ.",
+      "word": "ván lướt"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Ca nô đi trước,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Ván lướt theo sau"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nước tung trắng phau,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Mặt hồ cuộn sóng."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ươc",
+          "options": [
+            "ươc",
+            "ươi",
+            "ươu"
+          ]
+        },
+        {
+          "answer": "ươt",
+          "options": [
+            "ươt",
+            "ươi",
+            "ươu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "nước",
+          "options": [
+            "nước",
+            "nưới"
+          ]
+        },
+        {
+          "answer": "trượt",
+          "options": [
+            "trượt",
+            "trợt"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "rước đèn",
+      "template": "r_ đèn",
+      "answer": "ước",
+      "options": [
+        "ước",
+        "ưới",
+        "ướu"
+      ],
+      "image": "img_b105_ruwowcs_ddenf"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cầu trượt",
+          "answer": "img_b105_caauf_truwowtj",
+          "options": [
+            "img_b105_caauf_truwowtj",
+            "img_b105_ruwowcs_ddenf",
+            "img_b105_vans_luwowts"
+          ]
+        },
+        {
+          "word": "rước đèn",
+          "answer": "img_b105_ruwowcs_ddenf",
+          "options": [
+            "img_b105_ruwowcs_ddenf",
+            "img_b105_caauf_truwowtj",
+            "img_b105_vans_luwowts"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "chảy",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

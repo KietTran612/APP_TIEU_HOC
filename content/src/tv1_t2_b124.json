@@ -1,0 +1,133 @@
+{
+  "lesson_id": "tv1_t2_b124",
+  "book": "tv1_t2_1996",
+  "lesson_no": 124,
+  "type": "on_luyen",
+  "title": "Ôn luyện",
+  "source": {
+    "pages": [
+      89
+    ],
+    "scan_file": "045",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b124_thieeuf_nhi": "Các bạn thiếu nhi quàng khăn đỏ vui vẻ đứng bên chậu hoa, tay cầm sách vở"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Tranh sách vẽ Bác Hồ với các cháu thiếu nhi; app vẽ các bạn thiếu nhi (không vẽ người thật)."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b124_thieeuf_nhi",
+      "say": "Các bạn thiếu nhi chăm ngoan.",
+      "word": "thiếu nhi"
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "Năm điều Bác Hồ dạy:"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "- Yêu Tổ quốc, yêu đồng bào"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "- Học tập tốt, lao động tốt"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "- Đoàn kết tốt, kỉ luật tốt"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "- Giữ gìn vệ sinh thật tốt"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "- Khiêm tốn, thật thà, dũng cảm"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "học tập",
+          "options": [
+            "học tập",
+            "lao động",
+            "đoàn kết"
+          ]
+        },
+        {
+          "answer": "dũng cảm",
+          "options": [
+            "dũng cảm",
+            "khiêm tốn",
+            "thật thà"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "tốt",
+          "options": [
+            "tốt",
+            "tối"
+          ]
+        },
+        {
+          "answer": "luật",
+          "options": [
+            "luật",
+            "lật"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "đoàn kết",
+      "template": "đ_ kết",
+      "answer": "oàn",
+      "options": [
+        "oàn",
+        "oài",
+        "oà"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "dũng",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

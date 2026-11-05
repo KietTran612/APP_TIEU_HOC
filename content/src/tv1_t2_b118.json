@@ -1,0 +1,211 @@
+{
+  "lesson_id": "tv1_t2_b118",
+  "book": "tv1_t2_1996",
+  "lesson_no": 118,
+  "type": "van_moi",
+  "title": "uât uây",
+  "source": {
+    "pages": [
+      78,
+      79
+    ],
+    "scan_file": "040",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uât",
+    "uây"
+  ],
+  "images": {
+    "img_b118_sanr_xuaats": "Người công nhân đeo kính đứng bên máy tiện trong xưởng sản xuất",
+    "img_b118_cas_vangf_nguaayr": "Hai con cá vàng đuôi xòe ngoe nguẩy trong bể kính tròn",
+    "img_b118_beeps_luwar_hoongf": "Mặt trời lặn sau rặng núi, ngôi nhà tranh có cả nhà ngồi quây quần bên bếp lửa hồng"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "uât"
+    },
+    {
+      "type": "keyword",
+      "text": "sản xuất",
+      "image": "img_b118_sanr_xuaats"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "sản xuất",
+        "xuất",
+        "uât"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uât",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "xuất",
+      "drag_tone": true,
+      "then": "sản xuất"
+    },
+    {
+      "type": "unit",
+      "text": "uây"
+    },
+    {
+      "type": "keyword",
+      "text": "ngoe nguẩy đuôi",
+      "image": "img_b118_cas_vangf_nguaayr"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "ngoe nguẩy đuôi",
+        "nguẩy",
+        "uây"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uây",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "nguẩy",
+      "drag_tone": true,
+      "then": "ngoe nguẩy đuôi"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "tôn trọng kỉ luật"
+        },
+        {
+          "text": "bất khuất"
+        },
+        {
+          "text": "khuấy nước"
+        },
+        {
+          "text": "lắc đầu nguây nguẩy"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b118_beeps_luwar_hoongf",
+      "say": "Chiều tối, cả nhà sum họp bên bếp lửa.",
+      "word": "bếp lửa"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Mặt trời khuất sau rặng núi."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nhà nhà lại sum họp bên bếp lửa hồng."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uât",
+          "options": [
+            "uât",
+            "uây",
+            "uân"
+          ]
+        },
+        {
+          "answer": "uây",
+          "options": [
+            "uây",
+            "uât",
+            "uân"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "khuấy",
+          "options": [
+            "khuấy",
+            "khấy"
+          ]
+        },
+        {
+          "answer": "luật",
+          "options": [
+            "luật",
+            "lật"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "sản xuất",
+      "template": "sản x_",
+      "answer": "uất",
+      "options": [
+        "uất",
+        "uấy",
+        "uấn"
+      ],
+      "image": "img_b118_sanr_xuaats"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "sản xuất",
+          "answer": "img_b118_sanr_xuaats",
+          "options": [
+            "img_b118_sanr_xuaats",
+            "img_b118_cas_vangf_nguaayr",
+            "img_b118_beeps_luwar_hoongf"
+          ]
+        },
+        {
+          "word": "ngoe nguẩy đuôi",
+          "answer": "img_b118_cas_vangf_nguaayr",
+          "options": [
+            "img_b118_cas_vangf_nguaayr",
+            "img_b118_sanr_xuaats",
+            "img_b118_beeps_luwar_hoongf"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nguẩy",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

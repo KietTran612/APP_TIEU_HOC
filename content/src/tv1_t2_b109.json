@@ -1,0 +1,226 @@
+{
+  "lesson_id": "tv1_t2_b109",
+  "book": "tv1_t2_1996",
+  "lesson_no": 109,
+  "type": "van_moi",
+  "title": "oa oe",
+  "source": {
+    "pages": [
+      60,
+      61
+    ],
+    "scan_file": "031",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "oa",
+    "oe"
+  ],
+  "images": {
+    "img_b109_cais_loa": "Cậu bé cầm cái loa tay giơ lên miệng nói to",
+    "img_b109_chichs_choef": "Con chim chích chòe đuôi dài đậu trên cành, đang hót",
+    "img_b109_ddenf_trawng": "Hai bạn nhỏ đứng chỉ tay: một bên là cây đèn bão, một bên là vầng trăng nấp sau đám mây"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Vần có âm đệm o, u (oa, oe, oai, oan… uê, uy, uân…): sách không in cách đánh vần. App làm theo sơ đồ vần ở bảng ôn bài 115 và 120 (sách nối âm đệm với âm chính rồi mới đến âm cuối): \"o – a – oa\", \"oa – nờ – oan\", \"uâ – nờ – uân\". Chuỗi đánh vần này cần phụ huynh, giáo viên duyệt."
+    }
+  ],
+  "part1": [
+    {
+      "type": "unit",
+      "text": "oa"
+    },
+    {
+      "type": "keyword",
+      "text": "cái loa",
+      "image": "img_b109_cais_loa"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái loa",
+        "loa",
+        "oa"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oa",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "loa",
+      "then": "cái loa"
+    },
+    {
+      "type": "unit",
+      "text": "oe"
+    },
+    {
+      "type": "keyword",
+      "text": "chích chòe",
+      "image": "img_b109_chichs_choef"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "chích chòe",
+        "chòe",
+        "oe"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oe",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chòe",
+      "drag_tone": true,
+      "then": "chích chòe"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "hoa đào"
+        },
+        {
+          "text": "chim họa mi"
+        },
+        {
+          "text": "mạnh khỏe"
+        },
+        {
+          "text": "dẻo tay múa xòe"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b109_ddenf_trawng",
+      "say": "Đèn và trăng, bên nào tỏ hơn?",
+      "word": "đèn và trăng"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đèn khoe đèn tỏ hơn trăng"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đèn ra trước gió còn chăng hỡi đèn?"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Trăng khoe trăng tỏ hơn đèn"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cớ sao trăng phải chịu luồn đám mây?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "oa",
+          "options": [
+            "oa",
+            "oe",
+            "ao"
+          ]
+        },
+        {
+          "answer": "oe",
+          "options": [
+            "oe",
+            "oa",
+            "eo"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "khoe",
+          "options": [
+            "khoe",
+            "kheo"
+          ]
+        },
+        {
+          "answer": "hoa",
+          "options": [
+            "hoa",
+            "hao"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "cái loa",
+      "template": "cái l_",
+      "answer": "oa",
+      "options": [
+        "oa",
+        "oe",
+        "ao"
+      ],
+      "image": "img_b109_cais_loa"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "chích chòe",
+          "answer": "img_b109_chichs_choef",
+          "options": [
+            "img_b109_chichs_choef",
+            "img_b109_cais_loa",
+            "img_b109_ddenf_trawng"
+          ]
+        },
+        {
+          "word": "cái loa",
+          "answer": "img_b109_cais_loa",
+          "options": [
+            "img_b109_cais_loa",
+            "img_b109_chichs_choef",
+            "img_b109_ddenf_trawng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "hỡi",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

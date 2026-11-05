@@ -131,5 +131,102 @@ class Tap2Lessons91To99(Tap2TestCase):
         self.assertEqual(len([it for it in b95["items"] if it["role"] == "rime"]), 9)
         self.assertEqual(texts(99, "sentence")[-1], "Phơi trên nong trời.")
 
+
+class Tap2Lessons100To125(Tap2TestCase):
+    def test_basics(self):
+        for no in range(100, 126):
+            with self.subTest(no=no):
+                self.assert_lesson_basics(no)
+
+    def test_keywords(self):
+        self.assertEqual(texts(100, "keyword"), ["quả chuối", "cánh buồm"])
+        self.assertEqual(texts(109, "keyword"), ["cái loa", "chích chòe"])
+        self.assertEqual(texts(118, "keyword"), ["sản xuất", "ngoe nguẩy đuôi"])
+        self.assertEqual(texts(119, "keyword"), ["chim vành khuyên", "duyệt binh"])
+
+    def test_glide_spelling_follows_book_diagram(self):
+        rime = steps(110, "spell")[2]["spell"]  # vần oan
+        self.assertEqual([p["text"] for p in rime["parts"]], ["oa", "n", "oan"])
+        b115 = steps(115, "rime_table")[0]
+        self.assertEqual(len([it for it in b115["items"] if it["role"] == "rime"]), 12)
+
+    def test_rare_rime_tables_have_sentences(self):
+        for no, count in ((121, 10), (122, 8)):
+            table = steps(no, "rime_table")[0]
+            sentences = [it for it in table["items"] if it["role"] == "sentence"]
+            self.assertEqual(len(sentences), count, no)
+        self.assertEqual(steps(121, "rime_table")[0]["items"][-1]["text"], "Bé mặc quần soóc.")
+
+    def test_oo_rime_id_differs_from_ong(self):
+        table = steps(121, "rime_table")[0]
+        oong = [it for it in table["items"] if it["role"] == "rime" and it["text"] == "oong"][0]
+        self.assertEqual(oong["audio"], "van_ooong")
+
+    def test_riddle_b102(self):
+        self.assertEqual(texts(102, "sentence")[0], "Đố vui")
+        self.assertEqual(L[lid_of(102)]["part2"][0]["kind"], "listen_picture")
+
+    def test_real_people_replaced(self):
+        for no in (107, 115, 124):
+            app_notes = [n["text"] for n in L[lid_of(no)]["notes"] if n["kind"] == "khac_sach"]
+            self.assertTrue([t for t in app_notes if "không vẽ người thật" in t], no)
+
+    def test_on_luyen_poems(self):
+        self.assertEqual(texts(123, "sentence")[0], "Tổ quốc Việt Nam")
+        self.assertEqual(texts(124, "sentence")[-1], "- Khiêm tốn, thật thà, dũng cảm")
+        self.assertEqual(texts(125, "sentence")[-1], "Cùng bay nào, cho trái đất quay!")
+
+
+def targets(no, k):
+    """Các tiếng đúng (chữ thường, không lặp) của bước find_words thứ k trong bài."""
+    step = steps(no, "find_words")[k]
+    return sorted({it["text"].lower() for it in step["items"] if it["role"] == "target"})
+
+
+class Tap2Reading126To138(Tap2TestCase):
+    def test_basics(self):
+        for no in range(126, 139):
+            with self.subTest(no=no):
+                self.assert_lesson_basics(no)
+
+    def test_index_labels_and_weeks(self):
+        import json
+        from tapdoc.paths import UNITY_RES
+        index = json.loads((UNITY_RES / "lessons" / "index.json").read_text(encoding="utf-8"))
+        by_id = {e["lesson_id"]: e for e in index["lessons"]}
+        self.assertEqual((by_id["tv1_t2_b126"]["label"], by_id["tv1_t2_b126"]["week"]), ("Bài 1", 27))
+        self.assertEqual(by_id["tv1_t2_b131"]["label"], "Chính tả")
+        self.assertEqual((by_id["tv1_t2_b137"]["label"], by_id["tv1_t2_b137"]["week"]), ("Câu đố", 28))
+        self.assertEqual(by_id["tv1_t2_b136"]["label"], "Bài 10")
+
+    def test_truong_em(self):
+        self.assertEqual(texts(126, "sentence")[0], "Trường em ngói mới đỏ hồng")
+        self.assertEqual(targets(126, 0), ["trường", "tươi"])
+        self.assertEqual(targets(126, 1), ["những", "vẫy"])
+        self.assertEqual(steps(126, "passage")[0]["labels"], ["NGUYỄN BÙI VỢI", "poem"])
+
+    def test_qu_rimes_found(self):
+        self.assertEqual(targets(127, 1), ["quyển", "quỳnh"])
+        self.assertIn("quýt", targets(134, 1))
+
+    def test_memorize_for_hoc_thuoc_long(self):
+        for no in (128, 134):
+            self.assertEqual(len(steps(no, "memorize")), 1, no)
+            self.assertEqual(steps(no, "memorize")[0]["text"], "Học thuộc lòng cả bài.")
+
+    def test_doc_them_has_no_questions(self):
+        for no in (130, 136):
+            self.assertEqual(steps(no, "question") + steps(no, "find_words"), [], no)
+
+    def test_riddles_answers_from_page_138(self):
+        answers = [s["text"] for s in steps(137, "riddle_answer")]
+        self.assertEqual(answers, ["Cái tẩy", "Bút chì (viết chì)"])
+
+    def test_dictation_pages(self):
+        fills = steps(138, "fill_blank")
+        self.assertEqual(fills[0]["labels"], ["l", "n"])
+        self.assertEqual([it["answer"] for it in fills[1]["items"]], ["oa", "oa", "oa", "a", "a"])
+        self.assertEqual(targets(138, 1), ["sáng", "sóc", "xanh", "xuống"])
+
 if __name__ == "__main__":
     unittest.main()

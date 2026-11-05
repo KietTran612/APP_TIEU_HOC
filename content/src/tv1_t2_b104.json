@@ -1,0 +1,216 @@
+{
+  "lesson_id": "tv1_t2_b104",
+  "book": "tv1_t2_1996",
+  "lesson_no": 104,
+  "type": "van_moi",
+  "title": "ươi ươu",
+  "source": {
+    "pages": [
+      50,
+      51
+    ],
+    "scan_file": "026",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ươi",
+    "ươu"
+  ],
+  "images": {
+    "img_b104_quar_buwowir": "Quả bưởi tròn vỏ xanh có cuống và lá",
+    "img_b104_con_huwowu": "Con hươu sao có sừng, lông đốm, đứng trên bãi cỏ",
+    "img_b104_ddanf_huwowu": "Đàn hươu sao ăn cỏ và uống nước bên bờ suối trong rừng"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Vần có ươ (ươi, ươu, ươc, ươt…): như vần có iê, uô, app tạm đánh vần chữ ghép ươ đọc là \"ư-ơ\" (tập một, tr.121) rồi đến âm cuối, ví dụ \"ươ – i – ươi\". Cần phụ huynh, giáo viên duyệt."
+    }
+  ],
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ươi"
+    },
+    {
+      "type": "keyword",
+      "text": "quả bưởi",
+      "image": "img_b104_quar_buwowir"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả bưởi",
+        "bưởi",
+        "ươi"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ươi",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "bưởi",
+      "drag_tone": true,
+      "then": "quả bưởi"
+    },
+    {
+      "type": "unit",
+      "text": "ươu"
+    },
+    {
+      "type": "keyword",
+      "text": "con hươu",
+      "image": "img_b104_con_huwowu"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con hươu",
+        "hươu",
+        "ươu"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ươu",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "hươu",
+      "then": "con hươu"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "tươi cười"
+        },
+        {
+          "text": "người bạn tốt"
+        },
+        {
+          "text": "chim khướu"
+        },
+        {
+          "text": "rượu thuốc"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b104_ddanf_huwowu",
+      "say": "Đàn hươu ăn cỏ bên bờ suối.",
+      "word": "đàn hươu"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Bên bờ suối, đàn hươu đang ăn cỏ tươi."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Tiếng khướu hót vang rừng, xen lẫn tiếng suối chảy róc rách."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ươi",
+          "options": [
+            "ươi",
+            "ươu",
+            "uôi"
+          ]
+        },
+        {
+          "answer": "ươu",
+          "options": [
+            "ươu",
+            "ươi",
+            "uôi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "bưởi",
+          "options": [
+            "bưởi",
+            "buổi"
+          ]
+        },
+        {
+          "answer": "khướu",
+          "options": [
+            "khướu",
+            "khưới"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "con hươu",
+      "template": "con h_",
+      "answer": "ươu",
+      "options": [
+        "ươu",
+        "ươi",
+        "uôi"
+      ],
+      "image": "img_b104_con_huwowu"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "quả bưởi",
+          "answer": "img_b104_quar_buwowir",
+          "options": [
+            "img_b104_quar_buwowir",
+            "img_b104_con_huwowu",
+            "img_b104_ddanf_huwowu"
+          ]
+        },
+        {
+          "word": "con hươu",
+          "answer": "img_b104_con_huwowu",
+          "options": [
+            "img_b104_con_huwowu",
+            "img_b104_quar_buwowir",
+            "img_b104_ddanf_huwowu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "lẫn",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

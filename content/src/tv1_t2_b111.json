@@ -1,0 +1,221 @@
+{
+  "lesson_id": "tv1_t2_b111",
+  "book": "tv1_t2_1996",
+  "lesson_no": 111,
+  "type": "van_moi",
+  "title": "oac oat",
+  "source": {
+    "pages": [
+      64,
+      65
+    ],
+    "scan_file": "033",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "oac",
+    "oat"
+  ],
+  "images": {
+    "img_b111_khoacs_aos": "Hai bạn nhỏ khoác áo mưa ra ngoài trời mưa",
+    "img_b111_sinh_hoatj_toor": "Mấy bạn học sinh ngồi quanh bàn sinh hoạt tổ, một bạn giơ tay phát biểu",
+    "img_b111_con_nghes": "Chú nghé con đi dọc bờ tre, vểnh tai nghe chim hót, cò trắng bay qua"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "oac"
+    },
+    {
+      "type": "keyword",
+      "text": "khoác áo",
+      "image": "img_b111_khoacs_aos"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "khoác áo",
+        "khoác",
+        "oac"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oac",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "khoác",
+      "drag_tone": true,
+      "then": "khoác áo"
+    },
+    {
+      "type": "unit",
+      "text": "oat"
+    },
+    {
+      "type": "keyword",
+      "text": "sinh hoạt tổ",
+      "image": "img_b111_sinh_hoatj_toor"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "sinh hoạt tổ",
+        "hoạt",
+        "oat"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oat",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "hoạt",
+      "drag_tone": true,
+      "then": "sinh hoạt tổ"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "áo rách toạc"
+        },
+        {
+          "text": "không khoác lác"
+        },
+        {
+          "text": "đọc lưu loát"
+        },
+        {
+          "text": "phim hoạt họa"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b111_con_nghes",
+      "say": "Chú nghé đi theo bờ tre.",
+      "word": "con nghé"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Nghé rong theo bờ tre"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nghển tai nghe chim hót,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Một bóng cò trắng toát"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Lướt giữa nắng mai hồng."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "oac",
+          "options": [
+            "oac",
+            "oai",
+            "oan"
+          ]
+        },
+        {
+          "answer": "oat",
+          "options": [
+            "oat",
+            "oai",
+            "oan"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "khoác",
+          "options": [
+            "khoác",
+            "khác"
+          ]
+        },
+        {
+          "answer": "loát",
+          "options": [
+            "loát",
+            "lát"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "khoác áo",
+      "template": "kh_ áo",
+      "answer": "oác",
+      "options": [
+        "oác",
+        "oái",
+        "oán"
+      ],
+      "image": "img_b111_khoacs_aos"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "sinh hoạt tổ",
+          "answer": "img_b111_sinh_hoatj_toor",
+          "options": [
+            "img_b111_sinh_hoatj_toor",
+            "img_b111_khoacs_aos",
+            "img_b111_con_nghes"
+          ]
+        },
+        {
+          "word": "khoác áo",
+          "answer": "img_b111_khoacs_aos",
+          "options": [
+            "img_b111_khoacs_aos",
+            "img_b111_sinh_hoatj_toor",
+            "img_b111_con_nghes"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nghển",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

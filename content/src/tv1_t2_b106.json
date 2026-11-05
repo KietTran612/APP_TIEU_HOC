@@ -1,0 +1,208 @@
+{
+  "lesson_id": "tv1_t2_b106",
+  "book": "tv1_t2_1996",
+  "lesson_no": 106,
+  "type": "van_moi",
+  "title": "ươm ươp",
+  "source": {
+    "pages": [
+      54,
+      55
+    ],
+    "scan_file": "028",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ươm",
+    "ươp"
+  ],
+  "images": {
+    "img_b106_con_buwowms": "Con bướm cánh to có hoa văn đang bay",
+    "img_b106_quar_muwowps": "Quả mướp dài vỏ xanh có cuống và lá, tua cuốn",
+    "img_b106_hoof_guwowm": "Cảnh Hồ Gươm có Tháp Rùa giữa hồ, cây hoa đỏ, người đi dạo và xe đi lại quanh hồ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[11]",
+        "note": "tranh Hồ Gươm, Tháp Rùa: cảnh có thật, vẽ theo nét tranh sách"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ươm"
+    },
+    {
+      "type": "keyword",
+      "text": "con bướm",
+      "image": "img_b106_con_buwowms"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con bướm",
+        "bướm",
+        "ươm"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ươm",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "bướm",
+      "drag_tone": true,
+      "then": "con bướm"
+    },
+    {
+      "type": "unit",
+      "text": "ươp"
+    },
+    {
+      "type": "keyword",
+      "text": "quả mướp",
+      "image": "img_b106_quar_muwowps"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả mướp",
+        "mướp",
+        "ươp"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ươp",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "mướp",
+      "drag_tone": true,
+      "then": "quả mướp"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "Hồ Gươm"
+        },
+        {
+          "text": "lượm lúa"
+        },
+        {
+          "text": "chơi cướp cờ"
+        },
+        {
+          "text": "người đi nườm nượp"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b106_hoof_guwowm",
+      "say": "Đây là Hồ Gươm ở Hà Nội.",
+      "word": "Hồ Gươm"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Hồ Gươm là một cảnh đẹp của thủ đô Hà Nội."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Giữa hồ có Tháp Rùa."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Suốt ngày, người và xe đi lại quanh hồ nườm nượp."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ươm",
+          "options": [
+            "ươm",
+            "ươp",
+            "uôm"
+          ]
+        },
+        {
+          "answer": "ươp",
+          "options": [
+            "ươp",
+            "ươm",
+            "ươi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "bướm",
+          "options": [
+            "bướm",
+            "buốm"
+          ]
+        },
+        {
+          "answer": "lượm",
+          "options": [
+            "lượm",
+            "lượp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "quả mướp",
+      "template": "quả m_",
+      "answer": "ướp",
+      "options": [
+        "ướp",
+        "ướm",
+        "ước"
+      ],
+      "image": "img_b106_quar_muwowps"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con bướm",
+          "answer": "img_b106_con_buwowms",
+          "options": [
+            "img_b106_con_buwowms",
+            "img_b106_quar_muwowps",
+            "img_b106_hoof_guwowm"
+          ]
+        },
+        {
+          "word": "quả mướp",
+          "answer": "img_b106_quar_muwowps",
+          "options": [
+            "img_b106_quar_muwowps",
+            "img_b106_con_buwowms",
+            "img_b106_hoof_guwowm"
+          ]
+        }
+      ]
+    }
+  ]
+}

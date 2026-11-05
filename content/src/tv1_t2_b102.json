@@ -1,0 +1,229 @@
+{
+  "lesson_id": "tv1_t2_b102",
+  "book": "tv1_t2_1996",
+  "lesson_no": 102,
+  "type": "van_moi",
+  "title": "uôn uông",
+  "source": {
+    "pages": [
+      46,
+      47
+    ],
+    "scan_file": "024",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uôn",
+    "uông"
+  ],
+  "images": {
+    "img_b102_chuoonf_chuoonf": "Con chuồn chuồn cánh mỏng đậu trên ngọn cỏ bên mặt nước",
+    "img_b102_cais_chuoong": "Cái chuông đồng có quai treo, hoa văn trên thân",
+    "img_b102_con_vitj": "Hai con vịt bơi trong ao, có con cá nhỏ dưới nước"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part2[0]",
+        "note": "đáp án câu đố (con vịt) do app soạn theo tranh sách"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu đố \"Đố vui\": sách không in đáp án; app soạn đáp án \"con vịt\" theo tranh trên trang và có lượt nghe câu đố rồi chọn tranh."
+    }
+  ],
+  "part1": [
+    {
+      "type": "unit",
+      "text": "uôn"
+    },
+    {
+      "type": "keyword",
+      "text": "chuồn chuồn",
+      "image": "img_b102_chuoonf_chuoonf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "chuồn chuồn",
+        "chuồn",
+        "uôn"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uôn",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chuồn",
+      "drag_tone": true,
+      "then": "chuồn chuồn"
+    },
+    {
+      "type": "unit",
+      "text": "uông"
+    },
+    {
+      "type": "keyword",
+      "text": "cái chuông",
+      "image": "img_b102_cais_chuoong"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái chuông",
+        "chuông",
+        "uông"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uông",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chuông",
+      "then": "cái chuông"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "uốn dẻo"
+        },
+        {
+          "text": "cuộn chỉ"
+        },
+        {
+          "text": "uống thuốc"
+        },
+        {
+          "text": "buồng chuối"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b102_con_vitj",
+      "say": "Hai con vịt bơi trong ao.",
+      "word": "con vịt"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đố vui"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Con gì có cánh"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Mà lại biết bơi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Ngày xuống ao chơi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đêm về đẻ trứng?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con vịt",
+          "prompt": "Con gì có cánh, mà lại biết bơi, ngày xuống ao chơi, đêm về đẻ trứng?",
+          "answer": "img_b102_con_vitj",
+          "options": [
+            "img_b102_chuoonf_chuoonf",
+            "img_b102_con_vitj",
+            "img_b102_cais_chuoong"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uôn",
+          "options": [
+            "uôn",
+            "uôm",
+            "uôi"
+          ]
+        },
+        {
+          "answer": "uông",
+          "options": [
+            "uông",
+            "uôm",
+            "uôi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "cuộn",
+          "options": [
+            "cuộn",
+            "cộn"
+          ]
+        },
+        {
+          "answer": "uống",
+          "options": [
+            "uống",
+            "ống"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "cái chuông",
+      "template": "cái ch_",
+      "answer": "uông",
+      "options": [
+        "uông",
+        "uôm",
+        "uôi"
+      ],
+      "image": "img_b102_cais_chuoong"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "chuồn chuồn",
+          "answer": "img_b102_chuoonf_chuoonf",
+          "options": [
+            "img_b102_chuoonf_chuoonf",
+            "img_b102_cais_chuoong",
+            "img_b102_con_vitj"
+          ]
+        }
+      ]
+    }
+  ]
+}

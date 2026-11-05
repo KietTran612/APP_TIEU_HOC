@@ -1,0 +1,122 @@
+{
+  "lesson_id": "tv1_t2_b123",
+  "book": "tv1_t2_1996",
+  "lesson_no": 123,
+  "type": "on_luyen",
+  "title": "Ôn luyện",
+  "source": {
+    "pages": [
+      88
+    ],
+    "scan_file": "045",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b123_toor_quoocs": "Phong cảnh quê hương: đồi chè, rừng cọ, dòng sông có thuyền, núi xa"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b123_toor_quoocs",
+      "say": "Đồi chè, rừng cọ, dòng sông của Tổ quốc mình.",
+      "word": "Tổ quốc"
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "Tổ quốc Việt Nam"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đẹp vô cùng Tổ quốc ta ơi!"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Rừng cọ đồi chè, đồng xanh ngào ngạt"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nắng chói sông Lô, hò ô tiếng hát"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Chuyến phà dào dạt bến nước Bình Ca..."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "Tổ quốc",
+          "options": [
+            "Tổ quốc",
+            "sông Lô",
+            "đồi chè"
+          ]
+        },
+        {
+          "answer": "chuyến phà",
+          "options": [
+            "chuyến phà",
+            "tiếng hát",
+            "rừng cọ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "cọ",
+          "options": [
+            "cọ",
+            "cỏ"
+          ]
+        },
+        {
+          "answer": "quốc",
+          "options": [
+            "quốc",
+            "cuốc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "Tổ quốc",
+      "template": "Tổ q_",
+      "answer": "uốc",
+      "options": [
+        "uốc",
+        "uất",
+        "uyết"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "Tổ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

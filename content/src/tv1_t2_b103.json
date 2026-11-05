@@ -1,0 +1,176 @@
+{
+  "lesson_id": "tv1_t2_b103",
+  "book": "tv1_t2_1996",
+  "lesson_no": 103,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      48,
+      49
+    ],
+    "scan_file": "025",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uôi",
+    "uôm",
+    "uôc",
+    "uôt",
+    "uôn",
+    "uông"
+  ],
+  "images": {
+    "img_b103_meof_treof_caau": "Con mèo trèo lên cây cau, chú chuột đội nón đi ra khỏi nhà"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "marker": "●",
+      "rows": [
+        {
+          "rime": "uôi",
+          "word": "nải chuối"
+        },
+        {
+          "rime": "uôm",
+          "word": "cánh buồm"
+        },
+        {
+          "rime": "uôc",
+          "word": "bó đuốc"
+        },
+        {
+          "rime": "uôt",
+          "word": "chuột nhắt"
+        },
+        {
+          "rime": "uôn",
+          "word": "bánh cuốn"
+        },
+        {
+          "rime": "uông",
+          "word": "rau muống"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b103_meof_treof_caau",
+      "say": "Mèo trèo cây cau, chuột đi chợ.",
+      "word": "mèo trèo cau"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Con mèo mà trèo cây cau,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Hỏi thăm chú chuột đi đâu vắng nhà?"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Chú chuột đi chợ đàng xa,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Mua mắm mua muối giỗ cha chú mèo."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uôc",
+          "options": [
+            "uôc",
+            "uôi",
+            "uôm"
+          ]
+        },
+        {
+          "answer": "uôn",
+          "options": [
+            "uôn",
+            "uôi",
+            "uôm"
+          ]
+        },
+        {
+          "answer": "uôi",
+          "options": [
+            "uôi",
+            "uôm",
+            "uôc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "muống",
+          "options": [
+            "muống",
+            "mống"
+          ]
+        },
+        {
+          "answer": "đuốc",
+          "options": [
+            "đuốc",
+            "đốc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "bánh cuốn",
+      "template": "bánh c_",
+      "answer": "uốn",
+      "options": [
+        "uốn",
+        "uốm",
+        "uối"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chuột nhắt",
+          "options": [
+            "chuột nhắt",
+            "nải chuối",
+            "cánh buồm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "giỗ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "lesson_id": "tv1_t2_b115",
+  "book": "tv1_t2_1996",
+  "lesson_no": 115,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      72,
+      73
+    ],
+    "scan_file": "037",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "oa",
+    "oe",
+    "oai",
+    "oan",
+    "oac",
+    "oat",
+    "oăn",
+    "oăt",
+    "oăng",
+    "oanh",
+    "oach",
+    "oang"
+  ],
+  "images": {
+    "img_b115_ddoanf_quaan": "Lá cờ lớn bay phần phật, đoàn quân thời xưa cưỡi ngựa phi nhanh ra trận (nhìn từ xa, không vẽ rõ mặt)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Tranh sách vẽ Trần Quốc Toản cưỡi ngựa ra trận; app vẽ lá cờ và đoàn quân nhìn từ xa (không vẽ người thật)."
+    }
+  ],
+  "part1": [
+    {
+      "type": "rime_table",
+      "marker": "●",
+      "rows": [
+        {
+          "rime": "oa",
+          "word": "cái loa"
+        },
+        {
+          "rime": "oe",
+          "word": "hoa hòe"
+        },
+        {
+          "rime": "oai",
+          "word": "quả xoài"
+        },
+        {
+          "rime": "oan",
+          "word": "cây xoan"
+        },
+        {
+          "rime": "oac",
+          "word": "áo khoác"
+        },
+        {
+          "rime": "oat",
+          "word": "sinh hoạt"
+        },
+        {
+          "rime": "oăn",
+          "word": "tóc xoăn"
+        },
+        {
+          "rime": "oăt",
+          "word": "loắt choắt"
+        },
+        {
+          "rime": "oăng",
+          "word": "con hoẵng"
+        },
+        {
+          "rime": "oanh",
+          "word": "chim oanh"
+        },
+        {
+          "rime": "oach",
+          "word": "kế hoạch"
+        },
+        {
+          "rime": "oang",
+          "word": "rừng hoang"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b115_ddoanf_quaan",
+      "say": "Lá cờ bay phần phật, đoàn quân ra trận.",
+      "word": "đoàn quân"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Trần Quốc Toản ra trận"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Gươm tuốt vỏ cầm tay,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Ngựa phi nhanh như bay,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Làm kinh hoàng lũ giặc."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Lá cờ bay phần phật"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Náo nức cả đoàn quân."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "oai",
+          "options": [
+            "oai",
+            "oan",
+            "oac"
+          ]
+        },
+        {
+          "answer": "oăt",
+          "options": [
+            "oăt",
+            "oat",
+            "oăn"
+          ]
+        },
+        {
+          "answer": "oanh",
+          "options": [
+            "oanh",
+            "oach",
+            "oang"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "xoan",
+          "options": [
+            "xoan",
+            "xoăn"
+          ]
+        },
+        {
+          "answer": "hoàng",
+          "options": [
+            "hoàng",
+            "hoằng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "áo khoác",
+      "template": "áo kh_",
+      "answer": "oác",
+      "options": [
+        "oác",
+        "oái",
+        "oán"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "kế hoạch",
+          "options": [
+            "kế hoạch",
+            "sinh hoạt",
+            "rừng hoang"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vỏ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

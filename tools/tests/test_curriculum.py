@@ -84,3 +84,11 @@ class ProgramTest(unittest.TestCase):
         program = load_program(LESSON_INDEX)
         self.assertEqual(max(program), 125)
         self.assertEqual(program[80], cur[80])
+
+
+class RareRimesTest(unittest.TestCase):
+    def test_rare_rimes_count_as_learned(self):
+        from tapdoc.curriculum import load_program
+        learned = learned_until(load_program(LESSON_INDEX), 122)
+        self.assertIn("oay", learned.rimes)
+        self.assertIn("uynh", learned.rimes)

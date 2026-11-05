@@ -1,0 +1,221 @@
+{
+  "lesson_id": "tv1_t2_b100",
+  "book": "tv1_t2_1996",
+  "lesson_no": 100,
+  "type": "van_moi",
+  "title": "uôi uôm",
+  "source": {
+    "pages": [
+      42,
+      43
+    ],
+    "scan_file": "022",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uôi",
+    "uôm"
+  ],
+  "images": {
+    "img_b100_quar_chuoois": "Quả chuối chín vàng đặt trên đĩa",
+    "img_b100_canhs_buoomf": "Con thuyền có cánh buồm trắng căng gió trên mặt nước",
+    "img_b100_dduoir_buwowms": "Ba bạn nhỏ đuổi bắt bướm trên đồng cỏ xanh, bướm bay cao"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "uôi"
+    },
+    {
+      "type": "keyword",
+      "text": "quả chuối",
+      "image": "img_b100_quar_chuoois"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "quả chuối",
+        "chuối",
+        "uôi"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uôi",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chuối",
+      "drag_tone": true,
+      "then": "quả chuối"
+    },
+    {
+      "type": "unit",
+      "text": "uôm"
+    },
+    {
+      "type": "keyword",
+      "text": "cánh buồm",
+      "image": "img_b100_canhs_buoomf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cánh buồm",
+        "buồm",
+        "uôm"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uôm",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "buồm",
+      "drag_tone": true,
+      "then": "cánh buồm"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "dòng suối"
+        },
+        {
+          "text": "tuổi thơ"
+        },
+        {
+          "text": "ao chuôm"
+        },
+        {
+          "text": "nhuộm vải"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b100_dduoir_buwowms",
+      "say": "Các bạn nhỏ đuổi bắt bướm trên đồng cỏ.",
+      "word": "đồng cỏ"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Muồm muỗm bay cao"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cào cào bay thấp"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Chúng em đuổi bắt"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Trên đồng cỏ xanh."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uôi",
+          "options": [
+            "uôi",
+            "uôm",
+            "ôi"
+          ]
+        },
+        {
+          "answer": "uôm",
+          "options": [
+            "uôm",
+            "uôi",
+            "ôm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "suối",
+          "options": [
+            "suối",
+            "sối"
+          ]
+        },
+        {
+          "answer": "buồm",
+          "options": [
+            "buồm",
+            "bồm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "quả chuối",
+      "template": "quả ch_",
+      "answer": "uối",
+      "options": [
+        "uối",
+        "uốm",
+        "ối"
+      ],
+      "image": "img_b100_quar_chuoois"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cánh buồm",
+          "answer": "img_b100_canhs_buoomf",
+          "options": [
+            "img_b100_canhs_buoomf",
+            "img_b100_quar_chuoois",
+            "img_b100_dduoir_buwowms"
+          ]
+        },
+        {
+          "word": "quả chuối",
+          "answer": "img_b100_quar_chuoois",
+          "options": [
+            "img_b100_quar_chuoois",
+            "img_b100_canhs_buoomf",
+            "img_b100_dduoir_buwowms"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "muỗm",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

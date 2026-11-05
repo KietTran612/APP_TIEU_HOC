@@ -1,0 +1,210 @@
+{
+  "lesson_id": "tv1_t2_b110",
+  "book": "tv1_t2_1996",
+  "lesson_no": 110,
+  "type": "van_moi",
+  "title": "oai oan",
+  "source": {
+    "pages": [
+      62,
+      63
+    ],
+    "scan_file": "032",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "oai",
+    "oan"
+  ],
+  "images": {
+    "img_b110_mays_ddieenj_thoaij": "Máy điện thoại bàn kiểu cũ có ống nghe và dây xoắn",
+    "img_b110_muix_khoan": "Cái khoan tay và mũi khoan xoắn",
+    "img_b110_quee_ngoaij": "Má dắt bé gái về quê ngoại, vườn dừa và cây xoài sai quả, người giặt áo bên ao"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "oai"
+    },
+    {
+      "type": "keyword",
+      "text": "máy điện thoại",
+      "image": "img_b110_mays_ddieenj_thoaij"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "máy điện thoại",
+        "thoại",
+        "oai"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oai",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "thoại",
+      "drag_tone": true,
+      "then": "máy điện thoại"
+    },
+    {
+      "type": "unit",
+      "text": "oan"
+    },
+    {
+      "type": "keyword",
+      "text": "mũi khoan",
+      "image": "img_b110_muix_khoan"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "mũi khoan",
+        "khoan",
+        "oan"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oan",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "khoan",
+      "then": "mũi khoan"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "quả xoài"
+        },
+        {
+          "text": "ông bà ngoại"
+        },
+        {
+          "text": "học giỏi toán"
+        },
+        {
+          "text": "vui liên hoan"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b110_quee_ngoaij",
+      "say": "Loan theo má về quê ngoại.",
+      "word": "quê ngoại"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Nghỉ hè, Loan theo má về quê ngoại."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Quê Loan có nhiều dừa, có vườn xoài sum sê, trĩu quả."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "oai",
+          "options": [
+            "oai",
+            "oan",
+            "oa"
+          ]
+        },
+        {
+          "answer": "oan",
+          "options": [
+            "oan",
+            "oai",
+            "oe"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "xoài",
+          "options": [
+            "xoài",
+            "xài"
+          ]
+        },
+        {
+          "answer": "toán",
+          "options": [
+            "toán",
+            "tán"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "mũi khoan",
+      "template": "mũi kh_",
+      "answer": "oan",
+      "options": [
+        "oan",
+        "oai",
+        "oa"
+      ],
+      "image": "img_b110_muix_khoan"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "máy điện thoại",
+          "answer": "img_b110_mays_ddieenj_thoaij",
+          "options": [
+            "img_b110_mays_ddieenj_thoaij",
+            "img_b110_muix_khoan",
+            "img_b110_quee_ngoaij"
+          ]
+        },
+        {
+          "word": "mũi khoan",
+          "answer": "img_b110_muix_khoan",
+          "options": [
+            "img_b110_muix_khoan",
+            "img_b110_mays_ddieenj_thoaij",
+            "img_b110_quee_ngoaij"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "trĩu",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "lesson_id": "tv1_t2_b108",
+  "book": "tv1_t2_1996",
+  "lesson_no": 108,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      58,
+      59
+    ],
+    "scan_file": "030",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ươi",
+    "ươu",
+    "ươc",
+    "ươt",
+    "ươm",
+    "ươp",
+    "ươn",
+    "ương"
+  ],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "marker": "●",
+      "rows": [
+        {
+          "rime": "ươi",
+          "word": "lưỡi cuốc"
+        },
+        {
+          "rime": "ươu",
+          "word": "con hươu"
+        },
+        {
+          "rime": "ươc",
+          "word": "cái lược"
+        },
+        {
+          "rime": "ươt",
+          "word": "tóc mượt"
+        },
+        {
+          "rime": "ươm",
+          "word": "bướm lượn"
+        },
+        {
+          "rime": "ươp",
+          "word": "giàn mướp"
+        },
+        {
+          "rime": "ươn",
+          "word": "vườn rau"
+        },
+        {
+          "rime": "ương",
+          "word": "cây phượng"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Giọt mồ hôi"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Mồ hôi mà đổ xuống đồng,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Lúa mọc trùng trùng sáng cả đồi nương"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Mồ hôi mà đổ xuống vườn,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Dâu xanh lá tốt vấn vương tơ tằm."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Mồ hôi mà đổ xuống đầm,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cá lội phía dưới, rau nằm phía trên."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ươu",
+          "options": [
+            "ươu",
+            "ươi",
+            "ươm"
+          ]
+        },
+        {
+          "answer": "ươt",
+          "options": [
+            "ươt",
+            "ươp",
+            "ươm"
+          ]
+        },
+        {
+          "answer": "ương",
+          "options": [
+            "ương",
+            "ươm",
+            "ươi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "lược",
+          "options": [
+            "lược",
+            "lượp"
+          ]
+        },
+        {
+          "answer": "lưỡi",
+          "options": [
+            "lưỡi",
+            "lưỡu"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "vườn rau",
+      "template": "v_ rau",
+      "answer": "ườn",
+      "options": [
+        "ườn",
+        "ườm",
+        "ười"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cây phượng",
+          "options": [
+            "cây phượng",
+            "giàn mướp",
+            "cái lược"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "lưỡi",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

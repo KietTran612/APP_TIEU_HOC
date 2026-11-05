@@ -495,7 +495,7 @@ class BuildErrorTest(unittest.TestCase):
 
     def test_invalid_syllable_is_wrapped_with_location(self):
         with self.assertRaises(BuildError) as cm:
-            build_lesson(src_of(part1=[{"type": "keyword", "text": "ca7", "image": "img_x"}], images={"img_x": "x"}))
+            build_lesson(src_of(part1=[{"type": "keyword", "text": "ca%", "image": "img_x"}], images={"img_x": "x"}))
         self.assertTrue(str(cm.exception).startswith("tv1_t1_b99 part1[0]: "))
 
     def test_invalid_syllable_in_round_is_wrapped(self):

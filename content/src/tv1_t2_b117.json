@@ -1,0 +1,209 @@
+{
+  "lesson_id": "tv1_t2_b117",
+  "book": "tv1_t2_1996",
+  "lesson_no": 117,
+  "type": "van_moi",
+  "title": "uơ uân",
+  "source": {
+    "pages": [
+      76,
+      77
+    ],
+    "scan_file": "039",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uơ",
+    "uân"
+  ],
+  "images": {
+    "img_b117_voi_huow_voif": "Chú voi đứng trên bãi cỏ, giơ vòi huơ lên cao",
+    "img_b117_huaan_chuwowng": "Tấm huân chương hình ngôi sao treo dưới dải băng",
+    "img_b117_tet_troongf_caay": "Các bạn nhỏ cầm xẻng, cây non đi trồng cây hai bên đường vào mùa xuân"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "uơ"
+    },
+    {
+      "type": "keyword",
+      "text": "voi huơ vòi",
+      "image": "img_b117_voi_huow_voif"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "voi huơ vòi",
+        "huơ",
+        "uơ"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uơ",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "huơ",
+      "then": "voi huơ vòi"
+    },
+    {
+      "type": "unit",
+      "text": "uân"
+    },
+    {
+      "type": "keyword",
+      "text": "huân chương",
+      "image": "img_b117_huaan_chuwowng"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "huân chương",
+        "huân",
+        "uân"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uân",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "huân",
+      "then": "huân chương"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "thuở ấu thơ"
+        },
+        {
+          "text": "huơ tay"
+        },
+        {
+          "text": "cờ luân lưu"
+        },
+        {
+          "text": "tuần tra biên giới"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b117_tet_troongf_caay",
+      "say": "Mùa xuân, các bạn đi trồng cây.",
+      "word": "trồng cây"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Mùa xuân là Tết trồng cây,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Làm cho đất nước càng ngày càng xuân."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uơ",
+          "options": [
+            "uơ",
+            "uân",
+            "uê"
+          ]
+        },
+        {
+          "answer": "uân",
+          "options": [
+            "uân",
+            "uơ",
+            "uy"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "xuân",
+          "options": [
+            "xuân",
+            "xân"
+          ]
+        },
+        {
+          "answer": "tuần",
+          "options": [
+            "tuần",
+            "tầm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "huân chương",
+      "template": "h_ chương",
+      "answer": "uân",
+      "options": [
+        "uân",
+        "uơ",
+        "uy"
+      ],
+      "image": "img_b117_huaan_chuwowng"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "voi huơ vòi",
+          "answer": "img_b117_voi_huow_voif",
+          "options": [
+            "img_b117_voi_huow_voif",
+            "img_b117_huaan_chuwowng",
+            "img_b117_tet_troongf_caay"
+          ]
+        },
+        {
+          "word": "huân chương",
+          "answer": "img_b117_huaan_chuwowng",
+          "options": [
+            "img_b117_huaan_chuwowng",
+            "img_b117_voi_huow_voif",
+            "img_b117_tet_troongf_caay"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "thuở",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

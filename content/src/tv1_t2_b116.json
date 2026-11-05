@@ -1,0 +1,211 @@
+{
+  "lesson_id": "tv1_t2_b116",
+  "book": "tv1_t2_1996",
+  "lesson_no": 116,
+  "type": "van_moi",
+  "title": "uê uy",
+  "source": {
+    "pages": [
+      74,
+      75
+    ],
+    "scan_file": "038",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uê",
+    "uy"
+  ],
+  "images": {
+    "img_b116_hoa_hueej": "Cành hoa huệ trắng có mấy bông nở và nụ",
+    "img_b116_tauf_thuyr": "Con tàu thủy chạy trên sông, ống khói nhả khói",
+    "img_b116_xuws_hueef": "Phong cảnh xứ Huế: dòng sông uốn quanh, núi xanh xa xa, thuyền buồm, con đường ven sông"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "uê"
+    },
+    {
+      "type": "keyword",
+      "text": "hoa huệ",
+      "image": "img_b116_hoa_hueej"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "hoa huệ",
+        "huệ",
+        "uê"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uê",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "huệ",
+      "drag_tone": true,
+      "then": "hoa huệ"
+    },
+    {
+      "type": "unit",
+      "text": "uy"
+    },
+    {
+      "type": "keyword",
+      "text": "tàu thủy",
+      "image": "img_b116_tauf_thuyr"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "tàu thủy",
+        "thủy",
+        "uy"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uy",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "thủy",
+      "drag_tone": true,
+      "then": "tàu thủy"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "cây vạn tuế"
+        },
+        {
+          "text": "Huế có sông Hương"
+        },
+        {
+          "text": "huy hiệu măng non"
+        },
+        {
+          "text": "lũy tre xanh biếc"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b116_xuws_hueef",
+      "say": "Đường vô xứ Huế, non xanh nước biếc.",
+      "word": "xứ Huế"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đường vô xứ Huế quanh quanh"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Non xanh nước biếc như tranh họa đồ."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uê",
+          "options": [
+            "uê",
+            "uy",
+            "ui"
+          ]
+        },
+        {
+          "answer": "uy",
+          "options": [
+            "uy",
+            "uê",
+            "ui"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "huệ",
+          "options": [
+            "huệ",
+            "hệ"
+          ]
+        },
+        {
+          "answer": "thủy",
+          "options": [
+            "thủy",
+            "thủi"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "tàu thủy",
+      "template": "tàu th_",
+      "answer": "ủy",
+      "options": [
+        "ủy",
+        "ủi",
+        "uể"
+      ],
+      "image": "img_b116_tauf_thuyr"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "hoa huệ",
+          "answer": "img_b116_hoa_hueej",
+          "options": [
+            "img_b116_hoa_hueej",
+            "img_b116_tauf_thuyr",
+            "img_b116_xuws_hueef"
+          ]
+        },
+        {
+          "word": "tàu thủy",
+          "answer": "img_b116_tauf_thuyr",
+          "options": [
+            "img_b116_tauf_thuyr",
+            "img_b116_hoa_hueej",
+            "img_b116_xuws_hueef"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "lũy",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

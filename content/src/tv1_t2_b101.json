@@ -1,0 +1,211 @@
+{
+  "lesson_id": "tv1_t2_b101",
+  "book": "tv1_t2_1996",
+  "lesson_no": 101,
+  "type": "van_moi",
+  "title": "uôc uôt",
+  "source": {
+    "pages": [
+      44,
+      45
+    ],
+    "scan_file": "023",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uôc",
+    "uôt"
+  ],
+  "images": {
+    "img_b101_cais_cuoocs": "Cái cuốc lưỡi sắt cán gỗ dài đặt trên đất",
+    "img_b101_tuoots_luas": "Hai cô nông dân tuốt lúa bên máy tuốt lúa đạp chân",
+    "img_b101_meof_dduoir_chuootj": "Các bạn nhỏ nắm tay nhau thành vòng tròn chơi trò mèo đuổi chuột"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "uôc"
+    },
+    {
+      "type": "keyword",
+      "text": "cái cuốc",
+      "image": "img_b101_cais_cuoocs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái cuốc",
+        "cuốc",
+        "uôc"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uôc",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "cuốc",
+      "drag_tone": true,
+      "then": "cái cuốc"
+    },
+    {
+      "type": "unit",
+      "text": "uôt"
+    },
+    {
+      "type": "keyword",
+      "text": "tuốt lúa",
+      "image": "img_b101_tuoots_luas"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "tuốt lúa",
+        "tuốt",
+        "uôt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uôt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "tuốt",
+      "drag_tone": true,
+      "then": "tuốt lúa"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "đôi guốc"
+        },
+        {
+          "text": "thuộc bài"
+        },
+        {
+          "text": "con chuột"
+        },
+        {
+          "text": "trắng muốt"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b101_meof_dduoir_chuootj",
+      "say": "Các bạn chơi trò mèo đuổi chuột.",
+      "word": "mèo đuổi chuột"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Chúng em chơi trò mèo đuổi chuột."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Ai thua cuộc phải nhảy lò cò quanh các bạn."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uôc",
+          "options": [
+            "uôc",
+            "uôi",
+            "uôm"
+          ]
+        },
+        {
+          "answer": "uôt",
+          "options": [
+            "uôt",
+            "uôi",
+            "uôm"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "chuột",
+          "options": [
+            "chuột",
+            "chuôi"
+          ]
+        },
+        {
+          "answer": "guốc",
+          "options": [
+            "guốc",
+            "gốc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "cái cuốc",
+      "template": "cái c_",
+      "answer": "uốc",
+      "options": [
+        "uốc",
+        "uối",
+        "uốm"
+      ],
+      "image": "img_b101_cais_cuoocs"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "tuốt lúa",
+          "answer": "img_b101_tuoots_luas",
+          "options": [
+            "img_b101_tuoots_luas",
+            "img_b101_cais_cuoocs",
+            "img_b101_meof_dduoir_chuootj"
+          ]
+        },
+        {
+          "word": "cái cuốc",
+          "answer": "img_b101_cais_cuoocs",
+          "options": [
+            "img_b101_cais_cuoocs",
+            "img_b101_tuoots_luas",
+            "img_b101_meof_dduoir_chuootj"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nhảy",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

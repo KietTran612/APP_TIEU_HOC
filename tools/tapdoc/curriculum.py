@@ -9,7 +9,7 @@ from tapdoc.viet import TONE_INFO, nfc, split_syllable, syllables
 DEFAULT_BOOK = "tv1_t1_1990"
 
 # Chỉ các loại bài này dạy cái mới; các loại khác (ôn tập, chữ hoa, ...) bị bỏ qua.
-_TEACHING = ("dau_thanh", "am_moi", "van_moi")
+_TEACHING = ("dau_thanh", "am_moi", "van_moi", "van_it_dung")
 
 _TONE_BY_NAME = {name: key for key, (name, _) in TONE_INFO.items()}
 

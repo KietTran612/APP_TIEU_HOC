@@ -1,0 +1,203 @@
+{
+  "lesson_id": "tv1_t2_b120",
+  "book": "tv1_t2_1996",
+  "lesson_no": 120,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      82,
+      83
+    ],
+    "scan_file": "042",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uê",
+    "uy",
+    "uơ",
+    "uân",
+    "uât",
+    "uây",
+    "uyên",
+    "uyêt"
+  ],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "marker": "●",
+      "rows": [
+        {
+          "rime": "uê",
+          "word": "hoa huệ"
+        },
+        {
+          "rime": "uy",
+          "word": "tàu thủy"
+        },
+        {
+          "rime": "uơ",
+          "word": "huơ tay"
+        },
+        {
+          "rime": "uân",
+          "word": "mùa xuân"
+        },
+        {
+          "rime": "uât",
+          "word": "sản xuất"
+        },
+        {
+          "rime": "uây",
+          "word": "khuấy nước"
+        },
+        {
+          "rime": "uyên",
+          "word": "chim khuyên"
+        },
+        {
+          "rime": "uyêt",
+          "word": "tuyết trắng"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Trăng sáng"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Sân nhà em sáng quá,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nhờ ánh trăng sáng ngời,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Trăng tròn như cái đĩa"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Lơ lửng mà không rơi."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Những hôm nào trăng khuyết"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Trông giống con thuyền trôi."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Em đi trăng theo bước"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Như muốn cùng đi chơi."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uây",
+          "options": [
+            "uây",
+            "uân",
+            "uât"
+          ]
+        },
+        {
+          "answer": "uyên",
+          "options": [
+            "uyên",
+            "uyêt",
+            "uơ"
+          ]
+        },
+        {
+          "answer": "uê",
+          "options": [
+            "uê",
+            "uy",
+            "uơ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "khuyết",
+          "options": [
+            "khuyết",
+            "khuyên"
+          ]
+        },
+        {
+          "answer": "thuyền",
+          "options": [
+            "thuyền",
+            "thuần"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "mùa xuân",
+      "template": "mùa x_",
+      "answer": "uân",
+      "options": [
+        "uân",
+        "uây",
+        "uât"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tuyết trắng",
+          "options": [
+            "tuyết trắng",
+            "chim khuyên",
+            "hoa huệ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "lửng",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

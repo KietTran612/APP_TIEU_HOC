@@ -2,7 +2,7 @@ import json
 import unittest
 
 from tapdoc.build import build_lesson, load_sources
-from tapdoc.curriculum import learned_until, load_curriculum
+from tapdoc.curriculum import learned_until, load_curriculum, load_program
 from tapdoc.manifest import load_rows
 from tapdoc.paths import CONTENT_SRC, LESSON_INDEX, MANIFESTS, STYLE_FILE, UNITY_RES
 from tapdoc.validate import check_nfc, check_part1, check_part2, validate_all
@@ -51,7 +51,7 @@ class PrototypeContentTest(unittest.TestCase):
             self.assertTrue(6 <= len(l["part2"]) <= 10, lid)
 
     def test_sources_pass_nfc_part1_and_part2_checks(self):
-        cur = load_curriculum(LESSON_INDEX)
+        cur = load_program(LESSON_INDEX)  # chữ đã học tính liền cả hai quyển
         self.assertLessEqual({"tv1_t1_b04", "tv1_t1_b13", "tv1_t1_b42"}, set(L.keys()))  # bản đầu tiên thêm bài 1–17
         for lid, lesson in L.items():
             with self.subTest(lesson=lid):

@@ -1,0 +1,210 @@
+{
+  "lesson_id": "tv1_t2_b113",
+  "book": "tv1_t2_1996",
+  "lesson_no": 113,
+  "type": "van_moi",
+  "title": "oanh oach",
+  "source": {
+    "pages": [
+      68,
+      69
+    ],
+    "scan_file": "035",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "oanh",
+    "oach"
+  ],
+  "images": {
+    "img_b113_khoanh_banhs": "Mấy khoanh bánh mì tròn cắt ra, thấy ruột bánh",
+    "img_b113_thu_hoachj_luas": "Cô nông dân vác bó lúa trên vai trong mùa thu hoạch",
+    "img_b113_gom_giaays_vunj": "Các bạn học sinh mang giấy vụn, sắt vụn đến góp, xếp thành đống để làm kế hoạch nhỏ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "oanh"
+    },
+    {
+      "type": "keyword",
+      "text": "khoanh bánh",
+      "image": "img_b113_khoanh_banhs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "khoanh bánh",
+        "khoanh",
+        "oanh"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oanh",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "khoanh",
+      "then": "khoanh bánh"
+    },
+    {
+      "type": "unit",
+      "text": "oach"
+    },
+    {
+      "type": "keyword",
+      "text": "thu hoạch lúa",
+      "image": "img_b113_thu_hoachj_luas"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "thu hoạch lúa",
+        "hoạch",
+        "oach"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oach",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "hoạch",
+      "drag_tone": true,
+      "then": "thu hoạch lúa"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "doanh trại bộ đội"
+        },
+        {
+          "text": "đường đi loanh quanh"
+        },
+        {
+          "text": "ngã oành oạch"
+        },
+        {
+          "text": "vượt kế hoạch"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b113_gom_giaays_vunj",
+      "say": "Các bạn góp giấy vụn làm kế hoạch nhỏ.",
+      "word": "kế hoạch nhỏ"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Lớp em hoàn thành kế hoạch nhỏ."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Trường em sẽ có nhiều quà gửi các chú bộ đội ngoài đảo xa."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "oanh",
+          "options": [
+            "oanh",
+            "oach",
+            "oăn"
+          ]
+        },
+        {
+          "answer": "oach",
+          "options": [
+            "oach",
+            "oanh",
+            "oai"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "khoanh",
+          "options": [
+            "khoanh",
+            "khanh"
+          ]
+        },
+        {
+          "answer": "hoạch",
+          "options": [
+            "hoạch",
+            "hoạnh"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "khoanh bánh",
+      "template": "kh_ bánh",
+      "answer": "oanh",
+      "options": [
+        "oanh",
+        "oach",
+        "oai"
+      ],
+      "image": "img_b113_khoanh_banhs"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "thu hoạch lúa",
+          "answer": "img_b113_thu_hoachj_luas",
+          "options": [
+            "img_b113_thu_hoachj_luas",
+            "img_b113_khoanh_banhs",
+            "img_b113_gom_giaays_vunj"
+          ]
+        },
+        {
+          "word": "khoanh bánh",
+          "answer": "img_b113_khoanh_banhs",
+          "options": [
+            "img_b113_khoanh_banhs",
+            "img_b113_thu_hoachj_luas",
+            "img_b113_gom_giaays_vunj"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "sẽ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

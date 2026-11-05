@@ -1,0 +1,156 @@
+{
+  "lesson_id": "tv1_t2_b122",
+  "book": "tv1_t2_1996",
+  "lesson_no": 122,
+  "type": "van_it_dung",
+  "title": "Vần ít dùng",
+  "source": {
+    "pages": [
+      86,
+      87
+    ],
+    "scan_file": "044",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uya",
+    "uyu",
+    "uyt",
+    "uynh",
+    "uych",
+    "uâng",
+    "uênh",
+    "uêch"
+  ],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "marker": "●",
+      "rows": [
+        {
+          "rime": "uya",
+          "sentence": "Mẹ thức khuya vá áo."
+        },
+        {
+          "rime": "uyu",
+          "sentence": "Đường đi khúc khuỷu."
+        },
+        {
+          "rime": "uyt",
+          "sentence": "Bé tập huýt sáo."
+        },
+        {
+          "rime": "uynh",
+          "sentence": "Phụ huynh đi họp."
+        },
+        {
+          "rime": "uych",
+          "sentence": "Các em chạy huỳnh huỵch."
+        },
+        {
+          "rime": "uâng",
+          "sentence": "Bâng khuâng tiễn bạn đi xa."
+        },
+        {
+          "rime": "uênh",
+          "sentence": "Chớ nói huênh hoang."
+        },
+        {
+          "rime": "uêch",
+          "sentence": "Chữ viết nguệch ngoạc."
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uya",
+          "options": [
+            "uya",
+            "uyu",
+            "uych"
+          ]
+        },
+        {
+          "answer": "uâng",
+          "options": [
+            "uâng",
+            "uênh",
+            "uyt"
+          ]
+        },
+        {
+          "answer": "uêch",
+          "options": [
+            "uêch",
+            "uyu",
+            "uya"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "khuya",
+          "options": [
+            "khuya",
+            "khuyu"
+          ]
+        },
+        {
+          "answer": "huýt",
+          "options": [
+            "huýt",
+            "hút"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "phụ huynh",
+      "template": "phụ h_",
+      "answer": "uynh",
+      "options": [
+        "uynh",
+        "uych",
+        "uyt"
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "bâng khuâng",
+      "template": "bâng kh_",
+      "answer": "uâng",
+      "options": [
+        "uâng",
+        "uênh",
+        "uyu"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "huênh hoang",
+          "options": [
+            "huênh hoang",
+            "nguệch ngoạc",
+            "khúc khuỷu"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "lesson_id": "tv1_t2_b112",
+  "book": "tv1_t2_1996",
+  "lesson_no": 112,
+  "type": "van_moi",
+  "title": "oăn oăt",
+  "source": {
+    "pages": [
+      66,
+      67
+    ],
+    "scan_file": "034",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "oăn",
+    "oăt"
+  ],
+  "images": {
+    "img_b112_tocs_xoawn": "Chân dung bé gái tóc xoăn tít, mặc áo hoa",
+    "img_b112_choox_ngoawtj": "Con đường núi quanh co có chỗ ngoặt gấp, hai bên là núi đá và cây",
+    "img_b112_bes_loawts_choawts": "Chú bé nhỏ nhắn đội mũ ca lô, đeo cái xắc, chân bước thoăn thoắt trên đường đồi"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "oăn"
+    },
+    {
+      "type": "keyword",
+      "text": "tóc xoăn",
+      "image": "img_b112_tocs_xoawn"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "tóc xoăn",
+        "xoăn",
+        "oăn"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oăn",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "xoăn",
+      "then": "tóc xoăn"
+    },
+    {
+      "type": "unit",
+      "text": "oăt"
+    },
+    {
+      "type": "keyword",
+      "text": "chỗ ngoặt",
+      "image": "img_b112_choox_ngoawtj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "chỗ ngoặt",
+        "ngoặt",
+        "oăt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "oăt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "ngoặt",
+      "drag_tone": true,
+      "then": "chỗ ngoặt"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "xoắn thừng"
+        },
+        {
+          "text": "nhanh thoăn thoắt"
+        },
+        {
+          "text": "nhọn hoắt"
+        },
+        {
+          "text": "bé loắt choắt"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b112_bes_loawts_choawts",
+      "say": "Chú bé đeo xắc đi nhanh thoăn thoắt.",
+      "word": "chú bé"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Chú bé loắt choắt"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cái xắc xinh xinh"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cái chân thoăn thoắt"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cái đầu nghênh nghênh."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "oăn",
+          "options": [
+            "oăn",
+            "oăt",
+            "oai"
+          ]
+        },
+        {
+          "answer": "oăt",
+          "options": [
+            "oăt",
+            "oăn",
+            "oai"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "xoăn",
+          "options": [
+            "xoăn",
+            "xoan"
+          ]
+        },
+        {
+          "answer": "hoắt",
+          "options": [
+            "hoắt",
+            "hoát"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "tóc xoăn",
+      "template": "tóc x_",
+      "answer": "oăn",
+      "options": [
+        "oăn",
+        "oan",
+        "oai"
+      ],
+      "image": "img_b112_tocs_xoawn"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "tóc xoăn",
+          "answer": "img_b112_tocs_xoawn",
+          "options": [
+            "img_b112_tocs_xoawn",
+            "img_b112_choox_ngoawtj",
+            "img_b112_bes_loawts_choawts"
+          ]
+        },
+        {
+          "word": "chỗ ngoặt",
+          "answer": "img_b112_choox_ngoawtj",
+          "options": [
+            "img_b112_choox_ngoawtj",
+            "img_b112_tocs_xoawn",
+            "img_b112_bes_loawts_choawts"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "chỗ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

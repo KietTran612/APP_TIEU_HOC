@@ -1,0 +1,132 @@
+{
+  "lesson_id": "tv1_t2_b125",
+  "book": "tv1_t2_1996",
+  "lesson_no": 125,
+  "type": "on_luyen",
+  "title": "Ôn luyện",
+  "source": {
+    "pages": [
+      90
+    ],
+    "scan_file": "046",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b125_trais_ddaats": "Các bạn nhỏ vui vẻ giơ tay bên quả địa cầu, chim bồ câu trắng bay, bóng bay xanh"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b125_trais_ddaats",
+      "say": "Các bạn nhỏ vui chơi bên quả địa cầu, chim bồ câu bay.",
+      "word": "trái đất"
+    },
+    {
+      "type": "sentence",
+      "marker": "●",
+      "text": "Bài ca về trái đất"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Trái đất này là của chúng mình"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Quả bóng xanh bay giữa trời xanh"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bồ câu ơi, tiếng chim gù thương mến"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Hải âu ơi, cánh chim vờn sóng biển"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cùng bay nào, cho trái đất quay!"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cùng bay nào, cho trái đất quay!"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "trái đất",
+          "options": [
+            "trái đất",
+            "bồ câu",
+            "hải âu"
+          ]
+        },
+        {
+          "answer": "sóng biển",
+          "options": [
+            "sóng biển",
+            "trời xanh",
+            "quả bóng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "mến",
+          "options": [
+            "mến",
+            "mếm"
+          ]
+        },
+        {
+          "answer": "vờn",
+          "options": [
+            "vờn",
+            "vườn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "thương mến",
+      "template": "th_ mến",
+      "answer": "ương",
+      "options": [
+        "ương",
+        "ươi",
+        "uông"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "Hải",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

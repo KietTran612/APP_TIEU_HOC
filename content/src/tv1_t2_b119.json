@@ -1,0 +1,209 @@
+{
+  "lesson_id": "tv1_t2_b119",
+  "book": "tv1_t2_1996",
+  "lesson_no": 119,
+  "type": "van_moi",
+  "title": "uyên uyêt",
+  "source": {
+    "pages": [
+      80,
+      81
+    ],
+    "scan_file": "041",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "uyên",
+    "uyêt"
+  ],
+  "images": {
+    "img_b119_chim_vanhf_khuyeen": "Con chim vành khuyên lông xanh có vòng trắng quanh mắt, đậu trên cành",
+    "img_b119_duyeetj_binh": "Đoàn chiến sĩ đội mũ, mặc lễ phục, bồng súng đi đều trong buổi duyệt binh",
+    "img_b119_vinhj_haj_long": "Vịnh Hạ Long: những hòn núi đá nhô lên giữa mặt nước, thuyền buồm đi giữa các đảo đá"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[11]",
+        "note": "tranh vịnh Hạ Long: cảnh có thật, vẽ theo nét tranh sách"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "uyên"
+    },
+    {
+      "type": "keyword",
+      "text": "chim vành khuyên",
+      "image": "img_b119_chim_vanhf_khuyeen"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "chim vành khuyên",
+        "khuyên",
+        "uyên"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uyên",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "khuyên",
+      "then": "chim vành khuyên"
+    },
+    {
+      "type": "unit",
+      "text": "uyêt"
+    },
+    {
+      "type": "keyword",
+      "text": "duyệt binh",
+      "image": "img_b119_duyeetj_binh"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "duyệt binh",
+        "duyệt",
+        "uyêt"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "uyêt",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "duyệt",
+      "drag_tone": true,
+      "then": "duyệt binh"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "bóng chuyền"
+        },
+        {
+          "text": "vô tuyến truyền hình"
+        },
+        {
+          "text": "trăng khuyết"
+        },
+        {
+          "text": "đẹp tuyệt vời"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b119_vinhj_haj_long",
+      "say": "Đây là vịnh Hạ Long.",
+      "word": "vịnh Hạ Long"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đi thuyền trong vịnh Hạ Long, thấy cảnh núi non đẹp tuyệt vời."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "uyên",
+          "options": [
+            "uyên",
+            "uyêt",
+            "uân"
+          ]
+        },
+        {
+          "answer": "uyêt",
+          "options": [
+            "uyêt",
+            "uyên",
+            "uât"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "khuyên",
+          "options": [
+            "khuyên",
+            "khiên"
+          ]
+        },
+        {
+          "answer": "tuyệt",
+          "options": [
+            "tuyệt",
+            "tiệt"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "bóng chuyền",
+      "template": "bóng ch_",
+      "answer": "uyền",
+      "options": [
+        "uyền",
+        "uần",
+        "iền"
+      ]
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "chim vành khuyên",
+          "answer": "img_b119_chim_vanhf_khuyeen",
+          "options": [
+            "img_b119_chim_vanhf_khuyeen",
+            "img_b119_duyeetj_binh",
+            "img_b119_vinhj_haj_long"
+          ]
+        },
+        {
+          "word": "duyệt binh",
+          "answer": "img_b119_duyeetj_binh",
+          "options": [
+            "img_b119_duyeetj_binh",
+            "img_b119_chim_vanhf_khuyeen",
+            "img_b119_vinhj_haj_long"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "cảnh",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}
