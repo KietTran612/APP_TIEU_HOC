@@ -1,0 +1,196 @@
+{
+  "lesson_id": "tv1_t2_b146",
+  "book": "tv1_t2_1996",
+  "lesson_no": 146,
+  "type": "tap_doc",
+  "title": "Nặn đồ chơi",
+  "week": 30,
+  "td_no": 17,
+  "source": {
+    "pages": [
+      111
+    ],
+    "scan_file": "056",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b146_nawnj_ddoof_chowi": "Bé ngồi bên thềm nhà nặn đồ chơi bằng đất: quả thị, quả na, con chuột; con mèo nằm vẫy đuôi bên cạnh"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "sach",
+      "text": "Na: các tỉnh phía Nam gọi là mãng cầu (chú thích dưới tranh, tr.111)."
+    }
+  ],
+  "part1": [
+    {
+      "type": "title",
+      "text": "Nặn đồ chơi"
+    },
+    {
+      "type": "sentence",
+      "text": "Bên thềm gió mát"
+    },
+    {
+      "type": "sentence",
+      "text": "Bé nặn đồ chơi,"
+    },
+    {
+      "type": "sentence",
+      "text": "Mèo nằm vẫy đuôi"
+    },
+    {
+      "type": "sentence",
+      "text": "Tròn xoe đôi mắt."
+    },
+    {
+      "type": "sentence",
+      "text": "Đây là quả thị,"
+    },
+    {
+      "type": "sentence",
+      "text": "Đây là quả na,"
+    },
+    {
+      "type": "sentence",
+      "text": "Quả này phần mẹ,"
+    },
+    {
+      "type": "sentence",
+      "text": "Quả này phần cha."
+    },
+    {
+      "type": "sentence",
+      "text": "Đây là thằng Chuột"
+    },
+    {
+      "type": "sentence",
+      "text": "Tặng riêng chú Mèo,"
+    },
+    {
+      "type": "sentence",
+      "text": "Mèo ta thích chí"
+    },
+    {
+      "type": "sentence",
+      "text": "Vểnh râu \"meo, meo\"!"
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "NGUYỄN NGỌC KÝ",
+      "breaks": [
+        4,
+        8
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b146_nawnj_ddoof_chowi",
+      "say": "Bé nặn quả thị, quả na và con chuột.",
+      "word": "nặn đồ chơi"
+    },
+    {
+      "type": "find_words",
+      "question": "Đọc đúng các tiếng trong bài có âm v, gi, tr, ch đứng đầu.",
+      "match": {
+        "onset": [
+          "v",
+          "gi",
+          "tr",
+          "ch"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có vần uôi, uôt, oe, eo? Em hãy tìm và đọc lên những tiếng ấy.",
+      "match": {
+        "rime": [
+          "uôi",
+          "uôt",
+          "oe",
+          "eo"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Bé nặn những thứ gì? Bé tặng quả thị, quả na cho ai? Bé tặng \"thằng chuột\" cho ai?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "quả thị",
+          "options": [
+            "quả thị",
+            "quả na",
+            "đồ chơi"
+          ]
+        },
+        {
+          "answer": "thích chí",
+          "options": [
+            "thích chí",
+            "tròn xoe",
+            "gió mát"
+          ]
+        },
+        {
+          "answer": "vẫy đuôi",
+          "options": [
+            "vẫy đuôi",
+            "đôi mắt",
+            "phần mẹ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "nặn",
+          "options": [
+            "nặn",
+            "nắn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "tròn xoe",
+      "template": "tròn x_",
+      "answer": "oe",
+      "options": [
+        "oe",
+        "eo",
+        "oa"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "vẫy",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "lesson_id": "tv1_t2_b142",
+  "book": "tv1_t2_1996",
+  "lesson_no": 142,
+  "type": "hoc_thuoc_long",
+  "title": "Cái bống",
+  "week": 29,
+  "td_no": 14,
+  "source": {
+    "pages": [
+      107
+    ],
+    "scan_file": "054",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b142_cais_boongs": "Trời mưa to, người mẹ đội nón đi chợ về, bé gái quẩy gánh hàng chạy theo đỡ mẹ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "sach",
+      "text": "\"Đồng dao\": bài hát dân gian của trẻ em, sách ghi ở cuối bài thay cho tên tác giả."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b142_cais_boongs",
+      "say": "Bống gánh đỡ mẹ chạy cơn mưa.",
+      "word": "cái bống"
+    },
+    {
+      "type": "title",
+      "text": "Cái bống",
+      "sub": "Học thuộc lòng"
+    },
+    {
+      "type": "sentence",
+      "text": "Cái bống là cái bống bang"
+    },
+    {
+      "type": "sentence",
+      "text": "Khéo sảy, khéo sàng cho mẹ nấu cơm."
+    },
+    {
+      "type": "sentence",
+      "text": "Mẹ bống đi chợ đường trơn,"
+    },
+    {
+      "type": "sentence",
+      "text": "Bống ra gánh đỡ chạy cơn mưa ròng."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "Đồng dao"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có vần ong, ông, ơn, eo và đọc lên những tiếng ấy.",
+      "match": {
+        "rime": [
+          "ong",
+          "ông",
+          "ơn",
+          "eo"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "title",
+      "text": "Đánh vần và đọc những tiếng: cho, chợ, chạy, trơn.",
+      "instruction": true
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "cho"
+        },
+        {
+          "text": "chợ"
+        },
+        {
+          "text": "chạy"
+        },
+        {
+          "text": "trơn"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "text": "Bống giúp mẹ làm những việc gì?"
+    },
+    {
+      "type": "memorize",
+      "question": "Học thuộc lòng cả bài."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cái bống",
+          "options": [
+            "cái bống",
+            "đường trơn",
+            "nấu cơm"
+          ]
+        },
+        {
+          "answer": "gánh đỡ",
+          "options": [
+            "gánh đỡ",
+            "đi chợ",
+            "cơn mưa"
+          ]
+        },
+        {
+          "answer": "khéo sảy",
+          "options": [
+            "khéo sảy",
+            "khéo sàng",
+            "mưa ròng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "sảy",
+          "options": [
+            "sảy",
+            "sẩy"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "đường trơn",
+      "template": "đường tr_",
+      "answer": "ơn",
+      "options": [
+        "ơn",
+        "ơm",
+        "ôn"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "đỡ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

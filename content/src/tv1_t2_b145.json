@@ -1,0 +1,181 @@
+{
+  "lesson_id": "tv1_t2_b145",
+  "book": "tv1_t2_1996",
+  "lesson_no": 145,
+  "type": "tap_doc",
+  "title": "Bà và cháu",
+  "week": 30,
+  "td_no": 16,
+  "source": {
+    "pages": [
+      110
+    ],
+    "scan_file": "056",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b145_baf_vaf_chaus": "Bà ngồi trên phản phe phẩy quạt, bé gái ngồi cạnh đọc truyện cho bà nghe, mẹ ngồi khâu áo"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Bà và cháu"
+    },
+    {
+      "type": "sentence",
+      "text": "Mẹ mang về cho Diệu Thu một quyển sách."
+    },
+    {
+      "type": "sentence",
+      "text": "Mẹ nói:"
+    },
+    {
+      "type": "sentence",
+      "text": "- Khi con còn nhỏ, bà thường đọc sách và kể chuyện cho con nghe."
+    },
+    {
+      "type": "sentence",
+      "text": "Bây giờ con đã lớn, con đã biết đọc, biết viết."
+    },
+    {
+      "type": "sentence",
+      "text": "Con hãy đọc sách cho bà nghe."
+    },
+    {
+      "type": "sentence",
+      "text": "Diệu Thu chạy đến bên bà:"
+    },
+    {
+      "type": "sentence",
+      "text": "- Bà ngồi xuống đây, cháu đọc truyện cho bà nghe nhé!"
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo NGÔI SAO XINH",
+      "breaks": [
+        2,
+        5,
+        6
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b145_baf_vaf_chaus",
+      "say": "Diệu Thu đọc truyện cho bà nghe.",
+      "word": "đọc truyện"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có vần uyên, uông, iêt.",
+      "match": {
+        "rime": [
+          "uyên",
+          "uông",
+          "iêt"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "title",
+      "text": "Đọc thật đúng các từ sau đây: quyển sách, xách giỏ, quyển truyện, kể chuyện.",
+      "instruction": true
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "quyển sách"
+        },
+        {
+          "text": "xách giỏ"
+        },
+        {
+          "text": "quyển truyện"
+        },
+        {
+          "text": "kể chuyện"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "text": "Mẹ nói gì với Diệu Thu? Diệu Thu vâng lời mẹ và đã làm gì?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "quyển sách",
+          "options": [
+            "quyển sách",
+            "kể chuyện",
+            "đọc truyện"
+          ]
+        },
+        {
+          "answer": "biết viết",
+          "options": [
+            "biết viết",
+            "biết đọc",
+            "bây giờ"
+          ]
+        },
+        {
+          "answer": "xuống đây",
+          "options": [
+            "xuống đây",
+            "chạy đến",
+            "mang về"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "truyện",
+          "options": [
+            "truyện",
+            "truyền"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "biết viết",
+      "template": "biết v_",
+      "answer": "iết",
+      "options": [
+        "iết",
+        "iếu",
+        "iếng"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "kể",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "lesson_id": "tv1_t2_b150",
+  "book": "tv1_t2_1996",
+  "lesson_no": 150,
+  "type": "cau_do",
+  "title": "Câu đố",
+  "week": 30,
+  "source": {
+    "pages": [
+      115
+    ],
+    "scan_file": "058",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b150_con_traau": "Con trâu đang gặm cỏ, sừng cong, dây thừng xỏ mũi",
+    "img_b150_con_ong": "Con ong mật bay bên cành hoa đào nở",
+    "img_b150_gaf_troongs": "Con gà trống mào đỏ đứng trên đống rơm, ngẩng cổ gáy"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Đáp án câu đố in ở trang \"Trả lời câu đố\" (tr.138); app hiện đáp án ngay sau mỗi câu đố, sau khi bé chọn tranh. Sách vẽ chung một tranh cho cả ba câu đố; app tách thành tranh từng đáp án."
+    }
+  ],
+  "part1": [
+    {
+      "type": "title",
+      "text": "Câu đố"
+    },
+    {
+      "type": "sentence",
+      "text": "Con gì ăn cỏ,"
+    },
+    {
+      "type": "sentence",
+      "text": "Đầu có hai sừng,"
+    },
+    {
+      "type": "sentence",
+      "text": "Lỗ mũi buộc thừng,"
+    },
+    {
+      "type": "sentence",
+      "text": "Cày bừa rất khỏe?"
+    },
+    {
+      "type": "riddle_answer",
+      "answer": "Trâu (hoặc bò)",
+      "image": "img_b150_con_traau",
+      "options": [
+        {
+          "image": "img_b150_con_ong",
+          "text": "Ong"
+        },
+        {
+          "image": "img_b150_gaf_troongs",
+          "text": "Gà trống"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "text": "Con gì bé tí,"
+    },
+    {
+      "type": "sentence",
+      "text": "Chăm chỉ suốt ngày,"
+    },
+    {
+      "type": "sentence",
+      "text": "Bay khắp vườn cây,"
+    },
+    {
+      "type": "sentence",
+      "text": "Tìm hoa gây mật?"
+    },
+    {
+      "type": "riddle_answer",
+      "answer": "Ong",
+      "image": "img_b150_con_ong",
+      "options": [
+        {
+          "image": "img_b150_con_traau",
+          "text": "Trâu (hoặc bò)"
+        },
+        {
+          "image": "img_b150_gaf_troongs",
+          "text": "Gà trống"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "text": "Con gì mào đỏ,"
+    },
+    {
+      "type": "sentence",
+      "text": "Lông mượt như tơ,"
+    },
+    {
+      "type": "sentence",
+      "text": "Sáng sớm tinh mơ"
+    },
+    {
+      "type": "sentence",
+      "text": "Gọi người thức dậy?"
+    },
+    {
+      "type": "riddle_answer",
+      "answer": "Gà trống",
+      "image": "img_b150_gaf_troongs",
+      "options": [
+        {
+          "image": "img_b150_con_traau",
+          "text": "Trâu (hoặc bò)"
+        },
+        {
+          "image": "img_b150_con_ong",
+          "text": "Ong"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "Trâu (hoặc bò)",
+          "prompt": "Con gì ăn cỏ, đầu có hai sừng, lỗ mũi buộc thừng, cày bừa rất khỏe?",
+          "answer": "img_b150_con_traau",
+          "options": [
+            "img_b150_con_ong",
+            "img_b150_con_traau",
+            "img_b150_gaf_troongs"
+          ]
+        },
+        {
+          "word": "Ong",
+          "prompt": "Con gì bé tí, chăm chỉ suốt ngày, bay khắp vườn cây, tìm hoa gây mật?",
+          "answer": "img_b150_con_ong",
+          "options": [
+            "img_b150_con_ong",
+            "img_b150_gaf_troongs",
+            "img_b150_con_traau"
+          ]
+        },
+        {
+          "word": "Gà trống",
+          "prompt": "Con gì mào đỏ, lông mượt như tơ, sáng sớm tinh mơ, gọi người thức dậy?",
+          "answer": "img_b150_gaf_troongs",
+          "options": [
+            "img_b150_con_traau",
+            "img_b150_con_ong",
+            "img_b150_gaf_troongs"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "hai sừng",
+          "options": [
+            "hai sừng",
+            "buộc thừng",
+            "cày bừa"
+          ]
+        },
+        {
+          "answer": "gây mật",
+          "options": [
+            "gây mật",
+            "suốt ngày",
+            "vườn cây"
+          ]
+        },
+        {
+          "answer": "tinh mơ",
+          "options": [
+            "tinh mơ",
+            "mào đỏ",
+            "thức dậy"
+          ]
+        }
+      ]
+    }
+  ]
+}

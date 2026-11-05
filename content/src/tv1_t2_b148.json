@@ -1,0 +1,190 @@
+{
+  "lesson_id": "tv1_t2_b148",
+  "book": "tv1_t2_1996",
+  "lesson_no": 148,
+  "type": "tap_doc",
+  "title": "Mẹ đã về",
+  "week": 30,
+  "td_no": 19,
+  "source": {
+    "pages": [
+      113
+    ],
+    "scan_file": "057",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b148_mej_ddax_veef": "Người mẹ ngồi nghỉ trên chõng tre, mồ hôi nhễ nhại; bé gái bưng bát nước mời mẹ, bé trai đứng quạt cho mẹ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b148_mej_ddax_veef",
+      "say": "Mẹ đi gánh lúa về, hai con chạy ra đón mẹ.",
+      "word": "mẹ về"
+    },
+    {
+      "type": "title",
+      "text": "Mẹ đã về"
+    },
+    {
+      "type": "sentence",
+      "text": "- A! Mẹ đã về!"
+    },
+    {
+      "type": "sentence",
+      "text": "Phượng, Hà cùng reo lên rồi chạy nhanh ra cổng đón mẹ."
+    },
+    {
+      "type": "sentence",
+      "text": "Mẹ đã gánh lúa về."
+    },
+    {
+      "type": "sentence",
+      "text": "Áo mẹ ướt đẫm mồ hôi."
+    },
+    {
+      "type": "sentence",
+      "text": "Mặt mẹ đỏ bừng..."
+    },
+    {
+      "type": "sentence",
+      "text": "Hà chạy ù vào nhà lấy quạt, rối rít hỏi:"
+    },
+    {
+      "type": "sentence",
+      "text": "- Mẹ có mệt lắm không?"
+    },
+    {
+      "type": "sentence",
+      "text": "Sao mẹ gánh nặng thế?"
+    },
+    {
+      "type": "sentence",
+      "text": "Mẹ ngồi xuống đây, chúng con quạt cho mẹ."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo NGUYỄN VĂN CHƯƠNG",
+      "breaks": [
+        1,
+        5,
+        6
+      ]
+    },
+    {
+      "type": "find_words",
+      "question": "Những tiếng nào trong bài có vần at, ăt, êt, it? Em hãy tìm và đọc lên những tiếng đó.",
+      "match": {
+        "rime": [
+          "at",
+          "ăt",
+          "êt",
+          "it"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "title",
+      "text": "Đọc đúng các từ: đã về, ra cổng, ướt đẫm, đỏ bừng.",
+      "instruction": true
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "đã về"
+        },
+        {
+          "text": "ra cổng"
+        },
+        {
+          "text": "ướt đẫm"
+        },
+        {
+          "text": "đỏ bừng"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "text": "Những câu nào cho em biết bà mẹ nóng bức vì gánh nặng?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ra cổng",
+          "options": [
+            "ra cổng",
+            "đỏ bừng",
+            "gánh lúa"
+          ]
+        },
+        {
+          "answer": "mồ hôi",
+          "options": [
+            "mồ hôi",
+            "lấy quạt",
+            "rối rít"
+          ]
+        },
+        {
+          "answer": "xuống đây",
+          "options": [
+            "xuống đây",
+            "chạy nhanh",
+            "đón mẹ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "rít",
+          "options": [
+            "rít",
+            "rịt"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "ướt đẫm",
+      "template": "ướt đ_",
+      "answer": "ẫm",
+      "options": [
+        "ẫm",
+        "ậm",
+        "ầm"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "đẫm",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

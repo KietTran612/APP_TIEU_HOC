@@ -1,0 +1,185 @@
+{
+  "lesson_id": "tv1_t2_b147",
+  "book": "tv1_t2_1996",
+  "lesson_no": 147,
+  "type": "hoc_thuoc_long",
+  "title": "Tình cảm gia đình",
+  "week": 30,
+  "td_no": 18,
+  "source": {
+    "pages": [
+      112
+    ],
+    "scan_file": "057",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b147_gia_ddinhf": "Hai anh em đeo cặp vẫy tay chào bố mẹ đứng ở cửa sổ, cây xanh trước nhà"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Sách đánh số ba câu ca dao 1, 2, 3; app tách ba câu thành ba khổ, không ghi số."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b147_gia_ddinhf",
+      "say": "Hai anh em chào bố mẹ đi học.",
+      "word": "gia đình"
+    },
+    {
+      "type": "title",
+      "text": "Tình cảm gia đình",
+      "sub": "Học thuộc lòng"
+    },
+    {
+      "type": "sentence",
+      "text": "Công cha như núi Thái Sơn,"
+    },
+    {
+      "type": "sentence",
+      "text": "Nghĩa mẹ như nước trong nguồn chảy ra."
+    },
+    {
+      "type": "sentence",
+      "text": "Con ơi, muốn nên thân người"
+    },
+    {
+      "type": "sentence",
+      "text": "Lắng tai nghe lấy những lời mẹ cha."
+    },
+    {
+      "type": "sentence",
+      "text": "Anh em như thể tay chân,"
+    },
+    {
+      "type": "sentence",
+      "text": "Anh em hòa thuận, hai thân vui vầy."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "Ca dao cổ",
+      "breaks": [
+        2,
+        4
+      ]
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có vần uôn, ươi, ui, uân.",
+      "match": {
+        "rime": [
+          "uôn",
+          "ươi",
+          "ui",
+          "uân"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "title",
+      "text": "Đọc đúng các từ sau: nghĩa mẹ, trong nguồn, vui vầy.",
+      "instruction": true
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "nghĩa mẹ"
+        },
+        {
+          "text": "trong nguồn"
+        },
+        {
+          "text": "vui vầy"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "text": "Câu ca dao thứ hai khuyên em điều gì? Câu thứ ba khuyên em thế nào?"
+    },
+    {
+      "type": "memorize",
+      "question": "Học thuộc lòng cả bài."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "công cha",
+          "options": [
+            "công cha",
+            "nghĩa mẹ",
+            "anh em"
+          ]
+        },
+        {
+          "answer": "hòa thuận",
+          "options": [
+            "hòa thuận",
+            "vui vầy",
+            "tay chân"
+          ]
+        },
+        {
+          "answer": "lắng tai",
+          "options": [
+            "lắng tai",
+            "thân người",
+            "lời mẹ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "nguồn",
+          "options": [
+            "nguồn",
+            "ngồn"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "hòa thuận",
+      "template": "hòa th_",
+      "answer": "uận",
+      "options": [
+        "uận",
+        "uẩn",
+        "ẩn"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "Nghĩa",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

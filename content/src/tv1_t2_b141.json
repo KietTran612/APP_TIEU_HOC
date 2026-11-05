@@ -1,0 +1,186 @@
+{
+  "lesson_id": "tv1_t2_b141",
+  "book": "tv1_t2_1996",
+  "lesson_no": 141,
+  "type": "tap_doc",
+  "title": "Bác đưa thư",
+  "week": 29,
+  "td_no": 13,
+  "source": {
+    "pages": [
+      106
+    ],
+    "scan_file": "054",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b141_bacs_dduwa_thuw": "Bác đưa thư đội mũ, đeo túi thư, dựng xe đạp trước cửa nhà; cậu bé bưng cốc nước mời bác uống"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu văn dài được tách thành hai bước đọc theo dấu phẩy để bé đọc từng phần; ở bước đọc cả bài câu vẫn liền như sách."
+    }
+  ],
+  "part1": [
+    {
+      "type": "title",
+      "text": "Bác đưa thư"
+    },
+    {
+      "type": "sentence",
+      "text": "Bác đưa thư trao cho Hoạch một bức thư."
+    },
+    {
+      "type": "sentence",
+      "text": "Đúng là thư của bố rồi."
+    },
+    {
+      "type": "sentence",
+      "text": "Hoạch mừng quýnh."
+    },
+    {
+      "type": "sentence",
+      "text": "Hoạch muốn chạy thật nhanh vào khoe với mẹ,"
+    },
+    {
+      "type": "sentence",
+      "text": "nhưng em chợt thấy bác đưa thư mồ hôi nhễ nhại."
+    },
+    {
+      "type": "sentence",
+      "text": "Hoạch vội chạy vào nhà, rót một cốc nước lọc mát lạnh,"
+    },
+    {
+      "type": "sentence",
+      "text": "hai tay bưng ra, lễ phép mời bác uống."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo TRẦN NGUYÊN ĐÀO",
+      "breaks": [
+        5
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b141_bacs_dduwa_thuw",
+      "say": "Hoạch bưng cốc nước mời bác đưa thư.",
+      "word": "bác đưa thư"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm trong bài những tiếng có âm tr, ch, l, n đứng đầu.",
+      "match": {
+        "onset": [
+          "tr",
+          "ch",
+          "l",
+          "n"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "title",
+      "text": "Đánh vần và đọc những tiếng: Hoạch, mừng quýnh, nhễ nhại, nước lọc.",
+      "instruction": true
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "Hoạch"
+        },
+        {
+          "text": "mừng quýnh"
+        },
+        {
+          "text": "nhễ nhại"
+        },
+        {
+          "text": "nước lọc"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "text": "Thấy bác đưa thư mệt, Hoạch đã làm gì?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "bức thư",
+          "options": [
+            "bức thư",
+            "cốc nước",
+            "lễ phép"
+          ]
+        },
+        {
+          "answer": "mồ hôi",
+          "options": [
+            "mồ hôi",
+            "mát lạnh",
+            "mời bác"
+          ]
+        },
+        {
+          "answer": "mừng quýnh",
+          "options": [
+            "mừng quýnh",
+            "nhễ nhại",
+            "nước lọc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "lễ",
+          "options": [
+            "lễ",
+            "lệ"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "nước lọc",
+      "template": "nước l_",
+      "answer": "ọc",
+      "options": [
+        "ọc",
+        "ộc",
+        "ạc"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "nhễ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

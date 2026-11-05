@@ -93,7 +93,9 @@ def is_learned_text(text: str, learned: Learned) -> bool:
         if syl.onset and syl.onset not in learned.letters:
             return False
         rime_set = learned.letters if len(syl.rime) == 1 else learned.rimes
-        if syl.rime not in rime_set:
+        # Sách coi u của "qu" là âm đệm: "quýnh" có vần uynh, "quýt" có vần uyt.
+        qu_rime = syl.onset == "qu" and "u" + syl.rime in learned.rimes
+        if syl.rime not in rime_set and not qu_rime:
             return False
         if syl.tone is not None and syl.tone not in learned.tones:
             return False

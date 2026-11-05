@@ -1,0 +1,156 @@
+{
+  "lesson_id": "tv1_t2_b139",
+  "book": "tv1_t2_1996",
+  "lesson_no": 139,
+  "type": "tap_doc",
+  "title": "Tay mẹ",
+  "week": 29,
+  "td_no": 11,
+  "source": {
+    "pages": [
+      104
+    ],
+    "scan_file": "053",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b139_tay_mej": "Người mẹ ngồi trên chiếu bế em bé và phe phẩy quạt, chị gái ngồi bên đọc sách, con mèo nằm cạnh"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Tay mẹ"
+    },
+    {
+      "type": "sentence",
+      "text": "Bao tháng, bao năm, mẹ bế anh em chúng con trên đôi tay mềm mại ấy!"
+    },
+    {
+      "type": "sentence",
+      "text": "Cơm chúng con ăn, tay mẹ nấu; nước chúng con uống, tay mẹ xách, mẹ đun."
+    },
+    {
+      "type": "sentence",
+      "text": "Trời nóng, gió từ tay mẹ đưa chúng con vào giấc ngủ."
+    },
+    {
+      "type": "sentence",
+      "text": "Trời rét, vòng tay mẹ lại ủ ấm cho chúng con."
+    },
+    {
+      "type": "passage",
+      "layout": "prose",
+      "author": "Theo PHONG THU",
+      "breaks": [
+        1,
+        2
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b139_tay_mej",
+      "say": "Mẹ bế em, tay mẹ phe phẩy quạt.",
+      "word": "tay mẹ"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có âm tr, ch đứng đầu.",
+      "match": {
+        "onset": [
+          "tr",
+          "ch"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những tiếng trong bài có vần anh, ach, ươc, uông.",
+      "match": {
+        "rime": [
+          "anh",
+          "ach",
+          "ươc",
+          "uông"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Vì sao em yêu quý đôi tay mẹ?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "tay mẹ",
+          "options": [
+            "tay mẹ",
+            "giấc ngủ",
+            "mềm mại"
+          ]
+        },
+        {
+          "answer": "vòng tay",
+          "options": [
+            "vòng tay",
+            "ủ ấm",
+            "trời rét"
+          ]
+        },
+        {
+          "answer": "nước",
+          "options": [
+            "nước",
+            "cơm",
+            "đun"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "xách",
+          "options": [
+            "xách",
+            "xếch"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "mềm mại",
+      "template": "m_ mại",
+      "answer": "ềm",
+      "options": [
+        "ềm",
+        "ầm",
+        "èm"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "ủ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

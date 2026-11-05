@@ -1,0 +1,170 @@
+{
+  "lesson_id": "tv1_t2_b140",
+  "book": "tv1_t2_1996",
+  "lesson_no": 140,
+  "type": "tap_doc",
+  "title": "Cái võng",
+  "week": 29,
+  "td_no": 12,
+  "source": {
+    "pages": [
+      105
+    ],
+    "scan_file": "053",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b140_cais_voongx": "Chị gái đưa võng cho em bé ngủ dưới tán cây trong sân, đống rơm, con chó nằm ngủ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "text": "Cái võng"
+    },
+    {
+      "type": "sentence",
+      "text": "Đều đều võng đưa"
+    },
+    {
+      "type": "sentence",
+      "text": "Giữa trưa êm ả,"
+    },
+    {
+      "type": "sentence",
+      "text": "Ru bé ngủ say,"
+    },
+    {
+      "type": "sentence",
+      "text": "Sân tròn bóng lá."
+    },
+    {
+      "type": "sentence",
+      "text": "Bé ngủ ngon quá"
+    },
+    {
+      "type": "sentence",
+      "text": "Đầy cả giấc trưa"
+    },
+    {
+      "type": "sentence",
+      "text": "Cái võng thương bé"
+    },
+    {
+      "type": "sentence",
+      "text": "Thức hoài đưa đưa."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "ĐỊNH HẢI",
+      "breaks": [
+        4
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b140_cais_voongx",
+      "say": "Chị đưa võng ru bé ngủ.",
+      "word": "cái võng"
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm và đọc những tiếng trong bài có vần on, ưa, oai.",
+      "match": {
+        "rime": [
+          "on",
+          "ưa",
+          "oai"
+        ]
+      },
+      "marker": "?"
+    },
+    {
+      "type": "find_words",
+      "question": "Đánh vần và đọc những tiếng trong bài có thanh hỏi (?), thanh ngã (~).",
+      "match": {
+        "tone": [
+          "hỏi",
+          "ngã"
+        ]
+      }
+    },
+    {
+      "type": "question",
+      "text": "Bé ngủ vào lúc nào? Câu nào cho biết bé ngủ rất ngon?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "cái võng",
+          "options": [
+            "cái võng",
+            "giấc trưa",
+            "bóng lá"
+          ]
+        },
+        {
+          "answer": "ngủ say",
+          "options": [
+            "ngủ say",
+            "đưa đưa",
+            "êm ả"
+          ]
+        },
+        {
+          "answer": "thương bé",
+          "options": [
+            "thương bé",
+            "sân tròn",
+            "ngủ ngon"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "võng",
+          "options": [
+            "võng",
+            "vòng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "giấc trưa",
+      "template": "giấc tr_",
+      "answer": "ưa",
+      "options": [
+        "ưa",
+        "ua",
+        "ia"
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "võng",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

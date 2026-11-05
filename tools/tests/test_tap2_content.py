@@ -228,5 +228,33 @@ class Tap2Reading126To138(Tap2TestCase):
         self.assertEqual([it["answer"] for it in fills[1]["items"]], ["oa", "oa", "oa", "a", "a"])
         self.assertEqual(targets(138, 1), ["sáng", "sóc", "xanh", "xuống"])
 
+
+class Tap2Reading139To151(Tap2TestCase):
+    def test_basics(self):
+        for no in range(139, 152):
+            with self.subTest(no=no):
+                self.assert_lesson_basics(no)
+
+    def test_spelling_lists_follow_instruction(self):
+        # "Đánh vần và đọc những tiếng: ..." là câu lệnh rồi đến các tiếng sách nêu.
+        self.assertEqual([it["text"] for it in steps(141, "words")[0]["items"]],
+                         ["Hoạch", "mừng quýnh", "nhễ nhại", "nước lọc"])
+        self.assertEqual(steps(142, "memorize")[0]["text"], "Học thuộc lòng cả bài.")
+
+    def test_book_footnotes(self):
+        for no, word in ((143, "Phì"), (146, "Na")):
+            sach = [n["text"] for n in L[lid_of(no)]["notes"] if n["kind"] == "sach"]
+            self.assertTrue([t for t in sach if t.startswith(word)], no)
+
+    def test_tone_questions(self):
+        self.assertEqual(targets(140, 1), ["cả", "giữa", "ngủ", "võng", "ả"])
+
+    def test_riddles_page_115(self):
+        self.assertEqual([s["text"] for s in steps(150, "riddle_answer")], ["Trâu (hoặc bò)", "Ong", "Gà trống"])
+
+    def test_dictation_tone_fill(self):
+        tones = [s for s in steps(144, "fill_blank") if set(s["labels"]) <= {"huyền", "sắc", "hỏi", "ngã", "nặng"}]
+        self.assertEqual([it["answer"] for it in tones[0]["items"]], ["ngã", "hỏi", "ngã", "hỏi"])
+
 if __name__ == "__main__":
     unittest.main()

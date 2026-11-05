@@ -92,3 +92,14 @@ class RareRimesTest(unittest.TestCase):
         learned = learned_until(load_program(LESSON_INDEX), 122)
         self.assertIn("oay", learned.rimes)
         self.assertIn("uynh", learned.rimes)
+
+
+class QuRimeLearnedTest(unittest.TestCase):
+    def test_qu_word_learned_when_u_rime_learned(self):
+        # "quýnh" có vần uynh (bài 122), "quýt" có vần uyt (bài 122): sách coi u của qu là âm đệm.
+        from tapdoc.curriculum import load_program
+        learned = learned_until(load_program(LESSON_INDEX), 141)
+        self.assertTrue(is_learned_text("mừng quýnh", learned))
+        self.assertTrue(is_learned_text("quả quýt", learned))
+        early = learned_until(load_program(LESSON_INDEX), 100)
+        self.assertFalse(is_learned_text("quýnh", early))
