@@ -202,10 +202,9 @@ namespace TapDoc.Tests
                 new ResourcesContentSource().Load(ContentKind.Image, SystemImages.Mascot));
             yield return LoadMainWithProfile(unlockAll: true);
             var app = AppRoot.Instance;
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            foreach (var size in ScreenSizes.All)
             {
-                var rt = new RenderTexture(size.x, size.y, 24);
-                app.UiCamera.targetTexture = rt;
+                var rt = ScreenSizes.Apply(app, size);
                 app.Curtain.Show();
                 yield return null;
                 Canvas.ForceUpdateCanvases();
@@ -213,14 +212,13 @@ namespace TapDoc.Tests
                 Assert.IsNotNull(mascot, "Màn chuyển không có gà con");
                 AssertInside(app.SafeRoot, (RectTransform)mascot.transform, size);
                 LayoutProbe.AssertFits(app.Canvas);
-                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.x}x{size.y}/app_prepare_curtain.png");
+                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.Name}/app_prepare_curtain.png");
                 app.Curtain.Hide();
-                app.UiCamera.targetTexture = null;
-                Object.Destroy(rt);
+                ScreenSizes.Reset(app, rt);
             }
         }
 
-        private static void AssertInside(RectTransform outer, RectTransform inner, Vector2Int size)
+        private static void AssertInside(RectTransform outer, RectTransform inner, ScreenSize size)
         {
             var o = new Vector3[4];
             var i = new Vector3[4];
@@ -228,7 +226,7 @@ namespace TapDoc.Tests
             inner.GetWorldCorners(i);
             const float eps = .01f;
             Assert.IsTrue(i[0].x >= o[0].x - eps && i[0].y >= o[0].y - eps && i[2].x <= o[2].x + eps && i[2].y <= o[2].y + eps,
-                $"Gà con tràn khỏi vùng an toàn ở khung {size.x}×{size.y}");
+                $"Gà con tràn khỏi vùng an toàn ở khung {size}");
         }
 
         /// <summary>Màn bước thử: <c>Bind</c> hỏi một tranh không có trong bài, hoặc ném lỗi.</summary>

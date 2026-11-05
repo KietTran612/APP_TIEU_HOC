@@ -88,11 +88,10 @@ namespace TapDoc.Tests
             yield return LoadMainWithProfile();
             AppRoot.Instance.Progress.MarkCompleted(Ordered()[0]);
             AppRoot.Instance.Progress.RecordMistake(Ordered()[0], 0);
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            foreach (var size in ScreenSizes.All)
             {
-                var rt = new RenderTexture(size.x, size.y, 24);
-                AppRoot.Instance.UiCamera.targetTexture = rt;
-                var dir = $"TestOutput/screens/{size.x}x{size.y}";
+                var rt = ScreenSizes.Apply(AppRoot.Instance, size);
+                var dir = $"TestOutput/screens/{size.Name}";
 
                 AppRoot.Instance.ShowLessonList();
                 yield return null;
@@ -113,8 +112,7 @@ namespace TapDoc.Tests
                 ScreenProbe.Save(AppRoot.Instance.UiCamera, $"{dir}/app_profile_create.png");
                 LayoutProbe.AssertFits(AppRoot.Instance.Canvas);
 
-                AppRoot.Instance.UiCamera.targetTexture = null;
-                Object.Destroy(rt);
+                ScreenSizes.Reset(AppRoot.Instance, rt);
             }
         }
 

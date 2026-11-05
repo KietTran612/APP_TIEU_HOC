@@ -44,6 +44,12 @@ namespace TapDoc.Tests
         };
 
         /// <summary>
+        /// Cỡ cho test đi hết mọi bài (rất nhiều bài × bước): màn rộng nhất, iPhone có tai thỏ, màn vừa đủ rộng, iPad có
+        /// thanh vuốt, iPad 4:3. Máy tính bảng 16:10, xoay dọc, gập dùng cùng khung 1440×1080 như iPad 4:3.
+        /// </summary>
+        public static readonly IReadOnlyList<ScreenSize> LessonWalk = new[] { Phone20x9, IPhone, Phone16x9, IPadAir, IPad43 };
+
+        /// <summary>
         /// Giả lập máy <paramref name="size"/>: lề an toàn, đích vẽ của camera giao diện, rồi tính lại khung màn.
         /// Trả RenderTexture để <see cref="Reset"/> huỷ.
         /// </summary>

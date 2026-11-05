@@ -14,12 +14,17 @@ namespace TapDoc.Tests
         private static readonly string[] Lessons = { "tv1_t1_b42" };
 
         /// <summary>Mở app với một bé đã mở mọi bài, rồi vào thẳng bài <paramref name="id"/> (nạp theo mã).</summary>
-        private IEnumerator OpenLesson(string id, Vector2Int? size = null)
+        private IEnumerator OpenLesson(string id, ScreenSize? size = null)
         {
             yield return LoadMainWithProfile(unlockAll: true);
             var app = AppRoot.Instance;
             app.Speech.WaitScale = .02f;
-            if (size.HasValue) app.UiCamera.targetTexture = new RenderTexture(size.Value.x, size.Value.y, 24);
+            if (size.HasValue)
+            {
+                var insets = size.Value.Insets;
+                DeviceSafeArea.Override = _ => insets;
+                app.UiCamera.targetTexture = new RenderTexture(size.Value.Pixels.x, size.Value.Pixels.y, 24);
+            }
             app.ShowLesson(id);
             yield return WaitPrepared();
         }
@@ -36,10 +41,10 @@ namespace TapDoc.Tests
         [UnityTest]
         public IEnumerator Layout_AllSteps_FitAndNoOverflow([ValueSource(nameof(Lessons))] string id)
         {
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            foreach (var size in ScreenSizes.All)
             {
                 yield return OpenLesson(id, size);
-                var dir = $"TestOutput/screens/{size.x}x{size.y}";
+                var dir = $"TestOutput/screens/{size.Name}";
                 yield return WalkAll(Object.FindAnyObjectByType<LessonScreen>(), (screen, n) =>
                 {
                     var phase = screen.Flow.Phase == Phase.Part1 ? "p1" : "p2";

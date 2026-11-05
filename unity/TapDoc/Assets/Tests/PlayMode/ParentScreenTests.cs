@@ -120,10 +120,9 @@ namespace TapDoc.Tests
         {
             // Mục "Chú ý và Phụ lục": chép đúng tr.120–122 và các điểm app làm khác sách, cuộn được, vừa màn.
             yield return LoadMainWithProfile();
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            foreach (var size in ScreenSizes.All)
             {
-                var rt = new RenderTexture(size.x, size.y, 24);
-                AppRoot.Instance.UiCamera.targetTexture = rt;
+                var rt = ScreenSizes.Apply(AppRoot.Instance, size);
                 AppRoot.Instance.ShowParent();
                 yield return WaitPrepared();
                 var p = Object.FindAnyObjectByType<ParentScreen>();
@@ -139,10 +138,9 @@ namespace TapDoc.Tests
                 Assert.That(labels, Has.Member("ngh"));                          // Bảng gọi tên tr.121
                 Assert.That(labels, Has.Member("giờ"));
                 Assert.That(labels, Has.Some.Contains("Phần luyện tập"));        // app khác sách
-                ScreenProbe.Save(AppRoot.Instance.UiCamera, $"TestOutput/screens/{size.x}x{size.y}/app_parent_appendix.png");
+                ScreenProbe.Save(AppRoot.Instance.UiCamera, $"TestOutput/screens/{size.Name}/app_parent_appendix.png");
                 LayoutProbe.AssertFits(AppRoot.Instance.Canvas);
-                AppRoot.Instance.UiCamera.targetTexture = null;
-                Object.Destroy(rt);
+                ScreenSizes.Reset(AppRoot.Instance, rt);
             }
         }
 
@@ -156,11 +154,10 @@ namespace TapDoc.Tests
             s.RecordMistake("tv1_t1_b04", 3);
             s.RecordMistake("tv1_t1_b13", 7);
             s.CreateProfile("Na", ProfileScreen.Avatars[1]);
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            foreach (var size in ScreenSizes.All)
             {
-                var rt = new RenderTexture(size.x, size.y, 24);
-                AppRoot.Instance.UiCamera.targetTexture = rt;
-                var dir = $"TestOutput/screens/{size.x}x{size.y}";
+                var rt = ScreenSizes.Apply(AppRoot.Instance, size);
+                var dir = $"TestOutput/screens/{size.Name}";
 
                 AppRoot.Instance.ShowParent();
                 yield return WaitPrepared();
@@ -172,8 +169,7 @@ namespace TapDoc.Tests
                 ScreenProbe.Save(AppRoot.Instance.UiCamera, $"{dir}/app_parent.png");
                 LayoutProbe.AssertFits(AppRoot.Instance.Canvas);
 
-                AppRoot.Instance.UiCamera.targetTexture = null;
-                Object.Destroy(rt);
+                ScreenSizes.Reset(AppRoot.Instance, rt);
             }
         }
 

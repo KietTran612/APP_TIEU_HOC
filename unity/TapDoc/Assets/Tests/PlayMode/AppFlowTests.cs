@@ -242,15 +242,13 @@ namespace TapDoc.Tests
         public IEnumerator LessonList_FitsPhoneAndTablet()
         {
             yield return LoadMainWithProfile(unlockAll: true);
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            foreach (var size in ScreenSizes.All)
             {
-                var rt = new RenderTexture(size.x, size.y, 24);
-                AppRoot.Instance.UiCamera.targetTexture = rt;
+                var rt = ScreenSizes.Apply(AppRoot.Instance, size);
                 AppRoot.Instance.ShowLessonList();
                 yield return null;
                 LayoutProbe.AssertFits(AppRoot.Instance.Canvas);
-                AppRoot.Instance.UiCamera.targetTexture = null;
-                Object.Destroy(rt);
+                ScreenSizes.Reset(AppRoot.Instance, rt);
             }
         }
 

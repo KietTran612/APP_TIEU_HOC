@@ -64,16 +64,23 @@ namespace TapDoc.Tests
         {
             if (string.IsNullOrWhiteSpace(tmp.text) || tmp.textInfo.characterCount == 0) return;
             if (tmp.GetComponentInParent<ScrollRect>() != null) return;
-            var tb = tmp.textBounds;
+            // Đo khung của từng ký tự thật sự vẽ ra (textBounds của TMP có thể lớn bất thường với dấu đứng riêng "˜").
             var t = tmp.rectTransform;
             var min = new Vector2(float.MaxValue, float.MaxValue);
             var max = new Vector2(float.MinValue, float.MinValue);
-            foreach (var p in new[] { tb.min, tb.max, new Vector3(tb.min.x, tb.max.y), new Vector3(tb.max.x, tb.min.y) })
+            var info = tmp.textInfo;
+            for (var i = 0; i < info.characterCount; i++)
             {
-                var local = (Vector2)canvasRect.InverseTransformPoint(t.TransformPoint(p));
-                min = Vector2.Min(min, local);
-                max = Vector2.Max(max, local);
+                var ch = info.characterInfo[i];
+                if (!ch.isVisible) continue;
+                foreach (var p in new[] { ch.bottomLeft, ch.topRight })
+                {
+                    var local = (Vector2)canvasRect.InverseTransformPoint(t.TransformPoint(p));
+                    min = Vector2.Min(min, local);
+                    max = Vector2.Max(max, local);
+                }
             }
+            if (min.x > max.x) return;
             Assert.IsTrue(min.x >= bounds.xMin - 1f && max.x <= bounds.xMax + 1f && min.y >= bounds.yMin - 1f && max.y <= bounds.yMax + 1f,
                 $"Chữ '{tmp.name}' (\"{tmp.text}\") ra ngoài vùng an toàn: {min}..{max} ngoài {bounds}");
         }
