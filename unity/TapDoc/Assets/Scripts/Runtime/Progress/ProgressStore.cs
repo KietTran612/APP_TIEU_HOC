@@ -261,6 +261,7 @@ namespace TapDoc
             if (!File.Exists(FilePath))
             {
                 File.Move(tmp, FilePath);
+                ExcludeFromBackup(FilePath);
                 return;
             }
 
@@ -274,6 +275,18 @@ namespace TapDoc
                 File.Delete(FilePath);
                 File.Move(tmp, FilePath);
             }
+            ExcludeFromBackup(FilePath);
+        }
+
+        /// <summary>
+        /// iOS: đánh dấu file tiến độ không sao lưu lên iCloud (app offline, dữ liệu của bé chỉ ở trên máy). Android tắt
+        /// sao lưu lúc build (<c>AndroidNoBackup</c>); nền khác không làm gì.
+        /// </summary>
+        private static void ExcludeFromBackup(string path)
+        {
+#if UNITY_IOS && !UNITY_EDITOR
+            UnityEngine.iOS.Device.SetNoBackupFlag(path);
+#endif
         }
 
         /// <summary>
