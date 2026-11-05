@@ -18,7 +18,7 @@
 
 ## Việc còn lại
 
-1. **Đóng gói biểu tượng bánh răng.** File hình mới chỉ có trên máy này, chưa vào gói Drive. Lệnh `tools/run_unity_media.py pack` gom mọi tranh trên máy, kể cả tranh Tập 2 đang làm dở của session khác. Danh mục `content/manifests/image_manifest.json` cũng đang có thay đổi chưa commit của họ. Cần chọn lúc phối hợp để:
+1. **Đóng gói biểu tượng bánh răng** (chủ dự án chốt 05/11: chờ Tập 2 xong rồi đóng gói chung). File hình mới chỉ có trên máy này, chưa vào gói Drive. Lệnh `tools/run_unity_media.py pack` gom mọi tranh trên máy, kể cả tranh Tập 2 đang làm dở của session khác. Danh mục `content/manifests/image_manifest.json` cũng đang có thay đổi chưa commit của họ. Cần chọn lúc phối hợp để:
    - thêm mục `img_ui_cai_dat` vào danh mục;
    - chạy lệnh đóng gói;
    - commit `media_lock.json`;
