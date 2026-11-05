@@ -246,9 +246,12 @@ class Tap2RimeTest(unittest.TestCase):
         "anh": ["a", "nh", "anh"], "ia": ["i", "a", "ia"], "ưa": ["ư", "a", "ưa"],
         "iên": ["iê", "n", "iên"], "yêu": ["yê", "u", "yêu"], "ươi": ["ươ", "i", "ươi"],
         "uông": ["uô", "ng", "uông"],
-        "oa": ["o", "a", "oa"], "uy": ["u", "y", "uy"], "oan": ["o", "an", "oan"],
-        "oăng": ["o", "ăng", "oăng"], "uyên": ["u", "yên", "uyên"], "oay": ["o", "ay", "oay"],
-        "uân": ["u", "ân", "uân"], "oong": ["oo", "ng", "oong"],
+        # Âm đệm: theo sơ đồ bảng ôn tr.72, tr.82 ("o–a" rồi i/n…, "u–â" rồi n/t/y, "u–yê" rồi n/t),
+        # khối âm đệm + âm chính đọc trước, rồi đến âm cuối.
+        "oa": ["o", "a", "oa"], "uy": ["u", "y", "uy"], "oan": ["oa", "n", "oan"],
+        "oăng": ["oă", "ng", "oăng"], "uyên": ["uyê", "n", "uyên"], "oay": ["oa", "y", "oay"],
+        "uân": ["uâ", "n", "uân"], "oanh": ["oa", "nh", "oanh"], "uyêt": ["uyê", "t", "uyêt"],
+        "oong": ["oo", "ng", "oong"],
     }
 
     def texts(self, result):
@@ -280,7 +283,7 @@ class Tap2RimeTest(unittest.TestCase):
         self.assertEqual((parts[0].audio, parts[0].say), ("van_iee", "i ê"))
         self.assertEqual(spell_rime("uông").parts[0].say, "u ô")
         self.assertEqual(spell_rime("ươi").parts[0].say, "ư ơ")
-        self.assertEqual(spell_rime("oan").parts[1].audio, "van_an")
+        self.assertEqual(spell_rime("oan").parts[0].audio, "van_oa")  # "oa" đã học ở bài 109
 
     def test_syllables(self):
         def texts(word):

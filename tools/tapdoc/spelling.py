@@ -131,7 +131,9 @@ def spell_rime(rime: str) -> SpellResult:
     - Tập 1: nguyên âm + âm cuối (c, ch, m, n, ng, nh, p, t), hoặc hai nguyên âm đơn ("a – o – ao", "i – a – ia").
     - Tập 2, quy tắc tạm (gắn nhãn cần duyệt), xét theo thứ tự:
       1. chữ ghép nguyên âm iê, yê, uô, ươ, oo ở đầu, rồi âm cuối hoặc nguyên âm: "iê – nờ – iên";
-      2. âm đệm (o trước a/ă/e, u trước â/ê/y/ơ), rồi phần còn lại làm một khối: "o – an – oan", "u – yên – uyên".
+      2. âm đệm (o trước a/ă/e, u trước â/ê/y/ơ): vần chỉ có âm đệm + âm chính thì đọc từng âm ("o – a – oa");
+         còn lại đọc khối âm đệm + âm chính rồi đến âm cuối, như sơ đồ bảng ôn tr.72, tr.82 ("oa – nờ – oan",
+         "uâ – nờ – uân", "uyê – nờ – uyên").
     """
     target = nfc(rime).lower()
     first = second = None
@@ -142,11 +144,15 @@ def spell_rime(rime: str) -> SpellResult:
         if second is not None:
             first, rule = _unit(head), (_RULE_OO if head == "oo" else _RULE_DIGRAPH)
     elif len(target) >= 2 and target[1] in _GLIDES.get(target[0], ()):
-        rest = target[1:]
-        if len(rest) == 1:
-            first, second = _unit(target[0]), _unit(rest)
-        elif spell_rime(rest).parts:
-            first, second = _unit(target[0]), _unit(rest)
+        # Khối âm đệm + âm chính (oa, oă, uâ, uê, uy, uyê…) như sơ đồ bảng ôn tr.72, tr.82; rồi đến âm cuối.
+        head = target[:3] if target.startswith("uyê") else target[:2]
+        rest = target[len(head):]
+        if not rest:
+            first, second = _unit(target[0]), _unit(target[1:])
+        else:
+            second = _second_of(rest)
+            if second is not None:
+                first = _unit(head)
         if first is not None:
             rule = _RULE_GLIDE
     elif len(target) >= 2 and target[0] in _SINGLE_VOWELS:

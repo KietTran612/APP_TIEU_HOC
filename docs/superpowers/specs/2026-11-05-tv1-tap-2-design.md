@@ -88,7 +88,7 @@ Thêm cho tập 2:
 
 ## 5. Quy tắc đánh vần cho vần mới của tập 2 [Đề xuất; mọi chuỗi theo mục này gắn `can_duyet` lần đầu]
 
-Tập 2 có ba kiểu vần chưa có ở tập 1. Sách giáo khoa không in cách đánh vần cho các kiểu này (tr.122 tập 1 chỉ nói ia và nguyên âm đôi "dạy như một vần"); sách giáo viên chưa tìm được. Claude chọn theo hai nguyên tắc đã chốt ở tập 1: đọc chữ ghép theo tr.121 ("iê đọc là i-ê"), và **phần đã học thì giữ nguyên một khối**.
+Tập 2 có ba kiểu vần chưa có ở tập 1. Sách giáo khoa không in cách đánh vần cho các kiểu này (tr.122 tập 1 chỉ nói ia và nguyên âm đôi "dạy như một vần"); sách giáo viên chưa tìm được. Claude chọn theo hai nguyên tắc đã chốt ở tập 1: đọc chữ ghép theo tr.121 ("iê đọc là i-ê"), và **phần đã học thì giữ nguyên một khối**. Riêng vần có âm đệm, **làm theo sơ đồ cấu trúc vần in ở bảng ôn bài 115 (tr.72) và bài 120 (tr.82)**: sách nối âm đệm với âm chính ("o–a", "u–â", "u–yê") rồi mới rẽ ra âm cuối (ghi nhận 5/11/2026 khi chép bài 115; thay cho cách "o – an – oan" đã viết lúc đầu).
 
 | Kiểu vần | Bài | Cách đánh vần vần | Ví dụ |
 |---|---|---|---|
@@ -96,7 +96,7 @@ Tập 2 có ba kiểu vần chưa có ở tập 1. Sách giáo khoa không in c�
 | Nguyên âm đôi đứng một mình: ia, ua, ưa | 91 | theo tr.122 | "i – a – ia" |
 | Nguyên âm đôi iê/yê, uô, ươ + âm cuối | 92–107 | mảnh đầu là chữ ghép đọc theo tr.121 ("i-ê", "u-ô", "ư-ơ"), rồi âm cuối | "iê – nờ – iên", "ươ – i – ươi" |
 | Âm đệm o/u + một nguyên âm: oa, oe, uê, uy, uơ | 109, 116, 117 | âm đệm, rồi nguyên âm | "o – a – oa", "u – i dài – uy" |
-| Âm đệm o/u + vần đã học | 110–119, 121–122 | âm đệm, rồi **vần đã học làm một khối** | "o – an – oan", "u – ân – uân", "u – yên – uyên", "o – ay – oay" |
+| Âm đệm o/u + âm chính + âm cuối | 110–119, 121–122 | **khối âm đệm + âm chính**, rồi âm cuối — theo sơ đồ bảng ôn tr.72 ("o–a" rồi i, n, c, t…) và tr.82 ("u–â" rồi n, t, y; "u–yê" rồi n, t) | "oa – nờ – oan", "uâ – nờ – uân", "uyê – nờ – uyên", "oa – y – oay" |
 | Vần có "oo": oong, ooc | 121 | "oo" là một mảnh, rồi âm cuối | "oo – ngờ – oong" |
 
 - Đánh vần tiếng vẫn như tập 1: âm đầu, vần (một khối), tiếng không dấu, dấu, tiếng có dấu. Ví dụ "loa": "lờ – oa – loa"; "khoẻ": "khờ – oe – khoe – hỏi – khoẻ".
