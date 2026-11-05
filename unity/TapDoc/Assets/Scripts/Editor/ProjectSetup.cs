@@ -104,7 +104,7 @@ namespace TapDoc.EditorTools
         static void ConfigurePlayerSettings()
         {
             PlayerSettings.companyName = "AURA";
-            PlayerSettings.productName = "Tập đọc";
+            PlayerSettings.productName = UiText.AppTitle;
 
             // Chỉ xoay ngang (trái và phải).
             PlayerSettings.defaultInterfaceOrientation = UIOrientation.AutoRotation;

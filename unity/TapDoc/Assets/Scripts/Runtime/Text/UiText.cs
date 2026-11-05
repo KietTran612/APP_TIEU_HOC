@@ -15,7 +15,7 @@ namespace TapDoc
         public const string PartLetters = "Chữ cái và âm";
         public const string PartRimes = "Vần";
         public const string Praise = "Giỏi lắm!";
-        public const string AppTitle = "Tập đọc lớp 1";
+        public const string AppTitle = "Bờ A Ba";
         public const string ReviewMistakes = "Ôn lại";
         public const string Parent = "Phụ huynh";
         public const string SwitchChild = "Đổi bé";

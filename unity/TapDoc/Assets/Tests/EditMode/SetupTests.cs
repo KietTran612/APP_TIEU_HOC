@@ -20,6 +20,13 @@ namespace TapDoc.Tests
         /// <summary>App có màn mở đầu riêng; tắt màn "Made with Unity" (Unity 6 cho tắt ở mọi gói giấy phép).</summary>
         [Test] public void UnitySplashScreenOff() => Assert.IsFalse(PlayerSettings.SplashScreen.show);
 
+        /// <summary>Tên app chủ dự án chọn ngày 5/11/2026: "Bờ A Ba" (phụ đề "Tập đọc lớp 1" để ở kho ứng dụng).</summary>
+        [Test] public void AppNameIsBoABa()
+        {
+            Assert.AreEqual("Bờ A Ba", UiText.AppTitle);
+            Assert.AreEqual(UiText.AppTitle, PlayerSettings.productName);
+        }
+
         [Test] public void LandscapeOnly()
         {
             Assert.IsFalse(PlayerSettings.allowedAutorotateToPortrait);
