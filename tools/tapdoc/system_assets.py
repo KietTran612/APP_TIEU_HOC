@@ -15,6 +15,11 @@ SYSTEM_AUDIO: dict[str, str] = {
     "hd_nhin_chon_chu_hoa": "Con nhìn chữ thường rồi chọn chữ hoa đúng nhé.",
     "hd_nghe_do_chon_tranh": "Con nghe câu đố rồi chọn tranh đúng nhé.",
     "hd_thu_lai": "Con thử lại nhé.",
+    # Phần Tập đọc (tập 2). Điền chữ dùng lại hd_keo_vao_cho_trong.
+    "hd_tim_tieng": "Con chạm vào các tiếng đúng nhé.",
+    "hd_tra_loi_mieng": "Con trả lời cùng bố mẹ nhé.",
+    "hd_hoc_thuoc": "Con đọc thuộc lòng, quên tiếng nào thì chạm vào nhé.",
+    "hd_doan_do": "Con đoán xem là gì nhé.",
     "khen_01": "Đúng rồi!",
     "khen_02": "Giỏi lắm!",
     "khen_hoan_thanh": "Con học xong bài rồi. Giỏi lắm!",
@@ -26,6 +31,7 @@ SYSTEM_IMAGES: dict[str, str] = {
     "img_chung_em_doc": "Kí hiệu 'Em đọc' của sách: một chấm tròn đặc màu đen, bên trong có hoa văn nhỏ",
     "img_chung_luyen_tap": "Kí hiệu 'Luyện tập ở lớp và ở nhà' của sách: ngôi nhà nhỏ mái nhọn, nét mực đen, "
                            "thân nhà tô hoa văn ô nhỏ",
+    "img_chung_cau_hoi": "Kí hiệu 'Câu hỏi' của sách (tập 2): ô vuông nhỏ viền mực đen, bên trong có dấu chấm hỏi đen",
     # Hình đại diện để bé chọn khi tạo hồ sơ: con vật quen thuộc, vẽ mặt trước, nền trơn.
     "img_chung_avatar_01": "Hình đại diện: mặt con mèo con tươi cười, tai nhọn, có ria, vẽ chính diện",
     "img_chung_avatar_02": "Hình đại diện: mặt con chó con tươi cười, tai cụp, lưỡi thè nhẹ, vẽ chính diện",

@@ -8,6 +8,8 @@ from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from unittest import mock
 
+import tapdoc.build as build_mod
+
 from tapdoc import __main__ as cli
 from tapdoc.build import BuildError, BuildResult, _Builder, build_all, build_lesson, load_sources
 from tapdoc.system_assets import SYSTEM_AUDIO, SYSTEM_IMAGES
@@ -534,26 +536,31 @@ class BuildErrorTest(unittest.TestCase):
 class AudioCollisionTest(unittest.TestCase):
     """Một mã âm thanh chỉ được có một lời đọc trong cả bài."""
 
-    def test_spell_part_collides_with_earlier_step(self):
-        # telex("xoong") == telex("xông"): "oong" và "ông" cùng mã van_oong
-        with self.assertRaises(BuildError) as cm:
-            build_lesson(src_of(part1=[{"type": "unit", "text": "ông"}, {"type": "spell", "target": "xoong"}]))
-        self.assertTrue(str(cm.exception).startswith("tv1_t1_b99 part1[1]: "))
-        self.assertIn("van_oong", str(cm.exception))
-        self.assertIn("'ông'", str(cm.exception))
-        self.assertIn("'oong'", str(cm.exception))
+    def test_oong_and_ong_no_longer_collide(self):
+        # Trước đây telex("xoong") == telex("xông"); nay chữ "oo" thật viết "ooo" nên hai mã khác nhau.
+        r = build_lesson(src_of(part1=[{"type": "unit", "text": "ông"}, {"type": "spell", "target": "xoong"},
+                                       {"type": "words", "marker": "", "items": [{"text": "xông"}, {"text": "xoong"}]}]))
+        self.assertIn("van_oong", r.audio)
+        self.assertIn("van_ooong", r.audio)
+        self.assertIn("tieng_xoong", r.audio)
+        self.assertIn("tieng_xooong", r.audio)
 
     def test_item_audio_collides_between_two_items(self):
         src = src_of(part1=[{"type": "words", "marker": "", "items": [{"text": "xông"}, {"text": "xoong"}]}])
-        with self.assertRaises(BuildError) as cm:
+        forced = lambda text: ("tieng_trung", text, "tieng")  # ép hai chữ khác nhau ra cùng một mã
+        with mock.patch("tapdoc.build.text_audio", side_effect=forced), self.assertRaises(BuildError) as cm:
             build_lesson(src)
         self.assertTrue(str(cm.exception).startswith("tv1_t1_b99 part1[0].items[1]: "))
-        self.assertIn("tieng_xoong", str(cm.exception))
+        self.assertIn("tieng_trung", str(cm.exception))
+        self.assertIn("'xông'", str(cm.exception))
+        self.assertIn("'xoong'", str(cm.exception))
 
     def test_collision_in_part2(self):
         src = src_of(part1=[{"type": "unit", "text": "ông"}],
                      part2=[{"kind": "listen_choose", "answer": "oong", "options": ["oong", "a"]}])
-        with self.assertRaises(BuildError) as cm:
+        real = build_mod.audio_for
+        forced = lambda text: ("van_oong", text, "van") if text == "oong" else real(text)
+        with mock.patch("tapdoc.build.audio_for", side_effect=forced), self.assertRaises(BuildError) as cm:
             build_lesson(src)
         self.assertTrue(str(cm.exception).startswith("tv1_t1_b99 part2[0]: "))
 
@@ -631,7 +638,8 @@ class SystemAssetsTest(unittest.TestCase):
         self.assertEqual(set(SYSTEM_AUDIO), {
             "hd_nghe_chon_chu", "hd_nghe_chon_tranh", "hd_nhin_keo_dau", "hd_keo_vao_cho_trong", "hd_danh_van_theo",
             "hd_keo_dau_vao_chu", "hd_thu_lai", "khen_01", "khen_02", "khen_hoan_thanh",
-            "hd_nhin_chon_chu_hoa", "hd_nghe_do_chon_tranh"})
+            "hd_nhin_chon_chu_hoa", "hd_nghe_do_chon_tranh",
+        "hd_tim_tieng", "hd_tra_loi_mieng", "hd_hoc_thuoc", "hd_doan_do"})
         self.assertEqual(SYSTEM_AUDIO["hd_nghe_chon_chu"], "Con nghe rồi chọn chữ đúng nhé.")
         self.assertEqual(SYSTEM_AUDIO["khen_hoan_thanh"], "Con học xong bài rồi. Giỏi lắm!")
         self.assertTrue(all(k.isascii() and unicodedata.is_normalized("NFC", v) for k, v in SYSTEM_AUDIO.items()))
@@ -651,7 +659,7 @@ class SystemAssetsTest(unittest.TestCase):
             f"img_ui_{n}" for n in ("nha", "loa", "tiep", "lui", "so", "on_lai", "xong", "khoa",
                                     "lat_truoc", "lat_sau", "sao_giay", "canh_hoa")}
         self.assertEqual(set(SYSTEM_IMAGES),
-                         {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap"} | avatars | ui)
+                         {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap", "img_chung_cau_hoi"} | avatars | ui)
         self.assertIn("con mèo", SYSTEM_IMAGES["img_chung_avatar_01"])
         self.assertTrue(all(unicodedata.is_normalized("NFC", v) for v in SYSTEM_IMAGES.values()))
 

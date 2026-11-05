@@ -11,6 +11,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .ids import audio_for, text_audio, tone_audio
+from . import reading_steps
 from .books import load_books, part_of
 from .lesson_notes import lesson_notes
 from .readings import unit_readings
@@ -114,6 +115,8 @@ class _Builder:
         self.image_text: dict[str, str] = {}  # mã tranh -> chữ của bước Phần 1 có tranh đó (R6)
         self.picture_count = 0
         self.sentence_count = 0
+        self.question_count = 0
+        self.reading: list[dict] = []  # câu của bài đọc hiện tại (phần Tập đọc, reading_steps.py)
         self.nn = ""
         self.new_units: frozenset[str] = frozenset()
         self.colour_sentences = False
@@ -342,24 +345,28 @@ class _Builder:
         return {"type": "combine_table", "marker": step.get("marker", ""), "items": items}
 
     def _step_rime_table(self, step: dict, where: str) -> dict:
-        """Mỗi hàng gồm vần mới và từ chứa vần đó; chỉ tô vần của hàng."""
+        """Mỗi hàng gồm vần mới và từ (hoặc câu, ở bảng vần ít dùng) chứa vần đó; chỉ tô vần của hàng."""
         items = []
         for k, row in enumerate(step["rows"]):
             row_where = f"{where}.rows[{k}]"
-            rime, word = row["rime"], row["word"]
+            rime = row["rime"]
+            if ("word" in row) == ("sentence" in row):
+                raise self.error(row_where, "mỗi hàng cần đúng một trong hai trường 'word' hoặc 'sentence'")
             result = spell_rime(rime)
             if len(result.parts) != 3 or result.parts[-1].kind != "join":
                 raise self.error(row_where, f"vần {rime!r} phải đánh vần thành nguyên âm, âm cuối và vần")
             items.append({"text": rime, "audio": self._audio(audio_for(rime), row_where),
                           "role": "rime", "row": k, "spells": [self._spell(result, row_where)]})
-            spans = []
-            for tok, start in tokens(word):
-                syl = split_syllable(tok)
-                if syl.rime == strip_tone(rime.lower()):
-                    spans.append({"s": start + len(syl.onset), "n": len(tok) - len(syl.onset)})
-            items.append({"text": word, "audio": self._audio(text_audio(word), row_where),
-                          "role": "word", "row": k, "hl": spans,
-                          "spells": self._spells_of(word, row_where)})
+            if "word" in row:
+                word = row["word"]
+                items.append({"text": word, "audio": self._audio(text_audio(word), row_where),
+                              "role": "word", "row": k, "hl": _rime_spans(word, rime),
+                              "spells": self._spells_of(word, row_where)})
+            else:
+                sentence = row["sentence"]
+                items.append({"text": sentence, "audio": self._sentence_audio(sentence, row_where),
+                              "role": "sentence", "row": k, "hl": _rime_spans(sentence, rime),
+                              "spells": self._spells_of(sentence, row_where)})
         return {"type": "rime_table", "marker": step.get("marker", ""), "items": items}
 
     def _step_rime_grid(self, step: dict, where: str) -> dict:
@@ -458,6 +465,7 @@ class _Builder:
             items.append({"text": word, "audio": self._audio(text_audio(word), item_where),
                           "hl": self._highlights(word) if self.colour_sentences else [],
                           "spells": [self._spell(spell_syllable(word), item_where)]})
+        self.reading.append({"text": text, "audio": audio_id})
         return {"type": "sentence", "marker": step.get("marker", ""), "text": text, "audio": audio_id,
                 "items": items}
 
@@ -479,6 +487,7 @@ class _Builder:
         "rime_grid": _step_rime_grid,
         "letter_pairs": _step_letter_pairs,
         "rule": _step_rule,
+        **reading_steps.STEPS,
     }
 
     def _build_part1(self) -> list[dict]:
@@ -647,6 +656,16 @@ class _Builder:
         if isinstance(td_no, bool) or not isinstance(td_no, int):
             raise self.error(_HEAD, f"bài tập đọc cần trường 'td_no' (số bài in trong mục lục): {td_no!r}")
         return {"part": part, "label": f"Bài {td_no}", "week": week}
+
+
+def _rime_spans(text: str, rime: str) -> list[dict]:
+    """Vị trí phần vần `rime` trong các tiếng của `text` (bỏ dấu thanh khi so)."""
+    spans = []
+    for tok, start in tokens(text):
+        syl = split_syllable(tok)
+        if syl.rime == strip_tone(rime.lower()):
+            spans.append({"s": start + len(syl.onset), "n": len(tok) - len(syl.onset)})
+    return spans
 
 
 def _onset_spans(text: str) -> list[dict]:

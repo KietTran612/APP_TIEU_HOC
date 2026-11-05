@@ -15,6 +15,30 @@ def step_of(step, new_units=(), kind="van_moi"):
     return build_lesson(src).lesson["part1"][0]
 
 
+class RimeSentenceTest(unittest.TestCase):
+    """Bảng vần ít dùng (tập 2 bài 121–122): mỗi hàng là vần và một câu chứa vần đó."""
+
+    def test_sentence_row(self):
+        st = step_of({"type": "rime_table", "rows": [{"rime": "oay", "sentence": "Không nên viết ngoáy."}]},
+                     kind="van_it_dung")
+        rime, sentence = st["items"]
+        self.assertEqual((rime["role"], rime["text"]), ("rime", "oay"))
+        self.assertEqual([p["text"] for p in rime["spells"][0]["parts"]], ["oa", "y", "oay"])
+        self.assertEqual((sentence["role"], sentence["row"], sentence["text"]), ("sentence", 0, "Không nên viết ngoáy."))
+        self.assertTrue(sentence["audio"].startswith("cau_b"))
+        self.assertEqual(sentence["hl"], [{"s": 17, "n": 3}])  # "oáy" trong "ngoáy"
+        self.assertEqual([sp["target"] for sp in sentence["spells"]], ["không", "nên", "viết", "ngoáy"])
+
+    def test_row_needs_word_or_sentence(self):
+        with self.assertRaises(BuildError):
+            step_of({"type": "rime_table", "rows": [{"rime": "oay"}]}, kind="van_it_dung")
+
+    def test_row_with_both_word_and_sentence_raises(self):
+        with self.assertRaises(BuildError):
+            step_of({"type": "rime_table", "rows": [{"rime": "oay", "word": "ngoáy", "sentence": "Viết ngoáy."}]},
+                    kind="van_it_dung")
+
+
 class RimeTableTest(unittest.TestCase):
     def test_rows(self):
         st = step_of({"type": "rime_table", "rows": [

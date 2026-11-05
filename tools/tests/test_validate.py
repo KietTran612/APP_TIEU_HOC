@@ -709,7 +709,7 @@ class ValidateAllTest(unittest.TestCase):
         self.build_all_good()
         data = json.loads(self.lesson_path.read_text(encoding="utf-8"))
         data["part1"][3]["spell"]["parts"] = []
-        data["part1"][4]["marker"] = "?"
+        data["part1"][4]["marker"] = "★"
         self.write_json(self.lesson_path, data)
         issues = validate_all(allow_missing=True)
         self.assertEqual([i.where for i in issues], ["part1[3].spell", "part1[4].marker"])
