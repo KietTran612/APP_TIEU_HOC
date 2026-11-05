@@ -1,0 +1,196 @@
+{
+  "lesson_id": "tv1_t2_b85",
+  "book": "tv1_t2_1996",
+  "lesson_no": 85,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      12,
+      13
+    ],
+    "scan_file": "007",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "anh",
+    "ênh",
+    "inh",
+    "ach",
+    "êch",
+    "ich"
+  ],
+  "images": {
+    "img_b85_ddoongf_hoof_tichs_tawcs": "Bé gái chăm chỉ ngồi học bên bàn; trên chiếc bàn nhỏ cạnh đó có đồng hồ báo thức và lọ hoa"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "marker": "●",
+      "rows": [
+        {
+          "rime": "anh",
+          "word": "cây chanh"
+        },
+        {
+          "rime": "ênh",
+          "word": "con kênh"
+        },
+        {
+          "rime": "inh",
+          "word": "kính cận"
+        },
+        {
+          "rime": "ach",
+          "word": "sách đẹp"
+        },
+        {
+          "rime": "êch",
+          "word": "con ếch"
+        },
+        {
+          "rime": "ich",
+          "word": "tờ lịch"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b85_ddoongf_hoof_tichs_tawcs",
+      "say": "Đồng hồ kêu tích tắc, bé chăm chỉ học bài.",
+      "word": "đồng hồ"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Tích tắc tích tắc,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Kim ngắn chỉ giờ"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Kim dài chỉ phút."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Tích tắc tích tắc,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Thì giờ vùn vụt"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nhanh như tên bay."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Chớ phí một giây,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Em chăm chỉ học."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "anh",
+          "options": [
+            "anh",
+            "ênh",
+            "inh"
+          ]
+        },
+        {
+          "answer": "êch",
+          "options": [
+            "êch",
+            "ach",
+            "ich"
+          ]
+        },
+        {
+          "answer": "inh",
+          "options": [
+            "inh",
+            "anh",
+            "ênh"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "kênh",
+          "options": [
+            "kênh",
+            "kính"
+          ]
+        },
+        {
+          "answer": "lịch",
+          "options": [
+            "lịch",
+            "lệch"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "cây chanh",
+      "template": "cây ch_",
+      "answer": "anh",
+      "options": [
+        "anh",
+        "ênh",
+        "inh"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "con ếch",
+          "options": [
+            "con ếch",
+            "tờ lịch",
+            "sách đẹp"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "chỉ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

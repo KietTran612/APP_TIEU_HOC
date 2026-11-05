@@ -1,0 +1,209 @@
+{
+  "lesson_id": "tv1_t2_b86",
+  "book": "tv1_t2_1996",
+  "lesson_no": 86,
+  "type": "van_moi",
+  "title": "ang eng",
+  "source": {
+    "pages": [
+      14,
+      15
+    ],
+    "scan_file": "008",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ang",
+    "eng"
+  ],
+  "images": {
+    "img_b86_trang_sachs": "Quyển sách mở ra, thấy rõ hai trang sách",
+    "img_b86_cais_xengr": "Cái xẻng sắt cán gỗ dài",
+    "img_b86_vaaps_phair_ddas": "Bé trai chạy vội vấp phải hòn đá ngã sóng soài, mẹ cúi xuống đỡ bé dậy"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ang"
+    },
+    {
+      "type": "keyword",
+      "text": "trang sách",
+      "image": "img_b86_trang_sachs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "trang sách",
+        "trang",
+        "ang"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ang",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "trang",
+      "then": "trang sách"
+    },
+    {
+      "type": "unit",
+      "text": "eng"
+    },
+    {
+      "type": "keyword",
+      "text": "cái xẻng",
+      "image": "img_b86_cais_xengr"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cái xẻng",
+        "xẻng",
+        "eng"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "eng",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "xẻng",
+      "drag_tone": true,
+      "then": "cái xẻng"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "giảng bài"
+        },
+        {
+          "text": "quê Bác ở làng Sen"
+        },
+        {
+          "text": "xà beng"
+        },
+        {
+          "text": "đánh kẻng"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b86_vaaps_phair_ddas",
+      "say": "Bé chạy vội nên vấp phải đá, ngã.",
+      "word": "vấp ngã"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đi đâu mà vội mà vàng"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Mà vấp phải đá, mà quàng phải dây!"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ang",
+          "options": [
+            "ang",
+            "eng",
+            "am"
+          ]
+        },
+        {
+          "answer": "eng",
+          "options": [
+            "eng",
+            "ang",
+            "em"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "kẻng",
+          "options": [
+            "kẻng",
+            "kèng"
+          ]
+        },
+        {
+          "answer": "làng",
+          "options": [
+            "làng",
+            "lảng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "cái xẻng",
+      "template": "cái x_",
+      "answer": "ẻng",
+      "options": [
+        "ẻng",
+        "ảng",
+        "ẻm"
+      ],
+      "image": "img_b86_cais_xengr"
+    },
+    {
+      "kind": "compose",
+      "word": "trang sách",
+      "template": "tr_ sách",
+      "answer": "ang",
+      "options": [
+        "ang",
+        "eng",
+        "am"
+      ],
+      "image": "img_b86_trang_sachs"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "cái xẻng",
+          "answer": "img_b86_cais_xengr",
+          "options": [
+            "img_b86_cais_xengr",
+            "img_b86_trang_sachs",
+            "img_b86_vaaps_phair_ddas"
+          ]
+        },
+        {
+          "word": "trang sách",
+          "answer": "img_b86_trang_sachs",
+          "options": [
+            "img_b86_trang_sachs",
+            "img_b86_cais_xengr",
+            "img_b86_vaaps_phair_ddas"
+          ]
+        }
+      ]
+    }
+  ]
+}

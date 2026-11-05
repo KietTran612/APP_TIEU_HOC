@@ -1,0 +1,1245 @@
+{
+  "schema": 1,
+  "lesson_id": "tv1_t2_b81",
+  "book": "tv1_t2_1996",
+  "lesson_no": 81,
+  "type": "van_moi",
+  "title": "anh",
+  "in_app": true,
+  "new_units": [
+    "anh"
+  ],
+  "source": {
+    "pages": [
+      4,
+      5
+    ],
+    "scan_file": "003",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu đố \"Đố vui\": tranh trên trang là ô lưới nhiều loại quả; app hiện tranh quả ớt là đáp án và có lượt nghe câu đố rồi chọn tranh. Tranh quả chanh, hộp bánh được vẽ thêm."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[10]",
+        "note": "đáp án câu đố (quả ớt) do app soạn, sách không in đáp án"
+      },
+      {
+        "where": "images",
+        "note": "img_b81_quar_chanh, img_b81_hoopj_banhs vẽ thêm cho lượt nghe chọn tranh"
+      },
+      {
+        "where": "part1[5].items[0]",
+        "note": "dùng tên đọc riêng tr.122 cho 'qu' (tạm)"
+      },
+      {
+        "where": "part1[8].items[0]",
+        "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
+      },
+      {
+        "where": "part1[9].items[0]",
+        "note": "dùng tên đọc riêng tr.122 cho 'qu' (tạm)"
+      },
+      {
+        "where": "part1[9].items[1]",
+        "note": "dùng tên đọc riêng tr.122 cho 'gi' (tạm)"
+      },
+      {
+        "where": "part1[9].items[1]",
+        "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
+      },
+      {
+        "where": "part1[9].items[1]",
+        "note": "gi + vần có i: không đánh vần thẳng được, cần duyệt"
+      },
+      {
+        "where": "part1[10]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "anh",
+      "audio": "van_anh",
+      "hl": [
+        {
+          "s": 0,
+          "n": 3
+        }
+      ]
+    },
+    {
+      "type": "keyword",
+      "text": "cây cảnh",
+      "audio": "tu_caay_canhr",
+      "image": "img_b81_caay_canhr",
+      "hl": [
+        {
+          "s": 5,
+          "n": 3
+        }
+      ]
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        {
+          "text": "cây cảnh",
+          "audio": "tu_caay_canhr",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "cảnh",
+          "audio": "tieng_canhr",
+          "hl": [
+            {
+              "s": 1,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "anh",
+          "audio": "van_anh",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "spell",
+      "spell": {
+        "target": "anh",
+        "drag_tone": false,
+        "parts": [
+          {
+            "kind": "unit",
+            "text": "a",
+            "audio": "van_a"
+          },
+          {
+            "kind": "unit",
+            "text": "nh",
+            "audio": "am_nh"
+          },
+          {
+            "kind": "join",
+            "text": "anh",
+            "audio": "van_anh"
+          }
+        ]
+      }
+    },
+    {
+      "type": "spell",
+      "spell": {
+        "target": "cảnh",
+        "drag_tone": true,
+        "parts": [
+          {
+            "kind": "unit",
+            "text": "c",
+            "audio": "am_c"
+          },
+          {
+            "kind": "unit",
+            "text": "anh",
+            "audio": "van_anh"
+          },
+          {
+            "kind": "join",
+            "text": "canh",
+            "audio": "tieng_canh"
+          },
+          {
+            "kind": "tone",
+            "text": "ˀ",
+            "audio": "dau_hoi",
+            "tone": "hoi"
+          },
+          {
+            "kind": "join",
+            "text": "cảnh",
+            "audio": "tieng_canhr"
+          }
+        ]
+      },
+      "then_text": "cây cảnh",
+      "then_audio": "tu_caay_canhr"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "quả chanh",
+          "audio": "tu_quar_chanh",
+          "image": "img_b81_quar_chanh",
+          "hl": [
+            {
+              "s": 6,
+              "n": 3
+            }
+          ],
+          "spells": [
+            {
+              "target": "quả",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "qu",
+                  "audio": "am_qu"
+                },
+                {
+                  "kind": "unit",
+                  "text": "a",
+                  "audio": "van_a"
+                },
+                {
+                  "kind": "join",
+                  "text": "qua",
+                  "audio": "tieng_qua"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˀ",
+                  "audio": "dau_hoi",
+                  "tone": "hoi"
+                },
+                {
+                  "kind": "join",
+                  "text": "quả",
+                  "audio": "tieng_quar"
+                }
+              ]
+            },
+            {
+              "target": "chanh",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "ch",
+                  "audio": "am_ch"
+                },
+                {
+                  "kind": "unit",
+                  "text": "anh",
+                  "audio": "van_anh"
+                },
+                {
+                  "kind": "join",
+                  "text": "chanh",
+                  "audio": "tieng_chanh"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "hộp bánh",
+          "audio": "tu_hoopj_banhs",
+          "image": "img_b81_hoopj_banhs",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ],
+          "spells": [
+            {
+              "target": "hộp",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "h",
+                  "audio": "am_h"
+                },
+                {
+                  "kind": "unit",
+                  "text": "ôp",
+                  "audio": "van_oop"
+                },
+                {
+                  "kind": "join",
+                  "text": "hôp",
+                  "audio": "tieng_hoop"
+                },
+                {
+                  "kind": "tone",
+                  "text": ".",
+                  "audio": "dau_nang",
+                  "tone": "nang"
+                },
+                {
+                  "kind": "join",
+                  "text": "hộp",
+                  "audio": "tieng_hoopj"
+                }
+              ]
+            },
+            {
+              "target": "bánh",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "b",
+                  "audio": "am_b"
+                },
+                {
+                  "kind": "unit",
+                  "text": "anh",
+                  "audio": "van_anh"
+                },
+                {
+                  "kind": "join",
+                  "text": "banh",
+                  "audio": "tieng_banh"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "bánh",
+                  "audio": "tieng_banhs"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "con cánh cam",
+          "audio": "tu_con_canhs_cam",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ],
+          "spells": [
+            {
+              "target": "con",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "on",
+                  "audio": "van_on"
+                },
+                {
+                  "kind": "join",
+                  "text": "con",
+                  "audio": "tieng_con"
+                }
+              ]
+            },
+            {
+              "target": "cánh",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "anh",
+                  "audio": "van_anh"
+                },
+                {
+                  "kind": "join",
+                  "text": "canh",
+                  "audio": "tieng_canh"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "cánh",
+                  "audio": "tieng_canhs"
+                }
+              ]
+            },
+            {
+              "target": "cam",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "am",
+                  "audio": "van_am"
+                },
+                {
+                  "kind": "join",
+                  "text": "cam",
+                  "audio": "tieng_cam"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đố vui",
+      "audio": "cau_b81_01",
+      "items": [
+        {
+          "text": "Đố",
+          "audio": "tieng_ddoos",
+          "hl": [],
+          "spells": [
+            {
+              "target": "đố",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "ô",
+                  "audio": "van_oo"
+                },
+                {
+                  "kind": "join",
+                  "text": "đô",
+                  "audio": "tieng_ddoo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "đố",
+                  "audio": "tieng_ddoos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "vui",
+          "audio": "tieng_vui",
+          "hl": [],
+          "spells": [
+            {
+              "target": "vui",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "v",
+                  "audio": "am_v"
+                },
+                {
+                  "kind": "unit",
+                  "text": "ui",
+                  "audio": "van_ui"
+                },
+                {
+                  "kind": "join",
+                  "text": "vui",
+                  "audio": "tieng_vui"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Còn bé, em mặc áo xanh",
+      "audio": "cau_b81_02",
+      "items": [
+        {
+          "text": "Còn",
+          "audio": "tieng_conf",
+          "hl": [],
+          "spells": [
+            {
+              "target": "còn",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "on",
+                  "audio": "van_on"
+                },
+                {
+                  "kind": "join",
+                  "text": "con",
+                  "audio": "tieng_con"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "còn",
+                  "audio": "tieng_conf"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "bé",
+          "audio": "tieng_bes",
+          "hl": [],
+          "spells": [
+            {
+              "target": "bé",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "b",
+                  "audio": "am_b"
+                },
+                {
+                  "kind": "unit",
+                  "text": "e",
+                  "audio": "van_e"
+                },
+                {
+                  "kind": "join",
+                  "text": "be",
+                  "audio": "tieng_be"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "bé",
+                  "audio": "tieng_bes"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "em",
+          "audio": "van_em",
+          "hl": [],
+          "spells": [
+            {
+              "target": "em",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "em",
+                  "audio": "van_em"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "mặc",
+          "audio": "tieng_mawcj",
+          "hl": [],
+          "spells": [
+            {
+              "target": "mặc",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "m",
+                  "audio": "am_m"
+                },
+                {
+                  "kind": "unit",
+                  "text": "ăc",
+                  "audio": "van_awc"
+                },
+                {
+                  "kind": "join",
+                  "text": "măc",
+                  "audio": "tieng_mawc"
+                },
+                {
+                  "kind": "tone",
+                  "text": ".",
+                  "audio": "dau_nang",
+                  "tone": "nang"
+                },
+                {
+                  "kind": "join",
+                  "text": "mặc",
+                  "audio": "tieng_mawcj"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "áo",
+          "audio": "tieng_aos",
+          "hl": [],
+          "spells": [
+            {
+              "target": "áo",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "ao",
+                  "audio": "van_ao"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "áo",
+                  "audio": "tieng_aos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "xanh",
+          "audio": "tieng_xanh",
+          "hl": [
+            {
+              "s": 1,
+              "n": 3
+            }
+          ],
+          "spells": [
+            {
+              "target": "xanh",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "x",
+                  "audio": "am_x"
+                },
+                {
+                  "kind": "unit",
+                  "text": "anh",
+                  "audio": "van_anh"
+                },
+                {
+                  "kind": "join",
+                  "text": "xanh",
+                  "audio": "tieng_xanh"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Khi lớn như anh, em mặc áo đỏ.",
+      "audio": "cau_b81_03",
+      "items": [
+        {
+          "text": "Khi",
+          "audio": "tieng_khi",
+          "hl": [],
+          "spells": [
+            {
+              "target": "khi",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "kh",
+                  "audio": "am_kh"
+                },
+                {
+                  "kind": "unit",
+                  "text": "i",
+                  "audio": "van_i"
+                },
+                {
+                  "kind": "join",
+                  "text": "khi",
+                  "audio": "tieng_khi"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "lớn",
+          "audio": "tieng_lowns",
+          "hl": [],
+          "spells": [
+            {
+              "target": "lớn",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "l",
+                  "audio": "am_l"
+                },
+                {
+                  "kind": "unit",
+                  "text": "ơn",
+                  "audio": "van_own"
+                },
+                {
+                  "kind": "join",
+                  "text": "lơn",
+                  "audio": "tieng_lown"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "lớn",
+                  "audio": "tieng_lowns"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "như",
+          "audio": "tieng_nhuw",
+          "hl": [],
+          "spells": [
+            {
+              "target": "như",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "nh",
+                  "audio": "am_nh"
+                },
+                {
+                  "kind": "unit",
+                  "text": "ư",
+                  "audio": "van_uw"
+                },
+                {
+                  "kind": "join",
+                  "text": "như",
+                  "audio": "tieng_nhuw"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "anh",
+          "audio": "van_anh",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ],
+          "spells": [
+            {
+              "target": "anh",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "anh",
+                  "audio": "van_anh"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "em",
+          "audio": "van_em",
+          "hl": [],
+          "spells": [
+            {
+              "target": "em",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "em",
+                  "audio": "van_em"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "mặc",
+          "audio": "tieng_mawcj",
+          "hl": [],
+          "spells": [
+            {
+              "target": "mặc",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "m",
+                  "audio": "am_m"
+                },
+                {
+                  "kind": "unit",
+                  "text": "ăc",
+                  "audio": "van_awc"
+                },
+                {
+                  "kind": "join",
+                  "text": "măc",
+                  "audio": "tieng_mawc"
+                },
+                {
+                  "kind": "tone",
+                  "text": ".",
+                  "audio": "dau_nang",
+                  "tone": "nang"
+                },
+                {
+                  "kind": "join",
+                  "text": "mặc",
+                  "audio": "tieng_mawcj"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "áo",
+          "audio": "tieng_aos",
+          "hl": [],
+          "spells": [
+            {
+              "target": "áo",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "ao",
+                  "audio": "van_ao"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "áo",
+                  "audio": "tieng_aos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đỏ",
+          "audio": "tieng_ddor",
+          "hl": [],
+          "spells": [
+            {
+              "target": "đỏ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˀ",
+                  "audio": "dau_hoi",
+                  "tone": "hoi"
+                },
+                {
+                  "kind": "join",
+                  "text": "đỏ",
+                  "audio": "tieng_ddor"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "(quả gì?)",
+      "audio": "cau_b81_04",
+      "items": [
+        {
+          "text": "quả",
+          "audio": "tieng_quar",
+          "hl": [],
+          "spells": [
+            {
+              "target": "quả",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "qu",
+                  "audio": "am_qu"
+                },
+                {
+                  "kind": "unit",
+                  "text": "a",
+                  "audio": "van_a"
+                },
+                {
+                  "kind": "join",
+                  "text": "qua",
+                  "audio": "tieng_qua"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˀ",
+                  "audio": "dau_hoi",
+                  "tone": "hoi"
+                },
+                {
+                  "kind": "join",
+                  "text": "quả",
+                  "audio": "tieng_quar"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "gì",
+          "audio": "tieng_gif",
+          "hl": [],
+          "spells": [
+            {
+              "target": "gì",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "gi",
+                  "audio": "am_gi"
+                },
+                {
+                  "kind": "unit",
+                  "text": "i",
+                  "audio": "van_i"
+                },
+                {
+                  "kind": "join",
+                  "text": "gi",
+                  "audio": "tieng_gi"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "gì",
+                  "audio": "tieng_gif"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b81_quar_owts",
+      "audio": "hd_b81_tranh_01"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_do_chon_tranh",
+      "prompt_audio": "cau_b81_05",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quả chanh",
+          "audio": "",
+          "image": "img_b81_quar_chanh",
+          "tone": ""
+        },
+        {
+          "text": "quả ớt",
+          "audio": "",
+          "image": "img_b81_quar_owts",
+          "tone": ""
+        },
+        {
+          "text": "hộp bánh",
+          "audio": "",
+          "image": "img_b81_hoopj_banhs",
+          "tone": ""
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "van_anh",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "anh",
+          "audio": "van_anh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "am",
+          "audio": "van_am",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ai",
+          "audio": "van_ai",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_chanh",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chanh",
+          "audio": "tieng_chanh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cha",
+          "audio": "tieng_cha",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chim",
+          "audio": "tieng_chim",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_canhr",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cảnh",
+          "audio": "tieng_canhr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cánh",
+          "audio": "tieng_canhs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_banhs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bánh",
+          "audio": "tieng_banhs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bành",
+          "audio": "tieng_banhf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "compose",
+      "tag": "",
+      "instruction_audio": "hd_keo_vao_cho_trong",
+      "prompt_audio": "tu_quar_chanh",
+      "prompt_text": "quả ch_",
+      "base_text": "",
+      "image": "img_b81_quar_chanh",
+      "options": [
+        {
+          "text": "anh",
+          "audio": "van_anh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "am",
+          "audio": "van_am",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ai",
+          "audio": "van_ai",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_picture",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_tranh",
+      "prompt_audio": "tu_hoopj_banhs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "hộp bánh",
+          "audio": "",
+          "image": "img_b81_hoopj_banhs",
+          "tone": ""
+        },
+        {
+          "text": "quả chanh",
+          "audio": "",
+          "image": "img_b81_quar_chanh",
+          "tone": ""
+        },
+        {
+          "text": "cây cảnh",
+          "audio": "",
+          "image": "img_b81_caay_canhr",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

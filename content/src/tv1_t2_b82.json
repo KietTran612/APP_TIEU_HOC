@@ -1,0 +1,211 @@
+{
+  "lesson_id": "tv1_t2_b82",
+  "book": "tv1_t2_1996",
+  "lesson_no": 82,
+  "type": "van_moi",
+  "title": "ênh inh",
+  "source": {
+    "pages": [
+      6,
+      7
+    ],
+    "scan_file": "004",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ênh",
+    "inh"
+  ],
+  "images": {
+    "img_b82_caauf_baapj_beenh": "Cầu bập bênh bằng gỗ ở sân chơi, một chú chim nhỏ đậu ở một đầu",
+    "img_b82_hocj_sinh": "Cậu học sinh đeo cặp sách, áo trắng quần xanh, vui vẻ đi học",
+    "img_b82_con_keenh_caauf_xinh": "Con kênh xanh có nhịp cầu gỗ nhỏ nối đôi bờ cỏ, hai bạn nhỏ đi trên cầu, hàng dừa hai bên bờ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ênh"
+    },
+    {
+      "type": "keyword",
+      "text": "cầu bập bênh",
+      "image": "img_b82_caauf_baapj_beenh"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cầu bập bênh",
+        "bênh",
+        "ênh"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ênh",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "bênh",
+      "then": "cầu bập bênh"
+    },
+    {
+      "type": "unit",
+      "text": "inh"
+    },
+    {
+      "type": "keyword",
+      "text": "học sinh",
+      "image": "img_b82_hocj_sinh"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "học sinh",
+        "sinh",
+        "inh"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "inh",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "sinh",
+      "then": "học sinh"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "chênh vênh"
+        },
+        {
+          "text": "cao lênh khênh"
+        },
+        {
+          "text": "làm tính"
+        },
+        {
+          "text": "xinh xắn"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b82_con_keenh_caauf_xinh",
+      "say": "Con kênh có nhịp cầu xinh.",
+      "word": "nhịp cầu"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Con kênh xanh xanh"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đẹp ánh bình minh"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Có nhịp cầu xinh"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nối đôi bờ cỏ."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ênh",
+          "options": [
+            "ênh",
+            "inh",
+            "anh"
+          ]
+        },
+        {
+          "answer": "inh",
+          "options": [
+            "inh",
+            "ênh",
+            "anh"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "tính",
+          "options": [
+            "tính",
+            "tình"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "học sinh",
+      "template": "học s_",
+      "answer": "inh",
+      "options": [
+        "inh",
+        "ênh",
+        "anh"
+      ],
+      "image": "img_b82_hocj_sinh"
+    },
+    {
+      "kind": "compose",
+      "word": "cầu bập bênh",
+      "template": "cầu bập b_",
+      "answer": "ênh",
+      "options": [
+        "ênh",
+        "inh",
+        "anh"
+      ],
+      "image": "img_b82_caauf_baapj_beenh"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "học sinh",
+          "answer": "img_b82_hocj_sinh",
+          "options": [
+            "img_b82_hocj_sinh",
+            "img_b82_caauf_baapj_beenh",
+            "img_b82_con_keenh_caauf_xinh"
+          ]
+        },
+        {
+          "word": "cầu bập bênh",
+          "answer": "img_b82_caauf_baapj_beenh",
+          "options": [
+            "img_b82_caauf_baapj_beenh",
+            "img_b82_hocj_sinh",
+            "img_b82_con_keenh_caauf_xinh"
+          ]
+        }
+      ]
+    }
+  ]
+}

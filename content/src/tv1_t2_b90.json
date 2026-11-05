@@ -1,0 +1,186 @@
+{
+  "lesson_id": "tv1_t2_b90",
+  "book": "tv1_t2_1996",
+  "lesson_no": 90,
+  "type": "on_tap_van",
+  "title": "Ôn tập",
+  "source": {
+    "pages": [
+      22,
+      23
+    ],
+    "scan_file": "012",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ang",
+    "ăng",
+    "âng",
+    "ong",
+    "ông",
+    "eng",
+    "ung",
+    "ưng"
+  ],
+  "images": {
+    "img_b90_ddaamf_sen": "Đầm sen hoa hồng nở giữa lá xanh, cô gái ngồi thuyền thúng hái sen"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "rime_table",
+      "marker": "●",
+      "rows": [
+        {
+          "rime": "ang",
+          "word": "bảng đen"
+        },
+        {
+          "rime": "ăng",
+          "word": "búp măng"
+        },
+        {
+          "rime": "âng",
+          "word": "vầng trăng"
+        },
+        {
+          "rime": "ong",
+          "word": "bóng bay"
+        },
+        {
+          "rime": "ông",
+          "word": "bông hồng"
+        },
+        {
+          "rime": "eng",
+          "word": "cái kẻng"
+        },
+        {
+          "rime": "ung",
+          "word": "khẩu súng"
+        },
+        {
+          "rime": "ưng",
+          "word": "quả trứng"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b90_ddaamf_sen",
+      "say": "Đầm sen nở hoa, cô gái chèo thuyền hái sen.",
+      "word": "đầm sen"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Trong đầm gì đẹp bằng sen"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Lá xanh bông trắng lại chen nhị vàng"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nhị vàng bông trắng lá xanh"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Gần bùn mà chẳng hôi tanh mùi bùn."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăng",
+          "options": [
+            "ăng",
+            "âng",
+            "ang"
+          ]
+        },
+        {
+          "answer": "ông",
+          "options": [
+            "ông",
+            "ong",
+            "ung"
+          ]
+        },
+        {
+          "answer": "ưng",
+          "options": [
+            "ưng",
+            "ung",
+            "eng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "bóng",
+          "options": [
+            "bóng",
+            "bống"
+          ]
+        },
+        {
+          "answer": "trứng",
+          "options": [
+            "trứng",
+            "trúng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "vầng trăng",
+      "template": "v_ trăng",
+      "answer": "ầng",
+      "options": [
+        "ầng",
+        "ằng",
+        "àng"
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "bông hồng",
+          "options": [
+            "bông hồng",
+            "bóng bay",
+            "bảng đen"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "chẳng",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

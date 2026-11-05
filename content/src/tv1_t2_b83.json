@@ -1,0 +1,172 @@
+{
+  "lesson_id": "tv1_t2_b83",
+  "book": "tv1_t2_1996",
+  "lesson_no": 83,
+  "type": "van_moi",
+  "title": "ach",
+  "source": {
+    "pages": [
+      8,
+      9
+    ],
+    "scan_file": "005",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ach"
+  ],
+  "images": {
+    "img_b83_lof_gachj": "Lò gạch ở làng quê có mái che, người thợ đang xếp gạch, khói bốc lên",
+    "img_b83_nhaf_sachj": "Mẹ quét nhà sạch sẽ, bé gái ngồi rửa bát bên chậu nước",
+    "img_b83_capj_sachs": "Chiếc cặp sách có quai đeo, bên cạnh mấy quyển sách vở"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "images",
+        "note": "img_b83_capj_sachs vẽ thêm cho lượt nghe chọn tranh"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ach"
+    },
+    {
+      "type": "keyword",
+      "text": "lò gạch",
+      "image": "img_b83_lof_gachj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "lò gạch",
+        "gạch",
+        "ach"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ach",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "gạch",
+      "drag_tone": true,
+      "then": "lò gạch"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "cặp sách",
+          "image": "img_b83_capj_sachs"
+        },
+        {
+          "text": "khách đến chơi nhà"
+        },
+        {
+          "text": "vở sạch chữ đẹp"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b83_nhaf_sachj",
+      "say": "Mẹ quét nhà, bé rửa bát cho nhà sạch.",
+      "word": "nhà sạch"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "- Nhà sạch thì mát, bát sạch ngon cơm."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "- Đói cho sạch, rách cho thơm."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ach",
+          "options": [
+            "ach",
+            "ap",
+            "am"
+          ]
+        },
+        {
+          "answer": "gạch",
+          "options": [
+            "gạch",
+            "gà",
+            "gấc"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "sạch",
+          "options": [
+            "sạch",
+            "sách"
+          ]
+        },
+        {
+          "answer": "rách",
+          "options": [
+            "rách",
+            "ràch"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "cặp sách",
+      "template": "cặp s_",
+      "answer": "ách",
+      "options": [
+        "ách",
+        "áp",
+        "ám"
+      ],
+      "image": "img_b83_capj_sachs"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "lò gạch",
+          "answer": "img_b83_lof_gachj",
+          "options": [
+            "img_b83_lof_gachj",
+            "img_b83_nhaf_sachj",
+            "img_b83_capj_sachs"
+          ]
+        },
+        {
+          "word": "cặp sách",
+          "answer": "img_b83_capj_sachs",
+          "options": [
+            "img_b83_capj_sachs",
+            "img_b83_lof_gachj",
+            "img_b83_nhaf_sachj"
+          ]
+        }
+      ]
+    }
+  ]
+}

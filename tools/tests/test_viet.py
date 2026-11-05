@@ -50,6 +50,11 @@ class SplitTest(unittest.TestCase):
     def test_tokens_index_counts_nfc_characters(self):
         self.assertEqual(tokens(unicodedata.normalize("NFD", "cái đu")), [("cái", 0), ("đu", 4)])
 
+    def test_parentheses_are_dropped(self):
+        # Tập 2: "(quả gì?)", "(là cái gì ?)", "(Bài đọc thêm)".
+        self.assertEqual(tokens("(quả gì?)"), [("quả", 1), ("gì", 5)])
+        self.assertEqual(syllables("(Bài đọc thêm)"), ["Bài", "đọc", "thêm"])
+
     def test_other_book_punctuation_is_dropped(self):
         # Sách còn dùng gạch dài, ngoặc đơn cong và dấu ba chấm liền một ký tự.
         self.assertEqual(syllables("—Ai gọi đó? ‘Ếp ếp’ thật là vui…"),

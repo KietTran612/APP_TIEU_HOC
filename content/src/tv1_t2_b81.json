@@ -1,0 +1,200 @@
+{
+  "lesson_id": "tv1_t2_b81",
+  "book": "tv1_t2_1996",
+  "lesson_no": 81,
+  "type": "van_moi",
+  "title": "anh",
+  "source": {
+    "pages": [
+      4,
+      5
+    ],
+    "scan_file": "003",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "anh"
+  ],
+  "images": {
+    "img_b81_caay_canhr": "Cây cảnh cắt tỉa thành hình con chim đứng trên bãi cỏ có hoa nhỏ",
+    "img_b81_quar_owts": "Hai quả ớt: một quả còn xanh, một quả chín đỏ (đáp án câu đố \"Còn bé em mặc áo xanh, khi lớn như anh em mặc áo đỏ\")",
+    "img_b81_quar_chanh": "Một quả chanh xanh và nửa quả chanh bổ đôi",
+    "img_b81_hoopj_banhs": "Hộp bánh quy hình vuông mở nắp, bên trong có mấy chiếc bánh"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[10]",
+        "note": "đáp án câu đố (quả ớt) do app soạn, sách không in đáp án"
+      },
+      {
+        "where": "images",
+        "note": "img_b81_quar_chanh, img_b81_hoopj_banhs vẽ thêm cho lượt nghe chọn tranh"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu đố \"Đố vui\": tranh trên trang là ô lưới nhiều loại quả; app hiện tranh quả ớt là đáp án và có lượt nghe câu đố rồi chọn tranh. Tranh quả chanh, hộp bánh được vẽ thêm."
+    }
+  ],
+  "part1": [
+    {
+      "type": "unit",
+      "text": "anh"
+    },
+    {
+      "type": "keyword",
+      "text": "cây cảnh",
+      "image": "img_b81_caay_canhr"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "cây cảnh",
+        "cảnh",
+        "anh"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "anh",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "cảnh",
+      "drag_tone": true,
+      "then": "cây cảnh"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "quả chanh",
+          "image": "img_b81_quar_chanh"
+        },
+        {
+          "text": "hộp bánh",
+          "image": "img_b81_hoopj_banhs"
+        },
+        {
+          "text": "con cánh cam"
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đố vui"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Còn bé, em mặc áo xanh"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Khi lớn như anh, em mặc áo đỏ."
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "(quả gì?)"
+    },
+    {
+      "type": "picture",
+      "image": "img_b81_quar_owts",
+      "say": "Đây là quả ớt.",
+      "word": "quả ớt"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "quả ớt",
+          "prompt": "Còn bé, em mặc áo xanh, khi lớn như anh, em mặc áo đỏ. Quả gì?",
+          "answer": "img_b81_quar_owts",
+          "options": [
+            "img_b81_quar_chanh",
+            "img_b81_quar_owts",
+            "img_b81_hoopj_banhs"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "anh",
+          "options": [
+            "anh",
+            "am",
+            "ai"
+          ]
+        },
+        {
+          "answer": "chanh",
+          "options": [
+            "chanh",
+            "cha",
+            "chim"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "cảnh",
+          "options": [
+            "cảnh",
+            "cánh"
+          ]
+        },
+        {
+          "answer": "bánh",
+          "options": [
+            "bánh",
+            "bành"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "quả chanh",
+      "template": "quả ch_",
+      "answer": "anh",
+      "options": [
+        "anh",
+        "am",
+        "ai"
+      ],
+      "image": "img_b81_quar_chanh"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "hộp bánh",
+          "answer": "img_b81_hoopj_banhs",
+          "options": [
+            "img_b81_hoopj_banhs",
+            "img_b81_quar_chanh",
+            "img_b81_caay_canhr"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "lesson_id": "tv1_t2_b89",
+  "book": "tv1_t2_1996",
+  "lesson_no": 89,
+  "type": "van_moi",
+  "title": "ung ưng",
+  "source": {
+    "pages": [
+      20,
+      21
+    ],
+    "scan_file": "011",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ung",
+    "ưng"
+  ],
+  "images": {
+    "img_b89_boong_sungs": "Những bông hoa súng nở trên mặt ao, lá súng tròn nổi trên nước",
+    "img_b89_banhs_chuwng": "Chiếc bánh chưng vuông gói lá dong, buộc lạt",
+    "img_b89_trung_thu": "Đêm trung thu trăng tròn, các bạn nhỏ nắm tay nhau múa hát, một bạn đánh trống"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ung"
+    },
+    {
+      "type": "keyword",
+      "text": "bông súng",
+      "image": "img_b89_boong_sungs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bông súng",
+        "súng",
+        "ung"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ung",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "súng",
+      "drag_tone": true,
+      "then": "bông súng"
+    },
+    {
+      "type": "unit",
+      "text": "ưng"
+    },
+    {
+      "type": "keyword",
+      "text": "bánh chưng",
+      "image": "img_b89_banhs_chuwng"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bánh chưng",
+        "chưng",
+        "ưng"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ưng",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "chưng",
+      "then": "bánh chưng"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "ung dung"
+        },
+        {
+          "text": "thúng thóc"
+        },
+        {
+          "text": "tưng bừng"
+        },
+        {
+          "text": "rừng núi"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b89_trung_thu",
+      "say": "Đêm trung thu, các bạn nhỏ múa hát.",
+      "word": "trung thu"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Đêm trung thu,"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "chúng em vui tưng bừng."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ung",
+          "options": [
+            "ung",
+            "ưng",
+            "ong"
+          ]
+        },
+        {
+          "answer": "ưng",
+          "options": [
+            "ưng",
+            "ung",
+            "ông"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "rừng",
+          "options": [
+            "rừng",
+            "rùng"
+          ]
+        },
+        {
+          "answer": "súng",
+          "options": [
+            "súng",
+            "sứng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "bánh chưng",
+      "template": "bánh ch_",
+      "answer": "ưng",
+      "options": [
+        "ưng",
+        "ung",
+        "ông"
+      ],
+      "image": "img_b89_banhs_chuwng"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "bông súng",
+          "answer": "img_b89_boong_sungs",
+          "options": [
+            "img_b89_boong_sungs",
+            "img_b89_banhs_chuwng",
+            "img_b89_trung_thu"
+          ]
+        },
+        {
+          "word": "bánh chưng",
+          "answer": "img_b89_banhs_chuwng",
+          "options": [
+            "img_b89_banhs_chuwng",
+            "img_b89_boong_sungs",
+            "img_b89_trung_thu"
+          ]
+        }
+      ]
+    }
+  ]
+}

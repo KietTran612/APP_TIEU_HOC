@@ -1,0 +1,225 @@
+{
+  "lesson_id": "tv1_t2_b84",
+  "book": "tv1_t2_1996",
+  "lesson_no": 84,
+  "type": "van_moi",
+  "title": "êch ich",
+  "source": {
+    "pages": [
+      10,
+      11
+    ],
+    "scan_file": "006",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "êch",
+    "ich"
+  ],
+  "images": {
+    "img_b84_con_eechs": "Con ếch ngồi, lưng có đốm",
+    "img_b84_towf_lichj": "Quyển lịch bloc treo tường, tờ đầu ghi ngày (không viết chữ hay số rõ)",
+    "img_b84_chim_chichs": "Hai chị em đứng nhìn hai chú chim chích đậu trên cành tre, ríu rít hót"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "êch"
+    },
+    {
+      "type": "keyword",
+      "text": "con ếch",
+      "image": "img_b84_con_eechs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "con ếch",
+        "ếch",
+        "êch"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "êch",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "ếch",
+      "drag_tone": true,
+      "then": "con ếch"
+    },
+    {
+      "type": "unit",
+      "text": "ich"
+    },
+    {
+      "type": "keyword",
+      "text": "tờ lịch",
+      "image": "img_b84_towf_lichj"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "tờ lịch",
+        "lịch",
+        "ich"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ich",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "lịch",
+      "drag_tone": true,
+      "then": "tờ lịch"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "chênh chếch"
+        },
+        {
+          "text": "mũ lệch"
+        },
+        {
+          "text": "cổ tích"
+        },
+        {
+          "text": "vở kịch"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b84_chim_chichs",
+      "say": "Hai chị em nghe chim chích hót.",
+      "word": "chim chích"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Em rất thích"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Con chim chích"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đậu cành tre"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Chim ríu rít"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Hót em nghe."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "êch",
+          "options": [
+            "êch",
+            "ich",
+            "ach"
+          ]
+        },
+        {
+          "answer": "ich",
+          "options": [
+            "ich",
+            "êch",
+            "ach"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "lịch",
+          "options": [
+            "lịch",
+            "lệch"
+          ]
+        },
+        {
+          "answer": "chích",
+          "options": [
+            "chích",
+            "chếch"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "con ếch",
+      "template": "con _",
+      "answer": "ếch",
+      "options": [
+        "ếch",
+        "ích",
+        "ách"
+      ],
+      "image": "img_b84_con_eechs"
+    },
+    {
+      "kind": "compose",
+      "word": "tờ lịch",
+      "template": "tờ l_",
+      "answer": "ịch",
+      "options": [
+        "ịch",
+        "ệch",
+        "ạch"
+      ],
+      "image": "img_b84_towf_lichj"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "con ếch",
+          "answer": "img_b84_con_eechs",
+          "options": [
+            "img_b84_con_eechs",
+            "img_b84_towf_lichj",
+            "img_b84_chim_chichs"
+          ]
+        },
+        {
+          "word": "chim chích",
+          "answer": "img_b84_chim_chichs",
+          "options": [
+            "img_b84_chim_chichs",
+            "img_b84_con_eechs",
+            "img_b84_towf_lichj"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "lesson_id": "tv1_t2_b87",
+  "book": "tv1_t2_1996",
+  "lesson_no": 87,
+  "type": "van_moi",
+  "title": "ăng âng",
+  "source": {
+    "pages": [
+      16,
+      17
+    ],
+    "scan_file": "009",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ăng",
+    "âng"
+  ],
+  "images": {
+    "img_b87_bups_mawng": "Búp măng tre nhọn mọc lên bên gốc tre",
+    "img_b87_nhaf_cao_taangf": "Toà nhà cao tầng nhiều cửa sổ, hàng cây xanh phía trước",
+    "img_b87_lawng_bacs": "Cô giáo dẫn các bạn học sinh xếp hàng đi vào thăm lăng Bác, hàng cây hai bên"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[11]",
+        "note": "tranh lăng Bác: công trình có thật, vẽ theo nét tranh sách"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ăng"
+    },
+    {
+      "type": "keyword",
+      "text": "búp măng",
+      "image": "img_b87_bups_mawng"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "búp măng",
+        "măng",
+        "ăng"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ăng",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "măng",
+      "then": "búp măng"
+    },
+    {
+      "type": "unit",
+      "text": "âng"
+    },
+    {
+      "type": "keyword",
+      "text": "nhà cao tầng",
+      "image": "img_b87_nhaf_cao_taangf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "nhà cao tầng",
+        "tầng",
+        "âng"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "âng",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "tầng",
+      "drag_tone": true,
+      "then": "nhà cao tầng"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "vầng trăng"
+        },
+        {
+          "text": "lăng Bác"
+        },
+        {
+          "text": "vâng lời"
+        },
+        {
+          "text": "chị ngã em nâng"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b87_lawng_bacs",
+      "say": "Các bạn học sinh xếp hàng vào thăm lăng Bác.",
+      "word": "lăng Bác"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Vâng lời cô giáo, các bạn học sinh xếp hàng vào thăm lăng Bác."
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ăng",
+          "options": [
+            "ăng",
+            "âng",
+            "ang"
+          ]
+        },
+        {
+          "answer": "âng",
+          "options": [
+            "âng",
+            "ăng",
+            "eng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "măng",
+          "options": [
+            "măng",
+            "mâng"
+          ]
+        },
+        {
+          "answer": "tầng",
+          "options": [
+            "tầng",
+            "tằng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "búp măng",
+      "template": "búp m_",
+      "answer": "ăng",
+      "options": [
+        "ăng",
+        "âng",
+        "ang"
+      ],
+      "image": "img_b87_bups_mawng"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "nhà cao tầng",
+          "answer": "img_b87_nhaf_cao_taangf",
+          "options": [
+            "img_b87_nhaf_cao_taangf",
+            "img_b87_bups_mawng",
+            "img_b87_lawng_bacs"
+          ]
+        },
+        {
+          "word": "búp măng",
+          "answer": "img_b87_bups_mawng",
+          "options": [
+            "img_b87_bups_mawng",
+            "img_b87_nhaf_cao_taangf",
+            "img_b87_lawng_bacs"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "ngã",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}

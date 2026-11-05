@@ -1,0 +1,221 @@
+{
+  "lesson_id": "tv1_t2_b88",
+  "book": "tv1_t2_1996",
+  "lesson_no": 88,
+  "type": "van_moi",
+  "title": "ong ông",
+  "source": {
+    "pages": [
+      18,
+      19
+    ],
+    "scan_file": "010",
+    "verification": "page_verified"
+  },
+  "new_units": [
+    "ong",
+    "ông"
+  ],
+  "images": {
+    "img_b88_chumf_bongs": "Chùm ba quả bóng bay buộc chung dây",
+    "img_b88_boong_hoongf": "Bông hoa hồng đỏ đang nở, có lá xanh",
+    "img_b88_caauf_sawts": "Cây cầu sắt dài bắc ngang dòng sông rộng, đoàn tàu chạy trên cầu, thuyền nhỏ dưới sông"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": []
+  },
+  "part1": [
+    {
+      "type": "unit",
+      "text": "ong"
+    },
+    {
+      "type": "keyword",
+      "text": "chùm bóng",
+      "image": "img_b88_chumf_bongs"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "chùm bóng",
+        "bóng",
+        "ong"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ong",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "bóng",
+      "drag_tone": true,
+      "then": "chùm bóng"
+    },
+    {
+      "type": "unit",
+      "text": "ông"
+    },
+    {
+      "type": "keyword",
+      "text": "bông hồng",
+      "image": "img_b88_boong_hoongf"
+    },
+    {
+      "type": "analyze",
+      "rows": [
+        "bông hồng",
+        "hồng",
+        "ông"
+      ]
+    },
+    {
+      "type": "spell",
+      "target": "ông",
+      "rime": true
+    },
+    {
+      "type": "spell",
+      "target": "hồng",
+      "drag_tone": true,
+      "then": "bông hồng"
+    },
+    {
+      "type": "words",
+      "marker": "●",
+      "items": [
+        {
+          "text": "cái chong chóng"
+        },
+        {
+          "text": "con ong chăm chỉ"
+        },
+        {
+          "text": "sông Cửu Long"
+        },
+        {
+          "text": "đồng rộng mênh mông"
+        }
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b88_caauf_sawts",
+      "say": "Cầu sắt bắc ngang dòng sông rộng.",
+      "word": "cầu sắt"
+    },
+    {
+      "type": "sentence",
+      "marker": "⌂",
+      "text": "Trên dòng sông rộng"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cầu sắt bắc ngang"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Ai nấy đều khen"
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Công nhân tài quá!"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "ong",
+          "options": [
+            "ong",
+            "ông",
+            "ang"
+          ]
+        },
+        {
+          "answer": "ông",
+          "options": [
+            "ông",
+            "ong",
+            "âng"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "answer": "bóng",
+          "options": [
+            "bóng",
+            "bống"
+          ]
+        },
+        {
+          "answer": "sông",
+          "options": [
+            "sông",
+            "song"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "word": "bông hồng",
+      "template": "bông h_",
+      "answer": "ồng",
+      "options": [
+        "ồng",
+        "òng",
+        "ằng"
+      ],
+      "image": "img_b88_boong_hoongf"
+    },
+    {
+      "kind": "listen_picture",
+      "rounds": [
+        {
+          "word": "chùm bóng",
+          "answer": "img_b88_chumf_bongs",
+          "options": [
+            "img_b88_chumf_bongs",
+            "img_b88_boong_hoongf",
+            "img_b88_caauf_sawts"
+          ]
+        },
+        {
+          "word": "cầu sắt",
+          "answer": "img_b88_caauf_sawts",
+          "options": [
+            "img_b88_caauf_sawts",
+            "img_b88_chumf_bongs",
+            "img_b88_boong_hoongf"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "look_tone",
+      "tag": "look_alike",
+      "rounds": [
+        {
+          "model": "chỉ",
+          "options": [
+            "hoi",
+            "nga"
+          ]
+        }
+      ]
+    }
+  ]
+}
