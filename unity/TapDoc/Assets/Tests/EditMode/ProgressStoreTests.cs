@@ -172,5 +172,82 @@ namespace TapDoc.Tests
             var t = ProgressStore.Load(P);
             Assert.IsFalse(t.UnlockAll);
         }
+
+        [Test]
+        public void NoticeVersion_DefaultZero_RoundTrips()
+        {
+            var s = new ProgressStore(P);
+            Assert.AreEqual(0, s.NoticeVersion);
+            s.NoticeVersion = 1;
+            s.Save();
+            Assert.AreEqual(1, ProgressStore.Load(P).NoticeVersion);
+        }
+
+        [Test]
+        public void OldFile_NoNoticeVersion_ReadsZero()
+        {
+            File.WriteAllText(P, "{\"schema\":1,\"profiles\":[{\"id\":\"a\",\"name\":\"Na\",\"avatar\":\"img_chung_avatar_01\",\"lessons\":[],\"mistakes\":[]}],\"current\":\"a\",\"sfx_off\":false}");
+            var s = ProgressStore.Load(P);
+            Assert.AreEqual(0, s.NoticeVersion);
+            Assert.AreEqual(1, s.Profiles.Count);
+            Assert.AreEqual("Na", s.Profiles[0].name);
+        }
+
+        [Test]
+        public void RenameProfile_CleansName()
+        {
+            var s = new ProgressStore(P);
+            var p = s.CreateProfile("Na", "img_chung_avatar_01");
+            Assert.IsTrue(s.RenameProfile(p.id, "  Bông  "));
+            Assert.AreEqual("Bông", p.name);
+            Assert.IsFalse(s.RenameProfile(p.id, "   "), "Tên trống sau khi làm sạch thì không đổi");
+            Assert.AreEqual("Bông", p.name);
+            Assert.IsFalse(s.RenameProfile("khong_co", "Su"));
+        }
+
+        [Test]
+        public void SetAvatar_ChangesAvatar()
+        {
+            var s = new ProgressStore(P);
+            var p = s.CreateProfile("Na", "img_chung_avatar_01");
+            Assert.IsTrue(s.SetAvatar(p.id, "img_chung_avatar_03"));
+            Assert.AreEqual("img_chung_avatar_03", p.avatar);
+            Assert.IsFalse(s.SetAvatar("khong_co", "img_chung_avatar_03"));
+        }
+
+        [Test]
+        public void DeleteProfile_Current_ClearsCurrent()
+        {
+            var s = new ProgressStore(P);
+            var a = s.CreateProfile("A", "img_chung_avatar_01");
+            var b = s.CreateProfile("B", "img_chung_avatar_02");
+            s.Select(a.id);
+            Assert.IsTrue(s.DeleteProfile(b.id));
+            Assert.AreEqual(a.id, s.Current.id, "Xoá bé khác thì bé đang học giữ nguyên");
+            Assert.IsTrue(s.DeleteProfile(a.id));
+            Assert.IsNull(s.Current, "Xoá bé đang học thì không còn bé đang học");
+            Assert.AreEqual(0, s.Profiles.Count);
+            Assert.IsFalse(s.DeleteProfile(a.id));
+        }
+
+        [Test]
+        public void ResetAll_DeletesSideFiles()
+        {
+            var s = new ProgressStore(P);
+            s.CreateProfile("Na", "img_chung_avatar_01");
+            s.NoticeVersion = 1;
+            s.SfxEnabled = false;
+            s.Save();
+            File.WriteAllText(P + ".tmp", "x");
+            File.WriteAllText(P + ".bak", "x");
+            s.ResetAll();
+            Assert.IsFalse(File.Exists(P));
+            Assert.IsFalse(File.Exists(P + ".tmp"));
+            Assert.IsFalse(File.Exists(P + ".bak"));
+            Assert.AreEqual(0, s.Profiles.Count);
+            Assert.IsNull(s.Current);
+            Assert.AreEqual(0, s.NoticeVersion);
+            Assert.IsTrue(s.SfxEnabled);
+        }
     }
 }

@@ -49,6 +49,13 @@ namespace TapDoc
             set => _data.sfx_off = !value;
         }
 
+        /// <summary>Phiên bản popup "Gửi phụ huynh" đã xem trên máy này; 0 là chưa xem.</summary>
+        public int NoticeVersion
+        {
+            get => _data.notice_version;
+            set => _data.notice_version = value;
+        }
+
         /// <summary>"Mở mọi bài" của bé đang học; chưa chọn bé thì luôn tắt. Tắt lại không xoá tiến độ.</summary>
         public bool UnlockAll
         {
@@ -79,6 +86,54 @@ namespace TapDoc
         }
 
         /// <summary>Tạo hồ sơ mới và chọn luôn hồ sơ đó. Tên rỗng (sau khi bỏ khoảng trắng) thì báo <see cref="ArgumentException"/>.</summary>
+        /// <summary>Đổi tên gọi của bé (làm sạch như lúc tạo). Mã không có hoặc tên trống thì không đổi, trả <c>false</c>.</summary>
+        public bool RenameProfile(string profileId, string name)
+        {
+            var profile = Find(profileId);
+            var clean = CleanName(name);
+            if (profile == null || clean.Length == 0) return false;
+            profile.name = clean;
+            return true;
+        }
+
+        /// <summary>Đổi hình đại diện của bé; mã bé không có thì trả <c>false</c>.</summary>
+        public bool SetAvatar(string profileId, string avatar)
+        {
+            var profile = Find(profileId);
+            if (profile == null || string.IsNullOrEmpty(avatar)) return false;
+            profile.avatar = avatar;
+            return true;
+        }
+
+        /// <summary>Xoá hồ sơ (cả tiến độ) của bé; xoá bé đang học thì không còn bé đang học.</summary>
+        public bool DeleteProfile(string profileId)
+        {
+            var profile = Find(profileId);
+            if (profile == null) return false;
+            _data.profiles.Remove(profile);
+            if (_data.current == profileId) _data.current = null;
+            return true;
+        }
+
+        /// <summary>
+        /// Đưa kho về như lúc mới cài: không hồ sơ, tiếng động bật, chưa xem cảnh báo; xoá file tiến độ cùng các file
+        /// phụ (<c>.tmp</c>, <c>.bak</c> — file hỏng cũ có thể còn tên bé).
+        /// </summary>
+        public void ResetAll()
+        {
+            _data.profiles.Clear();
+            _data.current = null;
+            _data.sfx_off = false;
+            _data.notice_version = 0;
+            foreach (var f in new[] { FilePath, FilePath + ".tmp", FilePath + ".bak" })
+            {
+                if (File.Exists(f)) File.Delete(f);
+            }
+        }
+
+        private Profile Find(string profileId) =>
+            string.IsNullOrEmpty(profileId) ? null : _data.profiles.Find(p => p.id == profileId);
+
         public Profile CreateProfile(string name, string avatar)
         {
             var clean = CleanName(name);

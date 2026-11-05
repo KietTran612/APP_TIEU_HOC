@@ -16,6 +16,12 @@ namespace TapDoc
         /// đọc ra <c>false</c>, tức là tiếng động bật.
         /// </summary>
         public bool sfx_off;
+
+        /// <summary>
+        /// Phiên bản nội dung popup "Gửi phụ huynh" đã xem trên máy này (so với <c>UiText.NoticeVersion</c>). File cũ
+        /// không có trường này thì đọc ra 0, tức là chưa xem.
+        /// </summary>
+        public int notice_version;
     }
 
     /// <summary>
