@@ -30,10 +30,20 @@ namespace TapDoc
         /// <summary>Vùng học (các bước đặt trong đây).</summary>
         internal RectTransform Stage => _stage;
 
+        /// <summary>Khối phóng to đều của vùng học (nằm trên vùng chứa <c>StageArea</c>).</summary>
+        public FitBox StageFit { get; private set; }
+
+        /// <summary>
+        /// Bố cục kiểu mép (điện thoại): nút ở hai dải mép, vùng học phóng to. Ngược lại là kiểu góc như máy tính bảng
+        /// (bản thiết kế tỷ lệ màn hình mục 5.2).
+        /// </summary>
+        public bool IsWideLayout { get; private set; }
+
         /// <summary>Trang của bước trước đang lật đi; <c>null</c> khi không lật.</summary>
         internal GameObject TurningPage { get; private set; }
 
         private const float Margin = 20f;
+        private const float NotesWidth = 260f;
         private const float PageTurnSeconds = .4f;
         private LessonFx _fx;
 
@@ -64,6 +74,7 @@ namespace TapDoc
             NextButton.gameObject.SetActive(false);
 
             _stage = UiKit.CreateStage((RectTransform)transform);
+            StageFit = _stage.parent.GetComponent<FitBox>();
 
             Dots = ProgressDots.Create(transform, Flow.TotalCount);
             var dotsRt = (RectTransform)Dots.transform;
@@ -89,11 +100,78 @@ namespace TapDoc
                 NotesButton = UiKit.CreateButton(transform, UiText.Notes, OpenNotes);
                 var notesRt = (RectTransform)NotesButton.transform;
                 notesRt.anchorMin = notesRt.anchorMax = notesRt.pivot = Vector2.one;
-                notesRt.sizeDelta = new Vector2(260f, UiKit.MinTouch);
-                notesRt.anchoredPosition = new Vector2(-20f, -20f);
+                notesRt.anchoredPosition = new Vector2(-Margin, -Margin);
             }
 
+            // Xoay máy, đổi cỡ cửa sổ: chỉnh bố cục tại chỗ, bước học không dựng lại, giọng đọc không phát lại.
+            FrameWatcher.On(gameObject).Changed += ApplyLayout;
+            ApplyLayout(((RectTransform)transform).rect.size);
+
             PresentCurrent(turnPage: false);
+        }
+
+        /// <summary>
+        /// Đặt vùng học, hàng chấm, gà con và nút Ghi chú theo kiểu góc hay kiểu mép của khung cỡ
+        /// <paramref name="size"/>. Nút Về nhà, Loa, Tiếp luôn neo ở góc khung.
+        /// </summary>
+        private void ApplyLayout(Vector2 size)
+        {
+            IsWideLayout = ScreenLayout.IsWide(size);
+            var area = (RectTransform)_stage.parent;
+            if (IsWideLayout)
+            {
+                area.anchorMin = Vector2.zero;
+                area.anchorMax = Vector2.one;
+                area.offsetMin = new Vector2(ScreenLayout.SideBand, ScreenLayout.WideBottom);
+                area.offsetMax = new Vector2(-ScreenLayout.SideBand, -ScreenLayout.WideTopBand);
+            }
+            else
+            {
+                area.anchorMin = area.anchorMax = new Vector2(.5f, .5f);
+                area.sizeDelta = ScreenLayout.StageSize;
+                area.anchoredPosition = Vector2.zero;
+            }
+            FitStage();
+
+            ((RectTransform)Dots.transform).anchoredPosition =
+                new Vector2(0f, -(IsWideLayout ? ScreenLayout.WideTopBand : UiKit.StageTopInset) / 2f);
+            ((RectTransform)Mascot.transform).anchoredPosition = IsWideLayout
+                ? new Vector2(-Margin, 2f * Margin + UiKit.MinTouch)
+                : new Vector2(-(2f * Margin + UiKit.MinTouch), Margin);
+            if (NotesButton != null)
+            {
+                ((RectTransform)NotesButton.transform).sizeDelta =
+                    new Vector2(IsWideLayout ? UiKit.MinTouch : NotesWidth, UiKit.MinTouch);
+            }
+        }
+
+        /// <summary>
+        /// Kiểu góc: vùng học đúng cỡ thiết kế. Kiểu mép: phóng to tối đa mà vẫn vừa cả phần nội dung bước đang hiện vẽ
+        /// ra ngoài khung 1400×680 (ví dụ bảng đọc nhiều hàng); bước gọn trong khung thì to hết cỡ.
+        /// </summary>
+        private void FitStage()
+        {
+            if (StageFit == null) return;
+            if (!IsWideLayout)
+            {
+                StageFit.Fit();
+                return;
+            }
+            Canvas.ForceUpdateCanvases();
+            var bounds = new Rect(-ScreenLayout.StageSize / 2f, ScreenLayout.StageSize);
+            var corners = new Vector3[4];
+            foreach (var g in _stage.GetComponentsInChildren<Graphic>(false))
+            {
+                if (TurningPage != null && g.transform.IsChildOf(TurningPage.transform)) continue;
+                g.rectTransform.GetWorldCorners(corners);
+                foreach (var c in corners)
+                {
+                    var p = (Vector2)_stage.InverseTransformPoint(c);
+                    bounds = Rect.MinMaxRect(Mathf.Min(bounds.xMin, p.x), Mathf.Min(bounds.yMin, p.y),
+                        Mathf.Max(bounds.xMax, p.x), Mathf.Max(bounds.yMax, p.y));
+                }
+            }
+            StageFit.FitBounds(bounds);
         }
 
         private static void Corner(Button button, Vector2 corner, Vector2 offset)
@@ -168,6 +246,7 @@ namespace TapDoc
             }
 
             binding = false;
+            FitStage();
             // Trang của bước trước đang lật nằm trên bước mới cho tới khi lật qua.
             if (TurningPage != null) TurningPage.transform.SetAsLastSibling();
             if (completedDuringBind && this != null && token == _stepToken)

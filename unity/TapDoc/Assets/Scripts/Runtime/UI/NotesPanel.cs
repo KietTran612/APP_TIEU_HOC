@@ -19,6 +19,9 @@ namespace TapDoc
         public GameObject Root { get; }
         private readonly RectTransform _content;
 
+        /// <summary>Khung nội dung rộng 1440 ở giữa; nền của <see cref="Root"/> phủ kín màn để chặn chạm phía sau.</summary>
+        private readonly RectTransform _frame;
+
         public NotesPanel(Transform parent, string title)
         {
             Root = new GameObject("NotesPanel", typeof(RectTransform), typeof(Image));
@@ -28,7 +31,14 @@ namespace TapDoc
             background.sprite = UiKit.WhiteSprite;
             background.color = Background;
 
-            var heading = UiKit.CreateLabel(Root.transform, title, 52f);
+            var frameGo = new GameObject("Frame", typeof(RectTransform));
+            frameGo.transform.SetParent(Root.transform, false);
+            _frame = (RectTransform)frameGo.transform;
+            _frame.anchorMin = new Vector2(.5f, 0f);
+            _frame.anchorMax = new Vector2(.5f, 1f);
+            _frame.sizeDelta = new Vector2(UiKit.SafeWidth, 0f);
+
+            var heading = UiKit.CreateLabel(_frame, title, 52f);
             var headingRt = heading.rectTransform;
             headingRt.anchorMin = new Vector2(0f, 1f);
             headingRt.anchorMax = Vector2.one;
@@ -36,14 +46,14 @@ namespace TapDoc
             headingRt.offsetMin = new Vector2(40f, -180f);
             headingRt.offsetMax = new Vector2(-340f, -20f);
 
-            var close = UiKit.CreateButton(Root.transform, UiText.Close, () => Root.SetActive(false));
+            var close = UiKit.CreateButton(_frame, UiText.Close, () => Root.SetActive(false));
             var closeRt = (RectTransform)close.transform;
             closeRt.anchorMin = closeRt.anchorMax = closeRt.pivot = Vector2.one;
             closeRt.sizeDelta = new Vector2(260f, UiKit.MinTouch);
             closeRt.anchoredPosition = new Vector2(-40f, -20f);
 
             var scrollGo = new GameObject("Scroll", typeof(RectTransform), typeof(ScrollRect));
-            scrollGo.transform.SetParent(Root.transform, false);
+            scrollGo.transform.SetParent(_frame, false);
             Stretch((RectTransform)scrollGo.transform, new Vector2(40f, 30f), new Vector2(-40f, -200f));
             var viewport = new GameObject("Viewport", typeof(RectTransform), typeof(Image), typeof(RectMask2D));
             viewport.transform.SetParent(scrollGo.transform, false);

@@ -95,28 +95,109 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
-        public IEnumerator Mascot_OutsideStageAndButtons_BothSizes()
+        public IEnumerator Layout_ModeFollowsScreen_AllSizes()
         {
-            yield return Open();
+            UseStubsForMissingAssets(); // chỉ kiểm bố cục; tranh tập 2 chưa nhập không phải điều đang kiểm
+            yield return LoadMainWithProfile(unlockAll: true);
             var app = AppRoot.Instance;
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            foreach (var size in ScreenSizes.All)
             {
-                var rt = new RenderTexture(size.x, size.y, 24);
-                app.UiCamera.targetTexture = rt;
+                var rt = ScreenSizes.Apply(app, size);
                 app.ShowLesson(LessonId);
                 yield return WaitPrepared();
                 var s = Screen();
-                var mascot = CanvasRect((RectTransform)s.Mascot.transform);
-                Assert.IsFalse(mascot.Overlaps(CanvasRect(s.Stage)), "Gà con không đè vùng học");
+                Assert.AreEqual(size.Wide, s.IsWideLayout, $"{size}: kiểu mép");
+                if (size.Wide)
+                {
+                    Assert.AreEqual(ScreenLayout.WideStageScale(app.KidRoot.rect.size), s.StageFit.Scale, .01f, $"{size}: phóng to");
+                    Assert.GreaterOrEqual(s.StageFit.Scale, ScreenLayout.WideMinGain - .001f, $"{size}: phần học to lên");
+                }
+                else
+                {
+                    Assert.AreEqual(1f, s.StageFit.Scale, .001f, $"{size}: máy tính bảng giữ như cũ");
+                }
+                s.NextButton.gameObject.SetActive(true); // nút Tiếp hiện ra cũng không bị phần học đè
+                Canvas.ForceUpdateCanvases();
+                var stage = CanvasRect(s.Stage);
                 foreach (var b in new[] { s.BackButton, s.ReplayButton, s.NextButton })
                 {
-                    Assert.IsFalse(mascot.Overlaps(CanvasRect((RectTransform)b.transform)), $"Gà con không đè nút {b.name}");
+                    Assert.IsFalse(stage.Overlaps(CanvasRect((RectTransform)b.transform)), $"{size}: phần học đè nút {b.name}");
                 }
-                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.x}x{size.y}/app_lesson_chrome.png");
+                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.Name}/app_lesson_chrome.png");
                 LayoutProbe.AssertFits(app.Canvas);
-                app.UiCamera.targetTexture = null;
-                Object.Destroy(rt);
+                ScreenSizes.Reset(app, rt);
             }
+        }
+
+        [UnityTest]
+        public IEnumerator Mascot_OutsideStageAndButtons_AllSizes()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile(unlockAll: true);
+            var app = AppRoot.Instance;
+            foreach (var size in ScreenSizes.All)
+            {
+                var rt = ScreenSizes.Apply(app, size);
+                app.ShowLesson(LessonId);
+                yield return WaitPrepared();
+                var s = Screen();
+                s.NextButton.gameObject.SetActive(true); // nút Tiếp hiện thì gà con cũng không được đè
+                Canvas.ForceUpdateCanvases();
+                var mascot = CanvasRect((RectTransform)s.Mascot.transform);
+                Assert.IsFalse(mascot.Overlaps(CanvasRect(s.Stage)), $"{size}: gà con không đè vùng học");
+                foreach (var b in new[] { s.BackButton, s.ReplayButton, s.NextButton })
+                {
+                    Assert.IsFalse(mascot.Overlaps(CanvasRect((RectTransform)b.transform)), $"{size}: gà con không đè nút {b.name}");
+                }
+                ScreenSizes.Reset(app, rt);
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator Wide_TallStep_ShrinksToFitScreen()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile(unlockAll: true);
+            var app = AppRoot.Instance;
+            var rt = ScreenSizes.Apply(app, ScreenSizes.Phone20x9);
+            app.ShowLesson("tv1_t1_b80"); // bước đầu là bảng đọc nhiều hàng, cao hơn khung 680 của phần học
+            yield return WaitPrepared();
+            var s = Screen();
+            Assert.IsTrue(s.IsWideLayout);
+            Assert.Less(s.StageFit.Scale, ScreenLayout.WideStageScale(app.KidRoot.rect.size) - .05f,
+                "Bước cao hơn khung thì phóng to ít hơn cho vừa màn");
+            Assert.GreaterOrEqual(s.StageFit.Scale, 1f - .001f, "Không nhỏ hơn máy tính bảng");
+            LayoutProbe.AssertFits(app.Canvas);
+            ScreenSizes.Reset(app, rt);
+        }
+
+        [UnityTest]
+        public IEnumerator Resize_MidStep_NoRebuildNoReplay()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile(unlockAll: true);
+            var app = AppRoot.Instance;
+            app.Speech.WaitScale = .02f;
+            var rt = ScreenSizes.Apply(app, ScreenSizes.IPad43);
+            app.ShowLesson(LessonId);
+            yield return WaitPrepared();
+            var s = Screen();
+            for (var i = 0; i < 30; i++) yield return null; // giọng đọc mở đầu của bước đã phát
+            var view = s.CurrentView;
+            var position = s.Flow.Position;
+            var played = app.Speech.History.Count;
+            Assert.IsFalse(s.IsWideLayout);
+
+            var phone = ScreenSizes.Apply(app, ScreenSizes.Phone20x9);
+            yield return null;
+            yield return null;
+
+            Assert.AreSame(view, s.CurrentView, "Đổi cỡ không dựng lại bước học");
+            Assert.AreEqual(position, s.Flow.Position);
+            Assert.AreEqual(played, app.Speech.History.Count, "Đổi cỡ không phát lại giọng đọc");
+            Assert.IsTrue(s.IsWideLayout, "Màn học chuyển sang kiểu mép");
+            Assert.Greater(s.StageFit.Scale, 1.05f);
+            ScreenSizes.Reset(app, phone);
         }
 
         [UnityTest]

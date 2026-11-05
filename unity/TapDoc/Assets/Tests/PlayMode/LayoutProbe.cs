@@ -52,6 +52,13 @@ namespace TapDoc.Tests
             }
         }
 
+        private static string PathOf(Transform t)
+        {
+            var path = t.name;
+            for (var p = t.parent; p != null && p.GetComponent<Canvas>() == null; p = p.parent) path = p.name + "/" + path;
+            return path;
+        }
+
         /// <summary>Phần chữ thật sự hiện (không tính khung trống) nằm trong <paramref name="bounds"/>.</summary>
         private static void AssertTextInside(RectTransform canvasRect, Rect bounds, TMP_Text tmp)
         {
@@ -92,7 +99,7 @@ namespace TapDoc.Tests
 
             var w = maxX - minX;
             var h = maxY - minY;
-            var name = target.name;
+            var name = PathOf(target.transform);
             Assert.GreaterOrEqual(
                 Mathf.Min(w, h),
                 UiKit.MinTouch - 0.5f,

@@ -32,16 +32,44 @@ namespace TapDoc
             return rt;
         }
 
-        /// <summary>Phóng to khối cho vừa cỡ hiện tại của vùng.</summary>
+        /// <summary>Phóng to khối cho vừa cỡ hiện tại của vùng (theo cỡ thiết kế; bỏ khung nội dung đã đo trước đó).</summary>
         public void Fit()
+        {
+            _hasBounds = false;
+            Apply();
+        }
+
+        /// <summary>
+        /// Như <see cref="Fit"/> nhưng cho vừa cả phần nội dung vẽ ra ngoài cỡ thiết kế: <paramref name="bounds"/> tính
+        /// theo toạ độ của khối (gốc ở tâm), gộp với khung thiết kế; khối vẫn nằm giữa vùng. Vùng đổi cỡ thì tính lại
+        /// với khung này.
+        /// </summary>
+        public void FitBounds(Rect bounds)
+        {
+            _bounds = bounds;
+            _hasBounds = true;
+            Apply();
+        }
+
+        private bool _hasBounds;
+        private Rect _bounds;
+
+        private void Apply()
         {
             if (Content == null || DesignSize.x <= 0f || DesignSize.y <= 0f) return;
             var size = ((RectTransform)transform).rect.size;
             if (size.x <= 0f || size.y <= 0f) return;
-            Scale = Mathf.Min(size.x / DesignSize.x, size.y / DesignSize.y);
+            var halfW = DesignSize.x / 2f;
+            var halfH = DesignSize.y / 2f;
+            if (_hasBounds)
+            {
+                halfW = Mathf.Max(halfW, Mathf.Abs(_bounds.xMin), Mathf.Abs(_bounds.xMax));
+                halfH = Mathf.Max(halfH, Mathf.Abs(_bounds.yMin), Mathf.Abs(_bounds.yMax));
+            }
+            Scale = Mathf.Min(size.x / (2f * halfW), size.y / (2f * halfH));
             Content.localScale = new Vector3(Scale, Scale, 1f);
         }
 
-        private void OnRectTransformDimensionsChange() => Fit();
+        private void OnRectTransformDimensionsChange() => Apply();
     }
 }

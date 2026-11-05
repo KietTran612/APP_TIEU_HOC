@@ -51,6 +51,23 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator FitBounds_KeptWhenAreaResizes()
+        {
+            var area = Area(new Vector2(2000f, 990f));
+            FitBox.Create(area, "Stage", ScreenLayout.StageSize);
+            var fit = area.GetComponent<FitBox>();
+            fit.FitBounds(new Rect(-700f, -472f, 1400f, 944f)); // nội dung cao 944, hơn khung 680
+            Assert.AreEqual(990f / 944f, fit.Scale, .001f);
+
+            area.sizeDelta = new Vector2(1800f, 944f);
+            yield return null;
+            Assert.AreEqual(1f, fit.Scale, .001f, "Vùng đổi cỡ thì vẫn tính theo khung nội dung đã đo");
+
+            fit.Fit();
+            Assert.AreEqual(1800f / 1400f, fit.Scale, .001f, "Fit() quay về cỡ thiết kế (vùng 1800×944 hẹp theo chiều ngang)");
+        }
+
+        [UnityTest]
         public IEnumerator FrameWatcher_FiresOnlyOnRealChange()
         {
             var area = Area(new Vector2(1440f, 1080f));

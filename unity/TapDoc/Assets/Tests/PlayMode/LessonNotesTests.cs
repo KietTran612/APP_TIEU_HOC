@@ -113,23 +113,63 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
-        public IEnumerator Notes_PanelFitsPhoneAndTablet()
+        public IEnumerator Notes_PanelFitsAllSizes()
         {
+            UseStubsForMissingAssets(); // chỉ kiểm bố cục; tranh tập 2 chưa nhập không phải điều đang kiểm
             yield return LoadMainWithProfile(unlockAll: true);
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            foreach (var size in ScreenSizes.All)
             {
-                var rt = new RenderTexture(size.x, size.y, 24);
-                AppRoot.Instance.UiCamera.targetTexture = rt;
+                var rt = ScreenSizes.Apply(AppRoot.Instance, size);
                 yield return Open("tv1_t1_b80"); // bài có nhiều ghi chú dài nhất
                 var s = Opened;
                 yield return null;
                 Press(s.NotesButton);
                 yield return null;
-                ScreenProbe.Save(AppRoot.Instance.UiCamera, $"TestOutput/screens/{size.x}x{size.y}/app_lesson_notes.png");
+                ScreenProbe.Save(AppRoot.Instance.UiCamera, $"TestOutput/screens/{size.Name}/app_lesson_notes.png");
                 LayoutProbe.AssertFits(AppRoot.Instance.Canvas);
-                AppRoot.Instance.UiCamera.targetTexture = null;
-                Object.Destroy(rt);
+                ScreenSizes.Reset(AppRoot.Instance, rt);
             }
+        }
+
+        private static Rect CanvasRect(RectTransform rt)
+        {
+            var corners = new Vector3[4];
+            rt.GetWorldCorners(corners);
+            var canvas = (RectTransform)AppRoot.Instance.Canvas.transform;
+            Vector2 min = canvas.InverseTransformPoint(corners[0]), max = canvas.InverseTransformPoint(corners[2]);
+            return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
+        }
+
+        [UnityTest]
+        public IEnumerator Notes_Wide_InRightBand_NoOverlap()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile(unlockAll: true);
+            var app = AppRoot.Instance;
+            var rt = ScreenSizes.Apply(app, ScreenSizes.Phone20x9);
+            yield return Open("tv1_t1_b80");
+            var s = Opened;
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+            var notes = (RectTransform)s.NotesButton.transform;
+            Assert.AreEqual(UiKit.MinTouch, notes.rect.width, .5f, "Nút Ghi chú vừa dải mép");
+            Assert.AreEqual(UiKit.MinTouch, notes.rect.height, .5f);
+            var notesRect = CanvasRect(notes);
+            Assert.IsFalse(notesRect.Overlaps(CanvasRect(s.Stage)), "Nút Ghi chú không đè phần học");
+            Assert.IsFalse(notesRect.Overlaps(CanvasRect((RectTransform)s.Mascot.transform)), "Nút Ghi chú không đè gà con");
+            LayoutProbe.AssertFits(app.Canvas);
+
+            Press(s.NotesButton);
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+            var panel = (RectTransform)s.NotesPanel.transform;
+            Assert.AreEqual(app.KidRoot.rect.width, panel.rect.width, .5f, "Nền khung Ghi chú phủ kín, che các nút ở hai mép");
+            var frame = (RectTransform)panel.Find("Frame");
+            Assert.IsNotNull(frame, "Nội dung khung Ghi chú nằm trong khung con");
+            Assert.AreEqual(UiKit.SafeWidth, frame.rect.width, .5f, "Nội dung khung Ghi chú giữ rộng 1440");
+            Assert.AreEqual(CanvasRect(app.KidRoot).center.x, CanvasRect(frame).center.x, .5f, "Khung Ghi chú nằm giữa màn");
+            LayoutProbe.AssertFits(app.Canvas);
+            ScreenSizes.Reset(app, rt);
         }
     }
 }
