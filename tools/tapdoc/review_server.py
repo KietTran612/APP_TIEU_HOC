@@ -142,6 +142,16 @@ def lesson_media(lesson, lesson_id, audio_rows, image_rows, video_rows) -> list[
     return items
 
 
+def in_book(row, book) -> bool:
+    """Mã thuộc quyển khi dùng trong một bài của quyển; mã không gắn bài nào của sách (dùng chung) thuộc mọi quyển.
+
+    ``book`` là cặp (bài của quyển, mọi bài có trong index.json).
+    """
+    mine, known = book
+    bai = [b for b in row.get("bai") or [] if b in known]
+    return not bai or any(b in mine for b in bai)
+
+
 class _ReviewHTTPServer(ThreadingHTTPServer):
     # Trên Windows SO_REUSEADDR cho máy chủ thứ hai cùng nghe cổng đang dùng mà không báo lỗi.
     allow_reuse_address = sys.platform != "win32"
@@ -191,6 +201,14 @@ class _ReviewHTTPServer(ThreadingHTTPServer):
             return None
         matches = sorted((self.scans_dir / folder).glob(scan + "_*.jpg"))
         return matches[0] if matches else None
+
+    def book_lessons(self, book):
+        """(mã các bài thuộc quyển ``book``, mã mọi bài) theo index.json; quyển không có thì báo lỗi."""
+        index = json.loads((self.lessons_dir / "index.json").read_text(encoding="utf-8"))
+        lessons = {lesson["lesson_id"] for lesson in index["lessons"] if lesson.get("book") == book}
+        if not lessons:
+            raise ValueError("Không có sách " + book)
+        return lessons, {lesson["lesson_id"] for lesson in index["lessons"]}
 
     def audio_rows(self):
         return load_rows(self.manifests_dir / "audio_manifest.json")
@@ -562,14 +580,15 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
             return
 
         if path == "/api/tts/batch":
-            if payload.keys() - {"lesson", "kind", "include_approved"}:
+            if payload.keys() - {"lesson", "kind", "book", "include_approved"}:
                 raise ValueError("Bộ lọc lô không hợp lệ")
             filters = dict(lesson=payload.get("lesson"), kind=payload.get("kind"),
                            include_approved=payload.get("include_approved", False))
             if type(filters["include_approved"]) is not bool or any(
                     key in payload and (not isinstance(payload[key], str) or not payload[key])
-                    for key in ("lesson", "kind")):
+                    for key in ("lesson", "kind", "book")):
                 raise ValueError("Bộ lọc lô không hợp lệ")
+            book_lessons = server.book_lessons(payload["book"]) if "book" in payload else None
             with server.lock:
                 if server.job["running"]:
                     self._send_json(409, {"error": "Đang tạo một lô khác"})
@@ -577,7 +596,8 @@ class _ReviewRequestHandler(BaseHTTPRequestHandler):
                 settings = load_settings(server.settings_path)
                 if filters["kind"] is not None and filters["kind"] not in settings["defaults"]:
                     raise ValueError("Loại âm thanh không hợp lệ")
-                rows = [r for r in server.audio_rows() if selected(r, settings, **filters)]
+                rows = [r for r in server.audio_rows() if selected(r, settings, **filters)
+                        and (book_lessons is None or in_book(r, book_lessons))]
                 server.job = dict(running=True, total=len(rows), done=0, current=None, failed={})
                 server.batch_thread = threading.Thread(target=server.batch,
                     args=(rows, settings, filters), daemon=True)

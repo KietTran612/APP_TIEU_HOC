@@ -161,6 +161,25 @@ class TtsServerTest(unittest.TestCase):
         self.assertFalse(self.row()["has_prev"])
         self.assertFalse((self.prev / "am_q.json").exists())
 
+    def test_batch_limited_to_chosen_book(self):
+        # Đang duyệt tập 1 thì nút tạo lại không được đụng mã chỉ dùng ở tập 2 (và ngược lại).
+        index = dict(books=[dict(book_id="sach_1"), dict(book_id="sach_2")], lessons=[
+            dict(lesson_id="b01", title="Bài một", lesson_no=1, book="sach_1"),
+            dict(lesson_id="b02", title="Bài hai", lesson_no=2, book="sach_2")])
+        (self.lessons / "index.json").write_text(json.dumps(index), encoding="utf-8")
+        rows = load_rows(self.manifests / "audio_manifest.json")
+        rows[1].update(status="cho_duyet", bai=["b02"])
+        rows.append(dict(id="khen_gioi", text="giỏi", kind="khen", bai=["chung"], status="cho_duyet",
+                         source="tam", ghi_chu="", file="audio/khen_gioi.mp3"))
+        save_rows(self.manifests / "audio_manifest.json", rows)
+        self.post("/api/tts/batch", dict(book="sach_2"))
+        self.server.batch_thread.join(3)
+        _, job = self.request("/api/tts/job")
+        self.assertEqual(job["total"], 2)  # am_a của sach_2 và lời khen dùng chung, không có am_q
+        done = {r["id"] for r in load_rows(self.manifests / "audio_manifest.json") if "tts" in r}
+        self.assertEqual(done, {"am_a", "khen_gioi"})
+        self.assertEqual(self.request("/api/tts/batch", dict(book="khong_co"))[0], 400)
+
     def test_batch_job_progress_and_409(self):
         entered = threading.Event()
         base = self.engine

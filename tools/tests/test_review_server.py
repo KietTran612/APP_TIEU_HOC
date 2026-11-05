@@ -143,6 +143,9 @@ class ReviewServerTest(unittest.TestCase):
         self.assertIn("/api/review", html)
         self.assertIn("/media/audio/", html)
         self.assertIn("/media/images/", html)
+        # Chọn tập sách: duyệt tập 1 không lẫn mã chỉ dùng ở tập 2.
+        self.assertIn('id="filter-book"', html)
+        self.assertIn("payload.book", html)
         self.assertIsNone(re.search(r"https?://", html, re.IGNORECASE))
 
     def test_media_images_and_invalid_media_paths(self):

@@ -240,6 +240,11 @@
       <button type="button" id="tab-lesson" class="tab-btn">Nghe theo bài</button>
     </div>
 
+    <label class="filter-group" id="book-wrap">
+      <span>Sách:</span>
+      <select id="filter-book" aria-label="Tập sách đang duyệt"></select>
+    </label>
+
     <label class="filter-group">
       <span>Trạng thái:</span>
       <select id="filter-status">
@@ -335,6 +340,9 @@
       const lessonItems = new Map();
       let byLessonRequest = 0;
       let state = { audio: [], images: [], videos: [] };
+      let allLessons = [];
+      const lessonBook = new Map(); // mã bài -> mã sách
+      const filterBook = document.getElementById("filter-book");
       const rowElements = new Map();
       let ttsAvailable = false;
       let ttsDefaults = {};
@@ -371,11 +379,47 @@
         }, 2000);
       }
 
+      // Mã thuộc sách đang chọn khi dùng trong một bài của sách; mã không gắn bài nào (dùng chung) hiện ở mọi tập.
+      function inBook(row) {
+        const book = filterBook.value;
+        if (!book) return true;
+        const known = (row.bai || []).filter(b => lessonBook.has(b));
+        return !known.length || known.some(b => lessonBook.get(b) === book);
+      }
+      const bookRows = (list) => list.filter(inBook);
+
+      function rememberedLesson(book) {
+        try {
+          return localStorage.getItem("duyet-theo-bai:" + book) || localStorage.getItem("duyet-theo-bai") || "";
+        } catch (error) { return ""; }
+      }
+
+      // Hai ô chọn bài chỉ liệt kê bài của sách đang chọn.
+      function fillLessonSelects() {
+        const book = filterBook.value;
+        for (const id of ["bylesson-select", "lesson-select"]) {
+          const select = byId(id);
+          select.textContent = "";
+          for (const lesson of allLessons) {
+            if (book && lesson.book !== book) continue;
+            const option = document.createElement("option");
+            option.value = lesson.lesson_id;
+            option.textContent = "Bài " + lesson.lesson_no + " — " + lesson.title;
+            select.appendChild(option);
+          }
+        }
+        const remembered = rememberedLesson(book);
+        if ([...byId("bylesson-select").options].some(option => option.value === remembered)) {
+          byId("bylesson-select").value = remembered;
+        }
+      }
+
       function populateLessonFilter() {
         const lessons = new Set();
         for (const list of [state.audio, state.images, state.videos]) {
           for (const row of list) {
             for (const b of row.bai || []) {
+              if (filterBook.value && lessonBook.has(b) && lessonBook.get(b) !== filterBook.value) continue;
               lessons.add(b);
             }
           }
@@ -392,7 +436,7 @@
           opt.textContent = b;
           filterBai.appendChild(opt);
         }
-        filterBai.value = current;
+        filterBai.value = lessons.has(current) ? current : "";
       }
 
       async function saveReview(manifest, row, newStatus, newNote) {
@@ -453,6 +497,7 @@
         const exactId = query && list.some(row => row.id === query);
         const marked = fold(query) !== query.toLowerCase();
         return list.filter((row) => {
+          if (!inBook(row)) return false;
           if (st && row.status !== st) return false;
           if (bai && !(row.bai || []).includes(bai)) return false;
           if (carefulOnly && !row.can_nghe_ky) return false;
@@ -492,7 +537,14 @@
       }
 
       function baiCell(td, bai) {
-        const short = bai.map(b => b.replace(/^tv1_t1_/, ""));
+        // Bài cùng tập đang chọn ghi gọn "b05"; bài của tập khác ghi kèm tập, ví dụ "t2 b97".
+        const mine = (b) => Boolean(filterBook.value) && lessonBook.get(b) === filterBook.value;
+        const ordered = [...bai.filter(mine), ...bai.filter(b => !mine(b))];
+        const short = ordered.map(b => {
+          const m = /^tv1_(t\d)_(.+)$/.exec(b);
+          if (!m) return b;
+          return filterBook.value && lessonBook.get(b) === filterBook.value ? m[2] : m[1] + " " + m[2];
+        });
         if (short.length <= 3) {
           td.textContent = short.join(", ");
           return;
@@ -589,9 +641,9 @@
             : ["Mã", "Mô tả", "Bài", "Ảnh (160 px)", "Trạng thái", "Duyệt", "Ghi chú"]);
 
         const rows = filteredRows();
-        const total = listFor(currentTab).length;
+        const total = bookRows(listFor(currentTab)).length;
         // Đổi tab, bộ lọc, ô tìm hay cỡ trang thì quay về trang 1.
-        const filterKey = JSON.stringify([currentTab, filterStatus.value, filterBai.value, filterCareful.checked,
+        const filterKey = JSON.stringify([currentTab, filterBook.value, filterStatus.value, filterBai.value, filterCareful.checked,
           byId("filter-kind").value, byId("filter-voice").value, byId("filter-regen").checked,
           byId("filter-overridden").checked, byId("search").value.trim(), pageSize]);
         if (filterKey !== lastFilterKey) {
@@ -749,7 +801,9 @@
       }
 
       function rememberLesson() {
-        try { localStorage.setItem("duyet-theo-bai", byId("bylesson-select").value); } catch (error) { /* không lưu được thì thôi */ }
+        try {
+          localStorage.setItem("duyet-theo-bai:" + filterBook.value, byId("bylesson-select").value);
+        } catch (error) { /* không lưu được thì thôi */ }
       }
 
       function buildRow(row, kind, mixed) {
@@ -988,7 +1042,8 @@
       }
 
       function updateRegenCount() {
-        byId("tts-regen-count").textContent = state.audio.filter(r => r.needs_regen).length + " mã cần tạo lại";
+        byId("tts-regen-count").textContent = bookRows(state.audio).filter(r => r.needs_regen).length + " mã cần tạo lại"
+          + (filterBook.value ? " (trong " + filterBook.selectedOptions[0].textContent + ")" : "");
       }
 
       function updateTtsRow(row, reloadAudio = false) {
@@ -1179,6 +1234,7 @@
           byId("tts-batch").disabled = true;
           const payload = { include_approved: byId("tts-include-approved").checked };
           if (filterBai.value) payload.lesson = filterBai.value;
+          if (filterBook.value) payload.book = filterBook.value;
           if (byId("filter-kind").value) payload.kind = byId("filter-kind").value;
           await api("/api/tts/batch", payload);
           await pollJob();
@@ -1319,19 +1375,50 @@
         } catch (error) { if (request === lessonRequest) byId("lesson-chains").textContent = error.message; }
       }
 
+      const BOOK_LABELS = { tv1_t1_1990: "Tiếng Việt 1 – Tập 1", tv1_t2_1996: "Tiếng Việt 1 – Tập 2" };
+
+      // Đọc danh sách bài và dựng ô chọn sách; mặc định sách đã chọn lần trước, chưa chọn thì tập đầu tiên.
+      async function loadBooks() {
+        try {
+          allLessons = await api("/api/lessons");
+        } catch (error) {
+          summaryText.textContent = error.message;
+          return;
+        }
+        const books = [];
+        for (const lesson of allLessons) {
+          lessonBook.set(lesson.lesson_id, lesson.book || "");
+          if (lesson.book && !books.includes(lesson.book)) books.push(lesson.book);
+        }
+        filterBook.textContent = "";
+        for (const book of books) {
+          const option = document.createElement("option");
+          option.value = book;
+          option.textContent = BOOK_LABELS[book] || book;
+          filterBook.appendChild(option);
+        }
+        const both = document.createElement("option");
+        both.value = "";
+        both.textContent = "Cả hai tập";
+        filterBook.appendChild(both);
+        let saved = null;
+        try { saved = localStorage.getItem("duyet-sach"); } catch (error) { /* bỏ qua */ }
+        filterBook.value = saved !== null && (saved === "" || books.includes(saved)) ? saved : (books[0] || "");
+        byId("book-wrap").hidden = books.length < 2;
+        fillLessonSelects();
+      }
+
+      filterBook.addEventListener("change", async () => {
+        try { localStorage.setItem("duyet-sach", filterBook.value); } catch (error) { /* bỏ qua */ }
+        fillLessonSelects();
+        populateLessonFilter();
+        if (ttsAvailable) updateRegenCount();
+        render();
+        await loadLesson();
+      });
+
       async function loadLessons() {
         try {
-          const lessons = await api("/api/lessons");
-          for (const lesson of lessons) {
-            const option = document.createElement("option");
-            option.value = lesson.lesson_id;
-            option.textContent = "Bài " + lesson.lesson_no + " — " + lesson.title;
-            byId("lesson-select").appendChild(option);
-            byId("bylesson-select").appendChild(option.cloneNode(true));
-          }
-          let remembered = "";
-          try { remembered = localStorage.getItem("duyet-theo-bai") || ""; } catch (error) { /* bỏ qua */ }
-          if (lessons.some(lesson => lesson.lesson_id === remembered)) byId("bylesson-select").value = remembered;
           if (currentTab === "bylesson") render();
           await loadLesson();
         } catch (error) {
@@ -1376,6 +1463,7 @@
             }
             buildDefaults();
           } catch (error) { showToast(error.message); }
+          await loadBooks();
           populateLessonFilter();
           render();
           await loadLessons();
