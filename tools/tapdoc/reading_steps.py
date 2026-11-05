@@ -159,6 +159,9 @@ def step_fill_blank(b, step: dict, where: str) -> dict:
         else:
             at = blank.find(fill)
             if at < 0:
+                # Lựa chọn của sách không dấu ("ua hay au"), chữ cần điền mang dấu ("lúa"): so khi đã bỏ dấu thanh.
+                at = strip_tone(blank).find(strip_tone(fill))
+            if at < 0:
                 raise b.error(item_where, f"{fill!r} không có trong tiếng {blank!r}")
             hl = {"s": starts[0] + at, "n": len(fill)}
         items.append({"role": "blank", "text": word, "audio": b._audio(text_audio(word), item_where),

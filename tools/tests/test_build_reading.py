@@ -209,6 +209,12 @@ class FillBlankTest(unittest.TestCase):
                          items=[{"word": "toa tàu", "blank": "toa", "fill": "oa"}])["items"][0]
         self.assertEqual(item["hl"], [{"s": 1, "n": 2}])
 
+    def test_letter_blank_ignores_tone(self):
+        # Sách cho "ua hay au" không dấu, chữ cần điền mang dấu: "đồng l..." -> "lúa".
+        item = self.fill(mode="letter", choices=["ua", "au"],
+                         items=[{"word": "đồng lúa", "blank": "lúa", "fill": "ua"}])["items"][0]
+        self.assertEqual(item["hl"], [{"s": 6, "n": 2}])
+
     def test_tone_blank(self):
         item = self.fill(mode="tone", choices=["huyền", "sắc", "hỏi", "ngã", "nặng"],
                          items=[{"word": "thoang thoảng", "blank": "thoảng", "fill": "hỏi"}])["items"][0]
