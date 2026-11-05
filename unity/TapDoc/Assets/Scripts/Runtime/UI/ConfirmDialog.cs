@@ -21,7 +21,12 @@ namespace TapDoc
         public Button ConfirmButton { get; private set; }
         public Button CancelButton { get; private set; }
 
-        public static ConfirmDialog Show(Transform canvas, string message, string confirmLabel, Action onConfirm)
+        /// <summary>
+        /// Mở hộp hỏi. <paramref name="confirmOnLeft"/>: đổi chỗ hai nút (xác nhận bên trái), dùng cho lần hỏi thứ hai
+        /// của một việc không lấy lại được, để bấm nhanh hai lần cùng một chỗ không vượt qua cả hai lần hỏi.
+        /// </summary>
+        public static ConfirmDialog Show(Transform canvas, string message, string confirmLabel, Action onConfirm,
+            bool confirmOnLeft = false)
         {
             var go = new GameObject("ConfirmDialog", typeof(RectTransform), typeof(Image), typeof(ConfirmDialog));
             go.transform.SetParent(canvas, false);
@@ -37,12 +42,12 @@ namespace TapDoc
 
             var dialog = go.GetComponent<ConfirmDialog>();
             dialog._onConfirm = onConfirm;
-            dialog.Build(message, confirmLabel);
+            dialog.Build(message, confirmLabel, confirmOnLeft);
             go.transform.SetAsLastSibling();
             return dialog;
         }
 
-        private void Build(string message, string confirmLabel)
+        private void Build(string message, string confirmLabel, bool confirmOnLeft)
         {
             Message = UiKit.CreateLabel(transform, message, 56f);
             var mrt = Message.rectTransform;
@@ -50,10 +55,11 @@ namespace TapDoc
             mrt.sizeDelta = new Vector2(UiKit.SafeWidth - 160f, 300f);
             mrt.anchoredPosition = new Vector2(0f, 120f);
 
+            var side = (ButtonWidth + ButtonGap) / 2f;
             CancelButton = UiKit.CreateButton(transform, UiText.Cancel, () => Close(false));
-            Place((RectTransform)CancelButton.transform, new Vector2(-(ButtonWidth + ButtonGap) / 2f, -160f));
+            Place((RectTransform)CancelButton.transform, new Vector2(confirmOnLeft ? side : -side, -160f));
             ConfirmButton = UiKit.CreateButton(transform, confirmLabel, () => Close(true));
-            Place((RectTransform)ConfirmButton.transform, new Vector2((ButtonWidth + ButtonGap) / 2f, -160f));
+            Place((RectTransform)ConfirmButton.transform, new Vector2(confirmOnLeft ? -side : side, -160f));
             ConfirmButton.transform.Find("Fill").GetComponent<Image>().color = Palette.StampRed;
         }
 

@@ -288,6 +288,33 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator DeleteAll_DoubleTapSameSpot_DoesNotWipe()
+        {
+            yield return OpenManageWithTwoChildren();
+            Press(Settings().DeleteAllButton);
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+            var first = (RectTransform)Dialog().ConfirmButton.transform;
+            var spot = RectTransformUtility.WorldToScreenPoint(App.UiCamera, first.TransformPoint(first.rect.center));
+            Press(Dialog().ConfirmButton);
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+
+            // Lần bấm thứ hai rơi đúng chỗ cũ: phải trúng "Huỷ" của hộp thứ hai, không trúng "Xoá".
+            var hits = new System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult>();
+            UnityEngine.EventSystems.EventSystem.current.RaycastAll(
+                new UnityEngine.EventSystems.PointerEventData(UnityEngine.EventSystems.EventSystem.current) { position = spot }, hits);
+            Assert.IsNotEmpty(hits);
+            var second = Dialog();
+            Assert.IsFalse(hits[0].gameObject.transform.IsChildOf(second.ConfirmButton.transform),
+                "Nút Xoá của lần hỏi thứ hai không được nằm đúng chỗ nút Xoá lần thứ nhất");
+            Assert.IsTrue(hits[0].gameObject.transform.IsChildOf(second.CancelButton.transform), "Chỗ cũ là nút Huỷ");
+            Press(second.CancelButton);
+            yield return null;
+            Assert.AreEqual(2, App.Progress.Profiles.Count, "Không xoá gì");
+        }
+
+        [UnityTest]
         public IEnumerator Manage_FitsAllSizes()
         {
             yield return OpenManageWithTwoChildren();

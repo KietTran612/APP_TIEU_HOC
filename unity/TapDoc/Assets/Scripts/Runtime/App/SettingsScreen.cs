@@ -273,7 +273,8 @@ namespace TapDoc
         private void ConfirmDeleteAll()
         {
             ConfirmDialog.Show(_app.Canvas.transform, UiText.DeleteAllConfirm1, UiText.Delete, () =>
-                ConfirmDialog.Show(_app.Canvas.transform, UiText.DeleteAllConfirm2, UiText.Delete, _app.ResetAllData));
+                ConfirmDialog.Show(_app.Canvas.transform, UiText.DeleteAllConfirm2, UiText.Delete, _app.ResetAllData,
+                    confirmOnLeft: true));
         }
 
         /// <summary>Sửa hồ sơ: ô tên gọi, 6 hình đại diện, nút Lưu (như phần tạo bé).</summary>
