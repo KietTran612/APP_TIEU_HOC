@@ -120,6 +120,9 @@ namespace TapDoc.Tests
                 var rt = ScreenSizes.Apply(app, size);
                 yield return null;
                 Canvas.ForceUpdateCanvases();
+                var frame = (RectTransform)app.Notice.transform.Find("Frame");
+                Assert.AreEqual(Mathf.Min(app.KidRoot.sizeDelta.x, NoticePopup.MaxFrameWidth), frame.rect.width, .5f,
+                    $"{size}: khung rộng theo màn của bé, tối đa {NoticePopup.MaxFrameWidth}");
                 ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.Name}/app_notice.png");
                 LayoutProbe.AssertFits(app.Canvas);
                 ScreenSizes.Reset(app, rt);

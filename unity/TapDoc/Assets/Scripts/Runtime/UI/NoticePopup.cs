@@ -15,6 +15,9 @@ namespace TapDoc
         private const float Margin = 40f;
         private const float MascotSize = 120f;
 
+        /// <summary>Bề ngang tối đa của khung nội dung trên màn rộng (dòng chữ không quá dài, vẫn dễ đọc).</summary>
+        public const float MaxFrameWidth = 1800f;
+
         private RectTransform _frame;
 
         /// <summary>Nút "Đã hiểu" (lần đầu) hoặc "Đóng" (mở lại từ Cài đặt).</summary>
@@ -69,8 +72,8 @@ namespace TapDoc
             var crt = (RectTransform)card.transform;
             crt.anchorMin = Vector2.zero;
             crt.anchorMax = Vector2.one;
-            crt.offsetMin = new Vector2(Margin + MascotSize, 2f * Margin + UiKit.MinTouch);
-            crt.offsetMax = new Vector2(-(Margin + MascotSize), -(Margin + UiKit.MinTouch + 10f));
+            crt.offsetMin = new Vector2(Margin, 2f * Margin + UiKit.MinTouch);
+            crt.offsetMax = new Vector2(-Margin, -(Margin + UiKit.MinTouch + 10f));
             UiKit.SetRounded(card.GetComponent<Image>(), Palette.Ink);
             UiKit.AddFill(card.transform, UiShapes.Rounded, Palette.PaperLight);
             UiKit.AddHatchShadow(crt);
@@ -121,14 +124,19 @@ namespace TapDoc
             mrt.anchoredPosition = new Vector2(-Margin / 2f, Margin);
         }
 
-        /// <summary>Đặt khung nội dung trùng khung chuẩn 1440 của app (đổi theo khi xoay máy).</summary>
+        /// <summary>
+        /// Đặt khung nội dung theo khung màn của bé (rộng hết vùng an toàn trên điện thoại, 1440 trên máy tính bảng),
+        /// tối đa <see cref="MaxFrameWidth"/>, ở giữa; đổi theo khi xoay máy.
+        /// </summary>
         private void FollowStandardFrame()
         {
             var app = AppRoot.Instance;
-            if (app != null && app.SafeRoot != null)
+            if (app != null && app.KidRoot != null)
             {
-                _frame.anchoredPosition = app.SafeRoot.anchoredPosition;
-                _frame.sizeDelta = app.SafeRoot.sizeDelta;
+                var size = app.KidRoot.sizeDelta;
+                var width = Mathf.Min(size.x, MaxFrameWidth);
+                _frame.anchoredPosition = app.KidRoot.anchoredPosition + new Vector2((size.x - width) / 2f, 0f);
+                _frame.sizeDelta = new Vector2(width, size.y);
                 return;
             }
             _frame.anchorMin = new Vector2(.5f, 0f);

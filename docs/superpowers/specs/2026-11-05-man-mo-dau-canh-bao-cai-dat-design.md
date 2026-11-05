@@ -66,7 +66,7 @@ App sắp ra bản Android và iOS cho trẻ em. Trước khi bé học, phụ h
 
 ### 5.2 Popup cảnh báo "Gửi phụ huynh"
 
-**Hình thức:** một khung giấy rộng 1440 ở giữa màn. Nền phía sau phủ kín màn và chặn chạm, như khung Ghi chú.
+**Hình thức:** một khung giấy ở giữa màn, rộng theo khung màn của bé (1440 trên máy tính bảng, rộng hơn trên điện thoại, tối đa 1800) [Chốt 05/11: chủ dự án muốn khung rộng hơn]. Nền phía sau phủ kín màn và chặn chạm, như khung Ghi chú.
 
 **Bố cục:** tiêu đề ở trên, nội dung cuộn được ở giữa, một nút người lớn (có chữ) "Đã hiểu" ở dưới, gà con nhỏ đứng ở góc.
 
