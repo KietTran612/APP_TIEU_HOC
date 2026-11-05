@@ -7,10 +7,11 @@ dữ liệu của dự án; Unity đọc đúng các tên trường này.
 
 import json
 from contextlib import contextmanager
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from .ids import audio_for, text_audio, tone_audio
+from .books import load_books, part_of
 from .lesson_notes import lesson_notes
 from .readings import unit_readings
 from .spelling import Part, SpellResult, spell_rime, spell_syllable
@@ -43,6 +44,8 @@ _REQUIRED_FIELDS = ("lesson_id", "book", "lesson_no", "type", "title", "source",
                     "part1", "part2")
 _HEAD = "(đầu bài)"
 _RIME_LESSON_TYPES = ("van_moi", "on_tap_van", "on_tap_cuoi_ki")
+# Trang tập đọc không có số bài: nhãn trong danh sách bài là tên loại trang.
+_READING_LABELS = {"cau_do": "Câu đố", "tap_chep_chinh_ta": "Chính tả"}
 
 
 class BuildError(Exception):
@@ -54,6 +57,7 @@ class BuildResult:
     lesson: dict
     audio: dict[str, tuple[str, str]]  # mã -> (lời đọc, loại)
     images: dict[str, str]  # mã -> mô tả
+    index: dict = field(default_factory=dict)  # phần, nhãn, tuần cho index.json (không ghi vào file bài)
 
 
 def _nfc_deep(obj):
@@ -595,6 +599,7 @@ class _Builder:
             in_app = src.get("in_app", True)
             if not isinstance(in_app, bool):
                 raise self.error(_HEAD, f"in_app phải là true/false: {in_app!r}")
+            index = self._index_entry()
         part1 = self._build_part1()
         part2 = self._build_part2()
 
@@ -622,7 +627,26 @@ class _Builder:
             "part1": part1,
             "part2": part2,
         }
-        return BuildResult(lesson, self.audio, self.images)
+        return BuildResult(lesson, self.audio, self.images, index)
+
+    def _index_entry(self) -> dict:
+        """Phần, nhãn và tuần của bài trong danh sách bài (thiết kế tập 2, mục 4.1)."""
+        src = self.src
+        try:
+            part = part_of(src["type"])
+        except ValueError as e:
+            raise self.error(_HEAD, str(e)) from e
+        if part != "tap_doc":
+            return {"part": part, "label": f"Bài {src['lesson_no']}", "week": 0}
+        week = src.get("week")
+        if isinstance(week, bool) or not isinstance(week, int):
+            raise self.error(_HEAD, f"bài tập đọc cần trường 'week' (số tuần): {week!r}")
+        if src["type"] in _READING_LABELS:
+            return {"part": part, "label": _READING_LABELS[src["type"]], "week": week}
+        td_no = src.get("td_no")
+        if isinstance(td_no, bool) or not isinstance(td_no, int):
+            raise self.error(_HEAD, f"bài tập đọc cần trường 'td_no' (số bài in trong mục lục): {td_no!r}")
+        return {"part": part, "label": f"Bài {td_no}", "week": week}
 
 
 def _onset_spans(text: str) -> list[dict]:
@@ -689,8 +713,10 @@ def build_all(src_dir, out_dir) -> list[BuildResult]:
     for result in results:
         _write_json(out / f"{result.lesson['lesson_id']}.json", result.lesson)
     # Bài `in_app: false` (bài mẫu 42) vẫn được dựng để test nạp được, nhưng không hiện trong danh sách bài.
-    by_no = sorted((r.lesson for r in results if r.lesson["in_app"]), key=lambda lesson: lesson["lesson_no"])
-    index = {"lessons": [{"lesson_id": l["lesson_id"], "lesson_no": l["lesson_no"], "title": l["title"],
-                          "type": l["type"], "book": l["book"]} for l in by_no]}
+    by_no = sorted((r for r in results if r.lesson["in_app"]), key=lambda r: r.lesson["lesson_no"])
+    index = {"books": load_books(),
+             "lessons": [{"lesson_id": r.lesson["lesson_id"], "lesson_no": r.lesson["lesson_no"],
+                          "title": r.lesson["title"], "type": r.lesson["type"], "book": r.lesson["book"], **r.index}
+                         for r in by_no]}
     _write_json(out / "index.json", index)
     return results

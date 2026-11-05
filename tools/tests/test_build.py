@@ -689,11 +689,13 @@ class FilesTest(unittest.TestCase):
         self.assertEqual(sorted(p.name for p in out.iterdir()), ["index.json", "tv1_t1_b04.json", "tv1_t1_b13.json"])
         self.assertEqual({r.lesson["lesson_id"] for r in results}, {"tv1_t1_b04", "tv1_t1_b13"})
         index = json.loads((out / "index.json").read_text(encoding="utf-8"))
-        self.assertEqual(index, {"lessons": [
+        self.assertEqual(index["lessons"], [
             {"lesson_id": "tv1_t1_b04", "lesson_no": 4, "title": "Dấu huyền - Dấu sắc", "type": "dau_thanh",
-             "book": "tv1_t1_1990"},
-            {"lesson_id": "tv1_t1_b13", "lesson_no": 13, "title": "u ư", "type": "am_moi", "book": "tv1_t1_1990"},
-        ]})
+             "book": "tv1_t1_1990", "part": "chu_cai", "label": "Bài 4", "week": 0},
+            {"lesson_id": "tv1_t1_b13", "lesson_no": 13, "title": "u ư", "type": "am_moi", "book": "tv1_t1_1990",
+             "part": "chu_cai", "label": "Bài 13", "week": 0},
+        ])
+        self.assertEqual(sorted(index), ["books", "lessons"])
         built = json.loads((out / "tv1_t1_b13.json").read_text(encoding="utf-8"))
         self.assertEqual(built, build_lesson(SRC13).lesson)
 
@@ -788,3 +790,53 @@ class CliTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class IndexTest(unittest.TestCase):
+    """index.json: danh sách quyển, phần, nhãn và tuần của từng bài (thiết kế tập 2, mục 4)."""
+
+    def build_index(self, sources):
+        import json
+        import tempfile
+        from pathlib import Path
+        from tapdoc.build import build_all
+        with tempfile.TemporaryDirectory() as src_dir, tempfile.TemporaryDirectory() as out_dir:
+            for src in sources:
+                Path(src_dir, f"{src['lesson_id']}.json").write_text(json.dumps(src, ensure_ascii=False),
+                                                                     encoding="utf-8")
+            build_all(src_dir, out_dir)
+            return json.loads(Path(out_dir, "index.json").read_text(encoding="utf-8"))
+
+    def reading_src(self, lesson_type="tap_doc", **extra):
+        src = src_of(lesson_id="tv1_t2_b129", lesson_no=129)
+        src.update({"book": "tv1_t2_1996", "type": lesson_type, "title": "Chim non chăm học"}, **extra)
+        return src
+
+    def test_index_has_books_and_parts(self):
+        index = self.build_index([src_of(lesson_id="tv1_t1_b42", lesson_no=42) | {"type": "van_moi"}])
+        self.assertEqual([b["book_id"] for b in index["books"]], ["tv1_t1_1990", "tv1_t2_1996"])
+        entry = index["lessons"][0]
+        self.assertEqual((entry["part"], entry["label"], entry["week"]), ("van", "Bài 42", 0))
+
+    def test_reading_label(self):
+        index = self.build_index([self.reading_src(td_no=4, week=27)])
+        entry = index["lessons"][0]
+        self.assertEqual((entry["part"], entry["label"], entry["week"]), ("tap_doc", "Bài 4", 27))
+
+    def test_riddle_and_dictation_labels(self):
+        index = self.build_index([self.reading_src("cau_do", week=28),
+                                  self.reading_src("tap_chep_chinh_ta", week=28) | {"lesson_id": "tv1_t2_b131",
+                                                                                     "lesson_no": 131}])
+        self.assertEqual([e["label"] for e in index["lessons"]], ["Câu đố", "Chính tả"])
+
+    def test_reading_without_td_no_raises(self):
+        with self.assertRaises(BuildError):
+            build_lesson(self.reading_src(week=27))
+
+    def test_reading_without_week_raises(self):
+        with self.assertRaises(BuildError):
+            build_lesson(self.reading_src("cau_do"))
+
+    def test_lesson_file_has_no_index_fields(self):
+        lesson = build_lesson(self.reading_src(td_no=4, week=27)).lesson
+        self.assertFalse({"part", "label", "week", "td_no"} & set(lesson))
