@@ -142,22 +142,83 @@ namespace TapDoc.Tests
             }
         }
 
-        [UnityTest]
-        public IEnumerator Layout_BothSizes()
+        private static Rect CanvasRect(RectTransform rt)
         {
+            var corners = new Vector3[4];
+            rt.GetWorldCorners(corners);
+            var canvas = (RectTransform)AppRoot.Instance.Canvas.transform;
+            Vector2 min = canvas.InverseTransformPoint(corners[0]), max = canvas.InverseTransformPoint(corners[2]);
+            return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
+        }
+
+        [UnityTest]
+        public IEnumerator Result_Fits_AllSizes()
+        {
+            UseStubsForMissingAssets(); // chỉ kiểm bố cục; tranh tập 2 chưa nhập không phải điều đang kiểm
             yield return LoadMainWithProfile();
             var app = AppRoot.Instance;
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            foreach (var size in ScreenSizes.All)
             {
-                var rt = new RenderTexture(size.x, size.y, 24);
-                app.UiCamera.targetTexture = rt;
+                var rt = ScreenSizes.Apply(app, size);
                 app.ShowResult(Ordered()[0]);
                 yield return null;
-                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.x}x{size.y}/app_result.png");
+                var screen = Result();
+                screen.SkipScene();
+                yield return null;
+                Canvas.ForceUpdateCanvases();
+                if (size.Wide) Assert.Greater(screen.BookFit.Scale, 1f, $"{size}: sổ to lên");
+                else Assert.AreEqual(1f, screen.BookFit.Scale, .05f, $"{size}: máy tính bảng giữ như cũ");
+                var book = CanvasRect((RectTransform)screen.Spread.transform);
+                var mascot = CanvasRect((RectTransform)screen.Mascot.transform);
+                foreach (var b in new[] { screen.ToListButton, screen.NextLessonButton })
+                {
+                    var br = CanvasRect((RectTransform)b.transform);
+                    Assert.IsFalse(book.Overlaps(br), $"{size}: sổ đè nút {b.name}");
+                    Assert.IsFalse(mascot.Overlaps(br), $"{size}: gà con đè nút {b.name}");
+                }
+                Assert.IsFalse(book.Overlaps(mascot), $"{size}: gà con đè sổ");
+                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.Name}/app_result.png");
                 LayoutProbe.AssertFits(app.Canvas);
-                app.UiCamera.targetTexture = null;
-                Object.Destroy(rt);
+                ScreenSizes.Reset(app, rt);
             }
+        }
+
+        [UnityTest]
+        public IEnumerator Resize_DuringScene_SkipsToEnd_PraiseOnce()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            ScreenSizes.Apply(app, ScreenSizes.IPad43);
+            Motion.Scale = 1f;
+            app.ShowResult(Ordered()[0]);
+            yield return null;
+            var screen = Result();
+            Assert.IsFalse(screen.IsSceneDone, "Cảnh đang chạy");
+
+            var phone = ScreenSizes.Apply(app, ScreenSizes.Phone20x9);
+            yield return null;
+            yield return null;
+            Assert.IsTrue(screen.IsSceneDone, "Đổi cỡ giữa cảnh thì nhảy tới cuối");
+            yield return new WaitForSecondsRealtime(1.5f);
+            Assert.AreEqual(1, app.Speech.History.Count(id => id == SystemAudio.khen_hoan_thanh), "Lời khen chỉ phát một lần");
+            Assert.AreEqual(3, screen.Spread.PageFor(Ordered()[0]).FlowerCount);
+            ScreenSizes.Reset(app, phone);
+        }
+
+        [UnityTest]
+        public IEnumerator FlowerLands_AtSlotSize_Wide()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            var rt = ScreenSizes.Apply(app, ScreenSizes.Phone20x9);
+            app.ShowResult(Ordered()[0]);
+            yield return null;
+            var screen = Result();
+            Assert.Greater(screen.BookFit.Scale, 1.2f);
+            Assert.AreEqual(screen.BookFit.Scale, screen.FlowerLandingScale, .02f, "Hoa bay hạ cánh đúng cỡ ô của sổ đã phóng to");
+            ScreenSizes.Reset(app, rt);
         }
 
         [UnityTest]

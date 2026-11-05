@@ -24,6 +24,12 @@ namespace TapDoc
         public Button PrevButton { get; private set; }
         public Button NextButton { get; private set; }
 
+        /// <summary>Khối phóng to đều chứa quyển sổ (cỡ thiết kế 1400×680, to lên trên màn rộng).</summary>
+        public FitBox BookFit { get; private set; }
+
+        /// <summary>Dòng tiêu đề "Sổ bé ngoan của …".</summary>
+        internal TMP_Text Title { get; private set; }
+
         public void Build(AppRoot app)
         {
             // Nền trong suốt phủ màn để nhận thao tác vuốt.
@@ -35,20 +41,23 @@ namespace TapDoc
 
             var title = UiKit.CreateLabel(transform, string.Format(UiText.BookTitleFormat, app.Progress.Current?.name), 56f);
             title.textWrappingMode = TextWrappingModes.NoWrap;
+            Title = title;
             var trt = title.rectTransform;
-            trt.anchorMin = trt.anchorMax = trt.pivot = new Vector2(.5f, 1f);
-            trt.sizeDelta = new Vector2(UiKit.SafeWidth - 2f * (UiKit.MinTouch + 2f * Margin), UiKit.MinTouch);
-            trt.anchoredPosition = new Vector2(0f, -Margin);
+            trt.anchorMin = new Vector2(0f, 1f);
+            trt.anchorMax = Vector2.one;
+            trt.pivot = new Vector2(.5f, 1f);
+            trt.offsetMin = new Vector2(UiKit.MinTouch + 2f * Margin, -Margin - UiKit.MinTouch);
+            trt.offsetMax = new Vector2(-(UiKit.MinTouch + 2f * Margin), -Margin);
 
             var bookArea = new GameObject("BookArea", typeof(RectTransform));
             bookArea.transform.SetParent(transform, false);
             var brt = (RectTransform)bookArea.transform;
             brt.anchorMin = Vector2.zero;
             brt.anchorMax = Vector2.one;
-            brt.offsetMin = new Vector2(Margin, BottomBand);
-            brt.offsetMax = new Vector2(-Margin, -TopBand);
+            var book = FitBox.Create(brt, "Book", ScreenLayout.StageSize);
+            BookFit = brt.GetComponent<FitBox>();
             var entries = app.Lessons.Index.lessons;
-            Spread = BookSpread.Create(brt, entries, app.Progress, app.Assets);
+            Spread = BookSpread.Create(book, entries, app.Progress, app.Assets);
             Spread.ShowPage(FlowerBook.StartPage(app.Progress, entries.Select(e => e.lesson_id).ToList()));
 
             PrevButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Backward, UiText.PagePrev,
@@ -58,6 +67,21 @@ namespace TapDoc
                 () => Flip(2), Palette.Orange);
             Place(NextButton, new Vector2(1f, 0f), new Vector2(-Margin, Margin));
             RefreshButtons();
+
+            // Xoay máy, đổi cỡ cửa sổ: chỉnh tại chỗ, giữ trang đang mở.
+            FrameWatcher.On(gameObject).Changed += ApplyLayout;
+            ApplyLayout(((RectTransform)transform).rect.size);
+        }
+
+        /// <summary>Vùng sổ: kiểu góc như cũ; kiểu mép (màn rộng) chừa hai dải mép cho nút, sổ to lên.</summary>
+        private void ApplyLayout(Vector2 size)
+        {
+            var area = (RectTransform)BookFit.transform;
+            var side = ScreenLayout.IsWide(size) ? ScreenLayout.SideBand : Margin;
+            var bottom = ScreenLayout.IsWide(size) ? Margin : BottomBand;
+            area.offsetMin = new Vector2(side, bottom);
+            area.offsetMax = new Vector2(-side, -TopBand);
+            BookFit.Fit();
         }
 
         private static void Place(Button button, Vector2 corner, Vector2 offset)

@@ -33,6 +33,15 @@ namespace TapDoc
         public Button NextLessonButton { get; private set; }
         public Button ToListButton { get; private set; }
 
+        /// <summary>Khối phóng to đều chứa quyển sổ; <c>null</c> ở phiên ôn.</summary>
+        public FitBox BookFit { get; private set; }
+
+        /// <summary>Cỡ hoa bay lúc hạ cánh (so với lớp hiệu ứng) để khớp ô hoa của sổ đã phóng to.</summary>
+        internal float FlowerLandingScale =>
+            BookFit != null && _overlay != null && _overlay.lossyScale.x > 0f
+                ? BookFit.Content.lossyScale.x / _overlay.lossyScale.x
+                : 1f;
+
         /// <summary>Quyển sổ của cảnh; <c>null</c> ở phiên ôn.</summary>
         public BookSpread Spread { get; private set; }
 
@@ -71,7 +80,6 @@ namespace TapDoc
             Mascot = Mascot.Create(transform, app.Assets);
             var mrt = (RectTransform)Mascot.transform;
             mrt.anchorMin = mrt.anchorMax = mrt.pivot = new Vector2(1f, 0f);
-            mrt.anchoredPosition = new Vector2(-(2f * Margin + UiKit.MinTouch), Margin);
 
             ToListButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Home, UiText.ToList,
                 () => app.ShowLessonList());
@@ -85,16 +93,42 @@ namespace TapDoc
             }
             SetButtonsVisible(false);
 
+            // Xoay máy, đổi cỡ cửa sổ giữa cảnh: nhảy tới cuối (như bé chạm màn), rồi chỉnh bố cục tại chỗ.
+            FrameWatcher.On(gameObject).Changed += size =>
+            {
+                SkipScene();
+                ApplyLayout(size);
+            };
+            ApplyLayout(((RectTransform)transform).rect.size);
+
             RunScene();
+        }
+
+        /// <summary>
+        /// Kiểu góc như cũ; kiểu mép (màn rộng): vùng sổ chừa hai dải mép cho nút và sổ to lên, gà con đứng trên nút
+        /// "Bài tiếp" như ở màn học.
+        /// </summary>
+        private void ApplyLayout(Vector2 size)
+        {
+            var wide = ScreenLayout.IsWide(size);
+            ((RectTransform)Mascot.transform).anchoredPosition = wide
+                ? new Vector2(-Margin, 2f * Margin + UiKit.MinTouch)
+                : new Vector2(-(2f * Margin + UiKit.MinTouch), Margin);
+            if (BookFit == null) return;
+            var area = (RectTransform)BookFit.transform;
+            var side = wide ? ScreenLayout.SideBand : Margin;
+            area.offsetMin = new Vector2(side, wide ? Margin : BottomBand);
+            area.offsetMax = new Vector2(-side, -TopBand);
+            BookFit.Fit();
         }
 
         private void BuildBook(string lessonId)
         {
             var area = Stretched("BookArea");
-            area.offsetMin = new Vector2(Margin, BottomBand);
-            area.offsetMax = new Vector2(-Margin, -TopBand);
+            var book = FitBox.Create(area, "Book", ScreenLayout.StageSize);
+            BookFit = area.GetComponent<FitBox>();
             var entries = _app.Lessons.Index.lessons;
-            Spread = BookSpread.Create(area, entries, _app.Progress, _app.Assets);
+            Spread = BookSpread.Create(book, entries, _app.Progress, _app.Assets);
             Spread.ShowPage(FlowerBook.PageOf(entries.Select(e => e.lesson_id).ToList(), lessonId));
             _page = Spread.PageFor(lessonId);
             if (_page == null) return;
@@ -161,10 +195,11 @@ namespace TapDoc
             var targetPos = (Vector2)_overlay.InverseTransformPoint(target.TransformPoint(target.rect.center));
             Sfx(SystemSfx.FlowerFly);
 
+            var landing = FlowerLandingScale;
             var flower = Picture(FlowerBook.FlowerImage(_page.LessonId, slot), BookPage.SlotSize, "FlyingFlower");
-            flower.anchoredPosition = new Vector2(0f, _overlay.rect.height / 2f + BookPage.SlotSize);
-            flower.localScale = Vector3.one * 1.6f;
-            _ = Motion.ScaleTo(flower, 1f, FlySeconds);
+            flower.anchoredPosition = new Vector2(0f, _overlay.rect.height / 2f + BookPage.SlotSize * landing);
+            flower.localScale = Vector3.one * (1.6f * landing);
+            _ = Motion.ScaleTo(flower, landing, FlySeconds);
             await Motion.MoveTo(flower, targetPos, FlySeconds);
             if (flower != null) Destroy(flower.gameObject);
             if (this == null || IsSceneDone) return;
@@ -178,7 +213,7 @@ namespace TapDoc
 
         private async void DropPetal(Vector2 from, int index)
         {
-            var petal = Picture(SystemIcons.Petal, 36f, "Petal");
+            var petal = Picture(SystemIcons.Petal, 36f * FlowerLandingScale, "Petal");
             petal.anchoredPosition = from;
             var group = petal.gameObject.AddComponent<CanvasGroup>();
             var side = (index - (PetalsPerFlower - 1) / 2f) * 70f;

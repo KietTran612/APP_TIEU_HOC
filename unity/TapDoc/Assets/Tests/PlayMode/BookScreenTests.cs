@@ -131,29 +131,76 @@ namespace TapDoc.Tests
             LogAssert.NoUnexpectedReceived();
         }
 
-        [UnityTest]
-        public IEnumerator LongTitles_Fit()
+        private static Rect CanvasRect(RectTransform rt)
         {
+            var corners = new Vector3[4];
+            rt.GetWorldCorners(corners);
+            var canvas = (RectTransform)AppRoot.Instance.Canvas.transform;
+            Vector2 min = canvas.InverseTransformPoint(corners[0]), max = canvas.InverseTransformPoint(corners[2]);
+            return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
+        }
+
+        [UnityTest]
+        public IEnumerator Book_Fits_AllSizes()
+        {
+            UseStubsForMissingAssets(); // chỉ kiểm bố cục; tranh tập 2 chưa nhập không phải điều đang kiểm
             yield return LoadMainWithProfile();
             var app = AppRoot.Instance;
             app.Progress.Current.name = new string('Đ', ProgressStore.MaxNameLength);
             var ordered = Ordered();
             var b06 = System.Array.IndexOf(ordered, "tv1_t1_b06");
             Assert.GreaterOrEqual(b06, 0);
-            foreach (var size in new[] { new Vector2Int(2400, 1080), new Vector2Int(2048, 1536) })
+            foreach (var size in ScreenSizes.All)
             {
-                var rt = new RenderTexture(size.x, size.y, 24);
-                app.UiCamera.targetTexture = rt;
+                var rt = ScreenSizes.Apply(app, size);
                 var screen = OpenBook();
                 screen.Spread.ShowPage(b06);
                 screen.RefreshButtons();
                 yield return null;
-                Assert.IsNotNull(screen.Spread.PageFor("tv1_t1_b06"));
-                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.x}x{size.y}/app_book.png");
+                Canvas.ForceUpdateCanvases();
+                if (size.Wide)
+                {
+                    if (size.Name == ScreenSizes.Phone20x9.Name) Assert.Greater(screen.BookFit.Scale, 1.2f, $"{size}: sổ to lên");
+                    Assert.Greater(screen.BookFit.Scale, 1f, $"{size}: sổ to lên");
+                }
+                else
+                {
+                    Assert.AreEqual(1f, screen.BookFit.Scale, .05f, $"{size}: máy tính bảng giữ như cũ");
+                }
+                var book = CanvasRect((RectTransform)screen.Spread.transform);
+                var title = CanvasRect(screen.Title.rectTransform);
+                foreach (var b in new[] { screen.HomeButton, screen.PrevButton, screen.NextButton })
+                {
+                    var br = CanvasRect((RectTransform)b.transform);
+                    Assert.IsFalse(book.Overlaps(br), $"{size}: sổ đè nút {b.name}");
+                    Assert.IsFalse(title.Overlaps(br), $"{size}: tiêu đề đè nút {b.name}");
+                }
+                ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.Name}/app_book.png");
                 LayoutProbe.AssertFits(app.Canvas);
-                app.UiCamera.targetTexture = null;
-                Object.Destroy(rt);
+                ScreenSizes.Reset(app, rt);
             }
+        }
+
+        [UnityTest]
+        public IEnumerator Resize_KeepsPage()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            ScreenSizes.Apply(app, ScreenSizes.IPad43);
+            var screen = OpenBook();
+            screen.Spread.ShowPage(4);
+            screen.RefreshButtons();
+            yield return null;
+            var spread = screen.Spread;
+
+            var phone = ScreenSizes.Apply(app, ScreenSizes.Phone20x9);
+            yield return null;
+            yield return null;
+            Assert.AreSame(spread, screen.Spread, "Đổi cỡ không dựng lại sổ");
+            Assert.AreEqual(4, screen.Spread.LeftPage, "Vẫn ở trang đang xem");
+            Assert.Greater(screen.BookFit.Scale, 1.2f, "Sổ to lên theo màn mới");
+            ScreenSizes.Reset(app, phone);
         }
     }
 }
