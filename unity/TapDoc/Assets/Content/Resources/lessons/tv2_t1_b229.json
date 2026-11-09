@@ -614,7 +614,7 @@
     {
       "type": "sentence",
       "marker": "",
-      "text": "Bà tôi sai mang đi biếu cô tôi, dì tôi, cậu tôi, chú tôi, bác tôi,",
+      "text": "Bà tôi sai mang đi biếu cô tôi, dì tôi, cậu tôi, chú tôi,",
       "audio": "cau_b229_11",
       "items": [
         {
@@ -700,7 +700,15 @@
           "audio": "tieng_tooi",
           "hl": [],
           "spells": []
-        },
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "bác tôi,",
+      "audio": "cau_b229_12",
+      "items": [
         {
           "text": "bác",
           "audio": "tieng_bacs",
@@ -719,7 +727,7 @@
       "type": "sentence",
       "marker": "",
       "text": "mỗi người một quả.",
-      "audio": "cau_b229_12",
+      "audio": "cau_b229_13",
       "items": [
         {
           "text": "mỗi",
@@ -797,13 +805,18 @@
           "row": 0
         },
         {
-          "text": "Bà tôi sai mang đi biếu cô tôi, dì tôi, cậu tôi, chú tôi, bác tôi,",
+          "text": "Bà tôi sai mang đi biếu cô tôi, dì tôi, cậu tôi, chú tôi,",
           "audio": "cau_b229_11",
           "row": 0
         },
         {
-          "text": "mỗi người một quả.",
+          "text": "bác tôi,",
           "audio": "cau_b229_12",
+          "row": 0
+        },
+        {
+          "text": "mỗi người một quả.",
+          "audio": "cau_b229_13",
           "row": 0
         }
       ],
@@ -1483,42 +1496,42 @@
         {
           "text": "bác",
           "audio": "tieng_bacs",
-          "row": 9,
-          "col": 14,
+          "row": 10,
+          "col": 0,
           "spells": []
         },
         {
           "text": "tôi",
           "audio": "tieng_tooi",
-          "row": 9,
-          "col": 15,
+          "row": 10,
+          "col": 1,
           "spells": []
         },
         {
           "text": "mỗi",
           "audio": "tieng_mooix",
-          "row": 10,
+          "row": 11,
           "col": 0,
           "spells": []
         },
         {
           "text": "người",
           "audio": "tieng_nguwowif",
-          "row": 10,
+          "row": 11,
           "col": 1,
           "spells": []
         },
         {
           "text": "một",
           "audio": "tieng_mootj",
-          "row": 10,
+          "row": 11,
           "col": 2,
           "spells": []
         },
         {
           "text": "quả",
           "audio": "tieng_quar",
-          "row": 10,
+          "row": 11,
           "col": 3,
           "spells": []
         }
@@ -1534,12 +1547,12 @@
       "items": [
         {
           "text": "Cá chuối: còn gọi là cá quả hay cá tràu.",
-          "audio": "cau_b229_13",
+          "audio": "cau_b229_14",
           "role": "line"
         },
         {
           "text": "Không xuể: không hết được.",
-          "audio": "cau_b229_14",
+          "audio": "cau_b229_15",
           "role": "line"
         }
       ]

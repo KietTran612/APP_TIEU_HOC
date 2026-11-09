@@ -24,11 +24,11 @@
     "status": "chua_duyet",
     "can_duyet": [
       {
-        "where": "part1[2]",
+        "where": "part1[3]",
         "note": "đáp án chữ có 3 chữ cái do app đếm: Mặt, núi, ngủ, tre, lên"
       },
       {
-        "where": "part1[3]",
+        "where": "part1[4]",
         "note": "đáp án chữ có 4 chữ cái do app đếm: trời, nâng, vầng"
       }
     ]
@@ -59,7 +59,13 @@
           "text": "Chữ gáy gồm 3 chữ cái g, a, y.",
           "audio": "cau_b280_04",
           "role": "line"
-        },
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
         {
           "text": "Chữ ở gồm 1 chữ cái ơ.",
           "audio": "cau_b280_05",

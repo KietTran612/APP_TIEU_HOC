@@ -29,7 +29,7 @@
     "status": "chua_duyet",
     "can_duyet": [
       {
-        "where": "part1[17]",
+        "where": "part1[16]",
         "note": "từ láy do app chọn: là là, thoang thoảng, quanh quanh, trập trùng"
       },
       {
@@ -915,7 +915,13 @@
           "text": "Thác Bạc: tên một ngọn thác chảy từ sườn núi xuống, trông như tấm lụa trắng xóa.",
           "audio": "cau_b275_12",
           "role": "line"
-        },
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": ":",
+      "items": [
         {
           "text": "Bộ đội biên phòng: bộ đội canh phòng vùng đất của nước ta giáp với một nước khác.",
           "audio": "cau_b275_13",

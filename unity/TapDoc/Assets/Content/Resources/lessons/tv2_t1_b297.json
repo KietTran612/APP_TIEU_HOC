@@ -788,7 +788,7 @@
     {
       "type": "sentence",
       "marker": "",
-      "text": "một cành hoa mận trắng, biết nở cuối mùa đông để báo trước mùa xuân tới.",
+      "text": "một cành hoa mận trắng,",
       "audio": "cau_b297_17",
       "items": [
         {
@@ -820,7 +820,15 @@
           "audio": "tieng_trawngs",
           "hl": [],
           "spells": []
-        },
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "biết nở cuối mùa đông để báo trước mùa xuân tới.",
+      "audio": "cau_b297_18",
+      "items": [
         {
           "text": "biết",
           "audio": "tieng_bieets",
@@ -969,8 +977,13 @@
           "row": 1
         },
         {
-          "text": "một cành hoa mận trắng, biết nở cuối mùa đông để báo trước mùa xuân tới.",
+          "text": "một cành hoa mận trắng,",
           "audio": "cau_b297_17",
+          "row": 1
+        },
+        {
+          "text": "biết nở cuối mùa đông để báo trước mùa xuân tới.",
+          "audio": "cau_b297_18",
           "row": 1
         }
       ],
@@ -1734,78 +1747,78 @@
         {
           "text": "biết",
           "audio": "tieng_bieets",
-          "row": 15,
-          "col": 5,
+          "row": 16,
+          "col": 0,
           "spells": []
         },
         {
           "text": "nở",
           "audio": "tieng_nowr",
-          "row": 15,
-          "col": 6,
+          "row": 16,
+          "col": 1,
           "spells": []
         },
         {
           "text": "cuối",
           "audio": "tieng_cuoois",
-          "row": 15,
+          "row": 16,
+          "col": 2,
+          "spells": []
+        },
+        {
+          "text": "mùa",
+          "audio": "tieng_muaf",
+          "row": 16,
+          "col": 3,
+          "spells": []
+        },
+        {
+          "text": "đông",
+          "audio": "tieng_ddoong",
+          "row": 16,
+          "col": 4,
+          "spells": []
+        },
+        {
+          "text": "để",
+          "audio": "tieng_ddeer",
+          "row": 16,
+          "col": 5,
+          "spells": []
+        },
+        {
+          "text": "báo",
+          "audio": "tieng_baos",
+          "row": 16,
+          "col": 6,
+          "spells": []
+        },
+        {
+          "text": "trước",
+          "audio": "tieng_truwowcs",
+          "row": 16,
           "col": 7,
           "spells": []
         },
         {
           "text": "mùa",
           "audio": "tieng_muaf",
-          "row": 15,
+          "row": 16,
           "col": 8,
-          "spells": []
-        },
-        {
-          "text": "đông",
-          "audio": "tieng_ddoong",
-          "row": 15,
-          "col": 9,
-          "spells": []
-        },
-        {
-          "text": "để",
-          "audio": "tieng_ddeer",
-          "row": 15,
-          "col": 10,
-          "spells": []
-        },
-        {
-          "text": "báo",
-          "audio": "tieng_baos",
-          "row": 15,
-          "col": 11,
-          "spells": []
-        },
-        {
-          "text": "trước",
-          "audio": "tieng_truwowcs",
-          "row": 15,
-          "col": 12,
-          "spells": []
-        },
-        {
-          "text": "mùa",
-          "audio": "tieng_muaf",
-          "row": 15,
-          "col": 13,
           "spells": []
         },
         {
           "text": "xuân",
           "audio": "tieng_xuaan",
-          "row": 15,
-          "col": 14,
+          "row": 16,
+          "col": 9,
           "spells": []
         },
         {
           "text": "tới",
           "audio": "tieng_towis",
-          "row": 15,
-          "col": 15,
+          "row": 16,
+          "col": 10,
           "spells": []
         }
       ],
@@ -1820,17 +1833,17 @@
       "items": [
         {
           "text": "Mận: loài cây có hoa trắng, quả màu nâu hay xanh nhạt, ăn có vị ngọt chua.",
-          "audio": "cau_b297_18",
-          "role": "line"
-        },
-        {
-          "text": "Khướu: loài chim mình đen, hót rất hay.",
           "audio": "cau_b297_19",
           "role": "line"
         },
         {
-          "text": "Trầm ngâm: có dáng lặng lẽ như đang suy nghĩ.",
+          "text": "Khướu: loài chim mình đen, hót rất hay.",
           "audio": "cau_b297_20",
+          "role": "line"
+        },
+        {
+          "text": "Trầm ngâm: có dáng lặng lẽ như đang suy nghĩ.",
+          "audio": "cau_b297_21",
           "role": "line"
         }
       ]
