@@ -1,7 +1,7 @@
 # Phân công session — dự án "Bờ A Ba"
 
 Bảng này do session điều phối (root) giữ. Cập nhật mỗi khi tạo session mới, giao việc lớn, hoặc một mảng việc xong.
-Cập nhật lần cuối: 09/11/2026. Lịch sử việc đã xong: [lich-su-cong-viec.md](lich-su-cong-viec.md).
+Cập nhật lần cuối: 09/11/2026. Lịch sử việc đã xong: [lich-su-cong-viec.md](lich-su-cong-viec.md). Quy trình chuẩn và cách giải vấn đề khó: [QUY-TRINH-LAM-VIEC.md](../../../QUY-TRINH-LAM-VIEC.md).
 
 ## Nguyên tắc
 
