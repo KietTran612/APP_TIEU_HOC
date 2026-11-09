@@ -42,7 +42,8 @@
 
    Mục "Giai đoạn 1980 – 1989" của trang này còn có bản đầu tiên của chương trình: Học vần lớp 1 tập 1 (1981), tập 2 (1986) và Tập đọc lớp 1 (1985).
 2. **TV1 T1:** ảnh `041` và `042` bị đảo thứ tự. Ảnh `041` chứa tr.82–83 (bài 61) và lấy từ một bản scan khác (màu giấy, màu mực khác); ảnh `042` chứa tr.80–81 (bài 60). Tính cả hai ảnh này thì đủ trang 0–124.
-3. **TV2 T1:** có hai ảnh cùng tên `Trang_29` (`029`, `030`). Chưa kiểm xem có trùng trang hay không.
+3. **TV2 T1:** hai ảnh cùng tên `Trang_29` không trùng trang mà bị đảo thứ tự: `030` là tr.56–57, `029` là tr.58–59 (lấy từ bản scan khác). Các ảnh còn lại theo công thức ảnh `NNN` = tr.`2·NNN−2`, `2·NNN−1`; ảnh `065` là tr.128 và trang trắng. Đủ trang 0–128 (xem 9/11/2026).
+   - Sách theo chương trình cũ: mỗi tuần có Tập đọc, Học thuộc lòng, Bài đọc thêm, Chính tả, Từ ngữ, Ngữ pháp, Tập làm văn; **không có Kể chuyện, Tập viết**. 17 tuần, 65 bài đọc (mục lục tuần 16 để trống số bài 59–61), 2 trang câu đố (bài 15, 46), đáp án ở tr.122 "Giải đáp câu đố", mục lục tr.123–128. Kí hiệu mới: [:] giải nghĩa từ. Bài 1 in ảnh chụp Bác Hồ.
 4. **TV2 T2:** thứ tự ảnh bị xáo trộn, mỗi tên `Trang_N` lặp lại 2–3 lần (ví dụ ảnh `001` chứa tr.18–19). Phải sắp lại theo số trang in trên sách.
 5. **TV1 T1 (1990) và TV1 T2 (chỉnh lí 1994)** thuộc hai lần in khác nhau. Số bài nối tiếp nhau (80 → 81), nhưng chưa kiểm xem bản chỉnh lí 1994 có sửa nội dung Tập 1 hay không.
 6. **TV1 T2:** công thức trang đôi (ảnh `NNN` chứa trang `2·NNN−2` và `2·NNN−1`) đúng cho cả 72 ảnh, đã đối chiếu từng trang khi chép bài (5/11/2026). Tr.2 có thêm kí hiệu **[?] Câu hỏi**. Tr.138 "Trả lời câu đố" là đáp án của ba trang Câu đố (tr.102, 115, 128). Mục lục ghi bài 34 là "Chị Võ Thị Sáu", trang 133 in "Võ Thị Sáu".
