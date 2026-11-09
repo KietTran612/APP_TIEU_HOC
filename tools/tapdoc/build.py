@@ -12,7 +12,7 @@ from pathlib import Path
 
 from .ids import audio_for, text_audio, tone_audio
 from . import reading_steps
-from .books import load_books, part_of
+from .books import grade_of, load_books, part_of
 from .lesson_notes import lesson_notes
 from .readings import unit_readings
 from .spelling import Part, SpellResult, spell_rime, spell_syllable
@@ -46,7 +46,9 @@ _REQUIRED_FIELDS = ("lesson_id", "book", "lesson_no", "type", "title", "source",
 _HEAD = "(đầu bài)"
 _RIME_LESSON_TYPES = ("van_moi", "on_tap_van", "on_tap_cuoi_ki")
 # Trang tập đọc không có số bài: nhãn trong danh sách bài là tên loại trang.
-_READING_LABELS = {"cau_do": "Câu đố", "tap_chep_chinh_ta": "Chính tả"}
+_READING_LABELS = {"cau_do": "Câu đố", "tap_chep_chinh_ta": "Chính tả", "tu_ngu": "Từ ngữ", "ngu_phap": "Ngữ pháp",
+                   "tap_lam_van": "Tập làm văn"}
+_THEMES_LOP2 = ("Nhà trường", "Gia đình", "Đất nước ta")
 
 
 class BuildError(Exception):
@@ -639,23 +641,31 @@ class _Builder:
         return BuildResult(lesson, self.audio, self.images, index)
 
     def _index_entry(self) -> dict:
-        """Phần, nhãn và tuần của bài trong danh sách bài (thiết kế tập 2, mục 4.1)."""
+        """Phần, nhãn, tuần, lớp (và chủ điểm ở lớp 2) của bài trong danh sách bài (thiết kế tập 2 mục 4.1, lớp 2 mục 4)."""
         src = self.src
         try:
-            part = part_of(src["type"])
+            grade = grade_of(src["book"])
+            part = part_of(src["type"], grade)
         except ValueError as e:
             raise self.error(_HEAD, str(e)) from e
-        if part != "tap_doc":
-            return {"part": part, "label": f"Bài {src['lesson_no']}", "week": 0}
+        if part not in ("tap_doc", "lop2"):
+            return {"part": part, "label": f"Bài {src['lesson_no']}", "week": 0, "grade": grade}
         week = src.get("week")
         if isinstance(week, bool) or not isinstance(week, int):
             raise self.error(_HEAD, f"bài tập đọc cần trường 'week' (số tuần): {week!r}")
+        extra = {"grade": grade}
+        if grade == 2:
+            if not 1 <= week <= 17:
+                raise self.error(_HEAD, f"tuần lớp 2 phải từ 1 đến 17: {week!r}")
+            if src.get("theme") not in _THEMES_LOP2:
+                raise self.error(_HEAD, f"bài lớp 2 cần trường 'theme' trong {_THEMES_LOP2}: {src.get('theme')!r}")
+            extra["theme"] = src["theme"]
         if src["type"] in _READING_LABELS:
-            return {"part": part, "label": _READING_LABELS[src["type"]], "week": week}
+            return {"part": part, "label": _READING_LABELS[src["type"]], "week": week, **extra}
         td_no = src.get("td_no")
         if isinstance(td_no, bool) or not isinstance(td_no, int):
             raise self.error(_HEAD, f"bài tập đọc cần trường 'td_no' (số bài in trong mục lục): {td_no!r}")
-        return {"part": part, "label": f"Bài {td_no}", "week": week}
+        return {"part": part, "label": f"Bài {td_no}", "week": week, **extra}
 
 
 def _rime_spans(text: str, rime: str) -> list[dict]:

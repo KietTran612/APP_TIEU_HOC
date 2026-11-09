@@ -699,9 +699,9 @@ class FilesTest(unittest.TestCase):
         index = json.loads((out / "index.json").read_text(encoding="utf-8"))
         self.assertEqual(index["lessons"], [
             {"lesson_id": "tv1_t1_b04", "lesson_no": 4, "title": "Dấu huyền - Dấu sắc", "type": "dau_thanh",
-             "book": "tv1_t1_1990", "part": "chu_cai", "label": "Bài 4", "week": 0},
+             "book": "tv1_t1_1990", "part": "chu_cai", "label": "Bài 4", "week": 0, "grade": 1},
             {"lesson_id": "tv1_t1_b13", "lesson_no": 13, "title": "u ư", "type": "am_moi", "book": "tv1_t1_1990",
-             "part": "chu_cai", "label": "Bài 13", "week": 0},
+             "part": "chu_cai", "label": "Bài 13", "week": 0, "grade": 1},
         ])
         self.assertEqual(sorted(index), ["books", "lessons"])
         built = json.loads((out / "tv1_t1_b13.json").read_text(encoding="utf-8"))
@@ -822,7 +822,7 @@ class IndexTest(unittest.TestCase):
 
     def test_index_has_books_and_parts(self):
         index = self.build_index([src_of(lesson_id="tv1_t1_b42", lesson_no=42) | {"type": "van_moi"}])
-        self.assertEqual([b["book_id"] for b in index["books"]], ["tv1_t1_1990", "tv1_t2_1996"])
+        self.assertEqual([b["book_id"] for b in index["books"]], ["tv1_t1_1990", "tv1_t2_1996", "tv2_t1_2001"])
         entry = index["lessons"][0]
         self.assertEqual((entry["part"], entry["label"], entry["week"]), ("van", "Bài 42", 0))
 
