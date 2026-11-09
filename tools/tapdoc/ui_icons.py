@@ -33,6 +33,7 @@ SAMPLES = 4  # lấy mẫu 4×4 trong mỗi điểm ảnh để viền mịn
 FLOWER_ID = "img_chung_hoa_be_ngoan"
 MASCOT_ID = "img_chung_ga_con"
 MASCOT_SOURCE_ID = "img_chung_avatar_04"
+GLOSSARY_ID = "img_chung_giai_nghia"  # kí hiệu [:] giải nghĩa từ của sách lớp 2
 
 
 def _arc(cx, cy, r, start_deg, end_deg, steps=24):
@@ -128,6 +129,14 @@ ICONS: dict[str, list] = {
     # Bánh răng nền giấy viền mực, lỗ giữa để trống (thấy nền nút).
     "img_ui_cai_dat": _gear_teeth(12, 12, 6.0, 9.8) + _outlined(_arc(12, 12, 5.2, 0, 360, 48), 3.8, closed=True),
 }
+
+# Hình tạm kí hiệu [:]: ô vuông viền mực, giữa có dấu hai chấm (tranh chính thức ghi đè cùng mã).
+GLOSSARY: list = [
+    ("fill", [(4, 4), (20, 4), (20, 20), (4, 20)], PAPER),
+    ("stroke", [(4, 4), (20, 4), (20, 20), (4, 20)], 1.6, INK, True),
+    ("circle", 12, 8.8, 1.7, INK, 0),
+    ("circle", 12, 15.2, 1.7, INK, 0),
+]
 
 FLOWER: list = [
     ("stroke", [(12, 14), (12.4, 18), (12, 23)], 1.3, INK, False),
@@ -245,7 +254,7 @@ def _png(width: int, height: int, raw: bytes) -> bytes:
 def write_all(image_dir: Path, force: bool = False) -> list[str]:
     """Ghi các hình mặc định còn thiếu vào ``image_dir``, trả về các mã đã ghi.
 
-    ``force`` vẽ lại mọi biểu tượng; hoa và gà con thì không bao giờ ghi đè, vì đó là chỗ
+    ``force`` vẽ lại mọi biểu tượng; hoa, gà con và kí hiệu [:] thì không bao giờ ghi đè, vì đó là chỗ
     tranh chính thức sẽ thay vào.
     """
     image_dir = Path(image_dir)
@@ -255,6 +264,10 @@ def write_all(image_dir: Path, force: bool = False) -> list[str]:
         if force or not path.exists():
             path.write_bytes(render(shapes, ICON_SIZE))
             written.append(icon_id)
+    glossary = image_dir / f"{GLOSSARY_ID}.png"
+    if not glossary.exists():
+        glossary.write_bytes(render(GLOSSARY, ICON_SIZE))
+        written.append(GLOSSARY_ID)
     flower = image_dir / f"{FLOWER_ID}.png"
     if not flower.exists():
         flower.write_bytes(render(FLOWER, FLOWER_SIZE))

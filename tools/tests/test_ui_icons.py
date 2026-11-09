@@ -104,7 +104,7 @@ class WriteAllTest(unittest.TestCase):
 
     def test_writes_missing_copies_mascot(self):
         written = ui_icons.write_all(self.dir)
-        self.assertEqual(set(written), set(ui_icons.ICONS) | {FLOWER, MASCOT})
+        self.assertEqual(set(written), set(ui_icons.ICONS) | {FLOWER, MASCOT, ui_icons.GLOSSARY_ID})
         for icon_id in ui_icons.ICONS:
             self.assertEqual((self.dir / f"{icon_id}.png").read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
         self.assertEqual((self.dir / f"{FLOWER}.png").read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
@@ -113,10 +113,18 @@ class WriteAllTest(unittest.TestCase):
     def test_force_never_overwrites_flower_or_mascot(self):
         (self.dir / f"{FLOWER}.png").write_bytes(b"x")
         (self.dir / f"{MASCOT}.png").write_bytes(b"x")
+        (self.dir / f"{ui_icons.GLOSSARY_ID}.png").write_bytes(b"x")
         written = ui_icons.write_all(self.dir, force=True)
+        self.assertEqual((self.dir / f"{ui_icons.GLOSSARY_ID}.png").read_bytes(), b"x")
         self.assertEqual((self.dir / f"{FLOWER}.png").read_bytes(), b"x")
         self.assertEqual((self.dir / f"{MASCOT}.png").read_bytes(), b"x")
         self.assertEqual(set(written), set(ui_icons.ICONS))
+
+    def test_glossary_placeholder_drawn(self):
+        # Kí hiệu [:] giải nghĩa từ (lớp 2): hình tạm cho tới khi có tranh chính thức cùng mã.
+        self.assertIn(ui_icons.GLOSSARY_ID, SYSTEM_IMAGES)
+        png = ui_icons.render(ui_icons.GLOSSARY, 16)
+        self.assertEqual(png[:8], bytes([0x89]) + b"PNG" + bytes([13, 10, 26, 10]))
 
     def test_keeps_existing_icon_without_force(self):
         (self.dir / "img_ui_nha.png").write_bytes(b"x")

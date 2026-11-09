@@ -22,7 +22,7 @@ namespace TapDoc.Tests
             var p = Object.FindAnyObjectByType<ParentScreen>();
             p.SimulateUnlock();
             yield return null;
-            Assert.That(LabelsUnder(p), Has.Some.Contains($"1/{Ordered().Length}"));
+            Assert.That(LabelsUnder(p), Has.Some.Contains(string.Format(UiText.LearnedGradeFormat, 1, 1, AppRoot.Instance.Lessons.Index.OrderedIds(1).Count)));
             Assert.That(LabelsUnder(p), Has.Member("u")); // lượt 0 bài 13: đáp án "u"
         }
 
@@ -86,8 +86,8 @@ namespace TapDoc.Tests
             var labels = LabelsUnder(p);
             Assert.That(labels, Has.Member(TestChildName));
             Assert.That(labels, Has.Member("Na"));
-            Assert.That(labels, Has.Some.Contains($"1/{Ordered().Length}"));
-            Assert.That(labels, Has.Some.Contains($"0/{Ordered().Length}"));
+            Assert.That(labels, Has.Some.Contains(string.Format(UiText.LearnedGradeFormat, 1, 1, AppRoot.Instance.Lessons.Index.OrderedIds(1).Count)));
+            Assert.That(labels, Has.Some.Contains(string.Format(UiText.LearnedGradeFormat, 1, 0, AppRoot.Instance.Lessons.Index.OrderedIds(1).Count)));
         }
 
         [UnityTest]

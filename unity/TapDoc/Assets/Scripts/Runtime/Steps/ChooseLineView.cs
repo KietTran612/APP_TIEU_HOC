@@ -5,24 +5,29 @@ namespace TapDoc
 {
     /// <summary>
     /// Chọn dòng đúng yêu cầu (lớp 2, thiết kế TV2 tập một mục 6): "Trong những dòng sau, dòng nào viết chưa thành
-    /// câu?". App đọc câu hỏi; mỗi dòng là một thẻ. Chạm thẻ thì app đọc dòng đó; dòng đúng sáng lên và được đếm, dòng
-    /// khác chỉ được đọc, không chê. Hai lần chạm chưa đúng liền nhau thì một dòng đúng còn thiếu được tô vàng gợi ý.
-    /// Tìm đủ thì khen và đi tiếp.
+    /// câu?". App đọc câu hỏi; mỗi dòng là một thẻ (lưới 2 cột × 2 hàng, nhiều dòng thì chia trang). Chạm thẻ thì app đọc
+    /// dòng đó; dòng đúng sáng lên và được đếm, dòng khác chỉ được đọc, không chê. Hai lần chạm chưa đúng liền nhau thì
+    /// một dòng đúng còn thiếu được tô vàng gợi ý (mở trang có dòng đó). Tìm đủ thì khen và đi tiếp.
     /// </summary>
     public class ChooseLineView : StepViewBase
     {
-        private const float Top = 170f;
-        private const float Bottom = -250f;
-        private const float LineGap = 14f;
+        private const int PerPage = 4;
+        private const float ColGap = 24f;
+        private const float RowGap = 18f;
+        private const float GridWidth = 1040f; // chừa hai bên cho nút lật trang
+        private const float GridTop = 175f;
 
         private readonly List<Tile> _lines = new();
         private readonly HashSet<int> _found = new();
         private TMPro.TextMeshProUGUI _count;
+        private PageButtons _pager;
         private int _misses;
         private int _hint = -1;
 
         internal int FoundCount => _found.Count;
         internal int HintIndex => _hint;
+        internal int Page { get; private set; }
+        internal int PageCount => Mathf.Max(1, (Step.items.Count + PerPage - 1) / PerPage);
         internal Tile LineTile(int index) => _lines[index];
 
         private int Need => Mathf.Max(1, Step.need);
@@ -30,21 +35,24 @@ namespace TapDoc
         protected override void Build()
         {
             AddMarker();
-            var question = UiKit.CreateLabel(Root.transform, Step.text, 46f);
+            var question = UiKit.CreateLabel(Root.transform, Step.text, 44f);
             var qrt = question.rectTransform;
             qrt.anchorMin = qrt.anchorMax = new Vector2(0.5f, 0.5f);
-            qrt.sizeDelta = new Vector2(FlowWidth - 120f, 120f);
-            qrt.anchoredPosition = new Vector2(60f, 270f);
+            qrt.sizeDelta = new Vector2(GridWidth + 120f, 120f);
+            qrt.anchoredPosition = new Vector2(40f, 265f);
             question.alignment = TMPro.TextAlignmentOptions.Left;
+            question.enableAutoSizing = true;
+            question.fontSizeMax = 44f;
+            question.fontSizeMin = 30f;
 
-            var n = Step.items.Count;
-            var height = Mathf.Min(110f, (Top - Bottom - LineGap * (n - 1)) / Mathf.Max(1, n));
-            for (var k = 0; k < n; k++)
+            var w = (GridWidth - ColGap) / 2f;
+            for (var k = 0; k < Step.items.Count; k++)
             {
                 var index = k;
-                var y = Top - height / 2f - k * (height + LineGap);
-                var tile = AddTile(Step.items[k].text, new Vector2(FlowWidth * 0.8f, height), new Vector2(0f, y),
-                    Mathf.Min(56f, height * 0.55f));
+                var slot = k % PerPage;
+                var x = (slot % 2 == 0 ? -1f : 1f) * (w + ColGap) / 2f;
+                var y = GridTop - UiKit.MinTouch / 2f - (slot / 2) * (UiKit.MinTouch + RowGap);
+                var tile = AddTile(Step.items[k].text, new Vector2(w, UiKit.MinTouch), new Vector2(x, y), 46f);
                 tile.Tapped += () => _ = OnLineTapped(index);
                 _lines.Add(tile);
             }
@@ -53,9 +61,18 @@ namespace TapDoc
             var crt = _count.rectTransform;
             crt.anchorMin = crt.anchorMax = new Vector2(0.5f, 0.5f);
             crt.sizeDelta = new Vector2(400f, 56f);
-            crt.anchoredPosition = new Vector2(0f, Bottom - 40f);
+            crt.anchoredPosition = new Vector2(0f, -300f);
             UpdateCount();
+            if (PageCount > 1) _pager = new PageButtons(Root.transform, Ctx.Assets, () => ShowPage(Page - 1), () => ShowPage(Page + 1));
+            ShowPage(0);
             Replay();
+        }
+
+        private void ShowPage(int page)
+        {
+            Page = Mathf.Clamp(page, 0, PageCount - 1);
+            for (var k = 0; k < _lines.Count; k++) _lines[k].gameObject.SetActive(k / PerPage == Page);
+            _pager?.Show(Page, PageCount);
         }
 
         private void UpdateCount() => _count.text = string.Format(UiText.FoundFormat, Mathf.Min(_found.Count, Need), Need);
@@ -87,7 +104,7 @@ namespace TapDoc
             if (IsAlive) Complete();
         }
 
-        /// <summary>Tô vàng dòng đúng đầu tiên chưa tìm.</summary>
+        /// <summary>Tô vàng dòng đúng đầu tiên chưa tìm, mở trang có dòng đó.</summary>
         private void ShowHint()
         {
             for (var k = 0; k < Step.items.Count; k++)
@@ -95,6 +112,7 @@ namespace TapDoc
                 if (Step.items[k].role != "target" || _found.Contains(k)) continue;
                 if (_hint >= 0) _lines[_hint].SetHint(false);
                 _hint = k;
+                if (k / PerPage != Page) ShowPage(k / PerPage);
                 _lines[k].SetHint(true);
                 return;
             }

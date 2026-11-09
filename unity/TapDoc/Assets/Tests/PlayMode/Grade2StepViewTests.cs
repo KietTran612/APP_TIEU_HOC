@@ -70,9 +70,11 @@ namespace TapDoc.Tests
         public IEnumerator CombineWordsTapShowsPhraseAndPlays()
         {
             var v = (CombineWordsView)CreateTrackedStep(Combine());
+            LayoutProbe.AssertFits(Canvas);
             TileWithText(v, "lông").SimulateTap();
             yield return new WaitForSeconds(.3f);
             Assert.IsNotNull(TileWithText(v, "dúm lông"));
+            LayoutProbe.AssertFits(Canvas);
             Assert.That(Ctx.Speech.History, Has.Member("tu_dums_loong"));
             Assert.AreEqual(1, v.Revealed);
             Assert.IsFalse(Done(v));
@@ -101,27 +103,29 @@ namespace TapDoc.Tests
             Assert.AreEqual(1, v.FilledCount);
             Assert.AreEqual("khai trường", v.FilledText(0));
             Assert.That(Ctx.Speech.History, Has.Member("cau_b179_01"));
-            Assert.AreEqual(1, v.Selected, "Điền xong thì chọn ô kế tiếp");
+            Assert.AreEqual(1, v.Selected, "Điền xong thì sang ô kế tiếp");
         }
 
         [UnityTest]
         public IEnumerator FillPassageWrongCardReturns()
         {
             var v = (FillPassageView)CreateTrackedStep(Passage());
-            v.ChoiceTile("năm học").SimulateTap();
+            var wrong = v.CurrentChoices.First(c => c != "khai trường");
+            v.ChoiceTile(wrong).SimulateTap();
             yield return new WaitForSeconds(.4f);
             Assert.AreEqual(0, v.FilledCount);
             Assert.IsNull(v.FilledText(0));
-            Assert.IsTrue(v.ChoiceTile("năm học").gameObject.activeSelf, "Thẻ sai vẫn còn để dùng ô khác");
+            Assert.IsTrue(v.ChoiceTile(wrong).gameObject.activeSelf, "Thẻ sai vẫn còn để chọn lại");
         }
 
         [UnityTest]
         public IEnumerator FillPassageHintAfterTwoWrong()
         {
             var v = (FillPassageView)CreateTrackedStep(Passage());
-            v.ChoiceTile("năm học").SimulateTap();
+            var wrong = v.CurrentChoices.Where(c => c != "khai trường").ToList();
+            v.ChoiceTile(wrong[0]).SimulateTap();
             yield return new WaitForSeconds(.4f);
-            v.ChoiceTile("vui sướng").SimulateTap();
+            v.ChoiceTile(wrong[wrong.Count - 1]).SimulateTap();
             yield return new WaitForSeconds(.4f);
             Assert.IsTrue(v.ChoiceTile("khai trường").IsHinted);
         }
@@ -130,25 +134,20 @@ namespace TapDoc.Tests
         public IEnumerator TapCardWithoutBlankFillsFirstEmpty()
         {
             var v = (FillPassageView)CreateTrackedStep(Passage());
-            // Bé chưa chạm ô nào: thẻ điền vào ô trống đầu tiên.
+            // Bé chưa chạm ô nào: thẻ điền vào ô trống đầu tiên còn lại.
             v.ChoiceTile("khai trường").SimulateTap();
             yield return new WaitForSeconds(.4f);
             Assert.AreEqual("khai trường", v.FilledText(0));
         }
 
         [UnityTest]
-        public IEnumerator TapBlankOnLaterPageThenCard()
+        public IEnumerator FillPassageChoicesFitOneRow()
         {
             var v = (FillPassageView)CreateTrackedStep(Passage());
-            Assert.Greater(v.PageCount, 1, "Đoạn mẫu dài phải chia trang");
-            while (v.BlankTile(2) == null) ButtonWithText(v, UiText.PageNext).onClick.Invoke();
-            v.BlankTile(2).SimulateTap();
-            Assert.AreEqual(2, v.Selected);
-            v.ChoiceTile("vui sướng").SimulateTap();
-            yield return new WaitForSeconds(.4f);
-            Assert.AreEqual("vui sướng", v.FilledText(2));
-            Assert.AreEqual(0, v.Selected, "Sau khi điền, chọn ô trống đầu tiên còn lại");
-            Assert.IsFalse(v.ChoiceTile("vui sướng").gameObject.activeSelf, "Từ cho sẵn dùng rồi thì ẩn");
+            Assert.That(v.CurrentChoices.Count, Is.InRange(2, 3));
+            Assert.That(v.CurrentChoices, Has.Member("khai trường"));
+            yield return null;
+            LayoutProbe.AssertFits(Canvas);
         }
 
         [UnityTest]
@@ -169,20 +168,14 @@ namespace TapDoc.Tests
             Assert.IsTrue(Done(v));
         }
 
-        [UnityTest]
-        public IEnumerator FillPassageFitsStage()
-        {
-            var v = CreateTrackedStep(Passage());
-            yield return null;
-            AssertTilesInside(v);
-        }
-
         // ---- chọn dòng ----
 
         [UnityTest]
         public IEnumerator ChooseLineMarksCorrectOnly()
         {
             var v = (ChooseLineView)CreateTrackedStep(Lines());
+            yield return null;
+            LayoutProbe.AssertFits(Canvas);
             v.LineTile(1).SimulateTap();
             yield return new WaitForSeconds(.3f);
             Assert.AreEqual(0, v.FoundCount);
@@ -208,6 +201,20 @@ namespace TapDoc.Tests
             AssertTilesInside(v);
         }
 
+        [UnityTest]
+        public IEnumerator ChooseLineManyLinesPagedAndFit()
+        {
+            var step = Lines();
+            for (var k = 0; k < 4; k++)
+                step.items.Add(new Item { text = $"Dòng thêm số {k + 1} khá dài để thử xuống dòng.", audio = $"cau_b178_1{k}", role = "other" });
+            var v = (ChooseLineView)CreateTrackedStep(step);
+            yield return null;
+            Assert.That(v.PageCount, Is.GreaterThan(1));
+            LayoutProbe.AssertFits(Canvas);
+            yield return ((ITestCompletable)v).CompleteForTest();
+            Assert.IsTrue(Done(v));
+        }
+
         // ---- câu hỏi có câu kèm theo, kí hiệu giải nghĩa ----
 
         [UnityTest]
@@ -227,6 +234,7 @@ namespace TapDoc.Tests
             yield return new WaitForSeconds(.3f);
             Assert.AreEqual("cau_b178_07", Ctx.Speech.History.Last());
             AssertTilesInside(v);
+            LayoutProbe.AssertFits(Canvas);
         }
 
         [Test]

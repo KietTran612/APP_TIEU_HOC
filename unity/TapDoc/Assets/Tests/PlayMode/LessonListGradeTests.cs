@@ -136,6 +136,12 @@ namespace TapDoc.Tests
         [UnityTest]
         public IEnumerator Grade1OnlyIndex_NoTabs()
         {
+            var real = new ResourcesContentSource();
+            var source = new FakeContentSource { Fallback = real.Load };
+            source.Put(ContentKind.LessonIndex, null, new TextAsset(
+                "{\"books\":[],\"lessons\":[{\"lesson_id\":\"tv1_t1_b01\",\"lesson_no\":1,\"title\":\"o\",\"type\":\"am_moi\"," +
+                "\"book\":\"tv1_t1_1990\",\"part\":\"chu_cai\",\"label\":\"Bài 1\",\"week\":0}]}"));
+            AppRoot.SourceFactory = () => source;
             yield return LoadMainWithProfile();
             Assert.IsNull(List().GradeTabButton(1));
             Assert.IsNull(List().GradeTabButton(2));
