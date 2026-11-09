@@ -140,7 +140,9 @@ namespace TapDoc.Tests
         [Test]
         public void SystemIcons_AllInSystemImages()
         {
-            Assert.AreEqual(13, SystemIcons.All.Length);
+            Assert.AreEqual(14, SystemIcons.All.Length);
+            Assert.AreEqual("img_ui_tu_sach", SystemIcons.Shelf);
+            Assert.AreEqual("img_bia_tv1_t1_1990", SystemImages.CoverOf("tv1_t1_1990"));
             CollectionAssert.Contains(SystemIcons.All, "img_ui_cai_dat");
             Assert.AreEqual("img_ui_cai_dat", SystemIcons.Settings);
             CollectionAssert.IsSubsetOf(SystemIcons.All, SystemImages.All);

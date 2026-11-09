@@ -5,6 +5,7 @@ import sys
 import threading
 import webbrowser
 
+from .books import load_books
 from .build import BuildError, build_all
 from .chatgpt_requests import write_request_files
 from .importer import import_audio_zip, import_clips, import_image
@@ -164,7 +165,7 @@ def _cmd_import_clips(args: argparse.Namespace) -> int:
 
 def _cmd_ui_icons(args: argparse.Namespace) -> int:
     image_dir = UNITY_RES / "images"
-    written = write_ui_icons(image_dir, force=args.force)
+    written = write_ui_icons(image_dir, force=args.force, book_ids=[b["book_id"] for b in load_books()])
     for image_id in written:
         print(f"Đã ghi {image_dir / (image_id + '.png')}")
     print(f"Hình mặc định: ghi {len(written)} file" if written else "Hình mặc định: đã đủ, không ghi gì")

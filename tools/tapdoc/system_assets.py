@@ -4,6 +4,8 @@ Danh mục âm thanh/tranh (Task 6) lấy các mã này từ đây; file bài h�
 `instruction_audio`, không liệt kê lại trong `BuildResult.audio`.
 """
 
+from .books import load_books
+
 # mã -> lời đọc
 SYSTEM_AUDIO: dict[str, str] = {
     "hd_nghe_chon_chu": "Con nghe rồi chọn chữ đúng nhé.",
@@ -56,11 +58,19 @@ SYSTEM_IMAGES: dict[str, str] = {
     "img_ui_xong": "Biểu tượng con đọc xong rồi: dấu tích",
     "img_ui_khoa": "Biểu tượng bài chưa mở: ổ khoá nhỏ màu nhạt",
     "img_ui_cai_dat": "Biểu tượng mở menu Cài đặt: bánh răng",
+    "img_ui_tu_sach": "Biểu tượng về Tủ sách: kệ có ba gáy sách",
     "img_ui_lat_truoc": "Biểu tượng trang trước: tờ giấy gấp góc, mũi tên nhỏ chỉ sang trái",
     "img_ui_lat_sau": "Biểu tượng trang sau: tờ giấy gấp góc, mũi tên nhỏ chỉ sang phải",
     "img_ui_sao_giay": "Ngôi sao giấy màu vàng viền mực, bung ra khi bé làm đúng",
     "img_ui_canh_hoa": "Cánh hoa hồng hình giọt nước viền mực, rơi ra khi dán hoa vào sổ",
 }
+
+# Bìa mỗi quyển ở Tủ sách (thiết kế Tủ sách mục 9): mã theo books.json, thêm quyển không phải sửa danh sách này.
+SYSTEM_IMAGES.update({
+    f"img_bia_{book['book_id']}": f"Bìa quyển {book['title']} ở Tủ sách: tranh không chữ, nét mực, màu kiểu SGK xưa, "
+                                  "chừa khoảng trống phía trên cho tên quyển"
+    for book in load_books()
+})
 
 # Tiếng động khi tương tác: tách hẳn khỏi âm thanh phát âm (`SYSTEM_AUDIO`). Mã luôn bắt đầu bằng `sfx_`,
 # file nằm ở `Resources/sfx/` (không phải `audio/`), không vào danh mục âm thanh hay lệnh `tts`.

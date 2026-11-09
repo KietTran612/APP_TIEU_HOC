@@ -82,7 +82,8 @@ class RenderTest(unittest.TestCase):
 
     def test_ids_match_system_images(self):
         self.assertTrue(set(ui_icons.ICONS) <= set(SYSTEM_IMAGES))
-        self.assertEqual(len(ui_icons.ICONS), 13)
+        self.assertEqual(len(ui_icons.ICONS), 14)
+        self.assertIn("img_ui_tu_sach", ui_icons.ICONS)
         self.assertIn("img_ui_cai_dat", ui_icons.ICONS)
         self.assertIn(FLOWER, SYSTEM_IMAGES)
         self.assertIn(MASCOT, SYSTEM_IMAGES)
@@ -119,6 +120,20 @@ class WriteAllTest(unittest.TestCase):
         self.assertEqual((self.dir / f"{FLOWER}.png").read_bytes(), b"x")
         self.assertEqual((self.dir / f"{MASCOT}.png").read_bytes(), b"x")
         self.assertEqual(set(written), set(ui_icons.ICONS))
+
+    def test_cover_png_size_and_no_overwrite(self):
+        """Bìa tạm: chữ nhật đứng 3:4, mỗi quyển một màu; có rồi thì không ghi đè, kể cả force."""
+        with mock.patch.object(ui_icons, "COVER_SIZE", (30, 40)):
+            written = ui_icons.write_all(self.dir, book_ids=["tv1_t1_1990", "tv2_t1_2001"])
+            self.assertIn("img_bia_tv1_t1_1990", written)
+            png = (self.dir / "img_bia_tv1_t1_1990.png").read_bytes()
+            self.assertEqual(struct.unpack(">II", png[16:24]), (30, 40))
+            a, b = decode_rgba(png), decode_rgba((self.dir / "img_bia_tv2_t1_2001.png").read_bytes())
+            self.assertNotEqual(a[20][20], b[20][20], "mỗi quyển một màu bìa")
+            (self.dir / "img_bia_tv1_t1_1990.png").write_bytes(b"x")
+            written = ui_icons.write_all(self.dir, force=True, book_ids=["tv1_t1_1990"])
+            self.assertNotIn("img_bia_tv1_t1_1990", written)
+            self.assertEqual((self.dir / "img_bia_tv1_t1_1990.png").read_bytes(), b"x")
 
     def test_glossary_placeholder_drawn(self):
         # Kí hiệu [:] giải nghĩa từ (lớp 2): hình tạm cho tới khi có tranh chính thức cùng mã.

@@ -10,6 +10,7 @@ from unittest import mock
 
 import tapdoc.build as build_mod
 
+from tapdoc.books import load_books
 from tapdoc import __main__ as cli
 from tapdoc.build import BuildError, BuildResult, _Builder, build_all, build_lesson, load_sources
 from tapdoc.system_assets import SYSTEM_AUDIO, SYSTEM_IMAGES
@@ -654,13 +655,15 @@ class SystemAssetsTest(unittest.TestCase):
 
     def test_system_images(self):
         avatars = {f"img_chung_avatar_{n:02d}" for n in range(1, 7)}  # hình đại diện cho bé chọn (MVP Task 5)
+        # Bìa mỗi quyển ở Tủ sách (thiết kế Tủ sách mục 9): mã theo books.json.
+        covers = {f"img_bia_{b['book_id']}" for b in load_books()}
         # Giao diện mới: hoa bé ngoan, gà con và 12 biểu tượng trên nút (hình mặc định của `ui-icons`).
         ui = {"img_chung_hoa_be_ngoan", "img_chung_ga_con"} | {
             f"img_ui_{n}" for n in ("nha", "loa", "tiep", "lui", "so", "on_lai", "xong", "khoa",
-                                    "lat_truoc", "lat_sau", "sao_giay", "canh_hoa", "cai_dat")}
+                                    "lat_truoc", "lat_sau", "sao_giay", "canh_hoa", "cai_dat", "tu_sach")}
         self.assertEqual(set(SYSTEM_IMAGES),
                          {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap", "img_chung_cau_hoi",
-                          "img_chung_giai_nghia"} | avatars | ui)
+                          "img_chung_giai_nghia"} | avatars | ui | covers)
         self.assertIn("con mèo", SYSTEM_IMAGES["img_chung_avatar_01"])
         self.assertTrue(all(unicodedata.is_normalized("NFC", v) for v in SYSTEM_IMAGES.values()))
 

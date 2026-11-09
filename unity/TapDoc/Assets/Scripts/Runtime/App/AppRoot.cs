@@ -77,6 +77,7 @@ namespace TapDoc
 
         /// <summary>Bộ tranh, âm thanh của màn hiện tại (bài, ôn lại, Phụ huynh); bộ chung nằm riêng trong catalog.</summary>
         private ContentSet _currentSet;
+        private ContentSet _coverSet;
 
         private const float ScreenFadeSeconds = .25f;
 
@@ -126,6 +127,10 @@ namespace TapDoc
                     await Lessons.LoadAppendixAsync(book);
                     if (this == null) return;
                 }
+                // Ảnh bìa ở Tủ sách: giữ suốt phiên; quyển chưa có ảnh thì Tủ sách dùng nền màu (không báo thiếu).
+                var covers = BookShelf.BookIds(index).Select(SystemImages.CoverOf).Where(Assets.HasImage)
+                    .Select(id => (ContentKind.Image, id)).ToList();
+                _coverSet = await Assets.PrepareAsync(covers);
                 if (this == null) return;
             }
             catch (Exception ex)

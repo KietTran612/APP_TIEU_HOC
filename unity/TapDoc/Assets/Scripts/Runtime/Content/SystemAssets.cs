@@ -59,6 +59,9 @@ namespace TapDoc
         public static readonly string[] All = new[] { Star, EmDoc, LuyenTap, CauHoi, GiaiNghia, Flower, Mascot }
             .Concat(SystemIcons.All).ToArray();
 
+        /// <summary>Ảnh bìa của quyển <paramref name="bookId"/> ở Tủ sách (không có chữ; app viết tên quyển lên).</summary>
+        public static string CoverOf(string bookId) => "img_bia_" + bookId;
+
         public static string ForMarker(string marker)
         {
             if (string.IsNullOrEmpty(marker)) return null;
@@ -89,9 +92,12 @@ namespace TapDoc
         /// <summary>Nút bánh răng mở menu Cài đặt.</summary>
         public const string Settings = "img_ui_cai_dat";
 
+        /// <summary>Nút về Tủ sách: kệ có ba gáy sách.</summary>
+        public const string Shelf = "img_ui_tu_sach";
+
         public static readonly string[] All =
         {
-            Home, Speaker, Forward, Backward, Book, Review, Check, Lock, PagePrev, PageNext, PaperStar, Petal, Settings,
+            Home, Speaker, Forward, Backward, Book, Review, Check, Lock, PagePrev, PageNext, PaperStar, Petal, Settings, Shelf,
         };
     }
 

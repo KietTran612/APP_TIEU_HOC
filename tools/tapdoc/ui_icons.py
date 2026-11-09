@@ -26,6 +26,9 @@ LOCKED_FILL = (216, 206, 182)
 LOCKED_INK = (166, 156, 134)
 
 ICON_SIZE = 192
+COVER_SIZE = (600, 800)  # bìa tạm ở Tủ sách: chữ nhật đứng 3:4
+# Màu bìa tạm theo thứ tự quyển (cam nhạt, lam ngọc nhạt, tím nhạt, xanh lá nhạt, vàng nhạt), lặp lại khi nhiều quyển.
+COVER_COLORS = [(248, 211, 166), (169, 212, 214), (221, 205, 232), (196, 225, 190), (245, 226, 160)]
 FLOWER_SIZE = 256
 VIEW = 24.0
 SAMPLES = 4  # lấy mẫu 4×4 trong mỗi điểm ảnh để viền mịn
@@ -127,6 +130,16 @@ ICONS: dict[str, list] = {
                         ("stroke", _star(12, 12.6, 9.5, 4), 1.4, INK, True)],
     "img_ui_canh_hoa": [("fill", _PETAL, PETAL_PINK), ("stroke", _PETAL, 1.3, INK, True)],
     # Bánh răng nền giấy viền mực, lỗ giữa để trống (thấy nền nút).
+    # Kệ có ba gáy sách đứng: nút về Tủ sách.
+    "img_ui_tu_sach": [
+        ("fill", [(4.5, 6), (8.5, 6), (8.5, 18.5), (4.5, 18.5)], (239, 157, 79)),
+        ("stroke", [(4.5, 6), (8.5, 6), (8.5, 18.5), (4.5, 18.5)], 1.3, INK, True),
+        ("fill", [(9.5, 4.5), (13.5, 4.5), (13.5, 18.5), (9.5, 18.5)], TEAL),
+        ("stroke", [(9.5, 4.5), (13.5, 4.5), (13.5, 18.5), (9.5, 18.5)], 1.3, INK, True),
+        ("fill", [(14.5, 7.2), (18, 6.2), (20.6, 17.8), (17.1, 18.8)], PAPER),
+        ("stroke", [(14.5, 7.2), (18, 6.2), (20.6, 17.8), (17.1, 18.8)], 1.3, INK, True),
+        ("stroke", [(3, 19.8), (21, 19.8)], 1.8, INK, False),
+    ],
     "img_ui_cai_dat": _gear_teeth(12, 12, 6.0, 9.8) + _outlined(_arc(12, 12, 5.2, 0, 360, 48), 3.8, closed=True),
 }
 
@@ -251,8 +264,43 @@ def _png(width: int, height: int, raw: bytes) -> bytes:
             + chunk(b"IDAT", zlib.compress(raw, 9)) + chunk(b"IEND", b""))
 
 
-def write_all(image_dir: Path, force: bool = False) -> list[str]:
+def render_cover(index: int) -> bytes:
+    """Bìa tạm của quyển thứ ``index``: nền màu theo thứ tự, gáy tối bên trái, khung giấy sáng phía trên (chỗ app
+    viết tên quyển), viền mực; không có chữ."""
+    width, height = COVER_SIZE
+    base = COVER_COLORS[index % len(COVER_COLORS)]
+    border = max(2, width // 75)
+    spine = width // 12
+    label = (width // 6, height // 10, width - width // 10, height * 2 // 5)
+    raw = bytearray()
+    for y in range(height):
+        raw.append(0)
+        for x in range(width):
+            if x < border or y < border or x >= width - border or y >= height - border:
+                color = INK
+            elif x < spine:
+                color = tuple(int(c * 0.78) for c in base)
+            elif x < spine + border:
+                color = INK
+            elif label[0] <= x < label[2] and label[1] <= y < label[3]:
+                edge = x < label[0] + border or x >= label[2] - border or y < label[1] + border or y >= label[3] - border
+                color = INK if edge else PAPER
+            else:
+                color = base
+            raw += bytes((*color, 255))
+    return _png(width, height, bytes(raw))
+
+
+def cover_id(book_id: str) -> str:
+    """Mã ảnh bìa của quyển ở Tủ sách (thiết kế Tủ sách mục 9)."""
+    return f"img_bia_{book_id}"
+
+
+def write_all(image_dir: Path, force: bool = False, book_ids=()) -> list[str]:
     """Ghi các hình mặc định còn thiếu vào ``image_dir``, trả về các mã đã ghi.
+
+    ``book_ids``: các quyển cần bìa tạm (theo thứ tự quyển, để mỗi quyển một màu); bìa đã có không bao giờ bị ghi
+    đè, vì đó là chỗ bìa chính thức thay vào.
 
     ``force`` vẽ lại mọi biểu tượng; hoa, gà con và kí hiệu [:] thì không bao giờ ghi đè, vì đó là chỗ
     tranh chính thức sẽ thay vào.
@@ -272,6 +320,11 @@ def write_all(image_dir: Path, force: bool = False) -> list[str]:
     if not flower.exists():
         flower.write_bytes(render(FLOWER, FLOWER_SIZE))
         written.append(FLOWER_ID)
+    for i, book_id in enumerate(book_ids):
+        cover = image_dir / f"{cover_id(book_id)}.png"
+        if not cover.exists():
+            cover.write_bytes(render_cover(i))
+            written.append(cover_id(book_id))
     mascot, source = image_dir / f"{MASCOT_ID}.png", image_dir / f"{MASCOT_SOURCE_ID}.png"
     if not mascot.exists() and source.exists():
         shutil.copyfile(source, mascot)
