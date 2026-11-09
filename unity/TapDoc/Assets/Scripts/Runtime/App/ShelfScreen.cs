@@ -31,7 +31,7 @@ namespace TapDoc
         private const float CoverWidth = 300f;
         private const float CoverHeight = 400f;
         private const float CoverGap = 60f;
-        private const float ProgressHeight = 90f;
+        private const float ProgressHeight = 120f; // chừa chỗ dưới vạch kệ cho dòng "Đã học x/y bài" và thanh tiến độ
         private const float GlowWidth = 10f;
 
         // Nền dự phòng khi quyển chưa có ảnh bìa, theo thứ tự quyển (như bìa tạm của công cụ Python).
@@ -216,7 +216,7 @@ namespace TapDoc
             var label = UiKit.CreateLabel(item.transform, string.Format(UiText.BookProgressFormat, done, total), 36f);
             var lrt = label.rectTransform;
             lrt.anchorMin = lrt.anchorMax = lrt.pivot = new Vector2(.5f, 0f);
-            lrt.sizeDelta = new Vector2(CoverWidth, ProgressHeight - 30f);
+            lrt.sizeDelta = new Vector2(CoverWidth, 60f);
             lrt.anchoredPosition = new Vector2(0f, 24f);
             _progress[bookId] = label;
             AddBar(item.transform, total > 0 ? (float)done / total : 0f);
