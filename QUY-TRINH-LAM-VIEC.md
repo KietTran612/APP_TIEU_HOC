@@ -285,6 +285,8 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Tranh vô lý (cá thờn bơn hai mắt hai bên, trẻ con giơ tạ) | Xem từng tranh trên tờ kiểm tra; sửa mô tả cho rõ rồi vẽ lại | 30/10, f9f0203; 09/11, 7f13b2a |
 | Tranh bản đồ chưa vẽ lại được | Chủ dự án cho dùng tạm ảnh cắt từ scan (`import-image --scan-tam`), bản phát hành tự bị chặn | 05/11, c31e355 |
 | Tải về bị trùng tên "(1)" | Kiểm tra trùng tên trong Downloads trước khi tải; nhập xong thì chuyển file vào Thùng rác | 05/11 |
+| Lệnh JS tải cả đợt (khoảng 18 ảnh) chạy quá 45 giây, công cụ trình duyệt báo hết giờ; trang vẫn tải tiếp nhưng không trả kết quả | Gọi hàm tải mà không `await`; hàm ghi kết quả vào `window.__dlres`, đọc lại sau ít giây. Đếm file trong Downloads để xác nhận đủ | 09/11 |
+| Một lô chờ trình duyệt dài quá khoảng 2 phút thì mất kết nối | Mỗi lô chờ tối đa khoảng 110 giây, rồi đọc tiến độ trong `window.__prog`. Mất kết nối thì chỉ đọc lại trạng thái một lần, không gửi lại thao tác | 09/11 |
 
 ### Tranh động (Flow)
 
