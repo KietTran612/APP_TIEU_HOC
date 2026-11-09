@@ -130,13 +130,13 @@ def step_question(b, step: dict, where: str) -> dict:
              "audio": question_audio(b, step["text"], where)}
     if step.get("lines"):
         # Các câu sách in kèm câu hỏi (lớp 2): hiện dưới câu hỏi, chạm để nghe.
-        built["lines"] = [{"text": t, "audio": b._sentence_audio(t, f"{where}.lines[{k}]")}
-                          for k, t in enumerate(step["lines"])]
+        built["rows"] = [{"text": t, "audio": b._sentence_audio(t, f"{where}.lines[{k}]")}
+                         for k, t in enumerate(step["lines"])]
     return built
 
 
 def step_combine_words(b, step: dict, where: str) -> dict:
-    """Ghép chữ rồi đọc lên (lớp 2): chữ gốc ghép trước hoặc sau từng chữ cho sẵn."""
+    """Ghép chữ rồi đọc lên (lớp 2): chữ gốc (`text`) ghép trước hoặc sau từng chữ cho sẵn (`items[].part`)."""
     base = nfc(step["base"])
     items = []
     for k, entry in enumerate(step["items"]):
@@ -145,27 +145,31 @@ def step_combine_words(b, step: dict, where: str) -> dict:
         if at not in ("before", "after"):
             raise b.error(item_where, f"at phải là before hoặc after: {at!r}")
         text = f"{base} {part}" if at == "after" else f"{part} {base}"
-        items.append({"part": part, "text": text, "audio": b._audio(text_audio(text), item_where)})
+        items.append({"text": text, "audio": b._audio(text_audio(text), item_where), "part": part, "role": at})
     if not items:
         raise b.error(where, "combine_words cần ít nhất một chữ để ghép")
-    return {"type": "combine_words", "marker": step.get("marker", ""),
-            "base": {"text": base, "audio": b._audio(text_audio(base), where)}, "items": items}
+    return {"type": "combine_words", "marker": step.get("marker", ""), "text": base,
+            "audio": b._audio(text_audio(base), where), "items": items}
 
 
 _BLANK_RE = re.compile(r"\[([^\]]+)\]")
 
 
 def step_fill_passage(b, step: dict, where: str) -> dict:
-    """Điền từ vào đoạn văn (lớp 2): ô viết "[đáp án]" khi có `bank`, "[đáp án|nhiễu|nhiễu]" khi không có."""
+    """Điền từ vào đoạn văn (lớp 2): ô viết "[đáp án]" khi có `bank`, "[đáp án|nhiễu|nhiễu]" khi không có.
+
+    `rows`: các câu đủ chữ (âm thanh đọc cả câu); `items`: các mảnh chữ (`role` text) và ô (`role` blank, có
+    `answer`, `choices`) theo thứ tự, `row` là chỉ số câu; `labels`: các từ cho sẵn (rỗng khi mỗi ô có lựa chọn riêng).
+    """
     bank = [nfc(w) for w in step.get("bank", [])]
-    sentences, blanks = [], []
+    rows, items, answers = [], [], []
     for k, raw in enumerate(step["text"]):
         line_where = f"{where}.text[{k}]"
-        line, parts, full, pos = nfc(raw), [], [], 0
+        line, full, pos = nfc(raw), [], 0
         for m in _BLANK_RE.finditer(line):
-            if m.start() > pos:
-                parts.append({"t": line[pos:m.start()]})
-                full.append(line[pos:m.start()])
+            if line[pos:m.start()].strip():
+                items.append({"text": line[pos:m.start()].strip(), "row": k, "role": "text"})
+            full.append(line[pos:m.start()])
             options = [o.strip() for o in m.group(1).split("|")]
             answer = options[0]
             if bank:
@@ -178,39 +182,35 @@ def step_fill_passage(b, step: dict, where: str) -> dict:
                 if len(options) < 2:
                     raise b.error(line_where, f"không có bank thì ô cần lựa chọn riêng [đáp án|nhiễu]: {m.group(0)!r}")
                 choices = options
-            parts.append({"blank": len(blanks)})
+            items.append({"text": answer, "row": k, "role": "blank", "answer": answer, "choices": choices})
             full.append(answer)
-            blanks.append({"answer": answer, "choices": choices})
+            answers.append(answer)
             pos = m.end()
-        if pos < len(line):
-            parts.append({"t": line[pos:]})
-            full.append(line[pos:])
+        if line[pos:].strip():
+            items.append({"text": line[pos:].strip(), "row": k, "role": "text"})
+        full.append(line[pos:])
         text = "".join(full)
-        sentences.append({"text": text, "audio": b._sentence_audio(text, line_where), "parts": parts})
-    if not blanks:
+        rows.append({"text": text, "audio": b._sentence_audio(text, line_where), "row": k})
+    if not answers:
         raise b.error(where, "fill_passage cần ít nhất một ô trống")
-    if bank:
-        for word in {bl["answer"] for bl in blanks}:
-            used = sum(1 for bl in blanks if bl["answer"] == word)
-            if used > bank.count(word):
-                raise b.error(where, f"{word!r} điền {used} ô nhưng bank chỉ có {bank.count(word)}")
-    return {"type": "fill_passage", "marker": step.get("marker", ""), "bank": bank, "sentences": sentences,
-            "blanks": blanks}
+    for word in set(answers) if bank else ():
+        if answers.count(word) > bank.count(word):
+            raise b.error(where, f"{word!r} điền {answers.count(word)} ô nhưng bank chỉ có {bank.count(word)}")
+    return {"type": "fill_passage", "marker": step.get("marker", ""), "labels": bank, "rows": rows, "items": items}
 
 
 def step_choose_line(b, step: dict, where: str) -> dict:
-    """Chọn các dòng đúng yêu cầu ("dòng nào viết chưa thành câu?"); đáp án Claude soạn, can_duyet ở nguồn."""
+    """Chọn các dòng đúng yêu cầu ("dòng nào viết chưa thành câu?"): dòng đúng `role` target; đáp án Claude soạn."""
     lines, answers = step["lines"], step.get("answers", [])
     if not answers:
         raise b.error(where, "choose_line cần ít nhất một đáp án")
     bad = [a for a in answers if not isinstance(a, int) or isinstance(a, bool) or not 0 <= a < len(lines)]
     if bad:
         raise b.error(where, f"answers ngoài danh sách dòng: {bad!r}")
-    items = [{"text": t, "audio": b._sentence_audio(t, f"{where}.lines[{k}]"), "correct": k in answers}
-             for k, t in enumerate(lines)]
-    return {"type": "choose_line", "marker": step.get("marker", ""),
-            "question": {"text": step["question"], "audio": question_audio(b, step["question"], where)},
-            "items": items}
+    items = [{"text": t, "audio": b._sentence_audio(t, f"{where}.lines[{k}]"),
+              "role": "target" if k in answers else "other"} for k, t in enumerate(lines)]
+    return {"type": "choose_line", "marker": step.get("marker", ""), "text": step["question"],
+            "audio": question_audio(b, step["question"], where), "items": items, "need": len(set(answers))}
 
 
 def step_memorize(b, step: dict, where: str) -> dict:

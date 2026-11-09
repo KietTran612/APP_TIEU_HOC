@@ -127,9 +127,10 @@ class CombineWordsTest(unittest.TestCase):
         st = step_of({"type": "combine_words", "base": "dúm", "items": [{"with": "lông", "at": "after"},
                                                                          {"with": "muối", "at": "after"}]})
         self.assertEqual(st["type"], "combine_words")
-        self.assertEqual(st["base"]["text"], "dúm")
+        self.assertEqual(st["text"], "dúm")
+        self.assertTrue(st["audio"].startswith("tieng_"))
         self.assertEqual([i["text"] for i in st["items"]], ["dúm lông", "dúm muối"])
-        self.assertEqual(st["items"][0]["part"], "lông")
+        self.assertEqual((st["items"][0]["part"], st["items"][0]["role"]), ("lông", "after"))
         self.assertTrue(st["items"][0]["audio"].startswith("tu_"))
 
     def test_combine_words_before(self):
@@ -146,20 +147,22 @@ class FillPassageTest(unittest.TestCase):
         st = step_of({"type": "fill_passage", "bank": BANK,
                       "text": ["Sắp đến ngày [khai trường], nhận được quà của bố, Lan càng thêm náo nức."]},
                      lesson_type="tap_lam_van")
-        sentence = st["sentences"][0]
-        self.assertEqual(sentence["text"], "Sắp đến ngày khai trường, nhận được quà của bố, Lan càng thêm náo nức.")
-        self.assertEqual(sentence["parts"][0], {"t": "Sắp đến ngày "})
-        self.assertEqual(sentence["parts"][1], {"blank": 0})
-        self.assertTrue(sentence["audio"].startswith("cau_b177_"))
-        self.assertEqual(st["blanks"][0], {"answer": "khai trường", "choices": BANK})
-        self.assertEqual(st["bank"], BANK)
+        row = st["rows"][0]
+        self.assertEqual(row["text"], "Sắp đến ngày khai trường, nhận được quà của bố, Lan càng thêm náo nức.")
+        self.assertTrue(row["audio"].startswith("cau_b177_"))
+        self.assertEqual(st["items"][0], {"text": "Sắp đến ngày", "row": 0, "role": "text"})
+        self.assertEqual(st["items"][1], {"text": "khai trường", "row": 0, "role": "blank", "answer": "khai trường",
+                                          "choices": BANK})
+        self.assertEqual(st["items"][2]["text"], ", nhận được quà của bố, Lan càng thêm náo nức.")
+        self.assertEqual(st["labels"], BANK)
 
     def test_fill_passage_own_choices(self):
         st = step_of({"type": "fill_passage", "text": ["Một năm có [mười hai|mười|mười một] tháng."]},
                      lesson_type="tu_ngu")
-        self.assertEqual(st["blanks"][0], {"answer": "mười hai", "choices": ["mười hai", "mười", "mười một"]})
-        self.assertEqual(st["sentences"][0]["text"], "Một năm có mười hai tháng.")
-        self.assertEqual(st["bank"], [])
+        blank = [i for i in st["items"] if i["role"] == "blank"][0]
+        self.assertEqual((blank["answer"], blank["choices"]), ("mười hai", ["mười hai", "mười", "mười một"]))
+        self.assertEqual(st["rows"][0]["text"], "Một năm có mười hai tháng.")
+        self.assertEqual(st["labels"], [])
 
     def test_fill_passage_answer_not_in_bank_fails(self):
         with self.assertRaises(BuildError):
@@ -184,8 +187,10 @@ class ChooseLineTest(unittest.TestCase):
         st = step_of({"type": "choose_line", "question": "Dòng nào viết chưa thành câu?",
                       "lines": NOT_SENTENCES, "answers": [0, 2, 4]}, lesson_type="ngu_phap")
         self.assertEqual(st["type"], "choose_line")
-        self.assertTrue(st["question"]["audio"].startswith("hoi_b177_"))
-        self.assertEqual([i["correct"] for i in st["items"]], [True, False, True, False, True])
+        self.assertEqual(st["text"], "Dòng nào viết chưa thành câu?")
+        self.assertTrue(st["audio"].startswith("hoi_b177_"))
+        self.assertEqual([i["role"] for i in st["items"]], ["target", "other", "target", "other", "target"])
+        self.assertEqual(st["need"], 3)
         self.assertTrue(st["items"][1]["audio"].startswith("cau_b177_"))
 
     def test_choose_line_bad_index_fails(self):
@@ -212,12 +217,12 @@ class QuestionLinesTest(unittest.TestCase):
     def test_question_lines(self):
         st = step_of({"type": "question", "text": "Đặt câu hỏi để tìm bộ phận chính thứ nhất trong hai câu sau:",
                       "lines": ["Con chìa vôi vừa hót vừa bay.", "Hoa mướp nở vàng rực."]}, lesson_type="ngu_phap")
-        self.assertEqual([l["text"] for l in st["lines"]], ["Con chìa vôi vừa hót vừa bay.", "Hoa mướp nở vàng rực."])
-        self.assertTrue(all(l["audio"].startswith("cau_b177_") for l in st["lines"]))
+        self.assertEqual([r["text"] for r in st["rows"]], ["Con chìa vôi vừa hót vừa bay.", "Hoa mướp nở vàng rực."])
+        self.assertTrue(all(r["audio"].startswith("cau_b177_") for r in st["rows"]))
 
     def test_question_without_lines_unchanged(self):
         st = step_of({"type": "question", "text": "Vì sao?"}, lesson_type="ngu_phap")
-        self.assertNotIn("lines", st)
+        self.assertNotIn("rows", st)
 
 
 class ColonMarkerTest(unittest.TestCase):
