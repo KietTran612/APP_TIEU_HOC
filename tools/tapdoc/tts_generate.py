@@ -32,6 +32,9 @@ def _json_bytes(value):
     return (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
 
 
+KEEP_PAD = 0.1  # phần đệm trim_mp3_span giữ thêm sau lời (mặc định của nó)
+
+
 def _speech_span(row, p, result):
     """Khoảng lời cần giữ: cả lời đọc, hoặc với keep_first chỉ các tiếng đầu (bằng số tiếng của chữ).
 
@@ -42,7 +45,11 @@ def _speech_span(row, p, result):
     count = len(tokens(row["text"]))
     if count == 0 or len(result.words) < count:
         raise TtsError(f"{row['id']}: không đủ mốc từ để cắt lấy tiếng đầu")
-    return result.words[0][0], result.words[count - 1][1]
+    start, end = result.words[0][0], result.words[count - 1][1]
+    if len(result.words) > count:
+        # Tiếng kế tiếp đọc liền ("mụ già."): phần đệm cuối (KEEP_PAD) không được lấn sang tiếng đó.
+        end = max(start + 0.05, min(end, result.words[count][0] - KEEP_PAD))
+    return start, end
 
 
 def _write_marks(marks_dir, row, p, result, offset) -> None:

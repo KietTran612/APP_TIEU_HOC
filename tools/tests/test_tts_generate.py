@@ -130,6 +130,17 @@ class KeepFirstGenerateTest(TempCase):
         self.assertTrue(result["tts"]["keep_first"])
         self.assertFalse(needs_regen(self.s, result))
 
+    def test_never_keeps_start_of_next_word(self):
+        # "mụ già." đọc liền: phần đệm sau tiếng giữ lại không được lấn sang tiếng kế tiếp.
+        set_override(self.s, self.r, doc="bờ già.", keep_first=True)
+        engine = FakeEngine(speech_start=0.2, speech_end=0.9, words=[(0.2, 0.5), (0.5, 0.9)])
+        with mock.patch("tapdoc.tts_generate.trim_mp3_span", wraps=trim_mp3_span) as trim:
+            generate_one(self.r, self.s, engine, self.audio, self.prev)
+        start, end = trim.call_args.args[1:3]
+        pad = trim.call_args.kwargs.get("pad", 0.1)
+        self.assertEqual(start, 0.2)
+        self.assertLessEqual(end + pad, 0.5 + 1e-9)
+
     def test_keeps_as_many_words_as_the_text(self):
         r = row("tu_bes_bi_boo", "bé bi bô", "tu")
         set_override(self.s, r, doc="bé bi bô, bé bi bô.", keep_first=True)

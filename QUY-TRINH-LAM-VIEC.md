@@ -168,7 +168,9 @@ Chi tiết đầy đủ ở `content/style/tranh_dong_huong_dan.md`: tài khoả
   | Lỗi | Cách sửa |
   |---|---|
   | Tiếng lẻ thanh hỏi, ngã bị đọc thành thanh huyền | Đọc "X, X." rồi chỉ giữ tiếng đầu (`keep_first`, cờ `--tieng-keep-first`). Vẫn sai thì đọc 3 lần "X, X, X.". Áp cho mọi tiếng lẻ mới ngay từ đầu |
-  | Tiếng lẻ thanh nặng, âm ê | Máy chưa đo được lỗi. Tạo nhiều bản, để chủ dự án chọn bằng tai trên trang nghe thử (`.superpowers/nghe-thu/`), rồi áp cách thắng cho cả nhóm |
+  | Tiếng lẻ thanh nặng | Máy chưa đo được lỗi. Chủ dự án chọn bằng tai: "bạ" đạt với hai câu "X. X." giữ tiếng đầu; "nụ" đạt khi đặt trong ngữ cảnh "nụ hoa." rồi giữ tiếng đầu. Mặc định áp "X. X."; tiếng nào vẫn sai thì thử đặt trong ngữ cảnh |
+  | Tiếng lẻ có âm ê | Máy chưa đo được lỗi. Chủ dự án chọn bằng tai: ê thanh sắc đọc 3 lần "X, X, X." ("ế"), hoặc "X, X." chậm −40% ("tế"); các thanh khác "X, X." giữ tiếng đầu |
+  | Mã khó còn lại | Tạo nhiều bản, để chủ dự án chọn bằng tai trên trang nghe thử (`.superpowers/nghe-thu/`), rồi áp cách thắng cho cả nhóm |
   | Hỏi, ngã nằm trong từ hoặc câu | Theo thứ tự ở dưới |
 
 - **Thứ tự sửa từ và câu** (chủ dự án quyết 09/11: **đọc đúng là trên hết**):
@@ -275,6 +277,7 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | edge-tts trả rỗng ngẫu nhiên; chạy 4 tiến trình thì treo hàng giờ | Chỉ 1 tiến trình, mỗi mã tối đa 90 giây, nghỉ vài giây giữa các mã, rồi chạy lượt bù. Kiểm tra định kỳ xem file mp3 mới còn được ghi không | 05–06/11 |
 | `tts --tieng-keep-first` báo "Đã tạo 0" với tiếng đã có file | Ghi cách đọc trước rồi mới chọn mã cần tạo | 09/11, 9678b22 |
 | Ghép tiếng bằng cách nối thẳng file MP3 thì khoảng nghỉ dài (khoảng 0,3 giây) và không bỏ được lặng đầu mỗi tiếng (khung MP3 mượn dữ liệu khung trước) | Giải mã từng tiếng ra PCM bằng Media Foundation của Windows, cắt lặng, cân RMS, chèn nghỉ 0,08 giây (dấu phẩy 0,25 giây), rồi mã hoá lại MP3 24 kHz mono cũng bằng Media Foundation (`CreateMp3`). Không cần ffmpeg. Lưu ý: đặt tần số mẫu cho bước giải mã thì Media Foundation từ chối, nên để mặc định rồi trộn kênh trong Python | 09/11, `audio_join.py` |
+| Đặt tiếng trong ngữ cảnh để giữ tiếng đầu ("mụ già.") thì bản cắt dính đầu tiếng sau, vì hai tiếng đọc liền và phần đệm 0,1 giây sau tiếng lấn sang tiếng kế | `keep_first` không giữ phần nào của tiếng kế tiếp: kết thúc đoạn giữ lùi về trước mốc đầu tiếng sau một khoảng bằng phần đệm | 09/11 |
 
 ### Tranh (ChatGPT)
 
