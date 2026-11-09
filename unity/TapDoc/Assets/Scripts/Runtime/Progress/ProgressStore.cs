@@ -66,6 +66,16 @@ namespace TapDoc
             }
         }
 
+        /// <summary>Quyển bé đang học đã mở ở Tủ sách; chưa chọn bé hay chưa mở quyển nào thì <c>null</c>.</summary>
+        public string OpenBook
+        {
+            get => string.IsNullOrEmpty(Current?.open_book) ? null : Current.open_book;
+            set
+            {
+                if (Current != null) Current.open_book = value;
+            }
+        }
+
         /// <summary>Lớp bé đang học đang xem ở danh sách bài (1 hoặc 2); chưa chọn bé hay chưa đặt thì lớp 1.</summary>
         public int GradeTab
         {
