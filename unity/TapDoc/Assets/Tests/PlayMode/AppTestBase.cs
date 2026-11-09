@@ -123,7 +123,7 @@ namespace TapDoc.Tests
             Press(ps.ButtonForProfile(profile.id));
             yield return null;
             Assert.IsNotNull(Object.FindAnyObjectByType<ShelfScreen>(), "Chọn bé xong mà không tới Tủ sách");
-            // Test cũ viết cho danh sách bài: mở quyển đầu (Tiếng Việt 1 – Tập một) như trước khi có Tủ sách.
+            // Test cũ viết cho danh sách bài: mở quyển đầu (Bé tập đọc 1) như trước khi có Tủ sách.
             AppRoot.Instance.OpenBook(BookShelf.BookIds(AppRoot.Instance.Lessons.Index)[0]);
             yield return null;
             Assert.IsNotNull(Object.FindAnyObjectByType<LessonListScreen>(), "Mở quyển đầu mà không tới danh sách bài");
