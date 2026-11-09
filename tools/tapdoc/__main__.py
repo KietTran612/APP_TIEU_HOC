@@ -22,6 +22,8 @@ from .viet import nfc
 _STATUSES = ("chua_co", "cho_duyet", "dat", "khong_dat")
 TTS_SETTINGS = ROOT / "content" / "tts" / "settings.json"
 TTS_PREV = ROOT / "content" / "tts" / "prev"
+TTS_PITCH_CACHE = ROOT / "content" / "tts" / "pitch_cache"  # WAV giải mã để đo cao độ (chỉ trên máy)
+TTS_MARKS = ROOT / "content" / "tts" / "marks"  # mốc từng tiếng của file vừa tạo (chỉ trên máy), để đo cao độ
 REVIEW_PORT = 8765  # cổng của công cụ duyệt, dùng chung cho lệnh review và mo
 
 
@@ -249,7 +251,7 @@ def _cmd_open(args: argparse.Namespace) -> int:
 def _cmd_tts(args: argparse.Namespace) -> int:
     from .tts_engine import EdgeEngine, TtsUnavailable
     from .tts_generate import run_batch, selected
-    from .tts_settings import load_settings
+    from .tts_settings import ensure_keep_first, load_settings, save_settings
 
     path = MANIFESTS / "audio_manifest.json"
     try:
@@ -260,6 +262,16 @@ def _cmd_tts(args: argparse.Namespace) -> int:
         filters = dict(lesson=args.bai, kind=args.loai, ids=args.ma,
                        include_approved=args.gom_da_duyet)
         wanted = [row for row in rows if selected(row, settings, **filters)]
+        if args.tieng_keep_first and not args.thu:
+            # Tiếng lẻ đọc trong câu đệm (HoaiMy đọc hỏi/ngã lẻ thành huyền). Đọc lại cấu hình ngay trước khi ghi
+            # để không xoá chỉnh sửa vừa lưu từ công cụ duyệt.
+            fresh = load_settings(TTS_SETTINGS)
+            changed = [r["id"] for r in wanted if r.get("kind") == "tieng"
+                       and ensure_keep_first(fresh, r["id"], r["text"])]
+            if changed:
+                save_settings(TTS_SETTINGS, fresh)
+                settings = fresh
+                print(f"Đọc trong câu đệm: {len(changed)} tiếng lẻ")
         if args.thu:
             for row in wanted:
                 print(row["id"])
@@ -281,7 +293,8 @@ def _cmd_tts(args: argparse.Namespace) -> int:
             if fresh:
                 save_rows(path, [fresh.get(r["id"], r) for r in load_rows(path)])
 
-        report = run_batch(rows, settings, engine, UNITY_RES / "audio", TTS_PREV, **filters, save=save)
+        report = run_batch(rows, settings, engine, UNITY_RES / "audio", TTS_PREV, **filters, save=save,
+                           marks_dir=TTS_MARKS)
     except TtsUnavailable as e:
         print(str(e), file=sys.stderr)
         return 2
@@ -292,6 +305,27 @@ def _cmd_tts(args: argparse.Namespace) -> int:
     for audio_id, reason in report.failed.items():
         print(_printable(f"  {audio_id}: {reason}"), file=sys.stderr)
     return 1 if report.failed else 0
+
+
+def _cmd_pitch(args: argparse.Namespace) -> int:
+    """Đo cao độ các tiếng hỏi/ngã của mã đã chọn; in mã không đạt (thiết kế TV2 tập một, mục 9)."""
+    from . import pitch_check
+
+    rows = load_rows(MANIFESTS / "audio_manifest.json")
+    wanted = [r for r in rows if (args.bai is None or args.bai in r.get("bai", []))
+              and (args.ma is None or r["id"] in args.ma)]
+    audio_dir = UNITY_RES / "audio"
+    templates = pitch_check.reference_templates(rows, audio_dir, TTS_PITCH_CACHE / "refs")
+    results = pitch_check.check_rows(wanted, audio_dir, TTS_MARKS, TTS_PITCH_CACHE, templates)
+    failed = [r for r in results if r["ok"] is False]
+    unchecked = [r for r in results if r["ok"] is None]
+    for r in failed:
+        print(_printable(f"KHÔNG ĐẠT {r['id']}: {r['word']} ({r['tone']}) nghe như {r['best']}"))
+    for r in unchecked:
+        print(_printable(f"chưa đo {r['id']}: {r['word']} — {r['why']}"))
+    print(f"Đã đo {len(results)} tiếng hỏi/ngã: đạt {len(results) - len(failed) - len(unchecked)}, "
+          f"không đạt {len(failed)}, chưa đo {len(unchecked)}")
+    return 1 if failed else 0
 
 
 def main(argv: list[str] | None = None, *, engine_factory=None) -> int:
@@ -344,7 +378,13 @@ def main(argv: list[str] | None = None, *, engine_factory=None) -> int:
     tts_cmd.add_argument("--ma", nargs="+", help="chỉ tạo các mã này")
     tts_cmd.add_argument("--gom-da-duyet", action="store_true", help="tạo lại cả mã đã duyệt")
     tts_cmd.add_argument("--thu", action="store_true", help="chỉ liệt kê mã sẽ tạo, không ghi file")
+    tts_cmd.add_argument("--tieng-keep-first", action="store_true",
+                         help="tiếng lẻ chưa có chỉnh riêng thì đọc trong câu đệm \"X, X.\" rồi giữ tiếng đầu")
     tts_cmd.set_defaults(func=_cmd_tts, engine_factory=engine_factory)
+    pitch_cmd = commands.add_parser("pitch", help="đo cao độ thanh hỏi/ngã trong âm thanh đã tạo")
+    pitch_cmd.add_argument("--bai", help="chỉ đo mã dùng trong bài này")
+    pitch_cmd.add_argument("--ma", nargs="+", help="chỉ đo các mã này")
+    pitch_cmd.set_defaults(func=_cmd_pitch)
     args = parser.parse_args(argv)
     return args.func(args)
 

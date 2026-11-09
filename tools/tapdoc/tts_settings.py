@@ -126,6 +126,14 @@ def set_override(settings, row, *, doc=None, rate=None, pitch=None, volume=None,
         settings["overrides"].pop(row["id"], None)
 
 
+def ensure_keep_first(settings, audio_id: str, text: str) -> bool:
+    """Tiếng lẻ đọc trong câu đệm "X, X." rồi giữ tiếng đầu; mã đã có chỉnh riêng thì giữ nguyên. True nếu đã ghi."""
+    if audio_id in settings["overrides"]:
+        return False
+    settings["overrides"][audio_id] = {"doc": f"{text}, {text}.", "keep_first": True}
+    return True
+
+
 def differs_from_settings(settings, row) -> bool:
     record = row.get("tts")
     return not isinstance(record, dict) or record.get("sig") != signature(effective_params(settings, row))

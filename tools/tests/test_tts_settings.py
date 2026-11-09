@@ -173,3 +173,20 @@ class StaleTest(unittest.TestCase):
     def test_missing_tts_record_needs_regen(self):
         self.assertTrue(needs_regen(settings(), row()))
         self.assertFalse(needs_regen(settings(), row(status="dat")))
+
+
+class EnsureKeepFirstTest(unittest.TestCase):
+    """Lớp 2: mọi tiếng lẻ đọc trong câu đệm "X, X." rồi giữ tiếng đầu (HoaiMy đọc hỏi/ngã lẻ thành huyền)."""
+
+    def test_ensure_keep_first_new(self):
+        from tapdoc.tts_settings import ensure_keep_first
+        s = settings()
+        self.assertTrue(ensure_keep_first(s, "tieng_cuwr", "cử"))
+        self.assertEqual(s["overrides"]["tieng_cuwr"], {"doc": "cử, cử.", "keep_first": True})
+
+    def test_ensure_keep_first_keeps_existing(self):
+        from tapdoc.tts_settings import ensure_keep_first
+        s = settings()
+        s["overrides"]["tieng_cuwr"] = {"rate": -10}
+        self.assertFalse(ensure_keep_first(s, "tieng_cuwr", "cử"))
+        self.assertEqual(s["overrides"]["tieng_cuwr"], {"rate": -10})

@@ -1,4 +1,5 @@
 import copy
+import math
 import io
 import json
 import tempfile
@@ -9,7 +10,7 @@ from unittest import mock
 
 from tapdoc import __main__ as cli
 from tapdoc.manifest import save_rows
-from tapdoc.mp3trim import trim_mp3
+from tapdoc.mp3trim import trim_mp3_span
 from tapdoc.tts_engine import EdgeEngine, TtsError, TtsUnavailable
 from tapdoc.tts_generate import approve, generate_one, restore_previous, run_batch
 from tapdoc.tts_settings import effective_params, needs_regen, set_override, signature
@@ -121,7 +122,7 @@ class KeepFirstGenerateTest(TempCase):
     def test_cuts_after_first_word(self):
         set_override(self.s, self.r, doc="bờ, bờ.", keep_first=True)
         engine = FakeEngine(speech_start=0.2, speech_end=1.3, words=[(0.2, 0.6), (0.9, 1.3)])
-        with mock.patch("tapdoc.tts_generate.trim_mp3", wraps=trim_mp3) as trim:
+        with mock.patch("tapdoc.tts_generate.trim_mp3_span", wraps=trim_mp3_span) as trim:
             result = generate_one(self.r, self.s, engine, self.audio, self.prev)
         self.assertEqual(trim.call_args.args[1:3], (0.2, 0.6))
         self.assertTrue(result["tts"]["trimmed"])
@@ -132,12 +133,12 @@ class KeepFirstGenerateTest(TempCase):
         r = row("tu_bes_bi_boo", "bé bi bô", "tu")
         set_override(self.s, r, doc="bé bi bô, bé bi bô.", keep_first=True)
         words = [(0.1, 0.3), (0.3, 0.5), (0.5, 0.8), (1.0, 1.2), (1.2, 1.4), (1.4, 1.9)]
-        with mock.patch("tapdoc.tts_generate.trim_mp3", wraps=trim_mp3) as trim:
+        with mock.patch("tapdoc.tts_generate.trim_mp3_span", wraps=trim_mp3_span) as trim:
             generate_one(r, self.s, FakeEngine(audio=fake_mp3(2.2), words=words), self.audio, self.prev)
         self.assertEqual(trim.call_args.args[1:3], (0.1, 0.8))
 
     def test_without_flag_uses_whole_speech(self):
-        with mock.patch("tapdoc.tts_generate.trim_mp3", wraps=trim_mp3) as trim:
+        with mock.patch("tapdoc.tts_generate.trim_mp3_span", wraps=trim_mp3_span) as trim:
             generate_one(self.r, self.s, FakeEngine(words=[(0.5, 0.6), (0.65, 0.7)]), self.audio, self.prev)
         self.assertEqual(trim.call_args.args[1:3], (0.5, 0.7))
 
@@ -277,6 +278,34 @@ class BatchTest(TempCase):
         self.assertEqual((report.done, report.skipped), (["am_b"], 2))
 
 
+class MarksTest(TempCase):
+    """Mốc từng tiếng của file đã cắt, để đo cao độ từng tiếng trong từ và câu (lớp 2, Task 2b)."""
+
+    def test_marks_written_relative_to_trimmed_start(self):
+        r = row("tu_bes_bi", "bé bi", kind="tu")
+        engine = FakeEngine(speech_start=0.5, speech_end=0.7, words=((0.5, 0.6), (0.6, 0.7)))
+        marks = self.root / "marks"
+        generate_one(r, self.s, engine, self.audio, self.prev, marks_dir=marks)
+        data = json.loads((marks / "tu_bes_bi.json").read_text(encoding="utf-8"))
+        offset = (math.floor(0.4 / 0.024) - 1) * 0.024
+        self.assertEqual(data["text"], "bé bi")
+        self.assertEqual(len(data["words"]), 2)
+        self.assertAlmostEqual(data["words"][0][0], 0.5 - offset, places=6)
+        self.assertAlmostEqual(data["words"][1][1], 0.7 - offset, places=6)
+
+    def test_marks_keep_first_only_first_words(self):
+        r = row("tieng_cuwr", "cử", kind="tieng")
+        set_override(self.s, r, doc="cử, cử.", keep_first=True)
+        engine = FakeEngine(speech_start=0.5, speech_end=0.9, words=((0.5, 0.6), (0.8, 0.9)))
+        generate_one(r, self.s, engine, self.audio, self.prev, marks_dir=self.root / "marks")
+        data = json.loads((self.root / "marks" / "tieng_cuwr.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(data["words"]), 1)
+
+    def test_no_marks_dir_writes_nothing(self):
+        generate_one(self.r, self.s, FakeEngine(words=((0.5, 0.7),)), self.audio, self.prev)
+        self.assertFalse((self.root / "marks").exists())
+
+
 class CliTest(TempCase):
     def call_cli(self, argv, factory):
         manifests = self.root / "manifests"
@@ -291,6 +320,24 @@ class CliTest(TempCase):
             save_settings(self.root / "settings.json", self.s)
             code = cli.main(argv, engine_factory=factory)
         return code, out.getvalue() + err.getvalue()
+
+    def test_tts_flag_only_tieng(self):
+        rows = [row("tieng_cuwr", "cử", kind="tieng"), row("tu_bes_bi", "bé bi", kind="tu"),
+                row("tieng_baj", "bạ", kind="tieng")]
+        manifests = self.root / "manifests"
+        save_rows(manifests / "audio_manifest.json", rows)
+        self.s["overrides"]["tieng_baj"] = {"rate": -10}
+        out = io.StringIO()
+        from tapdoc.tts_settings import load_settings, save_settings
+        with mock.patch.object(cli, "MANIFESTS", manifests),                 mock.patch.object(cli, "UNITY_RES", self.root),                 mock.patch.object(cli, "TTS_SETTINGS", self.root / "settings.json"),                 mock.patch.object(cli, "TTS_PREV", self.prev),                 mock.patch.object(cli, "TTS_MARKS", self.root / "marks"),                 redirect_stdout(out), redirect_stderr(out):
+            save_settings(self.root / "settings.json", self.s)
+            code = cli.main(["tts", "--tieng-keep-first"],
+                            engine_factory=lambda: FakeEngine(words=((0.5, 0.6), (0.6, 0.7))))
+        saved = load_settings(self.root / "settings.json")["overrides"]
+        self.assertEqual(code, 0, out.getvalue())
+        self.assertEqual(saved["tieng_cuwr"], {"doc": "cử, cử.", "keep_first": True})
+        self.assertNotIn("tu_bes_bi", saved)
+        self.assertEqual(saved["tieng_baj"], {"rate": -10})
 
     def test_cli_tts_dry_run_lists_ids(self):
         factory = mock.Mock(side_effect=AssertionError("không được tạo bộ đọc"))

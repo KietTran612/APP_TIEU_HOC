@@ -57,20 +57,27 @@ def trim_mp3(data: bytes, speech_start: float, speech_end: float,
 
     Mốc không hợp lệ hoặc file không đọc được thì giữ nguyên và trả cờ False.
     """
+    audio, trimmed, _ = trim_mp3_span(data, speech_start, speech_end, pad)
+    return audio, trimmed
+
+
+def trim_mp3_span(data: bytes, speech_start: float, speech_end: float,
+                  pad: float = 0.1) -> tuple[bytes, bool, float]:
+    """Như `trim_mp3`, thêm thời điểm (giây, theo file gốc) của khung đầu được giữ; không cắt thì 0."""
     try:
         if (not all(math.isfinite(v) for v in (speech_start, speech_end, pad))
                 or speech_start < 0 or speech_end <= speech_start or pad < 0):
-            return data, False
+            return data, False, 0.0
         frames = _frames(data)
         if speech_start >= frames[-1][3]:
-            return data, False
+            return data, False, 0.0
         start, end = max(0, speech_start - pad), min(frames[-1][3], speech_end + pad)
         kept = [i for i, (_, _, a, b, _) in enumerate(frames) if b > start and a < end]
         if not kept:
-            return data, False
+            return data, False, 0.0
         first, last = max(0, kept[0] - 1), kept[-1]
         while first > 0 and frames[first][4]:
             first -= 1
-        return data[frames[first][0]:frames[last][1]], True
+        return data[frames[first][0]:frames[last][1]], True, frames[first][2]
     except (ValueError, TypeError, OverflowError):
-        return data, False
+        return data, False, 0.0

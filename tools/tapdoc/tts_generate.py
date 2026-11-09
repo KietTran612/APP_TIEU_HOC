@@ -6,7 +6,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 from .importer import _ID_RE, _looks_like_mp3, _without_changed_note, _write_atomic
-from .mp3trim import trim_mp3
+from .mp3trim import trim_mp3_span
 from .tts_engine import TtsError, TtsUnavailable
 from .tts_settings import VOICES, differs_from_settings, effective_params, set_override, signature
 from .viet import tokens
@@ -44,14 +44,22 @@ def _speech_span(row, p, result):
     return result.words[0][0], result.words[count - 1][1]
 
 
-def generate_one(row, settings, engine, audio_dir, prev_dir) -> dict:
+def _write_marks(marks_dir, row, p, result, offset) -> None:
+    """Mốc (giây, tính từ đầu file đã cắt) của các tiếng còn trong file, để đo cao độ từng tiếng."""
+    words = result.words[:len(tokens(row["text"]))] if p.keep_first else result.words
+    data = {"text": row["text"], "words": [[round(a - offset, 4), round(b - offset, 4)] for a, b in words]}
+    Path(marks_dir).mkdir(parents=True, exist_ok=True)
+    _write_atomic(Path(marks_dir) / f"{row['id']}.json", _json_bytes(data))
+
+
+def generate_one(row, settings, engine, audio_dir, prev_dir, marks_dir=None) -> dict:
     """Chỉ thay file sau khi bộ đọc trả âm thanh; lỗi bộ đọc không chạm bản cũ."""
     dest, previous, metadata = _paths(row, audio_dir, prev_dir)
     p = effective_params(settings, row)
     result = engine.synthesize(p)
     if not result.audio or not _looks_like_mp3(result.audio):
         raise TtsError(f"{row['id']}: bộ đọc trả dữ liệu rỗng hoặc không phải MP3")
-    audio, trimmed = trim_mp3(result.audio, *_speech_span(row, p, result))
+    audio, trimmed, offset = trim_mp3_span(result.audio, *_speech_span(row, p, result))
     if p.keep_first and not trimmed:
         raise TtsError(f"{row['id']}: không cắt được phần đọc lặp phía sau")
     updated = copy.deepcopy(row)
@@ -80,6 +88,8 @@ def generate_one(row, settings, engine, audio_dir, prev_dir) -> dict:
         _write_atomic(dest, audio)
         previous.unlink(missing_ok=True)
         metadata.unlink(missing_ok=True)
+    if marks_dir is not None and result.words:
+        _write_marks(marks_dir, row, p, result, offset)
     return updated
 
 
@@ -130,7 +140,7 @@ def selected(row, settings, *, lesson=None, kind=None, ids=None, include_approve
 
 
 def run_batch(rows, settings, engine, audio_dir, prev_dir, *, lesson=None, kind=None,
-              ids=None, include_approved=False, on_progress=None, save=None) -> BatchReport:
+              ids=None, include_approved=False, on_progress=None, save=None, marks_dir=None) -> BatchReport:
     report = BatchReport()
     for index, row in enumerate(rows):
         if not selected(row, settings, lesson=lesson, kind=kind, ids=ids,
@@ -138,7 +148,7 @@ def run_batch(rows, settings, engine, audio_dir, prev_dir, *, lesson=None, kind=
             report.skipped += 1
             continue
         try:
-            updated = generate_one(row, settings, engine, audio_dir, prev_dir)
+            updated = generate_one(row, settings, engine, audio_dir, prev_dir, marks_dir)
         except TtsUnavailable:
             raise
         except (TtsError, OSError, ValueError) as e:

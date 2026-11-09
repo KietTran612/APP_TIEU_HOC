@@ -14,6 +14,17 @@ class TrimTest(unittest.TestCase):
         self.assertEqual(trimmed, data[(math.floor(0.4 / 0.024) - 1) * 144:
                                       math.ceil(0.8 / 0.024) * 144])
 
+    def test_span_reports_offset_of_kept_start(self):
+        from tapdoc.mp3trim import trim_mp3_span
+        data = fake_mp3(1.2)
+        trimmed, ok, offset = trim_mp3_span(data, 0.5, 0.7)
+        self.assertEqual((trimmed, ok), trim_mp3(data, 0.5, 0.7))
+        self.assertAlmostEqual(offset, (math.floor(0.4 / 0.024) - 1) * 0.024, places=6)
+
+    def test_span_untrimmed_offset_zero(self):
+        from tapdoc.mp3trim import trim_mp3_span
+        self.assertEqual(trim_mp3_span(b"khong phai mp3", 0.5, 0.7), (b"khong phai mp3", False, 0.0))
+
     def test_not_mp3_returned_unchanged(self):
         for data in (b"", b"broken", fake_mp3(1.2)[:-1]):
             self.assertEqual(trim_mp3(data, 0.5, 0.7), (data, False))
