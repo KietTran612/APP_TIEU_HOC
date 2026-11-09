@@ -242,5 +242,67 @@ namespace TapDoc.Tests
             screen.SkipScene();
             yield return null;
         }
+
+        private static LessonIndex Idx => AppRoot.Instance.Lessons.Index;
+
+        [UnityTest]
+        public IEnumerator EndOfBook_ShowsShelfButton_NotNextLesson()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            var books = BookShelf.BookIds(Idx);
+            var ids = BookShelf.LessonIds(Idx, books[0]);
+            foreach (var id in ids.Take(ids.Count - 1)) app.Progress.MarkCompleted(id);
+            app.ShowResult(ids[ids.Count - 1]);
+            yield return null;
+            var screen = Result();
+            Assert.IsNull(screen.NextLessonButton, "Hết quyển: không có Bài tiếp");
+            Assert.IsNotNull(screen.ShelfButton, "Hết quyển: có nút Tủ sách");
+            Assert.AreEqual(SystemIcons.Shelf, screen.ShelfButton.GetComponent<IconButton>().IconId);
+            Press(screen.ShelfButton);
+            yield return null;
+            var shelf = Object.FindAnyObjectByType<ShelfScreen>();
+            Assert.IsNotNull(shelf);
+            Assert.AreEqual(books[1], shelf.CelebratedBookId, "Quyển vừa mở khoá chạy hiệu ứng");
+            Assert.AreEqual(ShelfBookState.Current, shelf.StateOf(books[1]));
+        }
+
+        [UnityTest]
+        public IEnumerator MidBook_NextLessonStaysInBook()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile();
+            var ids = BookShelf.LessonIds(Idx, BookShelf.BookIds(Idx)[0]);
+            AppRoot.Instance.ShowResult(ids[0]);
+            yield return null;
+            Assert.IsNotNull(Result().NextLessonButton);
+            Assert.IsNull(Result().ShelfButton);
+        }
+
+        [UnityTest]
+        public IEnumerator LastBook_LastLesson_NoNextNoShelf()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile(unlockAll: true);
+            var books = BookShelf.BookIds(Idx);
+            var last = BookShelf.LessonIds(Idx, books[books.Count - 1]).Last();
+            AppRoot.Instance.ShowResult(last);
+            yield return null;
+            Assert.IsNull(Result().NextLessonButton);
+            Assert.IsNull(Result().ShelfButton);
+            Assert.IsTrue(Result().ToListButton.gameObject.activeInHierarchy);
+        }
+
+        [UnityTest]
+        public IEnumerator ResultBook_ShowsOnlyLessonsOfThatBook()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile();
+            var book = BookShelf.BookIds(Idx)[0];
+            AppRoot.Instance.ShowResult(BookShelf.LessonIds(Idx, book)[0]);
+            yield return null;
+            Assert.AreEqual(BookShelf.LessonIds(Idx, book).Count, Result().Spread.PageCount);
+        }
     }
 }

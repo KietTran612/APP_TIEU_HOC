@@ -31,6 +31,9 @@ namespace TapDoc
         private bool _praised;
 
         public Button NextLessonButton { get; private set; }
+
+        /// <summary>Học xong bài cuối của một quyển (không phải quyển cuối): nút về Tủ sách, nơi quyển sau vừa mở khoá.</summary>
+        public Button ShelfButton { get; private set; }
         public Button ToListButton { get; private set; }
 
         /// <summary>Khối phóng to đều chứa quyển sổ; <c>null</c> ở phiên ôn.</summary>
@@ -84,12 +87,24 @@ namespace TapDoc
             ToListButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Home, UiText.ToList,
                 () => app.ShowLessonList());
             Corner(ToListButton, Vector2.zero, new Vector2(Margin, Margin));
-            var nextLessonId = isLesson ? FindNextLessonId(app.Lessons, app.Progress, lessonId) : null;
+            var index = app.Lessons.Index;
+            var nextLessonId = isLesson ? BookShelf.NextLessonInBook(index, app.Progress, lessonId) : null;
             if (!string.IsNullOrEmpty(nextLessonId))
             {
                 NextLessonButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Forward, UiText.NextLesson,
                     () => app.ShowLesson(nextLessonId), Palette.Orange);
                 Corner(NextLessonButton, new Vector2(1f, 0f), new Vector2(-Margin, Margin));
+            }
+            else if (isLesson)
+            {
+                // Hết quyển: quyển sau vừa mở thì về Tủ sách để bé thấy quyển mới (bản thiết kế Tủ sách mục 4).
+                var nextBook = BookShelf.NextBookId(index, BookShelf.BookOf(index, lessonId));
+                if (nextBook != null && BookShelf.IsBookUnlocked(index, app.Progress, nextBook))
+                {
+                    ShelfButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Shelf, UiText.Shelf,
+                        () => app.ShowShelf(nextBook), Palette.Orange);
+                    Corner(ShelfButton, new Vector2(1f, 0f), new Vector2(-Margin, Margin));
+                }
             }
             SetButtonsVisible(false);
 
@@ -127,7 +142,9 @@ namespace TapDoc
             var area = Stretched("BookArea");
             var book = FitBox.Create(area, "Book", ScreenLayout.StageSize);
             BookFit = area.GetComponent<FitBox>();
-            var entries = _app.Lessons.Index.lessons;
+            // Sổ chỉ có trang của các bài trong quyển của bài vừa học.
+            var bookId = BookShelf.BookOf(_app.Lessons.Index, lessonId);
+            var entries = _app.Lessons.Index.lessons.Where(e => bookId == null || e.book == bookId).ToList();
             Spread = BookSpread.Create(book, entries, _app.Progress, _app.Assets);
             Spread.ShowPage(FlowerBook.PageOf(entries.Select(e => e.lesson_id).ToList(), lessonId));
             _page = Spread.PageFor(lessonId);
@@ -168,6 +185,7 @@ namespace TapDoc
         {
             ToListButton.gameObject.SetActive(visible);
             if (NextLessonButton != null) NextLessonButton.gameObject.SetActive(visible);
+            if (ShelfButton != null) ShelfButton.gameObject.SetActive(visible);
         }
 
         private async void RunScene()
@@ -280,33 +298,13 @@ namespace TapDoc
             SetButtonsVisible(true);
             _ = Motion.Punch(ToListButton.transform, 1.15f, .25f);
             if (NextLessonButton != null) _ = Motion.Punch(NextLessonButton.transform, 1.15f, .25f);
+            if (ShelfButton != null) _ = Motion.Punch(ShelfButton.transform, 1.15f, .25f);
             if (_stamp != null) _ = Motion.Fade(_stamp.Group, 0f, .5f);
         }
 
         private static void Sfx(string id)
         {
             if (SfxPlayer.Instance != null) SfxPlayer.Instance.Play(id);
-        }
-
-        /// <summary>Bài đứng sau <paramref name="currentLessonId"/> trong danh sách, nếu bài đó đã mở cho bé.</summary>
-        private static string FindNextLessonId(LessonRepository lessons, ProgressStore progress, string currentLessonId)
-        {
-            if (string.IsNullOrEmpty(currentLessonId)) return null;
-            try
-            {
-                // Bài sau trong cùng lớp: hết lớp 1 không nhảy sang lớp 2 (mỗi lớp một chuỗi mở khoá).
-                var ordered = lessons.Index.SameGradeIds(currentLessonId);
-                var idx = ordered.IndexOf(currentLessonId);
-                if (idx >= 0 && idx + 1 < ordered.Count && progress.IsUnlocked(ordered, ordered[idx + 1]))
-                {
-                    return ordered[idx + 1];
-                }
-            }
-            catch
-            {
-                // Ignore if index not available in synthetic test
-            }
-            return null;
         }
     }
 }

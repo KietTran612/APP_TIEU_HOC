@@ -52,6 +52,9 @@ namespace TapDoc
         public Button SwitchChildButton { get; private set; }
         public Button SettingsButton { get; private set; }
 
+        /// <summary>Quyển vừa mở khoá đang chạy hiệu ứng mở; <c>null</c> khi không có.</summary>
+        public string CelebratedBookId { get; private set; }
+
         public Button CoverButton(string bookId) => bookId != null && _covers.TryGetValue(bookId, out var b) ? b : null;
         public ShelfBookState StateOf(string bookId) => _states.TryGetValue(bookId, out var s) ? s : ShelfBookState.Locked;
         public TMP_Text TitleOf(string bookId) => bookId != null && _titles.TryGetValue(bookId, out var t) ? t : null;
@@ -297,9 +300,27 @@ namespace TapDoc
             done.enabled = fraction > 0f;
         }
 
-        /// <summary>Hiệu ứng mở quyển mới (Task 4).</summary>
-        private void Celebrate(string bookId)
+        /// <summary>Quyển vừa mở khoá: ổ khoá rơi xuống rồi mờ đi, bìa nảy nhẹ, có tiếng "ting".</summary>
+        private async void Celebrate(string bookId)
         {
+            var cover = CoverButton(bookId);
+            if (cover == null) return;
+            CelebratedBookId = bookId;
+            var lockGo = new GameObject("FallingLock", typeof(RectTransform), typeof(Image), typeof(CanvasGroup));
+            lockGo.transform.SetParent(cover.transform, false);
+            var rt = (RectTransform)lockGo.transform;
+            rt.anchorMin = rt.anchorMax = new Vector2(.5f, .35f);
+            rt.sizeDelta = new Vector2(110f, 110f);
+            var img = lockGo.GetComponent<Image>();
+            img.sprite = _app.Assets.HasImage(SystemIcons.Lock) ? _app.Assets.Image(SystemIcons.Lock) : null;
+            img.enabled = img.sprite != null;
+            img.preserveAspect = true;
+            img.raycastTarget = false;
+            if (SfxPlayer.Instance != null) SfxPlayer.Instance.Play(SystemSfx.Correct);
+            _ = Motion.Fade(lockGo.GetComponent<CanvasGroup>(), 0f, .6f);
+            _ = Motion.Punch(cover.transform, 1.12f, .35f);
+            await Motion.MoveTo(rt, rt.anchoredPosition + new Vector2(0f, -220f), .6f);
+            if (lockGo != null) Destroy(lockGo);
         }
 
         private static void Corner(Button button, Vector2 corner, Vector2 offset)
