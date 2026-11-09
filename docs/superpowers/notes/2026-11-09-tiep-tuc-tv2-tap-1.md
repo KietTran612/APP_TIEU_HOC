@@ -35,3 +35,4 @@
 - Smoke test (`Grade2LessonSmokeTests`) bắt được thẻ nhỏ hơn 160 và chữ tràn mà test từng màn không bắt: chạy nó sau mỗi lần thêm dạng bài.
 - Màn đọc từng câu chứa tối đa khoảng 16 tiếng; màn quy tắc tối đa 3 dòng; màn điền chữ (`fill_blank`) cụm ≤ khoảng 18 kí tự.
 - Mã âm thanh từ (`tu_*`) dùng chung với lớp 1: cùng chữ mà lời đọc khác (ví dụ "Sa Pa" / "sa-pa") thì `build` báo lỗi danh mục.
+- `python -m tapdoc requests` xoá mọi `content/requests/images_*.md` không còn khớp bài, kể cả file tổng `images_tv2_t1_dot_N.md`: file tổng chỉ để gửi một lần, session vẽ tranh làm theo phiếu từng bài `images_tv2_t1_bNNN.md`.
