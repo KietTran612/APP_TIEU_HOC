@@ -1,0 +1,271 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b186",
+  "book": "tv2_t1_2001",
+  "lesson_no": 186,
+  "type": "ngu_phap",
+  "title": "Câu (tiếp theo)",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      17
+    ],
+    "scan_file": "009",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Bé chạm vào dòng đã thành câu; đáp án do app soạn. Phần viết tiếp vào vở: bé nói tiếp cho thành câu cùng bố mẹ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[1]",
+        "note": "đáp án dòng đã thành câu do app soạn: Lớp học của chúng em rất sáng sủa, sạch sẽ."
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Câu",
+      "audio": "cau_b186_01",
+      "labels": [
+        "Tiếp theo"
+      ]
+    },
+    {
+      "type": "choose_line",
+      "marker": "",
+      "text": "1. Dòng nào dưới đây viết đã thành câu?",
+      "audio": "hoi_b186_01",
+      "items": [
+        {
+          "text": "Trường của em",
+          "audio": "cau_b186_02",
+          "role": "other"
+        },
+        {
+          "text": "Lớp học của chúng em rất sáng sủa, sạch sẽ.",
+          "audio": "cau_b186_03",
+          "role": "target"
+        },
+        {
+          "text": "Cô giáo em",
+          "audio": "cau_b186_04",
+          "role": "other"
+        }
+      ],
+      "need": 1
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Em hãy viết tiếp vào vở những dòng chưa thành câu ở trên cho thành câu.",
+      "audio": "hoi_b186_02",
+      "rows": [
+        {
+          "text": "Trường của em",
+          "audio": "cau_b186_05"
+        },
+        {
+          "text": "Cô giáo em",
+          "audio": "cau_b186_06"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Nói và viết không thành câu thì người khác có hiểu được không? Vậy muốn người khác hiểu thì nói và viết phải như thế nào?",
+      "audio": "hoi_b186_03"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_sangs_suar",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "sáng sủa",
+          "audio": "tu_sangs_suar",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sạch sẽ",
+          "audio": "tu_sachj_sex",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lớp học",
+          "audio": "tu_lowps_hocj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_sachj_sex",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "sạch sẽ",
+          "audio": "tu_sachj_sex",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sáng sủa",
+          "audio": "tu_sangs_suar",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cô giáo",
+          "audio": "tu_coo_giaos",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_lowps_hocj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "lớp học",
+          "audio": "tu_lowps_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trường",
+          "audio": "tieng_truwowngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cô giáo",
+          "audio": "tu_coo_giaos",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_coo_giaos",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cô giáo",
+          "audio": "tu_coo_giaos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lớp học",
+          "audio": "tu_lowps_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sáng sủa",
+          "audio": "tu_sangs_suar",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_truwowngf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "trường",
+          "audio": "tieng_truwowngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lớp học",
+          "audio": "tu_lowps_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sạch sẽ",
+          "audio": "tu_sachj_sex",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thanhf_caau",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thành câu",
+          "audio": "tu_thanhf_caau",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hiểu được",
+          "audio": "tu_hieeur_dduwowcj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sáng sủa",
+          "audio": "tu_sangs_suar",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

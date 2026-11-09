@@ -1,0 +1,274 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b178",
+  "book": "tv2_t1_2001",
+  "lesson_no": 178,
+  "type": "ngu_phap",
+  "title": "Câu",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      10,
+      11
+    ],
+    "scan_file": "006",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Bé chạm vào dòng chưa thành câu; đáp án do app soạn."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "đáp án dòng chưa thành câu do app soạn: Ngày khai trường, Cái trống trường em, Lan chưa"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Câu",
+      "audio": "cau_b178_01",
+      "labels": []
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Nói, viết phải thành câu.",
+          "audio": "cau_b178_02",
+          "role": "line"
+        },
+        {
+          "text": "Nếu nói, viết không thành câu thì người khác không hiểu được.",
+          "audio": "cau_b178_03",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "choose_line",
+      "marker": "",
+      "text": "Trong những dòng sau đây, dòng nào viết chưa thành câu?",
+      "audio": "hoi_b178_01",
+      "items": [
+        {
+          "text": "Ngày khai trường",
+          "audio": "cau_b178_04",
+          "role": "target"
+        },
+        {
+          "text": "Bác rất vui lòng.",
+          "audio": "cau_b178_05",
+          "role": "other"
+        },
+        {
+          "text": "Cái trống trường em",
+          "audio": "cau_b178_06",
+          "role": "target"
+        },
+        {
+          "text": "Trong cặp có bốn quyển vở.",
+          "audio": "cau_b178_07",
+          "role": "other"
+        },
+        {
+          "text": "Lan chưa",
+          "audio": "cau_b178_08",
+          "role": "target"
+        }
+      ],
+      "need": 3
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thanhf_caau",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thành câu",
+          "audio": "tu_thanhf_caau",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hiểu được",
+          "audio": "tu_hieeur_dduwowcj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "người khác",
+          "audio": "tu_nguwowif_khacs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quyeenr_vowr",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quyển vở",
+          "audio": "tu_quyeenr_vowr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cái trống",
+          "audio": "tu_cais_troongs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vui lòng",
+          "audio": "tu_vui_longf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_cais_troongs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cái trống",
+          "audio": "tu_cais_troongs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "khai trường",
+          "audio": "tu_khai_truwowngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quyển vở",
+          "audio": "tu_quyeenr_vowr",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vui_longf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vui lòng",
+          "audio": "tu_vui_longf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "người khác",
+          "audio": "tu_nguwowif_khacs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thành câu",
+          "audio": "tu_thanhf_caau",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_khai_truwowngf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "khai trường",
+          "audio": "tu_khai_truwowngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quyển vở",
+          "audio": "tu_quyeenr_vowr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hiểu được",
+          "audio": "tu_hieeur_dduwowcj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_hieeur_dduwowcj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "hiểu được",
+          "audio": "tu_hieeur_dduwowcj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vui lòng",
+          "audio": "tu_vui_longf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cái trống",
+          "audio": "tu_cais_troongs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

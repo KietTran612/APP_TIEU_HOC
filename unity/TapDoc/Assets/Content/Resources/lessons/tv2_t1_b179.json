@@ -1,0 +1,344 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b179",
+  "book": "tv2_t1_2001",
+  "lesson_no": 179,
+  "type": "tap_lam_van",
+  "title": "Điền từ: Niềm vui ngày khai trường",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      11
+    ],
+    "scan_file": "006",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Điền từ bằng chạm hoặc kéo thẻ từ vào chỗ trống; đáp án do app soạn."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "đáp án điền từ do app soạn theo bài Niềm vui ngày khai trường"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Điền từ",
+      "audio": "cau_b179_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Niềm vui ngày khai trường.",
+      "audio": "cau_b179_02",
+      "labels": [
+        "Em hãy chọn những từ sau đây để điền vào chỗ trống: vui sướng, khai trường, năm học, siêng học."
+      ]
+    },
+    {
+      "type": "fill_passage",
+      "marker": "",
+      "labels": [
+        "vui sướng",
+        "khai trường",
+        "năm học",
+        "siêng học"
+      ],
+      "rows": [
+        {
+          "text": "Sắp đến ngày khai trường, nhận được quà của bố, Lan càng thêm náo nức.",
+          "audio": "cau_b179_03",
+          "row": 0
+        },
+        {
+          "text": "Hôm nay đã bắt đầu năm học mới: Lan vui sướng khi cắp chiếc cặp mới đi học.",
+          "audio": "cau_b179_04",
+          "row": 1
+        },
+        {
+          "text": "Lan hứa với bố sẽ siêng học, siêng làm như lời Bác Hồ khuyên.",
+          "audio": "cau_b179_05",
+          "row": 2
+        }
+      ],
+      "items": [
+        {
+          "text": "Sắp đến ngày",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "khai trường",
+          "row": 0,
+          "role": "blank",
+          "answer": "khai trường",
+          "choices": [
+            "vui sướng",
+            "khai trường",
+            "năm học",
+            "siêng học"
+          ]
+        },
+        {
+          "text": ", nhận được quà của bố, Lan càng thêm náo nức.",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "Hôm nay đã bắt đầu",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "năm học",
+          "row": 1,
+          "role": "blank",
+          "answer": "năm học",
+          "choices": [
+            "vui sướng",
+            "khai trường",
+            "năm học",
+            "siêng học"
+          ]
+        },
+        {
+          "text": "mới: Lan",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "vui sướng",
+          "row": 1,
+          "role": "blank",
+          "answer": "vui sướng",
+          "choices": [
+            "vui sướng",
+            "khai trường",
+            "năm học",
+            "siêng học"
+          ]
+        },
+        {
+          "text": "khi cắp chiếc cặp mới đi học.",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "Lan hứa với bố sẽ",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "siêng học",
+          "row": 2,
+          "role": "blank",
+          "answer": "siêng học",
+          "choices": [
+            "vui sướng",
+            "khai trường",
+            "năm học",
+            "siêng học"
+          ]
+        },
+        {
+          "text": ", siêng làm như lời Bác Hồ khuyên.",
+          "row": 2,
+          "role": "text"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vui_suwowngs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vui sướng",
+          "audio": "tu_vui_suwowngs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "náo nức",
+          "audio": "tu_naos_nuwcs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "siêng học",
+          "audio": "tu_sieeng_hocj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chieecs_cawpj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chiếc cặp",
+          "audio": "tu_chieecs_cawpj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "năm học",
+          "audio": "tu_nawm_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "khai trường",
+          "audio": "tu_khai_truwowngf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_sieeng_hocj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "siêng học",
+          "audio": "tu_sieeng_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "siêng làm",
+          "audio": "tu_sieeng_lamf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vui sướng",
+          "audio": "tu_vui_suwowngs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_naos_nuwcs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "náo nức",
+          "audio": "tu_naos_nuwcs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vui sướng",
+          "audio": "tu_vui_suwowngs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "năm học",
+          "audio": "tu_nawm_hocj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_khai_truwowngf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "khai trường",
+          "audio": "tu_khai_truwowngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chiếc cặp",
+          "audio": "tu_chieecs_cawpj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "siêng làm",
+          "audio": "tu_sieeng_lamf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_nawm_hocj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "năm học",
+          "audio": "tu_nawm_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "khai trường",
+          "audio": "tu_khai_truwowngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chiếc cặp",
+          "audio": "tu_chieecs_cawpj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}
