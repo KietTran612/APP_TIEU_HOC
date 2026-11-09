@@ -1,4 +1,5 @@
 import copy
+from dataclasses import asdict
 import math
 import io
 import json
@@ -328,25 +329,44 @@ class CliTest(TempCase):
             code = cli.main(argv, engine_factory=factory)
         return code, out.getvalue() + err.getvalue()
 
-    def test_tts_flag_only_tieng(self):
-        made_before = dict(row("tieng_cuar", "của", kind="tieng"), tts={"sig": "cu"})  # mã đã tạo (lớp 1 dùng chung)
-        rows = [row("tieng_cuwr", "cử", kind="tieng"), row("tu_bes_bi", "bé bi", kind="tu"),
-                row("tieng_baj", "bạ", kind="tieng"), made_before]
+    def _run_keep_first(self, rows, argv=("tts", "--tieng-keep-first")):
         manifests = self.root / "manifests"
         save_rows(manifests / "audio_manifest.json", rows)
-        self.s["overrides"]["tieng_baj"] = {"rate": -10}
         out = io.StringIO()
         from tapdoc.tts_settings import load_settings, save_settings
         with mock.patch.object(cli, "MANIFESTS", manifests),                 mock.patch.object(cli, "UNITY_RES", self.root),                 mock.patch.object(cli, "TTS_SETTINGS", self.root / "settings.json"),                 mock.patch.object(cli, "TTS_PREV", self.prev),                 mock.patch.object(cli, "TTS_MARKS", self.root / "marks"),                 redirect_stdout(out), redirect_stderr(out):
             save_settings(self.root / "settings.json", self.s)
-            code = cli.main(["tts", "--tieng-keep-first"],
-                            engine_factory=lambda: FakeEngine(words=((0.5, 0.6), (0.6, 0.7))))
-        saved = load_settings(self.root / "settings.json")["overrides"]
-        self.assertEqual(code, 0, out.getvalue())
+            code = cli.main(list(argv), engine_factory=lambda: FakeEngine(words=((0.5, 0.6), (0.6, 0.7))))
+        return code, out.getvalue(), load_settings(self.root / "settings.json")["overrides"]
+
+    def test_tts_flag_only_tieng(self):
+        approved = dict(row("tieng_cuar", "của", kind="tieng", status="dat"))
+        rows = [row("tieng_cuwr", "cử", kind="tieng"), row("tu_bes_bi", "bé bi", kind="tu"),
+                row("tieng_baj", "bạ", kind="tieng"), approved]
+        self.s["overrides"]["tieng_baj"] = {"rate": -10}
+        code, output, saved = self._run_keep_first(rows)
+        self.assertEqual(code, 0, output)
         self.assertEqual(saved["tieng_cuwr"], {"doc": "cử, cử.", "keep_first": True})
         self.assertNotIn("tu_bes_bi", saved)
         self.assertEqual(saved["tieng_baj"], {"rate": -10})
-        self.assertNotIn("tieng_cuar", saved)  # chỉ mã chưa tạo lần nào (mã mới), không chạm mã cũ
+        self.assertNotIn("tieng_cuar", saved)  # mã đã duyệt chỉ đổi khi có --gom-da-duyet
+
+    def test_keep_first_regenerates_existing_tieng(self):
+        # Lỗi L1 báo: tiếng đã có file khớp cấu hình cũ không được chọn, cờ không có tác dụng ("Đã tạo 0").
+        made = row("tieng_ngax", "ngã", kind="tieng")
+        made["tts"] = {**asdict(effective_params(self.s, made)), "sig": signature(effective_params(self.s, made))}
+        self.assertFalse(needs_regen(self.s, made))
+        code, output, saved = self._run_keep_first([made])
+        self.assertEqual(code, 0, output)
+        self.assertEqual(saved["tieng_ngax"], {"doc": "ngã, ngã.", "keep_first": True})
+        self.assertIn("Đã tạo 1", output)
+
+    def test_keep_first_dry_run_counts_existing(self):
+        made = row("tieng_ngax", "ngã", kind="tieng")
+        made["tts"] = {**asdict(effective_params(self.s, made)), "sig": signature(effective_params(self.s, made))}
+        code, output, saved = self._run_keep_first([made], ("tts", "--tieng-keep-first", "--thu"))
+        self.assertIn("tieng_ngax", output)
+        self.assertNotIn("tieng_ngax", saved)  # chạy thử không ghi cấu hình
 
     def test_cli_tts_dry_run_lists_ids(self):
         factory = mock.Mock(side_effect=AssertionError("không được tạo bộ đọc"))

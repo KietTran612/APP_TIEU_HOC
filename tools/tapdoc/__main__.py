@@ -261,18 +261,22 @@ def _cmd_tts(args: argparse.Namespace) -> int:
         settings = load_settings(TTS_SETTINGS)
         filters = dict(lesson=args.bai, kind=args.loai, ids=args.ma,
                        include_approved=args.gom_da_duyet)
-        wanted = [row for row in rows if selected(row, settings, **filters)]
-        if args.tieng_keep_first and not args.thu:
-            # Tiếng lẻ đọc trong câu đệm (HoaiMy đọc hỏi/ngã lẻ thành huyền). Đọc lại cấu hình ngay trước khi ghi
-            # để không xoá chỉnh sửa vừa lưu từ công cụ duyệt.
+        if args.tieng_keep_first:
+            # Tiếng lẻ đọc trong câu đệm "X, X." (HoaiMy đọc hỏi/ngã lẻ thành huyền). Áp TRƯỚC khi chọn mã, để tiếng đã
+            # có file theo cách đọc cũ cũng được tạo lại. Mã đã duyệt chỉ đổi khi có --gom-da-duyet.
+            # Đọc lại cấu hình ngay trước khi ghi để không xoá chỉnh sửa vừa lưu từ công cụ duyệt.
             fresh = load_settings(TTS_SETTINGS)
-            # Chỉ mã chưa tạo lần nào (mã mới): không đổi cách đọc của mã cũ dùng chung với lớp 1.
-            changed = [r["id"] for r in wanted if r.get("kind") == "tieng" and not r.get("tts")
-                       and ensure_keep_first(fresh, r["id"], r["text"])]
-            if changed:
+            candidates = [r for r in rows if r.get("kind") == "tieng"
+                          and (args.bai is None or args.bai in r.get("bai", []))
+                          and (args.loai is None or args.loai == "tieng")
+                          and (args.ma is None or r["id"] in args.ma)
+                          and (args.gom_da_duyet or r.get("status") != "dat")]
+            changed = [r["id"] for r in candidates if ensure_keep_first(fresh, r["id"], r["text"])]
+            settings = fresh
+            if changed and not args.thu:
                 save_settings(TTS_SETTINGS, fresh)
-                settings = fresh
                 print(f"Đọc trong câu đệm: {len(changed)} tiếng lẻ")
+        wanted = [row for row in rows if selected(row, settings, **filters)]
         if args.thu:
             for row in wanted:
                 print(row["id"])
