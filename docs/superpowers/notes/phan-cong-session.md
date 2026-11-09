@@ -26,7 +26,7 @@ Cập nhật lần cuối: 09/11/2026.
 | Session | Id | Mảng | Tình trạng (09/11) |
 |---|---|---|---|
 | Điều phối dự án Bờ A Ba (root) | `local_0cefca18-12fb-4d82-a1d6-a65ff28a9bed` | Điều phối; tự vẽ lẻ tranh lớp 1 | Đang chạy |
-| [L1] Làm SGK Tiếng Việt 1 tập 2 | `local_1af66fbb-4b38-439a-a40c-4b31d98db980` | Nội dung TV1 tập 2; giữ công cụ giọng đọc (tts) | Tập 2 đã chốt và đóng gói 9/11. Đang tạo lại các âm thanh bị chấm không đạt bằng `keep_first` |
+| [L1] Làm SGK Tiếng Việt 1 tập 2 | `local_1af66fbb-4b38-439a-a40c-4b31d98db980` | Nội dung TV1 tập 2; giữ công cụ giọng đọc (tts) | Tập 2 đã chốt và đóng gói 9/11. Đã sửa 30/32 âm thanh bị chấm không đạt (`keep_first`). Từ 9/11 đang rà soát toàn bộ 1043 mã có thanh hỏi, ngã (đo cao độ, sửa, mã `dat` chỉ báo lại) |
 | [L1] Tranh động lớp 1 | `local_fdaead13-02aa-4c66-abfd-9eb7797cd628` | Clip Flow cho TV1 (cả hai tập) | 343 clip; 12 clip bị chê đã làm lại, chờ duyệt |
 | [L2] Làm SGK Tiếng Việt 2 tập 1 | `local_8c04ba54-8b7d-4491-97c5-f8b6526afa73` | Nội dung, âm thanh, màn mới, đóng gói TV2 tập 1 | Mới tạo; đang lập kế hoạch cùng chủ dự án |
 | [L2] Vẽ tranh Tiếng Việt 2 tập 1 | `local_be5a6177-2125-4c96-8ac1-da797a8751f8` | Tranh ChatGPT cho TV2 tập 1 | Chờ danh sách tranh đợt 1 |
