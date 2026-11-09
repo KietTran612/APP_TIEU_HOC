@@ -78,6 +78,8 @@ Lớp 1 (171 mục, hai quyển) đã có trong app. Lớp 2 là bước tiếp 
 - Sửa `BOOK_CATALOG.md` mục 4.3: hai ảnh `Trang_29` là tr.56–57 và 58–59, bị đảo.
 
 ### 4.3 Danh sách bài [Đề xuất]
+> **Đã thay (9/11/2026):** mục 4.3–4.4 (thẻ "Lớp 1/Lớp 2", mở khoá riêng mỗi lớp) được thay bằng thiết kế Tủ sách ([2026-11-09-tu-sach-design.md](2026-11-09-tu-sach-design.md)), chủ dự án đã duyệt: chọn quyển ở màn Tủ sách, học xong quyển trước mới mở quyển sau. Session UI làm phần này.
+
 - Trên cùng màn danh sách có **hai thẻ chọn lớp: "Lớp 1" và "Lớp 2"**. Lớp 1 giữ đúng ba phần như hiện nay. Lớp 2 chia phần theo chủ điểm ("Nhà trường", "Gia đình", "Đất nước ta"), trong mỗi phần có dòng "Tuần 1" … "Tuần 17" như phần Tập đọc lớp 1.
 - Thẻ bài: dòng trên là nhãn, dòng dưới là tên bài, như Tập đọc tập 2. Tên Tập làm văn dài ("Quan sát tranh và trả lời câu hỏi: Cánh đồng lúa chín") phải đọc được [Builder: cỡ chữ, cắt dòng].
 - **Nhớ lớp đang xem theo từng bé** (lưu trong hồ sơ, mặc định "Lớp 1"). Mở màn thì vào lớp đã nhớ và cuộn tới bài đang học của lớp đó.
