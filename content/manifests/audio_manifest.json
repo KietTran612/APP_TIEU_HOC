@@ -43229,8 +43229,8 @@
     "text": "giong",
     "kind": "tieng",
     "file": "audio/tieng_giong.mp3",
-    "source": "",
-    "status": "chua_co",
+    "source": "tts_edge_hoaimy",
+    "status": "cho_duyet",
     "can_nghe_ky": true,
     "ghi_chu": "",
     "bai": [
@@ -43238,7 +43238,16 @@
       "tv1_t2_b138",
       "tv1_t2_b154",
       "tv1_t2_b164"
-    ]
+    ],
+    "tts": {
+      "doc": "giong",
+      "rate": -25,
+      "pitch": 0,
+      "volume": 0,
+      "voice": "vi-VN-HoaiMyNeural",
+      "sig": "52977de48eb3c42542875685e4add207f70e9216",
+      "trimmed": true
+    }
   },
   {
     "id": "tieng_giongj",
@@ -56795,13 +56804,22 @@
     "text": "Mong",
     "kind": "tieng",
     "file": "audio/tieng_mong.mp3",
-    "source": "",
-    "status": "chua_co",
+    "source": "tts_edge_hoaimy",
+    "status": "cho_duyet",
     "can_nghe_ky": true,
     "ghi_chu": "",
     "bai": [
       "tv1_t2_b130"
-    ]
+    ],
+    "tts": {
+      "doc": "Mong",
+      "rate": -25,
+      "pitch": 0,
+      "volume": 0,
+      "voice": "vi-VN-HoaiMyNeural",
+      "sig": "5f361a7ccb0161db62d8c86b5e81f480446248a2",
+      "trimmed": true
+    }
   },
   {
     "id": "tieng_moo",
