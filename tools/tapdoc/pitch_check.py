@@ -23,6 +23,7 @@ _SR = 8000  # hạ mẫu còn 8 kHz cho nhanh
 _FMIN, _FMAX = 110.0, 480.0
 _WIN, _HOP = 240, 80  # cửa sổ 30 ms, bước 10 ms
 _MIN_POINTS = 5
+_DECODE_TIMEOUT = 600  # giây cho một lần giải mã cả lô
 _TONE_MARKS = {"̀": "huyen", "́": "sac", "̉": "hoi", "̃": "nga", "̣": "nang"}
 _DIP_RISE = ("hoi", "nga")
 
@@ -86,8 +87,11 @@ def decode(mp3s, cache_dir) -> dict[Path, Path]:
                 shutil.copy(mp3, Path(tmp) / mp3.name)
             script = Path(tmp) / "decode.ps1"
             script.write_text(_DECODE_PS1, encoding="utf-8-sig")
-            subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script),
-                            "-Dir", tmp], check=True, capture_output=True)
+            try:
+                subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(script),
+                                "-Dir", tmp], check=True, capture_output=True, timeout=_DECODE_TIMEOUT)
+            except (OSError, subprocess.SubprocessError):
+                pass  # không có PowerShell / Media Foundation lỗi / treo: mã đó báo "không giải mã được"
             for mp3 in todo:
                 made = Path(tmp) / f"{mp3.stem}.wav"
                 if made.is_file():
@@ -174,7 +178,10 @@ def check_row(row: dict, wav, marks: dict | None, templates) -> list[dict]:
     results = []
     for k, word, tone in words:
         res = {"id": row["id"], "word": word, "tone": tone}
-        if wav is None or (count > 1 and len(spans) != count):
+        if wav is None:
+            results.append({**res, "ok": None, "why": "không giải mã được âm thanh"})
+            continue
+        if count > 1 and len(spans) != count:
             results.append({**res, "ok": None, "why": "không có mốc từng tiếng"})
             continue
         start, end = (None, None) if count == 1 else spans[k]
@@ -182,6 +189,11 @@ def check_row(row: dict, wav, marks: dict | None, templates) -> list[dict]:
         ok = judge(values, tone, templates)
         results.append({**res, "ok": ok, "best": nearest(values, templates) if len(values) >= _MIN_POINTS else "?"})
     return results
+
+
+def has_dip_rise_templates(templates) -> bool:
+    """Có đủ mẫu để chấm hỏi/ngã không (cần tiếng đã duyệt `dat` có file trên máy)."""
+    return "hoi" in templates and "nga" in templates and len(templates) >= 2
 
 
 def reference_templates(rows, audio_dir, cache_dir, per_tone: int = 14) -> dict[str, list[float]]:
@@ -208,6 +220,9 @@ def check_rows(rows, audio_dir, marks_dir, cache_dir, templates) -> list[dict]:
     results = []
     for r in targets:
         marks_path = Path(marks_dir) / f"{r['id']}.json"
-        marks = json.loads(marks_path.read_text(encoding="utf-8")) if marks_path.is_file() else None
+        mp3 = Path(audio_dir) / f"{r['id']}.mp3"
+        # Mốc cũ hơn file âm thanh (tạo lại trong công cụ duyệt, khôi phục bản trước) không dùng được.
+        fresh = marks_path.is_file() and marks_path.stat().st_mtime >= mp3.stat().st_mtime
+        marks = json.loads(marks_path.read_text(encoding="utf-8")) if fresh else None
         results += check_row(r, wavs.get(Path(audio_dir) / f"{r['id']}.mp3"), marks, templates)
     return results

@@ -266,7 +266,8 @@ def _cmd_tts(args: argparse.Namespace) -> int:
             # Tiếng lẻ đọc trong câu đệm (HoaiMy đọc hỏi/ngã lẻ thành huyền). Đọc lại cấu hình ngay trước khi ghi
             # để không xoá chỉnh sửa vừa lưu từ công cụ duyệt.
             fresh = load_settings(TTS_SETTINGS)
-            changed = [r["id"] for r in wanted if r.get("kind") == "tieng"
+            # Chỉ mã chưa tạo lần nào (mã mới): không đổi cách đọc của mã cũ dùng chung với lớp 1.
+            changed = [r["id"] for r in wanted if r.get("kind") == "tieng" and not r.get("tts")
                        and ensure_keep_first(fresh, r["id"], r["text"])]
             if changed:
                 save_settings(TTS_SETTINGS, fresh)
@@ -316,6 +317,10 @@ def _cmd_pitch(args: argparse.Namespace) -> int:
               and (args.ma is None or r["id"] in args.ma)]
     audio_dir = UNITY_RES / "audio"
     templates = pitch_check.reference_templates(rows, audio_dir, TTS_PITCH_CACHE / "refs")
+    if not pitch_check.has_dip_rise_templates(templates):
+        print("Chưa đủ mẫu thanh điệu: cần tiếng lẻ đã duyệt (dat) có file âm thanh trên máy "
+              "(nhập gói media trước: python tools/run_unity_media.py unpack)")
+        return 2
     results = pitch_check.check_rows(wanted, audio_dir, TTS_MARKS, TTS_PITCH_CACHE, templates)
     failed = [r for r in results if r["ok"] is False]
     unchecked = [r for r in results if r["ok"] is None]

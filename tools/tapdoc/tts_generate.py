@@ -88,8 +88,11 @@ def generate_one(row, settings, engine, audio_dir, prev_dir, marks_dir=None) -> 
         _write_atomic(dest, audio)
         previous.unlink(missing_ok=True)
         metadata.unlink(missing_ok=True)
-    if marks_dir is not None and result.words:
-        _write_marks(marks_dir, row, p, result, offset)
+    if marks_dir is not None:
+        if result.words:
+            _write_marks(marks_dir, row, p, result, offset)
+        else:
+            (Path(marks_dir) / f"{row['id']}.json").unlink(missing_ok=True)  # mốc cũ không còn khớp file mới
     return updated
 
 

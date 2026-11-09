@@ -1,6 +1,11 @@
 """Đo cao độ thanh hỏi/ngã (thiết kế TV2 tập một, mục 9): YIN thuần Python, so với mẫu thanh điệu."""
 
+import io
+import json
 import math
+import os
+import subprocess
+from unittest import mock
 import struct
 import tempfile
 import unittest
@@ -90,6 +95,49 @@ class CheckRowTest(unittest.TestCase):
     def test_multiword_without_marks_unchecked(self):
         result = pc.check_row({"id": "tu_x", "text": "cũng nghỉ"}, wav=None, marks=None, templates=TEMPLATES)
         self.assertEqual([r["ok"] for r in result], [None, None])
+
+
+
+class RobustnessTest(unittest.TestCase):
+    """Review cuối: lệnh pitch không được sập, không đo bằng mốc cũ."""
+
+    def test_decode_without_powershell_returns_empty(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            mp3 = Path(tmp) / "tieng_cuwr.mp3"
+            mp3.write_bytes(b"x")
+            with mock.patch("tapdoc.pitch_check.subprocess.run", side_effect=FileNotFoundError("powershell")):
+                self.assertEqual(pc.decode([mp3], Path(tmp) / "cache"), {})
+            with mock.patch("tapdoc.pitch_check.subprocess.run",
+                            side_effect=subprocess.TimeoutExpired("powershell", 1)):
+                self.assertEqual(pc.decode([mp3], Path(tmp) / "cache"), {})
+
+    def test_undecoded_reason(self):
+        result = pc.check_row({"id": "tieng_cuwr", "text": "cử"}, wav=None, marks=None, templates=TEMPLATES)
+        self.assertEqual((result[0]["ok"], result[0]["why"]), (None, "không giải mã được âm thanh"))
+
+    def test_stale_marks_ignored(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            audio, marks = Path(tmp) / "audio", Path(tmp) / "marks"
+            audio.mkdir()
+            marks.mkdir()
+            (marks / "tu_x.json").write_text(json.dumps({"text": "cũng nghỉ", "words": [[0, 0.1], [0.1, 0.2]]}))
+            mp3 = audio / "tu_x.mp3"
+            mp3.write_bytes(b"x")
+            old = mp3.stat().st_mtime - 100
+            os.utime(marks / "tu_x.json", (old, old))
+            wav = Path(tmp) / "a.wav"
+            write_tone(wav, [220.0] * 6)
+            with mock.patch("tapdoc.pitch_check.decode", return_value={mp3: wav}):
+                rows = pc.check_rows([{"id": "tu_x", "text": "cũng nghỉ"}], audio, marks, Path(tmp), TEMPLATES)
+        self.assertEqual([r["ok"] for r in rows], [None, None])
+
+    def test_cli_without_templates_exits_2(self):
+        from tapdoc import __main__ as cli
+        out = io.StringIO()
+        with mock.patch("tapdoc.pitch_check.reference_templates", return_value={}),                 mock.patch.object(cli, "load_rows", return_value=[]),                 mock.patch("sys.stdout", out):
+            code = cli.main(["pitch"])
+        self.assertEqual(code, 2)
+        self.assertIn("mẫu", out.getvalue())
 
 
 if __name__ == "__main__":

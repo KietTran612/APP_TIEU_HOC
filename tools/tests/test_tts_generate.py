@@ -301,6 +301,13 @@ class MarksTest(TempCase):
         data = json.loads((self.root / "marks" / "tieng_cuwr.json").read_text(encoding="utf-8"))
         self.assertEqual(len(data["words"]), 1)
 
+    def test_marks_removed_when_engine_gives_no_words(self):
+        marks = self.root / "marks"
+        marks.mkdir()
+        (marks / "am_b.json").write_text("{}")
+        generate_one(self.r, self.s, FakeEngine(words=()), self.audio, self.prev, marks_dir=marks)
+        self.assertFalse((marks / "am_b.json").exists())
+
     def test_no_marks_dir_writes_nothing(self):
         generate_one(self.r, self.s, FakeEngine(words=((0.5, 0.7),)), self.audio, self.prev)
         self.assertFalse((self.root / "marks").exists())
@@ -322,8 +329,9 @@ class CliTest(TempCase):
         return code, out.getvalue() + err.getvalue()
 
     def test_tts_flag_only_tieng(self):
+        made_before = dict(row("tieng_cuar", "của", kind="tieng"), tts={"sig": "cu"})  # mã đã tạo (lớp 1 dùng chung)
         rows = [row("tieng_cuwr", "cử", kind="tieng"), row("tu_bes_bi", "bé bi", kind="tu"),
-                row("tieng_baj", "bạ", kind="tieng")]
+                row("tieng_baj", "bạ", kind="tieng"), made_before]
         manifests = self.root / "manifests"
         save_rows(manifests / "audio_manifest.json", rows)
         self.s["overrides"]["tieng_baj"] = {"rate": -10}
@@ -338,6 +346,7 @@ class CliTest(TempCase):
         self.assertEqual(saved["tieng_cuwr"], {"doc": "cử, cử.", "keep_first": True})
         self.assertNotIn("tu_bes_bi", saved)
         self.assertEqual(saved["tieng_baj"], {"rate": -10})
+        self.assertNotIn("tieng_cuar", saved)  # chỉ mã chưa tạo lần nào (mã mới), không chạm mã cũ
 
     def test_cli_tts_dry_run_lists_ids(self):
         factory = mock.Mock(side_effect=AssertionError("không được tạo bộ đọc"))
