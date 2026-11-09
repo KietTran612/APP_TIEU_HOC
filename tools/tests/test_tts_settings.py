@@ -190,3 +190,43 @@ class EnsureKeepFirstTest(unittest.TestCase):
         s["overrides"]["tieng_cuwr"] = {"rate": -10}
         self.assertFalse(ensure_keep_first(s, "tieng_cuwr", "cử"))
         self.assertEqual(s["overrides"]["tieng_cuwr"], {"rate": -10})
+
+
+class JoinTest(unittest.TestCase):
+    """Ghép tiếng: overrides[id].join = các mã âm thanh đã có, nối theo thứ tự thay vì gọi bộ đọc."""
+
+    def _set(self, s, r, join):
+        s["overrides"][r["id"]] = {"join": join}
+
+    def test_off_by_default_and_signature_unchanged(self):
+        p = effective_params(settings(), row())
+        self.assertEqual(p.join, ())
+        self.assertEqual(signature(p), "417167990541752ddcb7d8eac0586bebf7e6a535")
+
+    def test_join_changes_params_and_signature(self):
+        s, r = settings(), row("tu_toor_dees", "tổ dế", "tu")
+        before = signature(effective_params(s, r))
+        self._set(s, r, ["tieng_toor", "tieng_dees"])
+        p = effective_params(s, r)
+        self.assertEqual(p.join, ("tieng_toor", "tieng_dees"))
+        self.assertNotEqual(signature(p), before)
+
+    def test_other_edits_keep_join(self):
+        # Trang duyệt chỉ gửi doc/rate/pitch/volume/voice: sửa tốc độ không được làm mất cấu hình ghép.
+        s, r = settings(), row("tu_toor_dees", "tổ dế", "tu")
+        self._set(s, r, ["tieng_toor", "tieng_dees"])
+        set_override(s, r, rate=-20)
+        self.assertEqual(s["overrides"]["tu_toor_dees"], {"join": ["tieng_toor", "tieng_dees"], "rate": -20})
+        set_override(s, r, join=[])
+        self.assertEqual(s["overrides"]["tu_toor_dees"], {"rate": -20})
+
+    def test_roundtrip_and_invalid_rejected(self):
+        s, r = settings(), row("tu_toor_dees", "tổ dế", "tu")
+        self._set(s, r, ["tieng_toor", "tieng_dees"])
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "settings.json"
+            save_settings(path, s)
+            self.assertEqual(load_settings(path), s)
+            for bad in ("tieng_toor", ["tieng_toor"], ["tieng_toor", 3], ["tieng_toor", "../x"], []):
+                with self.subTest(bad=bad), self.assertRaises(ValueError):
+                    save_settings(path, {**s, "overrides": {"tu_toor_dees": {"join": bad}}})

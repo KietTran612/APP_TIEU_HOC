@@ -3,6 +3,7 @@
 import hashlib
 import json
 import os
+import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
@@ -22,6 +23,8 @@ class TtsParams:
     voice: str
     # Đọc cả doc (ví dụ "dỗ, dỗ.") rồi chỉ giữ các tiếng đầu, bằng số tiếng của chữ trong danh mục.
     keep_first: bool = False
+    # Ghép tiếng: nối file của các mã này (đã có, thường đã duyệt) theo thứ tự thay vì gọi bộ đọc.
+    join: tuple = ()
 
 
 def _number(key, value):
@@ -44,7 +47,7 @@ def _validate(settings):
         for key in _LIMITS:
             _number(key, values.get(key))
     for audio_id, values in overrides.items():
-        if not isinstance(values, dict) or values.keys() - {"doc", "voice", "keep_first", *_LIMITS}:
+        if not isinstance(values, dict) or values.keys() - {"doc", "voice", "keep_first", "join", *_LIMITS}:
             raise ValueError(f"Thông số chỉnh tay không hợp lệ: {audio_id}")
         if "doc" in values and not isinstance(values["doc"], str):
             raise ValueError(f"Cách đọc của {audio_id} phải là chữ")
@@ -52,6 +55,8 @@ def _validate(settings):
             raise ValueError(f"Giọng đọc của {audio_id} không hợp lệ")
         if "keep_first" in values and type(values["keep_first"]) is not bool:
             raise ValueError(f"keep_first của {audio_id} phải là true hoặc false")
+        if "join" in values:
+            _join(values["join"])
         for key in values.keys() & _LIMITS.keys():
             _number(key, values[key])
 
@@ -78,6 +83,17 @@ def save_settings(path, settings: dict) -> None:
         raise
 
 
+_JOIN_ID = re.compile(r"[a-z0-9_]+")
+
+
+def _join(value) -> list:
+    """Danh sách mã để ghép: ít nhất hai mã âm thanh hợp lệ."""
+    if (not isinstance(value, list) or len(value) < 2
+            or not all(isinstance(v, str) and _JOIN_ID.fullmatch(v) for v in value)):
+        raise ValueError("join phải là danh sách từ hai mã âm thanh trở lên")
+    return list(value)
+
+
 def effective_params(settings: dict, row: dict) -> TtsParams:
     values = {**settings["defaults"][row["kind"]], **settings["overrides"].get(row["id"], {})}
     doc = values.get("doc") or row["text"]
@@ -85,22 +101,25 @@ def effective_params(settings: dict, row: dict) -> TtsParams:
         raise ValueError("Cách đọc phải là chữ")
     own = settings["overrides"].get(row["id"], {})
     return TtsParams(nfc(doc), *(_number(key, values[key]) for key in _LIMITS),
-                     own.get("voice", settings["voice"]), own.get("keep_first", False))
+                     own.get("voice", settings["voice"]), own.get("keep_first", False),
+                     tuple(own.get("join", ())))
 
 
 def signature(p: TtsParams) -> str:
     values = asdict(p)
     if not values["keep_first"]:
         del values["keep_first"]  # giữ nguyên dấu nhận dạng của mọi bản tạo trước khi có keep_first
+    if not values["join"]:
+        del values["join"]
     data = json.dumps(values, ensure_ascii=False, sort_keys=True).encode("utf-8")
     return hashlib.sha1(data).hexdigest()
 
 
 def set_override(settings, row, *, doc=None, rate=None, pitch=None, volume=None, voice=None,
-                 keep_first=None) -> None:
+                 keep_first=None, join=None) -> None:
     values = dict(settings["overrides"].get(row["id"], {}))
     for key, value in (("doc", doc), ("rate", rate), ("pitch", pitch), ("volume", volume), ("voice", voice),
-                       ("keep_first", keep_first)):
+                       ("keep_first", keep_first), ("join", join)):
         if value is None:
             continue
         if key == "doc":
@@ -113,11 +132,13 @@ def set_override(settings, row, *, doc=None, rate=None, pitch=None, volume=None,
         elif key == "keep_first":
             if type(value) is not bool:
                 raise ValueError("keep_first phải là true hoặc false")
+        elif key == "join":
+            value = _join(list(value)) if value else []
         else:
             value = _number(key, value)
         values[key] = value
     defaults = {**settings["defaults"][row["kind"]], "doc": nfc(row["text"]), "voice": settings["voice"],
-                "keep_first": False}
+                "keep_first": False, "join": []}
     values = {key: value for key, value in values.items()
               if value != defaults[key] and not (key == "doc" and not value)}
     if values:

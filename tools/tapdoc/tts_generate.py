@@ -52,19 +52,35 @@ def _write_marks(marks_dir, row, p, result, offset) -> None:
     _write_atomic(Path(marks_dir) / f"{row['id']}.json", _json_bytes(data))
 
 
+def _joined(row, p, audio_dir) -> bytes:
+    """Nối file MP3 của các mã trong p.join theo thứ tự (mỗi file mở đầu bằng khung không mượn dữ liệu)."""
+    parts = []
+    for audio_id in p.join:
+        path = Path(audio_dir) / f"{audio_id}.mp3"
+        data = path.read_bytes() if path.is_file() else b""
+        if not data or not _looks_like_mp3(data):
+            raise TtsError(f"{row['id']}: thiếu file ghép {audio_id}.mp3 hoặc file không phải MP3")
+        parts.append(data)
+    return b"".join(parts)
+
+
 def generate_one(row, settings, engine, audio_dir, prev_dir, marks_dir=None) -> dict:
     """Chỉ thay file sau khi bộ đọc trả âm thanh; lỗi bộ đọc không chạm bản cũ."""
     dest, previous, metadata = _paths(row, audio_dir, prev_dir)
     p = effective_params(settings, row)
-    result = engine.synthesize(p)
-    if not result.audio or not _looks_like_mp3(result.audio):
-        raise TtsError(f"{row['id']}: bộ đọc trả dữ liệu rỗng hoặc không phải MP3")
-    audio, trimmed, offset = trim_mp3_span(result.audio, *_speech_span(row, p, result))
-    if p.keep_first and not trimmed:
-        raise TtsError(f"{row['id']}: không cắt được phần đọc lặp phía sau")
+    if p.join:
+        audio, trimmed, source, result = _joined(row, p, audio_dir), False, "ghep_tieng", None
+    else:
+        result = engine.synthesize(p)
+        if not result.audio or not _looks_like_mp3(result.audio):
+            raise TtsError(f"{row['id']}: bộ đọc trả dữ liệu rỗng hoặc không phải MP3")
+        audio, trimmed, offset = trim_mp3_span(result.audio, *_speech_span(row, p, result))
+        if p.keep_first and not trimmed:
+            raise TtsError(f"{row['id']}: không cắt được phần đọc lặp phía sau")
+        source = "tts_edge_" + p.voice.removeprefix("vi-VN-").removesuffix("Neural").lower()
     updated = copy.deepcopy(row)
-    updated.update(status="cho_duyet", source="tts_edge_" + p.voice.removeprefix("vi-VN-").removesuffix("Neural").lower(),
-                   tts={**asdict(p), "sig": signature(p), "trimmed": trimmed})
+    updated.update(status="cho_duyet", source=source,
+                   tts={**asdict(p), "join": list(p.join), "sig": signature(p), "trimmed": trimmed})
     updated["ghi_chu"] = _without_changed_note(row.get("ghi_chu", ""))
     old_audio = dest.read_bytes() if dest.is_file() else None
     if old_audio is not None:
@@ -89,7 +105,7 @@ def generate_one(row, settings, engine, audio_dir, prev_dir, marks_dir=None) -> 
         previous.unlink(missing_ok=True)
         metadata.unlink(missing_ok=True)
     if marks_dir is not None:
-        if result.words:
+        if result is not None and result.words:
             _write_marks(marks_dir, row, p, result, offset)
         else:
             (Path(marks_dir) / f"{row['id']}.json").unlink(missing_ok=True)  # mốc cũ không còn khớp file mới
@@ -113,7 +129,7 @@ def restore_previous(row, settings, audio_dir, prev_dir) -> dict:
         if not isinstance(record.get("voice"), str) or record["voice"] not in VOICES:
             raise ValueError("Giọng đọc bản trước không hợp lệ")
         set_override(config, restored, **{key: record[key] for key in ("doc", "rate", "pitch", "volume", "voice")},
-                     keep_first=record.get("keep_first", False))
+                     keep_first=record.get("keep_first", False), join=record.get("join", []))
     elif old.get("override"):
         config["overrides"][row["id"]] = old["override"]
     else:

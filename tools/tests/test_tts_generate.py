@@ -162,6 +162,57 @@ class KeepFirstGenerateTest(TempCase):
         self.assertFalse(needs_regen(self.s, restored))
 
 
+class JoinGenerateTest(TempCase):
+    """Ghép: nối các file đã có theo thứ tự, không gọi bộ đọc; bản cũ vào prev như mọi lần tạo."""
+
+    def setUp(self):
+        super().setUp()
+        self.r = row("tu_toor_dees", "tổ dế", "tu")
+        self.path = self.audio / "tu_toor_dees.mp3"
+        self.path.write_bytes("bản cũ".encode())
+        (self.audio / "tieng_toor.mp3").write_bytes(fake_mp3(0.3))
+        (self.audio / "tieng_dees.mp3").write_bytes(fake_mp3(0.5))
+        self.s["overrides"]["tu_toor_dees"] = {"join": ["tieng_toor", "tieng_dees"]}
+
+    def test_concatenates_parts_without_engine(self):
+        engine = FakeEngine()
+        result = generate_one(self.r, self.s, engine, self.audio, self.prev)
+        self.assertEqual(engine.calls, [])
+        self.assertEqual(self.path.read_bytes(), fake_mp3(0.3) + fake_mp3(0.5))
+        self.assertEqual(result["status"], "cho_duyet")
+        self.assertEqual(result["source"], "ghep_tieng")
+        self.assertEqual(result["tts"]["join"], ["tieng_toor", "tieng_dees"])
+        self.assertEqual((self.prev / "tu_toor_dees.mp3").read_bytes(), "bản cũ".encode())
+        self.assertFalse(needs_regen(self.s, result))
+
+    def test_missing_or_invalid_part_leaves_old_file(self):
+        for broken in ((self.audio / "tieng_dees.mp3").unlink, lambda: (self.audio / "tieng_dees.mp3").write_bytes(b"x")):
+            with self.subTest(broken=broken):
+                (self.audio / "tieng_dees.mp3").write_bytes(fake_mp3(0.5))
+                broken()
+                with self.assertRaises(TtsError):
+                    generate_one(self.r, self.s, FakeEngine(), self.audio, self.prev)
+                self.assertEqual(self.path.read_bytes(), "bản cũ".encode())
+                self.assertFalse(self.prev.exists())
+
+    def test_restore_tts_take_drops_join(self):
+        del self.s["overrides"]["tu_toor_dees"]
+        first = generate_one(self.r, self.s, FakeEngine(), self.audio, self.prev)
+        self.s["overrides"]["tu_toor_dees"] = {"join": ["tieng_toor", "tieng_dees"]}
+        second = generate_one(first, self.s, FakeEngine(), self.audio, self.prev)
+        restored = restore_previous(second, self.s, self.audio, self.prev)
+        self.assertNotIn("tu_toor_dees", self.s["overrides"])
+        self.assertFalse(needs_regen(self.s, restored))
+
+    def test_restore_join_take_brings_join_back(self):
+        first = generate_one(self.r, self.s, FakeEngine(), self.audio, self.prev)
+        del self.s["overrides"]["tu_toor_dees"]
+        second = generate_one(first, self.s, FakeEngine(), self.audio, self.prev)
+        restored = restore_previous(second, self.s, self.audio, self.prev)
+        self.assertEqual(self.s["overrides"]["tu_toor_dees"], {"join": ["tieng_toor", "tieng_dees"]})
+        self.assertFalse(needs_regen(self.s, restored))
+
+
 class RestoreTest(TempCase):
     def test_restore_previous_restores_other_voice(self):
         set_override(self.s, self.r, voice="vi-VN-NamMinhNeural", doc="cu", rate=-40,
