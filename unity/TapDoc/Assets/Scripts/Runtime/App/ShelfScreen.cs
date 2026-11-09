@@ -53,10 +53,16 @@ namespace TapDoc
         public Button SettingsButton { get; private set; }
 
         /// <summary>Quyển vừa mở khoá đang chạy hiệu ứng mở; <c>null</c> khi không có.</summary>
+        private readonly Dictionary<string, Image> _arts = new();
+
         public string CelebratedBookId { get; private set; }
 
         public Button CoverButton(string bookId) => bookId != null && _covers.TryGetValue(bookId, out var b) ? b : null;
-        public ShelfBookState StateOf(string bookId) => _states.TryGetValue(bookId, out var s) ? s : ShelfBookState.Locked;
+        public ShelfBookState StateOf(string bookId) =>
+            bookId != null && _states.TryGetValue(bookId, out var s) ? s : ShelfBookState.Locked;
+
+        /// <summary>Lớp tranh bìa của quyển (thiếu ảnh bìa: không tranh, tô màu dự phòng).</summary>
+        internal Image ArtOf(string bookId) => bookId != null && _arts.TryGetValue(bookId, out var a) ? a : null;
         public TMP_Text TitleOf(string bookId) => bookId != null && _titles.TryGetValue(bookId, out var t) ? t : null;
         public TMP_Text ProgressOf(string bookId) => bookId != null && _progress.TryGetValue(bookId, out var t) ? t : null;
 
@@ -104,7 +110,9 @@ namespace TapDoc
             mrt.anchorMin = mrt.anchorMax = mrt.pivot = new Vector2(1f, 0f);
             mrt.anchoredPosition = new Vector2(-Margin, Margin);
 
-            if (!string.IsNullOrEmpty(celebrateBookId)) Celebrate(celebrateBookId);
+            // Quyển đã học xong (bé học lại bài cuối quyển trước) thì không rơi khoá lần nữa.
+            if (!string.IsNullOrEmpty(celebrateBookId) && StateOf(celebrateBookId) != ShelfBookState.Done)
+                Celebrate(celebrateBookId);
         }
 
         /// <summary>Hàng bìa cuộn ngang được (khi nhiều quyển hơn chỗ trống), đặt giữa vùng dưới tiêu đề, có vạch kệ.</summary>
@@ -176,6 +184,7 @@ namespace TapDoc
             UiKit.AddHatchShadow(crt);
 
             var art = UiKit.AddFill(coverGo.transform, UiShapes.Rounded, FallbackColors[order % FallbackColors.Length]);
+            _arts[bookId] = art;
             var sprite = _app.Assets.HasImage(SystemImages.CoverOf(bookId)) ? _app.Assets.Image(SystemImages.CoverOf(bookId)) : null;
             if (sprite != null)
             {

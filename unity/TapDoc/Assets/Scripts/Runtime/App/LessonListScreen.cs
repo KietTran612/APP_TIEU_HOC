@@ -94,7 +94,7 @@ namespace TapDoc
             headerRt.anchorMin = new Vector2(0.5f, 1f);
             headerRt.anchorMax = new Vector2(0.5f, 1f);
             headerRt.pivot = new Vector2(0.5f, 1f);
-            // Giữa nút Đổi bé (trái) và hàng nút bánh răng, Sổ, Phụ huynh (phải).
+            // Giữa nút Tủ sách (trái) và hàng nút bánh răng, Sổ, Phụ huynh (phải).
             headerRt.sizeDelta = new Vector2(540f, UiKit.MinTouch);
             headerRt.anchoredPosition = new Vector2(-240f, -Margin);
 
@@ -135,8 +135,12 @@ namespace TapDoc
             // Chỉ bài của quyển đang mở; mở bài theo luật Tủ sách (quyển phải mở, bài trước phải xong).
             var entries = index.lessons.Where(e => e.book == BookId).ToList();
             _grade = book?.grade > 0 ? book.grade : entries.Count > 0 ? entries[0].EffectiveGrade : 1;
-            CurrentLessonId = entries.Select(e => e.lesson_id)
-                .FirstOrDefault(id => BookShelf.IsLessonUnlocked(index, progress, id) && !progress.IsCompleted(id));
+            // Tính một lần cho cả danh sách: quyển có mở không, rồi chuỗi bài trong quyển.
+            var ordered = entries.Select(e => e.lesson_id).ToList();
+            var unlocked = BookShelf.IsBookUnlocked(index, progress, BookId)
+                ? new HashSet<string>(ordered.Where(id => progress.IsUnlocked(ordered, id)))
+                : new HashSet<string>();
+            CurrentLessonId = ordered.FirstOrDefault(id => unlocked.Contains(id) && !progress.IsCompleted(id));
             foreach (var (title, section, byWeek) in Sections(entries))
             {
                 var sectionHeader = UiKit.CreateLabel(content, title, 44f);
@@ -152,7 +156,7 @@ namespace TapDoc
                         weekHeader.gameObject.AddComponent<LayoutElement>().preferredHeight = 48f;
                     }
                     var grid = CreateGrid(content, Columns);
-                    foreach (var entry in group) AddCard(grid, entry, index, progress, app);
+                    foreach (var entry in group) AddCard(grid, entry, unlocked, progress, app);
                 }
             }
 
@@ -279,7 +283,7 @@ namespace TapDoc
             return gridGo.transform;
         }
 
-        private void AddCard(Transform grid, LessonEntry entry, LessonIndex index, ProgressStore progress, AppRoot app)
+        private void AddCard(Transform grid, LessonEntry entry, ISet<string> unlocked, ProgressStore progress, AppRoot app)
         {
             var lessonId = entry.lesson_id;
             var label = LabelOf(entry) + "\n" + entry.title;
@@ -297,7 +301,7 @@ namespace TapDoc
             text.fontSizeMax = text.fontSize;
             text.fontSizeMin = Mathf.Min(text.fontSize, MinCardFont);
 
-            if (!BookShelf.IsLessonUnlocked(index, progress, lessonId)) Lock(btn, app.Assets);
+            if (!unlocked.Contains(lessonId)) Lock(btn, app.Assets);
             else if (lessonId == CurrentLessonId) MarkCurrent(btn);
 
             var flowers = FlowerBook.FlowersFor(progress, lessonId);

@@ -136,21 +136,15 @@ namespace TapDoc.Tests
         [UnityTest]
         public IEnumerator Shelf_MissingCover_FallsBackToColor()
         {
-            // Nguồn giả: mọi ảnh bìa đều thiếu.
-            var real = new ResourcesContentSource();
-            var tex = new Texture2D(4, 4);
-            var sprite = Sprite.Create(tex, new Rect(0, 0, 4, 4), new Vector2(.5f, .5f));
-            var clip = AudioClip.Create("stub", 441, 1, 44100, false);
-            AppRoot.SourceFactory = () => new FakeContentSource
+            // Nguồn giả: mọi ảnh bìa đều thiếu (dựng trên bộ ảnh tạm của AppTestBase, được dọn ở TearDown).
+            UseStubsForMissingAssets();
+            var stubbed = AppRoot.SourceFactory;
+            AppRoot.SourceFactory = () =>
             {
-                Fallback = (kind, id) => kind == ContentKind.Image && id.StartsWith("img_bia_")
-                    ? null
-                    : real.Load(kind, id) ?? kind switch
-                    {
-                        ContentKind.Image => sprite,
-                        ContentKind.Speech or ContentKind.Sfx => clip,
-                        _ => null,
-                    },
+                var inner = (FakeContentSource)stubbed();
+                var fallback = inner.Fallback;
+                inner.Fallback = (kind, id) => kind == ContentKind.Image && id.StartsWith("img_bia_") ? null : fallback(kind, id);
+                return inner;
             };
             yield return LoadMainWithProfile();
             App.ShowShelf();
@@ -159,10 +153,10 @@ namespace TapDoc.Tests
             {
                 Assert.IsNotNull(Shelf().TitleOf(id), id);
                 Assert.IsTrue(Shelf().TitleOf(id).text.Length > 0);
+                Assert.AreSame(UiShapes.Rounded, Shelf().ArtOf(id).sprite, $"{id}: thiếu ảnh bìa thì chỉ là khung màu, không có tranh");
+                Assert.AreNotEqual(Color.white, Shelf().ArtOf(id).color, $"{id}: thiếu ảnh bìa thì tô màu dự phòng");
             }
             LogAssert.NoUnexpectedReceived();
-            AppRoot.SourceFactory = null;
-            Object.Destroy(tex);
         }
 
         [UnityTest]
@@ -202,6 +196,21 @@ namespace TapDoc.Tests
             App.OpenBook(BookAt(0));
             yield return null;
             Assert.IsTrue(List().ReviewButton.interactable);
+        }
+
+        [UnityTest]
+        public IEnumerator Celebrate_SkipsBookAlreadyDone()
+        {
+            yield return OpenShelf();
+            CompleteBook(BookAt(0));
+            App.ShowShelf(BookAt(1));
+            yield return null;
+            Assert.AreEqual(BookAt(1), Shelf().CelebratedBookId, "Quyển vừa mở khoá: có hiệu ứng");
+            CompleteBook(BookAt(1)); // học lại bài cuối quyển đầu khi quyển sau đã xong
+            App.ShowShelf(BookAt(1));
+            yield return null;
+            Assert.IsNull(Shelf().CelebratedBookId, "Quyển đã học xong: không rơi khoá lần nữa");
+            Assert.AreEqual(ShelfBookState.Locked, Shelf().StateOf(null));
         }
     }
 }
