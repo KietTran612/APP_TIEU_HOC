@@ -216,3 +216,16 @@ Mỗi mục là một bài trong danh sách, bắt đầu bằng `title` (tên p
 - **Bản quyền bài đọc:** chép nguyên văn như lớp 1; vẫn nằm trong danh sách rủi ro chính sách chủ dự án đang để ngỏ.
 - **Đáp án app soạn** (điền từ, chọn dòng): chủ dự án duyệt qua ghi chú `can_duyet`.
 - Để sau: chọn lớp ngay khi tạo hồ sơ bé; Tiếng Việt 2 tập hai; giọng người thật.
+
+## 15. Kết quả (9/11/2026)
+
+- **Nội dung:** đủ **133 mục** `page_verified` (mục 172–304, tuần 1–17), chép từ ảnh 003–061. Mục lục khớp trang; tuần 16 mục lục để trống số bài, trang in 59–61 (ghi `sach`). Trang 37, 65 là trang bìa chủ điểm, không thành bài.
+- **Công cụ:** `books.json` có `grade`, `spell`; `index.json` có `grade`, `theme`, `part = lop2`; quyển `spell: false` không sinh đánh vần; bước mới `combine_words`, `fill_passage`, `choose_line`; `find_words` điều kiện `word`; `question.lines`; kí hiệu ":". Âm thanh: `tts --tieng-keep-first`, mốc từng tiếng (`content/tts/marks`, chỉ trên máy), `tapdoc pitch` đo hỏi/ngã.
+- **Unity:** thẻ "Lớp 1"/"Lớp 2" ở mép dưới danh sách bài, lớp 2 chia theo chủ điểm và tuần, mỗi lớp một chuỗi mở khoá, nhớ lớp theo bé; Phụ huynh hiện tiến độ từng lớp; Sổ bé ngoan ghi nhãn bài.
+- **Khác kế hoạch (đã ghi trong sổ theo dõi):**
+  - Smoke test bắt thẻ nhỏ hơn cỡ chạm tối thiểu (160): ghép chữ hiện cụm ngay trên thẻ; chọn dòng và câu kèm câu hỏi xếp lưới 2×2, nhiều thì chia trang; **điền đoạn văn đi từng câu**, mỗi ô 3 thẻ (đáp án và hai từ khác của sách), bé không tự chọn ô.
+  - Câu dài tự tách theo dấu phẩy (≤15 tiếng); màn quy tắc/giải nghĩa tối đa 3 dòng; dòng phụ liệt kê từ cho sẵn rút gọn (từ đã hiện thành thẻ); 10 cụm điền chỗ trống rút ngắn cho vừa khung.
+  - "Sa Pa" không dùng làm phương án nghe (mã `tu_sa_pa` đã có ở lớp 1 với lời đọc khác).
+  - Kí hiệu [:] có hình tạm vẽ bằng `ui_icons.py` (không bao giờ bị ghi đè); hình chính thức vẫn nhờ session vẽ tranh.
+- **Test:** Python liên quan đạt, test hồi quy 171 mục lớp 1 dựng lại y hệt; Unity EditMode 158/159 (`AllReferencedAssetsExist` chờ tranh, âm thanh lớp 2); PlayMode lọc (màn mới, danh sách bài, Phụ huynh) đạt; smoke 133 mục ở hai khung hình đạt.
+- **Còn lại:** âm thanh HoaiMy (khoảng 3.000 mã, 1 tiến trình, đang chạy nền) và đo cao độ; 57 tranh + kí hiệu [:] (session vẽ tranh, 4 phiếu `content/requests/images_tv2_t1_dot_1..4.md`); đóng gói media khi đủ.
