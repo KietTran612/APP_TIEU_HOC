@@ -21,6 +21,8 @@
    python -m tapdoc tts --tieng-keep-first --ma <mã>
    ```
    Lượt bù đến khi hết `chua_co`. Rồi `python -m tapdoc pitch --bai tv2_t1_bNNN` cho mọi câu, từ có hỏi/ngã; mã không đạt sửa theo **quyết định chủ dự án 9/11** (đọc đúng trên hết, ngữ điệu tự nhiên càng tốt), theo thứ tự: (1) đọc nguyên câu nếu đo đúng thanh → (2) đọc chậm, ngắt nhẹ → (3) ghép từ các tiếng đã đạt/đo đúng bằng `overrides[id].join` (929d023 của L1). Khi ghép: nghỉ ngắn đều 0,05–0,12 s, ngắt nhẹ ở dấu phẩy, âm lượng đều, cắt lặng đầu/cuối mỗi tiếng, ghi rõ ghép từ mã nào. Tham số ghép dùng chung với L1 (local_1af66fbb, đã hỏi 9/11 về `join_gap`/cân âm lượng). Báo chủ dự án các mã vẫn không đạt.
+
+   **Quyết định 9/11 (qua root): làm tới cuối, không chờ duyệt giữa chừng; chủ dự án duyệt sau bằng tool.** Tiếng lẻ thanh nặng: đọc "X. X." giữ tiếng đầu; tiếng lẻ có ê thanh sắc: "X, X, X." giữ tiếng đầu (lựa chọn chủ dự án đã nghe ở lớp 1). Ghép mượt: `overrides[mã] = {"join": [...], "join_gap": 0.08}`, `","` = nghỉ 0,25 s (f6c01f1 của L1). Đóng gói media **một lần cho cả hai lớp**, sau khi có clip b299 và L1 báo xong sửa âm thanh lớp 1; báo root tên và dung lượng file trong `dist/`.
 2. **Tranh:** khi session vẽ tranh báo đã nhập, chạy `python -m tapdoc validate` (không `--allow-missing`).
 3. **Đóng gói** (đóng Unity trước): `python tools/run_unity_media.py pack`, commit `content/manifests/media_lock.json` (blob từ HEAD nếu file có chỉnh sửa của chủ dự án), báo chủ dự án tải hai file trong `dist/` lên Drive.
 4. **Commit danh mục:** chỉ dòng lớp 2 (blob từ HEAD + dòng có `bai` toàn `tv2_t1_*`, thêm mã bài lớp 2 vào dòng cũ), `git update-index --cacheinfo`.
