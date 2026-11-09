@@ -11,6 +11,7 @@ class SynthResult:
     audio: bytes
     speech_start: float | None
     speech_end: float | None
+    words: tuple = ()  # (bắt đầu, kết thúc) giây của từng từ, theo thứ tự đọc
 
 
 class TtsError(Exception):
@@ -50,7 +51,7 @@ class EdgeEngine:
                 if not audio:
                     raise TtsError("Dịch vụ không trả âm thanh")
                 return SynthResult(bytes(audio), min(starts) if starts else None,
-                                   max(ends) if ends else None)
+                                   max(ends) if ends else None, tuple(zip(starts, ends)))
             except (ValueError, TypeError) as e:
                 # Sai giọng hay thông số: thử lại cũng hỏng y như cũ.
                 raise TtsError(f"Thông số đọc không hợp lệ: {e}") from e

@@ -9,6 +9,7 @@ from unittest import mock
 
 from tapdoc import __main__ as cli
 from tapdoc.manifest import save_rows
+from tapdoc.mp3trim import trim_mp3
 from tapdoc.tts_engine import EdgeEngine, TtsError, TtsUnavailable
 from tapdoc.tts_generate import approve, generate_one, restore_previous, run_batch
 from tapdoc.tts_settings import effective_params, needs_regen, set_override, signature
@@ -112,6 +113,51 @@ class GenerateTest(TempCase):
         self.path.unlink()
         generate_one(first, self.s, FakeEngine(), self.audio, self.prev)
         self.assertEqual(list(self.prev.iterdir()), [])
+
+
+class KeepLastGenerateTest(TempCase):
+    """keep_last: cắt file theo mốc từ, chỉ giữ các tiếng cuối (bằng số tiếng của chữ trong danh mục)."""
+
+    def test_cuts_to_last_word(self):
+        set_override(self.s, self.r, doc="bờ, bờ.", keep_last=True)
+        engine = FakeEngine(speech_start=0.2, speech_end=1.3, words=[(0.2, 0.6), (0.9, 1.3)])
+        with mock.patch("tapdoc.tts_generate.trim_mp3", wraps=trim_mp3) as trim:
+            result = generate_one(self.r, self.s, engine, self.audio, self.prev)
+        self.assertEqual(trim.call_args.args[1:3], (0.9, 1.3))
+        self.assertTrue(result["tts"]["trimmed"])
+        self.assertTrue(result["tts"]["keep_last"])
+        self.assertFalse(needs_regen(self.s, result))
+
+    def test_keeps_as_many_words_as_the_text(self):
+        r = row("tu_bes_bi_boo", "bé bi bô", "tu")
+        set_override(self.s, r, doc="bé bi bô, bé bi bô.", keep_last=True)
+        words = [(0.1, 0.3), (0.3, 0.5), (0.5, 0.8), (1.0, 1.2), (1.2, 1.4), (1.4, 1.9)]
+        with mock.patch("tapdoc.tts_generate.trim_mp3", wraps=trim_mp3) as trim:
+            generate_one(r, self.s, FakeEngine(audio=fake_mp3(2.2), words=words), self.audio, self.prev)
+        self.assertEqual(trim.call_args.args[1:3], (1.0, 1.9))
+
+    def test_without_flag_uses_whole_speech(self):
+        with mock.patch("tapdoc.tts_generate.trim_mp3", wraps=trim_mp3) as trim:
+            generate_one(self.r, self.s, FakeEngine(words=[(0.5, 0.6), (0.65, 0.7)]), self.audio, self.prev)
+        self.assertEqual(trim.call_args.args[1:3], (0.5, 0.7))
+
+    def test_cannot_cut_leaves_old_file(self):
+        set_override(self.s, self.r, doc="bờ, bờ.", keep_last=True)
+        for engine in (FakeEngine(words=[]),  # không có mốc từ
+                       FakeEngine(words=[(5.0, 5.4)])):  # mốc nằm ngoài file: không cắt được
+            with self.subTest(words=engine.words), self.assertRaises(TtsError):
+                generate_one(self.r, self.s, engine, self.audio, self.prev)
+            self.assertEqual(self.path.read_bytes(), "bản cũ".encode())
+            self.assertFalse(self.prev.exists())
+
+    def test_restore_brings_back_flag(self):
+        set_override(self.s, self.r, doc="bờ, bờ.", keep_last=True)
+        first = generate_one(self.r, self.s, FakeEngine(words=[(0.2, 0.4), (0.5, 0.7)]), self.audio, self.prev)
+        set_override(self.s, first, doc="", keep_last=False)
+        second = generate_one(first, self.s, FakeEngine(), self.audio, self.prev)
+        restored = restore_previous(second, self.s, self.audio, self.prev)
+        self.assertEqual(self.s["overrides"]["am_b"], {"doc": "bờ, bờ.", "keep_last": True})
+        self.assertFalse(needs_regen(self.s, restored))
 
 
 class RestoreTest(TempCase):
@@ -329,6 +375,9 @@ class EdgeEngineTest(unittest.TestCase):
                                          "boundary": "WordBoundary"})
         self.assertAlmostEqual(result.speech_start, 0.175)
         self.assertAlmostEqual(result.speech_end, 0.603583)
+        self.assertEqual(len(result.words), 1)
+        self.assertAlmostEqual(result.words[0][0], 0.175)
+        self.assertAlmostEqual(result.words[0][1], 0.603583)
 
     def test_empty_audio_fails_after_four_tries(self):
         class Communicate:

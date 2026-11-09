@@ -20,6 +20,8 @@ class TtsParams:
     pitch: int
     volume: int
     voice: str
+    # Đọc cả câu đệm trong doc (ví dụ "dỗ, dỗ.") rồi chỉ giữ các tiếng cuối, bằng số tiếng của chữ trong danh mục.
+    keep_last: bool = False
 
 
 def _number(key, value):
@@ -42,12 +44,14 @@ def _validate(settings):
         for key in _LIMITS:
             _number(key, values.get(key))
     for audio_id, values in overrides.items():
-        if not isinstance(values, dict) or values.keys() - {"doc", "voice", *_LIMITS}:
+        if not isinstance(values, dict) or values.keys() - {"doc", "voice", "keep_last", *_LIMITS}:
             raise ValueError(f"Thông số chỉnh tay không hợp lệ: {audio_id}")
         if "doc" in values and not isinstance(values["doc"], str):
             raise ValueError(f"Cách đọc của {audio_id} phải là chữ")
         if "voice" in values and (not isinstance(values["voice"], str) or values["voice"] not in VOICES):
             raise ValueError(f"Giọng đọc của {audio_id} không hợp lệ")
+        if "keep_last" in values and type(values["keep_last"]) is not bool:
+            raise ValueError(f"keep_last của {audio_id} phải là true hoặc false")
         for key in values.keys() & _LIMITS.keys():
             _number(key, values[key])
 
@@ -79,18 +83,24 @@ def effective_params(settings: dict, row: dict) -> TtsParams:
     doc = values.get("doc") or row["text"]
     if not isinstance(doc, str):
         raise ValueError("Cách đọc phải là chữ")
+    own = settings["overrides"].get(row["id"], {})
     return TtsParams(nfc(doc), *(_number(key, values[key]) for key in _LIMITS),
-                     settings["overrides"].get(row["id"], {}).get("voice", settings["voice"]))
+                     own.get("voice", settings["voice"]), own.get("keep_last", False))
 
 
 def signature(p: TtsParams) -> str:
-    data = json.dumps(asdict(p), ensure_ascii=False, sort_keys=True).encode("utf-8")
+    values = asdict(p)
+    if not values["keep_last"]:
+        del values["keep_last"]  # giữ nguyên dấu nhận dạng của mọi bản tạo trước khi có keep_last
+    data = json.dumps(values, ensure_ascii=False, sort_keys=True).encode("utf-8")
     return hashlib.sha1(data).hexdigest()
 
 
-def set_override(settings, row, *, doc=None, rate=None, pitch=None, volume=None, voice=None) -> None:
+def set_override(settings, row, *, doc=None, rate=None, pitch=None, volume=None, voice=None,
+                 keep_last=None) -> None:
     values = dict(settings["overrides"].get(row["id"], {}))
-    for key, value in (("doc", doc), ("rate", rate), ("pitch", pitch), ("volume", volume), ("voice", voice)):
+    for key, value in (("doc", doc), ("rate", rate), ("pitch", pitch), ("volume", volume), ("voice", voice),
+                       ("keep_last", keep_last)):
         if value is None:
             continue
         if key == "doc":
@@ -100,10 +110,14 @@ def set_override(settings, row, *, doc=None, rate=None, pitch=None, volume=None,
         elif key == "voice":
             if not isinstance(value, str) or value not in VOICES:
                 raise ValueError("Giọng đọc không hợp lệ")
+        elif key == "keep_last":
+            if type(value) is not bool:
+                raise ValueError("keep_last phải là true hoặc false")
         else:
             value = _number(key, value)
         values[key] = value
-    defaults = {**settings["defaults"][row["kind"]], "doc": nfc(row["text"]), "voice": settings["voice"]}
+    defaults = {**settings["defaults"][row["kind"]], "doc": nfc(row["text"]), "voice": settings["voice"],
+                "keep_last": False}
     values = {key: value for key, value in values.items()
               if value != defaults[key] and not (key == "doc" and not value)}
     if values:

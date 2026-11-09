@@ -117,6 +117,48 @@ class ParamsTest(unittest.TestCase):
             self.assertEqual(list(Path(tmp).glob("*.tmp")), [])
 
 
+class KeepLastTest(unittest.TestCase):
+    """Đọc trong câu đệm ("dỗ, dỗ.") rồi chỉ giữ tiếng cuối: bật bằng keep_last trong overrides."""
+
+    def test_off_by_default_and_signature_unchanged(self):
+        p = effective_params(settings(), row())
+        self.assertFalse(p.keep_last)
+        self.assertEqual(signature(p), "417167990541752ddcb7d8eac0586bebf7e6a535")
+
+    def test_override_sets_flag_and_changes_signature(self):
+        s, r = settings(), row()
+        before = signature(effective_params(s, r))
+        set_override(s, r, doc="bờ, bờ.", keep_last=True)
+        self.assertEqual(s["overrides"]["am_b"], {"doc": "bờ, bờ.", "keep_last": True})
+        p = effective_params(s, r)
+        self.assertTrue(p.keep_last)
+        self.assertEqual(p.doc, "bờ, bờ.")
+        self.assertNotEqual(signature(p), before)
+        set_override(s, r, doc="", keep_last=False)
+        self.assertNotIn("am_b", s["overrides"])
+
+    def test_other_edits_keep_flag(self):
+        # Trang duyệt chỉ gửi doc/rate/pitch/volume/voice: sửa tốc độ không được làm mất cờ cắt.
+        s, r = settings(), row()
+        set_override(s, r, doc="bờ, bờ.", keep_last=True)
+        set_override(s, r, rate=-20)
+        self.assertEqual(s["overrides"]["am_b"], {"doc": "bờ, bờ.", "keep_last": True, "rate": -20})
+
+    def test_roundtrip_and_invalid_rejected(self):
+        s, r = settings(), row()
+        set_override(s, r, doc="bờ, bờ.", keep_last=True)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "settings.json"
+            save_settings(path, s)
+            self.assertEqual(load_settings(path), s)
+            for bad in ("có", 1):
+                with self.subTest(bad=bad), self.assertRaises(ValueError):
+                    set_override(settings(), r, keep_last=bad)
+            for bad in ("có", 1, None):
+                with self.subTest(bad=bad), self.assertRaises(ValueError):
+                    save_settings(path, {**s, "overrides": {"am_b": {"keep_last": bad}}})
+
+
 class StaleTest(unittest.TestCase):
     def test_default_change_marks_only_unapproved(self):
         s = settings()

@@ -9,6 +9,7 @@ from .importer import _ID_RE, _looks_like_mp3, _without_changed_note, _write_ato
 from .mp3trim import trim_mp3
 from .tts_engine import TtsError, TtsUnavailable
 from .tts_settings import VOICES, differs_from_settings, effective_params, set_override, signature
+from .viet import tokens
 
 
 @dataclass
@@ -30,6 +31,16 @@ def _json_bytes(value):
     return (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
 
 
+def _speech_span(row, p, result):
+    """Khoảng lời cần giữ: cả lời đọc, hoặc với keep_last chỉ các tiếng cuối (bằng số tiếng của chữ)."""
+    if not p.keep_last:
+        return result.speech_start, result.speech_end
+    count = len(tokens(row["text"]))
+    if count == 0 or len(result.words) < count:
+        raise TtsError(f"{row['id']}: không đủ mốc từ để cắt lấy tiếng cuối")
+    return result.words[-count][0], result.words[-1][1]
+
+
 def generate_one(row, settings, engine, audio_dir, prev_dir) -> dict:
     """Chỉ thay file sau khi bộ đọc trả âm thanh; lỗi bộ đọc không chạm bản cũ."""
     dest, previous, metadata = _paths(row, audio_dir, prev_dir)
@@ -37,7 +48,9 @@ def generate_one(row, settings, engine, audio_dir, prev_dir) -> dict:
     result = engine.synthesize(p)
     if not result.audio or not _looks_like_mp3(result.audio):
         raise TtsError(f"{row['id']}: bộ đọc trả dữ liệu rỗng hoặc không phải MP3")
-    audio, trimmed = trim_mp3(result.audio, result.speech_start, result.speech_end)
+    audio, trimmed = trim_mp3(result.audio, *_speech_span(row, p, result))
+    if p.keep_last and not trimmed:
+        raise TtsError(f"{row['id']}: không cắt được tiếng cuối khỏi câu đệm")
     updated = copy.deepcopy(row)
     updated.update(status="cho_duyet", source="tts_edge_" + p.voice.removeprefix("vi-VN-").removesuffix("Neural").lower(),
                    tts={**asdict(p), "sig": signature(p), "trimmed": trimmed})
@@ -83,7 +96,8 @@ def restore_previous(row, settings, audio_dir, prev_dir) -> dict:
     if record:
         if not isinstance(record.get("voice"), str) or record["voice"] not in VOICES:
             raise ValueError("Giọng đọc bản trước không hợp lệ")
-        set_override(config, restored, **{key: record[key] for key in ("doc", "rate", "pitch", "volume", "voice")})
+        set_override(config, restored, **{key: record[key] for key in ("doc", "rate", "pitch", "volume", "voice")},
+                     keep_last=record.get("keep_last", False))
     elif old.get("override"):
         config["overrides"][row["id"]] = old["override"]
     else:
