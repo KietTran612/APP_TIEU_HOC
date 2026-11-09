@@ -12,7 +12,7 @@ from pathlib import Path
 
 from .ids import audio_for, text_audio, tone_audio
 from . import reading_steps
-from .books import grade_of, load_books, part_of
+from .books import grade_of, load_books, part_of, spells
 from .lesson_notes import lesson_notes
 from .readings import unit_readings
 from .spelling import Part, SpellResult, spell_rime, spell_syllable
@@ -111,6 +111,7 @@ class _Builder:
     def __init__(self, src: dict):
         self.src = src
         self.lid = src.get("lesson_id", "?")
+        self.spell_on = True  # quyển `spell: false` tắt ở build()
         self.audio: dict[str, tuple[str, str]] = {}
         self.images: dict[str, str] = {}
         self.can_duyet: list[dict] = []
@@ -171,7 +172,10 @@ class _Builder:
         if entry not in self.can_duyet:
             self.can_duyet.append(entry)
 
-    def _spell(self, result: SpellResult, where: str, drag_tone: bool = False) -> dict:
+    def _spell(self, result: SpellResult, where: str, drag_tone: bool = False) -> dict | None:
+        """Chuỗi đánh vần của một tiếng; quyển `spell: false` (lớp 2) thì không sinh gì (None, bỏ khi dựng xong)."""
+        if not self.spell_on:
+            return None
         for part in result.parts:
             self._register_audio(part.audio, part.say, part.akind, where)
         for note in result.can_duyet:
@@ -604,6 +608,10 @@ class _Builder:
             if not isinstance(src["lesson_no"], int):
                 raise self.error(_HEAD, f"lesson_no phải là số nguyên: {src['lesson_no']!r}")
             self.nn = f"{src['lesson_no']:02d}"
+            try:
+                self.spell_on = spells(src["book"])
+            except ValueError as e:
+                raise self.error(_HEAD, str(e)) from e
             self.new_units = frozenset(src["new_units"])
             # Sách chỉ tô vần mới trong câu ở phần vần; câu ở bài âm mới không tô chữ mới.
             self.colour_sentences = src["type"] in _RIME_LESSON_TYPES
@@ -613,6 +621,9 @@ class _Builder:
             index = self._index_entry()
         part1 = self._build_part1()
         part2 = self._build_part2()
+        if not self.spell_on:
+            _drop_spells(part1)
+            _drop_spells(part2)
 
         with self._located("notes"):
             try:
@@ -666,6 +677,18 @@ class _Builder:
         if isinstance(td_no, bool) or not isinstance(td_no, int):
             raise self.error(_HEAD, f"bài tập đọc cần trường 'td_no' (số bài in trong mục lục): {td_no!r}")
         return {"part": part, "label": f"Bài {td_no}", "week": week, **extra}
+
+
+def _drop_spells(node) -> None:
+    """Bỏ các chuỗi đánh vần rỗng (None) mà `_spell` trả khi quyển không đánh vần: `spells` còn lại là []."""
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key == "spells" and isinstance(value, list):
+                value[:] = [v for v in value if v is not None]
+            _drop_spells(value)
+    elif isinstance(node, list):
+        for value in node:
+            _drop_spells(value)
 
 
 def _rime_spans(text: str, rime: str) -> list[dict]:

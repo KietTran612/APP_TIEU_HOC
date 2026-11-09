@@ -75,5 +75,43 @@ class Grade2IndexTest(unittest.TestCase):
             build_lesson(grade2_src([{"type": "title", "text": "x"}], week=18))
 
 
+def _all_spells(node, found):
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key == "spells":
+                found.append(value)
+            _all_spells(value, found)
+    elif isinstance(node, list):
+        for value in node:
+            _all_spells(value, found)
+    return found
+
+
+class NoSpellTest(unittest.TestCase):
+    LINES = ["Cái trống trường em", "Mùa hè cũng nghỉ."]
+
+    def build(self):
+        steps = [{"type": "title", "text": "Cái trống trường em"}]
+        steps += [{"type": "sentence", "text": t} for t in self.LINES]
+        steps += [{"type": "passage", "layout": "poem", "author": "THANH HÀO"},
+                  {"type": "words", "items": [{"text": "giá trống"}]},
+                  {"type": "find_words", "question": "Tìm tiếng có vần ông.", "match": {"rime": ["ông"]}, "in": [0]},
+                  {"type": "memorize"}]
+        return build_lesson(grade2_src(steps, lesson_type="hoc_thuoc_long", td_no=2))
+
+    def test_no_spell_grade2(self):
+        result = self.build()
+        spells_lists = _all_spells(result.lesson["part1"], [])
+        self.assertTrue(spells_lists)
+        self.assertTrue(all(lst == [] for lst in spells_lists), spells_lists[:3])
+
+    def test_no_phonics_audio_grade2(self):
+        ids = set(self.build().audio)
+        self.assertFalse({i for i in ids if i.startswith(("am_", "dau_"))})
+        # "em" là cả tiếng (không có âm đầu) nên mã của chính tiếng đó là van_em; không có mảnh vần nào khác.
+        self.assertEqual({i for i in ids if i.startswith("van_")}, {"van_em"})
+        self.assertIn("tieng_troongs", ids)
+
+
 if __name__ == "__main__":
     unittest.main()
