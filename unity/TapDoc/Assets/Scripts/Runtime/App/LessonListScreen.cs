@@ -158,7 +158,9 @@ namespace TapDoc
 
             ReviewButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Review, UiText.ReviewMistakes, app.ShowReview);
             Corner(ReviewButton, Vector2.zero, new Vector2(Margin, Margin));
-            ReviewButton.interactable = progress.Mistakes().Count > 0;
+            // Chỉ ôn lượt nhầm của quyển đang mở (bản thiết kế Tủ sách mục 7).
+            var bookLessons = new HashSet<string>(entries.Select(e => e.lesson_id));
+            ReviewButton.interactable = progress.Mistakes(int.MaxValue).Any(m => bookLessons.Contains(m.lesson_id));
             ReviewButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
 
             var mascot = Mascot.Create(transform, app.Assets);

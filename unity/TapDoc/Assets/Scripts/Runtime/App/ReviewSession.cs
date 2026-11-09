@@ -29,8 +29,11 @@ namespace TapDoc
         /// <summary>
         /// Lấy tối đa <see cref="MaxRounds"/> lượt còn dùng được theo thứ tự <see cref="ProgressStore.Mistakes"/>.
         /// Mọi lượt lỗi thời gặp phải đều bị <see cref="ProgressStore.ClearMistake"/>; người gọi lưu kho sau đó.
+        /// <paramref name="onlyLessons"/> (Tủ sách: bài của quyển đang mở): chỉ ôn lượt của các bài này; lượt lỗi thời
+        /// của mọi bài vẫn được dọn. <c>null</c>: mọi bài.
         /// </summary>
-        public static ReviewSession Build(ProgressStore store, Func<string, Lesson> load)
+        public static ReviewSession Build(ProgressStore store, Func<string, Lesson> load,
+            ICollection<string> onlyLessons = null)
         {
             if (store == null) throw new ArgumentNullException(nameof(store));
             if (load == null) throw new ArgumentNullException(nameof(load));
@@ -55,6 +58,7 @@ namespace TapDoc
                     continue;
                 }
                 if (lesson.part2.Count >= MaxRounds) continue;
+                if (onlyLessons != null && !onlyLessons.Contains(mistake.lesson_id)) continue;
                 lesson.part2.Add(round);
                 sources.Add((mistake.lesson_id, mistake.round));
             }

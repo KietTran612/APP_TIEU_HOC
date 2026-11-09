@@ -76,5 +76,19 @@ namespace TapDoc.Tests
             Assert.IsFalse(s.Current.lessons.Any(l => l.lesson_id == ReviewSession.LessonId), "Phiên ôn không phải là một bài đã học");
             Assert.IsFalse(s.IsUnlocked(Ordered(), Ordered()[1]), "Ôn lại không được mở bài mới");
         }
+
+        [UnityTest]
+        public IEnumerator ReviewSession_OnlyLessonsFilter()
+        {
+            yield return LoadMainWithProfile();
+            var s = AppRoot.Instance.Progress;
+            s.RecordMistake("tv1_t1_b13", 0);
+            s.RecordMistake("tv1_t1_b13", 99); // lỗi thời: vẫn được dọn dù không nằm trong bộ lọc
+            var r = ReviewSession.Build(s, TestLessons.Real.Get, new[] { "tv1_t1_b14" });
+            Assert.AreEqual(0, r.Lesson.part2.Count, "Lượt của bài ngoài quyển không được ôn");
+            Assert.AreEqual(1, s.Mistakes().Count, "Lượt lỗi thời vẫn được dọn");
+            r = ReviewSession.Build(s, TestLessons.Real.Get, new[] { "tv1_t1_b13" });
+            Assert.AreEqual(("tv1_t1_b13", 0), r.Sources.Single());
+        }
     }
 }

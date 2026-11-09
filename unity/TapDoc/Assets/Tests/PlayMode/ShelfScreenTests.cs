@@ -189,5 +189,19 @@ namespace TapDoc.Tests
                 ScreenSizes.Reset(App, rt);
             }
         }
+
+        [UnityTest]
+        public IEnumerator Review_OnlyOpenBookMistakes()
+        {
+            yield return OpenShelf();
+            App.Progress.RecordMistake("tv1_t1_b13", 0); // lượt nhầm ở quyển đầu
+            App.Progress.UnlockAll = true;
+            App.OpenBook(BookAt(1));
+            yield return null;
+            Assert.IsFalse(List().ReviewButton.interactable, "Quyển đang mở không có lượt nhầm");
+            App.OpenBook(BookAt(0));
+            yield return null;
+            Assert.IsTrue(List().ReviewButton.interactable);
+        }
     }
 }

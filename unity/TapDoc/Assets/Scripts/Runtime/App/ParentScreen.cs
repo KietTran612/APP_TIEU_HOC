@@ -15,8 +15,9 @@ namespace TapDoc
     public class ParentScreen : MonoBehaviour
     {
         private const int MaxConfusions = 5;
-        private const float RowHeight = 210f;
+        private const float RowHeight = 330f; // tên bé, ba dòng tiến độ (mỗi quyển một dòng), chữ hay nhầm
         private const float ChipHeight = 90f;
+        private const float ProgressHeight = 136f;
 
         private static readonly Color RowColor = Palette.PaperLight;
         private static readonly Color ChipColor = Palette.ChipYellow;
@@ -162,19 +163,21 @@ namespace TapDoc
             ProfileScreen.AddAvatar(avatarBox.transform, _app.Assets, profile.avatar, profile.name);
 
             var name = LeftLabel(row.transform, profile.name, 48f);
-            PlaceLeft(name.rectTransform, 1f, new Vector2(140f, -14f), new Vector2(520f, 100f));
+            PlaceLeft(name.rectTransform, 1f, new Vector2(140f, -14f), new Vector2(520f, 60f));
             name.overflowMode = TextOverflowModes.Ellipsis;
 
             var index = _app.Lessons.Index;
+            var books = BookShelf.BookIds(index);
+            var perBook = books.Count > 1;
             string learnedText;
-            if (index.HasGrade2)
+            if (perBook)
             {
-                // Tiến độ tách theo lớp (thiết kế TV2 tập một, mục 4.6): mỗi lớp một dòng.
-                learnedText = string.Join("\n", new[] { 1, 2 }.Select(g =>
+                // Tủ sách (bản thiết kế mục 7): mỗi quyển một dòng tiến độ.
+                learnedText = string.Join("\n", books.Select(b =>
                 {
-                    var ids = index.OrderedIds(g);
-                    return string.Format(UiText.LearnedGradeFormat, g, ids.Count(id => ProgressStore.IsCompleted(profile, id)),
-                        ids.Count);
+                    var ids = BookShelf.LessonIds(index, b);
+                    return string.Format(UiText.BookLearnedFormat, BookShelf.Book(index, b)?.title ?? b,
+                        ids.Count(id => ProgressStore.IsCompleted(profile, id)), ids.Count);
                 }));
             }
             else
@@ -183,8 +186,14 @@ namespace TapDoc
                 learnedText = string.Format(UiText.LearnedFormat, learned, ordered.Count);
             }
             var progress = LeftLabel(row.transform, learnedText, 44f);
-            PlaceLeft(progress.rectTransform, 1f, new Vector2(680f, -14f), new Vector2(420f, 100f));
-            if (index.HasGrade2)
+            // Dưới tên bé, kéo dài tới mép trái nút "Mở mọi bài" (không nằm dưới nút).
+            var prt = progress.rectTransform;
+            prt.anchorMin = new Vector2(0f, 1f);
+            prt.anchorMax = Vector2.one;
+            prt.pivot = new Vector2(0f, 1f);
+            prt.offsetMin = new Vector2(140f, -80f - ProgressHeight);
+            prt.offsetMax = new Vector2(-(UnlockWidth + 40f), -80f);
+            if (perBook)
             {
                 progress.enableAutoSizing = true;
                 progress.fontSizeMax = 40f;

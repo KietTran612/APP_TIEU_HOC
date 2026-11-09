@@ -22,7 +22,7 @@ namespace TapDoc.Tests
             var p = Object.FindAnyObjectByType<ParentScreen>();
             p.SimulateUnlock();
             yield return null;
-            Assert.That(LabelsUnder(p), Has.Some.Contains(string.Format(UiText.LearnedGradeFormat, 1, 1, AppRoot.Instance.Lessons.Index.OrderedIds(1).Count)));
+            Assert.That(LabelsUnder(p), Has.Some.Contains(BookLine(0, 1)));
             Assert.That(LabelsUnder(p), Has.Member("u")); // lượt 0 bài 13: đáp án "u"
         }
 
@@ -86,8 +86,8 @@ namespace TapDoc.Tests
             var labels = LabelsUnder(p);
             Assert.That(labels, Has.Member(TestChildName));
             Assert.That(labels, Has.Member("Na"));
-            Assert.That(labels, Has.Some.Contains(string.Format(UiText.LearnedGradeFormat, 1, 1, AppRoot.Instance.Lessons.Index.OrderedIds(1).Count)));
-            Assert.That(labels, Has.Some.Contains(string.Format(UiText.LearnedGradeFormat, 1, 0, AppRoot.Instance.Lessons.Index.OrderedIds(1).Count)));
+            Assert.That(labels, Has.Some.Contains(BookLine(0, 1)));
+            Assert.That(labels, Has.Some.Contains(BookLine(0, 0)));
         }
 
         [UnityTest]
@@ -198,6 +198,45 @@ namespace TapDoc.Tests
             p.SimulateUnlock();
             yield return null;
             Assert.IsNull(p.GetComponentInChildren<Mascot>(true), "Màn phụ huynh không có gà con");
+        }
+
+        /// <summary>Dòng tiến độ của quyển thứ <paramref name="k"/> với <paramref name="done"/> bài đã học.</summary>
+        private static string BookLine(int k, int done)
+        {
+            var index = AppRoot.Instance.Lessons.Index;
+            var book = BookShelf.BookIds(index)[k];
+            return string.Format(UiText.BookLearnedFormat, BookShelf.Book(index, book).title, done,
+                BookShelf.LessonIds(index, book).Count);
+        }
+
+        [UnityTest]
+        public IEnumerator Parent_ProgressPerBook()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile();
+            var index = AppRoot.Instance.Lessons.Index;
+            var second = BookShelf.BookIds(index)[1];
+            AppRoot.Instance.Progress.MarkCompleted(BookShelf.LessonIds(index, second)[0]);
+            AppRoot.Instance.ShowParent();
+            yield return WaitPrepared();
+            var p = Object.FindAnyObjectByType<ParentScreen>();
+            p.SimulateUnlock();
+            yield return null;
+            var labels = LabelsUnder(p);
+            Assert.That(labels, Has.Some.Contains(BookLine(0, 0)));
+            Assert.That(labels, Has.Some.Contains(BookLine(1, 1)));
+            for (var k = 2; k < BookShelf.BookIds(index).Count; k++) Assert.That(labels, Has.Some.Contains(BookLine(k, 0)));
+            // Dòng tiến độ không bị nút "Mở mọi bài" che.
+            var line = p.GetComponentsInChildren<TMPro.TMP_Text>().First(t => t.text.Contains(BookLine(1, 1)));
+            var toggle = (RectTransform)p.UnlockToggleFor(AppRoot.Instance.Progress.Current.id).transform;
+            Assert.IsFalse(WorldRect(line.rectTransform).Overlaps(WorldRect(toggle)), "Chữ tiến độ nằm dưới nút Mở mọi bài");
+        }
+
+        private static Rect WorldRect(RectTransform rt)
+        {
+            var c = new Vector3[4];
+            rt.GetWorldCorners(c);
+            return Rect.MinMaxRect(c[0].x, c[0].y, c[2].x, c[2].y);
         }
     }
 }

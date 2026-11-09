@@ -356,6 +356,13 @@ namespace TapDoc
 
         public void ShowShelf() => ShowShelf(null);
 
+        /// <summary>Mã các bài của quyển bé đang mở (chưa mở quyển nào thì quyển đang học).</summary>
+        internal System.Collections.Generic.HashSet<string> OpenBookLessonIds()
+        {
+            var book = Progress.OpenBook ?? BookShelf.CurrentBookId(Lessons.Index, Progress);
+            return new System.Collections.Generic.HashSet<string>(BookShelf.LessonIds(Lessons.Index, book));
+        }
+
         /// <summary>Mở quyển <paramref name="bookId"/> cho bé đang học (nhớ lại cho lần sau) và hiện danh sách bài.</summary>
         public void OpenBook(string bookId)
         {
@@ -408,7 +415,7 @@ namespace TapDoc
 
         private async Awaitable<(ContentSet, Action)> PrepareReviewAsync()
         {
-            // Nạp trước các bài có lượt cần ôn; bài hỏng hay không còn thì ReviewSession bỏ lượt đó.
+            // Nạp trước các bài có lượt cần ôn; bài hỏng hay không còn thì ReviewSession bỏ lượt đó (và dọn lượt đó).
             foreach (var lessonId in Progress.Mistakes(int.MaxValue).Select(m => m.lesson_id).Distinct().ToList())
             {
                 try
@@ -419,7 +426,8 @@ namespace TapDoc
                 {
                 }
             }
-            var session = ReviewSession.Build(Progress, Lessons.Get);
+            // Tủ sách: chỉ ôn lượt nhầm của quyển đang mở.
+            var session = ReviewSession.Build(Progress, Lessons.Get, OpenBookLessonIds());
             SaveProgress();
             if (session.Lesson.part2.Count == 0) return (null, ShowLessonList);
             return await PrepareLessonAsync(session.Lesson, session);

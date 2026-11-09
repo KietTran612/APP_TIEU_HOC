@@ -66,7 +66,6 @@ namespace TapDoc
         public const string PartReading = "Tập đọc";
         public const string WeekFormat = "Tuần {0}";
         public const string GradeTabFormat = "Lớp {0}";
-        public const string LearnedGradeFormat = "Lớp {0}: {1}/{2} bài";
         public const string UnlockAllOn = "Mở mọi bài: Bật";
         public const string UnlockAllOff = "Mở mọi bài: Tắt";
 
@@ -89,6 +88,8 @@ namespace TapDoc
         public const string ShelfTitleFormat = "Tủ sách của {0}";
         public const string BookProgressFormat = "Đã học {0}/{1} bài";
         public const string BookDone = "Đã học xong";
+        /// <summary>Tiến độ một quyển ở màn Phụ huynh: tên quyển, số bài đã học, tổng số bài.</summary>
+        public const string BookLearnedFormat = "{0}: {1}/{2}";
 
         // Menu Cài đặt (nút bánh răng).
         public const string Settings = "Cài đặt";
@@ -162,7 +163,6 @@ namespace TapDoc
             PartReading,
             WeekFormat,
             GradeTabFormat,
-            LearnedGradeFormat,
             UnlockAllOn,
             UnlockAllOff,
             ListenAll,
@@ -196,6 +196,7 @@ namespace TapDoc
             ShelfTitleFormat,
             BookProgressFormat,
             BookDone,
+            BookLearnedFormat,
         };
     }
 }

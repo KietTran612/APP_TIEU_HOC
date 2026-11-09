@@ -56,7 +56,9 @@ namespace TapDoc
             brt.anchorMax = Vector2.one;
             var book = FitBox.Create(brt, "Book", ScreenLayout.StageSize);
             BookFit = brt.GetComponent<FitBox>();
-            var entries = app.Lessons.Index.lessons;
+            // Sổ bé ngoan theo quyển đang mở (bản thiết kế Tủ sách mục 7).
+            var bookLessons = app.OpenBookLessonIds();
+            var entries = app.Lessons.Index.lessons.Where(e => bookLessons.Contains(e.lesson_id)).ToList();
             Spread = BookSpread.Create(book, entries, app.Progress, app.Assets);
             Spread.ShowPage(FlowerBook.StartPage(app.Progress, entries.Select(e => e.lesson_id).ToList()));
 

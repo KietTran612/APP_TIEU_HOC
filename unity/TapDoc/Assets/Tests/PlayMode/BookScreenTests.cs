@@ -31,7 +31,9 @@ namespace TapDoc.Tests
             Assert.AreEqual(2, screen.Spread.LeftPage, "Mở ở cặp trang có bài học xong đứng sau cùng");
             Assert.AreEqual(3, screen.Spread.PageFor(ordered[2]).FlowerCount);
             Assert.AreEqual(0, screen.Spread.PageFor(ordered[3]).FlowerCount);
-            Assert.AreEqual(ordered.Length, screen.Spread.PageCount, "Mỗi bài một trang");
+            var index = AppRoot.Instance.Lessons.Index;
+            Assert.AreEqual(BookShelf.LessonIds(index, BookShelf.BookIds(index)[0]).Count, screen.Spread.PageCount,
+                "Mỗi bài của quyển đang mở một trang");
         }
 
         [UnityTest]
@@ -201,6 +203,22 @@ namespace TapDoc.Tests
             Assert.AreEqual(4, screen.Spread.LeftPage, "Vẫn ở trang đang xem");
             Assert.Greater(screen.BookFit.Scale, 1.2f, "Sổ to lên theo màn mới");
             ScreenSizes.Reset(app, phone);
+        }
+
+        [UnityTest]
+        public IEnumerator Book_OpenBookPagesOnly()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            var book = BookShelf.BookIds(app.Lessons.Index)[1];
+            app.Progress.UnlockAll = true;
+            app.OpenBook(book);
+            yield return null;
+            var screen = OpenBook();
+            yield return null;
+            Assert.AreEqual(BookShelf.LessonIds(app.Lessons.Index, book).Count, screen.Spread.PageCount,
+                "Sổ chỉ có trang của quyển đang mở");
         }
     }
 }
