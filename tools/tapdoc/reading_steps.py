@@ -5,12 +5,14 @@ Bộ dựng giữ danh sách câu của bài đọc hiện tại (`b.reading`): 
 `sentence`. Bước `passage` và `memorize` dùng lại đúng mã âm thanh của các câu đó.
 """
 
+import re
+
 from .ids import text_audio
 from .spelling import spell_syllable
 from .viet import TONE_INFO, nfc, split_syllable, strip_tone, tokens
 
 _TONE_BY_NAME = {name: key for key, (name, _) in TONE_INFO.items()}
-_MATCH_KINDS = ("rime", "onset", "tone")
+_MATCH_KINDS = ("rime", "onset", "tone", "word")  # word: danh sách tiếng đúng (lớp 2, Claude chọn)
 _QUESTION_KIND = "cau"  # câu hỏi đọc như câu (cùng thông số giọng), mã riêng hoi_bNN_kk
 
 
@@ -80,6 +82,8 @@ def _match(b, match, where: str) -> tuple[str, frozenset[str]]:
 
 def _hit(kind: str, values: frozenset[str], tok: str) -> dict | None:
     """Vị trí phần được hỏi trong tiếng (tương đối đầu tiếng), hoặc None nếu tiếng không khớp."""
+    if kind == "word":
+        return {"s": 0, "n": len(tok)} if tok.lower() in values else None
     syl = split_syllable(tok)
     # Sách coi chữ u của "qu" là âm đệm của vần: "quyển" có vần uyên, "Quỳnh" có vần uynh.
     onset, rime = ("q", "u" + syl.rime) if syl.onset == "qu" else (syl.onset, syl.rime)
@@ -122,8 +126,91 @@ def step_find_words(b, step: dict, where: str) -> dict:
 
 
 def step_question(b, step: dict, where: str) -> dict:
-    return {"type": "question", "marker": step.get("marker", ""), "text": step["text"],
-            "audio": question_audio(b, step["text"], where)}
+    built = {"type": "question", "marker": step.get("marker", ""), "text": step["text"],
+             "audio": question_audio(b, step["text"], where)}
+    if step.get("lines"):
+        # Các câu sách in kèm câu hỏi (lớp 2): hiện dưới câu hỏi, chạm để nghe.
+        built["lines"] = [{"text": t, "audio": b._sentence_audio(t, f"{where}.lines[{k}]")}
+                          for k, t in enumerate(step["lines"])]
+    return built
+
+
+def step_combine_words(b, step: dict, where: str) -> dict:
+    """Ghép chữ rồi đọc lên (lớp 2): chữ gốc ghép trước hoặc sau từng chữ cho sẵn."""
+    base = nfc(step["base"])
+    items = []
+    for k, entry in enumerate(step["items"]):
+        item_where = f"{where}.items[{k}]"
+        part, at = nfc(entry["with"]), entry.get("at", "after")
+        if at not in ("before", "after"):
+            raise b.error(item_where, f"at phải là before hoặc after: {at!r}")
+        text = f"{base} {part}" if at == "after" else f"{part} {base}"
+        items.append({"part": part, "text": text, "audio": b._audio(text_audio(text), item_where)})
+    if not items:
+        raise b.error(where, "combine_words cần ít nhất một chữ để ghép")
+    return {"type": "combine_words", "marker": step.get("marker", ""),
+            "base": {"text": base, "audio": b._audio(text_audio(base), where)}, "items": items}
+
+
+_BLANK_RE = re.compile(r"\[([^\]]+)\]")
+
+
+def step_fill_passage(b, step: dict, where: str) -> dict:
+    """Điền từ vào đoạn văn (lớp 2): ô viết "[đáp án]" khi có `bank`, "[đáp án|nhiễu|nhiễu]" khi không có."""
+    bank = [nfc(w) for w in step.get("bank", [])]
+    sentences, blanks = [], []
+    for k, raw in enumerate(step["text"]):
+        line_where = f"{where}.text[{k}]"
+        line, parts, full, pos = nfc(raw), [], [], 0
+        for m in _BLANK_RE.finditer(line):
+            if m.start() > pos:
+                parts.append({"t": line[pos:m.start()]})
+                full.append(line[pos:m.start()])
+            options = [o.strip() for o in m.group(1).split("|")]
+            answer = options[0]
+            if bank:
+                if len(options) > 1:
+                    raise b.error(line_where, f"đã có bank thì ô không ghi lựa chọn riêng: {m.group(0)!r}")
+                if answer not in bank:
+                    raise b.error(line_where, f"đáp án {answer!r} không có trong bank {bank!r}")
+                choices = list(bank)
+            else:
+                if len(options) < 2:
+                    raise b.error(line_where, f"không có bank thì ô cần lựa chọn riêng [đáp án|nhiễu]: {m.group(0)!r}")
+                choices = options
+            parts.append({"blank": len(blanks)})
+            full.append(answer)
+            blanks.append({"answer": answer, "choices": choices})
+            pos = m.end()
+        if pos < len(line):
+            parts.append({"t": line[pos:]})
+            full.append(line[pos:])
+        text = "".join(full)
+        sentences.append({"text": text, "audio": b._sentence_audio(text, line_where), "parts": parts})
+    if not blanks:
+        raise b.error(where, "fill_passage cần ít nhất một ô trống")
+    if bank:
+        for word in {bl["answer"] for bl in blanks}:
+            used = sum(1 for bl in blanks if bl["answer"] == word)
+            if used > bank.count(word):
+                raise b.error(where, f"{word!r} điền {used} ô nhưng bank chỉ có {bank.count(word)}")
+    return {"type": "fill_passage", "marker": step.get("marker", ""), "bank": bank, "sentences": sentences,
+            "blanks": blanks}
+
+
+def step_choose_line(b, step: dict, where: str) -> dict:
+    """Chọn các dòng đúng yêu cầu ("dòng nào viết chưa thành câu?"); đáp án Claude soạn, can_duyet ở nguồn."""
+    lines, answers = step["lines"], step.get("answers", [])
+    if not answers:
+        raise b.error(where, "choose_line cần ít nhất một đáp án")
+    bad = [a for a in answers if not isinstance(a, int) or isinstance(a, bool) or not 0 <= a < len(lines)]
+    if bad:
+        raise b.error(where, f"answers ngoài danh sách dòng: {bad!r}")
+    items = [{"text": t, "audio": b._sentence_audio(t, f"{where}.lines[{k}]"), "correct": k in answers}
+             for k, t in enumerate(lines)]
+    return {"type": "choose_line", "marker": step.get("marker", ""),
+            "question": {"text": step["question"], "audio": question_audio(b, step["question"], where)},
+            "items": items}
 
 
 def step_memorize(b, step: dict, where: str) -> dict:
@@ -194,4 +281,7 @@ STEPS = {
     "memorize": step_memorize,
     "fill_blank": step_fill_blank,
     "riddle_answer": step_riddle_answer,
+    "combine_words": step_combine_words,
+    "fill_passage": step_fill_passage,
+    "choose_line": step_choose_line,
 }

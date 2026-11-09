@@ -24,7 +24,7 @@ GLOBAL = "-"  # `lesson` của lỗi không thuộc một bài nào
 ROUNDS_MIN, ROUNDS_MAX = 6, 10
 
 # Ký hiệu đầu mục được phép: không có, ● (em đọc), ⌂ (luyện tập), ●▨ (em đọc + em viết).
-VALID_MARKERS = ("", "●", "⌂", "●▨", "?")  # "?": Câu hỏi (tập 2, tr.2)
+VALID_MARKERS = ("", "●", "⌂", "●▨", "?", ":")  # "?": Câu hỏi (tập 2, tr.2); ":": giải nghĩa từ (lớp 2)
 
 NO_LESSONS = "chưa có bài nào được dựng — chạy build trước"
 REVIEWED = "da_duyet"  # `review.status` của bài đã được chủ dự án duyệt
