@@ -8,7 +8,8 @@
 |---|---|
 | Nội dung | Đủ 133 mục (172–304) `page_verified`, `validate --allow-missing` OK |
 | Công cụ, Unity | Xong; test liên quan đạt, smoke 133 mục đạt |
-| Tranh | 57 mã + `img_chung_giai_nghia` đã gửi session vẽ tranh (`local_be5a6177…`), phiếu `content/requests/images_tv2_t1_dot_1..4.md` (chỉ trên máy) |
+| Tranh | Đủ 57 tranh + `img_chung_giai_nghia` đã nhập (447cf3e, d239be1, d7bbff2, 957e711), `cho_duyet`; validate không còn lỗi tranh. Ghi chú duyệt: b190 cô bé mặc áo hoa (không phải áo bông), b268 chọn bản có thuyền chở cá, b274 hai cô gái không đội nón |
+| Tranh động | 27 clip mục 172–230 đã nhập (28fe7be); các mục sau do session tranh động làm tiếp |
 | Âm thanh | Đang tạo HoaiMy, 1 tiến trình, mỗi mã ≤ 90 giây, tiếng lẻ `keep_first` |
 | Gói media | Chưa đóng (chờ tranh và âm thanh) |
 
