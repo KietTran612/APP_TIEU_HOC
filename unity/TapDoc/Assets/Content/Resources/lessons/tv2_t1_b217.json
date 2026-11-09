@@ -1,0 +1,287 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b217",
+  "book": "tv2_t1_2001",
+  "lesson_no": 217,
+  "type": "ngu_phap",
+  "title": "Câu – Hai bộ phận chính",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      43
+    ],
+    "scan_file": "022",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Bé nói thêm bộ phận câu cùng bố mẹ (sách để bé tự điền, không có đáp án cố định)."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Câu – Hai bộ phận chính",
+      "audio": "cau_b217_01",
+      "labels": []
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Mẹ Thắng – chưa thành câu.",
+          "audio": "cau_b217_02",
+          "role": "line"
+        },
+        {
+          "text": "Vá áo – chưa thành câu.",
+          "audio": "cau_b217_03",
+          "role": "line"
+        },
+        {
+          "text": "Mẹ Thắng vá áo. – đã thành câu.",
+          "audio": "cau_b217_04",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Câu thường phải có đủ hai bộ phận chính.",
+          "audio": "cau_b217_05",
+          "role": "line"
+        },
+        {
+          "text": "Bộ phận chính thứ nhất đứng trước, bộ phận chính thứ hai đứng sau.",
+          "audio": "cau_b217_06",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Điền thêm bộ phận thứ hai cho thành câu:",
+      "audio": "hoi_b217_01",
+      "rows": [
+        {
+          "text": "Bố Tuấn...",
+          "audio": "cau_b217_07"
+        },
+        {
+          "text": "Thắng...",
+          "audio": "cau_b217_08"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Điền thêm bộ phận thứ nhất cho thành câu:",
+      "audio": "hoi_b217_02",
+      "rows": [
+        {
+          "text": "... đang ăn cơm.",
+          "audio": "cau_b217_09"
+        },
+        {
+          "text": "... may áo mặc rét cho Thắng.",
+          "audio": "cau_b217_10"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vas_aos",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vá áo",
+          "audio": "tu_vas_aos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "may áo",
+          "audio": "tu_may_aos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ăn cơm",
+          "audio": "tu_awn_cowm",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_booj_phaanj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bộ phận",
+          "audio": "tu_booj_phaanj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thành câu",
+          "audio": "tu_thanhf_caau",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vá áo",
+          "audio": "tu_vas_aos",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_awn_cowm",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ăn cơm",
+          "audio": "tu_awn_cowm",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vá áo",
+          "audio": "tu_vas_aos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mặc rét",
+          "audio": "tu_mawcj_rets",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_mawcj_rets",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "mặc rét",
+          "audio": "tu_mawcj_rets",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ăn cơm",
+          "audio": "tu_awn_cowm",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bộ phận",
+          "audio": "tu_booj_phaanj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thanhf_caau",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thành câu",
+          "audio": "tu_thanhf_caau",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bộ phận",
+          "audio": "tu_booj_phaanj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "may áo",
+          "audio": "tu_may_aos",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_may_aos",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "may áo",
+          "audio": "tu_may_aos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mặc rét",
+          "audio": "tu_mawcj_rets",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thành câu",
+          "audio": "tu_thanhf_caau",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

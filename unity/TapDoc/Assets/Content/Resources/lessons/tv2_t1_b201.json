@@ -1,0 +1,278 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b201",
+  "book": "tv2_t1_2001",
+  "lesson_no": 201,
+  "type": "ngu_phap",
+  "title": "Câu – Mở đầu và kết thúc (tiếp theo)",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      29
+    ],
+    "scan_file": "015",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Sách in hai tranh cạnh nhau; app hiện từng tranh trước câu hỏi về tranh đó. Bé trả lời miệng cùng bố mẹ; phần chép vào vở bé viết cùng bố mẹ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[4]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      },
+      {
+        "where": "part1[4]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Câu – Mở đầu và kết thúc",
+      "audio": "cau_b201_01",
+      "labels": [
+        "Tiếp theo"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Nhìn vào hình vẽ và trả lời",
+      "audio": "cau_b201_02",
+      "labels": []
+    },
+    {
+      "type": "picture",
+      "image": "img_b201_laam_hocj_baif",
+      "audio": "hd_b201_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Lâm đang làm gì? (tranh bên trái)",
+      "audio": "hoi_b201_01"
+    },
+    {
+      "type": "picture",
+      "image": "img_b201_laam_vieets_baif",
+      "audio": "hd_b201_tranh_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Khi học thuộc bài rồi, Lâm làm gì? (tranh bên phải)",
+      "audio": "hoi_b201_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Trên bàn học, đồ đạc được sắp xếp thế nào?",
+      "audio": "hoi_b201_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Em hãy chép lại các câu trả lời vào vở. Đoạn văn em vừa chép có mấy câu? Chữ đầu câu viết như thế nào cho đúng? Có dấu gì ở cuối câu?",
+      "audio": "hoi_b201_04"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_hocj_baif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "học bài",
+          "audio": "tu_hocj_baif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "viết bài",
+          "audio": "tu_vieets_baif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bàn học",
+          "audio": "tu_banf_hocj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_banf_hocj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bàn học",
+          "audio": "tu_banf_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "học bài",
+          "audio": "tu_hocj_baif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đồ đạc",
+          "audio": "tu_ddoof_ddacj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddoof_ddacj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đồ đạc",
+          "audio": "tu_ddoof_ddacj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sắp xếp",
+          "audio": "tu_sawps_xeeps",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "viết bài",
+          "audio": "tu_vieets_baif",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_sawps_xeeps",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "sắp xếp",
+          "audio": "tu_sawps_xeeps",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đồ đạc",
+          "audio": "tu_ddoof_ddacj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "học thuộc",
+          "audio": "tu_hocj_thuoocj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_hocj_thuoocj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "học thuộc",
+          "audio": "tu_hocj_thuoocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "học bài",
+          "audio": "tu_hocj_baif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sắp xếp",
+          "audio": "tu_sawps_xeeps",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vieets_baif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "viết bài",
+          "audio": "tu_vieets_baif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bàn học",
+          "audio": "tu_banf_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "học thuộc",
+          "audio": "tu_hocj_thuoocj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

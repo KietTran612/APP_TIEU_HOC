@@ -1,0 +1,751 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b223",
+  "book": "tv2_t1_2001",
+  "lesson_no": 223,
+  "type": "tap_chep_chinh_ta",
+  "title": "Làm anh – Bé Hoa",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      49
+    ],
+    "scan_file": "025",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Điền chỗ trống, ghép chữ làm bằng chạm hoặc kéo thẻ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[3]",
+        "note": "cách ghép do app chọn: câu chuyện, trò chuyện, kể chuyện"
+      },
+      {
+        "where": "part1[4]",
+        "note": "đáp án dỗ/giỗ"
+      },
+      {
+        "where": "part1[5]",
+        "note": "đáp án dàng/ràng"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án ngã/ngả"
+      },
+      {
+        "where": "part1[8]",
+        "note": "thành ngữ do app điền: nâng như nâng trứng, hứng như hứng hoa"
+      },
+      {
+        "where": "part1[12]",
+        "note": "cách ghép do app chọn: yêu mến, yêu thương, thân yêu, yêu quý"
+      },
+      {
+        "where": "part1[13]",
+        "note": "đáp án da/ra/gia"
+      },
+      {
+        "where": "part1[14]",
+        "note": "đáp án mắt/mắc"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập chép: Làm anh",
+      "audio": "cau_b223_01",
+      "labels": [
+        "Nhìn sách"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài chép: 3 khổ thơ đầu.",
+      "audio": "cau_b223_02",
+      "labels": [
+        "Phần này con chép vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "chuyện",
+          "audio": "tieng_chuyeenj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "người lớn",
+          "audio": "tu_nguwowif_lowns",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dỗ dành",
+          "audio": "tu_doox_danhf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dịu dàng",
+          "audio": "tu_diuj_dangf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nâng",
+          "audio": "tieng_naang",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ngã",
+          "audio": "tieng_ngax",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "chuyện",
+      "audio": "tieng_chuyeenj",
+      "items": [
+        {
+          "text": "câu chuyện",
+          "audio": "tu_caau_chuyeenj",
+          "part": "câu",
+          "role": "before"
+        },
+        {
+          "text": "trò chuyện",
+          "audio": "tu_trof_chuyeenj",
+          "part": "trò",
+          "role": "before"
+        },
+        {
+          "text": "kể chuyện",
+          "audio": "tu_keer_chuyeenj",
+          "part": "kể",
+          "role": "before"
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "dỗ",
+        "giỗ"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "dỗ em",
+          "audio": "tu_doox_em",
+          "answer": "dỗ",
+          "hl": [
+            {
+              "s": 0,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "dạy dỗ",
+          "audio": "tu_dayj_doox",
+          "answer": "dỗ",
+          "hl": [
+            {
+              "s": 4,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "ngày giỗ",
+          "audio": "tu_ngayf_gioox",
+          "answer": "giỗ",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "dàng",
+        "ràng"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "dịu dàng",
+          "audio": "tu_diuj_dangf",
+          "answer": "dàng",
+          "hl": [
+            {
+              "s": 4,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "rõ ràng",
+          "audio": "tu_rox_rangf",
+          "answer": "ràng",
+          "hl": [
+            {
+              "s": 3,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "dễ dàng",
+          "audio": "tu_deex_dangf",
+          "answer": "dàng",
+          "hl": [
+            {
+              "s": 3,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "rộn ràng",
+          "audio": "tu_roonj_rangf",
+          "answer": "ràng",
+          "hl": [
+            {
+              "s": 4,
+              "n": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "ngã",
+        "ngả"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "Chị ngã em nâng",
+          "audio": "tu_chij_ngax_em_naang",
+          "answer": "ngã",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "Mỗi người đi một ngả",
+          "audio": "tu_mooix_nguwowif_ddi_mootj_ngar",
+          "answer": "ngả",
+          "hl": [
+            {
+              "s": 17,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đố em điền đúng",
+      "audio": "cau_b223_03",
+      "labels": []
+    },
+    {
+      "type": "fill_passage",
+      "marker": "",
+      "labels": [],
+      "rows": [
+        {
+          "text": "Nâng như nâng trứng, hứng như hứng hoa.",
+          "audio": "cau_b223_04",
+          "row": 0
+        }
+      ],
+      "items": [
+        {
+          "text": "Nâng như",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "nâng",
+          "row": 0,
+          "role": "blank",
+          "answer": "nâng",
+          "choices": [
+            "nâng",
+            "hứng",
+            "ngã"
+          ]
+        },
+        {
+          "text": "trứng, hứng như",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "hứng",
+          "row": 0,
+          "role": "blank",
+          "answer": "hứng",
+          "choices": [
+            "hứng",
+            "nâng",
+            "ngả"
+          ]
+        },
+        {
+          "text": "hoa.",
+          "row": 0,
+          "role": "text"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Bé Hoa",
+      "audio": "cau_b223_05",
+      "labels": [
+        "Nghe đọc"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: \"Bây giờ... em ngủ\".",
+      "audio": "cau_b223_06",
+      "labels": [
+        "Phần này con nghe bố mẹ đọc rồi viết vào vở."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "Hoa",
+          "audio": "tieng_hoa",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "Nụ",
+          "audio": "tieng_nuj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "yêu",
+          "audio": "van_yeeu",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "da",
+          "audio": "tieng_da",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ru",
+          "audio": "tieng_ru",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "mắt",
+          "audio": "tieng_mawts",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ngủ",
+          "audio": "tieng_ngur",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "võng",
+          "audio": "tieng_vongx",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "yêu",
+      "audio": "van_yeeu",
+      "items": [
+        {
+          "text": "yêu mến",
+          "audio": "tu_yeeu_meens",
+          "part": "mến",
+          "role": "after"
+        },
+        {
+          "text": "yêu thương",
+          "audio": "tu_yeeu_thuwowng",
+          "part": "thương",
+          "role": "after"
+        },
+        {
+          "text": "thân yêu",
+          "audio": "tu_thaan_yeeu",
+          "part": "thân",
+          "role": "before"
+        },
+        {
+          "text": "yêu quý",
+          "audio": "tu_yeeu_quys",
+          "part": "quý",
+          "role": "after"
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "da",
+        "ra",
+        "gia"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "da thịt",
+          "audio": "tu_da_thitj",
+          "answer": "da",
+          "hl": [
+            {
+              "s": 0,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "ra vào",
+          "audio": "tu_ra_vaof",
+          "answer": "ra",
+          "hl": [
+            {
+              "s": 0,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "gia đình",
+          "audio": "tu_gia_ddinhf",
+          "answer": "gia",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "giày bằng da",
+          "audio": "tu_giayf_bawngf_da",
+          "answer": "da",
+          "hl": [
+            {
+              "s": 10,
+              "n": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "mắt",
+        "mắc"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "hai con mắt",
+          "audio": "tu_hai_con_mawts",
+          "answer": "mắt",
+          "hl": [
+            {
+              "s": 8,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "mắc lỗi chính tả",
+          "audio": "tu_mawcs_looix_chinhs_tar",
+          "answer": "mắc",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "có tai có mắt",
+          "audio": "tu_cos_tai_cos_mawts",
+          "answer": "mắt",
+          "hl": [
+            {
+              "s": 10,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "thắc mắc",
+          "audio": "tu_thawcs_mawcs",
+          "answer": "mắc",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_caau_chuyeenj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "câu chuyện",
+          "audio": "tu_caau_chuyeenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trò chuyện",
+          "audio": "tu_trof_chuyeenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kể chuyện",
+          "audio": "tu_keer_chuyeenj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_doox_danhf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "dỗ dành",
+          "audio": "tu_doox_danhf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dịu dàng",
+          "audio": "tu_diuj_dangf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rõ ràng",
+          "audio": "tu_rox_rangf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ngayf_gioox",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ngày giỗ",
+          "audio": "tu_ngayf_gioox",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dạy dỗ",
+          "audio": "tu_dayj_doox",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rộn ràng",
+          "audio": "tu_roonj_rangf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_yeeu_meens",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "yêu mến",
+          "audio": "tu_yeeu_meens",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thân yêu",
+          "audio": "tu_thaan_yeeu",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "yêu quý",
+          "audio": "tu_yeeu_quys",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thawcs_mawcs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thắc mắc",
+          "audio": "tu_thawcs_mawcs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "con mắt",
+          "audio": "tu_con_mawts",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gia đình",
+          "audio": "tu_gia_ddinhf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_vongx",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "võng",
+          "audio": "tieng_vongx",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ru",
+          "audio": "tieng_ru",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ngủ",
+          "audio": "tieng_ngur",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

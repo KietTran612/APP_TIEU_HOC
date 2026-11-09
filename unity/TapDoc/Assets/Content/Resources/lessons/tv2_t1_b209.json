@@ -1,0 +1,284 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b209",
+  "book": "tv2_t1_2001",
+  "lesson_no": 209,
+  "type": "ngu_phap",
+  "title": "Câu",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      36
+    ],
+    "scan_file": "019",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Lời Lâm nói trong tranh của sách hiện thành dòng chữ dưới câu hỏi, chạm để nghe. Bé trả lời miệng cùng bố mẹ; phần chép thư vào vở bé viết cùng bố mẹ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[1]",
+        "note": "tranh vẽ lại không có khung lời thoại; lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[1]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Câu",
+      "audio": "cau_b209_01",
+      "labels": []
+    },
+    {
+      "type": "picture",
+      "image": "img_b209_laam_vaf_mej",
+      "audio": "hd_b209_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Trong tranh vẽ, Lâm đang nói gì với mẹ? Nói như vậy đã thành câu chưa?",
+      "audio": "hoi_b209_01",
+      "rows": [
+        {
+          "text": "Mẹ ơi! Quyển vở này...",
+          "audio": "cau_b209_02"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Mẹ Lâm có hiểu ý Lâm muốn nói gì không? Tại sao?",
+      "audio": "hoi_b209_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Nói và viết phải như thế nào để người khác hiểu được?",
+      "audio": "hoi_b209_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Em thử nói tiếp hộ Lâm cho thành câu.",
+      "audio": "hoi_b209_04"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Một bạn viết thư cho bố như sau. Bạn này viết như trên đã thành câu chưa? Còn thiếu sót gì? Ở đây, có thể tách ra thành mấy câu?",
+      "audio": "hoi_b209_05",
+      "rows": [
+        {
+          "text": "Bố ạ.",
+          "audio": "cau_b209_03"
+        },
+        {
+          "text": "Tuần này, em Mai học rất tiến bộ bài tập viết em được sáu điểm, bài tập đọc em được tám điểm cô giáo khen em khi nào bố về, nhớ mua cho em một cái cặp sách.",
+          "audio": "cau_b209_04"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Em hãy chép lại vào vở bức thư trên cho đúng.",
+      "audio": "hoi_b209_06"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quyeenr_vowr",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quyển vở",
+          "audio": "tu_quyeenr_vowr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cặp sách",
+          "audio": "tu_cawpj_sachs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bức thư",
+          "audio": "tu_buwcs_thuw",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tieens_booj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tiến bộ",
+          "audio": "tu_tieens_booj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tập viết",
+          "audio": "tu_taapj_vieets",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tập đọc",
+          "audio": "tu_taapj_ddocj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_taapj_vieets",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tập viết",
+          "audio": "tu_taapj_vieets",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tập đọc",
+          "audio": "tu_taapj_ddocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quyển vở",
+          "audio": "tu_quyeenr_vowr",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_cawpj_sachs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cặp sách",
+          "audio": "tu_cawpj_sachs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quyển vở",
+          "audio": "tu_quyeenr_vowr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tiến bộ",
+          "audio": "tu_tieens_booj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_buwcs_thuw",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bức thư",
+          "audio": "tu_buwcs_thuw",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cặp sách",
+          "audio": "tu_cawpj_sachs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tập viết",
+          "audio": "tu_taapj_vieets",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_taapj_ddocj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tập đọc",
+          "audio": "tu_taapj_ddocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tiến bộ",
+          "audio": "tu_tieens_booj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bức thư",
+          "audio": "tu_buwcs_thuw",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,629 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b199",
+  "book": "tv2_t1_2001",
+  "lesson_no": 199,
+  "type": "tap_chep_chinh_ta",
+  "title": "Cò và Vạc – Đi học",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      27,
+      28
+    ],
+    "scan_file": "014",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Điền chỗ trống, ghép chữ làm bằng chạm hoặc kéo thẻ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[5]",
+        "note": "đáp án giở/dở theo chính tả chuẩn (sách không in đáp án)"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án ch/tr: chăm học, chăm làm, trăm công nghìn việc"
+      },
+      {
+        "where": "part1[12]",
+        "note": "đáp án r/d: rừng, dừng"
+      },
+      {
+        "where": "part1[13]",
+        "note": "đáp án n/ng: lặn, lặng"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập chép: Cò và Vạc",
+      "audio": "cau_b199_01",
+      "labels": [
+        "Nhìn bảng"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài chép: \"Ngày nay... ra học\".",
+      "audio": "cau_b199_02",
+      "labels": [
+        "Phần này con chép vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "dúm lông",
+          "audio": "tu_dums_loong",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "quyển",
+          "audio": "tieng_quyeenr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "giở sách",
+          "audio": "tu_giowr_sachs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chăm",
+          "audio": "tieng_chawm",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nhạt",
+          "audio": "tieng_nhatj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cũng",
+          "audio": "tieng_cungx",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "dúm",
+      "audio": "tieng_dums",
+      "items": [
+        {
+          "text": "dúm lông",
+          "audio": "tu_dums_loong",
+          "part": "lông",
+          "role": "after"
+        },
+        {
+          "text": "dúm muối",
+          "audio": "tu_dums_muoois",
+          "part": "muối",
+          "role": "after"
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "quyển",
+      "audio": "tieng_quyeenr",
+      "items": [
+        {
+          "text": "quyển vở",
+          "audio": "tu_quyeenr_vowr",
+          "part": "vở",
+          "role": "after"
+        },
+        {
+          "text": "quyển sách",
+          "audio": "tu_quyeenr_sachs",
+          "part": "sách",
+          "role": "after"
+        },
+        {
+          "text": "quyển truyện",
+          "audio": "tu_quyeenr_truyeenj",
+          "part": "truyện",
+          "role": "after"
+        },
+        {
+          "text": "quyển sổ",
+          "audio": "tu_quyeenr_soor",
+          "part": "sổ",
+          "role": "after"
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "giở",
+        "dở"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "giở trang sách",
+          "audio": "tu_giowr_trang_sachs",
+          "answer": "giở",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "giở vở ra học",
+          "audio": "tu_giowr_vowr_ra_hocj",
+          "answer": "giở",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "dở dang",
+          "audio": "tu_dowr_dang",
+          "answer": "dở",
+          "hl": [
+            {
+              "s": 0,
+              "n": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "ch",
+        "tr"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "chăm học",
+          "audio": "tu_chawm_hocj",
+          "answer": "ch",
+          "hl": [
+            {
+              "s": 0,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "chăm làm",
+          "audio": "tu_chawm_lamf",
+          "answer": "ch",
+          "hl": [
+            {
+              "s": 0,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "trăm công nghìn việc",
+          "audio": "tu_trawm_coong_nghinf_vieecj",
+          "answer": "tr",
+          "hl": [
+            {
+              "s": 0,
+              "n": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Đi học",
+      "audio": "cau_b199_03",
+      "labels": [
+        "Trí nhớ"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: 8 câu thơ cuối.",
+      "audio": "cau_b199_04",
+      "labels": [
+        "Phần này con nhớ lại rồi viết vào vở."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "giữa",
+          "audio": "tieng_giuwax",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dạy",
+          "audio": "tieng_dayj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "giáo",
+          "audio": "tieng_giaos",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "xòe",
+          "audio": "tieng_xoef",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rừng",
+          "audio": "tieng_ruwngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lặng",
+          "audio": "tieng_lawngj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trẻ",
+          "audio": "tieng_trer",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "giữa",
+      "audio": "tieng_giuwax",
+      "items": [
+        {
+          "text": "giữa rừng",
+          "audio": "tu_giuwax_ruwngf",
+          "part": "rừng",
+          "role": "after"
+        },
+        {
+          "text": "giữa lớp",
+          "audio": "tu_giuwax_lowps",
+          "part": "lớp",
+          "role": "after"
+        },
+        {
+          "text": "giữa sân",
+          "audio": "tu_giuwax_saan",
+          "part": "sân",
+          "role": "after"
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "dạy",
+      "audio": "tieng_dayj",
+      "items": [
+        {
+          "text": "dạy toán",
+          "audio": "tu_dayj_toans",
+          "part": "toán",
+          "role": "after"
+        },
+        {
+          "text": "dạy văn",
+          "audio": "tu_dayj_vawn",
+          "part": "văn",
+          "role": "after"
+        },
+        {
+          "text": "dạy bảo",
+          "audio": "tu_dayj_baor",
+          "part": "bảo",
+          "role": "after"
+        },
+        {
+          "text": "dạy dỗ",
+          "audio": "tu_dayj_doox",
+          "part": "dỗ",
+          "role": "after"
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "r",
+        "d"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "Cây mọc thành rừng.",
+          "audio": "tu_caay_mocj_thanhf_ruwngf",
+          "answer": "r",
+          "hl": [
+            {
+              "s": 14,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "Xe dừng lại trước cổng.",
+          "audio": "tu_xe_duwngf_laij_truwowcs_coongr",
+          "answer": "d",
+          "hl": [
+            {
+              "s": 3,
+              "n": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "n",
+        "ng"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "Mặt trời lặn",
+          "audio": "tu_mawtj_trowif_lawnj",
+          "answer": "n",
+          "hl": [
+            {
+              "s": 11,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "cảnh vật im lặng",
+          "audio": "tu_canhr_vaatj_im_lawngj",
+          "answer": "ng",
+          "hl": [
+            {
+              "s": 14,
+              "n": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_dums_loong",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "dúm lông",
+          "audio": "tu_dums_loong",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dúm muối",
+          "audio": "tu_dums_muoois",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quyển sổ",
+          "audio": "tu_quyeenr_soor",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quyeenr_truyeenj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quyển truyện",
+          "audio": "tu_quyeenr_truyeenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quyển sách",
+          "audio": "tu_quyeenr_sachs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giở sách",
+          "audio": "tu_giowr_sachs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_dowr_dang",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "dở dang",
+          "audio": "tu_dowr_dang",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giở sách",
+          "audio": "tu_giowr_sachs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chăm làm",
+          "audio": "tu_chawm_lamf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_giuwax_ruwngf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "giữa rừng",
+          "audio": "tu_giuwax_ruwngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giữa sân",
+          "audio": "tu_giuwax_saan",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dạy toán",
+          "audio": "tu_dayj_toans",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_dayj_baor",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "dạy bảo",
+          "audio": "tu_dayj_baor",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dạy dỗ",
+          "audio": "tu_dayj_doox",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giữa lớp",
+          "audio": "tu_giuwax_lowps",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_lawngj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "lặng",
+          "audio": "tieng_lawngj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rừng",
+          "audio": "tieng_ruwngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dạy",
+          "audio": "tieng_dayj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

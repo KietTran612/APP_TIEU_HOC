@@ -1,0 +1,271 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b233",
+  "book": "tv2_t1_2001",
+  "lesson_no": 233,
+  "type": "ngu_phap",
+  "title": "Câu – Hai bộ phận chính (tiếp theo)",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      58
+    ],
+    "scan_file": "029",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi hiểu bài, câu hỏi tìm từ, đặt câu: bé trả lời miệng cùng bố mẹ, app không chấm."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Câu – Hai bộ phận chính",
+      "audio": "cau_b233_01",
+      "labels": [
+        "Tiếp theo"
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Bộ phận chính thứ nhất của câu còn là bộ phận trả lời câu hỏi: Trong câu nói đến con gì? Nói đến cái gì?",
+          "audio": "cau_b233_02",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Đặt câu hỏi để tìm bộ phận chính thứ nhất trong hai câu sau:",
+      "audio": "hoi_b233_01",
+      "rows": [
+        {
+          "text": "Con chìa vôi vừa hót vừa bay.",
+          "audio": "cau_b233_03"
+        },
+        {
+          "text": "Hoa mướp nở vàng rực.",
+          "audio": "cau_b233_04"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Tìm bộ phận chính thứ nhất trong các câu sau:",
+      "audio": "hoi_b233_02",
+      "rows": [
+        {
+          "text": "Bé Hoa đang viết thư cho bố.",
+          "audio": "cau_b233_05"
+        },
+        {
+          "text": "Em nắn nót viết từng chữ.",
+          "audio": "cau_b233_06"
+        },
+        {
+          "text": "Bức thư đã viết xong.",
+          "audio": "cau_b233_07"
+        },
+        {
+          "text": "Con mèo đang lim dim ngủ trên bàn.",
+          "audio": "cau_b233_08"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chiaf_vooi",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chìa vôi",
+          "audio": "tu_chiaf_vooi",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hoa mướp",
+          "audio": "tu_hoa_muwowps",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "con mèo",
+          "audio": "tu_con_meof",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_hoa_muwowps",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "hoa mướp",
+          "audio": "tu_hoa_muwowps",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chìa vôi",
+          "audio": "tu_chiaf_vooi",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bức thư",
+          "audio": "tu_buwcs_thuw",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_buwcs_thuw",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bức thư",
+          "audio": "tu_buwcs_thuw",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "con mèo",
+          "audio": "tu_con_meof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nắn nót",
+          "audio": "tu_nawns_nots",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_con_meof",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "con mèo",
+          "audio": "tu_con_meof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bức thư",
+          "audio": "tu_buwcs_thuw",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vàng rực",
+          "audio": "tu_vangf_ruwcj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vangf_ruwcj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vàng rực",
+          "audio": "tu_vangf_ruwcj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lim dim",
+          "audio": "tu_lim_dim",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nắn nót",
+          "audio": "tu_nawns_nots",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_lim_dim",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "lim dim",
+          "audio": "tu_lim_dim",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vàng rực",
+          "audio": "tu_vangf_ruwcj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chìa vôi",
+          "audio": "tu_chiaf_vooi",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

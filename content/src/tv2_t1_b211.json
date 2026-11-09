@@ -1,0 +1,166 @@
+{
+  "lesson_id": "tv2_t1_b211",
+  "book": "tv2_t1_2001",
+  "lesson_no": 211,
+  "type": "tap_doc",
+  "title": "Tình cảm gia đình",
+  "week": 6,
+  "theme": "Gia đình",
+  "td_no": 20,
+  "source": {
+    "pages": [
+      38,
+      39
+    ],
+    "scan_file": "020",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b211_gia_ddinhf": "Buổi tối trong căn nhà ấm cúng: người bố và cậu con trai ngồi bên bàn, cậu bé đang viết bài; người mẹ ngồi trên giường ôm em bé, trăng khuyết ngoài cửa sổ"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[12]",
+        "note": "tiếng giống vần do app chọn: trời–ngời, mông–lòng, tay–hay"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi hiểu bài, câu hỏi tìm từ, đặt câu: bé trả lời miệng cùng bố mẹ, app không chấm."
+    }
+  ],
+  "part1": [
+    {
+      "type": "picture",
+      "image": "img_b211_gia_ddinhf",
+      "say": "Cả nhà quây quần bên nhau buổi tối.",
+      "word": "gia đình"
+    },
+    {
+      "type": "title",
+      "text": "Tình cảm gia đình"
+    },
+    {
+      "type": "sentence",
+      "text": "Công cha như núi ngất trời"
+    },
+    {
+      "type": "sentence",
+      "text": "Nghĩa mẹ như nước ngời ngời biển Đông"
+    },
+    {
+      "type": "sentence",
+      "text": "Núi cao, biển rộng mênh mông"
+    },
+    {
+      "type": "sentence",
+      "text": "Công cha nghĩa mẹ ghi lòng con ơi!"
+    },
+    {
+      "type": "sentence",
+      "text": "Anh em như thể chân tay"
+    },
+    {
+      "type": "sentence",
+      "text": "Rách lành đùm bọc, dở hay đỡ đần."
+    },
+    {
+      "type": "passage",
+      "layout": "poem",
+      "author": "Ca dao Việt Nam",
+      "breaks": [
+        4
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": ":",
+      "lines": [
+        "Đùm bọc: che chở, giúp đỡ nhau."
+      ]
+    },
+    {
+      "type": "question",
+      "text": "1. Câu ca dao 1 đã so sánh công cha mẹ với gì? Tại sao có thể so sánh như vậy?",
+      "marker": "?"
+    },
+    {
+      "type": "question",
+      "text": "2. Câu 2 so sánh tình anh em với cái gì? Em hiểu thế nào là đùm bọc và đỡ đần nhau?"
+    },
+    {
+      "type": "find_words",
+      "question": "3. So sánh tiếng cuối của câu sáu tiếng và tiếng thứ 6 của câu tám tiếng xem có gì giống nhau.",
+      "match": {
+        "word": [
+          "trời",
+          "ngời",
+          "mông",
+          "lòng",
+          "tay",
+          "hay"
+        ]
+      }
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "núi",
+          "options": [
+            "núi",
+            "biển",
+            "trời"
+          ]
+        },
+        {
+          "answer": "ngất trời",
+          "options": [
+            "ngất trời",
+            "mênh mông",
+            "ngời ngời"
+          ]
+        },
+        {
+          "answer": "đùm bọc",
+          "options": [
+            "đùm bọc",
+            "đỡ đần",
+            "chân tay"
+          ]
+        },
+        {
+          "answer": "đỡ đần",
+          "options": [
+            "đỡ đần",
+            "đùm bọc",
+            "rách lành"
+          ]
+        },
+        {
+          "answer": "biển Đông",
+          "options": [
+            "biển Đông",
+            "núi cao",
+            "ngất trời"
+          ]
+        },
+        {
+          "answer": "chân tay",
+          "options": [
+            "chân tay",
+            "anh em",
+            "dở hay"
+          ]
+        }
+      ]
+    }
+  ]
+}

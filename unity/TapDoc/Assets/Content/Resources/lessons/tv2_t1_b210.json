@@ -1,0 +1,371 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b210",
+  "book": "tv2_t1_2001",
+  "lesson_no": 210,
+  "type": "tap_lam_van",
+  "title": "Điền từ: Có chí thì nên",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      36
+    ],
+    "scan_file": "019",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Sách để trống, không cho sẵn từ: app cho mỗi chỗ trống 3 thẻ để chọn; thẻ và đáp án do app soạn theo bài Có chí thì nên."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "thẻ chọn và đáp án điền chỗ trống do app soạn"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Điền từ",
+      "audio": "cau_b210_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Có chí thì nên.",
+      "audio": "cau_b210_02",
+      "labels": [
+        "Em hãy tìm từ thích hợp để điền vào chỗ trống."
+      ]
+    },
+    {
+      "type": "fill_passage",
+      "marker": "",
+      "labels": [],
+      "rows": [
+        {
+          "text": "Bắc học rất chăm.",
+          "audio": "cau_b210_03",
+          "row": 0
+        },
+        {
+          "text": "Cậu học ở lớp và ở nhà rất siêng năng.",
+          "audio": "cau_b210_04",
+          "row": 1
+        },
+        {
+          "text": "Bài nào chưa hiểu kĩ, cậu xin thầy giảng thêm.",
+          "audio": "cau_b210_05",
+          "row": 2
+        },
+        {
+          "text": "Cuối năm, Bắc được trao phần thưởng.",
+          "audio": "cau_b210_06",
+          "row": 3
+        },
+        {
+          "text": "Thầy giáo nói: \"Hoan hô em Bắc! Em đã nêu một gương sáng về học tập\".",
+          "audio": "cau_b210_07",
+          "row": 4
+        }
+      ],
+      "items": [
+        {
+          "text": "Bắc học rất",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "chăm",
+          "row": 0,
+          "role": "blank",
+          "answer": "chăm",
+          "choices": [
+            "chăm",
+            "lười",
+            "chậm"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "Cậu học ở lớp và ở nhà rất",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "siêng năng",
+          "row": 1,
+          "role": "blank",
+          "answer": "siêng năng",
+          "choices": [
+            "siêng năng",
+            "lười biếng",
+            "tối dạ"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "Bài nào chưa hiểu kĩ, cậu xin thầy",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "giảng",
+          "row": 2,
+          "role": "blank",
+          "answer": "giảng",
+          "choices": [
+            "giảng",
+            "khen",
+            "thưởng"
+          ]
+        },
+        {
+          "text": "thêm.",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "Cuối năm, Bắc được trao",
+          "row": 3,
+          "role": "text"
+        },
+        {
+          "text": "phần thưởng",
+          "row": 3,
+          "role": "blank",
+          "answer": "phần thưởng",
+          "choices": [
+            "phần thưởng",
+            "quyển vở",
+            "bài tập"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 3,
+          "role": "text"
+        },
+        {
+          "text": "Thầy giáo nói: \"Hoan hô em Bắc! Em đã nêu một",
+          "row": 4,
+          "role": "text"
+        },
+        {
+          "text": "gương sáng",
+          "row": 4,
+          "role": "blank",
+          "answer": "gương sáng",
+          "choices": [
+            "gương sáng",
+            "bài học",
+            "lời khuyên"
+          ]
+        },
+        {
+          "text": "về học tập\".",
+          "row": 4,
+          "role": "text"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_phaanf_thuwowngr",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "phần thưởng",
+          "audio": "tu_phaanf_thuwowngr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gương sáng",
+          "audio": "tu_guwowng_sangs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "siêng năng",
+          "audio": "tu_sieeng_nawng",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_sieeng_nawng",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "siêng năng",
+          "audio": "tu_sieeng_nawng",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lười biếng",
+          "audio": "tu_luwowif_bieengs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kiên nhẫn",
+          "audio": "tu_kieen_nhaanx",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_guwowng_sangs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "gương sáng",
+          "audio": "tu_guwowng_sangs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "phần thưởng",
+          "audio": "tu_phaanf_thuwowngr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "học tập",
+          "audio": "tu_hocj_taapj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_hocj_taapj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "học tập",
+          "audio": "tu_hocj_taapj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "siêng năng",
+          "audio": "tu_sieeng_nawng",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giảng",
+          "audio": "tieng_giangr",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_giangr",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "giảng",
+          "audio": "tieng_giangr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chăm",
+          "audio": "tieng_chawm",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "khen",
+          "audio": "tieng_khen",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_chawm",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chăm",
+          "audio": "tieng_chawm",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giảng",
+          "audio": "tieng_giangr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "phần thưởng",
+          "audio": "tu_phaanf_thuwowngr",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

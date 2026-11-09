@@ -1,0 +1,397 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b218",
+  "book": "tv2_t1_2001",
+  "lesson_no": 218,
+  "type": "tap_lam_van",
+  "title": "Điền từ: Gia đình Sơn",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      43
+    ],
+    "scan_file": "022",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Sách để bé tự tìm từ: app cho mỗi chỗ trống 3 thẻ để chọn; thẻ và đáp án do app soạn."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "thẻ chọn và đáp án điền chỗ trống do app soạn"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Điền từ",
+      "audio": "cau_b218_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Gia đình Sơn.",
+      "audio": "cau_b218_02",
+      "labels": [
+        "Em tự tìm từ thích hợp để điền vào chỗ trống."
+      ]
+    },
+    {
+      "type": "fill_passage",
+      "marker": "",
+      "labels": [],
+      "rows": [
+        {
+          "text": "Gia đình Sơn gồm có ông bà Sơn; bố mẹ Sơn; em Sơn và Sơn.",
+          "audio": "cau_b218_03",
+          "row": 0
+        },
+        {
+          "text": "Em Sơn là em gái.",
+          "audio": "cau_b218_04",
+          "row": 1
+        },
+        {
+          "text": "Như vậy Sơn không có em trai.",
+          "audio": "cau_b218_05",
+          "row": 2
+        },
+        {
+          "text": "Ông nội Sơn tuy già nhưng vẫn còn khỏe mạnh.",
+          "audio": "cau_b218_06",
+          "row": 3
+        },
+        {
+          "text": "Ông thường tưới cây cối trong vườn.",
+          "audio": "cau_b218_07",
+          "row": 4
+        },
+        {
+          "text": "Bà nội thì chăm sóc Sơn và em Sơn.",
+          "audio": "cau_b218_08",
+          "row": 5
+        }
+      ],
+      "items": [
+        {
+          "text": "Gia đình Sơn gồm có ông",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "bà",
+          "row": 0,
+          "role": "blank",
+          "answer": "bà",
+          "choices": [
+            "bà",
+            "chú",
+            "anh"
+          ]
+        },
+        {
+          "text": "Sơn;",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "bố",
+          "row": 0,
+          "role": "blank",
+          "answer": "bố",
+          "choices": [
+            "bố",
+            "ông",
+            "chị"
+          ]
+        },
+        {
+          "text": "mẹ Sơn; em Sơn và Sơn.",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "Em Sơn là em gái.",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "Như vậy Sơn không có em",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "trai",
+          "row": 2,
+          "role": "blank",
+          "answer": "trai",
+          "choices": [
+            "trai",
+            "gái",
+            "bé"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "Ông nội Sơn tuy",
+          "row": 3,
+          "role": "text"
+        },
+        {
+          "text": "già",
+          "row": 3,
+          "role": "blank",
+          "answer": "già",
+          "choices": [
+            "già",
+            "trẻ",
+            "nhỏ"
+          ]
+        },
+        {
+          "text": "nhưng vẫn còn khỏe mạnh.",
+          "row": 3,
+          "role": "text"
+        },
+        {
+          "text": "Ông thường",
+          "row": 4,
+          "role": "text"
+        },
+        {
+          "text": "tưới",
+          "row": 4,
+          "role": "blank",
+          "answer": "tưới",
+          "choices": [
+            "tưới",
+            "vẽ",
+            "ăn"
+          ]
+        },
+        {
+          "text": "cây cối trong vườn.",
+          "row": 4,
+          "role": "text"
+        },
+        {
+          "text": "Bà nội thì",
+          "row": 5,
+          "role": "text"
+        },
+        {
+          "text": "chăm sóc",
+          "row": 5,
+          "role": "blank",
+          "answer": "chăm sóc",
+          "choices": [
+            "chăm sóc",
+            "tưới",
+            "bào"
+          ]
+        },
+        {
+          "text": "Sơn và em Sơn.",
+          "row": 5,
+          "role": "text"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_oong_baf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ông bà",
+          "audio": "tu_oong_baf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bố mẹ",
+          "audio": "tu_boos_mej",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "em gái",
+          "audio": "tu_em_gais",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_em_gais",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "em gái",
+          "audio": "tu_em_gais",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "em trai",
+          "audio": "tu_em_trai",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ông bà",
+          "audio": "tu_oong_baf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_khoer_manhj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "khỏe mạnh",
+          "audio": "tu_khoer_manhj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cây cối",
+          "audio": "tu_caay_coois",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chăm sóc",
+          "audio": "tu_chawm_socs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chawm_socs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chăm sóc",
+          "audio": "tu_chawm_socs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "khỏe mạnh",
+          "audio": "tu_khoer_manhj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bà nội",
+          "audio": "tu_baf_nooij",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_baf_nooij",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bà nội",
+          "audio": "tu_baf_nooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ông nội",
+          "audio": "tu_oong_nooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "em trai",
+          "audio": "tu_em_trai",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_caay_coois",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cây cối",
+          "audio": "tu_caay_coois",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chăm sóc",
+          "audio": "tu_chawm_socs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bố mẹ",
+          "audio": "tu_boos_mej",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

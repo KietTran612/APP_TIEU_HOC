@@ -5,7 +5,7 @@ import unittest
 
 from tapdoc.paths import CONTENT_SRC, UNITY_RES
 
-DONE = 24  # số mục lớp 2 đã chép (tăng theo đợt: 24, 63, 102, 133)
+DONE = 63  # số mục lớp 2 đã chép (tăng theo đợt: 24, 63, 102, 133)
 LABELS = {"tap_chep_chinh_ta": "Chính tả", "tu_ngu": "Từ ngữ", "ngu_phap": "Ngữ pháp", "tap_lam_van": "Tập làm văn",
           "cau_do": "Câu đố"}
 

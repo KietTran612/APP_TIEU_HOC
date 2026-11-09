@@ -1,0 +1,775 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b231",
+  "book": "tv2_t1_2001",
+  "lesson_no": 231,
+  "type": "tap_chep_chinh_ta",
+  "title": "Bé Mai trở thành người lớn như thế nào – Mẹ",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      56,
+      57
+    ],
+    "scan_file": "030",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Điền chỗ trống, ghép chữ, tìm chữ làm bằng chạm hoặc kéo thẻ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[5]",
+        "note": "đáp án chở/trở"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án ngạc/ngạt"
+      },
+      {
+        "where": "part1[7]",
+        "note": "đáp án bát/bác"
+      },
+      {
+        "where": "part1[11]",
+        "note": "cách ghép do app chọn: cái quạt, quạt nan, quạt giấy, quạt máy, em quạt"
+      },
+      {
+        "where": "part1[12]",
+        "note": "đáp án l/n"
+      },
+      {
+        "where": "part1[13]",
+        "note": "đáp án n/ng"
+      },
+      {
+        "where": "part1[14]",
+        "note": "đáp án vẫn/vẩn"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Bé Mai trở thành người lớn như thế nào",
+      "audio": "cau_b231_01",
+      "labels": [
+        "Nghe đọc"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: \"Một lần... lấy làm lạ\".",
+      "audio": "cau_b231_02",
+      "labels": [
+        "Phần này con nghe bố mẹ đọc rồi viết vào vở."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "người",
+          "audio": "tieng_nguwowif",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "quét",
+          "audio": "tieng_quets",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trở",
+          "audio": "tieng_trowr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ngạc nhiên",
+          "audio": "tu_ngacj_nhieen",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bát đũa",
+          "audio": "tu_bats_dduax",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "find_words",
+      "marker": "",
+      "text": "Tìm những chữ có ươi trong câu sau.",
+      "audio": "hoi_b231_01",
+      "rows": [
+        {
+          "text": "Cười người hôm trước, hôm sau người cười.",
+          "audio": "cau_b231_03",
+          "row": 0
+        }
+      ],
+      "items": [
+        {
+          "text": "Cười",
+          "audio": "tieng_cuwowif",
+          "row": 0,
+          "col": 0,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 1,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "người",
+          "audio": "tieng_nguwowif",
+          "row": 0,
+          "col": 1,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 2,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "hôm",
+          "audio": "tieng_hoom",
+          "row": 0,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "trước",
+          "audio": "tieng_truwowcs",
+          "row": 0,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "hôm",
+          "audio": "tieng_hoom",
+          "row": 0,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "sau",
+          "audio": "tieng_sau",
+          "row": 0,
+          "col": 5,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "người",
+          "audio": "tieng_nguwowif",
+          "row": 0,
+          "col": 6,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 2,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "cười",
+          "audio": "tieng_cuwowif",
+          "row": 0,
+          "col": 7,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 1,
+              "n": 3
+            }
+          ]
+        }
+      ],
+      "need": 2
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Em tìm thêm ba từ có ươi.",
+      "audio": "hoi_b231_02"
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "chở",
+        "trở"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "thuyền chở thóc",
+          "audio": "tu_thuyeenf_chowr_thocs",
+          "answer": "chở",
+          "hl": [
+            {
+              "s": 7,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "em trở về nhà",
+          "audio": "tu_em_trowr_veef_nhaf",
+          "answer": "trở",
+          "hl": [
+            {
+              "s": 3,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "ngạc",
+        "ngạt"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "ngạc nhiên",
+          "audio": "tu_ngacj_nhieen",
+          "answer": "ngạc",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "ngạt thở",
+          "audio": "tu_ngatj_thowr",
+          "answer": "ngạt",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "kinh ngạc",
+          "audio": "tu_kinh_ngacj",
+          "answer": "ngạc",
+          "hl": [
+            {
+              "s": 5,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "ngào ngạt",
+          "audio": "tu_ngaof_ngatj",
+          "answer": "ngạt",
+          "hl": [
+            {
+              "s": 5,
+              "n": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "bát",
+        "bác"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "bát đũa",
+          "audio": "tu_bats_dduax",
+          "answer": "bát",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "chú bác",
+          "audio": "tu_chus_bacs",
+          "answer": "bác",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Mẹ",
+      "audio": "cau_b231_04",
+      "labels": [
+        "Trí nhớ"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: 6 câu đầu.",
+      "audio": "cau_b231_05",
+      "labels": [
+        "Phần này con nhớ lại rồi viết vào vở."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "quạt",
+          "audio": "tieng_quatj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lặng",
+          "audio": "tieng_lawngj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nắng oi",
+          "audio": "tu_nawngs_oi",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tiếng",
+          "audio": "tieng_tieengs",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "quạt",
+      "audio": "tieng_quatj",
+      "items": [
+        {
+          "text": "cái quạt",
+          "audio": "tu_cais_quatj",
+          "part": "cái",
+          "role": "before"
+        },
+        {
+          "text": "quạt nan",
+          "audio": "tu_quatj_nan",
+          "part": "nan",
+          "role": "after"
+        },
+        {
+          "text": "quạt giấy",
+          "audio": "tu_quatj_giaays",
+          "part": "giấy",
+          "role": "after"
+        },
+        {
+          "text": "quạt máy",
+          "audio": "tu_quatj_mays",
+          "part": "máy",
+          "role": "after"
+        },
+        {
+          "text": "em quạt",
+          "audio": "tu_em_quatj",
+          "part": "em",
+          "role": "before"
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "l",
+        "n"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "im lặng",
+          "audio": "tu_im_lawngj",
+          "answer": "l",
+          "hl": [
+            {
+              "s": 3,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "gánh nặng",
+          "audio": "tu_ganhs_nawngj",
+          "answer": "n",
+          "hl": [
+            {
+              "s": 5,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "lắng tai",
+          "audio": "tu_lawngs_tai",
+          "answer": "l",
+          "hl": [
+            {
+              "s": 0,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "trời nắng",
+          "audio": "tu_trowif_nawngs",
+          "answer": "n",
+          "hl": [
+            {
+              "s": 5,
+              "n": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "n",
+        "ng"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "tiếng ve ran",
+          "audio": "tu_tieengs_ve_ran",
+          "answer": "ng",
+          "hl": [
+            {
+              "s": 3,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "tiến lên",
+          "audio": "tu_tieens_leen",
+          "answer": "n",
+          "hl": [
+            {
+              "s": 3,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "tiếng ru",
+          "audio": "tu_tieengs_ru",
+          "answer": "ng",
+          "hl": [
+            {
+              "s": 3,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "tiến bộ",
+          "audio": "tu_tieens_booj",
+          "answer": "n",
+          "hl": [
+            {
+              "s": 3,
+              "n": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "vẫn",
+        "vẩn"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "Trời mưa, em vẫn đi học.",
+          "audio": "tu_trowif_muwa_em_vaanx_ddi_hocj",
+          "answer": "vẫn",
+          "hl": [
+            {
+              "s": 13,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "chơi vơ vẩn ở dọc đường",
+          "audio": "tu_chowi_vow_vaanr_owr_docj_dduwowngf",
+          "answer": "vẩn",
+          "hl": [
+            {
+              "s": 8,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ngacj_nhieen",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ngạc nhiên",
+          "audio": "tu_ngacj_nhieen",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bát đũa",
+          "audio": "tu_bats_dduax",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quét nhà",
+          "audio": "tu_quets_nhaf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_nguwowif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "người",
+          "audio": "tieng_nguwowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cười",
+          "audio": "tieng_cuwowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tươi",
+          "audio": "tieng_tuwowi",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ngaof_ngatj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ngào ngạt",
+          "audio": "tu_ngaof_ngatj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ngạt thở",
+          "audio": "tu_ngatj_thowr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kinh ngạc",
+          "audio": "tu_kinh_ngacj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quatj_nan",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quạt nan",
+          "audio": "tu_quatj_nan",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quạt giấy",
+          "audio": "tu_quatj_giaays",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quạt máy",
+          "audio": "tu_quatj_mays",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tieens_booj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tiến bộ",
+          "audio": "tu_tieens_booj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tiếng ru",
+          "audio": "tu_tieengs_ru",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gánh nặng",
+          "audio": "tu_ganhs_nawngj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vow_vaanr",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vơ vẩn",
+          "audio": "tu_vow_vaanr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lắng tai",
+          "audio": "tu_lawngs_tai",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "im lặng",
+          "audio": "tu_im_lawngj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

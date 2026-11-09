@@ -1,0 +1,278 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b225",
+  "book": "tv2_t1_2001",
+  "lesson_no": 225,
+  "type": "ngu_phap",
+  "title": "Câu – Hai bộ phận chính (tiếp theo)",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      50,
+      51
+    ],
+    "scan_file": "026",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi hiểu bài, câu hỏi tìm từ, đặt câu: bé trả lời miệng cùng bố mẹ, app không chấm."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Câu – Hai bộ phận chính",
+      "audio": "cau_b225_01",
+      "labels": [
+        "Tiếp theo"
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Em Nụ đang ngủ.",
+          "audio": "cau_b225_02",
+          "role": "line"
+        },
+        {
+          "text": "Hỏi: Trong câu, nói đến ai?",
+          "audio": "cau_b225_03",
+          "role": "line"
+        },
+        {
+          "text": "Trả lời: Nói đến \"Em Nụ\".",
+          "audio": "cau_b225_04",
+          "role": "line"
+        },
+        {
+          "text": "Kết luận: \"Em Nụ\" là bộ phận chính thứ nhất của câu.",
+          "audio": "cau_b225_05",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Bộ phận chính thứ nhất của câu là bộ phận trả lời câu hỏi: Trong câu, nói đến ai?",
+          "audio": "cau_b225_06",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Đặt câu hỏi để tìm bộ phận chính thứ nhất bằng cách dùng từ \"ai\":",
+      "audio": "hoi_b225_01",
+      "rows": [
+        {
+          "text": "Mẹ cho quà bánh.",
+          "audio": "cau_b225_07"
+        },
+        {
+          "text": "Bé Hoa đã lớn rồi.",
+          "audio": "cau_b225_08"
+        },
+        {
+          "text": "Hai chị em về nhà.",
+          "audio": "cau_b225_09"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quaf_banhs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quà bánh",
+          "audio": "tu_quaf_banhs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "về nhà",
+          "audio": "tu_veef_nhaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lớn rồi",
+          "audio": "tu_lowns_rooif",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_booj_phaanj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bộ phận",
+          "audio": "tu_booj_phaanj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "câu hỏi",
+          "audio": "tu_caau_hoir",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trả lời",
+          "audio": "tu_trar_lowif",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_caau_hoir",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "câu hỏi",
+          "audio": "tu_caau_hoir",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kết luận",
+          "audio": "tu_keets_luaanj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bộ phận",
+          "audio": "tu_booj_phaanj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_veef_nhaf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "về nhà",
+          "audio": "tu_veef_nhaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quà bánh",
+          "audio": "tu_quaf_banhs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đang ngủ",
+          "audio": "tu_ddang_ngur",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddang_ngur",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đang ngủ",
+          "audio": "tu_ddang_ngur",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "về nhà",
+          "audio": "tu_veef_nhaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kết luận",
+          "audio": "tu_keets_luaanj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_keets_luaanj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "kết luận",
+          "audio": "tu_keets_luaanj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trả lời",
+          "audio": "tu_trar_lowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quà bánh",
+          "audio": "tu_quaf_banhs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

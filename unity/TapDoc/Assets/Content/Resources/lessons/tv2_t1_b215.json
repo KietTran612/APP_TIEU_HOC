@@ -1,0 +1,591 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b215",
+  "book": "tv2_t1_2001",
+  "lesson_no": 215,
+  "type": "tap_chep_chinh_ta",
+  "title": "Tình cảm gia đình – Quyển vở của em",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      41,
+      42
+    ],
+    "scan_file": "021",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Điền chỗ trống, ghép chữ làm bằng chạm hoặc kéo thẻ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[3]",
+        "note": "đáp án gia/da theo chính tả chuẩn"
+      },
+      {
+        "where": "part1[4]",
+        "note": "đáp án ngã/ngả theo câu tục ngữ quen"
+      },
+      {
+        "where": "part1[5]",
+        "note": "cách ghép do app chọn: có nghĩa, trả nghĩa, ơn nghĩa, tình nghĩa"
+      },
+      {
+        "where": "part1[9]",
+        "note": "đáp án chúng/trúng theo chính tả chuẩn"
+      },
+      {
+        "where": "part1[10]",
+        "note": "đáp án n/ng: nắng, nắn nót, uốn nắn, ngay ngắn, ngắn"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập chép: Tình cảm gia đình",
+      "audio": "cau_b215_01",
+      "labels": [
+        "Nhìn bảng"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài chép: 6 câu đầu.",
+      "audio": "cau_b215_02",
+      "labels": [
+        "Phần này con chép vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "biển Đông",
+          "audio": "tu_bieenr_ddoong",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "mênh mông",
+          "audio": "tu_meenh_moong",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dở hay",
+          "audio": "tu_dowr_hay",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "gia đình",
+          "audio": "tu_gia_ddinhf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ngất trời",
+          "audio": "tu_ngaats_trowif",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nghĩa",
+          "audio": "tieng_nghiax",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "gia",
+        "da"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "gia đình",
+          "audio": "tu_gia_ddinhf",
+          "answer": "gia",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "da thịt",
+          "audio": "tu_da_thitj",
+          "answer": "da",
+          "hl": [
+            {
+              "s": 0,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "tham gia",
+          "audio": "tu_tham_gia",
+          "answer": "gia",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "áo da bò",
+          "audio": "tu_aos_da_bof",
+          "answer": "da",
+          "hl": [
+            {
+              "s": 3,
+              "n": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "ngã",
+        "ngả"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "Chị ngã em nâng",
+          "audio": "tu_chij_ngax_em_naang",
+          "answer": "ngã",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "cùng về một ngả",
+          "audio": "tu_cungf_veef_mootj_ngar",
+          "answer": "ngả",
+          "hl": [
+            {
+              "s": 12,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "nghĩa",
+      "audio": "tieng_nghiax",
+      "items": [
+        {
+          "text": "có nghĩa",
+          "audio": "tu_cos_nghiax",
+          "part": "có",
+          "role": "before"
+        },
+        {
+          "text": "trả nghĩa",
+          "audio": "tu_trar_nghiax",
+          "part": "trả",
+          "role": "before"
+        },
+        {
+          "text": "ơn nghĩa",
+          "audio": "tu_own_nghiax",
+          "part": "ơn",
+          "role": "before"
+        },
+        {
+          "text": "tình nghĩa",
+          "audio": "tu_tinhf_nghiax",
+          "part": "tình",
+          "role": "before"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Quyển vở của em",
+      "audio": "cau_b215_03",
+      "labels": [
+        "Trí nhớ"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: 2 khổ thơ đầu.",
+      "audio": "cau_b215_04",
+      "labels": [
+        "Phần này con nhớ lại rồi viết vào vở."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "dòng",
+          "audio": "tieng_dongf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "giấy",
+          "audio": "tieng_giaays",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "mát rượi",
+          "audio": "tu_mats_ruwowij",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chữ",
+          "audio": "tieng_chuwx",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ngay ngắn",
+          "audio": "tu_ngay_ngawns",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nắn nót",
+          "audio": "tu_nawns_nots",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "mở",
+          "audio": "tieng_mowr",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "chúng",
+        "trúng"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "vở của chúng em",
+          "audio": "tu_vowr_cuar_chungs_em",
+          "answer": "chúng",
+          "hl": [
+            {
+              "s": 7,
+              "n": 5
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "bắn trúng đích",
+          "audio": "tu_bawns_trungs_ddichs",
+          "answer": "trúng",
+          "hl": [
+            {
+              "s": 4,
+              "n": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "n",
+        "ng"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "trời nắng",
+          "audio": "tu_trowif_nawngs",
+          "answer": "ng",
+          "hl": [
+            {
+              "s": 7,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "viết nắn nót",
+          "audio": "tu_vieets_nawns_nots",
+          "answer": "n",
+          "hl": [
+            {
+              "s": 5,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "uốn nắn",
+          "audio": "tu_uoons_nawns",
+          "answer": "n",
+          "hl": [
+            {
+              "s": 4,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "ngồi ngay ngắn",
+          "audio": "tu_ngooif_ngay_ngawns",
+          "answer": "n",
+          "hl": [
+            {
+              "s": 10,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "dài hay ngắn",
+          "audio": "tu_daif_hay_ngawns",
+          "answer": "n",
+          "hl": [
+            {
+              "s": 8,
+              "n": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_gia_ddinhf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "gia đình",
+          "audio": "tu_gia_ddinhf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "da thịt",
+          "audio": "tu_da_thitj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tham gia",
+          "audio": "tu_tham_gia",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_meenh_moong",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "mênh mông",
+          "audio": "tu_meenh_moong",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "biển Đông",
+          "audio": "tu_bieenr_ddoong",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ngất trời",
+          "audio": "tu_ngaats_trowif",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tinhf_nghiax",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tình nghĩa",
+          "audio": "tu_tinhf_nghiax",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ơn nghĩa",
+          "audio": "tu_own_nghiax",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trả nghĩa",
+          "audio": "tu_trar_nghiax",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ngay_ngawns",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ngay ngắn",
+          "audio": "tu_ngay_ngawns",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nắn nót",
+          "audio": "tu_nawns_nots",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mát rượi",
+          "audio": "tu_mats_ruwowij",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_trowif_nawngs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "trời nắng",
+          "audio": "tu_trowif_nawngs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "uốn nắn",
+          "audio": "tu_uoons_nawns",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dòng",
+          "audio": "tieng_dongf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_bawns_trungs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bắn trúng",
+          "audio": "tu_bawns_trungs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chúng em",
+          "audio": "tu_chungs_em",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giấy",
+          "audio": "tieng_giaays",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

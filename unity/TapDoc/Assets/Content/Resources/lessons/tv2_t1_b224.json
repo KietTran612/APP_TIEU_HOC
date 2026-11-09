@@ -1,0 +1,604 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b224",
+  "book": "tv2_t1_2001",
+  "lesson_no": 224,
+  "type": "tu_ngu",
+  "title": "Ông bà",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      50
+    ],
+    "scan_file": "026",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Điền từ bằng chạm hoặc kéo thẻ từ vào chỗ trống; đáp án do app soạn."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[5]",
+        "note": "đáp án điền từ do app soạn"
+      },
+      {
+        "where": "part1[7]",
+        "note": "đáp án điền từ do app soạn; \"hết lòng ... bà ngoại\" và \"rất ... bé Tâm\" có thể đổi chỗ kính mến / yêu quý"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Từ ngữ: Ông bà",
+      "audio": "cau_b224_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Những từ ngữ cần ghi nhớ",
+      "audio": "cau_b224_02",
+      "labels": []
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "ông",
+          "audio": "van_oong",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bà",
+          "audio": "tieng_baf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ông nội",
+          "audio": "tu_oong_nooij",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bà nội",
+          "audio": "tu_baf_nooij",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ông ngoại",
+          "audio": "tu_oong_ngoaij",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bà ngoại",
+          "audio": "tu_baf_ngoaij",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "yêu quý",
+          "audio": "tu_yeeu_quys",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "kính mến",
+          "audio": "tu_kinhs_meens",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vâng lời",
+          "audio": "tu_vaang_lowif",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "giúp đỡ",
+          "audio": "tu_giups_ddowx",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài tập 1: Chọn từ ở mục I điền vào chỗ trống cho thích hợp",
+      "audio": "cau_b224_03",
+      "labels": []
+    },
+    {
+      "type": "fill_passage",
+      "marker": "",
+      "labels": [
+        "ông",
+        "bà",
+        "ông nội",
+        "bà nội",
+        "ông ngoại",
+        "bà ngoại"
+      ],
+      "rows": [
+        {
+          "text": "Cha của cha em thì em gọi là ông nội.",
+          "audio": "cau_b224_04",
+          "row": 0
+        },
+        {
+          "text": "Mẹ của cha em thì em gọi là bà nội.",
+          "audio": "cau_b224_05",
+          "row": 1
+        },
+        {
+          "text": "Cha của mẹ em thì em gọi là ông ngoại.",
+          "audio": "cau_b224_06",
+          "row": 2
+        },
+        {
+          "text": "Mẹ của mẹ em thì em gọi là bà ngoại.",
+          "audio": "cau_b224_07",
+          "row": 3
+        }
+      ],
+      "items": [
+        {
+          "text": "Cha của cha em thì em gọi là",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "ông nội",
+          "row": 0,
+          "role": "blank",
+          "answer": "ông nội",
+          "choices": [
+            "ông",
+            "bà",
+            "ông nội",
+            "bà nội",
+            "ông ngoại",
+            "bà ngoại"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "Mẹ của cha em thì em gọi là",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "bà nội",
+          "row": 1,
+          "role": "blank",
+          "answer": "bà nội",
+          "choices": [
+            "ông",
+            "bà",
+            "ông nội",
+            "bà nội",
+            "ông ngoại",
+            "bà ngoại"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "Cha của mẹ em thì em gọi là",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "ông ngoại",
+          "row": 2,
+          "role": "blank",
+          "answer": "ông ngoại",
+          "choices": [
+            "ông",
+            "bà",
+            "ông nội",
+            "bà nội",
+            "ông ngoại",
+            "bà ngoại"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "Mẹ của mẹ em thì em gọi là",
+          "row": 3,
+          "role": "text"
+        },
+        {
+          "text": "bà ngoại",
+          "row": 3,
+          "role": "blank",
+          "answer": "bà ngoại",
+          "choices": [
+            "ông",
+            "bà",
+            "ông nội",
+            "bà nội",
+            "ông ngoại",
+            "bà ngoại"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 3,
+          "role": "text"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài tập 2: Điền vào chỗ trống",
+      "audio": "cau_b224_08",
+      "labels": []
+    },
+    {
+      "type": "fill_passage",
+      "marker": "",
+      "labels": [
+        "yêu quý",
+        "kính mến",
+        "vâng lời",
+        "giúp đỡ"
+      ],
+      "rows": [
+        {
+          "text": "Bé Tâm ở với bà ngoại.",
+          "audio": "cau_b224_09",
+          "row": 0
+        },
+        {
+          "text": "Thường ngày, Tâm vẫn giúp đỡ bà, xâu kim cho bà may vá.",
+          "audio": "cau_b224_10",
+          "row": 1
+        },
+        {
+          "text": "Tâm hay trèo cây.",
+          "audio": "cau_b224_11",
+          "row": 2
+        },
+        {
+          "text": "Bà bảo không nên trèo cây và không nên ăn quả xanh.",
+          "audio": "cau_b224_12",
+          "row": 3
+        },
+        {
+          "text": "Tâm vâng lời bà.",
+          "audio": "cau_b224_13",
+          "row": 4
+        },
+        {
+          "text": "Bé Tâm hết lòng kính mến bà ngoại.",
+          "audio": "cau_b224_14",
+          "row": 5
+        },
+        {
+          "text": "Bà cũng rất yêu quý bé Tâm.",
+          "audio": "cau_b224_15",
+          "row": 6
+        }
+      ],
+      "items": [
+        {
+          "text": "Bé Tâm ở với bà ngoại.",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "Thường ngày, Tâm vẫn",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "giúp đỡ",
+          "row": 1,
+          "role": "blank",
+          "answer": "giúp đỡ",
+          "choices": [
+            "yêu quý",
+            "kính mến",
+            "vâng lời",
+            "giúp đỡ"
+          ]
+        },
+        {
+          "text": "bà, xâu kim cho bà may vá.",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "Tâm hay trèo cây.",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "Bà bảo không nên trèo cây và không nên ăn quả xanh.",
+          "row": 3,
+          "role": "text"
+        },
+        {
+          "text": "Tâm",
+          "row": 4,
+          "role": "text"
+        },
+        {
+          "text": "vâng lời",
+          "row": 4,
+          "role": "blank",
+          "answer": "vâng lời",
+          "choices": [
+            "yêu quý",
+            "kính mến",
+            "vâng lời",
+            "giúp đỡ"
+          ]
+        },
+        {
+          "text": "bà.",
+          "row": 4,
+          "role": "text"
+        },
+        {
+          "text": "Bé Tâm hết lòng",
+          "row": 5,
+          "role": "text"
+        },
+        {
+          "text": "kính mến",
+          "row": 5,
+          "role": "blank",
+          "answer": "kính mến",
+          "choices": [
+            "yêu quý",
+            "kính mến",
+            "vâng lời",
+            "giúp đỡ"
+          ]
+        },
+        {
+          "text": "bà ngoại.",
+          "row": 5,
+          "role": "text"
+        },
+        {
+          "text": "Bà cũng rất",
+          "row": 6,
+          "role": "text"
+        },
+        {
+          "text": "yêu quý",
+          "row": 6,
+          "role": "blank",
+          "answer": "yêu quý",
+          "choices": [
+            "yêu quý",
+            "kính mến",
+            "vâng lời",
+            "giúp đỡ"
+          ]
+        },
+        {
+          "text": "bé Tâm.",
+          "row": 6,
+          "role": "text"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_oong_nooij",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ông nội",
+          "audio": "tu_oong_nooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bà nội",
+          "audio": "tu_baf_nooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ông ngoại",
+          "audio": "tu_oong_ngoaij",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_baf_ngoaij",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bà ngoại",
+          "audio": "tu_baf_ngoaij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ông ngoại",
+          "audio": "tu_oong_ngoaij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bà nội",
+          "audio": "tu_baf_nooij",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_kinhs_meens",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "kính mến",
+          "audio": "tu_kinhs_meens",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "yêu quý",
+          "audio": "tu_yeeu_quys",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giúp đỡ",
+          "audio": "tu_giups_ddowx",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vaang_lowif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vâng lời",
+          "audio": "tu_vaang_lowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giúp đỡ",
+          "audio": "tu_giups_ddowx",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kính mến",
+          "audio": "tu_kinhs_meens",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_giups_ddowx",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "giúp đỡ",
+          "audio": "tu_giups_ddowx",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vâng lời",
+          "audio": "tu_vaang_lowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "yêu quý",
+          "audio": "tu_yeeu_quys",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_may_vas",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "may vá",
+          "audio": "tu_may_vas",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "xâu kim",
+          "audio": "tu_xaau_kim",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trèo cây",
+          "audio": "tu_treof_caay",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}
