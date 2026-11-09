@@ -32,13 +32,16 @@ def _json_bytes(value):
 
 
 def _speech_span(row, p, result):
-    """Khoảng lời cần giữ: cả lời đọc, hoặc với keep_last chỉ các tiếng cuối (bằng số tiếng của chữ)."""
-    if not p.keep_last:
+    """Khoảng lời cần giữ: cả lời đọc, hoặc với keep_first chỉ các tiếng đầu (bằng số tiếng của chữ).
+
+    Chỉ cắt được phần sau: khung MP3 của bộ đọc mượn dữ liệu khung trước nên đầu đoạn giữ luôn lùi về đầu file.
+    """
+    if not p.keep_first:
         return result.speech_start, result.speech_end
     count = len(tokens(row["text"]))
     if count == 0 or len(result.words) < count:
-        raise TtsError(f"{row['id']}: không đủ mốc từ để cắt lấy tiếng cuối")
-    return result.words[-count][0], result.words[-1][1]
+        raise TtsError(f"{row['id']}: không đủ mốc từ để cắt lấy tiếng đầu")
+    return result.words[0][0], result.words[count - 1][1]
 
 
 def generate_one(row, settings, engine, audio_dir, prev_dir) -> dict:
@@ -49,8 +52,8 @@ def generate_one(row, settings, engine, audio_dir, prev_dir) -> dict:
     if not result.audio or not _looks_like_mp3(result.audio):
         raise TtsError(f"{row['id']}: bộ đọc trả dữ liệu rỗng hoặc không phải MP3")
     audio, trimmed = trim_mp3(result.audio, *_speech_span(row, p, result))
-    if p.keep_last and not trimmed:
-        raise TtsError(f"{row['id']}: không cắt được tiếng cuối khỏi câu đệm")
+    if p.keep_first and not trimmed:
+        raise TtsError(f"{row['id']}: không cắt được phần đọc lặp phía sau")
     updated = copy.deepcopy(row)
     updated.update(status="cho_duyet", source="tts_edge_" + p.voice.removeprefix("vi-VN-").removesuffix("Neural").lower(),
                    tts={**asdict(p), "sig": signature(p), "trimmed": trimmed})
@@ -97,7 +100,7 @@ def restore_previous(row, settings, audio_dir, prev_dir) -> dict:
         if not isinstance(record.get("voice"), str) or record["voice"] not in VOICES:
             raise ValueError("Giọng đọc bản trước không hợp lệ")
         set_override(config, restored, **{key: record[key] for key in ("doc", "rate", "pitch", "volume", "voice")},
-                     keep_last=record.get("keep_last", False))
+                     keep_first=record.get("keep_first", False))
     elif old.get("override"):
         config["overrides"][row["id"]] = old["override"]
     else:

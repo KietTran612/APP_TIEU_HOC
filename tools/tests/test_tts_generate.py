@@ -115,26 +115,26 @@ class GenerateTest(TempCase):
         self.assertEqual(list(self.prev.iterdir()), [])
 
 
-class KeepLastGenerateTest(TempCase):
-    """keep_last: cắt file theo mốc từ, chỉ giữ các tiếng cuối (bằng số tiếng của chữ trong danh mục)."""
+class KeepFirstGenerateTest(TempCase):
+    """keep_first: cắt bỏ phần sau theo mốc từ, chỉ giữ các tiếng đầu (bằng số tiếng của chữ trong danh mục)."""
 
-    def test_cuts_to_last_word(self):
-        set_override(self.s, self.r, doc="bờ, bờ.", keep_last=True)
+    def test_cuts_after_first_word(self):
+        set_override(self.s, self.r, doc="bờ, bờ.", keep_first=True)
         engine = FakeEngine(speech_start=0.2, speech_end=1.3, words=[(0.2, 0.6), (0.9, 1.3)])
         with mock.patch("tapdoc.tts_generate.trim_mp3", wraps=trim_mp3) as trim:
             result = generate_one(self.r, self.s, engine, self.audio, self.prev)
-        self.assertEqual(trim.call_args.args[1:3], (0.9, 1.3))
+        self.assertEqual(trim.call_args.args[1:3], (0.2, 0.6))
         self.assertTrue(result["tts"]["trimmed"])
-        self.assertTrue(result["tts"]["keep_last"])
+        self.assertTrue(result["tts"]["keep_first"])
         self.assertFalse(needs_regen(self.s, result))
 
     def test_keeps_as_many_words_as_the_text(self):
         r = row("tu_bes_bi_boo", "bé bi bô", "tu")
-        set_override(self.s, r, doc="bé bi bô, bé bi bô.", keep_last=True)
+        set_override(self.s, r, doc="bé bi bô, bé bi bô.", keep_first=True)
         words = [(0.1, 0.3), (0.3, 0.5), (0.5, 0.8), (1.0, 1.2), (1.2, 1.4), (1.4, 1.9)]
         with mock.patch("tapdoc.tts_generate.trim_mp3", wraps=trim_mp3) as trim:
             generate_one(r, self.s, FakeEngine(audio=fake_mp3(2.2), words=words), self.audio, self.prev)
-        self.assertEqual(trim.call_args.args[1:3], (1.0, 1.9))
+        self.assertEqual(trim.call_args.args[1:3], (0.1, 0.8))
 
     def test_without_flag_uses_whole_speech(self):
         with mock.patch("tapdoc.tts_generate.trim_mp3", wraps=trim_mp3) as trim:
@@ -142,7 +142,7 @@ class KeepLastGenerateTest(TempCase):
         self.assertEqual(trim.call_args.args[1:3], (0.5, 0.7))
 
     def test_cannot_cut_leaves_old_file(self):
-        set_override(self.s, self.r, doc="bờ, bờ.", keep_last=True)
+        set_override(self.s, self.r, doc="bờ, bờ.", keep_first=True)
         for engine in (FakeEngine(words=[]),  # không có mốc từ
                        FakeEngine(words=[(5.0, 5.4)])):  # mốc nằm ngoài file: không cắt được
             with self.subTest(words=engine.words), self.assertRaises(TtsError):
@@ -151,12 +151,12 @@ class KeepLastGenerateTest(TempCase):
             self.assertFalse(self.prev.exists())
 
     def test_restore_brings_back_flag(self):
-        set_override(self.s, self.r, doc="bờ, bờ.", keep_last=True)
+        set_override(self.s, self.r, doc="bờ, bờ.", keep_first=True)
         first = generate_one(self.r, self.s, FakeEngine(words=[(0.2, 0.4), (0.5, 0.7)]), self.audio, self.prev)
-        set_override(self.s, first, doc="", keep_last=False)
+        set_override(self.s, first, doc="", keep_first=False)
         second = generate_one(first, self.s, FakeEngine(), self.audio, self.prev)
         restored = restore_previous(second, self.s, self.audio, self.prev)
-        self.assertEqual(self.s["overrides"]["am_b"], {"doc": "bờ, bờ.", "keep_last": True})
+        self.assertEqual(self.s["overrides"]["am_b"], {"doc": "bờ, bờ.", "keep_first": True})
         self.assertFalse(needs_regen(self.s, restored))
 
 
