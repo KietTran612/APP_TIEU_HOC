@@ -1,0 +1,271 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b241",
+  "book": "tv2_t1_2001",
+  "lesson_no": 241,
+  "type": "tap_lam_van",
+  "title": "Quan sát tranh và trả lời câu hỏi: Đàn gà mới nở",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      64
+    ],
+    "scan_file": "033",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Tập làm văn quan sát tranh: app dùng lại tranh bài Đàn gà mới nở; bé trả lời miệng."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Quan sát tranh và trả lời câu hỏi",
+      "audio": "cau_b241_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Đàn gà mới nở.",
+      "audio": "cau_b241_02",
+      "labels": [
+        "Xem tranh ở bài Đàn gà mới nở."
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b236_ddanf_gaf_con",
+      "audio": "hd_b241_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Đàn gà con trong tranh có những nét gì đẹp?",
+      "audio": "hoi_b241_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Gà mẹ và gà con đang làm gì? Ở đâu?",
+      "audio": "hoi_b241_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Con gì đe dọa đàn gà con?",
+      "audio": "hoi_b241_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "4. Gà mẹ làm gì để bảo vệ đàn con?",
+      "audio": "hoi_b241_04"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "5. Nhìn tranh, em hãy đặt thêm một câu hỏi nữa và tự trả lời.",
+      "audio": "hoi_b241_05"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_gaf_mej",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "gà mẹ",
+          "audio": "tu_gaf_mej",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gà con",
+          "audio": "tu_gaf_con",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "diều hâu",
+          "audio": "tu_dieeuf_haau",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_gaf_con",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "gà con",
+          "audio": "tu_gaf_con",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gà mẹ",
+          "audio": "tu_gaf_mej",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bãi cỏ",
+          "audio": "tu_baix_cor",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_dieeuf_haau",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "diều hâu",
+          "audio": "tu_dieeuf_haau",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gà con",
+          "audio": "tu_gaf_con",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đe dọa",
+          "audio": "tu_dde_doaj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_baor_veej",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bảo vệ",
+          "audio": "tu_baor_veej",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đe dọa",
+          "audio": "tu_dde_doaj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gà mẹ",
+          "audio": "tu_gaf_mej",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_dde_doaj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đe dọa",
+          "audio": "tu_dde_doaj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bảo vệ",
+          "audio": "tu_baor_veej",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bãi cỏ",
+          "audio": "tu_baix_cor",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_baix_cor",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bãi cỏ",
+          "audio": "tu_baix_cor",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "diều hâu",
+          "audio": "tu_dieeuf_haau",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bảo vệ",
+          "audio": "tu_baor_veej",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

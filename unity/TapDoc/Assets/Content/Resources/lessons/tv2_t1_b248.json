@@ -1,0 +1,300 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b248",
+  "book": "tv2_t1_2001",
+  "lesson_no": 248,
+  "type": "ngu_phap",
+  "title": "Câu – Hai bộ phận chính (tiếp theo)",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      71,
+      72
+    ],
+    "scan_file": "036",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Sách in hai tranh cạnh nhau; app hiện từng tranh rồi hỏi. Bé đặt câu bằng miệng cùng bố mẹ; phần viết vào vở bé viết cùng bố mẹ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[4]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[6]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[4]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      },
+      {
+        "where": "part1[6]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Câu – Hai bộ phận chính",
+      "audio": "cau_b248_01",
+      "labels": [
+        "Tiếp theo"
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Đặt câu hỏi để tìm bộ phận chính thứ nhất và bộ phận chính thứ hai trong hai câu sau:",
+      "audio": "hoi_b248_01",
+      "rows": [
+        {
+          "text": "Chúng em chăm học chăm làm.",
+          "audio": "cau_b248_02"
+        },
+        {
+          "text": "Đất nước ta vô cùng tươi đẹp.",
+          "audio": "cau_b248_03"
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Bộ phận chính thứ hai của câu còn là bộ phận trả lời câu hỏi: \"... như thế nào?\"",
+          "audio": "cau_b248_04",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "2. Nhìn vào hình vẽ và đặt câu",
+      "audio": "cau_b248_05",
+      "labels": []
+    },
+    {
+      "type": "picture",
+      "image": "img_b248_las_cowf",
+      "audio": "hd_b248_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Nhìn tranh lá cờ, em hãy đặt một câu.",
+      "audio": "hoi_b248_02"
+    },
+    {
+      "type": "picture",
+      "image": "img_b248_lowps_hocj",
+      "audio": "hd_b248_tranh_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Nhìn tranh lớp học, em hãy đặt một câu.",
+      "audio": "hoi_b248_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Em hãy viết vào vở những câu em vừa đặt. Phân biệt bộ phận chính thứ nhất và bộ phận chính thứ hai của câu.",
+      "audio": "hoi_b248_04"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_las_cowf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "lá cờ",
+          "audio": "tu_las_cowf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lớp học",
+          "audio": "tu_lowps_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cô giáo",
+          "audio": "tu_coo_giaos",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tuwowi_ddepj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tươi đẹp",
+          "audio": "tu_tuwowi_ddepj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chăm học",
+          "audio": "tu_chawm_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chăm làm",
+          "audio": "tu_chawm_lamf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_coo_giaos",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cô giáo",
+          "audio": "tu_coo_giaos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lá cờ",
+          "audio": "tu_las_cowf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cột cờ",
+          "audio": "tu_cootj_cowf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_lowps_hocj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "lớp học",
+          "audio": "tu_lowps_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cô giáo",
+          "audio": "tu_coo_giaos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đất nước",
+          "audio": "tu_ddaats_nuwowcs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chawm_lamf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chăm làm",
+          "audio": "tu_chawm_lamf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tươi đẹp",
+          "audio": "tu_tuwowi_ddepj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lá cờ",
+          "audio": "tu_las_cowf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddaats_nuwowcs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đất nước",
+          "audio": "tu_ddaats_nuwowcs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lớp học",
+          "audio": "tu_lowps_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tươi đẹp",
+          "audio": "tu_tuwowi_ddepj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

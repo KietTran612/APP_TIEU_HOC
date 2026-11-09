@@ -1,0 +1,300 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b256",
+  "book": "tv2_t1_2001",
+  "lesson_no": 256,
+  "type": "ngu_phap",
+  "title": "Ôn tập câu",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      79
+    ],
+    "scan_file": "040",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi hiểu bài, câu hỏi tìm từ, đặt câu: bé trả lời miệng cùng bố mẹ, app không chấm."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Ôn tập câu",
+      "audio": "cau_b256_01",
+      "labels": []
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Tại sao nói và viết phải thành câu?",
+      "audio": "hoi_b256_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Khi viết, hết câu ta phải làm gì? Chữ đầu câu phải viết như thế nào?",
+      "audio": "hoi_b256_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Đoạn văn sau đây có mấy câu? Viết lại, chấm câu cho đúng.",
+      "audio": "hoi_b256_03",
+      "rows": [
+        {
+          "text": "Nhân dân ta rất anh hùng đất nước ta vô cùng tươi đẹp chúng em cố gắng học giỏi chúng ta xây dựng Tổ quốc giàu mạnh",
+          "audio": "cau_b256_02"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "4. Câu có mấy bộ phận chính?",
+      "audio": "hoi_b256_04"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "5. Bộ phận chính thứ nhất trả lời câu hỏi nào?",
+      "audio": "hoi_b256_05"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "6. Tìm bộ phận chính thứ nhất trong mấy câu sau:",
+      "audio": "hoi_b256_06",
+      "rows": [
+        {
+          "text": "Chúng em yêu quý Tổ quốc Việt Nam.",
+          "audio": "cau_b256_03"
+        },
+        {
+          "text": "Con rùa nhô đầu lên khỏi mặt nước.",
+          "audio": "cau_b256_04"
+        },
+        {
+          "text": "Dòng sông rì rào hát ca.",
+          "audio": "cau_b256_05"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "7. Bộ phận chính thứ hai trả lời câu hỏi nào?",
+      "audio": "hoi_b256_07"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "8. Tìm bộ phận chính thứ hai trong mấy câu sau:",
+      "audio": "hoi_b256_08",
+      "rows": [
+        {
+          "text": "Em ra thăm bến cảng.",
+          "audio": "cau_b256_06"
+        },
+        {
+          "text": "Nền trời rực hồng.",
+          "audio": "cau_b256_07"
+        },
+        {
+          "text": "Đồng ruộng quê hương đẹp như một bức tranh.",
+          "audio": "cau_b256_08"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thanhf_caau",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thành câu",
+          "audio": "tu_thanhf_caau",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bộ phận",
+          "audio": "tu_booj_phaanj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dấu chấm",
+          "audio": "tu_daaus_chaams",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_daaus_chaams",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "dấu chấm",
+          "audio": "tu_daaus_chaams",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "viết hoa",
+          "audio": "tu_vieets_hoa",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thành câu",
+          "audio": "tu_thanhf_caau",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_anh_hungf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "anh hùng",
+          "audio": "tu_anh_hungf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tươi đẹp",
+          "audio": "tu_tuwowi_ddepj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giàu mạnh",
+          "audio": "tu_giauf_manhj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tuwowi_ddepj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tươi đẹp",
+          "audio": "tu_tuwowi_ddepj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giàu mạnh",
+          "audio": "tu_giauf_manhj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rì rào",
+          "audio": "tu_rif_raof",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_buwcs_tranh",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bức tranh",
+          "audio": "tu_buwcs_tranh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bến cảng",
+          "audio": "tu_beens_cangr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "con rùa",
+          "audio": "tu_con_ruaf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ruwcj_hoongf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "rực hồng",
+          "audio": "tu_ruwcj_hoongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rì rào",
+          "audio": "tu_rif_raof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "anh hùng",
+          "audio": "tu_anh_hungf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

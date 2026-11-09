@@ -1,0 +1,259 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b249",
+  "book": "tv2_t1_2001",
+  "lesson_no": 249,
+  "type": "tap_lam_van",
+  "title": "Quan sát tranh và trả lời câu hỏi: Quê hương",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      72
+    ],
+    "scan_file": "037",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Tập làm văn quan sát tranh: app dùng lại tranh bài Vẽ quê hương; bé trả lời miệng."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Quan sát tranh và trả lời câu hỏi",
+      "audio": "cau_b249_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Quê hương.",
+      "audio": "cau_b249_02",
+      "labels": [
+        "Xem tranh ở bài Vẽ quê hương."
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b242_vex_quee_huwowng",
+      "audio": "hd_b249_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Nhìn bức tranh quê hương, em thấy đây là cảnh nông thôn hay thành phố? Vì sao em biết?",
+      "audio": "hoi_b249_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Tranh vẽ những cảnh gì? Em thích cảnh nào nhất?",
+      "audio": "hoi_b249_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Dựa vào tranh, em nêu thêm hai câu hỏi và tự trả lời.",
+      "audio": "hoi_b249_03"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_noong_thoon",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "nông thôn",
+          "audio": "tu_noong_thoon",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thành phố",
+          "audio": "tu_thanhf_phoos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quê hương",
+          "audio": "tu_quee_huwowng",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thanhf_phoos",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thành phố",
+          "audio": "tu_thanhf_phoos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nông thôn",
+          "audio": "tu_noong_thoon",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_canhs_ddoongf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lũy tre",
+          "audio": "tu_luyx_tre",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mái nhà",
+          "audio": "tu_mais_nhaf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_luyx_tre",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "lũy tre",
+          "audio": "tu_luyx_tre",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ngôi trường",
+          "audio": "tu_ngooi_truwowngf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ngooi_truwowngf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ngôi trường",
+          "audio": "tu_ngooi_truwowngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mái nhà",
+          "audio": "tu_mais_nhaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nông thôn",
+          "audio": "tu_noong_thoon",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_mais_nhaf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "mái nhà",
+          "audio": "tu_mais_nhaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ngôi trường",
+          "audio": "tu_ngooi_truwowngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lũy tre",
+          "audio": "tu_luyx_tre",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

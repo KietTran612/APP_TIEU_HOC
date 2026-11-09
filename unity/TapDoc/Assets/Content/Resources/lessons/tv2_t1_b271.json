@@ -1,0 +1,301 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b271",
+  "book": "tv2_t1_2001",
+  "lesson_no": 271,
+  "type": "tu_ngu",
+  "title": "Ôn tập",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      92,
+      93
+    ],
+    "scan_file": "047",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi hiểu bài, câu hỏi tìm từ, đặt câu: bé trả lời miệng cùng bố mẹ, app không chấm."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[5]",
+        "note": "đáp án điền từ do app soạn"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Từ ngữ: Ôn tập",
+      "audio": "cau_b271_01",
+      "labels": []
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Tổ quốc là gì? Tổ quốc ta tên là gì?",
+      "audio": "hoi_b271_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Thành phố lớn là trung tâm văn hóa chính trị của một nước được gọi là gì? Thủ đô của nước ta tên là gì?",
+      "audio": "hoi_b271_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Đặt câu với các từ: thành phố, nông thôn, đường phố, đường làng, cánh đồng, thửa ruộng.",
+      "audio": "hoi_b271_03"
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "4. Điền từ (quê hương, quê quán) vào câu sau đây",
+      "audio": "cau_b271_02",
+      "labels": []
+    },
+    {
+      "type": "fill_passage",
+      "marker": "",
+      "labels": [
+        "quê hương",
+        "quê quán"
+      ],
+      "rows": [
+        {
+          "text": "Hai anh bộ đội ấy quê quán khác nhau, nhưng cả hai đều yêu quê hương tha thiết.",
+          "audio": "cau_b271_03",
+          "row": 0
+        }
+      ],
+      "items": [
+        {
+          "text": "Hai anh bộ đội ấy",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "quê quán",
+          "row": 0,
+          "role": "blank",
+          "answer": "quê quán",
+          "choices": [
+            "quê hương",
+            "quê quán"
+          ]
+        },
+        {
+          "text": "khác nhau, nhưng cả hai đều yêu",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "quê hương",
+          "row": 0,
+          "role": "blank",
+          "answer": "quê hương",
+          "choices": [
+            "quê hương",
+            "quê quán"
+          ]
+        },
+        {
+          "text": "tha thiết.",
+          "row": 0,
+          "role": "text"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_toor_quoocs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "Tổ quốc",
+          "audio": "tu_toor_quoocs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thủ đô",
+          "audio": "tu_thur_ddoo",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thành phố",
+          "audio": "tu_thanhf_phoos",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_noong_thoon",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "nông thôn",
+          "audio": "tu_noong_thoon",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thành phố",
+          "audio": "tu_thanhf_phoos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đường phố",
+          "audio": "tu_dduwowngf_phoos",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quee_huwowng",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quê hương",
+          "audio": "tu_quee_huwowng",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quê quán",
+          "audio": "tu_quee_quans",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đường làng",
+          "audio": "tu_dduwowngf_langf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quee_quans",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quê quán",
+          "audio": "tu_quee_quans",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quê hương",
+          "audio": "tu_quee_huwowng",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_canhs_ddoongf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thửa ruộng",
+          "audio": "tu_thuwar_ruoongj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nông thôn",
+          "audio": "tu_noong_thoon",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thur_ddoo",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thủ đô",
+          "audio": "tu_thur_ddoo",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Tổ quốc",
+          "audio": "tu_toor_quoocs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đường làng",
+          "audio": "tu_dduwowngf_langf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

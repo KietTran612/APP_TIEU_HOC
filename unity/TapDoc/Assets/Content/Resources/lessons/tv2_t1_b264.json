@@ -1,0 +1,272 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b264",
+  "book": "tv2_t1_2001",
+  "lesson_no": 264,
+  "type": "ngu_phap",
+  "title": "Tiếng và chữ",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      86
+    ],
+    "scan_file": "044",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi hiểu bài, câu hỏi tìm từ, đặt câu: bé trả lời miệng cùng bố mẹ, app không chấm."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Tiếng và chữ",
+      "audio": "cau_b264_01",
+      "labels": []
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Câu có thể tách ra thành nhiều tiếng.",
+          "audio": "cau_b264_02",
+          "role": "line"
+        },
+        {
+          "text": "Khi nói, từng tiếng có thể ngắt ra rõ ràng.",
+          "audio": "cau_b264_03",
+          "role": "line"
+        },
+        {
+          "text": "Khi viết, mỗi tiếng viết thành một chữ.",
+          "audio": "cau_b264_04",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Ví dụ: Sài/Gòn/là/thành/phố/có/vinh/dự/được/mang/tên/Bác/.",
+          "audio": "cau_b264_05",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Tìm số tiếng trong các câu sau:",
+      "audio": "hoi_b264_01",
+      "rows": [
+        {
+          "text": "Cảng Sài Gòn có nhiều bến.",
+          "audio": "cau_b264_06"
+        },
+        {
+          "text": "Bến Nhà Rồng là nơi Bác Hồ đã ra đi để tìm đường cứu nước.",
+          "audio": "cau_b264_07"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Em hãy đặt một câu với từ thành phố. Câu em đặt có mấy tiếng? Được viết thành mấy chữ?",
+      "audio": "hoi_b264_02"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thanhf_phoos",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thành phố",
+          "audio": "tu_thanhf_phoos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vinh dự",
+          "audio": "tu_vinh_duwj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bến cảng",
+          "audio": "tu_beens_cangr",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_tieengs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tiếng",
+          "audio": "tieng_tieengs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chữ",
+          "audio": "tieng_chuwx",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "câu",
+          "audio": "tieng_caau",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vinh_duwj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vinh dự",
+          "audio": "tu_vinh_duwj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cứu nước",
+          "audio": "tu_cuwus_nuwowcs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thành phố",
+          "audio": "tu_thanhf_phoos",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_cuwus_nuwowcs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cứu nước",
+          "audio": "tu_cuwus_nuwowcs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vinh dự",
+          "audio": "tu_vinh_duwj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rõ ràng",
+          "audio": "tu_rox_rangf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_rox_rangf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "rõ ràng",
+          "audio": "tu_rox_rangf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thành phố",
+          "audio": "tu_thanhf_phoos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cứu nước",
+          "audio": "tu_cuwus_nuwowcs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_chuwx",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chữ",
+          "audio": "tieng_chuwx",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "câu",
+          "audio": "tieng_caau",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tiếng",
+          "audio": "tieng_tieengs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

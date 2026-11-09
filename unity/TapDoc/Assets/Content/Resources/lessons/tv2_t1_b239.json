@@ -1,0 +1,299 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b239",
+  "book": "tv2_t1_2001",
+  "lesson_no": 239,
+  "type": "tu_ngu",
+  "title": "Ôn tập",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      63
+    ],
+    "scan_file": "032",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi hiểu bài, câu hỏi tìm từ, đặt câu: bé trả lời miệng cùng bố mẹ, app không chấm."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Câu 4: bé chạm để chọn em họ bên nội, bên ngoại."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[5]",
+        "note": "đáp án: Bé Mai bên nội (con của chú)"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án: Bé Hoa bên ngoại (con của cậu)"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Từ ngữ: Ôn tập",
+      "audio": "cau_b239_01",
+      "labels": []
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Sắp xếp tên gọi những người trong gia đình theo thứ tự trên dưới.",
+      "audio": "hoi_b239_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Thế nào là ông nội, bà nội? Thế nào là ông ngoại, bà ngoại?",
+      "audio": "hoi_b239_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Bên nội là gì? Bên ngoại là gì? Kể tên một số bà con bên nội, bên ngoại.",
+      "audio": "hoi_b239_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "4. Bé Mai là con của chú tôi và thím tôi, nên là em họ tôi. Bé Hoa cũng là em họ tôi, vì là con của cậu tôi và mợ tôi.",
+      "audio": "hoi_b239_04"
+    },
+    {
+      "type": "choose_line",
+      "marker": "",
+      "text": "Vậy ai là em họ bên nội?",
+      "audio": "hoi_b239_05",
+      "items": [
+        {
+          "text": "Bé Mai",
+          "audio": "cau_b239_02",
+          "role": "target"
+        },
+        {
+          "text": "Bé Hoa",
+          "audio": "cau_b239_03",
+          "role": "other"
+        }
+      ],
+      "need": 1
+    },
+    {
+      "type": "choose_line",
+      "marker": "",
+      "text": "Ai là em họ bên ngoại?",
+      "audio": "hoi_b239_06",
+      "items": [
+        {
+          "text": "Bé Mai",
+          "audio": "cau_b239_04",
+          "role": "other"
+        },
+        {
+          "text": "Bé Hoa",
+          "audio": "cau_b239_05",
+          "role": "target"
+        }
+      ],
+      "need": 1
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "5. Em đã nhường nhịn các em ở nhà như thế nào? Trong một gia đình hòa thuận thì mọi người đối xử với nhau ra sao?",
+      "audio": "hoi_b239_07"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_oong_nooij",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ông nội",
+          "audio": "tu_oong_nooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bà ngoại",
+          "audio": "tu_baf_ngoaij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "em họ",
+          "audio": "tu_em_hoj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_em_hoj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "em họ",
+          "audio": "tu_em_hoj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bà con",
+          "audio": "tu_baf_con",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ông nội",
+          "audio": "tu_oong_nooij",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_baf_con",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bà con",
+          "audio": "tu_baf_con",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "em họ",
+          "audio": "tu_em_hoj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nhường nhịn",
+          "audio": "tu_nhuwowngf_nhinj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_nhuwowngf_nhinj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "nhường nhịn",
+          "audio": "tu_nhuwowngf_nhinj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hòa thuận",
+          "audio": "tu_hoaf_thuaanj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bà con",
+          "audio": "tu_baf_con",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_hoaf_thuaanj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "hòa thuận",
+          "audio": "tu_hoaf_thuaanj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nhường nhịn",
+          "audio": "tu_nhuwowngf_nhinj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ông nội",
+          "audio": "tu_oong_nooij",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_baf_ngoaij",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bà ngoại",
+          "audio": "tu_baf_ngoaij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ông nội",
+          "audio": "tu_oong_nooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hòa thuận",
+          "audio": "tu_hoaf_thuaanj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

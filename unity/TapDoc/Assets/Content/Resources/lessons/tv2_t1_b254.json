@@ -1,0 +1,1232 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b254",
+  "book": "tv2_t1_2001",
+  "lesson_no": 254,
+  "type": "tap_chep_chinh_ta",
+  "title": "Bến Nhà Rồng – Ta yêu quê ta",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      77,
+      78
+    ],
+    "scan_file": "039",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Đố chữ ghép làm bằng chạm chọn; điền chỗ trống bằng chạm hoặc kéo thẻ; gạch dưới chữ làm bằng chạm vào chữ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[3]",
+        "note": "đáp án do app soạn: chao lượn, chao cánh"
+      },
+      {
+        "where": "part1[4]",
+        "note": "đáp án do app soạn: trao đổi, trao trả"
+      },
+      {
+        "where": "part1[5]",
+        "note": "đáp án sát/xát"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án san/sang"
+      },
+      {
+        "where": "part1[11]",
+        "note": "đáp án ưi/ươi"
+      },
+      {
+        "where": "part1[12]",
+        "note": "đáp án ui/uôi"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Bến Nhà Rồng",
+      "audio": "cau_b254_01",
+      "labels": [
+        "Nghe đọc"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: \"Nền trời... ban mai\".",
+      "audio": "cau_b254_02",
+      "labels": [
+        "Phần này con nghe bố mẹ đọc rồi viết vào vở."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "Nhà Rồng",
+          "audio": "tu_nhaf_roongf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chao lượn",
+          "audio": "tu_chao_luwownj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tòa",
+          "audio": "tieng_toaf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cuốn",
+          "audio": "tieng_cuoons",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "san sát",
+          "audio": "tu_san_sats",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nổi",
+          "audio": "tieng_nooir",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "choose_line",
+      "marker": "",
+      "text": "Đố em: Trong các chữ lượn, đổi, cánh, trả, chữ nào có thể ghép với chữ chao?",
+      "audio": "hoi_b254_01",
+      "items": [
+        {
+          "text": "lượn",
+          "audio": "cau_b254_03",
+          "role": "target"
+        },
+        {
+          "text": "đổi",
+          "audio": "cau_b254_04",
+          "role": "other"
+        },
+        {
+          "text": "cánh",
+          "audio": "cau_b254_05",
+          "role": "target"
+        },
+        {
+          "text": "trả",
+          "audio": "cau_b254_06",
+          "role": "other"
+        }
+      ],
+      "need": 2
+    },
+    {
+      "type": "choose_line",
+      "marker": "",
+      "text": "Chữ nào có thể ghép với chữ trao?",
+      "audio": "hoi_b254_02",
+      "items": [
+        {
+          "text": "lượn",
+          "audio": "cau_b254_07",
+          "role": "other"
+        },
+        {
+          "text": "đổi",
+          "audio": "cau_b254_08",
+          "role": "target"
+        },
+        {
+          "text": "cánh",
+          "audio": "cau_b254_09",
+          "role": "other"
+        },
+        {
+          "text": "trả",
+          "audio": "cau_b254_10",
+          "role": "target"
+        }
+      ],
+      "need": 2
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "sát",
+        "xát"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "san sát",
+          "audio": "tu_san_sats",
+          "answer": "sát",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "cọ xát",
+          "audio": "tu_coj_xats",
+          "answer": "xát",
+          "hl": [
+            {
+              "s": 3,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "nằm sát đất",
+          "audio": "tu_nawmf_sats_ddaats",
+          "answer": "sát",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "xát xà phòng",
+          "audio": "tu_xats_xaf_phongf",
+          "answer": "xát",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "san",
+        "sang"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "san bằng",
+          "audio": "tu_san_bawngf",
+          "answer": "san",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "san phẳng",
+          "audio": "tu_san_phawngr",
+          "answer": "san",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "giàu sang",
+          "audio": "tu_giauf_sang",
+          "answer": "sang",
+          "hl": [
+            {
+              "s": 5,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "sang sông",
+          "audio": "tu_sang_soong",
+          "answer": "sang",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Ta yêu quê ta",
+      "audio": "cau_b254_11",
+      "labels": [
+        "Trí nhớ"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: Cả bài.",
+      "audio": "cau_b254_12",
+      "labels": [
+        "Phần này con nhớ lại rồi viết vào vở."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "yêu",
+          "audio": "van_yeeu",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "biếc rờn",
+          "audio": "tu_bieecs_rownf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dòng",
+          "audio": "tieng_dongf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dâu",
+          "audio": "tieng_daau",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tươi",
+          "audio": "tieng_tuwowi",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tuổi",
+          "audio": "tieng_tuooir",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trổ",
+          "audio": "tieng_troor",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "find_words",
+      "marker": "",
+      "text": "Gạch dưới những chữ yêu trong bài chính tả.",
+      "audio": "hoi_b254_03",
+      "rows": [
+        {
+          "text": "Yêu từng bờ ruộng, lối mòn,",
+          "audio": "cau_b254_13",
+          "row": 0
+        },
+        {
+          "text": "Đỏ tươi bông gạo, biếc rờn ngàn dâu.",
+          "audio": "cau_b254_14",
+          "row": 0
+        },
+        {
+          "text": "Yêu con sông mặt sóng xao,",
+          "audio": "cau_b254_15",
+          "row": 0
+        },
+        {
+          "text": "Dòng sông tuổi nhỏ rì rào hát ca.",
+          "audio": "cau_b254_16",
+          "row": 0
+        },
+        {
+          "text": "Yêu hàng ớt đã ra hoa,",
+          "audio": "cau_b254_17",
+          "row": 0
+        },
+        {
+          "text": "Đám dưa trổ nụ, đám cà trổ bông.",
+          "audio": "cau_b254_18",
+          "row": 0
+        },
+        {
+          "text": "Yêu sao tiếng mẹ ru nồng,",
+          "audio": "cau_b254_19",
+          "row": 0
+        },
+        {
+          "text": "Tiếng thoi lách cách bên nong dâu tằm.",
+          "audio": "cau_b254_20",
+          "row": 0
+        }
+      ],
+      "items": [
+        {
+          "text": "Yêu",
+          "audio": "van_yeeu",
+          "row": 0,
+          "col": 0,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "từng",
+          "audio": "tieng_tuwngf",
+          "row": 0,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "bờ",
+          "audio": "tieng_bowf",
+          "row": 0,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "ruộng",
+          "audio": "tieng_ruoongj",
+          "row": 0,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "lối",
+          "audio": "tieng_loois",
+          "row": 0,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "mòn",
+          "audio": "tieng_monf",
+          "row": 0,
+          "col": 5,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "Đỏ",
+          "audio": "tieng_ddor",
+          "row": 1,
+          "col": 0,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "tươi",
+          "audio": "tieng_tuwowi",
+          "row": 1,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "bông",
+          "audio": "tieng_boong",
+          "row": 1,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "gạo",
+          "audio": "tieng_gaoj",
+          "row": 1,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "biếc",
+          "audio": "tieng_bieecs",
+          "row": 1,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "rờn",
+          "audio": "tieng_rownf",
+          "row": 1,
+          "col": 5,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "ngàn",
+          "audio": "tieng_nganf",
+          "row": 1,
+          "col": 6,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "dâu",
+          "audio": "tieng_daau",
+          "row": 1,
+          "col": 7,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "Yêu",
+          "audio": "van_yeeu",
+          "row": 2,
+          "col": 0,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "con",
+          "audio": "tieng_con",
+          "row": 2,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "sông",
+          "audio": "tieng_soong",
+          "row": 2,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "mặt",
+          "audio": "tieng_mawtj",
+          "row": 2,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "sóng",
+          "audio": "tieng_songs",
+          "row": 2,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "xao",
+          "audio": "tieng_xao",
+          "row": 2,
+          "col": 5,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "Dòng",
+          "audio": "tieng_dongf",
+          "row": 3,
+          "col": 0,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "sông",
+          "audio": "tieng_soong",
+          "row": 3,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "tuổi",
+          "audio": "tieng_tuooir",
+          "row": 3,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "nhỏ",
+          "audio": "tieng_nhor",
+          "row": 3,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "rì",
+          "audio": "tieng_rif",
+          "row": 3,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "rào",
+          "audio": "tieng_raof",
+          "row": 3,
+          "col": 5,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "hát",
+          "audio": "tieng_hats",
+          "row": 3,
+          "col": 6,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "ca",
+          "audio": "tieng_ca",
+          "row": 3,
+          "col": 7,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "Yêu",
+          "audio": "van_yeeu",
+          "row": 4,
+          "col": 0,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "hàng",
+          "audio": "tieng_hangf",
+          "row": 4,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "ớt",
+          "audio": "tieng_owts",
+          "row": 4,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "đã",
+          "audio": "tieng_ddax",
+          "row": 4,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "ra",
+          "audio": "tieng_ra",
+          "row": 4,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "hoa",
+          "audio": "tieng_hoa",
+          "row": 4,
+          "col": 5,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "Đám",
+          "audio": "tieng_ddams",
+          "row": 5,
+          "col": 0,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "dưa",
+          "audio": "tieng_duwa",
+          "row": 5,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "trổ",
+          "audio": "tieng_troor",
+          "row": 5,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "nụ",
+          "audio": "tieng_nuj",
+          "row": 5,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "đám",
+          "audio": "tieng_ddams",
+          "row": 5,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "cà",
+          "audio": "tieng_caf",
+          "row": 5,
+          "col": 5,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "trổ",
+          "audio": "tieng_troor",
+          "row": 5,
+          "col": 6,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "bông",
+          "audio": "tieng_boong",
+          "row": 5,
+          "col": 7,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "Yêu",
+          "audio": "van_yeeu",
+          "row": 6,
+          "col": 0,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "sao",
+          "audio": "tieng_sao",
+          "row": 6,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "tiếng",
+          "audio": "tieng_tieengs",
+          "row": 6,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "mẹ",
+          "audio": "tieng_mej",
+          "row": 6,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "ru",
+          "audio": "tieng_ru",
+          "row": 6,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "nồng",
+          "audio": "tieng_noongf",
+          "row": 6,
+          "col": 5,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "Tiếng",
+          "audio": "tieng_tieengs",
+          "row": 7,
+          "col": 0,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "thoi",
+          "audio": "tieng_thoi",
+          "row": 7,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "lách",
+          "audio": "tieng_lachs",
+          "row": 7,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "cách",
+          "audio": "tieng_cachs",
+          "row": 7,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "bên",
+          "audio": "tieng_been",
+          "row": 7,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "nong",
+          "audio": "tieng_nong",
+          "row": 7,
+          "col": 5,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "dâu",
+          "audio": "tieng_daau",
+          "row": 7,
+          "col": 6,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "tằm",
+          "audio": "tieng_tawmf",
+          "row": 7,
+          "col": 7,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        }
+      ],
+      "need": 1
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "ưi",
+        "ươi"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "đỏ tươi",
+          "audio": "tu_ddor_tuwowi",
+          "answer": "ươi",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "tốt tươi",
+          "audio": "tu_toots_tuwowi",
+          "answer": "ươi",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "cưỡi ngựa",
+          "audio": "tu_cuwowix_nguwaj",
+          "answer": "ươi",
+          "hl": [
+            {
+              "s": 1,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "khung cửi",
+          "audio": "tu_khung_cuwir",
+          "answer": "ưi",
+          "hl": [
+            {
+              "s": 7,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "gửi thư",
+          "audio": "tu_guwir_thuw",
+          "answer": "ưi",
+          "hl": [
+            {
+              "s": 1,
+              "n": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "ui",
+        "uôi"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "nhỏ tuổi",
+          "audio": "tu_nhor_tuooir",
+          "answer": "uôi",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "tủi thân",
+          "audio": "tu_tuir_thaan",
+          "answer": "ui",
+          "hl": [
+            {
+              "s": 1,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "lên bảy tuổi",
+          "audio": "tu_leen_bayr_tuooir",
+          "answer": "uôi",
+          "hl": [
+            {
+              "s": 9,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chao_luwownj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chao lượn",
+          "audio": "tu_chao_luwownj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trao đổi",
+          "audio": "tu_trao_ddooir",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trao trả",
+          "audio": "tu_trao_trar",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_coj_xats",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cọ xát",
+          "audio": "tu_coj_xats",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "san sát",
+          "audio": "tu_san_sats",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giàu sang",
+          "audio": "tu_giauf_sang",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_san_phawngr",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "san phẳng",
+          "audio": "tu_san_phawngr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sang sông",
+          "audio": "tu_sang_soong",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cọ xát",
+          "audio": "tu_coj_xats",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_bieecs_rownf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "biếc rờn",
+          "audio": "tu_bieecs_rownf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trổ bông",
+          "audio": "tu_troor_boong",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dâu tằm",
+          "audio": "tu_daau_tawmf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_khung_cuwir",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "khung cửi",
+          "audio": "tu_khung_cuwir",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cưỡi ngựa",
+          "audio": "tu_cuwowix_nguwaj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gửi thư",
+          "audio": "tu_guwir_thuw",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tuir_thaan",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tủi thân",
+          "audio": "tu_tuir_thaan",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nhỏ tuổi",
+          "audio": "tu_nhor_tuooir",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đỏ tươi",
+          "audio": "tu_ddor_tuwowi",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}
