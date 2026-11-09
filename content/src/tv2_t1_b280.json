@@ -1,0 +1,144 @@
+{
+  "lesson_id": "tv2_t1_b280",
+  "book": "tv2_t1_2001",
+  "lesson_no": 280,
+  "type": "ngu_phap",
+  "title": "Chữ và chữ cái",
+  "week": 14,
+  "theme": "Đất nước ta",
+  "source": {
+    "pages": [
+      100
+    ],
+    "scan_file": "051",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {},
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[2]",
+        "note": "đáp án chữ có 3 chữ cái do app đếm: Mặt, núi, ngủ, tre, lên"
+      },
+      {
+        "where": "part1[3]",
+        "note": "đáp án chữ có 4 chữ cái do app đếm: trời, nâng, vầng"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Bé tìm chữ bằng cách chạm; đáp án do app đếm chữ cái (ch, tr, ng... tính là 2 chữ cái)."
+    }
+  ],
+  "part1": [
+    {
+      "type": "title",
+      "text": "Ngữ pháp: Chữ và chữ cái"
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "lines": [
+        "Chữ do một hoặc nhiều chữ cái tạo nên.",
+        "Ví dụ: Đàn chim gáy ở đâu bay về gù vang cánh đồng.",
+        "Chữ gáy gồm 3 chữ cái g, a, y.",
+        "Chữ ở gồm 1 chữ cái ơ."
+      ]
+    },
+    {
+      "type": "find_words",
+      "question": "1. Tìm những chữ có 3 chữ cái trong 2 câu sau đây.",
+      "match": {
+        "word": [
+          "mặt",
+          "núi",
+          "ngủ",
+          "tre",
+          "lên"
+        ]
+      },
+      "text": [
+        "Mặt trời xuống núi ngủ.",
+        "Tre nâng vầng trăng lên."
+      ]
+    },
+    {
+      "type": "find_words",
+      "question": "Tìm những chữ có 4 chữ cái trong 2 câu sau đây.",
+      "match": {
+        "word": [
+          "trời",
+          "nâng",
+          "vầng"
+        ]
+      },
+      "text": [
+        "Mặt trời xuống núi ngủ.",
+        "Tre nâng vầng trăng lên."
+      ]
+    },
+    {
+      "type": "question",
+      "text": "2. Em hãy đặt một câu với từ đồng lúa. Trong câu em đặt có mấy chữ? Chữ đầu câu có mấy chữ cái? Chữ cuối câu có mấy chữ cái? Trong câu, chữ cái nào phải viết hoa?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "chữ cái",
+          "options": [
+            "chữ cái",
+            "đồng lúa",
+            "chim gáy"
+          ]
+        },
+        {
+          "answer": "mặt trời",
+          "options": [
+            "mặt trời",
+            "vầng trăng",
+            "đồng lúa"
+          ]
+        },
+        {
+          "answer": "vầng trăng",
+          "options": [
+            "vầng trăng",
+            "mặt trời",
+            "cánh đồng"
+          ]
+        },
+        {
+          "answer": "cánh đồng",
+          "options": [
+            "cánh đồng",
+            "đồng lúa",
+            "chữ cái"
+          ]
+        },
+        {
+          "answer": "chim gáy",
+          "options": [
+            "chim gáy",
+            "cánh đồng",
+            "vầng trăng"
+          ]
+        },
+        {
+          "answer": "đồng lúa",
+          "options": [
+            "đồng lúa",
+            "chim gáy",
+            "mặt trời"
+          ]
+        }
+      ]
+    }
+  ]
+}

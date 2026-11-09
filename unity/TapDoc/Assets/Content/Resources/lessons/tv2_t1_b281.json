@@ -1,0 +1,271 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b281",
+  "book": "tv2_t1_2001",
+  "lesson_no": 281,
+  "type": "tap_lam_van",
+  "title": "Quan sát tranh và trả lời câu hỏi: Nhà Gấu ở trong rừng",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      100
+    ],
+    "scan_file": "051",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Tập làm văn quan sát tranh: app dùng lại tranh bài Nhà Gấu ở trong rừng; bé trả lời miệng."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Quan sát tranh và trả lời câu hỏi",
+      "audio": "cau_b281_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Nhà Gấu ở trong rừng.",
+      "audio": "cau_b281_02",
+      "labels": [
+        "Xem tranh ở bài Nhà Gấu ở trong rừng."
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b276_nhaf_gaaus",
+      "audio": "hd_b281_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Bức tranh này vẽ cảnh gì?",
+      "audio": "hoi_b281_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Gia đình nhà Gấu có những ai?",
+      "audio": "hoi_b281_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Chúng đang làm gì trong rừng?",
+      "audio": "hoi_b281_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "4. Hình dáng Gấu bố, Gấu mẹ và cả lũ con trông như thế nào?",
+      "audio": "hoi_b281_04"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "5. Ở miền rừng núi nước ta, ngoài gấu ra còn có những loài vật gì quý?",
+      "audio": "hoi_b281_05"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_gaaus_boos",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "gấu bố",
+          "audio": "tu_gaaus_boos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gấu mẹ",
+          "audio": "tu_gaaus_mej",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gấu con",
+          "audio": "tu_gaaus_con",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_gaaus_con",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "gấu con",
+          "audio": "tu_gaaus_con",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gấu bố",
+          "audio": "tu_gaaus_boos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rừng",
+          "audio": "tieng_ruwngf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_ruwngf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "rừng",
+          "audio": "tieng_ruwngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gốc cây",
+          "audio": "tu_goocs_caay",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gấu mẹ",
+          "audio": "tu_gaaus_mej",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_goocs_caay",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "gốc cây",
+          "audio": "tu_goocs_caay",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rừng",
+          "audio": "tieng_ruwngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hình dáng",
+          "audio": "tu_hinhf_dangs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_hinhf_dangs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "hình dáng",
+          "audio": "tu_hinhf_dangs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gốc cây",
+          "audio": "tu_goocs_caay",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "loài vật",
+          "audio": "tu_loaif_vaatj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_loaif_vaatj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "loài vật",
+          "audio": "tu_loaif_vaatj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hình dáng",
+          "audio": "tu_hinhf_dangs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gấu bố",
+          "audio": "tu_gaaus_boos",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,521 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b280",
+  "book": "tv2_t1_2001",
+  "lesson_no": 280,
+  "type": "ngu_phap",
+  "title": "Chữ và chữ cái",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      100
+    ],
+    "scan_file": "051",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Bé tìm chữ bằng cách chạm; đáp án do app đếm chữ cái (ch, tr, ng... tính là 2 chữ cái)."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "đáp án chữ có 3 chữ cái do app đếm: Mặt, núi, ngủ, tre, lên"
+      },
+      {
+        "where": "part1[3]",
+        "note": "đáp án chữ có 4 chữ cái do app đếm: trời, nâng, vầng"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Chữ và chữ cái",
+      "audio": "cau_b280_01",
+      "labels": []
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Chữ do một hoặc nhiều chữ cái tạo nên.",
+          "audio": "cau_b280_02",
+          "role": "line"
+        },
+        {
+          "text": "Ví dụ: Đàn chim gáy ở đâu bay về gù vang cánh đồng.",
+          "audio": "cau_b280_03",
+          "role": "line"
+        },
+        {
+          "text": "Chữ gáy gồm 3 chữ cái g, a, y.",
+          "audio": "cau_b280_04",
+          "role": "line"
+        },
+        {
+          "text": "Chữ ở gồm 1 chữ cái ơ.",
+          "audio": "cau_b280_05",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "find_words",
+      "marker": "",
+      "text": "1. Tìm những chữ có 3 chữ cái trong 2 câu sau đây.",
+      "audio": "hoi_b280_01",
+      "rows": [
+        {
+          "text": "Mặt trời xuống núi ngủ.",
+          "audio": "cau_b280_06",
+          "row": 0
+        },
+        {
+          "text": "Tre nâng vầng trăng lên.",
+          "audio": "cau_b280_07",
+          "row": 0
+        }
+      ],
+      "items": [
+        {
+          "text": "Mặt",
+          "audio": "tieng_mawtj",
+          "row": 0,
+          "col": 0,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "trời",
+          "audio": "tieng_trowif",
+          "row": 0,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "xuống",
+          "audio": "tieng_xuoongs",
+          "row": 0,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "núi",
+          "audio": "tieng_nuis",
+          "row": 0,
+          "col": 3,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "ngủ",
+          "audio": "tieng_ngur",
+          "row": 0,
+          "col": 4,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "Tre",
+          "audio": "tieng_tre",
+          "row": 1,
+          "col": 0,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "nâng",
+          "audio": "tieng_naang",
+          "row": 1,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "vầng",
+          "audio": "tieng_vaangf",
+          "row": 1,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "trăng",
+          "audio": "tieng_trawng",
+          "row": 1,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "lên",
+          "audio": "tieng_leen",
+          "row": 1,
+          "col": 4,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ],
+      "need": 5
+    },
+    {
+      "type": "find_words",
+      "marker": "",
+      "text": "Tìm những chữ có 4 chữ cái trong 2 câu sau đây.",
+      "audio": "hoi_b280_02",
+      "rows": [
+        {
+          "text": "Mặt trời xuống núi ngủ.",
+          "audio": "cau_b280_08",
+          "row": 0
+        },
+        {
+          "text": "Tre nâng vầng trăng lên.",
+          "audio": "cau_b280_09",
+          "row": 0
+        }
+      ],
+      "items": [
+        {
+          "text": "Mặt",
+          "audio": "tieng_mawtj",
+          "row": 0,
+          "col": 0,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "trời",
+          "audio": "tieng_trowif",
+          "row": 0,
+          "col": 1,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "text": "xuống",
+          "audio": "tieng_xuoongs",
+          "row": 0,
+          "col": 2,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "núi",
+          "audio": "tieng_nuis",
+          "row": 0,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "ngủ",
+          "audio": "tieng_ngur",
+          "row": 0,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "Tre",
+          "audio": "tieng_tre",
+          "row": 1,
+          "col": 0,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "nâng",
+          "audio": "tieng_naang",
+          "row": 1,
+          "col": 1,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "text": "vầng",
+          "audio": "tieng_vaangf",
+          "row": 1,
+          "col": 2,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "text": "trăng",
+          "audio": "tieng_trawng",
+          "row": 1,
+          "col": 3,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "lên",
+          "audio": "tieng_leen",
+          "row": 1,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        }
+      ],
+      "need": 3
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Em hãy đặt một câu với từ đồng lúa. Trong câu em đặt có mấy chữ? Chữ đầu câu có mấy chữ cái? Chữ cuối câu có mấy chữ cái? Trong câu, chữ cái nào phải viết hoa?",
+      "audio": "hoi_b280_03"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chuwx_cais",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chữ cái",
+          "audio": "tu_chuwx_cais",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đồng lúa",
+          "audio": "tu_ddoongf_luas",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chim gáy",
+          "audio": "tu_chim_gays",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_mawtj_trowif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "mặt trời",
+          "audio": "tu_mawtj_trowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vầng trăng",
+          "audio": "tu_vaangf_trawng",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đồng lúa",
+          "audio": "tu_ddoongf_luas",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vaangf_trawng",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vầng trăng",
+          "audio": "tu_vaangf_trawng",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mặt trời",
+          "audio": "tu_mawtj_trowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_canhs_ddoongf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đồng lúa",
+          "audio": "tu_ddoongf_luas",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chữ cái",
+          "audio": "tu_chuwx_cais",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chim_gays",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chim gáy",
+          "audio": "tu_chim_gays",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vầng trăng",
+          "audio": "tu_vaangf_trawng",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddoongf_luas",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đồng lúa",
+          "audio": "tu_ddoongf_luas",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chim gáy",
+          "audio": "tu_chim_gays",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mặt trời",
+          "audio": "tu_mawtj_trowif",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

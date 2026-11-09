@@ -1,0 +1,442 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b279",
+  "book": "tv2_t1_2001",
+  "lesson_no": 279,
+  "type": "tu_ngu",
+  "title": "Rừng núi",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      99,
+      100
+    ],
+    "scan_file": "050",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi hiểu bài, câu hỏi tìm từ, đặt câu: bé trả lời miệng cùng bố mẹ, app không chấm."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Điền từ bằng chạm hoặc kéo thẻ; đáp án do app soạn."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[5]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[8]",
+        "note": "đáp án điền từ do app soạn"
+      },
+      {
+        "where": "part1[5]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Từ ngữ: Rừng núi",
+      "audio": "cau_b279_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Những từ ngữ cần ghi nhớ",
+      "audio": "cau_b279_02",
+      "labels": []
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "rừng",
+          "audio": "tieng_ruwngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "núi",
+          "audio": "tieng_nuis",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đồi",
+          "audio": "tieng_ddooif",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "suối",
+          "audio": "tieng_suoois",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đèo",
+          "audio": "tieng_ddeof",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lâm sản",
+          "audio": "tu_laam_sanr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "thú rừng",
+          "audio": "tu_thus_ruwngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chim rừng",
+          "audio": "tu_chim_ruwngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "gỗ quý",
+          "audio": "tu_goox_quys",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "trập trùng",
+          "audio": "tu_traapj_trungf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rậm rạp",
+          "audio": "tu_raamj_rapj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trèo đèo lội suối",
+          "audio": "tu_treof_ddeof_looij_suoois",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài tập",
+      "audio": "cau_b279_03",
+      "labels": []
+    },
+    {
+      "type": "picture",
+      "image": "img_b279_nuis_rungf",
+      "audio": "hd_b279_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Nhìn vào hình vẽ, em chỉ rõ: đỉnh núi, sườn núi, chân núi, đèo.",
+      "audio": "hoi_b279_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Kể vài sản vật ở rừng nước ta mà em biết.",
+      "audio": "hoi_b279_02"
+    },
+    {
+      "type": "fill_passage",
+      "marker": "",
+      "labels": [
+        "trập trùng",
+        "rậm rạp",
+        "trèo đèo lội suối"
+      ],
+      "rows": [
+        {
+          "text": "Ở miền rừng núi thường có cây cối rậm rạp.",
+          "audio": "cau_b279_04",
+          "row": 0
+        },
+        {
+          "text": "Núi non trập trùng.",
+          "audio": "cau_b279_05",
+          "row": 1
+        },
+        {
+          "text": "Có nơi, học sinh đi học phải trèo đèo lội suối mới tới lớp học.",
+          "audio": "cau_b279_06",
+          "row": 2
+        }
+      ],
+      "items": [
+        {
+          "text": "Ở miền rừng núi thường có cây cối",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "rậm rạp",
+          "row": 0,
+          "role": "blank",
+          "answer": "rậm rạp",
+          "choices": [
+            "trập trùng",
+            "rậm rạp",
+            "trèo đèo lội suối"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "Núi non",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "trập trùng",
+          "row": 1,
+          "role": "blank",
+          "answer": "trập trùng",
+          "choices": [
+            "trập trùng",
+            "rậm rạp",
+            "trèo đèo lội suối"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "Có nơi, học sinh đi học phải",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "trèo đèo lội suối",
+          "row": 2,
+          "role": "blank",
+          "answer": "trèo đèo lội suối",
+          "choices": [
+            "trập trùng",
+            "rậm rạp",
+            "trèo đèo lội suối"
+          ]
+        },
+        {
+          "text": "mới tới lớp học.",
+          "row": 2,
+          "role": "text"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_laam_sanr",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "lâm sản",
+          "audio": "tu_laam_sanr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thú rừng",
+          "audio": "tu_thus_ruwngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gỗ quý",
+          "audio": "tu_goox_quys",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_traapj_trungf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "trập trùng",
+          "audio": "tu_traapj_trungf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rậm rạp",
+          "audio": "tu_raamj_rapj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trèo đèo",
+          "audio": "tu_treof_ddeof",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chim_ruwngf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chim rừng",
+          "audio": "tu_chim_ruwngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thú rừng",
+          "audio": "tu_thus_ruwngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lâm sản",
+          "audio": "tu_laam_sanr",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_raamj_rapj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "rậm rạp",
+          "audio": "tu_raamj_rapj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trập trùng",
+          "audio": "tu_traapj_trungf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gỗ quý",
+          "audio": "tu_goox_quys",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_goox_quys",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "gỗ quý",
+          "audio": "tu_goox_quys",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chim rừng",
+          "audio": "tu_chim_ruwngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "suối",
+          "audio": "tieng_suoois",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_ddeof",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đèo",
+          "audio": "tieng_ddeof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đồi",
+          "audio": "tieng_ddooif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "núi",
+          "audio": "tieng_nuis",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

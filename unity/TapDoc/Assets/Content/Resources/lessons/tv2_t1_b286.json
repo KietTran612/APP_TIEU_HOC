@@ -1,0 +1,766 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b286",
+  "book": "tv2_t1_2001",
+  "lesson_no": 286,
+  "type": "tap_chep_chinh_ta",
+  "title": "Biển đẹp – Con chim chiền chiện",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      105,
+      106
+    ],
+    "scan_file": "053",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Gạch dưới chữ, ghép chữ, điền chỗ trống làm bằng chạm hoặc kéo thẻ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[5]",
+        "note": "đáp án xa/sa"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án nắng/nắn"
+      },
+      {
+        "where": "part1[12]",
+        "note": "đáp án chan/chang"
+      },
+      {
+        "where": "part1[13]",
+        "note": "đáp án sữa/sửa"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Biển đẹp",
+      "audio": "cau_b286_01",
+      "labels": [
+        "Nghe đọc"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: \"Biển rất đẹp... giữa trời xanh\".",
+      "audio": "cau_b286_02",
+      "labels": [
+        "Phần này con nghe bố mẹ đọc rồi viết vào vở."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "bướm",
+          "audio": "tieng_buwowms",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lượn",
+          "audio": "tieng_luwownj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "buồm",
+          "audio": "tieng_buoomf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "xa",
+          "audio": "tieng_xa",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nắng",
+          "audio": "tieng_nawngs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "biển",
+          "audio": "tieng_bieenr",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "find_words",
+      "marker": "",
+      "text": "Gạch dưới những chữ có vần ươm và ươn trong câu.",
+      "audio": "hoi_b286_01",
+      "rows": [
+        {
+          "text": "Hoa thơm bướm lượn.",
+          "audio": "cau_b286_03",
+          "row": 0
+        }
+      ],
+      "items": [
+        {
+          "text": "Hoa",
+          "audio": "tieng_hoa",
+          "row": 0,
+          "col": 0,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "thơm",
+          "audio": "tieng_thowm",
+          "row": 0,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "bướm",
+          "audio": "tieng_buwowms",
+          "row": 0,
+          "col": 2,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 1,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "lượn",
+          "audio": "tieng_luwownj",
+          "row": 0,
+          "col": 3,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 1,
+              "n": 3
+            }
+          ]
+        }
+      ],
+      "need": 2
+    },
+    {
+      "type": "find_words",
+      "marker": "",
+      "text": "Gạch dưới những chữ có vần uôm trong câu.",
+      "audio": "hoi_b286_02",
+      "rows": [
+        {
+          "text": "Ếch kêu uôm uôm, ao chuôm đầy nước.",
+          "audio": "cau_b286_04",
+          "row": 0
+        }
+      ],
+      "items": [
+        {
+          "text": "Ếch",
+          "audio": "tieng_eechs",
+          "row": 0,
+          "col": 0,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "kêu",
+          "audio": "tieng_keeu",
+          "row": 0,
+          "col": 1,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "uôm",
+          "audio": "van_uoom",
+          "row": 0,
+          "col": 2,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "uôm",
+          "audio": "van_uoom",
+          "row": 0,
+          "col": 3,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "ao",
+          "audio": "van_ao",
+          "row": 0,
+          "col": 4,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "chuôm",
+          "audio": "tieng_chuoom",
+          "row": 0,
+          "col": 5,
+          "spells": [],
+          "role": "target",
+          "hl": [
+            {
+              "s": 2,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "text": "đầy",
+          "audio": "tieng_ddaayf",
+          "row": 0,
+          "col": 6,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        },
+        {
+          "text": "nước",
+          "audio": "tieng_nuwowcs",
+          "row": 0,
+          "col": 7,
+          "spells": [],
+          "role": "other",
+          "hl": []
+        }
+      ],
+      "need": 2
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "xa",
+        "sa"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "gần xa",
+          "audio": "tu_gaanf_xa",
+          "answer": "xa",
+          "hl": [
+            {
+              "s": 4,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "sao sa",
+          "audio": "tu_sao_sa",
+          "answer": "sa",
+          "hl": [
+            {
+              "s": 4,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "xa xỉ",
+          "audio": "tu_xa_xir",
+          "answer": "xa",
+          "hl": [
+            {
+              "s": 0,
+              "n": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "nắng",
+        "nắn"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "mưa nắng",
+          "audio": "tu_muwa_nawngs",
+          "answer": "nắng",
+          "hl": [
+            {
+              "s": 4,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "uốn nắn",
+          "audio": "tu_uoons_nawns",
+          "answer": "nắn",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "ánh nắng",
+          "audio": "tu_anhs_nawngs",
+          "answer": "nắng",
+          "hl": [
+            {
+              "s": 4,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "nắn nót",
+          "audio": "tu_nawns_nots",
+          "answer": "nắn",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập chép: Con chim chiền chiện",
+      "audio": "cau_b286_05",
+      "labels": [
+        "Nhìn bảng"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài chép: Cả bài.",
+      "audio": "cau_b286_06",
+      "labels": [
+        "Phần này con chép vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "chiền chiện",
+          "audio": "tu_chieenf_chieenj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ngọt ngào",
+          "audio": "tu_ngotj_ngaof",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sà",
+          "audio": "tieng_saf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chan chứa",
+          "audio": "tu_chan_chuwas",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "biến",
+          "audio": "tieng_bieens",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sữa",
+          "audio": "tieng_suwax",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "chiền chiện",
+      "audio": "tu_chieenf_chieenj",
+      "items": [
+        {
+          "text": "chiền chiện hót",
+          "audio": "tu_chieenf_chieenj_hots",
+          "part": "hót",
+          "role": "after"
+        },
+        {
+          "text": "chiền chiện bay",
+          "audio": "tu_chieenf_chieenj_bay",
+          "part": "bay",
+          "role": "after"
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "ngọt ngào",
+      "audio": "tu_ngotj_ngaof",
+      "items": [
+        {
+          "text": "tiếng nói ngọt ngào",
+          "audio": "tu_tieengs_nois_ngotj_ngaof",
+          "part": "tiếng nói",
+          "role": "before"
+        },
+        {
+          "text": "lời ru ngọt ngào",
+          "audio": "tu_lowif_ru_ngotj_ngaof",
+          "part": "lời ru",
+          "role": "before"
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "chan",
+        "chang"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "chan chứa",
+          "audio": "tu_chan_chuwas",
+          "answer": "chan",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "chan canh",
+          "audio": "tu_chan_canh",
+          "answer": "chan",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "nắng chang chang",
+          "audio": "tu_nawngs_chang_chang",
+          "answer": "chang",
+          "hl": [
+            {
+              "s": 5,
+              "n": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "sữa",
+        "sửa"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "sữa bò",
+          "audio": "tu_suwax_bof",
+          "answer": "sữa",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "sửa lỗi",
+          "audio": "tu_suwar_looix",
+          "answer": "sửa",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "sữa đậu nành",
+          "audio": "tu_suwax_ddaauj_nanhf",
+          "answer": "sữa",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "sửa soạn",
+          "audio": "tu_suwar_soanj",
+          "answer": "sửa",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_buwowms_luwownj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bướm lượn",
+          "audio": "tu_buwowms_luwownj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cánh buồm",
+          "audio": "tu_canhs_buoomf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ao chuôm",
+          "audio": "tu_ao_chuoom",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_sao_sa",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "sao sa",
+          "audio": "tu_sao_sa",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gần xa",
+          "audio": "tu_gaanf_xa",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "xa xỉ",
+          "audio": "tu_xa_xir",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_uoons_nawns",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "uốn nắn",
+          "audio": "tu_uoons_nawns",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ánh nắng",
+          "audio": "tu_anhs_nawngs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nắn nót",
+          "audio": "tu_nawns_nots",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chieenf_chieenj_hots",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chiền chiện hót",
+          "audio": "tu_chieenf_chieenj_hots",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tiếng nói",
+          "audio": "tu_tieengs_nois",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lời ru",
+          "audio": "tu_lowif_ru",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chan_canh",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chan canh",
+          "audio": "tu_chan_canh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nắng chang chang",
+          "audio": "tu_nawngs_chang_chang",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chan chứa",
+          "audio": "tu_chan_chuwas",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_suwar_soanj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "sửa soạn",
+          "audio": "tu_suwar_soanj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sữa bò",
+          "audio": "tu_suwax_bof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sửa lỗi",
+          "audio": "tu_suwar_looix",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

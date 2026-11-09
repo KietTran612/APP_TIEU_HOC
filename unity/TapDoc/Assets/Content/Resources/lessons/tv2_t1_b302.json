@@ -1,0 +1,520 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b302",
+  "book": "tv2_t1_2001",
+  "lesson_no": 302,
+  "type": "tu_ngu",
+  "title": "Ôn tập",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      120,
+      121
+    ],
+    "scan_file": "061",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi hiểu bài, câu hỏi tìm từ, đặt câu: bé trả lời miệng cùng bố mẹ, app không chấm."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Điền từ bằng chạm hoặc kéo thẻ; đáp án do app soạn."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[8]",
+        "note": "đáp án điền từ do app soạn; \"Tàu vào ... tránh bão\" app chọn vịnh, \"Tàu rời ... ra khơi\" app chọn cảng"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Từ ngữ: Ôn tập",
+      "audio": "cau_b302_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "A – Trả lời câu hỏi",
+      "audio": "cau_b302_02",
+      "labels": []
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Núi khác đồi thế nào?",
+      "audio": "hoi_b302_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Kể tên ba phần khác nhau của một ngọn núi từ trên xuống dưới. Đèo ở đâu?",
+      "audio": "hoi_b302_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Rừng có những gì nhiều và quý?",
+      "audio": "hoi_b302_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "4. Vịnh khác cảng như thế nào? Đảo nằm ở đâu?",
+      "audio": "hoi_b302_04"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "5. Ruộng khác nương thế nào? Rẫy là gì?",
+      "audio": "hoi_b302_05"
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "B – Điền từ thích hợp vào chỗ trống",
+      "audio": "cau_b302_03",
+      "labels": [
+        "thấp, bạc, rẫy, cảng, cao, vịnh, vàng, đèo"
+      ]
+    },
+    {
+      "type": "fill_passage",
+      "marker": "",
+      "labels": [
+        "thấp",
+        "bạc",
+        "rẫy",
+        "cảng",
+        "cao",
+        "vịnh",
+        "vàng",
+        "đèo"
+      ],
+      "rows": [
+        {
+          "text": "Núi cao, đồi thấp.",
+          "audio": "cau_b302_04",
+          "row": 0
+        },
+        {
+          "text": "Lên dốc xuống đèo.",
+          "audio": "cau_b302_05",
+          "row": 1
+        },
+        {
+          "text": "Rừng vàng biển bạc.",
+          "audio": "cau_b302_06",
+          "row": 2
+        },
+        {
+          "text": "Phá rẫy làm nương.",
+          "audio": "cau_b302_07",
+          "row": 3
+        },
+        {
+          "text": "Tàu vào vịnh tránh bão.",
+          "audio": "cau_b302_08",
+          "row": 4
+        },
+        {
+          "text": "Tàu rời cảng ra khơi.",
+          "audio": "cau_b302_09",
+          "row": 5
+        }
+      ],
+      "items": [
+        {
+          "text": "Núi",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "cao",
+          "row": 0,
+          "role": "blank",
+          "answer": "cao",
+          "choices": [
+            "thấp",
+            "bạc",
+            "rẫy",
+            "cảng",
+            "cao",
+            "vịnh",
+            "vàng",
+            "đèo"
+          ]
+        },
+        {
+          "text": ", đồi",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "thấp",
+          "row": 0,
+          "role": "blank",
+          "answer": "thấp",
+          "choices": [
+            "thấp",
+            "bạc",
+            "rẫy",
+            "cảng",
+            "cao",
+            "vịnh",
+            "vàng",
+            "đèo"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 0,
+          "role": "text"
+        },
+        {
+          "text": "Lên dốc xuống",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "đèo",
+          "row": 1,
+          "role": "blank",
+          "answer": "đèo",
+          "choices": [
+            "thấp",
+            "bạc",
+            "rẫy",
+            "cảng",
+            "cao",
+            "vịnh",
+            "vàng",
+            "đèo"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 1,
+          "role": "text"
+        },
+        {
+          "text": "Rừng",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "vàng",
+          "row": 2,
+          "role": "blank",
+          "answer": "vàng",
+          "choices": [
+            "thấp",
+            "bạc",
+            "rẫy",
+            "cảng",
+            "cao",
+            "vịnh",
+            "vàng",
+            "đèo"
+          ]
+        },
+        {
+          "text": "biển",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "bạc",
+          "row": 2,
+          "role": "blank",
+          "answer": "bạc",
+          "choices": [
+            "thấp",
+            "bạc",
+            "rẫy",
+            "cảng",
+            "cao",
+            "vịnh",
+            "vàng",
+            "đèo"
+          ]
+        },
+        {
+          "text": ".",
+          "row": 2,
+          "role": "text"
+        },
+        {
+          "text": "Phá",
+          "row": 3,
+          "role": "text"
+        },
+        {
+          "text": "rẫy",
+          "row": 3,
+          "role": "blank",
+          "answer": "rẫy",
+          "choices": [
+            "thấp",
+            "bạc",
+            "rẫy",
+            "cảng",
+            "cao",
+            "vịnh",
+            "vàng",
+            "đèo"
+          ]
+        },
+        {
+          "text": "làm nương.",
+          "row": 3,
+          "role": "text"
+        },
+        {
+          "text": "Tàu vào",
+          "row": 4,
+          "role": "text"
+        },
+        {
+          "text": "vịnh",
+          "row": 4,
+          "role": "blank",
+          "answer": "vịnh",
+          "choices": [
+            "thấp",
+            "bạc",
+            "rẫy",
+            "cảng",
+            "cao",
+            "vịnh",
+            "vàng",
+            "đèo"
+          ]
+        },
+        {
+          "text": "tránh bão.",
+          "row": 4,
+          "role": "text"
+        },
+        {
+          "text": "Tàu rời",
+          "row": 5,
+          "role": "text"
+        },
+        {
+          "text": "cảng",
+          "row": 5,
+          "role": "blank",
+          "answer": "cảng",
+          "choices": [
+            "thấp",
+            "bạc",
+            "rẫy",
+            "cảng",
+            "cao",
+            "vịnh",
+            "vàng",
+            "đèo"
+          ]
+        },
+        {
+          "text": "ra khơi.",
+          "row": 5,
+          "role": "text"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_nuis",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "núi",
+          "audio": "tieng_nuis",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đồi",
+          "audio": "tieng_ddooif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đèo",
+          "audio": "tieng_ddeof",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_vinhj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vịnh",
+          "audio": "tieng_vinhj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cảng",
+          "audio": "tieng_cangr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đảo",
+          "audio": "tieng_ddaor",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_ruoongj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ruộng",
+          "audio": "tieng_ruoongj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nương",
+          "audio": "tieng_nuwowng",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rẫy",
+          "audio": "tieng_raayx",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ruwngf_vangf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "rừng vàng",
+          "audio": "tu_ruwngf_vangf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "biển bạc",
+          "audio": "tu_bieenr_bacj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lên dốc",
+          "audio": "tu_leen_doocs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tranhs_baox",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tránh bão",
+          "audio": "tu_tranhs_baox",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ra khơi",
+          "audio": "tu_ra_khowi",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "phá rẫy",
+          "audio": "tu_phas_raayx",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddinhr_nuis",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đỉnh núi",
+          "audio": "tu_ddinhr_nuis",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sườn núi",
+          "audio": "tu_suwownf_nuis",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chân núi",
+          "audio": "tu_chaan_nuis",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

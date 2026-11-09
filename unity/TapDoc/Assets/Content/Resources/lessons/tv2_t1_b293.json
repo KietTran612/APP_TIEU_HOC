@@ -1,0 +1,666 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t1_b293",
+  "book": "tv2_t1_2001",
+  "lesson_no": 293,
+  "type": "tap_chep_chinh_ta",
+  "title": "Quê em vùng biển – Sa Pa",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      112,
+      113
+    ],
+    "scan_file": "057",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Ghép chữ, điền chỗ trống làm bằng chạm hoặc kéo thẻ; tên riêng bé đọc trên thẻ rồi viết vào vở cùng bố mẹ."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[3]",
+        "note": "cách ghép do app chọn: rộng mênh mông, biển cả mênh mông"
+      },
+      {
+        "where": "part1[5]",
+        "note": "đáp án ắp/ấp"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án tràn/tràng"
+      },
+      {
+        "where": "part1[7]",
+        "note": "đáp án bãi/bải"
+      },
+      {
+        "where": "part1[13]",
+        "note": "đáp án bậc/bật"
+      },
+      {
+        "where": "part1[14]",
+        "note": "đáp án đỉnh/đĩnh"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Quê em vùng biển",
+      "audio": "cau_b293_01",
+      "labels": [
+        "Nghe đọc"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: Cả bài (10 câu).",
+      "audio": "cau_b293_02",
+      "labels": [
+        "Phần này con nghe bố mẹ đọc rồi viết vào vở."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "mênh mông",
+          "audio": "tu_meenh_moong",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đoàn thuyền",
+          "audio": "tu_ddoanf_thuyeenf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đầy ắp",
+          "audio": "tu_ddaayf_awps",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tràn",
+          "audio": "tieng_tranf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bãi",
+          "audio": "tieng_baix",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "mênh mông",
+      "audio": "tu_meenh_moong",
+      "items": [
+        {
+          "text": "rộng mênh mông",
+          "audio": "tu_roongj_meenh_moong",
+          "part": "rộng",
+          "role": "before"
+        },
+        {
+          "text": "biển cả mênh mông",
+          "audio": "tu_bieenr_car_meenh_moong",
+          "part": "biển cả",
+          "role": "before"
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "thuyền",
+      "audio": "tieng_thuyeenf",
+      "items": [
+        {
+          "text": "đoàn thuyền",
+          "audio": "tu_ddoanf_thuyeenf",
+          "part": "đoàn",
+          "role": "before"
+        },
+        {
+          "text": "con thuyền",
+          "audio": "tu_con_thuyeenf",
+          "part": "con",
+          "role": "before"
+        },
+        {
+          "text": "chiếc thuyền",
+          "audio": "tu_chieecs_thuyeenf",
+          "part": "chiếc",
+          "role": "before"
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "ắp",
+        "ấp"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "thuyền đầy ắp cá",
+          "audio": "tu_thuyeenf_ddaayf_awps_cas",
+          "answer": "ắp",
+          "hl": [
+            {
+              "s": 11,
+              "n": 2
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "gà mái ấp trứng",
+          "audio": "tu_gaf_mais_aaps_truwngs",
+          "answer": "ấp",
+          "hl": [
+            {
+              "s": 7,
+              "n": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "tràn",
+        "tràng"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "nước tràn",
+          "audio": "tu_nuwowcs_tranf",
+          "answer": "tràn",
+          "hl": [
+            {
+              "s": 5,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "đầy tràn",
+          "audio": "tu_ddaayf_tranf",
+          "answer": "tràn",
+          "hl": [
+            {
+              "s": 4,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "tràng hạt",
+          "audio": "tu_trangf_hatj",
+          "answer": "tràng",
+          "hl": [
+            {
+              "s": 0,
+              "n": 5
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "tràng vỗ tay",
+          "audio": "tu_trangf_voox_tay",
+          "answer": "tràng",
+          "hl": [
+            {
+              "s": 0,
+              "n": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "bãi",
+        "bải"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "bãi cát",
+          "audio": "tu_baix_cats",
+          "answer": "bãi",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "bãi biển",
+          "audio": "tu_baix_bieenr",
+          "answer": "bãi",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "bải hoải tay chân",
+          "audio": "tu_bair_hoair_tay_chaan",
+          "answer": "bải",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Sa Pa",
+      "audio": "cau_b293_03",
+      "labels": [
+        "Trí nhớ"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: 6 câu đầu.",
+      "audio": "cau_b293_04",
+      "labels": [
+        "Phần này con nhớ lại rồi viết vào vở."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "trĩu",
+          "audio": "tieng_triux",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "quanh",
+          "audio": "tieng_quanh",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bậc thang",
+          "audio": "tu_baacj_thang",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đỉnh",
+          "audio": "tieng_ddinhr",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Viết tên riêng các địa phương sau",
+      "audio": "cau_b293_05",
+      "labels": [
+        "Phần viết con viết vào vở; ở đây con đọc các tên riêng."
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Pác Bó",
+          "audio": "cau_b293_06",
+          "role": "line"
+        },
+        {
+          "text": "Kon Tum",
+          "audio": "cau_b293_07",
+          "role": "line"
+        },
+        {
+          "text": "Đà Lạt",
+          "audio": "cau_b293_08",
+          "role": "line"
+        },
+        {
+          "text": "Plây Cu",
+          "audio": "cau_b293_09",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "bậc",
+        "bật"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "bậc thang",
+          "audio": "tu_baacj_thang",
+          "answer": "bậc",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "nổi bật",
+          "audio": "tu_nooir_baatj",
+          "answer": "bật",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "vượt bậc",
+          "audio": "tu_vuwowtj_baacj",
+          "answer": "bậc",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "bật đèn",
+          "audio": "tu_baatj_ddenf",
+          "answer": "bật",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "đỉnh",
+        "đĩnh"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "đỉnh núi",
+          "audio": "tu_ddinhr_nuis",
+          "answer": "đỉnh",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "đỉnh đầu",
+          "audio": "tu_ddinhr_ddaauf",
+          "answer": "đỉnh",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "đĩnh đạc",
+          "audio": "tu_ddinhx_ddacj",
+          "answer": "đĩnh",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_meenh_moong",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "mênh mông",
+          "audio": "tu_meenh_moong",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "biển cả",
+          "audio": "tu_bieenr_car",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đoàn thuyền",
+          "audio": "tu_ddoanf_thuyeenf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_con_thuyeenf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "con thuyền",
+          "audio": "tu_con_thuyeenf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chiếc thuyền",
+          "audio": "tu_chieecs_thuyeenf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đầy ắp",
+          "audio": "tu_ddaayf_awps",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_trangf_hatj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tràng hạt",
+          "audio": "tu_trangf_hatj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nước tràn",
+          "audio": "tu_nuwowcs_tranf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bãi cát",
+          "audio": "tu_baix_cats",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_baix_bieenr",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bãi biển",
+          "audio": "tu_baix_bieenr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bải hoải",
+          "audio": "tu_bair_hoair",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bậc thang",
+          "audio": "tu_baacj_thang",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddinhr_nuis",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đỉnh núi",
+          "audio": "tu_ddinhr_nuis",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đĩnh đạc",
+          "audio": "tu_ddinhx_ddacj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nổi bật",
+          "audio": "tu_nooir_baatj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddaf_latj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "Đà Lạt",
+          "audio": "tu_ddaf_latj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Kon Tum",
+          "audio": "tu_kon_tum",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Pác Bó",
+          "audio": "tu_pacs_bos",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}
