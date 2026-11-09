@@ -285,6 +285,12 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Tranh vô lý (cá thờn bơn hai mắt hai bên, trẻ con giơ tạ) | Xem từng tranh trên tờ kiểm tra; sửa mô tả cho rõ rồi vẽ lại | 30/10, f9f0203; 09/11, 7f13b2a |
 | Tranh bản đồ chưa vẽ lại được | Chủ dự án cho dùng tạm ảnh cắt từ scan (`import-image --scan-tam`), bản phát hành tự bị chặn | 05/11, c31e355 |
 | Tải về bị trùng tên "(1)" | Kiểm tra trùng tên trong Downloads trước khi tải; nhập xong thì chuyển file vào Thùng rác | 05/11 |
+| Tranh người sai tay: tay mọc ra từ ngực, tay vắt qua khung bảng, bé viết bảng bằng tay trái | Phóng to kiểm từng tay trước khi đưa chủ dự án. Lời nhắc ghi rõ bố cục để tay phải tự nhiên: bảng ở nửa trái tranh, bé ở nửa phải, "cánh tay PHẢI nối từ vai phải cầm phấn", "mỗi bé đúng hai tay, năm ngón" | 09/11, 916a3ca |
+| Nét phấn "không thành chữ" vẫn ra hình giống chữ (J, O) | Muốn không chữ thì cho vẽ hình (mặt trời, ngôi nhà); muốn chữ thì ghi đúng từng chữ và dấu ("a ă â b c", ă dấu trăng, â dấu mũ) rồi phóng to kiểm | 09/11 |
+| Ảnh bìa sách | Không chữ (trừ chữ trên bảng nếu chủ dự án muốn), 40% phía trên để trống nền giấy cho app viết tên quyển. Chủ dự án: hai bé không nắm tay nhau | 09/11, 916a3ca |
+| Gõ lời nhắc lúc trình xem ảnh đang mở: lời nhắc không được gửi mà không báo | Đóng trình xem (Esc), gửi, rồi kiểm tra lời nhắc đã có trong trang trước khi chờ vẽ | 09/11 |
+| Lấy nhầm ảnh cũ trong cuộc trò chuyện có nhiều ảnh | Duyệt trang theo thứ tự, gắn mỗi ảnh với lời nhắc đứng trước nó; tải bằng `fetch(img.src)` + thẻ `a download` đặt sẵn tên mã ảnh | 09/11 |
+| Máy không có Pillow để thu nhỏ ảnh | Dùng System.Drawing trong PowerShell (HighQualityBicubic); bìa thu nhỏ 600×800 trước khi `import-image` | 09/11 |
 | Lệnh JS tải cả đợt (khoảng 18 ảnh) chạy quá 45 giây, công cụ trình duyệt báo hết giờ; trang vẫn tải tiếp nhưng không trả kết quả | Gọi hàm tải mà không `await`; hàm ghi kết quả vào `window.__dlres`, đọc lại sau ít giây. Đếm file trong Downloads để xác nhận đủ | 09/11 |
 | Một lô chờ trình duyệt dài quá khoảng 2 phút thì mất kết nối | Mỗi lô chờ tối đa khoảng 110 giây, rồi đọc tiến độ trong `window.__prog`. Mất kết nối thì chỉ đọc lại trạng thái một lần, không gửi lại thao tác | 09/11 |
 
@@ -305,6 +311,15 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Trang chi tiết clip ở `/u/1`–`/u/4` không có nút mũi tên sang clip kế | Lọc lưới theo Video, mở từng thẻ theo thứ tự, xong thì quay về lưới | 09/11 |
 | Ô soạn có thêm biểu tượng nhỏ (ảnh `gstatic`), làm bộ đếm "đúng 2 ảnh" sai | Khi đếm ảnh trong ô soạn, bỏ ảnh có `src` thuộc `gstatic.com` | 09/11 |
 | Trình phát clip của Flow là canvas, không lấy được thẻ `video` để xem | Bấm phát rồi `drawImage` từ canvas theo thời gian để chụp khung; khung đen là do chưa nạp kịp. Chắc nhất là tải về rồi phát thật qua `python -m http.server` cục bộ | 09/11 |
+
+### Giao diện, bố cục
+
+| Vấn đề | Cách giải | Ngày / commit |
+|---|---|---|
+| `LayoutProbe` không bắt chồng lấn: chữ tiến độ Phụ huynh bị nút "Mở mọi bài" che, vạch kệ đè dòng "Đã học" mà test vẫn đạt | Luôn mở ảnh chụp `TestOutput/screens/<cỡ>/` (ít nhất 20:9 và 4:3) sau khi đổi bố cục; chỗ chữ cạnh nút thì thêm assert không chồng lấn bằng `GetWorldCorners` (xem `Parent_ProgressPerBook`) | 09/11, 9b7bc49, 04d6e43 |
+| Chữ đặt trên tranh bìa khó đọc (dấu "Đã học xong" đỏ trên tranh) | Đặt chữ trên miếng giấy sáng có viền; tên quyển căn giữa trong vùng trống phía trên bìa | 09/11, ae37628 |
+| Danh sách bài dựng chậm khi mỗi thẻ tự tính mở khoá (duyệt lại cả quyển trước) | Tính quyển có mở và chuỗi bài một lần cho cả danh sách, thẻ chỉ tra tập kết quả | 09/11, 30b6622 |
+| Test dùng nguồn ảnh giả riêng để lại `SourceFactory` cho test sau khi hỏng giữa chừng | Gọi `UseStubsForMissingAssets()` trước rồi bọc `AppRoot.SourceFactory` đó, để TearDown luôn dọn | 09/11, 30b6622 |
 
 ### Dữ liệu, git, điều phối
 
