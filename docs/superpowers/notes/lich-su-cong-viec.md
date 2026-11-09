@@ -63,7 +63,14 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 - **Còn dở:** đợt L2-3 (18 tranh), đợt L2-4 (12 tranh).
 
 **[L2] Tranh động Tiếng Việt 2 tập 1** (`local_d1b0f2bf…`)
-- Đã tạo trên Flow 27 clip (đợt L2-1 và L2-2), chờ chủ dự án cho phép tải về.
+- Đợt L2-1 và L2-2 xong: 27 clip (bài 172–230), 1280×720, khoảng 8 giây, có tiếng. Tạo trên Flow /u/6.
+- Commit 28fe7be: thêm 27 dòng `cho_duyet` vào `video_manifest.json` và 27 kịch bản. Root đã kiểm tra: đủ 27 file clip, các dòng tập 1 không bị đổi.
+- Chủ dự án để ý khi duyệt:
+  - b173: vệt mờ ở khung cuối;
+  - b189: cánh hoa bay;
+  - b209: vật đen nhỏ thoáng hiện.
+- Chưa đóng gói Drive.
+- **Còn dở:** đợt L2-3 và L2-4, chờ tranh.
 
 **[Chung] UI và hiệu ứng** (`local_98b994e9…`)
 - Viết bản thiết kế "Tủ sách" (`docs/superpowers/specs/2026-11-09-tu-sach-design.md`), đang qua người đọc độc lập, chưa duyệt.
