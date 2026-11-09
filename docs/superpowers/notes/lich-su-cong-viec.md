@@ -78,8 +78,15 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
   - b173: vệt mờ ở khung cuối;
   - b189: cánh hoa bay;
   - b209: vật đen nhỏ thoáng hiện.
+- Đợt L2-3 và L2-4: 29 clip (a0662f8). Root đã kiểm tra: đủ 29 dòng mới có file clip.
+- Lớp 2 tập một có 56/57 clip.
+- Chủ dự án để ý thêm khi duyệt:
+  - b242: Veo tự thêm bàn tay em bé cầm sáp;
+  - b267: cảnh xuân tràn ra ngoài khung vuông;
+  - b259: có một khoảnh khắc nhòe.
+- Tài khoản Flow /u/3 bị báo "unusual activity" 3 lần.
 - Chưa đóng gói Drive.
-- **Còn dở:** đợt L2-3 và L2-4, chờ tranh.
+- **Còn dở:** clip `img_b299_dduwowngf_daay_ddieenj`, chờ credit ngày mai.
 
 **[Chung] UI và hiệu ứng** (`local_98b994e9…`)
 - Tủ sách:
