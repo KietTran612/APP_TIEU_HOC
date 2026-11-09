@@ -39,8 +39,16 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
   - Mã `dat` bị nghi: `hd_b18_tranh_01` ("quả"), không đụng.
   - Tiếng lẻ hỏi, ngã: đã cài `keep_first` cho 233 mã; riêng "cải", "phải" giữ bản cũ.
   - Danh sách 88 mã cụm còn khó: `side-session-notes/…/hoi-nga-cum-con-nghi-2026-11-09.tsv`, chờ chủ dự án chọn cách đọc trên trang nghe thử.
+- Cài theo lựa chọn của chủ dự án ở trang nghe thử vòng 1 (cả 5 mã ở `cho_duyet`):
+  - bạ: "bạ. bạ.";
+  - ế: "ế, ế, ế.";
+  - tế: "tế, tế." đọc chậm −40%;
+  - hờ: "hờ. hờ.";
+  - tổ dế: ghép hai tiếng đã đạt.
+- Ghép mượt (f6c01f1, có unit test): cắt lặng, cân âm lượng, nghỉ 0,08 giây, dấu phẩy 0,25 giây, mã hoá lại MP3. Mục 6 và 12 của quy trình đã cập nhật.
+- Trang nghe thử vòng 2 (`.superpowers/nghe-thu-2/`): mụ, nụ, "bé bá cổ bà."; chờ chủ dự án chọn.
 - **Còn dở:**
-  - 88 mã cụm hỏi, ngã còn khó;
+  - 88 mã cụm hỏi, ngã còn khó: đang thử ngắt nhẹ rồi đo lại, sai thì ghép (cần đo trước 247 tiếng lẻ để có nguồn ghép);
   - rà âm ê (879 mã; máy không đo được lỗi nguyên âm, chờ chủ dự án chọn trên trang nghe thử);
   - thanh nặng (288 tiếng lẻ).
 
