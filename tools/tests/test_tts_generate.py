@@ -163,10 +163,13 @@ class KeepFirstGenerateTest(TempCase):
 
 
 class JoinGenerateTest(TempCase):
-    """Ghép: nối các file đã có theo thứ tự, không gọi bộ đọc; bản cũ vào prev như mọi lần tạo."""
+    """Ghép: nối các tiếng đã có (cắt lặng, cân âm lượng, chèn nghỉ), không gọi bộ đọc; bản cũ vào prev."""
 
     def setUp(self):
         super().setUp()
+        patcher = mock.patch("tapdoc.tts_generate.audio_join.join_files", return_value=b"ID3ghep")
+        patcher.start()
+        self.addCleanup(patcher.stop)
         self.r = row("tu_toor_dees", "tổ dế", "tu")
         self.path = self.audio / "tu_toor_dees.mp3"
         self.path.write_bytes("bản cũ".encode())
@@ -174,16 +177,35 @@ class JoinGenerateTest(TempCase):
         (self.audio / "tieng_dees.mp3").write_bytes(fake_mp3(0.5))
         self.s["overrides"]["tu_toor_dees"] = {"join": ["tieng_toor", "tieng_dees"]}
 
-    def test_concatenates_parts_without_engine(self):
+    def test_joins_parts_smoothly_without_engine(self):
         engine = FakeEngine()
-        result = generate_one(self.r, self.s, engine, self.audio, self.prev)
+        with mock.patch("tapdoc.tts_generate.audio_join.join_files", return_value=b"ID3ghep") as join:
+            result = generate_one(self.r, self.s, engine, self.audio, self.prev)
         self.assertEqual(engine.calls, [])
-        self.assertEqual(self.path.read_bytes(), fake_mp3(0.3) + fake_mp3(0.5))
+        paths, gaps = join.call_args.args
+        self.assertEqual([Path(x).name for x in paths], ["tieng_toor.mp3", "tieng_dees.mp3"])
+        self.assertEqual(gaps, [0.08])
+        self.assertEqual(self.path.read_bytes(), b"ID3ghep")
         self.assertEqual(result["status"], "cho_duyet")
         self.assertEqual(result["source"], "ghep_tieng")
         self.assertEqual(result["tts"]["join"], ["tieng_toor", "tieng_dees"])
         self.assertEqual((self.prev / "tu_toor_dees.mp3").read_bytes(), "bản cũ".encode())
         self.assertFalse(needs_regen(self.s, result))
+
+    def test_comma_gives_long_gap(self):
+        self.r = row("cau_x", "tổ, dế.", "cau")
+        self.s["overrides"]["cau_x"] = {"join": ["tieng_toor", ",", "tieng_dees"], "join_gap": 0.06}
+        with mock.patch("tapdoc.tts_generate.audio_join.join_files", return_value=b"ID3ghep") as join:
+            generate_one(self.r, self.s, FakeEngine(), self.audio, self.prev)
+        self.assertEqual(join.call_args.args[1], [0.25])
+
+    def test_join_failure_leaves_old_file(self):
+        from tapdoc.audio_join import JoinError
+        with mock.patch("tapdoc.tts_generate.audio_join.join_files", side_effect=JoinError("hỏng")):
+            with self.assertRaises(TtsError):
+                generate_one(self.r, self.s, FakeEngine(), self.audio, self.prev)
+        self.assertEqual(self.path.read_bytes(), "bản cũ".encode())
+        self.assertFalse(self.prev.exists())
 
     def test_missing_or_invalid_part_leaves_old_file(self):
         for broken in ((self.audio / "tieng_dees.mp3").unlink, lambda: (self.audio / "tieng_dees.mp3").write_bytes(b"x")):

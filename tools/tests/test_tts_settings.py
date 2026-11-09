@@ -230,3 +230,24 @@ class JoinTest(unittest.TestCase):
             for bad in ("tieng_toor", ["tieng_toor"], ["tieng_toor", 3], ["tieng_toor", "../x"], []):
                 with self.subTest(bad=bad), self.assertRaises(ValueError):
                     save_settings(path, {**s, "overrides": {"tu_toor_dees": {"join": bad}}})
+            for bad in ([",", "tieng_toor", "tieng_dees"], ["tieng_toor", "tieng_dees", ","],
+                        ["tieng_toor", ",", ",", "tieng_dees"], ["tieng_toor", ","]):
+                with self.subTest(bad=bad), self.assertRaises(ValueError):
+                    save_settings(path, {**s, "overrides": {"tu_toor_dees": {"join": bad}}})
+            for gap in (0.0, 0.5, "0.1", True):
+                with self.subTest(gap=gap), self.assertRaises(ValueError):
+                    save_settings(path, {**s, "overrides": {"tu_toor_dees": {"join": ["tieng_toor", "tieng_dees"],
+                                                                            "join_gap": gap}}})
+
+    def test_comma_marker_and_gap(self):
+        s, r = settings(), row("cau_x", "bé bá, bà.", "cau")
+        s["overrides"]["cau_x"] = {"join": ["tieng_bes", "tieng_bas", ",", "tieng_baf"], "join_gap": 0.06}
+        p = effective_params(s, r)
+        self.assertEqual(p.join, ("tieng_bes", "tieng_bas", ",", "tieng_baf"))
+        self.assertEqual(p.join_gap, 0.06)
+        default = settings()
+        default["overrides"]["cau_x"] = {"join": ["tieng_bes", "tieng_bas", ",", "tieng_baf"]}
+        self.assertEqual(effective_params(default, r).join_gap, 0.08)
+        self.assertNotEqual(signature(p), signature(effective_params(default, r)))
+        set_override(s, r, rate=-20)
+        self.assertEqual(s["overrides"]["cau_x"]["join_gap"], 0.06)

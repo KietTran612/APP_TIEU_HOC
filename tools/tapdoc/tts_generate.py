@@ -5,6 +5,7 @@ import json
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
+from . import audio_join
 from .importer import _ID_RE, _looks_like_mp3, _without_changed_note, _write_atomic
 from .mp3trim import trim_mp3_span
 from .tts_engine import TtsError, TtsUnavailable
@@ -53,15 +54,22 @@ def _write_marks(marks_dir, row, p, result, offset) -> None:
 
 
 def _joined(row, p, audio_dir) -> bytes:
-    """Nối file MP3 của các mã trong p.join theo thứ tự (mỗi file mở đầu bằng khung không mượn dữ liệu)."""
-    parts = []
-    for audio_id in p.join:
+    """Ghép các tiếng trong p.join (cắt lặng, cân âm lượng, nghỉ p.join_gap; "," là nghỉ dài) thành một MP3."""
+    ids, gaps = audio_join.plan(p.join, p.join_gap)
+    paths = []
+    for audio_id in ids:
         path = Path(audio_dir) / f"{audio_id}.mp3"
         data = path.read_bytes() if path.is_file() else b""
         if not data or not _looks_like_mp3(data):
             raise TtsError(f"{row['id']}: thiếu file ghép {audio_id}.mp3 hoặc file không phải MP3")
-        parts.append(data)
-    return b"".join(parts)
+        paths.append(path)
+    try:
+        audio = audio_join.join_files(paths, gaps)
+    except audio_join.JoinError as e:
+        raise TtsError(f"{row['id']}: ghép tiếng lỗi: {e}") from e
+    if not _looks_like_mp3(audio):
+        raise TtsError(f"{row['id']}: ghép tiếng không ra MP3")
+    return audio
 
 
 def generate_one(row, settings, engine, audio_dir, prev_dir, marks_dir=None) -> dict:
@@ -129,7 +137,8 @@ def restore_previous(row, settings, audio_dir, prev_dir) -> dict:
         if not isinstance(record.get("voice"), str) or record["voice"] not in VOICES:
             raise ValueError("Giọng đọc bản trước không hợp lệ")
         set_override(config, restored, **{key: record[key] for key in ("doc", "rate", "pitch", "volume", "voice")},
-                     keep_first=record.get("keep_first", False), join=record.get("join", []))
+                     keep_first=record.get("keep_first", False), join=record.get("join", []),
+                     join_gap=record.get("join_gap", 0.08))
     elif old.get("override"):
         config["overrides"][row["id"]] = old["override"]
     else:

@@ -174,11 +174,11 @@ Chi tiết đầy đủ ở `content/style/tranh_dong_huong_dan.md`: tài khoả
 - **Thứ tự sửa từ và câu** (chủ dự án quyết 09/11: **đọc đúng là trên hết**):
   1. Đọc nguyên câu, nếu đo thấy đúng thanh. Cách này giữ ngữ điệu tự nhiên nhất.
   2. Đọc chậm hơn, khoảng −20%, hoặc ngắt nhẹ; không đổi chữ.
-  3. Ghép từ các tiếng đã `dat` hoặc đã đo đúng, bằng `overrides[mã].join`:
-     - khoảng nghỉ ngắn và đều, khoảng 0,05–0,12 giây;
-     - ngắt nhẹ ở dấu phẩy;
-     - âm lượng đều nhau;
-     - ghi chú rõ ghép từ mã nào.
+  3. Ghép từ các tiếng đã `dat` hoặc đã đo đúng, bằng `overrides[mã].join`, ví dụ `{"join": ["tieng_bes", "tieng_bas", ",", "tieng_baf"]}`:
+     - lệnh `tts` tự cắt lặng đầu và cuối mỗi tiếng, cân âm lượng (RMS) về cùng mức, rồi mã hoá lại MP3 (module `tools/tapdoc/audio_join.py`);
+     - khoảng nghỉ giữa hai tiếng mặc định 0,08 giây, đổi được bằng `join_gap` (0,03–0,3);
+     - phần tử `","` trong danh sách là ngắt nhẹ ở dấu phẩy, nghỉ 0,25 giây;
+     - ghi chú rõ ghép từ mã nào. Khi tạo lại một tiếng đã dùng để ghép thì phải tạo lại cả các mã ghép từ tiếng đó.
 - **Đo trước khi thay:** `python -m tapdoc pitch --ma …|--bai …` đo cao độ thanh hỏi, ngã, so với các tiếng đã `dat`. Mốc từng tiếng lưu ở `content/tts/marks/`.
   - Tiếng ở cuối cụm thì đo tin được.
   - Tiếng ở giữa cụm thì tiêu chí yếu hơn; còn nghi thì để chủ dự án nghe.
@@ -274,6 +274,7 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Đo cao độ cho tiếng ở giữa cụm không tin được | Hiệu chỉnh ngưỡng trên các mã đã `dat`. Tiếng cuối cụm thì tách rõ (đạt khi lên ≥ 7 bán âm, sai khi ≤ 1); tiếng giữa cụm chỉ coi là "có thể sai" và để tai người nghe | 09/11 |
 | edge-tts trả rỗng ngẫu nhiên; chạy 4 tiến trình thì treo hàng giờ | Chỉ 1 tiến trình, mỗi mã tối đa 90 giây, nghỉ vài giây giữa các mã, rồi chạy lượt bù. Kiểm tra định kỳ xem file mp3 mới còn được ghi không | 05–06/11 |
 | `tts --tieng-keep-first` báo "Đã tạo 0" với tiếng đã có file | Ghi cách đọc trước rồi mới chọn mã cần tạo | 09/11, 9678b22 |
+| Ghép tiếng bằng cách nối thẳng file MP3 thì khoảng nghỉ dài (khoảng 0,3 giây) và không bỏ được lặng đầu mỗi tiếng (khung MP3 mượn dữ liệu khung trước) | Giải mã từng tiếng ra PCM bằng Media Foundation của Windows, cắt lặng, cân RMS, chèn nghỉ 0,08 giây (dấu phẩy 0,25 giây), rồi mã hoá lại MP3 24 kHz mono cũng bằng Media Foundation (`CreateMp3`). Không cần ffmpeg. Lưu ý: đặt tần số mẫu cho bước giải mã thì Media Foundation từ chối, nên để mặc định rồi trộn kênh trong Python | 09/11, `audio_join.py` |
 
 ### Tranh (ChatGPT)
 

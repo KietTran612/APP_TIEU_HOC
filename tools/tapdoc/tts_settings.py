@@ -25,6 +25,7 @@ class TtsParams:
     keep_first: bool = False
     # Ghép tiếng: nối file của các mã này (đã có, thường đã duyệt) theo thứ tự thay vì gọi bộ đọc.
     join: tuple = ()
+    join_gap: float = 0.08  # nghỉ giữa hai tiếng ghép (giây); dấu "," trong join là nghỉ dài
 
 
 def _number(key, value):
@@ -47,7 +48,7 @@ def _validate(settings):
         for key in _LIMITS:
             _number(key, values.get(key))
     for audio_id, values in overrides.items():
-        if not isinstance(values, dict) or values.keys() - {"doc", "voice", "keep_first", "join", *_LIMITS}:
+        if not isinstance(values, dict) or values.keys() - {"doc", "voice", "keep_first", "join", "join_gap", *_LIMITS}:
             raise ValueError(f"Thông số chỉnh tay không hợp lệ: {audio_id}")
         if "doc" in values and not isinstance(values["doc"], str):
             raise ValueError(f"Cách đọc của {audio_id} phải là chữ")
@@ -57,6 +58,8 @@ def _validate(settings):
             raise ValueError(f"keep_first của {audio_id} phải là true hoặc false")
         if "join" in values:
             _join(values["join"])
+        if "join_gap" in values:
+            _join_gap(values["join_gap"])
         for key in values.keys() & _LIMITS.keys():
             _number(key, values[key])
 
@@ -87,11 +90,21 @@ _JOIN_ID = re.compile(r"[a-z0-9_]+")
 
 
 def _join(value) -> list:
-    """Danh sách mã để ghép: ít nhất hai mã âm thanh hợp lệ."""
-    if (not isinstance(value, list) or len(value) < 2
-            or not all(isinstance(v, str) and _JOIN_ID.fullmatch(v) for v in value)):
-        raise ValueError("join phải là danh sách từ hai mã âm thanh trở lên")
+    """Danh sách ghép: ít nhất hai mã âm thanh; "," (nghỉ dài) chỉ đứng giữa hai mã, không liền nhau."""
+    ok = isinstance(value, list) and all(isinstance(v, str) and (v == "," or _JOIN_ID.fullmatch(v)) for v in value)
+    if ok:
+        ids = [v for v in value if v != ","]
+        ok = (len(ids) >= 2 and value[0] != "," and value[-1] != ","
+              and all(not (a == "," and b == ",") for a, b in zip(value, value[1:])))
+    if not ok:
+        raise ValueError("join phải là danh sách từ hai mã âm thanh trở lên, \",\" chỉ đứng giữa hai mã")
     return list(value)
+
+
+def _join_gap(value) -> float:
+    if type(value) not in (int, float) or not 0.03 <= value <= 0.3:
+        raise ValueError("join_gap phải là số giây từ 0.03 đến 0.3")
+    return float(value)
 
 
 def effective_params(settings: dict, row: dict) -> TtsParams:
@@ -102,7 +115,7 @@ def effective_params(settings: dict, row: dict) -> TtsParams:
     own = settings["overrides"].get(row["id"], {})
     return TtsParams(nfc(doc), *(_number(key, values[key]) for key in _LIMITS),
                      own.get("voice", settings["voice"]), own.get("keep_first", False),
-                     tuple(own.get("join", ())))
+                     tuple(own.get("join", ())), own.get("join_gap", 0.08))
 
 
 def signature(p: TtsParams) -> str:
@@ -110,16 +123,16 @@ def signature(p: TtsParams) -> str:
     if not values["keep_first"]:
         del values["keep_first"]  # giữ nguyên dấu nhận dạng của mọi bản tạo trước khi có keep_first
     if not values["join"]:
-        del values["join"]
+        del values["join"], values["join_gap"]
     data = json.dumps(values, ensure_ascii=False, sort_keys=True).encode("utf-8")
     return hashlib.sha1(data).hexdigest()
 
 
 def set_override(settings, row, *, doc=None, rate=None, pitch=None, volume=None, voice=None,
-                 keep_first=None, join=None) -> None:
+                 keep_first=None, join=None, join_gap=None) -> None:
     values = dict(settings["overrides"].get(row["id"], {}))
     for key, value in (("doc", doc), ("rate", rate), ("pitch", pitch), ("volume", volume), ("voice", voice),
-                       ("keep_first", keep_first), ("join", join)):
+                       ("keep_first", keep_first), ("join", join), ("join_gap", join_gap)):
         if value is None:
             continue
         if key == "doc":
@@ -134,11 +147,13 @@ def set_override(settings, row, *, doc=None, rate=None, pitch=None, volume=None,
                 raise ValueError("keep_first phải là true hoặc false")
         elif key == "join":
             value = _join(list(value)) if value else []
+        elif key == "join_gap":
+            value = _join_gap(value)
         else:
             value = _number(key, value)
         values[key] = value
     defaults = {**settings["defaults"][row["kind"]], "doc": nfc(row["text"]), "voice": settings["voice"],
-                "keep_first": False, "join": []}
+                "keep_first": False, "join": [], "join_gap": 0.08}
     values = {key: value for key, value in values.items()
               if value != defaults[key] and not (key == "doc" and not value)}
     if values:
