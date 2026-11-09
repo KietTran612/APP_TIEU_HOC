@@ -48,7 +48,8 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 - Ghép mượt (f6c01f1, có unit test): cắt lặng, cân âm lượng, nghỉ 0,08 giây, dấu phẩy 0,25 giây, mã hoá lại MP3. Mục 6 và 12 của quy trình đã cập nhật.
 - Trang nghe thử vòng 2 (`.superpowers/nghe-thu-2/`): mụ, nụ, "bé bá cổ bà."; chờ chủ dự án chọn.
 - **Còn dở:**
-  - 88 mã cụm hỏi, ngã còn khó: đang thử ngắt nhẹ rồi đo lại, sai thì ghép (cần đo trước 247 tiếng lẻ để có nguồn ghép);
+  - 88 mã cụm hỏi, ngã còn khó đã xử lý: 83 mã dùng ngắt nhẹ (thêm dấu phẩy sau tiếng bị nghi, đo đạt), 3 mã ghép (`tu_choox_owr`, `tu_gox_mox`, `tu_mux_len`). Root kiểm tra thì thấy dấu phẩy có chỗ đặt giữa cụm từ ("ngoài đảo, xa", "giữa, trời xanh"), cần chủ dự án nghe xác nhận. Còn 2 câu (`cau_b97_02`, `cau_b160_04`) chờ kết quả thanh nặng.
+  - Tổng kết hỏi, ngã (số mã / nghi sai / đã sửa): tiếng 268 / 92 / 92; câu 447 / 98 / 96; từ 251 / 28 / 28; lời dẫn 73 / 15 / 14; lời khen 2 / 1 / 1;
   - rà âm ê (879 mã; máy không đo được lỗi nguyên âm, chờ chủ dự án chọn trên trang nghe thử);
   - thanh nặng (288 tiếng lẻ).
 
