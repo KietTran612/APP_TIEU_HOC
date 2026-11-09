@@ -16,8 +16,10 @@ namespace TapDoc.Tests
         public IEnumerator LastLesson_ReachableByScroll()
         {
             yield return LoadMainWithProfile(unlockAll: true);
-            var list = Object.FindAnyObjectByType<LessonListScreen>();
             var last = Ordered().Last();
+            AppRoot.Instance.OpenBook(BookShelf.BookOf(AppRoot.Instance.Lessons.Index, last)); // bài cuối ở quyển cuối
+            yield return null;
+            var list = Object.FindAnyObjectByType<LessonListScreen>();
             list.ScrollTo(last);
             yield return null;
             Assert.IsTrue(IsOnScreen(list, list.ButtonFor(last)));

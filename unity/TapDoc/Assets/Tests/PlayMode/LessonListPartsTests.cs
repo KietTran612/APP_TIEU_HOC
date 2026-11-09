@@ -9,8 +9,8 @@ using Object = UnityEngine.Object;
 namespace TapDoc.Tests
 {
     /// <summary>
-    /// Hai quyển trong một danh sách bài (thiết kế tập 2, mục 4): ba phần theo <c>part</c>, nhóm tuần ở phần Tập đọc,
-    /// nhãn thẻ từ <c>index.json</c>, công tắc "Mở mọi bài" theo từng bé ở màn Phụ huynh.
+    /// Hai quyển (thiết kế tập 2, mục 4; Tủ sách 09/11: mỗi lần xem một quyển): các phần theo <c>part</c>, nhóm tuần ở
+    /// phần Tập đọc, nhãn thẻ từ <c>index.json</c>, công tắc "Mở mọi bài" theo từng bé ở màn Phụ huynh.
     /// </summary>
     public class LessonListPartsTests : AppTestBase
     {
@@ -44,6 +44,14 @@ namespace TapDoc.Tests
 
         private static LessonListScreen List() => Object.FindAnyObjectByType<LessonListScreen>();
 
+        /// <summary>Mở quyển tập hai (bật "Mở mọi bài" để quyển này mở khi tập một chưa xong).</summary>
+        private static IEnumerator OpenTap2()
+        {
+            AppRoot.Instance.Progress.UnlockAll = true;
+            AppRoot.Instance.OpenBook("tv1_t2_1996");
+            yield return null;
+        }
+
         private static string CardText(string lessonId) =>
             List().ButtonFor(lessonId).GetComponentInChildren<TMP_Text>().text;
 
@@ -55,8 +63,14 @@ namespace TapDoc.Tests
             var labels = LabelsUnder(List());
             Assert.That(labels, Has.Member(UiText.PartLetters));
             Assert.That(labels, Has.Member(UiText.PartRimes));
+            Assert.That(labels, Has.No.Member(UiText.PartReading), "Tập một không có phần Tập đọc");
+            Assert.IsTrue(Ids.Take(2).All(id => List().ButtonFor(id) != null));
+            Assert.IsTrue(Ids.Skip(2).All(id => List().ButtonFor(id) == null), "Bài tập hai không lẫn vào tập một");
+            yield return OpenTap2();
+            labels = LabelsUnder(List());
+            Assert.That(labels, Has.Member(UiText.PartRimes));
             Assert.That(labels, Has.Member(UiText.PartReading));
-            Assert.IsTrue(Ids.All(id => List().ButtonFor(id) != null));
+            Assert.IsTrue(Ids.Skip(2).All(id => List().ButtonFor(id) != null));
         }
 
         [UnityTest]
@@ -64,6 +78,7 @@ namespace TapDoc.Tests
         {
             UseTwoBookIndex();
             yield return LoadMainWithProfile();
+            yield return OpenTap2();
             Assert.AreEqual("Bài 1\nTrường em", CardText("tv1_t2_b126"));
             Assert.AreEqual("Câu đố\nCâu đố", CardText("tv1_t2_b137"));
             Assert.AreEqual("Bài 81\nanh", CardText("tv1_t2_b81"));
@@ -75,6 +90,7 @@ namespace TapDoc.Tests
         {
             UseTwoBookIndex();
             yield return LoadMainWithProfile();
+            yield return OpenTap2();
             List().ScrollTo("tv1_t2_b169");
             yield return null;
             var text = List().ButtonFor("tv1_t2_b169").GetComponentInChildren<TMP_Text>();
@@ -87,6 +103,7 @@ namespace TapDoc.Tests
         {
             UseTwoBookIndex();
             yield return LoadMainWithProfile();
+            yield return OpenTap2();
             var labels = LabelsUnder(List());
             Assert.That(labels, Has.Member(string.Format(UiText.WeekFormat, 27)));
             Assert.That(labels, Has.Member(string.Format(UiText.WeekFormat, 28)));
@@ -104,7 +121,9 @@ namespace TapDoc.Tests
             AppRoot.Instance.ShowLessonList();
             yield return null;
             Assert.AreEqual("tv1_t1_b42", List().CurrentLessonId);
-            Assert.IsFalse(List().ButtonFor("tv1_t2_b126").interactable, "Bài tập 2 mở khi chưa học tới");
+            Assert.IsNull(List().ButtonFor("tv1_t2_b126"), "Bài tập hai không lẫn vào tập một");
+            Assert.IsFalse(BookShelf.IsLessonUnlocked(AppRoot.Instance.Lessons.Index, AppRoot.Instance.Progress, "tv1_t2_b126"),
+                "Bài tập 2 mở khi chưa học tới");
         }
 
         [UnityTest]
@@ -129,9 +148,13 @@ namespace TapDoc.Tests
             Assert.IsTrue(ProgressStore.Load(StorePath).Profiles.Single(p => p.id == child.id).unlock_all, "Chưa lưu");
             LayoutProbe.AssertFits(AppRoot.Instance.Canvas);
 
-            AppRoot.Instance.ShowLessonList();
-            yield return null;
-            Assert.IsTrue(Ids.All(id => List().ButtonFor(id).interactable), "Bật Mở mọi bài mà còn bài khoá");
+            foreach (var book in new[] { "tv1_t1_1990", "tv1_t2_1996" })
+            {
+                AppRoot.Instance.OpenBook(book);
+                yield return null;
+                var ids = BookShelf.LessonIds(AppRoot.Instance.Lessons.Index, book);
+                Assert.IsTrue(ids.All(id => List().ButtonFor(id).interactable), $"Bật Mở mọi bài mà còn bài khoá ({book})");
+            }
         }
     }
 }

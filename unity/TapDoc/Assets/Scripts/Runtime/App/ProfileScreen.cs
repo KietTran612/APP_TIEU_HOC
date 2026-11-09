@@ -354,7 +354,7 @@ namespace TapDoc
         {
             _app.Progress.Select(profileId);
             _app.SaveProgress();
-            _app.ShowLessonList();
+            _app.ShowShelf();
         }
 
         private void OnDone()
@@ -362,7 +362,7 @@ namespace TapDoc
             if (!CanCreate) return;
             _app.Progress.CreateProfile(_nameInput.text, _avatar);
             _app.SaveProgress();
-            _app.ShowLessonList();
+            _app.ShowShelf();
         }
 
         /// <summary>Đặt <paramref name="rt"/> theo điểm neo <paramref name="anchor"/> (cũng là tâm xoay).</summary>

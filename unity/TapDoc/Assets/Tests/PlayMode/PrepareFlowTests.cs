@@ -237,7 +237,7 @@ namespace TapDoc.Tests
             Assert.AreEqual(canvasRect.height, curtainRect.height, .5f);
 
             // Nút "Đổi bé" ở mép trái (ngoài khung 1440 giữa): chạm vào đó phải trúng màn chuyển, không trúng nút.
-            var button = (RectTransform)list.SwitchChildButton.transform;
+            var button = (RectTransform)list.ShelfButton.transform;
             var screenPoint = RectTransformUtility.WorldToScreenPoint(app.UiCamera, button.TransformPoint(button.rect.center));
             var hits = new System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult>();
             UnityEngine.EventSystems.EventSystem.current.RaycastAll(

@@ -78,8 +78,8 @@ namespace TapDoc.Tests
             yield return LoadMainWithProfile();
             var list = List();
             yield return null;
-            Assert.AreEqual(AppRoot.Instance.Progress.Current.avatar, list.SwitchChildButton.GetComponent<IconButton>().IconId,
-                "Nút đổi bé là hình đại diện của bé");
+            Assert.AreEqual(SystemIcons.Shelf, list.ShelfButton.GetComponent<IconButton>().IconId,
+                "Góc trái là nút về Tủ sách (nút đổi bé ở Tủ sách)");
             Assert.AreEqual(SystemIcons.Book, list.BookButton.GetComponent<IconButton>().IconId);
             Assert.AreEqual(SystemIcons.Review, list.ReviewButton.GetComponent<IconButton>().IconId);
             Assert.IsNull(list.ParentButton.GetComponent<IconButton>(), "Nút Phụ huynh vẫn là nút có chữ");
@@ -154,7 +154,7 @@ namespace TapDoc.Tests
                     Assert.AreEqual(list.Columns, grid.constraintCount, $"{size}: mọi lưới cùng số cột");
                 }
                 var view = CanvasRect(list.Scroll.viewport);
-                foreach (var b in new[] { list.SwitchChildButton, list.BookButton, list.ParentButton, list.ReviewButton })
+                foreach (var b in new[] { list.ShelfButton, list.BookButton, list.ParentButton, list.ReviewButton })
                 {
                     Assert.IsFalse(view.Overlaps(CanvasRect((RectTransform)b.transform)), $"{size}: vùng cuộn đè nút {b.name}");
                 }

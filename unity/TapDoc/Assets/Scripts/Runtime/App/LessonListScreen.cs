@@ -27,17 +27,17 @@ namespace TapDoc
         private const float ParentWidth = 280f;
 
         private readonly Dictionary<string, Button> _lessonButtons = new();
-        private readonly Dictionary<int, Button> _gradeTabs = new();
 
-        /// <summary>Lớp đang hiện (1 hoặc 2). Chỉ có bài lớp 1 thì luôn là 1.</summary>
-        internal int Grade { get; private set; } = 1;
+        /// <summary>Quyển đang hiện (bản thiết kế Tủ sách mục 6): danh sách chỉ có bài của quyển này.</summary>
+        internal string BookId { get; private set; }
 
-        /// <summary>Nút chọn lớp <paramref name="grade"/>; <c>null</c> khi app chưa có bài lớp 2 (không hiện nút lớp).</summary>
-        internal Button GradeTabButton(int grade) => _gradeTabs.TryGetValue(grade, out var b) ? b : null;
+        /// <summary>Lớp của quyển đang hiện: lớp 1 chia theo phần, lớp 2 theo chủ điểm.</summary>
+        private int _grade = 1;
 
         internal Button ReviewButton { get; private set; }
         internal Button ParentButton { get; private set; }
-        internal Button SwitchChildButton { get; private set; }
+        /// <summary>Nút về Tủ sách (góc trên trái; nút đổi bé nằm ở Tủ sách).</summary>
+        internal Button ShelfButton { get; private set; }
         internal Button BookButton { get; private set; }
         internal Button SettingsButton { get; private set; }
         internal TMP_Text Header { get; private set; }
@@ -65,10 +65,10 @@ namespace TapDoc
         {
             var progress = app.Progress;
 
-            SwitchChildButton = UiKit.CreateIconButton(transform, app.Assets, progress.Current?.avatar, UiText.SwitchChild,
-                app.ShowProfiles, Palette.PaperLight);
-            Corner(SwitchChildButton, new Vector2(0f, 1f), new Vector2(Margin, -Margin));
-            SwitchChildButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
+            ShelfButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Shelf, UiText.Shelf, app.ShowShelf,
+                Palette.PaperLight);
+            Corner(ShelfButton, new Vector2(0f, 1f), new Vector2(Margin, -Margin));
+            ShelfButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
 
             ParentButton = UiKit.CreateButton(transform, UiText.Parent, app.ShowParent);
             Corner(ParentButton, Vector2.one, new Vector2(-Margin, -Margin));
@@ -85,7 +85,10 @@ namespace TapDoc
             Corner(SettingsButton, Vector2.one, new Vector2(-(3f * Margin + ParentWidth + UiKit.MinTouch), -Margin));
             SettingsButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
 
-            var header = UiKit.CreateLabel(transform, UiText.AppTitle, 64f);
+            var index = app.Lessons.Index;
+            BookId = progress.OpenBook ?? BookShelf.CurrentBookId(index, progress);
+            var book = BookShelf.Book(index, BookId);
+            var header = UiKit.CreateLabel(transform, book?.title ?? UiText.AppTitle, 64f);
             Header = header;
             var headerRt = header.rectTransform;
             headerRt.anchorMin = new Vector2(0.5f, 1f);
@@ -129,12 +132,11 @@ namespace TapDoc
             Scroll.vertical = true;
             Scroll.movementType = ScrollRect.MovementType.Clamped;
 
-            var index = app.Lessons.Index;
-            // Mỗi lớp một danh sách và một chuỗi mở khoá riêng (thiết kế TV2 tập một, mục 4.3–4.4).
-            Grade = index.HasGrade2 ? Mathf.Clamp(progress.GradeTab, 1, 2) : 1;
-            var entries = index.lessons.Where(e => e.EffectiveGrade == Grade).ToList();
-            var ordered = entries.Select(e => e.lesson_id).ToList();
-            CurrentLessonId = ordered.FirstOrDefault(id => progress.IsUnlocked(ordered, id) && !progress.IsCompleted(id));
+            // Chỉ bài của quyển đang mở; mở bài theo luật Tủ sách (quyển phải mở, bài trước phải xong).
+            var entries = index.lessons.Where(e => e.book == BookId).ToList();
+            _grade = book?.grade > 0 ? book.grade : entries.Count > 0 ? entries[0].EffectiveGrade : 1;
+            CurrentLessonId = entries.Select(e => e.lesson_id)
+                .FirstOrDefault(id => BookShelf.IsLessonUnlocked(index, progress, id) && !progress.IsCompleted(id));
             foreach (var (title, section, byWeek) in Sections(entries))
             {
                 var sectionHeader = UiKit.CreateLabel(content, title, 44f);
@@ -150,10 +152,9 @@ namespace TapDoc
                         weekHeader.gameObject.AddComponent<LayoutElement>().preferredHeight = 48f;
                     }
                     var grid = CreateGrid(content, Columns);
-                    foreach (var entry in group) AddCard(grid, entry, ordered, progress, app);
+                    foreach (var entry in group) AddCard(grid, entry, index, progress, app);
                 }
             }
-            if (index.HasGrade2) AddGradeTabs(app);
 
             ReviewButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Review, UiText.ReviewMistakes, app.ShowReview);
             Corner(ReviewButton, Vector2.zero, new Vector2(Margin, Margin));
@@ -220,7 +221,6 @@ namespace TapDoc
         }
 
         private const string ReadingPart = "tap_doc";
-        private const float GradeTabWidth = 220f;
 
         /// <summary>
         /// Các phần của lớp đang hiện: lớp 1 theo <c>part</c> (ba phần cố định), lớp 2 theo chủ điểm (thứ tự xuất hiện).
@@ -228,7 +228,7 @@ namespace TapDoc
         /// </summary>
         private IEnumerable<(string title, List<LessonEntry> lessons, bool byWeek)> Sections(List<LessonEntry> entries)
         {
-            if (Grade == 2)
+            if (_grade == 2)
             {
                 foreach (var group in entries.GroupBy(e => e.theme ?? string.Empty))
                 {
@@ -244,44 +244,6 @@ namespace TapDoc
             var known = new HashSet<string>(Parts.Select(p => p.part));
             var other = entries.Where(e => !known.Contains(PartOf(e))).ToList();
             if (other.Count > 0) yield return (UiText.PartReading, other, true);
-        }
-
-        /// <summary>Hai nút "Lớp 1" / "Lớp 2" ở giữa mép dưới; bấm thì nhớ lớp cho bé và dựng lại danh sách.</summary>
-        private void AddGradeTabs(AppRoot app)
-        {
-            var row = new GameObject("GradeTabs", typeof(RectTransform), typeof(HorizontalLayoutGroup));
-            row.transform.SetParent(transform, false);
-            var rt = (RectTransform)row.transform;
-            rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0f);
-            rt.sizeDelta = new Vector2(2f * GradeTabWidth + CardGap, UiKit.MinTouch);
-            rt.anchoredPosition = new Vector2(0f, Margin);
-            var hlg = row.GetComponent<HorizontalLayoutGroup>();
-            hlg.spacing = CardGap;
-            hlg.childControlWidth = hlg.childControlHeight = true;
-            hlg.childForceExpandWidth = hlg.childForceExpandHeight = true;
-            foreach (var grade in new[] { 1, 2 })
-            {
-                var g = grade;
-                var tab = UiKit.CreateButton(row.transform, string.Format(UiText.GradeTabFormat, g), () => SelectGrade(app, g));
-                tab.name = $"GradeTab_{g}";
-                tab.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
-                if (g != Grade)
-                {
-                    // Lớp đang xem giữ nền lam ngọc chữ trắng; lớp kia nền giấy chữ mực.
-                    var fill = tab.transform.Find("Fill");
-                    if (fill != null) fill.GetComponent<Image>().color = Palette.PaperLight;
-                    tab.GetComponentInChildren<TMP_Text>().color = Palette.Ink;
-                }
-                _gradeTabs[g] = tab;
-            }
-        }
-
-        private void SelectGrade(AppRoot app, int grade)
-        {
-            if (grade == Grade) return;
-            app.Progress.GradeTab = grade;
-            app.Progress.Save();
-            app.ShowLessonList();
         }
 
         private static readonly (string part, string title)[] Parts =
@@ -315,7 +277,7 @@ namespace TapDoc
             return gridGo.transform;
         }
 
-        private void AddCard(Transform grid, LessonEntry entry, List<string> ordered, ProgressStore progress, AppRoot app)
+        private void AddCard(Transform grid, LessonEntry entry, LessonIndex index, ProgressStore progress, AppRoot app)
         {
             var lessonId = entry.lesson_id;
             var label = LabelOf(entry) + "\n" + entry.title;
@@ -333,7 +295,7 @@ namespace TapDoc
             text.fontSizeMax = text.fontSize;
             text.fontSizeMin = Mathf.Min(text.fontSize, MinCardFont);
 
-            if (!progress.IsUnlocked(ordered, lessonId)) Lock(btn, app.Assets);
+            if (!BookShelf.IsLessonUnlocked(index, progress, lessonId)) Lock(btn, app.Assets);
             else if (lessonId == CurrentLessonId) MarkCurrent(btn);
 
             var flowers = FlowerBook.FlowersFor(progress, lessonId);

@@ -316,7 +316,10 @@ namespace TapDoc
             Present<ProfileScreen>().Build(this);
         }
 
-        /// <summary>Danh sách bài của bé đang học. Chưa chọn bé thì về màn chọn bé.</summary>
+        /// <summary>
+        /// Danh sách bài của quyển bé đang mở. Chưa chọn bé thì về màn chọn bé; chưa mở quyển nào, hay quyển đang mở bị
+        /// khoá (ví dụ phụ huynh vừa tắt "Mở mọi bài") thì về Tủ sách.
+        /// </summary>
         public void ShowLessonList()
         {
             InitIfNeeded();
@@ -326,7 +329,40 @@ namespace TapDoc
                 ShowProfiles();
                 return;
             }
+            var book = Progress.OpenBook;
+            if (book == null || !BookShelf.IsBookUnlocked(Lessons.Index, Progress, book))
+            {
+                ShowShelf();
+                return;
+            }
             Present<LessonListScreen>().Build(this);
+        }
+
+        /// <summary>
+        /// Tủ sách của bé đang học. <paramref name="celebrateBookId"/>: quyển vừa mở khoá (học xong quyển trước) chạy hiệu
+        /// ứng mở. Chưa chọn bé thì về màn chọn bé.
+        /// </summary>
+        public void ShowShelf(string celebrateBookId)
+        {
+            InitIfNeeded();
+            ReleaseCurrentSet();
+            if (Progress.Current == null)
+            {
+                ShowProfiles();
+                return;
+            }
+            Present<ShelfScreen>().Build(this, celebrateBookId);
+        }
+
+        public void ShowShelf() => ShowShelf(null);
+
+        /// <summary>Mở quyển <paramref name="bookId"/> cho bé đang học (nhớ lại cho lần sau) và hiện danh sách bài.</summary>
+        public void OpenBook(string bookId)
+        {
+            InitIfNeeded();
+            Progress.OpenBook = bookId;
+            SaveProgress();
+            ShowLessonList();
         }
 
         /// <summary>Mở bài: màn chuyển hiện, nạp bài cùng tranh, âm thanh của bài, nạp xong mới hiện màn bài.</summary>

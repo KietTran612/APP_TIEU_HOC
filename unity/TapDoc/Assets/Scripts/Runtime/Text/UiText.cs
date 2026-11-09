@@ -84,6 +84,12 @@ namespace TapDoc
         public const int NoticeVersion = 1;
         public const string NoticeTitle = "Gửi phụ huynh";
         public const string NoticeAccept = "Đã hiểu";
+        // Tủ sách: chọn quyển.
+        public const string Shelf = "Tủ sách";
+        public const string ShelfTitleFormat = "Tủ sách của {0}";
+        public const string BookProgressFormat = "Đã học {0}/{1} bài";
+        public const string BookDone = "Đã học xong";
+
         // Menu Cài đặt (nút bánh răng).
         public const string Settings = "Cài đặt";
         public const string ReviewNotice = "Xem lại lưu ý";
@@ -186,6 +192,10 @@ namespace TapDoc
             Delete,
             Cancel,
             Save,
+            Shelf,
+            ShelfTitleFormat,
+            BookProgressFormat,
+            BookDone,
         };
     }
 }

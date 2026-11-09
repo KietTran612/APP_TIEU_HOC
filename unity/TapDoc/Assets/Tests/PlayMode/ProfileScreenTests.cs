@@ -17,7 +17,7 @@ namespace TapDoc.Tests
             Assert.IsNotNull(ps);
             ps.SimulateCreate("Bông", "img_chung_avatar_02");
             yield return null;
-            Assert.IsNotNull(Object.FindAnyObjectByType<LessonListScreen>());
+            Assert.IsNotNull(Object.FindAnyObjectByType<ShelfScreen>(), "Tạo bé xong thì vào Tủ sách");
             Assert.AreEqual("Bông", AppRoot.Instance.Progress.Current.name);
         }
 
@@ -64,13 +64,18 @@ namespace TapDoc.Tests
             yield return LoadMainWithProfile(unlockAll: true);
             var list = Object.FindAnyObjectByType<LessonListScreen>();
             Assert.IsTrue(list.ButtonFor(Ordered()[1]).interactable);
-            Press(list.SwitchChildButton);
+            AppRoot.Instance.ShowShelf(); // nút đổi bé nằm ở Tủ sách
+            yield return null;
+            Press(Object.FindAnyObjectByType<ShelfScreen>().SwitchChildButton);
             yield return null;
 
             var ps = Object.FindAnyObjectByType<ProfileScreen>();
             Assert.IsNotNull(ps, "Nút Đổi bé không về màn chọn bé");
             Assert.That(LabelsUnder(ps), Has.Member(TestChildName));
             ps.SimulateCreate("Na", "img_chung_avatar_03");
+            yield return null;
+            Assert.IsNotNull(Object.FindAnyObjectByType<ShelfScreen>(), "Tạo bé xong thì vào Tủ sách");
+            AppRoot.Instance.OpenBook(BookShelf.BookIds(AppRoot.Instance.Lessons.Index)[0]);
             yield return null;
 
             list = Object.FindAnyObjectByType<LessonListScreen>();

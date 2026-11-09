@@ -178,18 +178,23 @@ namespace TapDoc.Tests
         public IEnumerator MainScene_ListsIndexLessons()
         {
             yield return LoadMainWithProfile(unlockAll: true);
-            var list = Object.FindObjectsByType<LessonListScreen>(FindObjectsSortMode.None).Single();
-            var labels = list
-                .GetComponentsInChildren<TMP_Text>()
-                .Select(t => t.text)
-                .ToList();
-            var entries = TestLessons.Real.Index.lessons;
-            Assert.AreEqual(entries.Count, list.LessonCount);
-            foreach (var e in entries)
+            // Tủ sách: mỗi quyển một danh sách; gộp các quyển lại thì đủ mọi bài trong index.
+            var index = TestLessons.Real.Index;
+            var shown = 0;
+            foreach (var book in BookShelf.BookIds(index))
             {
-                Assert.That(labels, Has.Some.StartsWith($"{UiText.LessonPrefix} {e.lesson_no}\n"));
-                Assert.IsNotNull(list.ButtonFor(e.lesson_id), $"Không có thẻ bài {e.lesson_id}");
+                AppRoot.Instance.OpenBook(book);
+                yield return null;
+                var list = Object.FindObjectsByType<LessonListScreen>(FindObjectsSortMode.None).Single();
+                var labels = list.GetComponentsInChildren<TMP_Text>().Select(t => t.text).ToList();
+                foreach (var e in index.lessons.Where(e => e.book == book))
+                {
+                    Assert.That(labels, Has.Some.StartsWith(LessonListScreen.LabelOf(e) + "\n"));
+                    Assert.IsNotNull(list.ButtonFor(e.lesson_id), $"Không có thẻ bài {e.lesson_id}");
+                }
+                shown += list.LessonCount;
             }
+            Assert.AreEqual(index.lessons.Count, shown);
         }
 
         [UnityTest]
@@ -234,7 +239,8 @@ namespace TapDoc.Tests
             Click(screen.BackButton);
             yield return new WaitForSeconds(.3f);
             Assert.IsFalse(AppRoot.Instance.Speech.IsBusy);
-            Assert.IsNotNull(Object.FindAnyObjectByType<LessonListScreen>());
+            // Bài thử không thuộc quyển nào: về Tủ sách (bài thật thì về danh sách của quyển).
+            Assert.IsTrue(Object.FindAnyObjectByType<LessonListScreen>() != null || Object.FindAnyObjectByType<ShelfScreen>() != null);
             LogAssert.NoUnexpectedReceived();
         }
 

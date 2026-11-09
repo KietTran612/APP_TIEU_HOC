@@ -137,7 +137,7 @@ namespace TapDoc.Tests
                 Canvas.ForceUpdateCanvases();
                 var list = Object.FindAnyObjectByType<LessonListScreen>();
                 var gear = CanvasRect((RectTransform)list.SettingsButton.transform);
-                foreach (var b in new[] { list.BookButton, list.ParentButton, list.SwitchChildButton })
+                foreach (var b in new[] { list.BookButton, list.ParentButton, list.ShelfButton })
                 {
                     Assert.IsFalse(gear.Overlaps(CanvasRect((RectTransform)b.transform)), $"{size}: bánh răng đè nút {b.name}");
                 }
