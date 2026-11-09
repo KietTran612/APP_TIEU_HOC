@@ -29,9 +29,9 @@ Cập nhật lần cuối: 09/11/2026. Lịch sử việc đã xong: [lich-su-co
 | [L1] Làm SGK Tiếng Việt 1 tập 2 | `local_1af66fbb-4b38-439a-a40c-4b31d98db980` | Nội dung TV1 tập 2; giữ công cụ giọng đọc (tts) | Tập 2 đã chốt và đóng gói 9/11. Đã sửa 30/32 âm thanh bị chấm không đạt (`keep_first`). Từ 9/11 đang rà soát toàn bộ 1043 mã có thanh hỏi, ngã (đo cao độ) và 879 mã có âm ê (đo formant); sửa rồi đo lại, mã `dat` chỉ báo lại |
 | [L1] Tranh động lớp 1 | `local_fdaead13-02aa-4c66-abfd-9eb7797cd628` | Clip Flow cho TV1 (cả hai tập) | 343 clip; 12 clip bị chê đã làm lại, chờ duyệt |
 | [L2] Làm SGK Tiếng Việt 2 tập 1 | `local_8c04ba54-8b7d-4491-97c5-f8b6526afa73` | Nội dung, âm thanh, màn mới, đóng gói TV2 tập 1 | Spec/plan đã duyệt 9/11. Đủ nội dung 133 mục (172–304, tuần 1–17) tới 6859d2c; âm thanh khoảng 3.300 mã đang tạo (khoảng 8 mã/phút); đang chờ review code độc lập; ghi chú `2026-11-09-tiep-tuc-tv2-tap-1.md` |
-| [L2] Vẽ tranh Tiếng Việt 2 tập 1 | `local_be5a6177-2125-4c96-8ac1-da797a8751f8` | Tranh ChatGPT cho TV2 tập 1 | Đã nhập đợt L2-1 (447cf3e) và L2-2 (d239be1): 27 tranh và kí hiệu giải nghĩa; còn L2-3 (18 tranh) và L2-4 (12 tranh) |
+| [L2] Vẽ tranh Tiếng Việt 2 tập 1 | `local_be5a6177-2125-4c96-8ac1-da797a8751f8` | Tranh ChatGPT cho TV2 tập 1 | Xong: đủ 4 đợt, 57 tranh và kí hiệu giải nghĩa (447cf3e, d239be1, d7bbff2, 957e711); chờ duyệt |
 | [L2] Tranh động Tiếng Việt 2 tập 1 | `local_d1b0f2bf-9813-44de-8419-c1b19596eb10` | Clip Flow cho TV2 tập 1 | Đợt L2-1 và L2-2 xong: 27 clip trong danh mục (28fe7be), chờ duyệt; còn đợt L2-3, L2-4 (chờ tranh) |
-| [Chung] UI và hiệu ứng | `local_98b994e9-1559-4920-b85d-4c3bcf3a5892` | Giao diện, hiệu ứng, màn mở đầu, Cài đặt, tỷ lệ màn hình | Xong tới f8a607e; chờ "test all" |
+| [Chung] UI và hiệu ứng | `local_98b994e9-1559-4920-b85d-4c3bcf3a5892` | Giao diện, hiệu ứng, màn mở đầu, Cài đặt, tỷ lệ màn hình | Tủ sách xong tới 04d6e43 (chọn quyển, mở quyển theo thứ tự, Sổ bé ngoan theo quyển); chờ "test all" |
 | [Chung] Refactor đọc dữ liệu | `local_1590fb2c-d64a-4465-b148-58ea493f67a0` | Cách nạp dữ liệu, chuẩn bị Addressables | Xong 4/11; nghỉ |
 
 Session cũ (chủ dự án tự tách ra hoặc đã xong), không giao việc mới: "Setup project", "Kiểm tra data bài học ôn tập", "Chuẩn bị startup dự án" (2 bản fork ngày 29/10), "Đoạn chat phụ", và bản "Thử ảnh động / sprite sheet" cũ ngày 30/10.

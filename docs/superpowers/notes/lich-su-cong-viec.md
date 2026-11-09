@@ -32,8 +32,15 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
   - Bản cũ để trong `prev`, danh mục chưa commit (chờ chủ dự án duyệt).
 - Làm trang nghe thử 8 mã khó (thanh nặng, ê mang thanh sắc, "hờ", "bé bá cổ bà", "tổ dế"): `.superpowers/nghe-thu/index.html`, chờ chủ dự án chọn.
 - Sửa dữ liệu tập 2: danh mục âm thanh dùng lại 87 mã có sẵn (98880eb); test `Index_EntriesNameTheirBook` (3effd2c).
+- Rà soát hỏi, ngã trong từ, câu, lời dẫn:
+  - Cách đo: tạo lại với thông số cũ để lấy mốc từng tiếng (`content/tts/marks/`), chấm theo tiêu chí hiệu chỉnh trên các mã `dat`.
+  - Cách sửa: chỉ đọc chậm hơn 20%, không đổi chữ.
+  - Kết quả (số mã / nghi sai / đã sửa đạt / còn khó): câu 447 / 98 / 35 / 63; từ 251 / 28 / 12 / 16; lời dẫn 73 / 15 / 5 / 9; lời khen 2 / 1 / 1 / 0.
+  - Mã `dat` bị nghi: `hd_b18_tranh_01` ("quả"), không đụng.
+  - Tiếng lẻ hỏi, ngã: đã cài `keep_first` cho 233 mã; riêng "cải", "phải" giữ bản cũ.
+  - Danh sách 88 mã cụm còn khó: `side-session-notes/…/hoi-nga-cum-con-nghi-2026-11-09.tsv`, chờ chủ dự án chọn cách đọc trên trang nghe thử.
 - **Còn dở:**
-  - rà hỏi, ngã trong từ, câu, lời dẫn (775 mã; đang thử đọc chậm 20%);
+  - 88 mã cụm hỏi, ngã còn khó;
   - rà âm ê (879 mã; máy không đo được lỗi nguyên âm, chờ chủ dự án chọn trên trang nghe thử);
   - thanh nặng (288 tiếng lẻ).
 
@@ -60,7 +67,9 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 **[L2] Vẽ tranh Tiếng Việt 2 tập 1** (`local_be5a6177…`)
 - Đợt L2-1: 9 tranh và kí hiệu giải nghĩa (447cf3e).
 - Đợt L2-2: 18 tranh (d239be1).
-- **Còn dở:** đợt L2-3 (18 tranh), đợt L2-4 (12 tranh).
+- Đợt L2-3: 18 tranh (d7bbff2).
+- Đợt L2-4: 12 tranh (957e711).
+- Lớp 2 tập một đủ 57 tranh và kí hiệu giải nghĩa. Root đã kiểm tra: 61 dòng tranh lớp 2 trong danh mục, không dòng nào còn `chua_co`.
 
 **[L2] Tranh động Tiếng Việt 2 tập 1** (`local_d1b0f2bf…`)
 - Đợt L2-1 và L2-2 xong: 27 clip (bài 172–230), 1280×720, khoảng 8 giây, có tiếng. Tạo trên Flow /u/6.
@@ -73,7 +82,15 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 - **Còn dở:** đợt L2-3 và L2-4, chờ tranh.
 
 **[Chung] UI và hiệu ứng** (`local_98b994e9…`)
-- Viết bản thiết kế "Tủ sách" (`docs/superpowers/specs/2026-11-09-tu-sach-design.md`), đang qua người đọc độc lập, chưa duyệt.
+- Tủ sách:
+  - bản thiết kế `docs/superpowers/specs/2026-11-09-tu-sach-design.md`;
+  - luật mở quyển và bài theo quyển, quyển đang mở của mỗi bé (c71d0bb);
+  - bìa tạm từng quyển và biểu tượng Tủ sách (992eb8c);
+  - màn Tủ sách: chọn quyển, danh sách bài theo quyển (445e91b);
+  - học xong quyển thì về Tủ sách, quyển mới mở có hiệu ứng (fedd386);
+  - Sổ bé ngoan, Ôn lại và tiến độ Phụ huynh theo quyển (9b7bc49);
+  - sửa theo review (30b6622, 04d6e43).
+- [L2] rút gọn tên bài Tập làm văn cho vừa thẻ (761444a).
 
 ## 06/11/2026
 
