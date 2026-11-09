@@ -96,7 +96,8 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
   - màn Tủ sách: chọn quyển, danh sách bài theo quyển (445e91b);
   - học xong quyển thì về Tủ sách, quyển mới mở có hiệu ứng (fedd386);
   - Sổ bé ngoan, Ôn lại và tiến độ Phụ huynh theo quyển (9b7bc49);
-  - sửa theo review (30b6622, 04d6e43).
+  - sửa theo review (30b6622, 04d6e43);
+  - 3 bìa vẽ lại theo ý chủ dự án đã vào app, chờ duyệt; ba quyển đổi tên thành "Bé tập đọc 1/2/3"; thêm danh mục ảnh bìa và biểu tượng (916a3ca). Test liên quan 57/57. Ảnh bìa đóng gói cùng lớp 2.
 - [L2] rút gọn tên bài Tập làm văn cho vừa thẻ (761444a).
 
 ## 06/11/2026
