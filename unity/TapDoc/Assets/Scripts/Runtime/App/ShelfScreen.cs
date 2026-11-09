@@ -200,9 +200,18 @@ namespace TapDoc
             trt.anchorMin = new Vector2(0f, 1f);
             trt.anchorMax = Vector2.one;
             trt.pivot = new Vector2(.5f, 1f);
-            // Trùng khung giấy sáng phía trên của bìa (bìa tạm vẽ khung ở 1/6–9/10 bề ngang, 1/10–2/5 bề cao).
-            trt.offsetMin = new Vector2(CoverWidth / 6f + 8f, -CoverHeight * 2f / 5f + 8f);
-            trt.offsetMax = new Vector2(-CoverWidth / 10f - 8f, -CoverHeight / 10f - 8f);
+            if (sprite != null)
+            {
+                // Bìa vẽ: 40% phía trên là nền giấy trống, tên quyển căn giữa bề ngang trong vùng đó.
+                trt.offsetMin = new Vector2(20f, -CoverHeight * .38f);
+                trt.offsetMax = new Vector2(-20f, -CoverHeight * .07f);
+            }
+            else
+            {
+                // Bìa tạm: trùng khung giấy sáng (vẽ ở 1/6–9/10 bề ngang, 1/10–2/5 bề cao).
+                trt.offsetMin = new Vector2(CoverWidth / 6f + 8f, -CoverHeight * 2f / 5f + 8f);
+                trt.offsetMax = new Vector2(-CoverWidth / 10f - 8f, -CoverHeight / 10f - 8f);
+            }
             _titles[bookId] = title;
 
             var button = coverGo.GetComponent<Button>();
@@ -236,13 +245,24 @@ namespace TapDoc
                     Pulse.StartOn(coverGo.transform, .04f, 1.6f);
                     break;
                 case ShelfBookState.Done:
-                    AddIcon(coverGo.transform, SystemImages.Flower, 72f, new Vector2(.24f, .17f));
-                    var stamp = UiKit.CreateLabel(coverGo.transform, UiText.BookDone, 36f);
-                    stamp.color = Palette.StampRed;
-                    var srt = stamp.rectTransform;
-                    srt.anchorMin = srt.anchorMax = new Vector2(.64f, .17f);
-                    srt.sizeDelta = new Vector2(180f, 60f);
+                    // Dấu "Đã học xong" trên miếng giấy sáng viền đỏ: đọc được cả khi nằm trên tranh bìa.
+                    var plate = new GameObject("DoneStamp", typeof(RectTransform), typeof(Image));
+                    plate.transform.SetParent(coverGo.transform, false);
+                    var srt = (RectTransform)plate.transform;
+                    srt.anchorMin = srt.anchorMax = new Vector2(.64f, .15f);
+                    srt.sizeDelta = new Vector2(176f, 58f);
                     srt.localRotation = Quaternion.Euler(0f, 0f, 8f);
+                    var plateImg = plate.GetComponent<Image>();
+                    UiKit.SetRounded(plateImg, Palette.StampRed);
+                    plateImg.raycastTarget = false;
+                    UiKit.AddFill(plate.transform, UiShapes.Rounded, Palette.PaperLight).raycastTarget = false;
+                    var stamp = UiKit.CreateLabel(plate.transform, UiText.BookDone, 34f);
+                    stamp.color = Palette.StampRed;
+                    var stampRt = stamp.rectTransform;
+                    stampRt.anchorMin = Vector2.zero;
+                    stampRt.anchorMax = Vector2.one;
+                    stampRt.offsetMin = stampRt.offsetMax = Vector2.zero;
+                    AddIcon(coverGo.transform, SystemImages.Flower, 72f, new Vector2(.2f, .15f));
                     break;
             }
         }
