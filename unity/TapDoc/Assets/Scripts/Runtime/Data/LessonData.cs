@@ -158,6 +158,10 @@ namespace TapDoc
         public string glyph;
         public List<Span> hl = new();
         public List<Spell> spells = new();
+        /// <summary>Chữ cho sẵn để ghép (<c>combine_words</c>, lớp 2).</summary>
+        public string part;
+        /// <summary>Lựa chọn riêng của một ô (<c>fill_passage</c> khi sách không cho sẵn từ).</summary>
+        public List<string> choices = new();
     }
 
     [Serializable]

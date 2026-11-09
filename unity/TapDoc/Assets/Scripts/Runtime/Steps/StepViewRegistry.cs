@@ -30,6 +30,10 @@ namespace TapDoc
             StepViewFactory.Register("memorize", () => new MemorizeView());
             StepViewFactory.Register("fill_blank", () => new FillBlankView());
             StepViewFactory.Register("riddle_answer", () => new RiddleAnswerView());
+            // Lớp 2.
+            StepViewFactory.Register("combine_words", () => new CombineWordsView());
+            StepViewFactory.Register("fill_passage", () => new FillPassageView());
+            StepViewFactory.Register("choose_line", () => new ChooseLineView());
 
             StepViewFactory.RegisterRound("listen_choose", () => new ListenChooseView());
             StepViewFactory.RegisterRound("match_case", () => new MatchCaseView());

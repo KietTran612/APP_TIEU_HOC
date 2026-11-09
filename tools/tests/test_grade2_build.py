@@ -226,6 +226,10 @@ class QuestionLinesTest(unittest.TestCase):
 
 
 class ColonMarkerTest(unittest.TestCase):
+    def test_glossary_marker_image(self):
+        from tapdoc.system_assets import SYSTEM_IMAGES
+        self.assertIn("dấu hai chấm", SYSTEM_IMAGES["img_chung_giai_nghia"])
+
     def test_rule_colon_marker_valid(self):
         from tapdoc.validate import VALID_MARKERS
         self.assertIn(":", VALID_MARKERS)

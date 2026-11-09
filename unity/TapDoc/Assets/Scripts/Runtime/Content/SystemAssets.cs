@@ -47,6 +47,8 @@ namespace TapDoc
 
         /// <summary>Kí hiệu "Câu hỏi" của sách tập 2 (ô vuông có dấu ?).</summary>
         public const string CauHoi = "img_chung_cau_hoi";
+        /// <summary>Kí hiệu [:] giải nghĩa từ của sách lớp 2.</summary>
+        public const string GiaiNghia = "img_chung_giai_nghia";
 
         /// <summary>Bông hoa bé ngoan (hiện là hình mặc định, sau thay bằng tranh chính thức cùng mã).</summary>
         public const string Flower = "img_chung_hoa_be_ngoan";
@@ -54,7 +56,7 @@ namespace TapDoc
         /// <summary>Bạn gà con đồng hành.</summary>
         public const string Mascot = "img_chung_ga_con";
 
-        public static readonly string[] All = new[] { Star, EmDoc, LuyenTap, CauHoi, Flower, Mascot }
+        public static readonly string[] All = new[] { Star, EmDoc, LuyenTap, CauHoi, GiaiNghia, Flower, Mascot }
             .Concat(SystemIcons.All).ToArray();
 
         public static string ForMarker(string marker)
@@ -63,6 +65,7 @@ namespace TapDoc
             if (marker.Contains('\u25cf')) return EmDoc;      // ●
             if (marker.Contains('\u2302')) return LuyenTap;   // ⌂
             if (marker.Contains('?')) return CauHoi;          // [?] Câu hỏi (tập 2)
+            if (marker.Contains(':')) return GiaiNghia;       // [:] giải nghĩa từ (lớp 2)
             return null;
         }
     }

@@ -32,6 +32,8 @@ SYSTEM_IMAGES: dict[str, str] = {
     "img_chung_luyen_tap": "Kí hiệu 'Luyện tập ở lớp và ở nhà' của sách: ngôi nhà nhỏ mái nhọn, nét mực đen, "
                            "thân nhà tô hoa văn ô nhỏ",
     "img_chung_cau_hoi": "Kí hiệu 'Câu hỏi' của sách (tập 2): ô vuông nhỏ viền mực đen, bên trong có dấu chấm hỏi đen",
+    "img_chung_giai_nghia": "Kí hiệu 'giải nghĩa từ' của sách lớp 2: ô vuông nhỏ viền mực đen, bên trong có dấu hai chấm "
+                            "đen (:)",
     # Hình đại diện để bé chọn khi tạo hồ sơ: con vật quen thuộc, vẽ mặt trước, nền trơn.
     "img_chung_avatar_01": "Hình đại diện: mặt con mèo con tươi cười, tai nhọn, có ria, vẽ chính diện",
     "img_chung_avatar_02": "Hình đại diện: mặt con chó con tươi cười, tai cụp, lưỡi thè nhẹ, vẽ chính diện",

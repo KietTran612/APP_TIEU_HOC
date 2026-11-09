@@ -659,7 +659,8 @@ class SystemAssetsTest(unittest.TestCase):
             f"img_ui_{n}" for n in ("nha", "loa", "tiep", "lui", "so", "on_lai", "xong", "khoa",
                                     "lat_truoc", "lat_sau", "sao_giay", "canh_hoa", "cai_dat")}
         self.assertEqual(set(SYSTEM_IMAGES),
-                         {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap", "img_chung_cau_hoi"} | avatars | ui)
+                         {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap", "img_chung_cau_hoi",
+                          "img_chung_giai_nghia"} | avatars | ui)
         self.assertIn("con mèo", SYSTEM_IMAGES["img_chung_avatar_01"])
         self.assertTrue(all(unicodedata.is_normalized("NFC", v) for v in SYSTEM_IMAGES.values()))
 
