@@ -303,5 +303,8 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Commit lẫn chỉnh sửa duyệt của chủ dự án | Chỉ stage dòng của mình bằng `hash-object` và `update-index` (mục 10) | 05/11 |
 | Hai session cùng sửa `tools/tapdoc` | Xem `git log` file trước khi sửa, sửa nhỏ, commit sớm, báo nhau trước khi thay đổi lớn | 09/11 |
 | `tapdoc build` tự thêm mã bài vào trường `bai` của danh mục | Kiểm tra đó là dữ liệu đúng rồi commit riêng các dòng đó | 09/11, 98880eb |
+| `tapdoc requests` xoá luôn các file tổng hợp `content/requests/images_<book>_dot_N.md` | Chạy `requests` trước, rồi mới ghi file danh sách tranh từng đợt; hoặc sinh lại file đợt sau khi chạy | 09/11 |
+| `validate` báo câu nhiễu nghe gần giống đáp án theo giọng miền Nam (trao/chao, lặng/lặn) | Đổi sang từ nhiễu khác hẳn âm; không tắt kiểm tra | 09/11 |
+| Bài lớp 2 câu dài: thẻ, dòng câu hỏi, tên bài tràn chữ trên máy nhỏ | Test đi hết mọi bước ở 1600×720 và 1440×1080 và test mọi thẻ không tràn; màn có nhiều dòng thì chia trang; tên bài trên thẻ rút gọn (ví dụ "Quan sát tranh: …"), bước tên bài trong bài giữ đủ như sách | 09/11, 761444a |
 | Session con biến mất khỏi thanh bên | Không ghim session root: mục "Đã ghim" đang thu gọn sẽ giấu luôn mọi session con | 09/11 |
 | Thanh bên không chia nhóm được session con | Dùng tiền tố tên `[L1]`, `[L2]`, `[Chung]` | 09/11 |
