@@ -297,6 +297,14 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Khung cuối của lần trước còn sót làm sai clip, mất credit | Trước khi gửi, kiểm tra ô soạn có đúng 2 ảnh và đúng mã tranh | 30/10 |
 | Hết credit; tài khoản bị báo "unusual activity" | Chia việc theo ngày (khoảng 5 clip mỗi tài khoản mỗi ngày). Tài khoản bị cảnh báo thì dùng sau cùng, đi chậm; bị đòi xác minh thì dừng, hỏi chủ dự án | 09/11 |
 | Clip vô lý (hoa nở rồi quay về nụ, em bé lái ô tô) | Viết kịch bản theo đúng logic đời thực, một chiều thời gian; xem lại clip trước khi nhập | 09/11 |
+| Thẻ clip báo "unusual activity" ngay sau khi gửi (3 clip liền trên `/u/3`) | Không gửi lại bằng mã. Bấm nút làm lại (Retry) trên từng thẻ bằng cú nhấp thật, mỗi lần cách nhau vài chục giây; cả 3 đều chạy được, credit lần hỏng được hoàn. Các tài khoản sau gửi cách nhau 12 giây thì không bị lại | 09/11, a0662f8 |
+| Sửa ảnh "điểm bắt đầu" trong trang chi tiết ảnh làm bản sửa đè lên tên tranh gốc, mất khung cuối | Tải thêm tranh gốc với tên `<mã>_cuoi.png` để làm khung cuối; khung đầu chọn theo `<mã>.png` (giờ là bản sửa) | 09/11, 28fe7be, a0662f8 |
+| Lệnh sửa ảnh gõ vào ô nhập không ăn (ô nhập đổi vị trí theo cỡ cửa sổ), ảnh vẫn là bản gốc | Nhập bằng `document.execCommand('insertText')` vào ô nhập rồi bấm phím Enter thật; kiểm tra lại: ảnh sửa của Nano Banana rộng 1376 px, ảnh gốc 1280 px | 09/11 |
+| Ảnh "điểm bắt đầu" bị Nano Banana vẽ tràn cả khung 16:9, mất lề giấy hai bên | Sửa thêm một lần: "đưa cả cảnh vào ô vuông giữa khung, lề giấy trống hai bên như tranh gốc". Clip vẫn có thể lan ra ngoài ô vuông giữa chừng, nên nhắc chủ dự án xem kỹ | 09/11 |
+| Tải nhiều ảnh lên một lần (khoảng 9 MB trở lên) làm rớt kết nối Claude in Chrome | Bắt ô chọn file bằng cách ghi đè `HTMLInputElement.prototype.click` khi bấm nút tải lên, rồi `file_upload` mỗi lần 3 ảnh. Khi công cụ báo lỗi, kiểm tra danh sách thành phần trước khi tải lại: ảnh thường vẫn lên | 09/11 |
+| Trang chi tiết clip ở `/u/1`–`/u/4` không có nút mũi tên sang clip kế | Lọc lưới theo Video, mở từng thẻ theo thứ tự, xong thì quay về lưới | 09/11 |
+| Ô soạn có thêm biểu tượng nhỏ (ảnh `gstatic`), làm bộ đếm "đúng 2 ảnh" sai | Khi đếm ảnh trong ô soạn, bỏ ảnh có `src` thuộc `gstatic.com` | 09/11 |
+| Trình phát clip của Flow là canvas, không lấy được thẻ `video` để xem | Bấm phát rồi `drawImage` từ canvas theo thời gian để chụp khung; khung đen là do chưa nạp kịp. Chắc nhất là tải về rồi phát thật qua `python -m http.server` cục bộ | 09/11 |
 
 ### Dữ liệu, git, điều phối
 
