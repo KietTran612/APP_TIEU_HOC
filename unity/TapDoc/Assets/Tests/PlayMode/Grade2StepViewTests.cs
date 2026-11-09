@@ -159,6 +159,27 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator FillPassageOwnChoicesAnswerNotAlwaysFirst()
+        {
+            // Lựa chọn riêng trong dữ liệu luôn đặt đáp án đầu tiên: màn phải xáo theo ô để bé không chỉ chạm thẻ trái.
+            var step = new Step { type = "fill_passage" };
+            step.rows.Add(new Item { text = "a b c.", audio = "cau_b177_09", row = 0 });
+            foreach (var (ans, d1, d2) in new[] { ("mười hai", "mười", "chín"), ("một", "hai", "chín"), ("tám", "năm", "sáu") })
+                step.items.Add(new Item { text = ans, row = 0, role = "blank", answer = ans, choices = new List<string> { ans, d1, d2 } });
+            var v = (FillPassageView)CreateTrackedStep(step);
+            var positions = new List<int>();
+            for (var k = 0; k < 3; k++)
+            {
+                var answer = step.items[k].answer;
+                positions.Add(v.CurrentChoices.ToList().IndexOf(answer));
+                v.ChoiceTile(answer).SimulateTap();
+                yield return new WaitForSeconds(.4f);
+            }
+            Assert.That(positions, Has.Some.Not.EqualTo(0), string.Join(",", positions));
+            Assert.That(positions.Distinct().Count(), Is.GreaterThan(1));
+        }
+
+        [UnityTest]
         public IEnumerator FillPassageOwnChoicesPerBlank()
         {
             var v = (FillPassageView)CreateTrackedStep(OwnChoices());

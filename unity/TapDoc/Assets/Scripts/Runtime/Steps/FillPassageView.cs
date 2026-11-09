@@ -105,7 +105,13 @@ namespace TapDoc
             var item = _blanks[blank];
             var own = item.choices != null && item.choices.Count > 0 && (Step.labels == null || Step.labels.Count == 0);
             List<string> choices;
-            if (own) choices = item.choices.Take(MaxChoices).ToList();
+            if (own)
+            {
+                // Dữ liệu đặt đáp án đầu tiên: xáo cố định theo ô (ô 0 lệch 1, ô 1 lệch 2…) để đáp án không luôn ở trái.
+                choices = item.choices.Take(MaxChoices).ToList();
+                var turn = (blank + 1) % choices.Count;
+                choices = choices.Skip(turn).Concat(choices.Take(turn)).ToList();
+            }
             else
             {
                 var used = new HashSet<string>(_filled.Select(b => _blanks[b].answer));
