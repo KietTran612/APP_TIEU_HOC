@@ -80,10 +80,17 @@ namespace TapDoc.Tests
         [Test]
         public void Index_EntriesNameTheirBook()
         {
-            // Màn Phụ huynh mở Phụ lục theo mã sách của các bài trong danh sách, không ghi cứng.
-            var books = TestLessons.Real.Index.lessons.Select(e => e.book).Distinct().ToList();
-            Assert.AreEqual(new[] { "tv1_t1_1990" }, books);
-            Assert.AreEqual(books[0], TestLessons.Real.Appendix(books[0]).book);
+            // Màn Phụ huynh mở Phụ lục theo mã sách của các bài trong danh sách, không ghi cứng. Mỗi quyển phải có
+            // trong index.books; quyển không có Phụ lục riêng (tập 2, lớp 2) mở Phụ lục mà index.books chỉ định.
+            var index = TestLessons.Real.Index;
+            var books = index.lessons.Select(e => e.book).Distinct().ToList();
+            Assert.That(books, Has.Member("tv1_t1_1990").And.Member("tv1_t2_1996"));
+            foreach (var book in books)
+            {
+                var entry = index.books.FirstOrDefault(b => b.book_id == book);
+                Assert.IsNotNull(entry, book);
+                Assert.AreEqual(entry.appendix, TestLessons.Real.Appendix(book).book, book);
+            }
         }
 
         [Test]
