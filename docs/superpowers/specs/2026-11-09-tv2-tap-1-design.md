@@ -166,7 +166,9 @@ Mỗi mục là một bài trong danh sách, bắt đầu bằng `title` (tên p
 
 - Mọi mã mới tạo bằng `python -m tapdoc tts`, giọng HoaiMy, `cho_duyet`. Không đụng mã lớp 1 đã có (dùng chung theo mã).
 - Chạy **1 tiến trình**, mỗi mã tối đa 90 giây [Chốt].
-- Dịch vụ hay trả rỗng: sau lượt chính chạy **lượt bù** cho mã còn `chua_co`. Mã một tiếng hay một từ ngắn mà vẫn rỗng thì đọc **trong câu đệm**: thêm override `doc` (ví dụ "dỗ, dỗ.") với `keep_first: true` trong `content/tts/settings.json` rồi chạy lại mã đó [Chốt].
+- **Mọi tiếng lẻ (`tieng_*`) mới đọc trong câu đệm ngay từ đầu** [Chốt, root 9/11/2026]: HoaiMy hay đọc thanh hỏi, ngã của tiếng đứng một mình thành thanh huyền (chủ dự án đã chê nhiều ở lớp 1). Mỗi mã `tieng_*` mới có override `{"doc": "X, X.", "keep_first": true}` trong `content/tts/settings.json` trước lượt tạo đầu tiên. Công cụ `tts` thêm cờ `--tieng-keep-first` tự ghi override này cho mã chưa có override.
+- **Từ và câu có thanh hỏi, ngã phải qua đo cao độ** trước khi coi là xong [Chốt, root 9/11/2026]: so đường cao độ của tiếng hỏi/ngã với mẫu (dip rồi lên). Mã đo không đạt thì làm lại theo cách session lớp 1 (`local_1af66fbb…`) báo sau khi rà soát xong; trong lúc chờ, thử `keep_first` với câu đệm. Cách đo: bộ nhớ `project-tts-keep-first` (MP3 → WAV bằng Media Foundation, YIN thuần Python, mẫu lấy từ tiếng đã duyệt `dat`). Dùng công cụ đo của session lớp 1 nếu đã có trong repo; chưa có thì đưa vào `tools/tapdoc/pitch_check.py`.
+- Dịch vụ hay trả rỗng: sau lượt chính chạy **lượt bù** cho mã còn `chua_co`. Mã từ ngắn mà vẫn rỗng cũng đọc trong câu đệm như trên [Chốt].
 - Âm thanh chạy nền, song song với việc chép bài; không chặn đợt sau.
 - Commit `settings.json` chỉ các override mới của mình, bằng cách dựng blob từ HEAD (mục 11).
 
