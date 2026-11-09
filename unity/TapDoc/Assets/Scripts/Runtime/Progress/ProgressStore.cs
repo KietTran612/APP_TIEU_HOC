@@ -66,6 +66,16 @@ namespace TapDoc
             }
         }
 
+        /// <summary>Lớp bé đang học đang xem ở danh sách bài (1 hoặc 2); chưa chọn bé hay chưa đặt thì lớp 1.</summary>
+        public int GradeTab
+        {
+            get => Current != null && Current.grade_tab > 0 ? Current.grade_tab : 1;
+            set
+            {
+                if (Current != null) Current.grade_tab = value;
+            }
+        }
+
         /// <summary>Kho của app thật: <c>persistentDataPath/tapdoc_progress.json</c>.</summary>
         public static ProgressStore Default() => Load(Path.Combine(Application.persistentDataPath, FileName));
 

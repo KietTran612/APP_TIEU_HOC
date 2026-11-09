@@ -294,7 +294,8 @@ namespace TapDoc
             if (string.IsNullOrEmpty(currentLessonId)) return null;
             try
             {
-                var ordered = lessons.Index.lessons.Select(e => e.lesson_id).ToList();
+                // Bài sau trong cùng lớp: hết lớp 1 không nhảy sang lớp 2 (mỗi lớp một chuỗi mở khoá).
+                var ordered = lessons.Index.SameGradeIds(currentLessonId);
                 var idx = ordered.IndexOf(currentLessonId);
                 if (idx >= 0 && idx + 1 < ordered.Count && progress.IsUnlocked(ordered, ordered[idx + 1]))
                 {

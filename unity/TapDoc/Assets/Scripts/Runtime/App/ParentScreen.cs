@@ -165,9 +165,31 @@ namespace TapDoc
             PlaceLeft(name.rectTransform, 1f, new Vector2(140f, -14f), new Vector2(520f, 100f));
             name.overflowMode = TextOverflowModes.Ellipsis;
 
-            var learned = ordered.Count(id => ProgressStore.IsCompleted(profile, id));
-            var progress = LeftLabel(row.transform, string.Format(UiText.LearnedFormat, learned, ordered.Count), 44f);
+            var index = _app.Lessons.Index;
+            string learnedText;
+            if (index.HasGrade2)
+            {
+                // Tiến độ tách theo lớp (thiết kế TV2 tập một, mục 4.6): mỗi lớp một dòng.
+                learnedText = string.Join("\n", new[] { 1, 2 }.Select(g =>
+                {
+                    var ids = index.OrderedIds(g);
+                    return string.Format(UiText.LearnedGradeFormat, g, ids.Count(id => ProgressStore.IsCompleted(profile, id)),
+                        ids.Count);
+                }));
+            }
+            else
+            {
+                var learned = ordered.Count(id => ProgressStore.IsCompleted(profile, id));
+                learnedText = string.Format(UiText.LearnedFormat, learned, ordered.Count);
+            }
+            var progress = LeftLabel(row.transform, learnedText, 44f);
             PlaceLeft(progress.rectTransform, 1f, new Vector2(680f, -14f), new Vector2(420f, 100f));
+            if (index.HasGrade2)
+            {
+                progress.enableAutoSizing = true;
+                progress.fontSizeMax = 40f;
+                progress.fontSizeMin = 24f;
+            }
 
             // "Mở mọi bài" theo từng bé: bé đã học phần trước ở trường vào thẳng bài sau; tắt lại không mất tiến độ.
             var unlock = UiKit.CreateButton(row.transform, UnlockLabel(profile), null);

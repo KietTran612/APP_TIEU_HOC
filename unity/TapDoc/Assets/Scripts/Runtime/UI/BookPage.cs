@@ -13,6 +13,10 @@ namespace TapDoc
     public class BookPage : MonoBehaviour
     {
         public const float SlotSize = 180f;
+
+        /// <summary>Dòng đầu trang Sổ bé ngoan: nhãn bài như trên thẻ ("Bài 1", "Chính tả") và tên bài.</summary>
+        internal static string HeaderText(LessonEntry entry) =>
+            string.Format(UiText.BookPageFormat, LessonListScreen.LabelOf(entry), entry.title);
         private const float SlotGap = 24f;
         private const float Padding = 28f;
         private const float HeaderHeight = 70f;
@@ -60,8 +64,7 @@ namespace TapDoc
 
             if (entry == null) return;
 
-            var header = UiKit.CreateLabel(transform, string.Format(UiText.BookPageFormat, UiText.LessonPrefix,
-                entry.lesson_no, entry.title), 40f);
+            var header = UiKit.CreateLabel(transform, HeaderText(entry), 40f);
             header.alignment = TextAlignmentOptions.Left;
             header.textWrappingMode = TextWrappingModes.NoWrap;
             var hrt = header.rectTransform;

@@ -27,6 +27,13 @@ namespace TapDoc
         private const float ParentWidth = 280f;
 
         private readonly Dictionary<string, Button> _lessonButtons = new();
+        private readonly Dictionary<int, Button> _gradeTabs = new();
+
+        /// <summary>Lớp đang hiện (1 hoặc 2). Chỉ có bài lớp 1 thì luôn là 1.</summary>
+        internal int Grade { get; private set; } = 1;
+
+        /// <summary>Nút chọn lớp <paramref name="grade"/>; <c>null</c> khi app chưa có bài lớp 2 (không hiện nút lớp).</summary>
+        internal Button GradeTabButton(int grade) => _gradeTabs.TryGetValue(grade, out var b) ? b : null;
 
         internal Button ReviewButton { get; private set; }
         internal Button ParentButton { get; private set; }
@@ -122,20 +129,21 @@ namespace TapDoc
             Scroll.vertical = true;
             Scroll.movementType = ScrollRect.MovementType.Clamped;
 
-            var entries = app.Lessons.Index.lessons;
+            var index = app.Lessons.Index;
+            // Mỗi lớp một danh sách và một chuỗi mở khoá riêng (thiết kế TV2 tập một, mục 4.3–4.4).
+            Grade = index.HasGrade2 ? Mathf.Clamp(progress.GradeTab, 1, 2) : 1;
+            var entries = index.lessons.Where(e => e.EffectiveGrade == Grade).ToList();
             var ordered = entries.Select(e => e.lesson_id).ToList();
             CurrentLessonId = ordered.FirstOrDefault(id => progress.IsUnlocked(ordered, id) && !progress.IsCompleted(id));
-            foreach (var (part, title) in Parts)
+            foreach (var (title, section, byWeek) in Sections(entries))
             {
-                var section = entries.Where(e => PartOf(e) == part).ToList();
-                if (section.Count == 0) continue;
                 var sectionHeader = UiKit.CreateLabel(content, title, 44f);
                 sectionHeader.alignment = TextAlignmentOptions.Left;
                 sectionHeader.gameObject.AddComponent<LayoutElement>().preferredHeight = 64f;
-                // Phần Tập đọc chia nhóm theo tuần như mục lục sách; hai phần kia là một lưới.
-                foreach (var group in section.GroupBy(e => part == ReadingPart ? e.week : 0))
+                // Phần Tập đọc và lớp 2 chia nhóm theo tuần như mục lục sách; hai phần đầu lớp 1 là một lưới.
+                foreach (var group in section.GroupBy(e => byWeek ? e.week : 0))
                 {
-                    if (part == ReadingPart && group.Key > 0)
+                    if (byWeek && group.Key > 0)
                     {
                         var weekHeader = UiKit.CreateLabel(content, string.Format(UiText.WeekFormat, group.Key), 34f);
                         weekHeader.alignment = TextAlignmentOptions.Left;
@@ -145,6 +153,7 @@ namespace TapDoc
                     foreach (var entry in group) AddCard(grid, entry, ordered, progress, app);
                 }
             }
+            if (index.HasGrade2) AddGradeTabs(app);
 
             ReviewButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Review, UiText.ReviewMistakes, app.ShowReview);
             Corner(ReviewButton, Vector2.zero, new Vector2(Margin, Margin));
@@ -211,6 +220,69 @@ namespace TapDoc
         }
 
         private const string ReadingPart = "tap_doc";
+        private const float GradeTabWidth = 220f;
+
+        /// <summary>
+        /// Các phần của lớp đang hiện: lớp 1 theo <c>part</c> (ba phần cố định), lớp 2 theo chủ điểm (thứ tự xuất hiện).
+        /// Bài lớp 1 không thuộc phần nào vẫn hiện ở cuối, để chuỗi mở khoá không bị đứt.
+        /// </summary>
+        private IEnumerable<(string title, List<LessonEntry> lessons, bool byWeek)> Sections(List<LessonEntry> entries)
+        {
+            if (Grade == 2)
+            {
+                foreach (var group in entries.GroupBy(e => e.theme ?? string.Empty))
+                {
+                    yield return (string.IsNullOrEmpty(group.Key) ? UiText.PartReading : group.Key, group.ToList(), true);
+                }
+                yield break;
+            }
+            foreach (var (part, title) in Parts)
+            {
+                var section = entries.Where(e => PartOf(e) == part).ToList();
+                if (section.Count > 0) yield return (title, section, part == ReadingPart);
+            }
+            var known = new HashSet<string>(Parts.Select(p => p.part));
+            var other = entries.Where(e => !known.Contains(PartOf(e))).ToList();
+            if (other.Count > 0) yield return (UiText.PartReading, other, true);
+        }
+
+        /// <summary>Hai nút "Lớp 1" / "Lớp 2" ở giữa mép dưới; bấm thì nhớ lớp cho bé và dựng lại danh sách.</summary>
+        private void AddGradeTabs(AppRoot app)
+        {
+            var row = new GameObject("GradeTabs", typeof(RectTransform), typeof(HorizontalLayoutGroup));
+            row.transform.SetParent(transform, false);
+            var rt = (RectTransform)row.transform;
+            rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0.5f, 0f);
+            rt.sizeDelta = new Vector2(2f * GradeTabWidth + CardGap, UiKit.MinTouch);
+            rt.anchoredPosition = new Vector2(0f, Margin);
+            var hlg = row.GetComponent<HorizontalLayoutGroup>();
+            hlg.spacing = CardGap;
+            hlg.childControlWidth = hlg.childControlHeight = true;
+            hlg.childForceExpandWidth = hlg.childForceExpandHeight = true;
+            foreach (var grade in new[] { 1, 2 })
+            {
+                var g = grade;
+                var tab = UiKit.CreateButton(row.transform, string.Format(UiText.GradeTabFormat, g), () => SelectGrade(app, g));
+                tab.name = $"GradeTab_{g}";
+                tab.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
+                if (g != Grade)
+                {
+                    // Lớp đang xem giữ nền lam ngọc chữ trắng; lớp kia nền giấy chữ mực.
+                    var fill = tab.transform.Find("Fill");
+                    if (fill != null) fill.GetComponent<Image>().color = Palette.PaperLight;
+                    tab.GetComponentInChildren<TMP_Text>().color = Palette.Ink;
+                }
+                _gradeTabs[g] = tab;
+            }
+        }
+
+        private void SelectGrade(AppRoot app, int grade)
+        {
+            if (grade == Grade) return;
+            app.Progress.GradeTab = grade;
+            app.Progress.Save();
+            app.ShowLessonList();
+        }
 
         private static readonly (string part, string title)[] Parts =
         {

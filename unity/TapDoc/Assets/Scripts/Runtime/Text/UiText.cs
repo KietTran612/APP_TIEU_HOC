@@ -51,7 +51,7 @@ namespace TapDoc
         // Sổ bé ngoan: nút mở sổ, tiêu đề sổ ({0} tên bé), đầu trang ({0} "Bài", {1} số bài, {2} tên bài), con dấu.
         public const string Book = "Sổ bé ngoan";
         public const string BookTitleFormat = "Sổ bé ngoan của {0}";
-        public const string BookPageFormat = "{0} {1} · {2}";
+        public const string BookPageFormat = "{0} · {1}"; // nhãn bài ("Bài 4", "Chính tả") · tên bài
         public const string StampText = "BÉ NGOAN";
 
         // Bong bóng của bạn gà con.
@@ -65,6 +65,8 @@ namespace TapDoc
         // Phần Tập đọc (tập 2) trong danh sách bài, nhóm theo tuần; công tắc mở mọi bài của từng bé (màn Phụ huynh).
         public const string PartReading = "Tập đọc";
         public const string WeekFormat = "Tuần {0}";
+        public const string GradeTabFormat = "Lớp {0}";
+        public const string LearnedGradeFormat = "Lớp {0}: {1}/{2} bài";
         public const string UnlockAllOn = "Mở mọi bài: Bật";
         public const string UnlockAllOff = "Mở mọi bài: Tắt";
 
@@ -153,6 +155,8 @@ namespace TapDoc
             SfxOff,
             PartReading,
             WeekFormat,
+            GradeTabFormat,
+            LearnedGradeFormat,
             UnlockAllOn,
             UnlockAllOff,
             ListenAll,

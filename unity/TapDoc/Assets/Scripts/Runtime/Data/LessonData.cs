@@ -9,6 +9,20 @@ namespace TapDoc
         /// <summary>Các quyển theo thứ tự học (content/books.json); index cũ không có thì rỗng.</summary>
         public List<BookEntry> books = new();
         public List<LessonEntry> lessons = new();
+
+        /// <summary>Có bài lớp 2 không (khi có, danh sách bài hiện hai nút "Lớp 1" / "Lớp 2").</summary>
+        public bool HasGrade2 => lessons.Exists(e => e.EffectiveGrade == 2);
+
+        /// <summary>Mã các bài của lớp <paramref name="grade"/>, theo thứ tự học: chuỗi mở khoá của lớp đó.</summary>
+        public List<string> OrderedIds(int grade) =>
+            lessons.FindAll(e => e.EffectiveGrade == grade).ConvertAll(e => e.lesson_id);
+
+        /// <summary>Mã các bài cùng lớp với bài <paramref name="lessonId"/>; bài không có trong danh sách thì rỗng.</summary>
+        public List<string> SameGradeIds(string lessonId)
+        {
+            var entry = lessons.Find(e => e.lesson_id == lessonId);
+            return entry == null ? new List<string>() : OrderedIds(entry.EffectiveGrade);
+        }
     }
 
     [Serializable]
@@ -18,6 +32,8 @@ namespace TapDoc
         public string title;
         /// <summary>Mã sách có Phụ lục dùng cho quyển này (tập 2 dùng Phụ lục của tập 1).</summary>
         public string appendix;
+        /// <summary>Lớp của quyển (1 hoặc 2).</summary>
+        public int grade;
     }
 
     [Serializable]
@@ -34,6 +50,12 @@ namespace TapDoc
         public string label;
         /// <summary>Tuần (chỉ phần Tập đọc), 0 nếu không có.</summary>
         public int week;
+        /// <summary>Lớp của bài (1 hoặc 2); index cũ không có thì 0, coi là lớp 1.</summary>
+        public int grade;
+        /// <summary>Chủ điểm của bài lớp 2 ("Nhà trường", "Gia đình", "Đất nước ta").</summary>
+        public string theme;
+
+        public int EffectiveGrade => grade <= 0 ? 1 : grade;
     }
 
     [Serializable]

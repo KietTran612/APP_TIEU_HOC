@@ -35,6 +35,8 @@ namespace TapDoc
         public string avatar;
         /// <summary>Phụ huynh bật "Mở mọi bài" cho bé này (bé đã học phần trước ở trường). File cũ không có thì tắt.</summary>
         public bool unlock_all;
+        /// <summary>Lớp bé đang xem ở danh sách bài (1 hoặc 2). File cũ không có thì 0, coi là lớp 1.</summary>
+        public int grade_tab;
         public List<LessonProgress> lessons = new();
         public List<Mistake> mistakes = new();
     }
