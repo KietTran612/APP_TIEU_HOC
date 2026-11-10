@@ -10,6 +10,21 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ---
 
+## 10/11/2026
+
+**Root:** chủ dự án cho tạm dừng mọi session để chuyển sang máy mới.
+- Mọi session dừng ở điểm sạch: không còn tiến trình tạo âm thanh, không file ghi dở.
+- Mỗi session commit ghi chú tiếp tục và chép script từ scratchpad vào repo.
+- Root viết `CHUYEN-MAY-MOI.md` và đóng gói `BoABa-chuyen-may-2026-11-10/`, gồm: bundle git, chỉnh sửa duyệt chưa commit, gói media mới, thư mục ngoài git, toàn bộ dữ liệu Claude (bộ nhớ, hội thoại, scratchpad).
+
+Commit cuối của từng session:
+- [L2] vẽ tranh: 7b2bd98;
+- [Chung] UI: eca64b8 (4 ảnh bìa và biểu tượng chỉ có trên máy cũ, vào gói media mới);
+- [L2] tranh động: 6a1c5dc (b299 đã tạo trên Flow, chưa tải);
+- [L1] tranh động: dc16bb1;
+- [L2] nội dung: 00d77f4 (1.623 mã âm thanh lớp 2), e41051a (script `tools/lop2/`);
+- [L1] nội dung: 9286c56 (thanh nặng và ê 116/390, script `tools/scripts/`).
+
 ## 09/11/2026
 
 **Root — điều phối**
