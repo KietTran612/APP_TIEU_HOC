@@ -15,8 +15,11 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 Chủ dự án cho làm tiếp các việc dở trong bảng B11 trước khi chuyển máy. Phần mới sẽ đưa lên Drive bằng gói bổ sung.
 - **Root:** thêm lệnh `run_unity_media.py bosung` (ca1edeb). Lệnh chỉ gói tranh, âm thanh (kèm `.meta`) và clip đổi so với khoá. `unpack --bosung` nhập gói bổ sung sau gói chính. Test `test_run_unity_media`, `test_media_lock`: 20/20 đạt.
 - **[L2] tranh động:** chủ dự án cho tải. Clip b299 (đường dây điện) đã vào `content/clips`, 1280×720, 7,9 giây (d553b83). TV2 tập một đủ 57/57 clip, tổng 400 clip. Chờ duyệt.
-- **[L1] nội dung:** đang tạo lại 274 âm thanh thanh nặng và âm ê.
-- **[L2] nội dung:** đã chuẩn bị 1.718 mã, chờ [L1] xong mới tạo giọng.
+- **[L1] nội dung:** xong đợt thanh nặng, âm ê và 2 câu khó (68a4ed7). Root đã kiểm: đúng 392 dòng `audio_manifest` đổi, đều `cho_duyet`.
+  - Có 120 mp3 thật sự đổi, danh sách ở `tools/scripts/l1_mp3_doi_1011.txt`.
+  - 272 mã đọc "X. X." + keep_first ra file trùng từng byte với bản cũ, vì edge-tts tạo từng câu riêng. Đã ghi vào QUY-TRINH mục 12.
+  - Còn khó: ạch, ặp, kịch, sạch (máy không đo được thanh nặng ở tiếng lẻ). Nếu nghe vẫn sai thì đặt vào ngữ cảnh (ví dụ "nụ hoa.") rồi keep_first.
+- **[L2] nội dung:** chuẩn bị 1.718 mã; bắt đầu tạo giọng sau khi [L1] xong.
 
 ## 10/11/2026
 
