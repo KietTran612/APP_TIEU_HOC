@@ -89,6 +89,105 @@ class UnityMediaTest(unittest.TestCase):
         self.assertIn("-quit", cmd)
         self.assertTrue((self.clips / "img_b02_coj.mp4").is_file())
 
+    # --- gói bổ sung: chỉ file đổi so với khoá, để không phải tải lại cả gói lớn ---
+
+    def write_base(self):
+        """Khoá và zip clip của gói gốc 2026-11-02 khớp với máy lúc đầu."""
+        self.dist.mkdir(exist_ok=True)
+        run_unity_media.write_lock(self.res, self.lock, self.package.name)
+        with zipfile.ZipFile(self.dist / "TapDoc-clips-2026-11-02.zip", "w") as z:
+            z.write(self.clips / "img_b01_bof.mp4", "img_b01_bof.mp4")
+
+    def test_bosung_zips_changed_new_media_with_meta_and_new_clips(self):
+        self.write_base()
+        (self.res / "audio/am_b.mp3").write_bytes(b"mp3 moi")
+        (self.res / "audio/am_c.mp3").write_bytes(b"mp3")
+        (self.res / "audio/am_c.mp3.meta").write_text("guid: 2", encoding="utf-8")
+        (self.clips / "img_b299_dien.mp4").write_bytes(b"mp4")
+        with patch.object(run_unity_media, "today", Mock(return_value="2026-11-10")):
+            self.assertEqual(run_unity_media.pack_bosung(), 0)
+        bosung = self.dist / "TapDoc-bosung-2026-11-10.zip"
+        with zipfile.ZipFile(bosung) as z:
+            self.assertEqual(sorted(z.namelist()), [
+                "Resources/audio/am_b.mp3", "Resources/audio/am_b.mp3.meta",
+                "Resources/audio/am_c.mp3", "Resources/audio/am_c.mp3.meta",
+                "bosung.json", "clips/img_b299_dien.mp4"])
+            info = json.loads(z.read("bosung.json"))
+        self.assertEqual(info["goc"], self.package.name)
+        self.assertEqual(info["xoa"], [])
+        lock = json.loads(self.lock.read_text(encoding="utf-8"))
+        self.assertEqual(lock["package"], self.package.name)
+        self.assertEqual(lock["bosung"], [bosung.name])
+        self.assertEqual(sorted(lock["files"]), ["audio/am_b.mp3", "audio/am_c.mp3"])
+        self.assertIsNone(run_unity_media.describe(run_unity_media.compare(self.res, self.lock)))
+
+    def test_bosung_records_deleted_media(self):
+        self.write_base()
+        (self.res / "audio/am_b.mp3").unlink()
+        (self.res / "audio/am_b.mp3.meta").unlink()
+        self.assertEqual(run_unity_media.pack_bosung(), 0)
+        with zipfile.ZipFile(self.dist / "TapDoc-bosung-2026-11-02.zip") as z:
+            self.assertEqual(json.loads(z.read("bosung.json"))["xoa"], ["audio/am_b.mp3"])
+
+    def test_bosung_second_run_gets_new_name_and_skips_clips_already_sent(self):
+        self.write_base()
+        (self.clips / "img_b299_dien.mp4").write_bytes(b"mp4")
+        self.assertEqual(run_unity_media.pack_bosung(), 0)
+        (self.res / "audio/am_b.mp3").write_bytes(b"mp3 moi")
+        self.assertEqual(run_unity_media.pack_bosung(), 0)
+        with zipfile.ZipFile(self.dist / "TapDoc-bosung-2026-11-02-2.zip") as z:
+            self.assertNotIn("clips/img_b299_dien.mp4", z.namelist())
+        lock = json.loads(self.lock.read_text(encoding="utf-8"))
+        self.assertEqual(lock["bosung"], ["TapDoc-bosung-2026-11-02.zip", "TapDoc-bosung-2026-11-02-2.zip"])
+
+    def test_bosung_refuses_changed_media_without_meta(self):
+        self.write_base()
+        (self.res / "audio/am_c.mp3").write_bytes(b"mp3")
+        before = self.lock.read_text(encoding="utf-8")
+        self.assertEqual(run_unity_media.pack_bosung(), 1)
+        self.assertEqual(self.lock.read_text(encoding="utf-8"), before)
+        self.assertEqual(list(self.dist.glob("TapDoc-bosung-*")), [])
+
+    def test_bosung_nothing_changed_makes_no_zip(self):
+        self.write_base()
+        self.assertEqual(run_unity_media.pack_bosung(), 0)
+        self.assertEqual(list(self.dist.glob("TapDoc-bosung-*")), [])
+
+    def test_bosung_needs_lock_and_base_clips(self):
+        self.assertEqual(run_unity_media.pack_bosung(), 1)
+        self.dist.mkdir()
+        run_unity_media.write_lock(self.res, self.lock, self.package.name)
+        self.assertEqual(run_unity_media.pack_bosung(), 1)
+
+    def test_unpack_applies_bosung_after_package(self):
+        self.dist.mkdir()
+        self.package.write_bytes(b"unitypackage")
+        (self.res / "audio/am_x.mp3").write_bytes(b"cu")
+        (self.res / "audio/am_x.mp3.meta").write_text("guid: 9", encoding="utf-8")
+        bosung = self.dist / "TapDoc-bosung-2026-11-10.zip"
+        with zipfile.ZipFile(bosung, "w") as z:
+            z.writestr("bosung.json", json.dumps({"goc": self.package.name, "xoa": ["audio/am_x.mp3"]}))
+            z.writestr("Resources/audio/am_b.mp3", b"mp3 moi")
+            z.writestr("Resources/audio/am_b.mp3.meta", "guid: 1")
+            z.writestr("clips/img_b299_dien.mp4", b"mp4")
+        with patch("run_unity_media.subprocess.run", return_value=Mock(returncode=0)):
+            self.assertEqual(run_unity_media.unpack(self.package, None, bosung=[bosung]), 0)
+        self.assertEqual((self.res / "audio/am_b.mp3").read_bytes(), b"mp3 moi")
+        self.assertTrue((self.clips / "img_b299_dien.mp4").is_file())
+        self.assertFalse((self.res / "audio/am_x.mp3").exists())
+        self.assertFalse((self.res / "audio/am_x.mp3.meta").exists())
+
+    def test_unpack_rejects_bosung_path_outside_project(self):
+        self.dist.mkdir()
+        self.package.write_bytes(b"unitypackage")
+        bosung = self.dist / "TapDoc-bosung-2026-11-10.zip"
+        with zipfile.ZipFile(bosung, "w") as z:
+            z.writestr("bosung.json", json.dumps({"goc": self.package.name, "xoa": []}))
+            z.writestr("Resources/../../ngoai.txt", b"x")
+        with patch("run_unity_media.subprocess.run", return_value=Mock(returncode=0)):
+            self.assertEqual(run_unity_media.unpack(self.package, None, bosung=[bosung]), 1)
+        self.assertFalse((self.res.parent / "ngoai.txt").exists())
+
     def test_unpack_missing_package(self):
         with patch("run_unity_media.subprocess.run") as run:
             self.assertEqual(run_unity_media.unpack(self.dist / "khong_co.unitypackage", None), 1)
