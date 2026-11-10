@@ -19,7 +19,8 @@ from tapdoc.tts_settings import effective_params, load_settings, save_settings, 
 
 IDS = (Path(__file__).parent / "l1_nang_e_ids.txt").read_text(encoding="utf-8").split()
 CACHE = ROOT / "content/tts/pitch_cache"
-NOTE_TAG = "Rà soát thanh nặng/âm ê 10/11"
+STOPS = ("p", "t", "c", "ch")
+NOTE_TAG ="Rà soát thanh nặng/âm ê 10/11"
 DONE_BY_OWNER = {"tieng_nuj": "chủ dự án chọn bản 5 \"nụ hoa.\" trên trang nghe thử"}
 
 
@@ -48,6 +49,10 @@ def main(write: bool) -> None:
             odd[i] = f"cao độ đo ra như thanh {best}"
         elif tone in ("hoi", "nga") and best not in ("hoi", "nga"):
             odd[i] = f"cao độ đo ra như thanh {best}"
+        elif tone == "ngang" and by_id[i]["text"].endswith(STOPS) and best in ("ngang", "sac"):
+            pass  # vần tắc không dấu (êt, mêt): khi đọc vốn cao như sắc
+        elif tone == "huyen" and best in ("huyen", "nang"):
+            pass  # cao độ không tách được huyền với nặng
         elif tone in ("ngang", "sac", "huyen") and best != tone:
             odd[i] = f"cao độ đo ra như thanh {best}"
     print(f"đã có bản mới {len(done)}/{len(IDS)}; đo {len(single)}; lạ {len(odd)}")
@@ -55,11 +60,20 @@ def main(write: bool) -> None:
         print(f"  lạ {i} ({by_id[i]['text']}): {why}")
     if not write:
         return
+    prev_dir = ROOT / "content/tts/prev"
+    same = {i for i in done if (prev_dir / f"{i}.mp3").is_file()
+            and (prev_dir / f"{i}.mp3").read_bytes() == (audio / f"{i}.mp3").read_bytes()}
+    print(f"trùng từng byte với bản cũ: {len(same)}")
     for k, r in enumerate(rows):
         if r["id"] not in done or NOTE_TAG in (r.get("ghi_chu") or ""):
             continue
         p = effective_params(settings, r)
-        if r["id"] in odd:
+        if r["id"] in same:
+            why = f" Đo: {odd[r['id']]}." if r["id"] in odd else ""
+            note = (f"{NOTE_TAG}: đọc \"{p.doc}\" rồi giữ tiếng đầu ra file TRÙNG từng byte với bản cũ "
+                    f"(edge-tts tạo từng câu riêng nên câu đầu = đọc tiếng trần) — âm thanh không đổi.{why} "
+                    "Nếu nghe vẫn sai thì cần đặt trong ngữ cảnh như \"nụ hoa.\". Chờ nghe xác nhận.")
+        elif r["id"] in odd:
             r = rows[k] = restore_previous(r, settings, audio, ROOT / "content/tts/prev")
             note = f"{NOTE_TAG}: bản mới ({p.doc}) đo lạ — {odd[r['id']]} → giữ bản cũ. Chờ nghe xác nhận."
         elif r["id"] in DONE_BY_OWNER:

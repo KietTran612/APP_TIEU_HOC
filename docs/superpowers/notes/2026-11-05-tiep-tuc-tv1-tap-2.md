@@ -2,34 +2,13 @@
 
 Đọc file này trước khi làm tiếp. Thiết kế: [2026-11-05-tv1-tap-2-design.md](../specs/2026-11-05-tv1-tap-2-design.md); kế hoạch: [2026-11-05-tv1-tap-2.md](../plans/2026-11-05-tv1-tap-2.md). Cách làm âm thanh chuẩn: `QUY-TRINH-LAM-VIEC.md` mục 6 và 12.
 
-## 0. Dừng giữa chừng khi chuyển máy (10/11, khoảng 09:10)
+## 0. Đợt thanh nặng và âm ê lớp 1 — XONG (10/11, chạy tiếp trên máy cũ)
 
-Đợt **thanh nặng và âm ê ở tiếng lẻ lớp 1** đang chạy thì dừng gọn (không còn lệnh `tts` nào chạy, danh mục và `settings.json` đọc được bình thường).
-
-**Rất quan trọng — dữ liệu chưa commit, phải mang sang máy mới:** `content/tts/settings.json` (overrides của mọi đợt sửa: `keep_first`, `join`, ngắt nhẹ, đọc chậm) và `content/manifests/audio_manifest.json` (trạng thái `cho_duyet`, ghi chú từng mã) ở working copy đều **chưa commit** vì lẫn kết quả duyệt của chủ dự án. Trong index hai file này còn có phần đã stage sẵn (không phải của session lớp 1). File mp3 mới và bản cũ trong `content/tts/prev/` cũng chỉ có trên máy này (đi theo gói media hoặc chép tay). Mất `settings.json` thì lệnh `tts` sẽ tạo lại theo cấu hình cũ.
-
-Tình trạng:
-
-| Việc | Tới đâu |
-|---|---|
-| Tạo lại thanh nặng + ê (390 mã, danh sách `tools/scripts/l1_nang_e_ids.txt`, cấu hình đã ghi trong `settings.json`) | **116/390 đã có bản mới, còn 274** (gồm cả mụ, nụ, đàn, một, cau_b16_02) |
-| "mụ" | Cấu hình `"mụ già."` + `keep_first`; cách cắt mới (fe46139) không giữ đầu tiếng "già". Chưa tạo lại — nằm trong 274 mã |
-| "nụ" | Chủ dự án chọn bản 5 `"nụ hoa."` + `keep_first`; nằm trong 274 mã |
-| `cau_b16_02` "bé bá cổ bà." | Chủ dự án chọn bản 2 `"bé, bá cổ bà."` tốc độ −25%. Cấu hình đã đổi; file hiện là bản ghép (cài sáng 10/11), sẽ được tạo lại trong 274 mã |
-| `cau_b97_02`, `cau_b160_04` | Ghép mượt sau khi "một" và "đàn" có bản mới: `tools/scripts/l1_ghep_2_cau.py` |
-| 3 mã đo lạ trong 116 mã đã tạo | ạch, ặp, kịch — `l1_kiem_nang_e.py --ghi` sẽ trả bản cũ và ghi chú |
-| Ghi chú "chờ nghe xác nhận" cho đợt nặng/ê | Chưa ghi — `l1_kiem_nang_e.py --ghi` làm |
-
-Chạy tiếp trên máy mới (từ thư mục `tools`, **chỉ 1 tiến trình tạo giọng**; lớp 2 đang chạy song song thì để ý tỉ lệ lỗi):
-
-```
-python scripts/regen_runner.py scripts/l1_nang_e_ids.txt ../.superpowers/regen_l1.log 4
-python scripts/l1_kiem_nang_e.py            # xem trước mã lạ
-python scripts/l1_kiem_nang_e.py --ghi      # trả bản cũ cho mã lạ, ghi chú, lưu danh mục
-python scripts/l1_ghep_2_cau.py             # ghép 2 câu còn khó
-```
-
-`regen_runner.py` hỏi `tts --thu` đầu mỗi lượt nên bị tắt giữa chừng thì chạy lại là tiếp từ chỗ dở; log mỗi mã một dòng. Xong hết thì báo root tổng số mã đã đổi và báo session L2 để đóng gói media chung hai lớp (lớp 1 không đóng gói riêng).
+- Tạo lại đủ 390/390 mã (`tools/scripts/l1_nang_e_ids.txt`), ghép mượt 2 câu `cau_b97_02`, `cau_b160_04`. Mọi mã `cho_duyet`, ghi chú "Rà soát thanh nặng/âm ê 10/11 … Chờ nghe xác nhận".
+- **Chỉ 120 file mp3 thật sự đổi** (danh sách `tools/scripts/l1_mp3_doi_1011.txt`, cần đóng gói bổ sung lên Drive). 272 mã đọc "X. X." + `keep_first` ra file **trùng từng byte** với bản cũ đọc "X" trần (edge-tts tạo từng câu riêng) — ghi chú nói rõ "âm thanh không đổi". Xem `QUY-TRINH-LAM-VIEC.md` mục 12.
+- Đổi thật: mụ ("mụ già."), nụ ("nụ hoa."), đàn ("đàn, đàn."), câu b16_02 ("bé, bá cổ bà." −25%), các tiếng ê và hỏi/ngã đọc dấu phẩy. "một" không đổi (trùng bản cũ) nên 2 câu ghép dùng bản "một" hiện có.
+- Đo lại: 4 mã đo lạ (ạch, ặp — không đo được cao độ; kịch, sạch — đo ra như ngang) đều trùng bản cũ, chỉ ghi chú. Câu b16_02 đạt tiêu chí trong câu; các tiếng thành phần của 2 câu ghép đo khớp thanh.
+- Việc tiếp nếu chủ dự án nghe thấy tiếng nặng còn sai: đặt trong ngữ cảnh như "nụ hoa." rồi `keep_first` (không dùng dấu chấm).
 
 ## 0b. Đã làm trong đợt rà soát âm thanh 09/11 (chờ chủ dự án nghe trong tool duyệt)
 

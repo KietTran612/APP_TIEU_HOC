@@ -168,7 +168,7 @@ Chi tiết đầy đủ ở `content/style/tranh_dong_huong_dan.md`: tài khoả
   | Lỗi | Cách sửa |
   |---|---|
   | Tiếng lẻ thanh hỏi, ngã bị đọc thành thanh huyền | Đọc "X, X." rồi chỉ giữ tiếng đầu (`keep_first`, cờ `--tieng-keep-first`). Vẫn sai thì đọc 3 lần "X, X, X.". Áp cho mọi tiếng lẻ mới ngay từ đầu |
-  | Tiếng lẻ thanh nặng | Máy chưa đo được lỗi. Chủ dự án chọn bằng tai: "bạ" đạt với hai câu "X. X." giữ tiếng đầu; "nụ" đạt khi đặt trong ngữ cảnh "nụ hoa." rồi giữ tiếng đầu. Mặc định áp "X. X."; tiếng nào vẫn sai thì thử đặt trong ngữ cảnh |
+  | Tiếng lẻ thanh nặng | Máy chưa đo được lỗi. Chủ dự án chọn bằng tai: "bạ" đạt với hai câu "X. X." giữ tiếng đầu; "nụ" đạt khi đặt trong ngữ cảnh "nụ hoa." rồi giữ tiếng đầu. **Lưu ý (10/11):** "X. X." giữ tiếng đầu ra file trùng từng byte với đọc "X" trần (xem mục 12), nên chỉ đổi được tiếng mà bản cũ không phải "X" trần. Tiếng nào nghe vẫn sai thì phải đặt trong ngữ cảnh |
   | Tiếng lẻ có âm ê | Máy chưa đo được lỗi. Chủ dự án chọn bằng tai: ê thanh sắc đọc 3 lần "X, X, X." ("ế"), hoặc "X, X." chậm −40% ("tế"); các thanh khác "X, X." giữ tiếng đầu |
   | Mã khó còn lại | Tạo nhiều bản, để chủ dự án chọn bằng tai trên trang nghe thử (`.superpowers/nghe-thu/`), rồi áp cách thắng cho cả nhóm |
   | Hỏi, ngã nằm trong từ hoặc câu | Theo thứ tự ở dưới |
@@ -337,3 +337,4 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Bài lớp 2 câu dài: thẻ, dòng câu hỏi, tên bài tràn chữ trên máy nhỏ | Test đi hết mọi bước ở 1600×720 và 1440×1080 và test mọi thẻ không tràn; màn có nhiều dòng thì chia trang; tên bài trên thẻ rút gọn (ví dụ "Quan sát tranh: …"), bước tên bài trong bài giữ đủ như sách | 09/11, 761444a |
 | Session con biến mất khỏi thanh bên | Không ghim session root: mục "Đã ghim" đang thu gọn sẽ giấu luôn mọi session con | 09/11 |
 | Thanh bên không chia nhóm được session con | Dùng tiền tố tên `[L1]`, `[L2]`, `[Chung]` | 09/11 |
+| Sửa tiếng lẻ bằng "X. X." (dấu chấm) + `keep_first` không đổi được gì: 207/210 tiếng nặng ra file trùng từng byte với bản đọc "X" trần, vì edge-tts tạo từng câu riêng | Trước khi ghi là "đã sửa", so file mới với bản trong `prev` (trùng byte = chưa đổi). Muốn đổi cách đọc tiếng lẻ thì dùng dấu phẩy ("X, X.") hoặc đặt trong ngữ cảnh ("nụ hoa."), không dùng dấu chấm | 10/11 |
