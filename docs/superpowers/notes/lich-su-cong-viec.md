@@ -10,6 +10,14 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ---
 
+## 10/11/2026 (chiều) — làm tiếp trên máy cũ
+
+Chủ dự án cho làm tiếp các việc dở trong bảng B11 trước khi chuyển máy. Phần mới sẽ đưa lên Drive bằng gói bổ sung.
+- **Root:** thêm lệnh `run_unity_media.py bosung` (ca1edeb). Lệnh chỉ gói tranh, âm thanh (kèm `.meta`) và clip đổi so với khoá. `unpack --bosung` nhập gói bổ sung sau gói chính. Test `test_run_unity_media`, `test_media_lock`: 20/20 đạt.
+- **[L2] tranh động:** chủ dự án cho tải. Clip b299 (đường dây điện) đã vào `content/clips`, 1280×720, 7,9 giây (d553b83). TV2 tập một đủ 57/57 clip, tổng 400 clip. Chờ duyệt.
+- **[L1] nội dung:** đang tạo lại 274 âm thanh thanh nặng và âm ê.
+- **[L2] nội dung:** đã chuẩn bị 1.718 mã, chờ [L1] xong mới tạo giọng.
+
 ## 10/11/2026
 
 **Root:** chủ dự án cho tạm dừng mọi session để chuyển sang máy mới.
