@@ -9,7 +9,7 @@
 | Nội dung | Đủ 133 mục (172–304) `page_verified`, `validate --allow-missing` OK |
 | Công cụ, Unity | Xong; test liên quan đạt, smoke 133 mục đạt |
 | Tranh | Đủ 57 tranh + `img_chung_giai_nghia` đã nhập (447cf3e, d239be1, d7bbff2, 957e711), `cho_duyet`; validate không còn lỗi tranh. Ghi chú duyệt: b190 cô bé mặc áo hoa (không phải áo bông), b268 chọn bản có thuyền chở cá, b274 hai cô gái không đội nón |
-| Tranh động | 27 clip mục 172–230 (28fe7be) + 29 clip mục 235–298 (a0662f8), chờ duyệt; còn thiếu 1 clip img_b299_dduwowngf_daay_ddieenj (Flow hết credit 9/11) — đóng gói media sau khi có clip này và đủ âm thanh |
+| Tranh động | Đủ 57/57 clip (28fe7be, a0662f8, b299 ở d553b83 ngày 10/11), `cho_duyet` — chờ đóng gói cùng âm thanh |
 | Âm thanh | **Dừng 10/11 09:10 (chủ dự án chuyển máy).** Mã chỉ thuộc lớp 2: 3334; đã có file 1623 (`cho_duyet`), còn **1711 `chua_co`** (886 từ, 343 tiếng, 326 câu, 148 câu hỏi, 15 hướng dẫn) + 7 mã cần tạo lại vì đổi cách đọc → lượt tới chọn 1718 mã. Lượt 10/11 chỉ kịp 8 trong 1726 mã. Dòng danh mục và 140 cách đọc riêng của lớp 2 đã commit; **file mp3 chỉ có trên máy cũ** (`unity/TapDoc/Assets/Content/Resources/audio/`) — đi qua gói media root đóng |
 | Gói media | Chưa đóng (chờ tranh và âm thanh) |
 
