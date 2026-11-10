@@ -7,12 +7,12 @@
 | Phần | Trạng thái |
 |---|---|
 | Luật quyển, bài (`BookShelf`) | Xong (c71d0bb) |
-| Biểu tượng Tủ sách, bìa tạm `img_bia_<book_id>` | Xong (992eb8c). PNG chỉ có trên máy này, đóng gói cùng Tập 2 |
+| Biểu tượng Tủ sách `img_ui_tu_sach`, bìa tạm `img_bia_<book_id>` | Xong (992eb8c). Xem mục 5: PNG chưa vào gói Drive |
 | Màn Tủ sách, danh sách theo quyển, bỏ tab Lớp 1/Lớp 2 | Xong (445e91b) |
 | Học xong quyển → về Tủ sách, quyển mới có hiệu ứng mở khoá | Xong (fedd386) |
 | Sổ bé ngoan, Ôn lại, tiến độ Phụ huynh theo quyển | Xong (9b7bc49) |
 | Review độc lập | Không có lỗi nghiêm trọng/quan trọng; đã sửa các mục nhỏ đáng làm (30b6622); vạch kệ đè dòng "Đã học" — đã hạ dòng chữ |
-| Ảnh bìa chính thức (ChatGPT) | Xong 9/11: 3 bìa 600×800 đã nhập, `cho_duyet`; dòng danh mục đã commit, PNG đóng gói cùng Tập 2 |
+| Ảnh bìa chính thức (ChatGPT) | Xong 9/11: 3 bìa 600×800 đã nhập, `cho_duyet`; dòng danh mục đã commit (916a3ca). Xem mục 5: PNG chưa vào gói Drive |
 | Tên quyển | Chủ dự án đổi 9/11: "Bé tập đọc 1/2/3" (không dùng tên sách gốc) — `content/books.json`, `index.json` |
 | Test all | Chưa chạy (chờ chủ dự án nói "test all") |
 
@@ -48,3 +48,19 @@
 - `LayoutProbe` không kiểm chồng lấn giữa các phần tử: dòng tiến độ Phụ huynh từng bị nút "Mở mọi bài" che, vạch kệ từng đè dòng "Đã học x/y bài", mà test vẫn xanh. Màn có chữ cạnh nút thì thêm assert không chồng lấn (xem `Parent_ProgressPerBook`) và luôn xem ảnh chụp.
 - Danh sách bài: tính trạng thái mở khoá một lần cho cả quyển, không gọi `BookShelf.IsLessonUnlocked` cho từng thẻ (mỗi lần gọi duyệt lại cả quyển trước).
 - Test cần nguồn ảnh giả riêng thì bọc `AppRoot.SourceFactory` sau `UseStubsForMissingAssets()` để TearDown dọn.
+
+## 5. Ảnh chờ duyệt và cần đóng gói (cập nhật 10/11, trước khi chuyển máy)
+
+Gói media mới nhất (746792b, 09/11 sáng) **không có** 4 ảnh dưới đây; chúng chỉ nằm trên máy cũ, trong `unity/TapDoc/Assets/Content/Resources/images/` (kèm file `.meta`):
+
+| Ảnh | Trạng thái | Ghi chú |
+|---|---|---|
+| `img_bia_tv1_t1_1990.png` | `cho_duyet` | Bìa "Bé tập đọc 1": bé viết "a ă â b c" tay phải |
+| `img_bia_tv1_t2_1996.png` | `cho_duyet` | Bìa "Bé tập đọc 2": bé gái đọc truyện dưới cây bàng |
+| `img_bia_tv2_t1_2001.png` | `cho_duyet` | Bìa "Bé tập đọc 3": hai bạn đi học, không nắm tay |
+| `img_ui_tu_sach.png` | `cho_duyet` (hình tạm vẽ bằng Python) | Biểu tượng nút Tủ sách |
+
+- **Trước khi rời máy cũ:** chạy `python tools/run_unity_media.py pack` (đóng Unity trước), commit `content/manifests/media_lock.json`, đưa gói lên Drive. Trên máy mới, `unpack` rồi kiểm 4 file trên có mặt.
+- Nếu lỡ mất: bìa tải lại từ ChatGPT (project Kiet_1, chat "Tạo tranh bìa sách"; lấy bản **cuối cùng** của mỗi bìa), thu nhỏ 600×800, `python -m tapdoc import-image <file> img_bia_<book_id>`. Biểu tượng Tủ sách sinh lại bằng `python -m tapdoc ui-icons` (không `--force`); lệnh này cũng sinh bìa tạm nếu thiếu bìa — khi đó phải nhập lại bìa thật.
+- Biểu tượng bánh răng `img_ui_cai_dat` đã có trong gói 746792b.
+- Chủ dự án duyệt ảnh: 3 bìa và biểu tượng Tủ sách (hình tạm; có thể vẽ chính thức bằng ChatGPT như các biểu tượng khác).

@@ -18,11 +18,7 @@
 
 ## Việc còn lại
 
-1. **Đóng gói biểu tượng bánh răng** (chủ dự án chốt 05/11: chờ Tập 2 xong rồi đóng gói chung). File hình mới chỉ có trên máy này, chưa vào gói Drive. Lệnh `tools/run_unity_media.py pack` gom mọi tranh trên máy, kể cả tranh Tập 2 đang làm dở của session khác. Danh mục `content/manifests/image_manifest.json` cũng đang có thay đổi chưa commit của họ. Cần chọn lúc phối hợp để:
-   - thêm mục `img_ui_cai_dat` vào danh mục;
-   - chạy lệnh đóng gói;
-   - commit `media_lock.json`;
-   - đưa gói lên Drive.
+1. ~~Đóng gói biểu tượng bánh răng~~ — xong: `img_ui_cai_dat` có trong gói media 746792b (09/11), dòng danh mục commit 916a3ca (10/11 kiểm lại).
 2. **Vẽ biểu tượng bánh răng chính thức** bằng ChatGPT theo phong cách các biểu tượng khác.
 3. **Tên app chính thức:** đổi `UiText.AppTitle` là màn mở đầu và Cài đặt đổi theo.
 4. **Để tới lúc phát hành (đã ghi chú, chưa làm):**
