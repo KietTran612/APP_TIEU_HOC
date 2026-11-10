@@ -30,7 +30,7 @@ Gói nằm ở thư mục `BoABa-chuyen-may-2026-11-10/`, cạnh repo trên máy
 
 Nên đặt đúng đường dẫn cũ `C:\Source\AURA\APP_TIEU_HOC`, để ghi chú và bộ nhớ khớp đường dẫn.
 
-- **Có mạng:** `git clone https://github.com/KietTran612/APP_TIEU_HOC.git C:\Source\AURA\APP_TIEU_HOC`. Lúc đóng gói còn 9 commit chưa push: chủ dự án push trên máy cũ trước khi rời, hoặc dùng bundle bên dưới (bundle có đủ mọi commit).
+- **Có mạng:** `git clone https://github.com/KietTran612/APP_TIEU_HOC.git C:\Source\AURA\APP_TIEU_HOC`. Lúc đóng gói còn một số commit chưa push (số ghi trong `<gói>/repo/COMMIT.txt`): chủ dự án push trên máy cũ trước khi rời, hoặc dùng bundle bên dưới (bundle có đủ mọi commit).
 - **Không có mạng hoặc muốn chắc chắn:** `git clone <gói>/repo/APP_TIEU_HOC.bundle C:\Source\AURA\APP_TIEU_HOC`, rồi `git remote set-url origin https://github.com/KietTran612/APP_TIEU_HOC.git`.
 - Kiểm tra: `git log --oneline -1` phải trùng commit ghi trong `<gói>/repo/COMMIT.txt`.
 
