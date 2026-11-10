@@ -44,7 +44,8 @@
   },
   "overrides": {
     "am_c": {
-      "pitch": -5
+      "pitch": -5,
+      "rate": -35
     },
     "am_ch": {
       "pitch": -5
@@ -53,15 +54,3560 @@
       "pitch": -5,
       "rate": -35
     },
-    "am_h": {
-      "pitch": -5
-    },
     "tenchu_t": {
       "doc": "Tê"
     },
     "tu_of_os_o_o": {
-      "doc": "ò ó o... o",
-      "rate": 0
+      "doc": "ò ó o,   o",
+      "rate": -25
+    },
+    "tieng_co": {
+      "rate": -30
+    },
+    "van_o": {
+      "rate": -35
+    },
+    "hd_b02_tranh_01": {
+      "rate": -20
+    },
+    "tu_con_cof": {
+      "rate": -20
+    },
+    "van_a": {
+      "rate": -35
+    },
+    "tu_cais_ca": {
+      "rate": -20
+    },
+    "hd_b03_tranh_01": {
+      "rate": -20
+    },
+    "hd_b03_tranh_02": {
+      "rate": -20
+    },
+    "tieng_baf": {
+      "rate": -30
+    },
+    "dau_huyen": {
+      "doc": "dấu huyền"
+    },
+    "tieng_ca": {
+      "rate": -30
+    },
+    "tieng_caf": {
+      "rate": -30
+    },
+    "dau_sac": {
+      "doc": "dấu sắc"
+    },
+    "tieng_cas": {
+      "rate": -30
+    },
+    "hd_b04_tranh_01": {
+      "doc": "Các bạn đang múa"
+    },
+    "tu_cos_caf": {
+      "rate": -25
+    },
+    "tieng_cos": {
+      "rate": -30
+    },
+    "tu_cos_cas": {
+      "rate": -20
+    },
+    "tieng_as": {
+      "rate": -30
+    },
+    "tieng_af": {
+      "rate": -35
+    },
+    "tu_cawpj_da": {
+      "rate": -20
+    },
+    "tieng_da": {
+      "rate": -30
+    },
+    "tenchu_dd": {
+      "rate": -35
+    },
+    "tu_caay_dda": {
+      "rate": -20
+    },
+    "hd_b05_tranh_01": {
+      "rate": -20
+    },
+    "hd_b05_tranh_02": {
+      "rate": -20
+    },
+    "tieng_ddof": {
+      "rate": -30
+    },
+    "tieng_ddo": {
+      "rate": -29
+    },
+    "tieng_os": {
+      "rate": -28
+    },
+    "tieng_of": {
+      "rate": -28
+    },
+    "tu_con_ddof": {
+      "rate": -19
+    },
+    "dau_hoi": {
+      "doc": "dấu hỏi"
+    },
+    "tieng_cor": {
+      "rate": -30
+    },
+    "dau_nga": {
+      "doc": "dấu ngã"
+    },
+    "tieng_ngax": {
+      "rate": -30,
+      "doc": "ngả"
+    },
+    "dau_nang": {
+      "doc": "dấu nặng"
+    },
+    "tieng_coj": {
+      "rate": -30
+    },
+    "tieng_ddoj": {
+      "rate": -29
+    },
+    "tieng_ddox": {
+      "doc": "đỏ",
+      "pitch": -10,
+      "rate": -30
+    },
+    "tieng_cof": {
+      "rate": -30
+    },
+    "tu_ddo_ddor": {
+      "rate": -20
+    },
+    "tieng_daj": {
+      "rate": -30
+    },
+    "tieng_or": {
+      "rate": -30
+    },
+    "tieng_oj": {
+      "rate": -30
+    },
+    "tieng_car": {
+      "rate": -30
+    },
+    "tieng_aj": {
+      "rate": -20,
+      "pitch": -5
+    },
+    "tieng_daf": {
+      "rate": -29
+    },
+    "van_oo": {
+      "rate": -35
+    },
+    "tu_cais_oo": {
+      "rate": -20
+    },
+    "van_ow": {
+      "rate": -35
+    },
+    "tieng_coo": {
+      "rate": -30
+    },
+    "tieng_coor": {
+      "rate": -30
+    },
+    "tieng_cows": {
+      "pitch": -5,
+      "rate": -30
+    },
+    "tieng_doo": {
+      "rate": -30
+    },
+    "tu_cas_cowf": {
+      "rate": -20
+    },
+    "tieng_owf": {
+      "pitch": -3,
+      "rate": -30
+    },
+    "tu_cais_dde": {
+      "rate": -20
+    },
+    "tieng_dee": {
+      "rate": -30
+    },
+    "hd_b09_tranh_02": {
+      "rate": -20
+    },
+    "tu_e_def": {
+      "rate": -20
+    },
+    "tieng_def": {
+      "pitch": -2
+    },
+    "tu_ddi_ddof": {
+      "rate": -20
+    },
+    "hd_b10_tranh_01": {
+      "doc": "Đây là hai viên bi."
+    },
+    "tieng_tis": {
+      "pitch": 1
+    },
+    "tieng_te": {
+      "pitch": -1
+    },
+    "tu_quar_mow": {
+      "rate": -20
+    },
+    "van_u": {
+      "rate": -35
+    },
+    "tieng_ddu": {
+      "rate": -30
+    },
+    "van_uw": {
+      "rate": -32
+    },
+    "tu_cuwr_taj": {
+      "rate": -20
+    },
+    "tu_cur_tuwf": {
+      "rate": -20
+    },
+    "tieng_uwf": {
+      "rate": -30,
+      "pitch": -1
+    },
+    "tieng_uf": {
+      "rate": -30,
+      "pitch": -2,
+      "volume": 3
+    },
+    "tieng_tus": {
+      "pitch": -1,
+      "rate": -27
+    },
+    "tieng_loj": {
+      "pitch": -4
+    },
+    "tieng_bof": {
+      "rate": -30,
+      "pitch": -1
+    },
+    "tieng_bes": {
+      "rate": -30
+    },
+    "tu_tof_vof": {
+      "rate": -20
+    },
+    "tieng_hee": {
+      "pitch": -3
+    },
+    "tieng_har": {
+      "pitch": 2
+    },
+    "tu_las_hej": {
+      "pitch": -2,
+      "rate": -20
+    },
+    "am_kh": {
+      "pitch": -2
+    },
+    "tieng_khees": {
+      "pitch": 1,
+      "rate": -27
+    },
+    "tu_ker_vowr": {
+      "rate": -19,
+      "pitch": 2
+    },
+    "tieng_ke": {
+      "rate": -28
+    },
+    "tieng_her": {
+      "pitch": 2
+    },
+    "am_h": {
+      "doc": "hờ. hờ.",
+      "keep_first": true
+    },
+    "tieng_baj": {
+      "doc": "bạ. bạ.",
+      "keep_first": true
+    },
+    "tieng_cur": {
+      "doc": "củ, củ.",
+      "keep_first": true
+    },
+    "tieng_cuwr": {
+      "doc": "cử, cử.",
+      "keep_first": true
+    },
+    "tieng_ddax": {
+      "doc": "đã, đã.",
+      "keep_first": true
+    },
+    "tieng_ddoox": {
+      "doc": "đỗ, đỗ.",
+      "keep_first": true
+    },
+    "tieng_ddur": {
+      "doc": "đủ, đủ.",
+      "keep_first": true
+    },
+    "tieng_dees": {
+      "doc": "dế, dế.",
+      "keep_first": true
+    },
+    "tieng_doox": {
+      "doc": "dỗ, dỗ.",
+      "keep_first": true
+    },
+    "tieng_dowr": {
+      "doc": "dở, dở.",
+      "keep_first": true
+    },
+    "tieng_eer": {
+      "doc": "ể, ể.",
+      "keep_first": true
+    },
+    "tieng_ees": {
+      "doc": "ế, ế, ế.",
+      "keep_first": true
+    },
+    "tieng_hir": {
+      "doc": "hỉ, hỉ.",
+      "keep_first": true
+    },
+    "tieng_khir": {
+      "doc": "khỉ, khỉ.",
+      "keep_first": true
+    },
+    "tieng_laj": {
+      "doc": "lạ, lạ.",
+      "keep_first": true
+    },
+    "tieng_lex": {
+      "doc": "lẽ, lẽ.",
+      "keep_first": true
+    },
+    "tieng_deex": {
+      "doc": "dễ, dễ.",
+      "keep_first": true
+    },
+    "tieng_khex": {
+      "doc": "khẽ, khẽ.",
+      "keep_first": true
+    },
+    "tieng_mir": {
+      "doc": "mỉ, mỉ.",
+      "keep_first": true
+    },
+    "tieng_mowx": {
+      "doc": "mỡ, mỡ.",
+      "keep_first": true
+    },
+    "tieng_muj": {
+      "doc": "mụ già.",
+      "keep_first": true
+    },
+    "tieng_nee": {
+      "doc": "nê, nê.",
+      "keep_first": true
+    },
+    "tieng_nuj": {
+      "doc": "nụ hoa.",
+      "keep_first": true
+    },
+    "tieng_oor": {
+      "doc": "ổ, ổ.",
+      "keep_first": true
+    },
+    "tieng_tees": {
+      "doc": "tế, tế.",
+      "keep_first": true,
+      "rate": -40
+    },
+    "tieng_tir": {
+      "doc": "tỉ, tỉ.",
+      "keep_first": true
+    },
+    "tieng_vex": {
+      "doc": "vẽ, vẽ.",
+      "keep_first": true
+    },
+    "tieng_voox": {
+      "doc": "vỗ, vỗ.",
+      "keep_first": true
+    },
+    "cau_b16_02": {
+      "doc": "bé, bá cổ bà.",
+      "rate": -25
+    },
+    "tieng_aamx": {
+      "doc": "ẫm, ẫm.",
+      "keep_first": true
+    },
+    "tieng_baix": {
+      "doc": "bãi, bãi.",
+      "keep_first": true
+    },
+    "tieng_caaur": {
+      "doc": "cẩu, cẩu.",
+      "keep_first": true
+    },
+    "tieng_caix": {
+      "doc": "Cãi, Cãi.",
+      "keep_first": true
+    },
+    "tieng_choox": {
+      "doc": "chỗ, chỗ.",
+      "keep_first": true
+    },
+    "tieng_chowr": {
+      "doc": "chở, chở.",
+      "keep_first": true
+    },
+    "tieng_chur": {
+      "doc": "Chủ, Chủ.",
+      "keep_first": true
+    },
+    "tieng_chuwax": {
+      "doc": "chữa, chữa.",
+      "keep_first": true
+    },
+    "tieng_chuwx": {
+      "doc": "chữ, chữ.",
+      "keep_first": true
+    },
+    "tieng_cuwar": {
+      "doc": "cửa, cửa.",
+      "keep_first": true
+    },
+    "tieng_cuwur": {
+      "doc": "cửu, cửu.",
+      "keep_first": true
+    },
+    "tieng_daanx": {
+      "doc": "dẫn, dẫn.",
+      "keep_first": true
+    },
+    "tieng_daix": {
+      "doc": "dãi, dãi.",
+      "keep_first": true
+    },
+    "tieng_ddaamx": {
+      "doc": "đẫm, đẫm.",
+      "keep_first": true
+    },
+    "tieng_ddiax": {
+      "doc": "đĩa, đĩa.",
+      "keep_first": true
+    },
+    "tieng_ddooir": {
+      "doc": "đổi, đổi.",
+      "keep_first": true
+    },
+    "tieng_ddoor": {
+      "doc": "đổ, đổ.",
+      "keep_first": true
+    },
+    "tieng_ddowx": {
+      "doc": "đỡ, đỡ.",
+      "keep_first": true
+    },
+    "tieng_deor": {
+      "doc": "dẻo, dẻo.",
+      "keep_first": true
+    },
+    "tieng_dungx": {
+      "doc": "dũng, dũng.",
+      "keep_first": true
+    },
+    "tieng_er": {
+      "doc": "ẻ, ẻ.",
+      "keep_first": true
+    },
+    "tieng_ghex": {
+      "doc": "ghẽ, ghẽ.",
+      "keep_first": true
+    },
+    "tieng_gioox": {
+      "doc": "giỗ, giỗ.",
+      "keep_first": true
+    },
+    "tieng_giuwax": {
+      "doc": "Giữa, Giữa.",
+      "keep_first": true
+    },
+    "tieng_giuwx": {
+      "doc": "Giữ, Giữ.",
+      "keep_first": true
+    },
+    "tieng_goox": {
+      "doc": "gỗ, gỗ.",
+      "keep_first": true
+    },
+    "tieng_gox": {
+      "doc": "gõ, gõ.",
+      "keep_first": true
+    },
+    "tieng_guwir": {
+      "doc": "gửi, gửi.",
+      "keep_first": true
+    },
+    "tieng_hayx": {
+      "doc": "Hãy, Hãy.",
+      "keep_first": true
+    },
+    "tieng_howix": {
+      "doc": "hỡi, hỡi.",
+      "keep_first": true
+    },
+    "tieng_howr": {
+      "doc": "hở, hở.",
+      "keep_first": true
+    },
+    "tieng_kex": {
+      "doc": "kẽ, kẽ.",
+      "keep_first": true
+    },
+    "tieng_khaaur": {
+      "doc": "khẩu, khẩu.",
+      "keep_first": true
+    },
+    "tieng_kix": {
+      "doc": "kĩ, kĩ.",
+      "keep_first": true
+    },
+    "tieng_leex": {
+      "doc": "lễ, lễ.",
+      "keep_first": true
+    },
+    "tieng_loox": {
+      "doc": "Lỗ, Lỗ.",
+      "keep_first": true
+    },
+    "tieng_luwar": {
+      "doc": "lửa, lửa.",
+      "keep_first": true
+    },
+    "tieng_luwowix": {
+      "doc": "lưỡi, lưỡi.",
+      "keep_first": true
+    },
+    "tieng_luwowux": {
+      "doc": "lưỡu, lưỡu.",
+      "keep_first": true
+    },
+    "tieng_lux": {
+      "doc": "lũ, lũ.",
+      "keep_first": true
+    },
+    "tieng_luyx": {
+      "doc": "lũy, lũy.",
+      "keep_first": true
+    },
+    "tieng_maix": {
+      "doc": "mãi, mãi.",
+      "keep_first": true
+    },
+    "tieng_mooix": {
+      "doc": "Mỗi, Mỗi.",
+      "keep_first": true
+    },
+    "tieng_mowr": {
+      "doc": "mở, mở.",
+      "keep_first": true
+    },
+    "tieng_mox": {
+      "doc": "mõ, mõ.",
+      "keep_first": true
+    },
+    "tieng_muix": {
+      "doc": "mũi, mũi.",
+      "keep_first": true
+    },
+    "tieng_mux": {
+      "doc": "mũ, mũ.",
+      "keep_first": true
+    },
+    "tieng_nair": {
+      "doc": "nải, nải.",
+      "keep_first": true
+    },
+    "tieng_neor": {
+      "doc": "nẻo, nẻo.",
+      "keep_first": true
+    },
+    "tieng_nghiax": {
+      "doc": "Nghĩa, Nghĩa.",
+      "keep_first": true
+    },
+    "tieng_nghir": {
+      "doc": "nghỉ, nghỉ.",
+      "keep_first": true
+    },
+    "tieng_nghix": {
+      "doc": "nghĩ, nghĩ.",
+      "keep_first": true
+    },
+    "tieng_ngox": {
+      "doc": "ngõ, ngõ.",
+      "keep_first": true
+    },
+    "tieng_ngur": {
+      "doc": "ngủ, ngủ.",
+      "keep_first": true
+    },
+    "tieng_nguwir": {
+      "doc": "ngửi, ngửi.",
+      "keep_first": true
+    },
+    "tieng_nhayr": {
+      "doc": "nhảy, nhảy.",
+      "keep_first": true
+    },
+    "tieng_nheex": {
+      "doc": "nhễ, nhễ.",
+      "keep_first": true
+    },
+    "tieng_nhir": {
+      "doc": "nhỉ, nhỉ.",
+      "keep_first": true
+    },
+    "tieng_noor": {
+      "doc": "nổ, nổ.",
+      "keep_first": true
+    },
+    "tieng_nuwax": {
+      "doc": "nữa, nữa.",
+      "keep_first": true
+    },
+    "tieng_oir": {
+      "doc": "ỏi, ỏi.",
+      "keep_first": true
+    },
+    "tieng_ooir": {
+      "doc": "ổi, ổi.",
+      "keep_first": true
+    },
+    "tieng_owir": {
+      "doc": "ởi, ởi.",
+      "keep_first": true
+    },
+    "tieng_owr": {
+      "doc": "ở, ở.",
+      "keep_first": true
+    },
+    "tieng_rox": {
+      "doc": "rõ, rõ.",
+      "keep_first": true
+    },
+    "tieng_rur": {
+      "doc": "rủ, rủ.",
+      "keep_first": true
+    },
+    "tieng_ruwar": {
+      "doc": "rửa, rửa.",
+      "keep_first": true
+    },
+    "tieng_saayr": {
+      "doc": "sẩy, sẩy.",
+      "keep_first": true
+    },
+    "tieng_sex": {
+      "doc": "sẽ, sẽ.",
+      "keep_first": true
+    },
+    "tieng_six": {
+      "doc": "sĩ, sĩ.",
+      "keep_first": true
+    },
+    "tieng_soor": {
+      "doc": "sổ, sổ.",
+      "keep_first": true
+    },
+    "tieng_suwar": {
+      "doc": "Sửa, Sửa.",
+      "keep_first": true
+    },
+    "tieng_thir": {
+      "doc": "thỉ, thỉ.",
+      "keep_first": true
+    },
+    "tieng_thooir": {
+      "doc": "thổi, thổi.",
+      "keep_first": true
+    },
+    "tieng_thowr": {
+      "doc": "thở, thở.",
+      "keep_first": true
+    },
+    "tieng_thuir": {
+      "doc": "thủi, thủi.",
+      "keep_first": true
+    },
+    "tieng_thur": {
+      "doc": "thủ, thủ.",
+      "keep_first": true
+    },
+    "tieng_tieenx": {
+      "doc": "tiễn, tiễn.",
+      "keep_first": true
+    },
+    "tieng_tinhx": {
+      "doc": "tĩnh, tĩnh.",
+      "keep_first": true
+    },
+    "tieng_treex": {
+      "doc": "trễ, trễ.",
+      "keep_first": true
+    },
+    "tieng_triar": {
+      "doc": "trỉa, trỉa.",
+      "keep_first": true
+    },
+    "tieng_triux": {
+      "doc": "trĩu, trĩu.",
+      "keep_first": true
+    },
+    "tieng_uir": {
+      "doc": "ủi, ủi.",
+      "keep_first": true
+    },
+    "tieng_ur": {
+      "doc": "ủ, ủ.",
+      "keep_first": true
+    },
+    "tieng_uwowir": {
+      "doc": "ưởi, ưởi.",
+      "keep_first": true
+    },
+    "tieng_vaayx": {
+      "doc": "vẫy, vẫy.",
+      "keep_first": true
+    },
+    "tieng_viar": {
+      "doc": "Vỉa, Vỉa.",
+      "keep_first": true
+    },
+    "tieng_vowr": {
+      "doc": "Vở, Vở.",
+      "keep_first": true
+    },
+    "tieng_vowx": {
+      "doc": "vỡ, vỡ.",
+      "keep_first": true
+    },
+    "tieng_bij": {
+      "doc": "bị. bị.",
+      "keep_first": true
+    },
+    "tieng_bonj": {
+      "doc": "Bọn. Bọn.",
+      "keep_first": true
+    },
+    "tieng_bowx": {
+      "doc": "bỡ, bỡ.",
+      "keep_first": true
+    },
+    "tieng_buoonf": {
+      "doc": "Buồn, Buồn.",
+      "keep_first": true
+    },
+    "tieng_cawms": {
+      "doc": "Cắm, Cắm.",
+      "keep_first": true
+    },
+    "tieng_chawcs": {
+      "doc": "Chắc, Chắc.",
+      "keep_first": true
+    },
+    "tieng_chif": {
+      "doc": "chì, chì.",
+      "keep_first": true
+    },
+    "tieng_coongj": {
+      "doc": "cộng. cộng.",
+      "keep_first": true
+    },
+    "tieng_coos": {
+      "doc": "cố, cố.",
+      "keep_first": true
+    },
+    "tieng_cuws": {
+      "doc": "Cứ, Cứ.",
+      "keep_first": true
+    },
+    "tieng_cux": {
+      "doc": "cũ, cũ.",
+      "keep_first": true
+    },
+    "tieng_dawnj": {
+      "doc": "dặn. dặn.",
+      "keep_first": true
+    },
+    "tieng_ddangs": {
+      "doc": "đáng, đáng.",
+      "keep_first": true
+    },
+    "tieng_ddieemr": {
+      "doc": "điểm, điểm.",
+      "keep_first": true
+    },
+    "tieng_ddooj": {
+      "doc": "độ. độ.",
+      "keep_first": true
+    },
+    "tieng_dipj": {
+      "doc": "dịp. dịp.",
+      "keep_first": true
+    },
+    "tieng_diuf": {
+      "doc": "dìu, dìu.",
+      "keep_first": true
+    },
+    "tieng_gawngs": {
+      "doc": "gắng, gắng.",
+      "keep_first": true
+    },
+    "tieng_gias": {
+      "doc": "giá, giá.",
+      "keep_first": true
+    },
+    "tieng_hanhf": {
+      "doc": "hành, hành.",
+      "keep_first": true
+    },
+    "tieng_hieenf": {
+      "doc": "Hiền, Hiền.",
+      "keep_first": true
+    },
+    "tieng_hungf": {
+      "doc": "Hùng, Hùng.",
+      "keep_first": true
+    },
+    "tieng_khai": {
+      "doc": "khai, khai.",
+      "keep_first": true
+    },
+    "tieng_kiaf": {
+      "doc": "Kìa, Kìa.",
+      "keep_first": true
+    },
+    "tieng_laaps": {
+      "doc": "lấp, lấp.",
+      "keep_first": true
+    },
+    "tieng_leo": {
+      "doc": "leo, leo.",
+      "keep_first": true
+    },
+    "tieng_los": {
+      "doc": "ló, ló.",
+      "keep_first": true
+    },
+    "tieng_luaj": {
+      "doc": "lụa. lụa.",
+      "keep_first": true
+    },
+    "tieng_luoongs": {
+      "doc": "luống, luống.",
+      "keep_first": true
+    },
+    "tieng_mangr": {
+      "doc": "mảng, mảng.",
+      "keep_first": true
+    },
+    "tieng_mongj": {
+      "doc": "mọng. mọng.",
+      "keep_first": true
+    },
+    "tieng_mons": {
+      "doc": "Món, Món.",
+      "keep_first": true
+    },
+    "tieng_muoonj": {
+      "doc": "muộn. muộn.",
+      "keep_first": true
+    },
+    "tieng_muwowif": {
+      "doc": "mười, mười.",
+      "keep_first": true
+    },
+    "tieng_nets": {
+      "doc": "nét, nét.",
+      "keep_first": true
+    },
+    "tieng_ngaamx": {
+      "doc": "ngẫm, ngẫm.",
+      "keep_first": true
+    },
+    "tieng_ngaanr": {
+      "doc": "ngẩn, ngẩn.",
+      "keep_first": true
+    },
+    "tieng_nghieem": {
+      "doc": "nghiêm, nghiêm.",
+      "keep_first": true
+    },
+    "tieng_ngowx": {
+      "doc": "ngỡ, ngỡ.",
+      "keep_first": true
+    },
+    "tieng_nguwowcj": {
+      "doc": "ngược. ngược.",
+      "keep_first": true
+    },
+    "tieng_nhaanj": {
+      "doc": "nhận. nhận.",
+      "keep_first": true
+    },
+    "tieng_nhaif": {
+      "doc": "nhài, nhài.",
+      "keep_first": true
+    },
+    "tieng_nieemf": {
+      "doc": "niềm, niềm.",
+      "keep_first": true
+    },
+    "tieng_noj": {
+      "doc": "nọ. nọ.",
+      "keep_first": true
+    },
+    "tieng_nooir": {
+      "doc": "nổi, nổi.",
+      "keep_first": true
+    },
+    "tieng_phong": {
+      "doc": "phong, phong.",
+      "keep_first": true
+    },
+    "tieng_rawngf": {
+      "doc": "rằng, rằng.",
+      "keep_first": true
+    },
+    "tieng_suwcs": {
+      "doc": "sức, sức.",
+      "keep_first": true
+    },
+    "tieng_suy": {
+      "doc": "suy, suy.",
+      "keep_first": true
+    },
+    "tieng_thaamf": {
+      "doc": "thầm, thầm.",
+      "keep_first": true
+    },
+    "tieng_thois": {
+      "doc": "thói, thói.",
+      "keep_first": true
+    },
+    "tieng_thuwa": {
+      "doc": "thưa, thưa.",
+      "keep_first": true
+    },
+    "tieng_thuwowcs": {
+      "doc": "thước, thước.",
+      "keep_first": true
+    },
+    "tieng_tius": {
+      "doc": "tíu, tíu.",
+      "keep_first": true
+    },
+    "tieng_tranf": {
+      "doc": "tràn, tràn.",
+      "keep_first": true
+    },
+    "tieng_tungf": {
+      "doc": "Tùng, Tùng.",
+      "keep_first": true
+    },
+    "tieng_tuwowngf": {
+      "doc": "tường, tường.",
+      "keep_first": true
+    },
+    "tieng_vieecj": {
+      "doc": "Việc. Việc.",
+      "keep_first": true
+    },
+    "tieng_vongj": {
+      "doc": "vọng. vọng.",
+      "keep_first": true
+    },
+    "tieng_xaaus": {
+      "doc": "xấu, xấu.",
+      "keep_first": true
+    },
+    "tieng_xuooi": {
+      "doc": "xuôi, xuôi.",
+      "keep_first": true
+    },
+    "tieng_xuwngs": {
+      "doc": "xứng, xứng.",
+      "keep_first": true
+    },
+    "tieng_aangr": {
+      "doc": "ẩng, ẩng.",
+      "keep_first": true
+    },
+    "tieng_aanr": {
+      "doc": "ẩn, ẩn.",
+      "keep_first": true
+    },
+    "tieng_angr": {
+      "doc": "ảng, ảng.",
+      "keep_first": true
+    },
+    "tieng_awngr": {
+      "doc": "ẳng, ẳng.",
+      "keep_first": true
+    },
+    "tieng_baanr": {
+      "doc": "bẩn, bẩn.",
+      "keep_first": true
+    },
+    "tieng_bangr": {
+      "doc": "bảng, bảng.",
+      "keep_first": true
+    },
+    "tieng_banr": {
+      "doc": "bản, bản.",
+      "keep_first": true
+    },
+    "tieng_baor": {
+      "doc": "bảo, bảo.",
+      "keep_first": true
+    },
+    "tieng_bar": {
+      "doc": "bả, bả.",
+      "keep_first": true
+    },
+    "tieng_bax": {
+      "doc": "bã, bã.",
+      "keep_first": true
+    },
+    "tieng_beer": {
+      "doc": "bể, bể.",
+      "keep_first": true
+    },
+    "tieng_bieenr": {
+      "doc": "biển, biển.",
+      "keep_first": true
+    },
+    "tieng_boongr": {
+      "doc": "bổng, bổng.",
+      "keep_first": true
+    },
+    "tieng_boongx": {
+      "doc": "Bỗng, Bỗng.",
+      "keep_first": true
+    },
+    "tieng_bor": {
+      "doc": "bỏ, bỏ.",
+      "keep_first": true
+    },
+    "tieng_buooir": {
+      "doc": "buổi, buổi.",
+      "keep_first": true
+    },
+    "tieng_buwowir": {
+      "doc": "bưởi, bưởi.",
+      "keep_first": true
+    },
+    "tieng_caanr": {
+      "doc": "cẩn, cẩn.",
+      "keep_first": true
+    },
+    "tieng_camr": {
+      "doc": "cảm, cảm.",
+      "keep_first": true
+    },
+    "tieng_canhr": {
+      "doc": "cảnh, cảnh.",
+      "keep_first": true
+    },
+    "tieng_cax": {
+      "doc": "cã, cã.",
+      "keep_first": true
+    },
+    "tieng_char": {
+      "doc": "chả, chả.",
+      "keep_first": true
+    },
+    "tieng_chawngr": {
+      "doc": "chẳng, chẳng.",
+      "keep_first": true
+    },
+    "tieng_chax": {
+      "doc": "chã, chã.",
+      "keep_first": true
+    },
+    "tieng_chayr": {
+      "doc": "chảy, chảy.",
+      "keep_first": true
+    },
+    "tieng_chir": {
+      "doc": "chỉ, chỉ.",
+      "keep_first": true
+    },
+    "tieng_chuyeenr": {
+      "doc": "chuyển, chuyển.",
+      "keep_first": true
+    },
+    "tieng_coix": {
+      "doc": "cõi, cõi.",
+      "keep_first": true
+    },
+    "tieng_coongr": {
+      "doc": "cổng, cổng.",
+      "keep_first": true
+    },
+    "tieng_cungx": {
+      "doc": "cũng, cũng.",
+      "keep_first": true
+    },
+    "tieng_dair": {
+      "doc": "dải, dải.",
+      "keep_first": true
+    },
+    "tieng_ddaor": {
+      "doc": "đảo, đảo.",
+      "keep_first": true
+    },
+    "tieng_ddeer": {
+      "doc": "để, để.",
+      "keep_first": true
+    },
+    "tieng_dder": {
+      "doc": "đẻ, đẻ.",
+      "keep_first": true
+    },
+    "tieng_dduooir": {
+      "doc": "đuổi, đuổi.",
+      "keep_first": true
+    },
+    "tieng_emr": {
+      "doc": "ẻm, ẻm.",
+      "keep_first": true
+    },
+    "tieng_engr": {
+      "doc": "ẻng, ẻng.",
+      "keep_first": true
+    },
+    "tieng_gar": {
+      "doc": "gả, gả.",
+      "keep_first": true
+    },
+    "tieng_gher": {
+      "doc": "ghẻ, ghẻ.",
+      "keep_first": true
+    },
+    "tieng_giangr": {
+      "doc": "giảng, giảng.",
+      "keep_first": true
+    },
+    "tieng_giar": {
+      "doc": "giả, giả.",
+      "keep_first": true
+    },
+    "tieng_giax": {
+      "doc": "giã, giã.",
+      "keep_first": true
+    },
+    "tieng_gioir": {
+      "doc": "giỏi, giỏi.",
+      "keep_first": true
+    },
+    "tieng_gior": {
+      "doc": "giỏ, giỏ.",
+      "keep_first": true
+    },
+    "tieng_giowr": {
+      "doc": "giở, giở.",
+      "keep_first": true
+    },
+    "tieng_gowir": {
+      "doc": "gởi, gởi.",
+      "keep_first": true
+    },
+    "tieng_hair": {
+      "doc": "Hải, Hải.",
+      "keep_first": true
+    },
+    "tieng_hemr": {
+      "doc": "hẻm, hẻm.",
+      "keep_first": true
+    },
+    "tieng_hoangx": {
+      "doc": "hoãng, hoãng.",
+      "keep_first": true
+    },
+    "tieng_hoawngx": {
+      "doc": "hoẵng, hoẵng.",
+      "keep_first": true
+    },
+    "tieng_hoir": {
+      "doc": "Hỏi, Hỏi.",
+      "keep_first": true
+    },
+    "tieng_hor": {
+      "doc": "hỏ, hỏ.",
+      "keep_first": true
+    },
+    "tieng_inr": {
+      "doc": "ỉn, ỉn.",
+      "keep_first": true
+    },
+    "tieng_keer": {
+      "doc": "kể, kể.",
+      "keep_first": true
+    },
+    "tieng_kengr": {
+      "doc": "kẻng, kẻng.",
+      "keep_first": true
+    },
+    "tieng_khawngr": {
+      "doc": "khẳng, khẳng.",
+      "keep_first": true
+    },
+    "tieng_khoer": {
+      "doc": "khỏe, khỏe.",
+      "keep_first": true
+    },
+    "tieng_khoir": {
+      "doc": "khỏi, khỏi.",
+      "keep_first": true
+    },
+    "tieng_khuyur": {
+      "doc": "khuỷu, khuỷu.",
+      "keep_first": true
+    },
+    "tieng_kir": {
+      "doc": "kỉ, kỉ.",
+      "keep_first": true
+    },
+    "tieng_laanx": {
+      "doc": "lẫn, lẫn.",
+      "keep_first": true
+    },
+    "tieng_langr": {
+      "doc": "lảng, lảng.",
+      "keep_first": true
+    },
+    "tieng_lanhr": {
+      "doc": "lảnh, lảnh.",
+      "keep_first": true
+    },
+    "tieng_lieemx": {
+      "doc": "liễm, liễm.",
+      "keep_first": true
+    },
+    "tieng_looongr": {
+      "doc": "loỏng, loỏng.",
+      "keep_first": true
+    },
+    "tieng_luwngr": {
+      "doc": "lửng, lửng.",
+      "keep_first": true
+    },
+    "tieng_mimr": {
+      "doc": "mỉm, mỉm.",
+      "keep_first": true
+    },
+    "tieng_mimx": {
+      "doc": "mĩm, mĩm.",
+      "keep_first": true
+    },
+    "tieng_moir": {
+      "doc": "mỏi, mỏi.",
+      "keep_first": true
+    },
+    "tieng_mor": {
+      "doc": "mỏ, mỏ.",
+      "keep_first": true
+    },
+    "tieng_mownr": {
+      "doc": "mởn, mởn.",
+      "keep_first": true
+    },
+    "tieng_mumx": {
+      "doc": "mũm, mũm.",
+      "keep_first": true
+    },
+    "tieng_muoomx": {
+      "doc": "muỗm, muỗm.",
+      "keep_first": true
+    },
+    "tieng_ngaangr": {
+      "doc": "ngẩng, ngẩng.",
+      "keep_first": true
+    },
+    "tieng_ngair": {
+      "doc": "ngải, ngải.",
+      "keep_first": true
+    },
+    "tieng_ngar": {
+      "doc": "ngả, ngả.",
+      "keep_first": true
+    },
+    "tieng_ngheenr": {
+      "doc": "Nghển, Nghển.",
+      "keep_first": true
+    },
+    "tieng_ngoawngx": {
+      "doc": "ngoẵng, ngoẵng.",
+      "keep_first": true
+    },
+    "tieng_nguaayr": {
+      "doc": "nguẩy, nguẩy.",
+      "keep_first": true
+    },
+    "tieng_nhanx": {
+      "doc": "nhãn, nhãn.",
+      "keep_first": true
+    },
+    "tieng_nhoenr": {
+      "doc": "nhoẻn, nhoẻn.",
+      "keep_first": true
+    },
+    "tieng_nhor": {
+      "doc": "nhỏ, nhỏ.",
+      "keep_first": true
+    },
+    "tieng_nhownr": {
+      "doc": "Nhởn, Nhởn.",
+      "keep_first": true
+    },
+    "tieng_nhuwngx": {
+      "doc": "Những, Những.",
+      "keep_first": true
+    },
+    "tieng_phowr": {
+      "doc": "phở, phở.",
+      "keep_first": true
+    },
+    "tieng_quar": {
+      "doc": "quả, quả.",
+      "keep_first": true
+    },
+    "tieng_quyeenr": {
+      "doc": "quyển, quyển.",
+      "keep_first": true
+    },
+    "tieng_rar": {
+      "doc": "rả, rả.",
+      "keep_first": true
+    },
+    "tieng_rir": {
+      "doc": "rỉ, rỉ.",
+      "keep_first": true
+    },
+    "tieng_roor": {
+      "doc": "rổ, rổ.",
+      "keep_first": true
+    },
+    "tieng_sar": {
+      "doc": "sả, sả.",
+      "keep_first": true
+    },
+    "tieng_sayr": {
+      "doc": "sảy, sảy.",
+      "keep_first": true
+    },
+    "tieng_ser": {
+      "doc": "sẻ, sẻ.",
+      "keep_first": true
+    },
+    "tieng_soir": {
+      "doc": "sỏi, sỏi.",
+      "keep_first": true
+    },
+    "tieng_suwngx": {
+      "doc": "sững, sững.",
+      "keep_first": true
+    },
+    "tieng_tair": {
+      "doc": "tải, tải.",
+      "keep_first": true
+    },
+    "tieng_thaamx": {
+      "doc": "thẫm, thẫm.",
+      "keep_first": true
+    },
+    "tieng_thamr": {
+      "doc": "thảm, thảm.",
+      "keep_first": true
+    },
+    "tieng_thar": {
+      "doc": "thả, thả.",
+      "keep_first": true
+    },
+    "tieng_thawmr": {
+      "doc": "thẳm, thẳm.",
+      "keep_first": true
+    },
+    "tieng_thawngr": {
+      "doc": "thẳng, thẳng.",
+      "keep_first": true
+    },
+    "tieng_theer": {
+      "doc": "thể, thể.",
+      "keep_first": true
+    },
+    "tieng_ther": {
+      "doc": "thẻ, thẻ.",
+      "keep_first": true
+    },
+    "tieng_thoangr": {
+      "doc": "thoảng, thoảng.",
+      "keep_first": true
+    },
+    "tieng_thor": {
+      "doc": "thỏ, thỏ.",
+      "keep_first": true
+    },
+    "tieng_thuowr": {
+      "doc": "thuở, thuở.",
+      "keep_first": true
+    },
+    "tieng_thuwowngr": {
+      "doc": "thưởng, thưởng.",
+      "keep_first": true
+    },
+    "tieng_thuyr": {
+      "doc": "thủy, thủy.",
+      "keep_first": true
+    },
+    "tieng_toanr": {
+      "doc": "Toản, Toản.",
+      "keep_first": true
+    },
+    "tieng_toar": {
+      "doc": "tỏa, tỏa.",
+      "keep_first": true
+    },
+    "tieng_tor": {
+      "doc": "tỏ, tỏ.",
+      "keep_first": true
+    },
+    "tieng_trair": {
+      "doc": "trải, trải.",
+      "keep_first": true
+    },
+    "tieng_trar": {
+      "doc": "trả, trả.",
+      "keep_first": true
+    },
+    "tieng_trer": {
+      "doc": "trẻ, trẻ.",
+      "keep_first": true
+    },
+    "tieng_trowr": {
+      "doc": "trở, trở.",
+      "keep_first": true
+    },
+    "tieng_tuooir": {
+      "doc": "tuổi, tuổi.",
+      "keep_first": true
+    },
+    "tieng_tuwowngr": {
+      "doc": "tưởng, tưởng.",
+      "keep_first": true
+    },
+    "tieng_uaanr": {
+      "doc": "uẩn, uẩn.",
+      "keep_first": true
+    },
+    "tieng_ueer": {
+      "doc": "uể, uể.",
+      "keep_first": true
+    },
+    "tieng_unr": {
+      "doc": "Ủn, Ủn.",
+      "keep_first": true
+    },
+    "tieng_uooir": {
+      "doc": "uổi, uổi.",
+      "keep_first": true
+    },
+    "tieng_uyeenr": {
+      "doc": "uyển, uyển.",
+      "keep_first": true
+    },
+    "tieng_uyr": {
+      "doc": "ủy, ủy.",
+      "keep_first": true
+    },
+    "tieng_vaanx": {
+      "doc": "vẫn, vẫn.",
+      "keep_first": true
+    },
+    "tieng_vair": {
+      "doc": "vải, vải.",
+      "keep_first": true
+    },
+    "tieng_vamr": {
+      "doc": "vảm, vảm.",
+      "keep_first": true
+    },
+    "tieng_vanr": {
+      "doc": "vản, vản.",
+      "keep_first": true
+    },
+    "tieng_var": {
+      "doc": "vả, vả.",
+      "keep_first": true
+    },
+    "tieng_vax": {
+      "doc": "vã, vã.",
+      "keep_first": true
+    },
+    "tieng_veenhr": {
+      "doc": "Vểnh, Vểnh.",
+      "keep_first": true
+    },
+    "tieng_vongx": {
+      "doc": "võng, võng.",
+      "keep_first": true
+    },
+    "tieng_vor": {
+      "doc": "vỏ, vỏ.",
+      "keep_first": true
+    },
+    "tieng_vungx": {
+      "doc": "vũng, vũng.",
+      "keep_first": true
+    },
+    "tieng_vuwngx": {
+      "doc": "vững, vững.",
+      "keep_first": true
+    },
+    "tieng_xengr": {
+      "doc": "xẻng, xẻng.",
+      "keep_first": true
+    },
+    "tieng_xer": {
+      "doc": "xẻ, xẻ.",
+      "keep_first": true
+    },
+    "tieng_xoor": {
+      "doc": "xổ, xổ.",
+      "keep_first": true
+    },
+    "tieng_yeengr": {
+      "doc": "yểng, yểng.",
+      "keep_first": true
+    },
+    "tieng_rowx": {
+      "doc": "rỡ, rỡ, rỡ.",
+      "keep_first": true
+    },
+    "tieng_xax": {
+      "doc": "xã, xã, xã.",
+      "keep_first": true
+    },
+    "tieng_nowr": {
+      "doc": "nở, nở, nở.",
+      "keep_first": true
+    },
+    "tieng_cuar": {
+      "doc": "của, của.",
+      "keep_first": true
+    },
+    "tieng_sanr": {
+      "doc": "sản, sản.",
+      "keep_first": true
+    },
+    "cau_b106_01": {
+      "rate": -35
+    },
+    "cau_b108_03": {
+      "rate": -35
+    },
+    "cau_b121_02": {
+      "rate": -35
+    },
+    "cau_b122_08": {
+      "rate": -35
+    },
+    "cau_b127_03": {
+      "rate": -35
+    },
+    "cau_b130_02": {
+      "rate": -35
+    },
+    "cau_b132_02": {
+      "rate": -35
+    },
+    "cau_b132_06": {
+      "rate": -35
+    },
+    "cau_b133_04": {
+      "rate": -35
+    },
+    "cau_b136_04": {
+      "rate": -35
+    },
+    "cau_b136_07": {
+      "rate": -35
+    },
+    "cau_b137_03": {
+      "rate": -35
+    },
+    "cau_b137_11": {
+      "rate": -35
+    },
+    "cau_b138_11": {
+      "rate": -35
+    },
+    "cau_b149_04": {
+      "rate": -35
+    },
+    "cau_b149_06": {
+      "rate": -35
+    },
+    "cau_b150_04": {
+      "rate": -35
+    },
+    "cau_b153_06": {
+      "rate": -35
+    },
+    "cau_b156_05": {
+      "rate": -35
+    },
+    "cau_b156_11": {
+      "rate": -35
+    },
+    "cau_b158_03": {
+      "rate": -35
+    },
+    "cau_b160_03": {
+      "rate": -35
+    },
+    "cau_b162_03": {
+      "rate": -35
+    },
+    "cau_b163_07": {
+      "rate": -35
+    },
+    "cau_b169_03": {
+      "rate": -35
+    },
+    "cau_b169_13": {
+      "rate": -35
+    },
+    "cau_b170_13": {
+      "rate": -35
+    },
+    "cau_b25_01": {
+      "rate": -35
+    },
+    "cau_b29_01": {
+      "rate": -35
+    },
+    "cau_b34_01": {
+      "rate": -35
+    },
+    "cau_b59_02": {
+      "rate": -35
+    },
+    "cau_b61_02": {
+      "rate": -35
+    },
+    "cau_b78_03": {
+      "rate": -35
+    },
+    "cau_b92_01": {
+      "rate": -35
+    },
+    "hd_b134_tranh_01": {
+      "rate": -35
+    },
+    "hd_b158_tranh_01": {
+      "rate": -35
+    },
+    "hd_b169_tranh_01": {
+      "rate": -35
+    },
+    "hd_b72_tranh_01": {
+      "rate": -35
+    },
+    "hd_b74_tranh_01": {
+      "rate": -35
+    },
+    "hoi_b168_03": {
+      "rate": -35
+    },
+    "khen_02": {
+      "rate": -35
+    },
+    "tu_baix_cats": {
+      "rate": -35
+    },
+    "tu_ddor_buwngf": {
+      "rate": -35
+    },
+    "tu_ddor_chois": {
+      "rate": -35
+    },
+    "tu_ddor_thawms": {
+      "rate": -35
+    },
+    "tu_deor_nhuw": {
+      "rate": -35
+    },
+    "tu_howpj_tacs_xax": {
+      "rate": -35
+    },
+    "tu_mor_thieecs": {
+      "rate": -35
+    },
+    "tu_muix_monf": {
+      "rate": -35
+    },
+    "tu_quee_bacs_owr_langf_sen": {
+      "rate": -35
+    },
+    "tu_ra_khoir_lowps": {
+      "rate": -35
+    },
+    "tu_trer_mawng": {
+      "rate": -35
+    },
+    "tu_ur_aams": {
+      "rate": -35
+    },
+    "tu_toor_dees": {
+      "join": [
+        "tieng_toor",
+        "tieng_dees"
+      ]
+    },
+    "cau_b100_04": {
+      "doc": "Trên đồng cỏ, xanh."
+    },
+    "cau_b104_01": {
+      "doc": "Bên bờ suối, đàn hươu đang ăn cỏ, tươi."
+    },
+    "cau_b125_03": {
+      "doc": "Quả bóng xanh bay giữa, trời xanh"
+    },
+    "cau_b125_05": {
+      "doc": "Hải, âu ơi, cánh chim vờn sóng biển"
+    },
+    "cau_b126_03": {
+      "doc": "Mọc lên tươi thắm giữa, đồng lúa xanh."
+    },
+    "cau_b128_03": {
+      "doc": "Phải giữ, sạch đôi tay,"
+    },
+    "cau_b131_06": {
+      "doc": "Phải giữ, sạch đôi tay,"
+    },
+    "cau_b134_02": {
+      "doc": "Quýt nhà ai chín đỏ, cây,"
+    },
+    "cau_b137_08": {
+      "doc": "Mũi, mòn, ruột cũng dần dần mòn theo."
+    },
+    "cau_b138_04": {
+      "doc": "Chim non đã, chăm học lại có giọng đọc rất hay."
+    },
+    "cau_b140_04": {
+      "doc": "Ru bé ngủ, say,"
+    },
+    "cau_b140_06": {
+      "doc": "Bé ngủ, ngon quá"
+    },
+    "cau_b141_06": {
+      "doc": "nhưng em chợt thấy bác đưa thư mồ hôi nhễ, nhại."
+    },
+    "cau_b145_05": {
+      "doc": "Bây giờ con đã, lớn, con đã, biết đọc, biết viết."
+    },
+    "cau_b145_06": {
+      "doc": "Con hãy, đọc sách cho bà nghe."
+    },
+    "cau_b146_06": {
+      "doc": "Đây là quả, thị,"
+    },
+    "cau_b147_06": {
+      "doc": "Anh em như thể, tay chân,"
+    },
+    "cau_b148_11": {
+      "doc": "Đọc đúng các từ: đã về, ra cổng, ướt đẫm, đỏ, bừng."
+    },
+    "cau_b154_04": {
+      "doc": "Dừa xanh tỏa, mát đường làng"
+    },
+    "cau_b155_03": {
+      "doc": "Những đóa râm bụt thêm đỏ, chói."
+    },
+    "cau_b156_07": {
+      "doc": "Gấu ngửi, ngửi, vào mặt người nằm nín thở, tưởng là đã chết bèn bỏ đi."
+    },
+    "cau_b163_09": {
+      "doc": "Thân hình vuông vắn đem xây cửa, nhà?"
+    },
+    "cau_b163_11": {
+      "doc": "Hòn gì bằng đất nặn ra, xếp vào lò lửa, nung ba bốn ngày, khi ra da đỏ, hây hây, thân hình vuông vắn đem xây cửa, nhà?"
+    },
+    "cau_b167_01": {
+      "doc": "Buổi, sáng trên đất bãi"
+    },
+    "cau_b168_01": {
+      "doc": "Võ, Thị Sáu"
+    },
+    "cau_b168_02": {
+      "doc": "Người con gái trẻ, măng"
+    },
+    "cau_b169_14": {
+      "doc": "Nếu không, ta sẽ, xé xác."
+    },
+    "cau_b170_01": {
+      "doc": "Gửi, lời chào lớp Một"
+    },
+    "cau_b170_05": {
+      "doc": "Gửi, lời chào tiến bước!"
+    },
+    "cau_b170_11": {
+      "doc": "Cô sẽ, xa chúng em..."
+    },
+    "cau_b170_17": {
+      "doc": "Gửi, lời chào tiến bước!"
+    },
+    "cau_b47_03": {
+      "doc": "Ăn đã, no tròn"
+    },
+    "cau_b49_02": {
+      "doc": "Bà cho bé quả, cam."
+    },
+    "cau_b62_02": {
+      "doc": "Bay đi đâu cả, tối ngày sếu ơi?"
+    },
+    "cau_b75_05": {
+      "doc": "Đều đi cả, rồi"
+    },
+    "hd_b128_tranh_01": {
+      "doc": "Bé rửa, tay cho sạch."
+    },
+    "hd_b142_tranh_01": {
+      "doc": "Bống gánh đỡ, mẹ chạy cơn mưa."
+    },
+    "hd_b146_tranh_01": {
+      "doc": "Bé nặn quả, thị, quả, na và con chuột."
+    },
+    "hd_b23_tranh_01": {
+      "doc": "Đây là quả, xoài."
+    },
+    "hd_b51_tranh_01": {
+      "doc": "Trời tối, thôn xóm đã, lên đèn."
+    },
+    "hd_b66_tranh_01": {
+      "doc": "Chú thỏ đứng gõ, cửa."
+    },
+    "hd_b83_tranh_01": {
+      "doc": "Mẹ quét nhà, bé rửa, bát cho nhà sạch."
+    },
+    "hd_b99_tranh_01": {
+      "doc": "Bạn nhỏ thả, diều, diều bay lên cao."
+    },
+    "hd_tra_loi_mieng": {
+      "doc": "Con trả, lời cùng bố mẹ nhé."
+    },
+    "hoi_b128_04": {
+      "doc": "Học thuộc lòng cả, bài."
+    },
+    "hoi_b133_03": {
+      "doc": "Mẹ con Thỏ, múa vào lúc nào? Ở đâu?"
+    },
+    "hoi_b134_04": {
+      "doc": "Học thuộc lòng cả, bài."
+    },
+    "hoi_b135_03": {
+      "doc": "Vì sao cả, hai con dê đều bị rơi xuống suối?"
+    },
+    "hoi_b140_03": {
+      "doc": "Bé ngủ, vào lúc nào? Câu nào cho biết bé ngủ, rất ngon?"
+    },
+    "hoi_b142_03": {
+      "doc": "Học thuộc lòng cả, bài."
+    },
+    "hoi_b145_02": {
+      "doc": "Mẹ nói gì với Diệu Thu? Diệu Thu vâng lời mẹ và đã, làm gì?"
+    },
+    "hoi_b146_03": {
+      "doc": "Bé nặn những thứ gì? Bé tặng quả, thị, quả, na cho ai? Bé tặng \"thằng chuột\" cho ai?"
+    },
+    "hoi_b147_03": {
+      "doc": "Học thuộc lòng cả, bài."
+    },
+    "hoi_b153_03": {
+      "doc": "Chim sơn ca nhảy, nhót ở đâu? Tiếng hót của chúng như thế nào?"
+    },
+    "hoi_b154_04": {
+      "doc": "Học thuộc lòng cả, bài."
+    },
+    "hoi_b158_03": {
+      "doc": "Khổ thơ thứ hai có những từ nào tả, tiếng máy kêu?"
+    },
+    "hoi_b161_03": {
+      "doc": "Học thuộc lòng cả, bài."
+    },
+    "hoi_b168_04": {
+      "doc": "Học thuộc lòng cả, bài."
+    },
+    "tu_cur_lacj": {
+      "doc": "củ, lạc"
+    },
+    "tu_moir_mawts": {
+      "doc": "mỏi, mắt"
+    },
+    "tu_moir_nguwowif": {
+      "doc": "mỏi, người"
+    },
+    "tu_mux_leechj": {
+      "doc": "mũ, lệch"
+    },
+    "tu_ngax_oanhf_oachj": {
+      "doc": "ngã, oành oạch"
+    },
+    "tu_ngur_ngon": {
+      "doc": "ngủ, ngon"
+    },
+    "tu_nhor_bes": {
+      "doc": "nhỏ, bé"
+    },
+    "tu_phaos_noor_ddif_ddetj": {
+      "doc": "pháo nổ, đì đẹt"
+    },
+    "tu_quar_maanj": {
+      "doc": "quả, mận"
+    },
+    "tu_thuowr_aaus_thow": {
+      "doc": "thuở, ấu thơ"
+    },
+    "tu_toar_mats": {
+      "doc": "tỏa, mát"
+    },
+    "cau_b109_02": {
+      "doc": "Đèn ra trước gió còn chăng hỡi, đèn?"
+    },
+    "cau_b113_02": {
+      "doc": "Trường em sẽ có nhiều quà gửi các chú bộ đội ngoài đảo, xa."
+    },
+    "cau_b129_03": {
+      "doc": "Chim non đã, chăm học lại có giọng đọc rất hay."
+    },
+    "cau_b133_03": {
+      "doc": "Ánh sáng trong xanh tỏa, khắp khu rừng."
+    },
+    "cau_b153_05": {
+      "doc": "Tiếng hót lúc trầm, lúc bổng, lảnh lót vang mãi, đi xa."
+    },
+    "cau_b158_10": {
+      "doc": "Cái thổi, xuyt xuyt,"
+    },
+    "cau_b159_05": {
+      "doc": "Bên bờ suối, những khóm hoa đủ, màu sắc đua nở."
+    },
+    "cau_b168_03": {
+      "doc": "Giặc đem ra bãi, bắn,"
+    },
+    "cau_b51_01": {
+      "doc": "Thôn xóm đã, lên đèn."
+    },
+    "cau_b76_03": {
+      "doc": "Đã, đi khắp nẻo quê nhà, Bác ơi!"
+    },
+    "cau_b92_02": {
+      "doc": "Hồng rất thích xem khỉ, đi xe đạp, chó làm tính, voi đá bóng."
+    },
+    "tu_tai_nghe_muix_nguwir": {
+      "doc": "tai nghe mũi, ngửi"
+    },
+    "cau_b153_03": {
+      "doc": "Những con sơn ca đang nhảy, nhót trên sườn đồi."
+    },
+    "tu_vor_oocs": {
+      "doc": "vỏ, ốc"
+    },
+    "tu_choox_owr": {
+      "join": [
+        "tieng_choox",
+        "tieng_owr"
+      ],
+      "join_gap": 0.06
+    },
+    "tu_gox_mox": {
+      "join": [
+        "tieng_gox",
+        "tieng_mox"
+      ],
+      "join_gap": 0.06
+    },
+    "tu_mux_len": {
+      "join": [
+        "tieng_mux",
+        "tieng_len"
+      ],
+      "join_gap": 0.06
+    },
+    "tieng_aacj": {
+      "doc": "ậc. ậc.",
+      "keep_first": true
+    },
+    "tieng_aamj": {
+      "doc": "ậm. ậm.",
+      "keep_first": true
+    },
+    "tieng_aangj": {
+      "doc": "ậng. ậng.",
+      "keep_first": true
+    },
+    "tieng_aapj": {
+      "doc": "ập. ập.",
+      "keep_first": true
+    },
+    "tieng_aatj": {
+      "doc": "ật. ật.",
+      "keep_first": true
+    },
+    "tieng_achj": {
+      "doc": "ạch. ạch.",
+      "keep_first": true
+    },
+    "tieng_acj": {
+      "doc": "ạc. ạc.",
+      "keep_first": true
+    },
+    "tieng_aij": {
+      "doc": "ại. ại.",
+      "keep_first": true
+    },
+    "tieng_apj": {
+      "doc": "ạp. ạp.",
+      "keep_first": true
+    },
+    "tieng_atj": {
+      "doc": "ạt. ạt.",
+      "keep_first": true
+    },
+    "tieng_awcj": {
+      "doc": "ặc. ặc.",
+      "keep_first": true
+    },
+    "tieng_awngj": {
+      "doc": "ặng. ặng.",
+      "keep_first": true
+    },
+    "tieng_awpj": {
+      "doc": "ặp. ặp.",
+      "keep_first": true
+    },
+    "tieng_awtj": {
+      "doc": "ặt. ặt.",
+      "keep_first": true
+    },
+    "tieng_banj": {
+      "doc": "bạn. bạn.",
+      "keep_first": true
+    },
+    "tieng_bipj": {
+      "doc": "bịp. bịp.",
+      "keep_first": true
+    },
+    "tieng_booj": {
+      "doc": "bộ. bộ.",
+      "keep_first": true
+    },
+    "tieng_bungj": {
+      "doc": "bụng. bụng.",
+      "keep_first": true
+    },
+    "tieng_buoocj": {
+      "doc": "buộc. buộc.",
+      "keep_first": true
+    },
+    "tieng_butj": {
+      "doc": "bụt. bụt.",
+      "keep_first": true
+    },
+    "tieng_caanj": {
+      "doc": "cận. cận.",
+      "keep_first": true
+    },
+    "tieng_caauj": {
+      "doc": "cậu. cậu.",
+      "keep_first": true
+    },
+    "tieng_caj": {
+      "doc": "cạ. cạ.",
+      "keep_first": true
+    },
+    "tieng_cawmj": {
+      "doc": "Cặm. Cặm.",
+      "keep_first": true
+    },
+    "tieng_cawpj": {
+      "doc": "cặp. cặp.",
+      "keep_first": true
+    },
+    "tieng_chaauj": {
+      "doc": "chậu. chậu.",
+      "keep_first": true
+    },
+    "tieng_chaj": {
+      "doc": "chạ. chạ.",
+      "keep_first": true
+    },
+    "tieng_chayj": {
+      "doc": "chạy. chạy.",
+      "keep_first": true
+    },
+    "tieng_chij": {
+      "doc": "chị. chị.",
+      "keep_first": true
+    },
+    "tieng_chiuj": {
+      "doc": "chịu. chịu.",
+      "keep_first": true
+    },
+    "tieng_chowj": {
+      "doc": "chợ. chợ.",
+      "keep_first": true
+    },
+    "tieng_chowtj": {
+      "doc": "chợt. chợt.",
+      "keep_first": true
+    },
+    "tieng_chuootj": {
+      "doc": "chuột. chuột.",
+      "keep_first": true
+    },
+    "tieng_chupj": {
+      "doc": "chụp. chụp.",
+      "keep_first": true
+    },
+    "tieng_chuyeenj": {
+      "doc": "chuyện. chuyện.",
+      "keep_first": true
+    },
+    "tieng_cooj": {
+      "doc": "cộ. cộ.",
+      "keep_first": true
+    },
+    "tieng_coonj": {
+      "doc": "cộn. cộn.",
+      "keep_first": true
+    },
+    "tieng_coopj": {
+      "doc": "cộp. cộp.",
+      "keep_first": true
+    },
+    "tieng_cootj": {
+      "doc": "Cột. Cột.",
+      "keep_first": true
+    },
+    "tieng_copj": {
+      "doc": "cọp. cọp.",
+      "keep_first": true
+    },
+    "tieng_cuij": {
+      "doc": "cụi. cụi.",
+      "keep_first": true
+    },
+    "tieng_cuoocj": {
+      "doc": "cuộc. cuộc.",
+      "keep_first": true
+    },
+    "tieng_cuoonj": {
+      "doc": "cuộn. cuộn.",
+      "keep_first": true
+    },
+    "tieng_daapj": {
+      "doc": "dập. dập.",
+      "keep_first": true
+    },
+    "tieng_daayj": {
+      "doc": "dậy. dậy.",
+      "keep_first": true
+    },
+    "tieng_datj": {
+      "doc": "dạt. dạt.",
+      "keep_first": true
+    },
+    "tieng_dayj": {
+      "doc": "dạy. dạy.",
+      "keep_first": true
+    },
+    "tieng_ddaauj": {
+      "doc": "Đậu. Đậu.",
+      "keep_first": true
+    },
+    "tieng_ddapj": {
+      "doc": "đạp. đạp.",
+      "keep_first": true
+    },
+    "tieng_ddawcj": {
+      "doc": "đặc. đặc.",
+      "keep_first": true
+    },
+    "tieng_ddeemj": {
+      "doc": "đệm. đệm.",
+      "keep_first": true
+    },
+    "tieng_ddemj": {
+      "doc": "đẹm. đẹm.",
+      "keep_first": true
+    },
+    "tieng_ddepj": {
+      "doc": "đẹp. đẹp.",
+      "keep_first": true
+    },
+    "tieng_ddetj": {
+      "doc": "đẹt. đẹt.",
+      "keep_first": true
+    },
+    "tieng_ddieenj": {
+      "doc": "điện. điện.",
+      "keep_first": true
+    },
+    "tieng_ddocj": {
+      "doc": "đọc. đọc.",
+      "keep_first": true
+    },
+    "tieng_ddongj": {
+      "doc": "đọng. đọng.",
+      "keep_first": true
+    },
+    "tieng_ddoocj": {
+      "doc": "độc. độc.",
+      "keep_first": true
+    },
+    "tieng_ddooij": {
+      "doc": "đội. đội.",
+      "keep_first": true
+    },
+    "tieng_ddoongj": {
+      "doc": "động. động.",
+      "keep_first": true
+    },
+    "tieng_dducj": {
+      "doc": "đục. đục.",
+      "keep_first": true
+    },
+    "tieng_dduwowcj": {
+      "doc": "được. được.",
+      "keep_first": true
+    },
+    "tieng_deetj": {
+      "doc": "dệt. dệt.",
+      "keep_first": true
+    },
+    "tieng_dieeuj": {
+      "doc": "Diệu. Diệu.",
+      "keep_first": true
+    },
+    "tieng_diuj": {
+      "doc": "dịu. dịu.",
+      "keep_first": true
+    },
+    "tieng_duwowcj": {
+      "doc": "dược. dược.",
+      "keep_first": true
+    },
+    "tieng_duyeetj": {
+      "doc": "duyệt. duyệt.",
+      "keep_first": true
+    },
+    "tieng_eechj": {
+      "doc": "ệch. ệch.",
+      "keep_first": true
+    },
+    "tieng_eej": {
+      "doc": "ệ. ệ.",
+      "keep_first": true
+    },
+    "tieng_eetj": {
+      "doc": "ệt. ệt.",
+      "keep_first": true
+    },
+    "tieng_ej": {
+      "doc": "ẹ. ẹ.",
+      "keep_first": true
+    },
+    "tieng_etj": {
+      "doc": "ẹt. ẹt.",
+      "keep_first": true
+    },
+    "tieng_gaamj": {
+      "doc": "gậm. gậm.",
+      "keep_first": true
+    },
+    "tieng_gachj": {
+      "doc": "gạch. gạch.",
+      "keep_first": true
+    },
+    "tieng_gaoj": {
+      "doc": "gạo. gạo.",
+      "keep_first": true
+    },
+    "tieng_gawmj": {
+      "doc": "gặm. gặm.",
+      "keep_first": true
+    },
+    "tieng_gawpj": {
+      "doc": "gặp. gặp.",
+      "keep_first": true
+    },
+    "tieng_gawtj": {
+      "doc": "gặt. gặt.",
+      "keep_first": true
+    },
+    "tieng_ghej": {
+      "doc": "ghẹ. ghẹ.",
+      "keep_first": true
+    },
+    "tieng_giawcj": {
+      "doc": "giặc. giặc.",
+      "keep_first": true
+    },
+    "tieng_giongj": {
+      "doc": "giọng. giọng.",
+      "keep_first": true
+    },
+    "tieng_giooij": {
+      "doc": "giội. giội.",
+      "keep_first": true
+    },
+    "tieng_giotj": {
+      "doc": "giọt. giọt.",
+      "keep_first": true
+    },
+    "tieng_goij": {
+      "doc": "gọi. gọi.",
+      "keep_first": true
+    },
+    "tieng_haj": {
+      "doc": "Hạ. Hạ.",
+      "keep_first": true
+    },
+    "tieng_hatj": {
+      "doc": "hạt. hạt.",
+      "keep_first": true
+    },
+    "tieng_heej": {
+      "doc": "hệ. hệ.",
+      "keep_first": true
+    },
+    "tieng_hepj": {
+      "doc": "hẹp. hẹp.",
+      "keep_first": true
+    },
+    "tieng_hieenj": {
+      "doc": "hiện. hiện.",
+      "keep_first": true
+    },
+    "tieng_hieeuj": {
+      "doc": "hiệu. hiệu.",
+      "keep_first": true
+    },
+    "tieng_hoachj": {
+      "doc": "hoạch. hoạch.",
+      "keep_first": true
+    },
+    "tieng_hoaj": {
+      "doc": "họa. họa.",
+      "keep_first": true
+    },
+    "tieng_hoanhj": {
+      "doc": "hoạnh. hoạnh.",
+      "keep_first": true
+    },
+    "tieng_hoatj": {
+      "doc": "hoạt. hoạt.",
+      "keep_first": true
+    },
+    "tieng_hocj": {
+      "doc": "học. học.",
+      "keep_first": true
+    },
+    "tieng_hoj": {
+      "doc": "Họ. Họ.",
+      "keep_first": true
+    },
+    "tieng_hoopj": {
+      "doc": "hộp. hộp.",
+      "keep_first": true
+    },
+    "tieng_hopj": {
+      "doc": "họp. họp.",
+      "keep_first": true
+    },
+    "tieng_howpj": {
+      "doc": "hợp. hợp.",
+      "keep_first": true
+    },
+    "tieng_hueej": {
+      "doc": "huệ. huệ.",
+      "keep_first": true
+    },
+    "tieng_huychj": {
+      "doc": "huỵch. huỵch.",
+      "keep_first": true
+    },
+    "tieng_ichj": {
+      "doc": "ịch. ịch.",
+      "keep_first": true
+    },
+    "tieng_ieecj": {
+      "doc": "iệc. iệc.",
+      "keep_first": true
+    },
+    "tieng_ieenj": {
+      "doc": "iện. iện.",
+      "keep_first": true
+    },
+    "tieng_ieepj": {
+      "doc": "iệp. iệp.",
+      "keep_first": true
+    },
+    "tieng_itj": {
+      "doc": "ịt. ịt.",
+      "keep_first": true
+    },
+    "tieng_kej": {
+      "doc": "kẹ. kẹ.",
+      "keep_first": true
+    },
+    "tieng_keoj": {
+      "doc": "kẹo. kẹo.",
+      "keep_first": true
+    },
+    "tieng_kheej": {
+      "doc": "khệ. khệ.",
+      "keep_first": true
+    },
+    "tieng_khuj": {
+      "doc": "khụ. khụ.",
+      "keep_first": true
+    },
+    "tieng_kichj": {
+      "doc": "kịch. kịch.",
+      "keep_first": true
+    },
+    "tieng_kieemj": {
+      "doc": "kiệm. kiệm.",
+      "keep_first": true
+    },
+    "tieng_kieenj": {
+      "doc": "kiện. kiện.",
+      "keep_first": true
+    },
+    "tieng_laapj": {
+      "doc": "lập. lập.",
+      "keep_first": true
+    },
+    "tieng_laatj": {
+      "doc": "lật. lật.",
+      "keep_first": true
+    },
+    "tieng_lacj": {
+      "doc": "lạc. lạc.",
+      "keep_first": true
+    },
+    "tieng_laij": {
+      "doc": "lại. lại.",
+      "keep_first": true
+    },
+    "tieng_lanhj": {
+      "doc": "lạnh. lạnh.",
+      "keep_first": true
+    },
+    "tieng_lawcj": {
+      "doc": "lặc. lặc.",
+      "keep_first": true
+    },
+    "tieng_lawngj": {
+      "doc": "lặng. lặng.",
+      "keep_first": true
+    },
+    "tieng_leechj": {
+      "doc": "lệch. lệch.",
+      "keep_first": true
+    },
+    "tieng_leej": {
+      "doc": "lệ. lệ.",
+      "keep_first": true
+    },
+    "tieng_lichj": {
+      "doc": "lịch. lịch.",
+      "keep_first": true
+    },
+    "tieng_lieetj": {
+      "doc": "liệt. liệt.",
+      "keep_first": true
+    },
+    "tieng_locj": {
+      "doc": "lọc. lọc.",
+      "keep_first": true
+    },
+    "tieng_loocj": {
+      "doc": "lộc. lộc.",
+      "keep_first": true
+    },
+    "tieng_looij": {
+      "doc": "lội. lội.",
+      "keep_first": true
+    },
+    "tieng_lownj": {
+      "doc": "lợn. lợn.",
+      "keep_first": true
+    },
+    "tieng_lowpj": {
+      "doc": "lợp. lợp.",
+      "keep_first": true
+    },
+    "tieng_luaatj": {
+      "doc": "luật. luật.",
+      "keep_first": true
+    },
+    "tieng_luj": {
+      "doc": "lụ. lụ.",
+      "keep_first": true
+    },
+    "tieng_luwowcj": {
+      "doc": "lược. lược.",
+      "keep_first": true
+    },
+    "tieng_luwowmj": {
+      "doc": "lượm. lượm.",
+      "keep_first": true
+    },
+    "tieng_luwownj": {
+      "doc": "lượn. lượn.",
+      "keep_first": true
+    },
+    "tieng_luwowpj": {
+      "doc": "lượp. lượp.",
+      "keep_first": true
+    },
+    "tieng_luwuj": {
+      "doc": "lựu. lựu.",
+      "keep_first": true
+    },
+    "tieng_maanj": {
+      "doc": "mận. mận.",
+      "keep_first": true
+    },
+    "tieng_maapj": {
+      "doc": "mập. mập.",
+      "keep_first": true
+    },
+    "tieng_maatj": {
+      "doc": "mật. mật.",
+      "keep_first": true
+    },
+    "tieng_machj": {
+      "doc": "mạch. mạch.",
+      "keep_first": true
+    },
+    "tieng_maij": {
+      "doc": "mại. mại.",
+      "keep_first": true
+    },
+    "tieng_manhj": {
+      "doc": "mạnh. mạnh.",
+      "keep_first": true
+    },
+    "tieng_mapj": {
+      "doc": "mạp. mạp.",
+      "keep_first": true
+    },
+    "tieng_mawcj": {
+      "doc": "Mặc. Mặc.",
+      "keep_first": true
+    },
+    "tieng_mawnj": {
+      "doc": "mặn. mặn.",
+      "keep_first": true
+    },
+    "tieng_mawtj": {
+      "doc": "mặt. mặt.",
+      "keep_first": true
+    },
+    "tieng_meetj": {
+      "doc": "mệt. mệt.",
+      "keep_first": true
+    },
+    "tieng_mej": {
+      "doc": "mẹ. mẹ.",
+      "keep_first": true
+    },
+    "tieng_mieengj": {
+      "doc": "miệng. miệng.",
+      "keep_first": true
+    },
+    "tieng_minj": {
+      "doc": "mịn. mịn.",
+      "keep_first": true
+    },
+    "tieng_mitj": {
+      "doc": "mịt. mịt.",
+      "keep_first": true
+    },
+    "tieng_mocj": {
+      "doc": "mọc. mọc.",
+      "keep_first": true
+    },
+    "tieng_moij": {
+      "doc": "mọi. mọi.",
+      "keep_first": true
+    },
+    "tieng_mootj": {
+      "doc": "một. một.",
+      "keep_first": true
+    },
+    "tieng_mucj": {
+      "doc": "mục. mục.",
+      "keep_first": true
+    },
+    "tieng_muwcj": {
+      "doc": "mực. mực.",
+      "keep_first": true
+    },
+    "tieng_muwowtj": {
+      "doc": "mượt. mượt.",
+      "keep_first": true
+    },
+    "tieng_naapj": {
+      "doc": "nập. nập.",
+      "keep_first": true
+    },
+    "tieng_nawngj": {
+      "doc": "nặng. nặng.",
+      "keep_first": true
+    },
+    "tieng_nawnj": {
+      "doc": "nặn. nặn.",
+      "keep_first": true
+    },
+    "tieng_neej": {
+      "doc": "nệ. nệ.",
+      "keep_first": true
+    },
+    "tieng_ngaapj": {
+      "doc": "ngập. ngập.",
+      "keep_first": true
+    },
+    "tieng_ngatj": {
+      "doc": "ngạt. ngạt.",
+      "keep_first": true
+    },
+    "tieng_ngheej": {
+      "doc": "nghệ. nghệ.",
+      "keep_first": true
+    },
+    "tieng_nghieepj": {
+      "doc": "nghiệp. nghiệp.",
+      "keep_first": true
+    },
+    "tieng_ngoacj": {
+      "doc": "ngoạc. ngoạc.",
+      "keep_first": true
+    },
+    "tieng_ngoaij": {
+      "doc": "ngoại. ngoại.",
+      "keep_first": true
+    },
+    "tieng_ngoamj": {
+      "doc": "ngoạm. ngoạm.",
+      "keep_first": true
+    },
+    "tieng_ngoawtj": {
+      "doc": "ngoặt. ngoặt.",
+      "keep_first": true
+    },
+    "tieng_ngonj": {
+      "doc": "ngọn. ngọn.",
+      "keep_first": true
+    },
+    "tieng_ngooj": {
+      "doc": "ngộ. ngộ.",
+      "keep_first": true
+    },
+    "tieng_ngotj": {
+      "doc": "ngọt. ngọt.",
+      "keep_first": true
+    },
+    "tieng_ngueechj": {
+      "doc": "nguệch. nguệch.",
+      "keep_first": true
+    },
+    "tieng_nguwaj": {
+      "doc": "Ngựa. Ngựa.",
+      "keep_first": true
+    },
+    "tieng_nhaatj": {
+      "doc": "nhật. nhật.",
+      "keep_first": true
+    },
+    "tieng_nhacj": {
+      "doc": "nhạc. nhạc.",
+      "keep_first": true
+    },
+    "tieng_nhaij": {
+      "doc": "nhại. nhại.",
+      "keep_first": true
+    },
+    "tieng_nhaj": {
+      "doc": "nhạ. nhạ.",
+      "keep_first": true
+    },
+    "tieng_nhawtj": {
+      "doc": "nhặt. nhặt.",
+      "keep_first": true
+    },
+    "tieng_nheenj": {
+      "doc": "nhện. nhện.",
+      "keep_first": true
+    },
+    "tieng_nhej": {
+      "doc": "nhẹ. nhẹ.",
+      "keep_first": true
+    },
+    "tieng_nhij": {
+      "doc": "nhị. nhị.",
+      "keep_first": true
+    },
+    "tieng_nhipj": {
+      "doc": "nhịp. nhịp.",
+      "keep_first": true
+    },
+    "tieng_nhonj": {
+      "doc": "nhọn. nhọn.",
+      "keep_first": true
+    },
+    "tieng_nhowtj": {
+      "doc": "nhợt. nhợt.",
+      "keep_first": true
+    },
+    "tieng_nhuoomj": {
+      "doc": "nhuộm. nhuộm.",
+      "keep_first": true
+    },
+    "tieng_nhupj": {
+      "doc": "nhụp. nhụp.",
+      "keep_first": true
+    },
+    "tieng_noocj": {
+      "doc": "nộc. nộc.",
+      "keep_first": true
+    },
+    "tieng_nooij": {
+      "doc": "nội. nội.",
+      "keep_first": true
+    },
+    "tieng_nucj": {
+      "doc": "nục. nục.",
+      "keep_first": true
+    },
+    "tieng_nuwowpj": {
+      "doc": "nượp. nượp.",
+      "keep_first": true
+    },
+    "tieng_oachj": {
+      "doc": "oạch. oạch.",
+      "keep_first": true
+    },
+    "tieng_oaij": {
+      "doc": "oại. oại.",
+      "keep_first": true
+    },
+    "tieng_oanj": {
+      "doc": "oạn. oạn.",
+      "keep_first": true
+    },
+    "tieng_ocj": {
+      "doc": "ọc. ọc.",
+      "keep_first": true
+    },
+    "tieng_oocj": {
+      "doc": "ộc. ộc.",
+      "keep_first": true
+    },
+    "tieng_ooj": {
+      "doc": "ộ. ộ.",
+      "keep_first": true
+    },
+    "tieng_oopj": {
+      "doc": "ộp. ộp.",
+      "keep_first": true
+    },
+    "tieng_ootj": {
+      "doc": "ột. ột.",
+      "keep_first": true
+    },
+    "tieng_opj": {
+      "doc": "ọp. ọp.",
+      "keep_first": true
+    },
+    "tieng_otj": {
+      "doc": "ọt. ọt.",
+      "keep_first": true
+    },
+    "tieng_ownj": {
+      "doc": "ợn. ợn.",
+      "keep_first": true
+    },
+    "tieng_owpj": {
+      "doc": "ợp. ợp.",
+      "keep_first": true
+    },
+    "tieng_owtj": {
+      "doc": "ợt. ợt.",
+      "keep_first": true
+    },
+    "tieng_phaatj": {
+      "doc": "phật. phật.",
+      "keep_first": true
+    },
+    "tieng_phuj": {
+      "doc": "phụ. phụ.",
+      "keep_first": true
+    },
+    "tieng_phuwowngj": {
+      "doc": "phượng. phượng.",
+      "keep_first": true
+    },
+    "tieng_quaj": {
+      "doc": "quạ. quạ.",
+      "keep_first": true
+    },
+    "tieng_quatj": {
+      "doc": "quạt. quạt.",
+      "keep_first": true
+    },
+    "tieng_raapj": {
+      "doc": "rập. rập.",
+      "keep_first": true
+    },
+    "tieng_rapj": {
+      "doc": "rạp. rạp.",
+      "keep_first": true
+    },
+    "tieng_rawngj": {
+      "doc": "rặng. rặng.",
+      "keep_first": true
+    },
+    "tieng_ritj": {
+      "doc": "rịt. rịt.",
+      "keep_first": true
+    },
+    "tieng_roj": {
+      "doc": "rọ. rọ.",
+      "keep_first": true
+    },
+    "tieng_roongj": {
+      "doc": "rộng. rộng.",
+      "keep_first": true
+    },
+    "tieng_roonj": {
+      "doc": "rộn. rộn.",
+      "keep_first": true
+    },
+    "tieng_rowj": {
+      "doc": "rợ. rợ.",
+      "keep_first": true
+    },
+    "tieng_ruootj": {
+      "doc": "Ruột. Ruột.",
+      "keep_first": true
+    },
+    "tieng_ruwcj": {
+      "doc": "rực. rực.",
+      "keep_first": true
+    },
+    "tieng_ruwowuj": {
+      "doc": "rượu. rượu.",
+      "keep_first": true
+    },
+    "tieng_sachj": {
+      "doc": "sạch. sạch.",
+      "keep_first": true
+    },
+    "tieng_sapj": {
+      "doc": "sạp. sạp.",
+      "keep_first": true
+    },
+    "tieng_sootj": {
+      "doc": "sột. sột.",
+      "keep_first": true
+    },
+    "tieng_sotj": {
+      "doc": "sọt. sọt.",
+      "keep_first": true
+    },
+    "tieng_sowj": {
+      "doc": "sợ. sợ.",
+      "keep_first": true
+    },
+    "tieng_suwcj": {
+      "doc": "sực. sực.",
+      "keep_first": true
+    },
+    "tieng_taapj": {
+      "doc": "tập. tập.",
+      "keep_first": true
+    },
+    "tieng_tawngj": {
+      "doc": "tặng. tặng.",
+      "keep_first": true
+    },
+    "tieng_thaanj": {
+      "doc": "thận. thận.",
+      "keep_first": true
+    },
+    "tieng_thaatj": {
+      "doc": "thật. thật.",
+      "keep_first": true
+    },
+    "tieng_thij": {
+      "doc": "thị. thị.",
+      "keep_first": true
+    },
+    "tieng_thoaij": {
+      "doc": "thoại. thoại.",
+      "keep_first": true
+    },
+    "tieng_thowj": {
+      "doc": "thợ. thợ.",
+      "keep_first": true
+    },
+    "tieng_thuaanj": {
+      "doc": "thuận. thuận.",
+      "keep_first": true
+    },
+    "tieng_thuoocj": {
+      "doc": "thuộc. thuộc.",
+      "keep_first": true
+    },
+    "tieng_thuwowcj": {
+      "doc": "thược. thược.",
+      "keep_first": true
+    },
+    "tieng_tieetj": {
+      "doc": "tiệt. tiệt.",
+      "keep_first": true
+    },
+    "tieng_toacj": {
+      "doc": "toạc. toạc.",
+      "keep_first": true
+    },
+    "tieng_toaj": {
+      "doc": "tọa. tọa.",
+      "keep_first": true
+    },
+    "tieng_traanj": {
+      "doc": "trận. trận.",
+      "keep_first": true
+    },
+    "tieng_traatj": {
+      "doc": "trật. trật.",
+      "keep_first": true
+    },
+    "tieng_traij": {
+      "doc": "trại. trại.",
+      "keep_first": true
+    },
+    "tieng_trongj": {
+      "doc": "trọng. trọng.",
+      "keep_first": true
+    },
+    "tieng_trowtj": {
+      "doc": "trợt. trợt.",
+      "keep_first": true
+    },
+    "tieng_trucj": {
+      "doc": "trục. trục.",
+      "keep_first": true
+    },
+    "tieng_truij": {
+      "doc": "trụi. trụi.",
+      "keep_first": true
+    },
+    "tieng_truwowtj": {
+      "doc": "trượt. trượt.",
+      "keep_first": true
+    },
+    "tieng_truyeenj": {
+      "doc": "truyện. truyện.",
+      "keep_first": true
+    },
+    "tieng_tucj": {
+      "doc": "tục. tục.",
+      "keep_first": true
+    },
+    "tieng_tutj": {
+      "doc": "tụt. tụt.",
+      "keep_first": true
+    },
+    "tieng_tuwj": {
+      "doc": "tự. tự.",
+      "keep_first": true
+    },
+    "tieng_tuyeetj": {
+      "doc": "tuyệt. tuyệt.",
+      "keep_first": true
+    },
+    "tieng_uaanj": {
+      "doc": "uận. uận.",
+      "keep_first": true
+    },
+    "tieng_ucj": {
+      "doc": "ục. ục.",
+      "keep_first": true
+    },
+    "tieng_utj": {
+      "doc": "ụt. ụt.",
+      "keep_first": true
+    },
+    "tieng_uwcj": {
+      "doc": "ực. ực.",
+      "keep_first": true
+    },
+    "tieng_uwowmj": {
+      "doc": "ượm. ượm.",
+      "keep_first": true
+    },
+    "tieng_uwownj": {
+      "doc": "ượn. ượn.",
+      "keep_first": true
+    },
+    "tieng_vaatj": {
+      "doc": "vật. vật.",
+      "keep_first": true
+    },
+    "tieng_vacj": {
+      "doc": "vạc. vạc.",
+      "keep_first": true
+    },
+    "tieng_vanj": {
+      "doc": "vạn. vạn.",
+      "keep_first": true
+    },
+    "tieng_vawcj": {
+      "doc": "vặc. vặc.",
+      "keep_first": true
+    },
+    "tieng_veej": {
+      "doc": "vệ. vệ.",
+      "keep_first": true
+    },
+    "tieng_veetj": {
+      "doc": "vệt. vệt.",
+      "keep_first": true
+    },
+    "tieng_vetj": {
+      "doc": "vẹt. vẹt.",
+      "keep_first": true
+    },
+    "tieng_vieenj": {
+      "doc": "viện. viện.",
+      "keep_first": true
+    },
+    "tieng_vieetj": {
+      "doc": "Việt. Việt.",
+      "keep_first": true
+    },
+    "tieng_vinhj": {
+      "doc": "vịnh. vịnh.",
+      "keep_first": true
+    },
+    "tieng_vitj": {
+      "doc": "vịt. vịt.",
+      "keep_first": true
+    },
+    "tieng_vooij": {
+      "doc": "vội. vội.",
+      "keep_first": true
+    },
+    "tieng_votj": {
+      "doc": "vọt. vọt.",
+      "keep_first": true
+    },
+    "tieng_vowtj": {
+      "doc": "vợt. vợt.",
+      "keep_first": true
+    },
+    "tieng_vutj": {
+      "doc": "vụt. vụt.",
+      "keep_first": true
+    },
+    "tieng_vuwownj": {
+      "doc": "vượn. vượn.",
+      "keep_first": true
+    },
+    "tieng_vuwowtj": {
+      "doc": "vượt. vượt.",
+      "keep_first": true
+    },
+    "tieng_xaj": {
+      "doc": "xạ. xạ.",
+      "keep_first": true
+    },
+    "tieng_xoetj": {
+      "doc": "xoẹt. xoẹt.",
+      "keep_first": true
+    },
+    "tieng_been": {
+      "doc": "bên, bên.",
+      "keep_first": true
+    },
+    "tieng_beenh": {
+      "doc": "bênh, bênh.",
+      "keep_first": true
+    },
+    "tieng_beens": {
+      "doc": "bến, bến, bến.",
+      "keep_first": true
+    },
+    "tieng_beep": {
+      "doc": "bêp, bêp.",
+      "keep_first": true
+    },
+    "tieng_beeps": {
+      "doc": "bếp, bếp, bếp.",
+      "keep_first": true
+    },
+    "tieng_chee": {
+      "doc": "chê, chê.",
+      "keep_first": true
+    },
+    "tieng_cheech": {
+      "doc": "chêch, chêch.",
+      "keep_first": true
+    },
+    "tieng_cheechs": {
+      "doc": "chếch, chếch, chếch.",
+      "keep_first": true
+    },
+    "tieng_cheenh": {
+      "doc": "chênh, chênh.",
+      "keep_first": true
+    },
+    "tieng_cheeps": {
+      "doc": "chếp, chếp, chếp.",
+      "keep_first": true
+    },
+    "tieng_cheet": {
+      "doc": "chêt, chêt.",
+      "keep_first": true
+    },
+    "tieng_cheets": {
+      "doc": "chết, chết, chết.",
+      "keep_first": true
+    },
+    "tieng_ddeem": {
+      "doc": "đêm, đêm.",
+      "keep_first": true
+    },
+    "tieng_ddeemf": {
+      "doc": "đềm, đềm.",
+      "keep_first": true
+    },
+    "tieng_ddeen": {
+      "doc": "đên, đên.",
+      "keep_first": true
+    },
+    "tieng_ddeens": {
+      "doc": "đến, đến, đến.",
+      "keep_first": true
+    },
+    "tieng_ddeeu": {
+      "doc": "đêu, đêu.",
+      "keep_first": true
+    },
+    "tieng_ddeeuf": {
+      "doc": "đều, đều.",
+      "keep_first": true
+    },
+    "tieng_deeps": {
+      "doc": "dếp, dếp, dếp.",
+      "keep_first": true
+    },
+    "tieng_deet": {
+      "doc": "dêt, dêt.",
+      "keep_first": true
+    },
+    "tieng_eechs": {
+      "doc": "ếch, ếch, ếch.",
+      "keep_first": true
+    },
+    "tieng_eemf": {
+      "doc": "ềm, ềm.",
+      "keep_first": true
+    },
+    "tieng_eeps": {
+      "doc": "ếp, ếp, ếp.",
+      "keep_first": true
+    },
+    "tieng_ghee": {
+      "doc": "ghê, ghê.",
+      "keep_first": true
+    },
+    "tieng_gheef": {
+      "doc": "ghề, ghề.",
+      "keep_first": true
+    },
+    "tieng_ghees": {
+      "doc": "ghế, ghế, ghế.",
+      "keep_first": true
+    },
+    "tieng_heet": {
+      "doc": "hêt, hêt.",
+      "keep_first": true
+    },
+    "tieng_heets": {
+      "doc": "hết, hết, hết.",
+      "keep_first": true
+    },
+    "tieng_huee": {
+      "doc": "huê, huê.",
+      "keep_first": true
+    },
+    "tieng_hueenh": {
+      "doc": "huênh, huênh.",
+      "keep_first": true
+    },
+    "tieng_huees": {
+      "doc": "huế, huế, huế.",
+      "keep_first": true
+    },
+    "tieng_keem": {
+      "doc": "kêm, kêm.",
+      "keep_first": true
+    },
+    "tieng_keenh": {
+      "doc": "kênh, kênh.",
+      "keep_first": true
+    },
+    "tieng_kees": {
+      "doc": "kế, kế, kế.",
+      "keep_first": true
+    },
+    "tieng_keet": {
+      "doc": "kêt, kêt.",
+      "keep_first": true
+    },
+    "tieng_keets": {
+      "doc": "kết, kết, kết.",
+      "keep_first": true
+    },
+    "tieng_keeu": {
+      "doc": "kêu, kêu.",
+      "keep_first": true
+    },
+    "tieng_kheenh": {
+      "doc": "khênh, khênh.",
+      "keep_first": true
+    },
+    "tieng_kheeu": {
+      "doc": "khêu, khêu.",
+      "keep_first": true
+    },
+    "tieng_leech": {
+      "doc": "lêch, lêch.",
+      "keep_first": true
+    },
+    "tieng_leef": {
+      "doc": "lề, lề.",
+      "keep_first": true
+    },
+    "tieng_leen": {
+      "doc": "lên, lên.",
+      "keep_first": true
+    },
+    "tieng_leenh": {
+      "doc": "lênh, lênh.",
+      "keep_first": true
+    },
+    "tieng_leeu": {
+      "doc": "lêu, lêu.",
+      "keep_first": true
+    },
+    "tieng_leeuf": {
+      "doc": "lều, lều.",
+      "keep_first": true
+    },
+    "tieng_meef": {
+      "doc": "mề, mề.",
+      "keep_first": true
+    },
+    "tieng_meem": {
+      "doc": "mêm, mêm.",
+      "keep_first": true
+    },
+    "tieng_meemf": {
+      "doc": "mềm, mềm.",
+      "keep_first": true
+    },
+    "tieng_meems": {
+      "doc": "mếm, mếm, mếm.",
+      "keep_first": true
+    },
+    "tieng_meen": {
+      "doc": "mên, mên.",
+      "keep_first": true
+    },
+    "tieng_meenf": {
+      "doc": "mền, mền.",
+      "keep_first": true
+    },
+    "tieng_meenh": {
+      "doc": "mênh, mênh.",
+      "keep_first": true
+    },
+    "tieng_meens": {
+      "doc": "mến, mến, mến.",
+      "keep_first": true
+    },
+    "tieng_meet": {
+      "doc": "mêt, mêt.",
+      "keep_first": true
+    },
+    "tieng_neen": {
+      "doc": "nên, nên.",
+      "keep_first": true
+    },
+    "tieng_neenf": {
+      "doc": "nền, nền.",
+      "keep_first": true
+    },
+    "tieng_neens": {
+      "doc": "nến, nến, nến.",
+      "keep_first": true
+    },
+    "tieng_neep": {
+      "doc": "nêp, nêp.",
+      "keep_first": true
+    },
+    "tieng_neeps": {
+      "doc": "nếp, nếp, nếp.",
+      "keep_first": true
+    },
+    "tieng_neeu": {
+      "doc": "nêu, nêu.",
+      "keep_first": true
+    },
+    "tieng_neeus": {
+      "doc": "Nếu, Nếu, Nếu.",
+      "keep_first": true
+    },
+    "tieng_nghee": {
+      "doc": "nghê, nghê.",
+      "keep_first": true
+    },
+    "tieng_ngheen": {
+      "doc": "nghên, nghên.",
+      "keep_first": true
+    },
+    "tieng_ngheenh": {
+      "doc": "nghênh, nghênh.",
+      "keep_first": true
+    },
+    "tieng_ngueech": {
+      "doc": "nguêch, nguêch.",
+      "keep_first": true
+    },
+    "tieng_nhee": {
+      "doc": "nhê, nhê.",
+      "keep_first": true
+    },
+    "tieng_nheen": {
+      "doc": "nhên, nhên.",
+      "keep_first": true
+    },
+    "tieng_pee": {
+      "doc": "pê, pê.",
+      "keep_first": true
+    },
+    "tieng_phee": {
+      "doc": "phê, phê.",
+      "keep_first": true
+    },
+    "tieng_quee": {
+      "doc": "quê, quê.",
+      "keep_first": true
+    },
+    "tieng_queen": {
+      "doc": "quên, quên.",
+      "keep_first": true
+    },
+    "tieng_ree": {
+      "doc": "rê, rê.",
+      "keep_first": true
+    },
+    "tieng_reet": {
+      "doc": "rêt, rêt.",
+      "keep_first": true
+    },
+    "tieng_reets": {
+      "doc": "rết, rết, rết.",
+      "keep_first": true
+    },
+    "tieng_reeuf": {
+      "doc": "rều, rều.",
+      "keep_first": true
+    },
+    "tieng_see": {
+      "doc": "sê, sê.",
+      "keep_first": true
+    },
+    "tieng_seen": {
+      "doc": "sên, sên.",
+      "keep_first": true
+    },
+    "tieng_seeu": {
+      "doc": "sêu, sêu.",
+      "keep_first": true
+    },
+    "tieng_seeus": {
+      "doc": "sếu, sếu, sếu.",
+      "keep_first": true
+    },
+    "tieng_teen": {
+      "doc": "tên, tên.",
+      "keep_first": true
+    },
+    "tieng_teeps": {
+      "doc": "tếp, tếp, tếp.",
+      "keep_first": true
+    },
+    "tieng_teet": {
+      "doc": "têt, têt.",
+      "keep_first": true
+    },
+    "tieng_teets": {
+      "doc": "Tết, Tết, Tết.",
+      "keep_first": true
+    },
+    "tieng_thee": {
+      "doc": "thê, thê.",
+      "keep_first": true
+    },
+    "tieng_theem": {
+      "doc": "thêm, thêm.",
+      "keep_first": true
+    },
+    "tieng_theemf": {
+      "doc": "thềm, thềm.",
+      "keep_first": true
+    },
+    "tieng_thees": {
+      "doc": "thế, thế, thế.",
+      "keep_first": true
+    },
+    "tieng_theeu": {
+      "doc": "thêu, thêu.",
+      "keep_first": true
+    },
+    "tieng_tree": {
+      "doc": "trê, trê.",
+      "keep_first": true
+    },
+    "tieng_treen": {
+      "doc": "trên, trên.",
+      "keep_first": true
+    },
+    "tieng_tuee": {
+      "doc": "tuê, tuê.",
+      "keep_first": true
+    },
+    "tieng_tuees": {
+      "doc": "tuế, tuế, tuế.",
+      "keep_first": true
+    },
+    "tieng_veenh": {
+      "doc": "vênh, vênh.",
+      "keep_first": true
+    },
+    "tieng_xee": {
+      "doc": "xê, xê.",
+      "keep_first": true
+    },
+    "tieng_xeechs": {
+      "doc": "xếch, xếch, xếch.",
+      "keep_first": true
+    },
+    "tieng_xeep": {
+      "doc": "xêp, xêp.",
+      "keep_first": true
+    },
+    "tieng_xeeps": {
+      "doc": "xếp, xếp, xếp.",
+      "keep_first": true
+    },
+    "tieng_xees": {
+      "doc": "xế, xế, xế.",
+      "keep_first": true
+    },
+    "van_eech": {
+      "doc": "êch, êch.",
+      "keep_first": true
+    },
+    "van_eem": {
+      "doc": "êm, êm.",
+      "keep_first": true
+    },
+    "van_een": {
+      "doc": "ên, ên.",
+      "keep_first": true
+    },
+    "van_eeng": {
+      "doc": "êng, êng.",
+      "keep_first": true
+    },
+    "van_eenh": {
+      "doc": "ênh, ênh.",
+      "keep_first": true
+    },
+    "van_eep": {
+      "doc": "êp, êp.",
+      "keep_first": true
+    },
+    "van_eet": {
+      "doc": "êt, êt.",
+      "keep_first": true
+    },
+    "van_eeu": {
+      "doc": "êu, êu.",
+      "keep_first": true
+    },
+    "van_uee": {
+      "doc": "uê, uê.",
+      "keep_first": true
+    },
+    "van_ueech": {
+      "doc": "uêch, uêch.",
+      "keep_first": true
+    },
+    "van_ueenh": {
+      "doc": "uênh, uênh.",
+      "keep_first": true
+    },
+    "tieng_ddanf": {
+      "doc": "đàn, đàn.",
+      "keep_first": true
     },
     "tieng_baacj": {
       "doc": "bậc. bậc.",
@@ -91,16 +3637,8 @@
       "doc": "biếu, biếu, biếu.",
       "keep_first": true
     },
-    "tieng_bij": {
-      "doc": "bị. bị.",
-      "keep_first": true
-    },
     "tieng_bocj": {
       "doc": "bọc. bọc.",
-      "keep_first": true
-    },
-    "tieng_bonj": {
-      "doc": "Bọn. Bọn.",
       "keep_first": true
     },
     "tieng_bootj": {
@@ -111,16 +3649,8 @@
       "doc": "bọt. bọt.",
       "keep_first": true
     },
-    "tieng_bowx": {
-      "doc": "bỡ, bỡ.",
-      "keep_first": true
-    },
     "tieng_buij": {
       "doc": "bụi. bụi.",
-      "keep_first": true
-    },
-    "tieng_buoonf": {
-      "doc": "Buồn, Buồn.",
       "keep_first": true
     },
     "tieng_canhj": {
@@ -131,20 +3661,12 @@
       "doc": "cạn. cạn.",
       "keep_first": true
     },
-    "tieng_cawms": {
-      "doc": "Cắm, Cắm.",
-      "keep_first": true
-    },
     "tieng_cawnj": {
       "doc": "cặn. cặn.",
       "keep_first": true
     },
     "tieng_chaamj": {
       "doc": "chậm. chậm.",
-      "keep_first": true
-    },
-    "tieng_chawcs": {
-      "doc": "Chắc, Chắc.",
       "keep_first": true
     },
     "tieng_chees": {
@@ -155,10 +3677,6 @@
       "doc": "chiện. chiện.",
       "keep_first": true
     },
-    "tieng_chif": {
-      "doc": "chì, chì.",
-      "keep_first": true
-    },
     "tieng_chonj": {
       "doc": "chọn. chọn.",
       "keep_first": true
@@ -167,28 +3685,8 @@
       "doc": "cộc. cộc.",
       "keep_first": true
     },
-    "tieng_coongj": {
-      "doc": "cộng. cộng.",
-      "keep_first": true
-    },
-    "tieng_coos": {
-      "doc": "cố, cố.",
-      "keep_first": true
-    },
-    "tieng_cuws": {
-      "doc": "Cứ, Cứ.",
-      "keep_first": true
-    },
-    "tieng_cux": {
-      "doc": "cũ, cũ.",
-      "keep_first": true
-    },
     "tieng_dawmj": {
       "doc": "dặm. dặm.",
-      "keep_first": true
-    },
-    "tieng_dawnj": {
-      "doc": "dặn. dặn.",
       "keep_first": true
     },
     "tieng_ddaamj": {
@@ -199,20 +3697,8 @@
       "doc": "đập. đập.",
       "keep_first": true
     },
-    "tieng_ddangs": {
-      "doc": "đáng, đáng.",
-      "keep_first": true
-    },
     "tieng_ddawtj": {
       "doc": "đặt. đặt.",
-      "keep_first": true
-    },
-    "tieng_ddieemr": {
-      "doc": "điểm, điểm.",
-      "keep_first": true
-    },
-    "tieng_ddooj": {
-      "doc": "độ. độ.",
       "keep_first": true
     },
     "tieng_ddootj": {
@@ -231,14 +3717,6 @@
       "doc": "Diệp. Diệp.",
       "keep_first": true
     },
-    "tieng_dipj": {
-      "doc": "dịp. dịp.",
-      "keep_first": true
-    },
-    "tieng_diuf": {
-      "doc": "dìu, dìu.",
-      "keep_first": true
-    },
     "tieng_ducj": {
       "doc": "dục. dục.",
       "keep_first": true
@@ -247,16 +3725,8 @@
       "doc": "gật. gật.",
       "keep_first": true
     },
-    "tieng_gawngs": {
-      "doc": "gắng, gắng.",
-      "keep_first": true
-    },
     "tieng_giaanj": {
       "doc": "giận. giận.",
-      "keep_first": true
-    },
-    "tieng_gias": {
-      "doc": "giá, giá.",
       "keep_first": true
     },
     "tieng_gongj": {
@@ -275,36 +3745,8 @@
       "doc": "gợn. gợn.",
       "keep_first": true
     },
-    "tieng_hanhf": {
-      "doc": "hành, hành.",
-      "keep_first": true
-    },
-    "tieng_hieenf": {
-      "doc": "Hiền, Hiền.",
-      "keep_first": true
-    },
     "tieng_hoawcj": {
       "doc": "hoặc. hoặc.",
-      "keep_first": true
-    },
-    "tieng_hungf": {
-      "doc": "Hùng, Hùng.",
-      "keep_first": true
-    },
-    "tieng_khai": {
-      "doc": "khai, khai.",
-      "keep_first": true
-    },
-    "tieng_kiaf": {
-      "doc": "Kìa, Kìa.",
-      "keep_first": true
-    },
-    "tieng_laaps": {
-      "doc": "lấp, lấp.",
-      "keep_first": true
-    },
-    "tieng_leo": {
-      "doc": "leo, leo.",
       "keep_first": true
     },
     "tieng_liaj": {
@@ -331,18 +3773,6 @@
       "doc": "lộng. lộng.",
       "keep_first": true
     },
-    "tieng_los": {
-      "doc": "ló, ló.",
-      "keep_first": true
-    },
-    "tieng_luaj": {
-      "doc": "lụa. lụa.",
-      "keep_first": true
-    },
-    "tieng_luoongs": {
-      "doc": "luống, luống.",
-      "keep_first": true
-    },
     "tieng_luwngj": {
       "doc": "lựng. lựng.",
       "keep_first": true
@@ -355,10 +3785,6 @@
       "doc": "mạc. mạc.",
       "keep_first": true
     },
-    "tieng_mangr": {
-      "doc": "mảng, mảng.",
-      "keep_first": true
-    },
     "tieng_manj": {
       "doc": "mạn. mạn.",
       "keep_first": true
@@ -367,52 +3793,20 @@
       "doc": "miết, miết, miết.",
       "keep_first": true
     },
-    "tieng_mongj": {
-      "doc": "mọng. mọng.",
-      "keep_first": true
-    },
-    "tieng_mons": {
-      "doc": "Món, Món.",
-      "keep_first": true
-    },
     "tieng_moocj": {
       "doc": "mộc. mộc.",
-      "keep_first": true
-    },
-    "tieng_muoonj": {
-      "doc": "muộn. muộn.",
-      "keep_first": true
-    },
-    "tieng_muwowif": {
-      "doc": "mười, mười.",
       "keep_first": true
     },
     "tieng_neets": {
       "doc": "nết, nết, nết.",
       "keep_first": true
     },
-    "tieng_nets": {
-      "doc": "nét, nét.",
-      "keep_first": true
-    },
     "tieng_ngaamj": {
       "doc": "ngậm. ngậm.",
       "keep_first": true
     },
-    "tieng_ngaamx": {
-      "doc": "ngẫm, ngẫm.",
-      "keep_first": true
-    },
-    "tieng_ngaanr": {
-      "doc": "ngẩn, ngẩn.",
-      "keep_first": true
-    },
     "tieng_ngacj": {
       "doc": "ngạc. ngạc.",
-      "keep_first": true
-    },
-    "tieng_nghieem": {
-      "doc": "nghiêm, nghiêm.",
       "keep_first": true
     },
     "tieng_ngocj": {
@@ -423,24 +3817,8 @@
       "doc": "ngột. ngột.",
       "keep_first": true
     },
-    "tieng_ngowx": {
-      "doc": "ngỡ, ngỡ.",
-      "keep_first": true
-    },
     "tieng_ngutj": {
       "doc": "ngụt. ngụt.",
-      "keep_first": true
-    },
-    "tieng_nguwowcj": {
-      "doc": "ngược. ngược.",
-      "keep_first": true
-    },
-    "tieng_nhaanj": {
-      "doc": "nhận. nhận.",
-      "keep_first": true
-    },
-    "tieng_nhaif": {
-      "doc": "nhài, nhài.",
       "keep_first": true
     },
     "tieng_nhaoj": {
@@ -463,18 +3841,6 @@
       "doc": "nịch. nịch.",
       "keep_first": true
     },
-    "tieng_nieemf": {
-      "doc": "niềm, niềm.",
-      "keep_first": true
-    },
-    "tieng_noj": {
-      "doc": "nọ. nọ.",
-      "keep_first": true
-    },
-    "tieng_nooir": {
-      "doc": "nổi, nổi.",
-      "keep_first": true
-    },
     "tieng_phachj": {
       "doc": "phạch. phạch.",
       "keep_first": true
@@ -487,20 +3853,12 @@
       "doc": "phiến, phiến, phiến.",
       "keep_first": true
     },
-    "tieng_phong": {
-      "doc": "phong, phong.",
-      "keep_first": true
-    },
     "tieng_quyeets": {
       "doc": "quyết, quyết, quyết.",
       "keep_first": true
     },
     "tieng_raj": {
       "doc": "Rạ. Rạ.",
-      "keep_first": true
-    },
-    "tieng_rawngf": {
-      "doc": "rằng, rằng.",
       "keep_first": true
     },
     "tieng_roij": {
@@ -527,18 +3885,6 @@
       "doc": "sợi. sợi.",
       "keep_first": true
     },
-    "tieng_suwcs": {
-      "doc": "sức, sức.",
-      "keep_first": true
-    },
-    "tieng_suy": {
-      "doc": "suy, suy.",
-      "keep_first": true
-    },
-    "tieng_thaamf": {
-      "doc": "thầm, thầm.",
-      "keep_first": true
-    },
     "tieng_thachj": {
       "doc": "thạch. thạch.",
       "keep_first": true
@@ -547,40 +3893,12 @@
       "doc": "thẹn. thẹn.",
       "keep_first": true
     },
-    "tieng_thois": {
-      "doc": "thói, thói.",
-      "keep_first": true
-    },
-    "tieng_thuwa": {
-      "doc": "thưa, thưa.",
-      "keep_first": true
-    },
-    "tieng_thuwowcs": {
-      "doc": "thước, thước.",
-      "keep_first": true
-    },
     "tieng_tieets": {
       "doc": "tiết, tiết, tiết.",
       "keep_first": true
     },
-    "tieng_tius": {
-      "doc": "tíu, tíu.",
-      "keep_first": true
-    },
     "tieng_traapj": {
       "doc": "trập. trập.",
-      "keep_first": true
-    },
-    "tieng_tranf": {
-      "doc": "tràn, tràn.",
-      "keep_first": true
-    },
-    "tieng_tungf": {
-      "doc": "Tùng, Tùng.",
-      "keep_first": true
-    },
-    "tieng_tuwowngf": {
-      "doc": "tường, tường.",
       "keep_first": true
     },
     "tieng_tuwowngj": {
@@ -595,28 +3913,8 @@
       "doc": "Vặn. Vặn.",
       "keep_first": true
     },
-    "tieng_vieecj": {
-      "doc": "Việc. Việc.",
-      "keep_first": true
-    },
     "tieng_vij": {
       "doc": "vị. vị.",
-      "keep_first": true
-    },
-    "tieng_vongj": {
-      "doc": "vọng. vọng.",
-      "keep_first": true
-    },
-    "tieng_xaaus": {
-      "doc": "xấu, xấu.",
-      "keep_first": true
-    },
-    "tieng_xuooi": {
-      "doc": "xuôi, xuôi.",
-      "keep_first": true
-    },
-    "tieng_xuwngs": {
-      "doc": "xứng, xứng.",
       "keep_first": true
     },
     "tieng_xuyeens": {
