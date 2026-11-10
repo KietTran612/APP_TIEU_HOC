@@ -17,7 +17,7 @@ Gói nằm ở thư mục `BoABa-chuyen-may-2026-11-10/`, cạnh repo trên máy
 |---|---|---|
 | `repo/APP_TIEU_HOC.bundle` | Toàn bộ lịch sử git (`git bundle --all`), để khôi phục không cần mạng | 2 |
 | `repo/chinh-sua-duyet/` | 4 file danh mục và cấu hình đang có chỉnh sửa duyệt của chủ dự án **chưa commit**, kèm `chinh-sua-duyet.patch` | 3 |
-| `media/TapDoc-media-<ngày>.unitypackage`, `media/TapDoc-clips-<ngày>.zip` | Gói media mới nhất: tranh, âm thanh, clip của cả lớp 1 và lớp 2. Mới hơn gói trên Drive | 4 |
+| `media/TapDoc-media-2026-11-10.unitypackage` (khoảng 1,2 GB), `media/TapDoc-clips-2026-11-10.zip` (khoảng 1,2 GB) | Gói media mới nhất: tranh, âm thanh, clip của cả lớp 1 và lớp 2. Mới hơn gói trên Drive | 4 |
 | `ngoai-repo/` | Các thư mục bị git bỏ qua mà vẫn cần: `content/requests/`, `content/tts/prev/`, `content/tts/marks/`, `.superpowers/` (trang nghe thử, sổ kế hoạch) | 5 |
 | `claude/memory/` | Bộ nhớ dự án của Claude (các quy tắc chủ dự án đã chốt) | 6 |
 | `claude/claude-projects/C--Source-AURA-APP-TIEU-HOC/` | **Toàn bộ** dữ liệu Claude Code của dự án: bộ nhớ và hội thoại gốc (`*.jsonl`) của mọi session (root, các session con, các session cũ), kèm kết quả công cụ | 6 |
@@ -46,7 +46,7 @@ Chủ dự án đang duyệt dở: trạng thái và ghi chú nằm trong 4 file
 
 ```bash
 cd C:/Source/AURA/APP_TIEU_HOC/tools
-python run_unity_media.py unpack "<gói>/media/TapDoc-media-<ngày>.unitypackage" --clips "<gói>/media/TapDoc-clips-<ngày>.zip"
+python run_unity_media.py unpack "<gói>/media/TapDoc-media-2026-11-10.unitypackage" --clips "<gói>/media/TapDoc-clips-2026-11-10.zip"
 ```
 
 Kết quả đúng: lệnh in "Đã nhập gói media." và không có cảnh báo media khác gói. Tên gói phải trùng với `content/manifests/media_lock.json`. Chủ dự án nên tải hai file này lên thư mục Drive của dự án, vì chúng mới hơn gói trên Drive.
