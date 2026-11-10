@@ -147,9 +147,13 @@ Bundle lỗi (báo "not a bundle", "missing") thì clone từ GitHub: `git clone
 
 Sau khi clone: `git fetch origin`, rồi `git status` phải ghi "Your branch is ahead of 'origin/main' by N commits" hoặc "up to date". **Không** push; chủ dự án tự push.
 
-### B3. Đặt lại chỉnh sửa duyệt chưa commit
+### B3. Đặt lại chỉnh sửa duyệt
 
-Bốn file này chứa trạng thái và ghi chú duyệt dở của chủ dự án, cùng cấu hình giọng đọc của các đợt sửa âm thanh. Bước này bắt buộc.
+Bốn file `audio_manifest.json`, `image_manifest.json`, `video_manifest.json` và `content/tts/settings.json` chứa trạng thái, ghi chú duyệt của chủ dự án và cấu hình giọng đọc của các đợt sửa âm thanh.
+
+Ngày 10/11 chủ dự án đã cho commit cả bốn file vào git (commit `230a2ef`, "bản chụp kết quả duyệt và cấu hình giọng đọc đến 10/11/2026").
+- **Clone từ GitHub** và `git log` có `230a2ef`: **bỏ qua bước này**, bốn file đã đúng.
+- **Clone từ bundle trong gói** (bundle được tạo trước commit đó): chạy các lệnh dưới đây. Sau đó `git pull` từ GitHub sẽ ra cùng nội dung.
 
 ```bash
 cd /c/Source/AURA/APP_TIEU_HOC
@@ -160,9 +164,9 @@ cp "<goi>/repo/chinh-sua-duyet/content/tts/settings.json" content/tts/
 git status --short
 ```
 
-Kết quả đúng: `git status --short` chỉ có đúng 4 dòng `M` của 4 file trên.
+Kết quả đúng: `git status --short` chỉ có đúng 4 dòng `M` của 4 file trên. Nếu đã kéo được `230a2ef` từ GitHub thì `git status` sạch.
 
-**Không commit 4 file này.** Chúng là chỉnh sửa duyệt của chủ dự án; xem QUY-TRINH-LAM-VIEC.md mục 1 và mục 10.
+Từ nay về sau, chỉnh sửa duyệt **mới** của chủ dự án vẫn theo quy tắc cũ: không commit lẫn vào, trừ khi chủ dự án cho phép (QUY-TRINH-LAM-VIEC.md mục 1 và mục 10).
 
 ### B4. Nhập gói media
 
@@ -293,7 +297,7 @@ Quy tắc khi chạy âm thanh:
 
 ### B12. Kiểm tra cuối và báo chủ dự án
 
-- [ ] `git log -1` trùng `COMMIT.txt`; `git status` chỉ có 4 file chỉnh sửa duyệt.
+- [ ] `git log` có commit `230a2ef` (hoặc đã chép 4 file ở bước B3); `git status` sạch hoặc chỉ có 4 file đó.
 - [ ] Media: 6.395 âm thanh, 431 tranh, 399 clip; `media_lock.json` ghi gói `2026-11-10`.
 - [ ] `content/tts/prev`, `marks`, `.superpowers`, `content/requests` đã có.
 - [ ] `validate --allow-missing` OK, không có cảnh báo media.
