@@ -10,10 +10,18 @@
 | Công cụ, Unity | Xong; test liên quan đạt, smoke 133 mục đạt |
 | Tranh | Đủ 57 tranh + `img_chung_giai_nghia` đã nhập (447cf3e, d239be1, d7bbff2, 957e711), `cho_duyet`; validate không còn lỗi tranh. Ghi chú duyệt: b190 cô bé mặc áo hoa (không phải áo bông), b268 chọn bản có thuyền chở cá, b274 hai cô gái không đội nón |
 | Tranh động | Đủ 57/57 clip (28fe7be, a0662f8, b299 ở d553b83 ngày 10/11), `cho_duyet` — chờ đóng gói cùng âm thanh |
-| Âm thanh | **Dừng 10/11 09:10 (chủ dự án chuyển máy).** Mã chỉ thuộc lớp 2: 3334; đã có file 1623 (`cho_duyet`), còn **1711 `chua_co`** (886 từ, 343 tiếng, 326 câu, 148 câu hỏi, 15 hướng dẫn) + 7 mã cần tạo lại vì đổi cách đọc → lượt tới chọn 1718 mã. Lượt 10/11 chỉ kịp 8 trong 1726 mã. Dòng danh mục và 140 cách đọc riêng của lớp 2 đã commit; **file mp3 chỉ có trên máy cũ** (`unity/TapDoc/Assets/Content/Resources/audio/`) — đi qua gói media root đóng |
-| Gói media | Chưa đóng (chờ tranh và âm thanh) |
+| Âm thanh | **Xong 11/11 (b26949d).** Đủ 3321/3321 mã chỉ thuộc lớp 2 có file, `cho_duyet`. Đã đo hỏi/ngã 1511 mã và sửa mã sai (xem mục 5 bên dưới); kiểm 389 tiếng lẻ (nặng/ê). Ghi chú "Rà soát … lớp 2 11/11" trên 21 mã đã đổi hoặc cần nghe. mp3 ngoài git — root đóng gói `bosung` |
+| Gói media | Root đóng bằng `python tools/run_unity_media.py bosung` (session này không chạy `pack`, không đụng `media_lock.json`) |
+
+## 1b. Kết quả rà soát âm thanh 11/11
+
+- Đo bằng `do_cao_do_lop2.py` (chỉ chấm tiếng lẻ và tiếng cuối cụm, xem QUY-TRINH §12): 2432 tiếng hỏi/ngã — đạt 546, giữa cụm (không chấm) 1730, chưa đo được (quá ngắn) 130, sai 18, có thể sai 8.
+- 18 mã sai → đọc chậm hơn 20% sửa được 13 (cau_b184_01, b184_13, b215_03, b232_09, b235_05, b236_10, b238_01, b254_01, b254_11, b262_01, b292_22, b302_08, tu_thoon_xax); cau_b223_05 ghép mượt "Chính tả, Bé Hoa"; cau_b254_04/08 ("đổi") đọc như tiếng lẻ.
+- **Cần chủ dự án nghe:** cau_b203_12 (tả, gần đạt), hoi_b236_01 (khổ, câu có chữ số), tieng_phachj, tieng_thachj (đo ra như ngang, giữ bản cũ), và 8 mã "có thể sai": cau_b190_21 nhỏ, cau_b219_08 ngã, cau_b221_07 mãi, cau_b236_17 cỏ, hoi_b278_01 ngã, tu_chees_gieeux giễu, tu_chinhs_giuwax giữa, tu_ddeens_nooix nỗi.
 
 ## 2. Làm tiếp (Claude)
+
+**Bước 1–3 đã xong 11/11 (b26949d).** Còn lại: root đóng gói `bosung`; chủ dự án nghe các mã ở mục 1b. Các bước dưới giữ lại để làm lại khi cần.
 
 1. **Âm thanh trên máy mới** (sau khi `run_unity_media.py unpack` gói root đóng, để có các mp3 đã tạo):
    ```

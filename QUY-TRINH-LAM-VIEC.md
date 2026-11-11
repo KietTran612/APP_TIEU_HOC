@@ -278,6 +278,9 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | `tts --tieng-keep-first` báo "Đã tạo 0" với tiếng đã có file | Ghi cách đọc trước rồi mới chọn mã cần tạo | 09/11, 9678b22 |
 | Ghép tiếng bằng cách nối thẳng file MP3 thì khoảng nghỉ dài (khoảng 0,3 giây) và không bỏ được lặng đầu mỗi tiếng (khung MP3 mượn dữ liệu khung trước) | Giải mã từng tiếng ra PCM bằng Media Foundation của Windows, cắt lặng, cân RMS, chèn nghỉ 0,08 giây (dấu phẩy 0,25 giây), rồi mã hoá lại MP3 24 kHz mono cũng bằng Media Foundation (`CreateMp3`). Không cần ffmpeg. Lưu ý: đặt tần số mẫu cho bước giải mã thì Media Foundation từ chối, nên để mặc định rồi trộn kênh trong Python | 09/11, `audio_join.py` |
 | Đặt tiếng trong ngữ cảnh để giữ tiếng đầu ("mụ già.") thì bản cắt dính đầu tiếng sau, vì hai tiếng đọc liền và phần đệm 0,1 giây sau tiếng lấn sang tiếng kế | `keep_first` không giữ phần nào của tiếng kế tiếp: kết thúc đoạn giữ lùi về trước mốc đầu tiếng sau một khoảng bằng phần đệm | 09/11 |
+| Đo hỏi/ngã cả lớp báo hàng trăm tiếng "có thể sai" ở giữa cụm | Hiệu chỉnh lại trên 31 câu/từ lớp 1 đã `dat` (11/11): 14/14 tiếng hỏi/ngã giữa cụm cũng không giống mẫu (chỉ lên 0,7–3,5 bán âm), nên tiếng giữa cụm **không chấm**. Chỉ chấm tiếng lẻ và tiếng cuối cụm: lên < 6 bán âm là sai, 6–7 thì có thể sai | 11/11, b26949d, `tools/lop2/do_cao_do_lop2.py` |
+| Câu có chữ số ("1.", "3–4") lệch mốc từng tiếng, đo nhầm tiếng | edge-tts tính mỗi cụm chữ số là một từ còn `tokens` bỏ qua. Khi số mốc = số tiếng + số cụm chữ số thì bỏ mốc của các cụm chữ số | 11/11, b26949d |
+| Tiếng hỏi/ngã cuối cụm lên chưa đủ, nhất là "tả" trong "Tập làm văn: … tả …" đọc gần như sắc | Đọc chậm hơn 20% (`rate` = mặc định − 20) sửa được 13/18 mã lớp 2. Mã chỉ có một tiếng thì đọc như tiếng lẻ ("đổi, đổi." giữ tiếng đầu). Câu ngắn còn lại thì ghép mượt. Câu có chữ số không ghép được, để chủ dự án nghe | 11/11, b26949d, `tools/lop2/sua_hoi_nga_lop2.py` |
 
 ### Tranh (ChatGPT)
 
