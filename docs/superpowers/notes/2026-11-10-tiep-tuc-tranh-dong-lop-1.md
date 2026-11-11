@@ -252,3 +252,15 @@ Kịch bản mới (build) đã có trong `tranh_dong_kich_ban.json`:
 - lưỡi luôn vuông góc với cán, không tua ngược.
 
 Nhớ đệm lại tranh 16:9 từ bản mới trong `Resources/images`, đừng dùng bản cũ đã tải lên Flow.
+
+## 9. Cập nhật tối 11/11
+
+- Chủ dự án cho làm lại sau 1 giờ nghỉ. Trên `/u/4` (dự án bc8e3e5b "Tháng 11 02 - 09:37") đã làm 5 clip: `b61_quar_cau`, `b62_ddanf_seeus`, `b63_cais_riuf`, `b65_booj_ddooij`, `b65_cur_lacj`.
+  - Gửi từng clip, chờ xong rồi đợi thêm 2–3 phút mới gửi clip sau; không gặp "unusual activity".
+  - Cả 5 đã xem và đạt; commit 1a09bed. Tập 1 đợt này xong 20/27.
+- **Còn lại:**
+  - 7 clip tập 1: `b67_hoa_cucs`, `b68_coo_giaos_tawngj_quaf`, `b69_baix_cats`, `b77_ddaamf_sen`, `b77_nhipj_caauf`, `b78_xe_qua_caauf`, `b50_coo_taams`;
+  - 32 clip tập 2 (mục 7);
+  - cái cuốc (mục 8).
+- **Credit tối 11/11:** `/u/2` 53, `/u/3` 50, `/u/4` 0 (cộng 50 mỗi ngày), `/u/1` và `/u/6` hết.
+- **Chủ dự án chốt "để mai" (12/11).** Mai bắt đầu lại trên `/u/4`, cũng gửi chậm như trên. `/u/2` và `/u/3` để sau cùng.
