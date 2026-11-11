@@ -23,6 +23,10 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
   - 1265676: ghi chú tiếp tục, kịch bản 12 clip còn lại.
   - Root đã kiểm: đúng 15 dòng `video_manifest` đổi, về `cho_duyet`, ghi chú giữ lý do cũ.
   - /u/2 báo "unusual activity" cả 5 clip (không mất credit). Root cho dừng gửi trong ngày. Ngày 12/11 thử 1 clip trên /u/4, mỗi clip cách nhau ít nhất 1 phút.
+- **[L2] nội dung:** âm thanh lớp 2 xong 3.321/3.321 mã (b26949d, ghi chú 379aeb7). Đo hỏi/ngã 1.511 mã: 18 sai, sửa 17 (đọc chậm 20%, ghép mượt, "X, X." giữ tiếng đầu); còn vài mã chờ chủ dự án nghe. Root đã kiểm: commit chỉ đổi 1.631 dòng và 268 override của lớp 2.
+- **[L1] nội dung:** tạo giọng 7 từ Em viết (bb6c51f), đọc nguyên cụm −15%. Validate không còn `chua_co`.
+- **[L1] tranh động:** thêm 5 clip trên /u/4, gửi cách nhau khoảng 3 phút, không bị chặn (1a09bed); tập 1 xong 20/27. Kịch bản 32 clip tập 2 (a3deb34) và cái cuốc (843d9a9).
+- **Root:** vẽ lại tranh cái cuốc b101 (60ef3a9). Chạy Unity nền tạo 1.704 file `.meta`, rồi `run_unity_media.py bosung`: `dist/TapDoc-bosung-2026-11-11.zip` 95 MB (1.704 mới, 152 đổi, 21 clip), khoá media 0d6084d. `validate` (không `--allow-missing`) OK. Gói bản cập nhật chuyển máy 11/11 (xem CHUYEN-MAY-MOI.md mục 0).
 - **Chủ dự án duyệt thêm clip tập 2 (bài 81–148):** 32 clip cần làm lại, giao [L1] tranh động sau 12 clip tập 1 còn lại. Thêm hai quy tắc: lời trong clip chỉ tiếng Việt; máy quay không lia lung tung. Tranh `img_b101_cais_cuoocs` bị chê, phải vẽ lại tranh trước rồi mới làm clip.
 
 ## 10/11/2026 (chiều) — làm tiếp trên máy cũ
