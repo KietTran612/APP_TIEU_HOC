@@ -1,15 +1,17 @@
-"""Đo cao độ hỏi/ngã cho mọi mã riêng lớp 2 và phân loại theo cách hiệu chỉnh trong QUY-TRINH-LAM-VIEC.md mục 12:
+"""Đo cao độ hỏi/ngã cho mọi mã riêng lớp 2 và phân loại (hiệu chỉnh 11/11 trên 31 câu/từ lớp 1 đã `dat`):
 
-- Tiếng lẻ, hoặc tiếng ở **cuối cụm** (cuối câu hoặc ngay trước dấu câu): đo tin được. Đường cao độ phải võng rồi lên:
-  lên (cao nhất nửa sau − thấp nhất) ≥ 7 bán âm → đạt; ≤ 1 bán âm → **sai**; ở giữa → theo mẫu (`pitch_check.judge`):
-  không giống hỏi/ngã thì **sai**, giống thì đạt.
-- Tiếng ở **giữa cụm**: tiêu chí yếu, không giống mẫu hỏi/ngã chỉ coi là **có thể sai** (để tai người nghe).
+- Tiếng lẻ, hoặc tiếng ở **cuối cụm** (cuối câu hoặc ngay trước dấu câu): đo tin được — tiếng cuối cụm đã đạt lên
+  6,4–13 bán âm. Giống mẫu hỏi/ngã (`pitch_check.judge`) hoặc lên ≥ 7 → **dat**; không giống và lên < 6 → **sai**
+  (cần sửa); còn lại → **co_the_sai** (để tai người nghe).
+- Tiếng ở **giữa cụm**: không đo được. Trong câu đã đạt, 14/14 tiếng hỏi/ngã giữa cụm cũng không giống mẫu (lên
+  0,7–3,5 bán âm, vì nói liền thì hỏi/ngã không lên hết). Không giống mẫu → **giua_cum** (không chấm, không sửa).
 
 Dùng (từ gốc repo, không gọi mạng):
     python tools/lop2/do_cao_do_lop2.py [--ma MÃ ...] [--json ra.json]
 In: mỗi mã có tiếng **sai** một dòng; cuối cùng là bảng đếm. `--json` ghi kết quả từng tiếng.
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -24,7 +26,7 @@ PREFIX = "tv2_t1_"
 CACHE = ROOT / "content/tts/pitch_cache"
 MARKS = ROOT / "content/tts/marks"
 PUNCT = set(",.?!;:…")
-RISE_OK, RISE_BAD = 7.0, 1.0
+RISE_OK, RISE_BAD = 7.0, 6.0
 
 
 def lop2(row) -> bool:
@@ -47,10 +49,21 @@ def rise(values) -> float:
     return max(half) - min(values) if values else 0.0
 
 
+def word_spans(text: str, spans: list) -> list:
+    """Mốc từng tiếng khớp `tokens(text)`. Bộ đọc tính chữ số ("2", "3.") là một từ còn `tokens` bỏ qua: khi số mốc
+    bằng số tiếng + số cụm chữ số thì bỏ mốc của các cụm chữ số theo thứ tự xuất hiện."""
+    toks = tokens(text)
+    digits = [m.start() for m in re.finditer(r"\d+", nfc(text))]
+    if not digits or len(spans) != len(toks) + len(digits):
+        return spans
+    order = sorted([(s, False) for _, s in toks] + [(s, True) for s in digits])
+    return [span for (_, is_digit), span in zip(order, spans) if not is_digit]
+
+
 def classify(row, wav, marks, templates) -> list[dict]:
     text = row["text"]
     count = len(tokens(text))
-    spans = (marks or {}).get("words") or []
+    spans = word_spans(text, (marks or {}).get("words") or [])
     out = []
     for k, word, tone in pc.words_to_check(text):
         res = {"id": row["id"], "word": word, "tone": tone, "pos": k}
@@ -69,9 +82,9 @@ def classify(row, wav, marks, templates) -> list[dict]:
         r = rise(values)
         like = pc.judge(values, tone, templates)
         if final:
-            verdict = "dat" if r >= RISE_OK else "sai" if r <= RISE_BAD else ("dat" if like else "sai")
+            verdict = "dat" if like or r >= RISE_OK else "sai" if r < RISE_BAD else "co_the_sai"
         else:
-            verdict = "dat" if like else "co_the_sai"
+            verdict = "dat" if like else "giua_cum"
         out.append({**res, "final": final, "rise": round(r, 1), "best": pc.nearest(values, templates),
                     "verdict": verdict})
     return out
@@ -117,6 +130,9 @@ def main(argv):
         count[x["verdict"]] = count.get(x["verdict"], 0) + 1
     ids_bad = sorted({x["id"] for x in results if x["verdict"] == "sai"})
     ids_maybe = sorted({x["id"] for x in results if x["verdict"] == "co_the_sai"} - set(ids_bad))
+    for audio_id in ids_maybe:
+        print(f"CÓ THỂ SAI {audio_id}: " + ", ".join(f"{x['word']}(lên {x['rise']})" for x in by_id[audio_id]
+                                                  if x["verdict"] == "co_the_sai"))
     print(f"Đã đo {len(targets)} mã, {len(results)} tiếng hỏi/ngã: {count}")
     print(f"Mã có tiếng sai: {len(ids_bad)}; mã chỉ có tiếng có thể sai: {len(ids_maybe)}")
     if out_json:
