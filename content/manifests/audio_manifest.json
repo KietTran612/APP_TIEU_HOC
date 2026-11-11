@@ -104730,13 +104730,13 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "Phát âm chưa chính xác | Tạo lại 9/11: đọc lặp \"mụ, mụ.\" rồi chỉ giữ tiếng đầu (keep_first); bỏ chỉnh pitch/tốc độ cũ. Bản cũ ở prev. | Rà soát thanh nặng/âm ê 10/11: đọc \"mụ già.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Phát âm chưa chính xác | Tạo lại 9/11: đọc lặp \"mụ, mụ.\" rồi chỉ giữ tiếng đầu (keep_first); bỏ chỉnh pitch/tốc độ cũ. Bản cũ ở prev. | Rà soát thanh nặng/âm ê 10/11: đọc \"mụ già.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. và ngắn | Sửa 11/11 theo chấm khong_dat \"... và ngắn\": bản \"mụ già.\" bị cắt cụt (già đọc liền nên phải lùi 0,1 giây, còn 0,23 giây, đo như huyền). Thử 7 bản ngoài danh mục; chọn \"mụ, già.\" −25% + keep_first: dấu phẩy ngắt nên giữ trọn tiếng mụ 0,52 giây, phần hữu thanh 0,44 giây (nụ đạt: 0,27), cao độ đo giống nặng, dốc xuống như bạ đã duyệt. Bản trước ở prev. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b13",
       "tv1_t1_b17"
     ],
     "tts": {
-      "doc": "mụ già.",
+      "doc": "mụ, già.",
       "rate": -25,
       "pitch": 0,
       "volume": 0,
@@ -104744,7 +104744,7 @@
       "keep_first": true,
       "join": [],
       "join_gap": 0.08,
-      "sig": "61e1f9cc43c4ef426f072a710ce211bf5f75e9fd",
+      "sig": "69856e3035bd6951d78759df8599d0f816de2f9f",
       "trimmed": true
     }
   },
