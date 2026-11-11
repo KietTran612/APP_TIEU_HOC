@@ -194,3 +194,50 @@ Khung đầu và tranh đệm:
 - bấm nút có chữ "Bắt đầu" hoặc "Start", chờ ô tìm kiếm hiện rồi focus nó;
 - gõ tên tệp, bấm `[role=option]` khớp tên, rồi bấm "Thêm vào câu lệnh" hoặc "Add to prompt" nếu có;
 - focus ô lệnh `[aria-label^="Bạn muốn tạo"]`, gõ lệnh, rồi bấm `[aria-label="Bắt đầu tạo"]` (tiếng Anh: "Start generation").
+
+## 7. Hàng đợi tập 2: 32 clip làm lại (giao 11/11, làm sau 12 clip tập 1 ở mục 6)
+
+Chủ dự án duyệt tập 2 ngày 11/11. Gồm 30 dòng `khong_dat` và 2 dòng có lời chê nhưng vẫn để `cho_duyet` (`b112_bes_loawts_choawts`, `b98_quar_saauf_rieeng`); root bảo coi 2 dòng này là không đạt.
+
+Ba quy tắc mới ở mục 1 của hướng dẫn (5–7): tiếng nói và tiếng hát chỉ tiếng Việt, không có tiếng Anh; máy quay và vật không xoay, lia tùm lum, xe chạy đúng đường; người không biến thành con vật.
+
+Kịch bản mới cho cả 32 clip đã có trong `tranh_dong_kich_ban.json` (24 build, 8 loop). Chưa tạo khung đầu nào. Khung đầu tạo bằng Nano Banana Pro theo trường `start`, 0 credit, ở cùng tài khoản sẽ làm video.
+
+| Tranh | Lời chê | Kiểu | Cách sửa |
+|---|---|---|---|
+| `b81_quar_chanh` | chưa hay | build | hoa chanh trắng → quả lớn, một quả tách đôi |
+| `b82_con_keenh_caauf_xinh` | đi mà đứng yên | build | hai bạn đi thật qua cầu |
+| `b82_hocj_sinh` | đi mà đứng yên | build | cậu bé đi thật từ trái sang |
+| `b83_capj_sachs` | chưa hay | build | cặp đổ, sách vương vãi → tự dọn gọn |
+| `b83_lof_gachj` | chưa hay | build | thợ xếp gạch, chồng gạch cao dần |
+| `b84_towf_lichj` | lật sai hướng | loop | tờ lịch lật ngược lên qua gáy phía trên rồi bị xé, bay đi |
+| `b86_vaaps_phair_ddas` | chưa hay | build | bé chạy, vấp đá ngã, mẹ chạy tới đỡ |
+| `b87_bups_mawng` | chưa hay | build | mưa xong, măng đội đất nhú lên |
+| `b101_meof_dduoir_chuootj` | trẻ biến thành thú có đuôi | build | vòng tròn bắt đầu chơi; trẻ không có tai, đuôi |
+| `b102_cais_chuoong` | chưa hay | loop | khúc gỗ treo dây thỉnh chuông "boong" |
+| `b102_con_vitj` | chưa hay | build | vịt bơi thật tới, vỗ cánh kêu "cạp cạp" |
+| `b105_caauf_truwowtj` | tua ngược ở cuối | build | bé ngồi trên đỉnh rồi trượt xuống |
+| `b105_ruwowcs_ddenf` | đi mà đứng yên | build | đoàn rước đèn đi thật từ trái sang |
+| `b106_con_buwowms` | chưa hay | build | nhộng nứt, bướm chui ra, cánh duỗi rộng |
+| `b109_cais_loa` | không la làng, đọc "Loa loa loa" | loop | nói vào loa tiếng Việt "Loa! Loa! Loa!" |
+| `b109_ddenf_trawng` | đèn cháy không đúng | build | ngọn lửa nhỏ sáng dần trong bóng đèn; mây trôi lộ trăng |
+| `b110_mays_ddieenj_thoaij` | cần chuông reo, không quay | loop | chuông reo, ống nghe rung nhẹ, máy đứng yên |
+| `b110_muix_khoan` | quay sai | loop | chỉ tay quay quay quanh trục khoan |
+| `b110_quee_ngoaij` | đi mà đứng tại chỗ | build | má và bé đi thật dọc đường |
+| `b111_con_nghes` | tiếng phải là nghé con | build | nghé bước tới, kêu giọng nghé non; cò bay ngang |
+| `b112_choox_ngoawtj` | xe chạy tùm lum | build | xe khách chạy đúng đường, khuất sau vách núi |
+| `b113_thu_hoachj_luas` | cần tiếng cô gái hát | loop | cô hát dịu dàng dân ca tiếng Việt |
+| `b114_khai_hoang` | cần tiếng ca | loop | hai người vừa làm vừa hò tiếng Việt |
+| `b116_hoa_hueej` | chưa hay | build | từ khóm lá, cành hoa vươn lên rồi nở |
+| `b136_con_quaj` | thả đá thì nước phải dâng | build | nước thấp, quạ thả sỏi, nước dâng dần |
+| `b137_cais_thuwowcs` | chưa hay | build | thanh gỗ trơn, vạch chia khắc dần |
+| `b141_bacs_dduwa_thuw` | chưa hay | build | bác đạp xe tới, bấm chuông, đón cốc nước |
+| `b142_cais_boongs` | có tiếng Anh | build | hai mẹ con đi thật trong mưa; không lời |
+| `b145_baf_vaf_chaus` | có tiếng Anh | loop | bé đọc tiếng Việt "Ngày xửa ngày xưa..." |
+| `b148_mej_ddax_veef` | chưa hay | build | bé quạt cho mẹ, bé gái mời nước, mẹ lau mồ hôi |
+| `b112_bes_loawts_choawts` | chạy mà đứng tại chỗ | build | chú bé đi thật dọc đường đồi |
+| `b98_quar_saauf_rieeng` | chưa hay | build | hoa sầu riêng → quả lớn, rụng, một quả nứt múi |
+
+`b101_cais_cuoocs` chưa làm: root vẽ lại tranh trước rồi mới báo.
+
+Credit: mỗi ngày khoảng 150 credit trên `/u/2`, `/u/3`, `/u/4`, tức khoảng 15 clip, nên tổng 44 clip (12 tập 1 + 32 tập 2) mất khoảng 3 ngày. Làm theo kế hoạch ở mục 6: mỗi clip cách nhau ít nhất 1 phút; gặp "unusual activity" là dừng và báo root.

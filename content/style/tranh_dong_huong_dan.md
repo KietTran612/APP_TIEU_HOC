@@ -17,6 +17,14 @@ Tài liệu để nhớ cách làm clip cho tranh bài học, dùng lại cho c�
   2. **Đi hay bay thì phải dời chỗ thật**, không bước tại chỗ hay vỗ cánh đứng yên. Khung đầu đặt nhân vật lùi lại phía sau trên đường đi (hoặc lệch sang một bên), clip cho nhân vật đi hoặc bay tới đúng chỗ trong tranh.
   3. **Con vật nên có tiếng kêu vui, rõ:** gà trống gáy, chó sủa "gâu gâu", mèo "meo", lợn "ụt ịt", trâu "nghé ọ", voi rống. Lời lệnh tả cả động tác mở miệng kêu và ghi tiếng kêu là tiếng thật, to, rõ.
   4. **Quá trình phát triển phải đúng thực tế:** củ lạc lớn dưới đất (hoa lạc đâm tia xuống đất, quả lớn trong đất rồi mới lộ ra); hoa mọc từ cây (cây con lớn lên, ra nụ, nụ nở thành hoa), không mọc từ lá hay từ không trung; quả lớn từ hoa trên cành.
+- **Hai quy tắc thêm sau đợt duyệt tập 2 (11/11):**
+  5. **Tiếng nói, tiếng hát chỉ được là tiếng Việt, không bao giờ có tiếng Anh.** Veo hay tự chèn lời tiếng Anh. Lời lệnh phải ghi rõ một trong hai cách:
+     - không lời: `No speech, no words, no English`;
+     - có lời thì ghi đúng câu tiếng Việt, ví dụ `the boy calls out in Vietnamese "Loa loa loa!"`, hoặc `a young woman softly sings a gentle Vietnamese folk melody (Vietnamese lyrics, never English)`.
+  6. **Máy quay không xoay, không lia; vật không quay tùm lum; xe chạy đúng theo đường.**
+     - Ghi rõ vật chỉ chuyển động đúng kiểu thật của nó, ví dụ mũi khoan quay quanh trục của nó, ống nghe điện thoại nảy nhẹ trên giá, xe đi theo mặt đường và không bao giờ ra khỏi đường.
+     - Câu phong cách đã có `Camera completely static`. Với vật dễ bị xoay, thêm `The object itself stays in place and does not spin or tumble`.
+  7. **Người không biến thành con vật.** Trò chơi đóng vai (mèo đuổi chuột) vẫn là trẻ em bình thường, không có tai, đuôi hay lông thú. Ghi rõ `they stay ordinary children: no animal ears, no tails, no fur`.
 - **Không cần chủ dự án duyệt kịch bản trước.** Cứ làm clip. Chủ dự án xem thành phẩm trong công cụ duyệt (tab "Tranh động") và yêu cầu làm lại nếu cần.
 
 ## 2. Phong cách hình và tiếng
