@@ -32,6 +32,10 @@
         "note": "dòng ⌂ là lời dặn làm ở nhà; app đọc như một dòng luật — chủ dự án xem có giữ không"
       },
       {
+        "where": "part1[3]",
+        "note": "[Chốt 11/11] Từ trong mục ▨ \"Em viết\" của sách đưa vào thành mục đọc. Không gắn kí hiệu ▨ vì validate chỉ nhận \"●▨\" và app chưa có hình ▨."
+      },
+      {
         "where": "part1[1].rows[0].cells['i']",
         "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
       },
@@ -126,6 +130,22 @@
       {
         "where": "part1[1].rows[4].cells['ư']",
         "note": "dùng tên đọc riêng tr.122 cho 'gi' (tạm)"
+      },
+      {
+        "where": "part1[3].items[0]",
+        "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
+      },
+      {
+        "where": "part1[3].items[0]",
+        "note": "dùng tên đọc riêng tr.122 cho 'gh' (tạm)"
+      },
+      {
+        "where": "part1[3].items[0]",
+        "note": "dùng tên đọc riêng tr.122 cho 'gi' (tạm)"
+      },
+      {
+        "where": "part1[3].items[0]",
+        "note": "gi + vần có i: không đánh vần thẳng được, cần duyệt"
       }
     ]
   },
@@ -1362,6 +1382,136 @@
           "text": "Ghép thêm dấu thanh để tạo tiếng mới ở nhà.",
           "audio": "cau_b27_01",
           "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "dì ghi gì đó?",
+          "audio": "tu_dif_ghi_gif_ddos",
+          "hl": [],
+          "spells": [
+            {
+              "target": "dì",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "d",
+                  "audio": "am_d"
+                },
+                {
+                  "kind": "unit",
+                  "text": "i",
+                  "audio": "van_i"
+                },
+                {
+                  "kind": "join",
+                  "text": "di",
+                  "audio": "tieng_di"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "dì",
+                  "audio": "tieng_dif"
+                }
+              ]
+            },
+            {
+              "target": "ghi",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "gh",
+                  "audio": "am_gh"
+                },
+                {
+                  "kind": "unit",
+                  "text": "i",
+                  "audio": "van_i"
+                },
+                {
+                  "kind": "join",
+                  "text": "ghi",
+                  "audio": "tieng_ghi"
+                }
+              ]
+            },
+            {
+              "target": "gì",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "gi",
+                  "audio": "am_gi"
+                },
+                {
+                  "kind": "unit",
+                  "text": "i",
+                  "audio": "van_i"
+                },
+                {
+                  "kind": "join",
+                  "text": "gi",
+                  "audio": "tieng_gi"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "gì",
+                  "audio": "tieng_gif"
+                }
+              ]
+            },
+            {
+              "target": "đó",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "đó",
+                  "audio": "tieng_ddos"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

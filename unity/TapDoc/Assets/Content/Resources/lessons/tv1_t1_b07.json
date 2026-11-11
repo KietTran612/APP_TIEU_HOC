@@ -17,7 +17,12 @@
   "notes": [],
   "review": {
     "status": "chua_duyet",
-    "can_duyet": []
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "[Chốt 11/11] Từ trong mục ▨ \"Em viết\" của sách đưa vào thành mục đọc. Không gắn kí hiệu ▨ vì validate chỉ nhận \"●▨\" và app chưa có hình ▨."
+      }
+    ]
   },
   "part1": [
     {
@@ -649,6 +654,157 @@
                   "kind": "join",
                   "text": "đá",
                   "audio": "tieng_ddas"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "cỏ",
+          "audio": "tieng_cor",
+          "hl": [],
+          "spells": [
+            {
+              "target": "cỏ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "co",
+                  "audio": "tieng_co"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˀ",
+                  "audio": "dau_hoi",
+                  "tone": "hoi"
+                },
+                {
+                  "kind": "join",
+                  "text": "cỏ",
+                  "audio": "tieng_cor"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "cọ",
+          "audio": "tieng_coj",
+          "hl": [],
+          "spells": [
+            {
+              "target": "cọ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "co",
+                  "audio": "tieng_co"
+                },
+                {
+                  "kind": "tone",
+                  "text": ".",
+                  "audio": "dau_nang",
+                  "tone": "nang"
+                },
+                {
+                  "kind": "join",
+                  "text": "cọ",
+                  "audio": "tieng_coj"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "da",
+          "audio": "tieng_da",
+          "hl": [],
+          "spells": [
+            {
+              "target": "da",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "d",
+                  "audio": "am_d"
+                },
+                {
+                  "kind": "unit",
+                  "text": "a",
+                  "audio": "van_a"
+                },
+                {
+                  "kind": "join",
+                  "text": "da",
+                  "audio": "tieng_da"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "đã",
+          "audio": "tieng_ddax",
+          "hl": [],
+          "spells": [
+            {
+              "target": "đã",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "a",
+                  "audio": "van_a"
+                },
+                {
+                  "kind": "join",
+                  "text": "đa",
+                  "audio": "tieng_dda"
+                },
+                {
+                  "kind": "tone",
+                  "text": "˜",
+                  "audio": "dau_nga",
+                  "tone": "nga"
+                },
+                {
+                  "kind": "join",
+                  "text": "đã",
+                  "audio": "tieng_ddax"
                 }
               ]
             }

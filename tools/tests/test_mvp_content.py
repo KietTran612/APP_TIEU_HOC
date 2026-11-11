@@ -57,7 +57,7 @@ class MvpLessons1To6Test(unittest.TestCase):
 
 class MvpLessons7To11Test(unittest.TestCase):
     def test_b07_review_tables(self):
-        self.assertEqual(types("tv1_t1_b07"), ["letter_grid", "combine_table"])
+        self.assertEqual(types("tv1_t1_b07"), ["letter_grid", "combine_table", "words"])
         grid = L["tv1_t1_b07"]["part1"][0]["items"]
         self.assertEqual([i["text"] for i in grid if i["role"] == "letter"], ["o", "a", "c", "d", "đ"])
         self.assertEqual([i["tone"] for i in grid if i["role"] == "tone"], ["sac", "huyen", "hoi", "nga", "nang"])

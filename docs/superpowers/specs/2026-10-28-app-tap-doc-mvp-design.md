@@ -103,7 +103,7 @@ Bản đầu tiên (bài 1–17) có 3 loại bài: `am_moi`, `dau_thanh`, `on_t
 
 Hai kí hiệu dùng trong sách và trong tài liệu này: **●** là "Em đọc", **⌂** là "Luyện tập ở lớp và ở nhà". Trong app, hai kí hiệu này hiện thành hình nhỏ đặt trước mục tương ứng, giống trong sách [Chốt].
 
-**Mọi thứ in trên trang, trừ phần viết, đều đưa vào bài** [Chốt]. Kể cả tranh không có chữ: app hiện tranh, bé chạm thì nghe một lời dẫn ngắn. Lời dẫn do người soạn đề xuất và gắn nhãn `can_duyet`.
+**Mọi thứ in trên trang, trừ phần viết, đều đưa vào bài** [Chốt]. Kể cả tranh không có chữ: app hiện tranh, bé chạm thì nghe một lời dẫn ngắn. Lời dẫn do người soạn đề xuất và gắn nhãn `can_duyet`. Ngoại lệ **[Chốt 11/11]**: ở bài Ôn tập, từ, cụm từ hoặc câu trong ▨ "Em viết" được đưa vào thành một mục đọc (`words`) ở cuối Phần 1. Dòng chỉ có chữ cái hoặc vần đơn lẻ thì vẫn bỏ. Mục này để kí hiệu trống, vì app chưa có hình ▨.
 
 #### `am_moi` — bài âm mới
 
@@ -478,7 +478,7 @@ Kế hoạch: [2026-10-29-hoan-thanh-tv1-tap-1.md](../plans/2026-10-29-hoan-than
 
 Bài 42 thôi là bài ẩn và hiện trong danh sách bài.
 
-Không đưa vào app: tranh mở đầu, trang kí hiệu, phụ lục bảng chữ cái, trang "Chú ý" và mục lục. Đó không phải bài học. Phần ▨ "Em viết" vẫn bỏ qua như cũ.
+Không đưa vào app: tranh mở đầu, trang kí hiệu, phụ lục bảng chữ cái, trang "Chú ý" và mục lục. Đó không phải bài học. Phần ▨ "Em viết" vẫn bỏ qua như cũ, trừ ngoại lệ **[Chốt 11/11]**: ở bài Ôn tập, từ trong ▨ "Em viết" đưa vào thành mục đọc. Đó là các bài 7, 11, 17, 22, 27, 32, 37; các bài ôn khác chỉ có chữ cái hoặc vần.
 
 **Ba đợt phát hành.** Mỗi đợt kết thúc như bản đầu tiên: bản build Windows cho chủ dự án thử, chủ dự án duyệt, gom 1 commit trên `main` rồi push.
 

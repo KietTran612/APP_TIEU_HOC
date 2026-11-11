@@ -107,7 +107,7 @@ class Lessons28To36Test(BookTestCase):
         self.assertTrue(any("'q'" in n for n in notes(35)))
 
     def test_b32_review_table_and_sentence(self):
-        self.assertEqual(types(32), ["letter_grid", "combine_table", "sentence"])
+        self.assertEqual(types(32), ["letter_grid", "combine_table", "sentence", "words"])
         self.assertEqual(steps(32, "sentence")[0]["marker"], "⌂")
 
     def test_b35_reading_has_quy(self):
@@ -456,3 +456,31 @@ class LessonNotesContentTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EmVietWordsTest(unittest.TestCase):
+    """[Chốt 11/11] Từ trong ▨ "Em viết" của bài Ôn tập đưa vào thành mục đọc cuối Phần 1 (chép theo scan)."""
+
+    EXPECTED = {
+        7: ["cỏ", "cọ", "da", "đã"],
+        11: ["dì đi đò"],
+        17: ["bé có bi"],
+        22: ["vo ve", "rù rì", "khe khẽ"],
+        27: ["dì ghi gì đó?"],
+        32: ["nghỉ hè", "nhà thờ"],
+        37: ["chỉ trỏ", "quê cha"],
+    }
+
+    def test_last_part1_step_reads_em_viet_words(self):
+        for no, words in self.EXPECTED.items():
+            with self.subTest(bai=no):
+                last = L[lid_of(no)]["part1"][-1]
+                self.assertEqual(last["type"], "words")
+                self.assertEqual(last["marker"], "")
+                self.assertEqual([i["text"] for i in last["items"]], words)
+
+    def test_review_lessons_with_only_letters_or_rimes_get_none(self):
+        for lid, lesson in L.items():
+            if lesson["type"].startswith("on_tap") and int(lid.rsplit("b", 1)[1]) not in self.EXPECTED:
+                notes = [n["note"] for n in lesson["review"]["can_duyet"]] if "can_duyet" in lesson["review"] else []
+                self.assertFalse(any("Em viết" in n for n in notes), lid)

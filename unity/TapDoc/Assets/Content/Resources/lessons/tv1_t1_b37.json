@@ -19,6 +19,10 @@
     "status": "chua_duyet",
     "can_duyet": [
       {
+        "where": "part1[2]",
+        "note": "[Chốt 11/11] Từ trong mục ▨ \"Em viết\" của sách đưa vào thành mục đọc. Không gắn kí hiệu ▨ vì validate chỉ nhận \"●▨\" và app chưa có hình ▨."
+      },
+      {
         "where": "part1[1].rows[0].cells['i']",
         "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
       },
@@ -65,6 +69,14 @@
       {
         "where": "part1[1].rows[4].cells['i']",
         "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
+      },
+      {
+        "where": "part1[2].items[0]",
+        "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
+      },
+      {
+        "where": "part1[2].items[1]",
+        "note": "dùng tên đọc riêng tr.122 cho 'qu' (tạm)"
       }
     ]
   },
@@ -1473,6 +1485,132 @@
                   "kind": "join",
                   "text": "phư",
                   "audio": "tieng_phuw"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "chỉ trỏ",
+          "audio": "tu_chir_tror",
+          "hl": [],
+          "spells": [
+            {
+              "target": "chỉ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "ch",
+                  "audio": "am_ch"
+                },
+                {
+                  "kind": "unit",
+                  "text": "i",
+                  "audio": "van_i"
+                },
+                {
+                  "kind": "join",
+                  "text": "chi",
+                  "audio": "tieng_chi"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˀ",
+                  "audio": "dau_hoi",
+                  "tone": "hoi"
+                },
+                {
+                  "kind": "join",
+                  "text": "chỉ",
+                  "audio": "tieng_chir"
+                }
+              ]
+            },
+            {
+              "target": "trỏ",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "tr",
+                  "audio": "am_tr"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "tro",
+                  "audio": "tieng_tro"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˀ",
+                  "audio": "dau_hoi",
+                  "tone": "hoi"
+                },
+                {
+                  "kind": "join",
+                  "text": "trỏ",
+                  "audio": "tieng_tror"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "quê cha",
+          "audio": "tu_quee_cha",
+          "hl": [],
+          "spells": [
+            {
+              "target": "quê",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "qu",
+                  "audio": "am_qu"
+                },
+                {
+                  "kind": "unit",
+                  "text": "ê",
+                  "audio": "van_ee"
+                },
+                {
+                  "kind": "join",
+                  "text": "quê",
+                  "audio": "tieng_quee"
+                }
+              ]
+            },
+            {
+              "target": "cha",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "ch",
+                  "audio": "am_ch"
+                },
+                {
+                  "kind": "unit",
+                  "text": "a",
+                  "audio": "van_a"
+                },
+                {
+                  "kind": "join",
+                  "text": "cha",
+                  "audio": "tieng_cha"
                 }
               ]
             }

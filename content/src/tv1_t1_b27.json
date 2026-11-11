@@ -29,6 +29,10 @@
       {
         "where": "part1[2]",
         "note": "dòng ⌂ là lời dặn làm ở nhà; app đọc như một dòng luật — chủ dự án xem có giữ không"
+      },
+      {
+        "where": "part1[3]",
+        "note": "[Chốt 11/11] Từ trong mục ▨ \"Em viết\" của sách đưa vào thành mục đọc. Không gắn kí hiệu ▨ vì validate chỉ nhận \"●▨\" và app chưa có hình ▨."
       }
     ]
   },
@@ -187,6 +191,15 @@
       "marker": "⌂",
       "lines": [
         "Ghép thêm dấu thanh để tạo tiếng mới ở nhà."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "dì ghi gì đó?"
+        }
       ]
     }
   ],

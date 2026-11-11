@@ -24,6 +24,10 @@
     "status": "chua_duyet",
     "can_duyet": [
       {
+        "where": "part1[2]",
+        "note": "[Chốt 11/11] Từ trong mục ▨ \"Em viết\" của sách đưa vào thành mục đọc. Không gắn kí hiệu ▨ vì validate chỉ nhận \"●▨\" và app chưa có hình ▨."
+      },
+      {
         "where": "part1[1].rows[0].cells['i']",
         "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
       },
@@ -33,6 +37,10 @@
       },
       {
         "where": "part1[1].rows[2].cells['i']",
+        "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
+      },
+      {
+        "where": "part1[2].items[0]",
         "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
       }
     ]
@@ -784,6 +792,104 @@
                   "kind": "join",
                   "text": "đi",
                   "audio": "tieng_ddi"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "dì đi đò",
+          "audio": "tu_dif_ddi_ddof",
+          "hl": [],
+          "spells": [
+            {
+              "target": "dì",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "d",
+                  "audio": "am_d"
+                },
+                {
+                  "kind": "unit",
+                  "text": "i",
+                  "audio": "van_i"
+                },
+                {
+                  "kind": "join",
+                  "text": "di",
+                  "audio": "tieng_di"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "dì",
+                  "audio": "tieng_dif"
+                }
+              ]
+            },
+            {
+              "target": "đi",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "i",
+                  "audio": "van_i"
+                },
+                {
+                  "kind": "join",
+                  "text": "đi",
+                  "audio": "tieng_ddi"
+                }
+              ]
+            },
+            {
+              "target": "đò",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "đ",
+                  "audio": "am_dd"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "đo",
+                  "audio": "tieng_ddo"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˋ",
+                  "audio": "dau_huyen",
+                  "tone": "huyen"
+                },
+                {
+                  "kind": "join",
+                  "text": "đò",
+                  "audio": "tieng_ddof"
                 }
               ]
             }

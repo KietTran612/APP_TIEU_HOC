@@ -19,6 +19,10 @@
     "status": "chua_duyet",
     "can_duyet": [
       {
+        "where": "part1[3]",
+        "note": "[Chốt 11/11] Từ trong mục ▨ \"Em viết\" của sách đưa vào thành mục đọc. Không gắn kí hiệu ▨ vì validate chỉ nhận \"●▨\" và app chưa có hình ▨."
+      },
+      {
         "where": "part1[1].rows[0].cells['i']",
         "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
       },
@@ -45,6 +49,10 @@
       {
         "where": "part1[2].items[2]",
         "note": "chữ 'y' đọc là 'i dài' (tạm)"
+      },
+      {
+        "where": "part1[3].items[0]",
+        "note": "chữ 'i' đọc là 'i ngắn' (tạm)"
       }
     ]
   },
@@ -1444,6 +1452,104 @@
                   "kind": "join",
                   "text": "bạ",
                   "audio": "tieng_baj"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "bé có bi",
+          "audio": "tu_bes_cos_bi",
+          "hl": [],
+          "spells": [
+            {
+              "target": "bé",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "b",
+                  "audio": "am_b"
+                },
+                {
+                  "kind": "unit",
+                  "text": "e",
+                  "audio": "van_e"
+                },
+                {
+                  "kind": "join",
+                  "text": "be",
+                  "audio": "tieng_be"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "bé",
+                  "audio": "tieng_bes"
+                }
+              ]
+            },
+            {
+              "target": "có",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "c",
+                  "audio": "am_c"
+                },
+                {
+                  "kind": "unit",
+                  "text": "o",
+                  "audio": "van_o"
+                },
+                {
+                  "kind": "join",
+                  "text": "co",
+                  "audio": "tieng_co"
+                },
+                {
+                  "kind": "tone",
+                  "text": "ˊ",
+                  "audio": "dau_sac",
+                  "tone": "sac"
+                },
+                {
+                  "kind": "join",
+                  "text": "có",
+                  "audio": "tieng_cos"
+                }
+              ]
+            },
+            {
+              "target": "bi",
+              "drag_tone": false,
+              "parts": [
+                {
+                  "kind": "unit",
+                  "text": "b",
+                  "audio": "am_b"
+                },
+                {
+                  "kind": "unit",
+                  "text": "i",
+                  "audio": "van_i"
+                },
+                {
+                  "kind": "join",
+                  "text": "bi",
+                  "audio": "tieng_bi"
                 }
               ]
             }
