@@ -241,3 +241,14 @@ Kịch bản mới cho cả 32 clip đã có trong `tranh_dong_kich_ban.json` (2
 `b101_cais_cuoocs` chưa làm: root vẽ lại tranh trước rồi mới báo.
 
 Credit: mỗi ngày khoảng 150 credit trên `/u/2`, `/u/3`, `/u/4`, tức khoảng 15 clip, nên tổng 44 clip (12 tập 1 + 32 tập 2) mất khoảng 3 ngày. Làm theo kế hoạch ở mục 6: mỗi clip cách nhau ít nhất 1 phút; gặp "unusual activity" là dừng và báo root.
+
+## 8. Hàng đợi thêm: `b101_cais_cuoocs` (đứng sau 44 clip ở mục 6–7)
+
+Root vẽ lại tranh cái cuốc ngày 11/11 (commit 60ef3a9): lưỡi sắt hình thang có khâu tra vào cán, vuông góc với cán, cắm xuống đất, bên cạnh có đất vụn và cỏ. Clip cũ làm từ tranh sai nên phải bỏ; dòng danh mục vẫn là `khong_dat` cho tới khi làm clip mới.
+
+Kịch bản mới (build) đã có trong `tranh_dong_kich_ban.json`:
+- khung đầu: cùng cái cuốc nhưng giơ lên cao, đất bên dưới phẳng, chưa có cục đất;
+- clip: cuốc bổ xuống, lưỡi cắm vào đất, kéo về làm đất vỡ tơi;
+- lưỡi luôn vuông góc với cán, không tua ngược.
+
+Nhớ đệm lại tranh 16:9 từ bản mới trong `Resources/images`, đừng dùng bản cũ đã tải lên Flow.
