@@ -10,6 +10,13 @@ Tài liệu để nhớ cách làm clip cho tranh bài học, dùng lại cho c�
   - **Đồ vật:** kiểu lắp ghép thành thành phẩm. Ví dụ ghế đẩu: bốn chân bật đứng dậy, mặt ghế bay vào gắn lên. Đồ đan (sọt, ghế mây) thì tự đan; đồ gấp (khăn) thì tự gấp; nhà, cầu thì dựng lên từng phần.
   - **Vật phát ra âm thanh:** cho vật đang hoạt động và phát tiếng của nó: đài phát nhạc (có nốt nhạc bay ra), xe nổ máy, chuông xe đạp kêu, sấm chớp.
   - **Con vật, người:** có hành động rõ (bay, chạy, nhảy, bơi, vỗ cánh, mổ thóc…); con vật có tiếng kêu đặc trưng (gà gáy, bò "ò", dê "be be", ếch "ộp ộp").
+- **Bốn lỗi chủ dự án chê nhiều lần (đợt duyệt 11/11, áp dụng cho mọi lớp):**
+  1. **Không tua ngược ở cuối clip.** Clip `loop` hay bị Veo diễn xong rồi chạy ngược lại về tư thế đầu (kiểu boomerang); chủ dự án không chấp nhận, kể cả khi clip cần lặp. Cách tránh:
+     - hành động có hướng (đi, chạy, bay, trao quà, xe chạy) thì làm kiểu `build`: khung đầu là lúc trước đó, rồi diễn tiếp tới tranh gốc;
+     - nếu vẫn dùng `loop` thì nhân vật về tư thế cũ bằng một động tác mới, tự nhiên (mèo kêu xong cúi xuống liếm chân tiếp), và lời lệnh ghi rõ `Time only moves forward: the motion never plays backward, never rewinds and never reverses.`
+  2. **Đi hay bay thì phải dời chỗ thật**, không bước tại chỗ hay vỗ cánh đứng yên. Khung đầu đặt nhân vật lùi lại phía sau trên đường đi (hoặc lệch sang một bên), clip cho nhân vật đi hoặc bay tới đúng chỗ trong tranh.
+  3. **Con vật nên có tiếng kêu vui, rõ:** gà trống gáy, chó sủa "gâu gâu", mèo "meo", lợn "ụt ịt", trâu "nghé ọ", voi rống. Lời lệnh tả cả động tác mở miệng kêu và ghi tiếng kêu là tiếng thật, to, rõ.
+  4. **Quá trình phát triển phải đúng thực tế:** củ lạc lớn dưới đất (hoa lạc đâm tia xuống đất, quả lớn trong đất rồi mới lộ ra); hoa mọc từ cây (cây con lớn lên, ra nụ, nụ nở thành hoa), không mọc từ lá hay từ không trung; quả lớn từ hoa trên cành.
 - **Không cần chủ dự án duyệt kịch bản trước.** Cứ làm clip. Chủ dự án xem thành phẩm trong công cụ duyệt (tab "Tranh động") và yêu cầu làm lại nếu cần.
 
 ## 2. Phong cách hình và tiếng
@@ -25,8 +32,8 @@ Tài liệu để nhớ cách làm clip cho tranh bài học, dùng lại cho c�
 
 | Kiểu | Trường `mode` | Khung đầu | Khung cuối | Dùng cho |
 |---|---|---|---|---|
-| Diễn rồi về | `loop` | tranh gốc | tranh gốc | con vật, người, vật phát tiếng, cảnh: hành động ở giữa rồi về đúng dáng cũ, phát lặp được |
-| Dựng lên thành tranh | `build` | ảnh "điểm bắt đầu" tạo bằng sửa ảnh | tranh gốc | cây quả (mọc lên), đồ vật (lắp ghép, đan, gấp), công trình (dựng lên), chữ số (tự vẽ) |
+| Diễn rồi về | `loop` | tranh gốc | tranh gốc | hành động tại chỗ: con vật kêu, vật phát tiếng, cảnh gió nước; hành động ở giữa rồi về dáng cũ bằng động tác mới, không tua ngược |
+| Dựng lên thành tranh | `build` | ảnh "điểm bắt đầu" tạo bằng sửa ảnh | tranh gốc | cây quả (mọc lên), đồ vật (lắp ghép, đan, gấp), công trình (dựng lên), chữ số (tự vẽ); người, con vật, xe đi tới chỗ trong tranh (khung đầu lùi lại phía sau) |
 
 - **Flow bắt buộc phải có khung đầu.** Nếu chỉ đặt khung cuối thì nút tạo bị khoá. Vì vậy kiểu `build` phải tạo trước ảnh "điểm bắt đầu".
 - **Ảnh "điểm bắt đầu":**
