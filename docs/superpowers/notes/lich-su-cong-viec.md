@@ -10,6 +10,21 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ---
 
+## 11/11/2026
+
+- **[L1] nội dung:**
+  - tạo lại `tieng_muj` bằng "mụ, già." + keep_first, vì bản cũ bị cụt (1619f07). Chờ chủ dự án nghe lại.
+  - Đưa từ trong ▨ Em viết của 7 bài Ôn tập (b07, b11, b17, b22, b27, b32, b37) vào thành mục đọc (7461625). 7 mã âm thanh mới đang `chua_co`, tạo sau khi [L2] tạo giọng xong.
+- **[L2] nội dung:** tạo giọng lớp 2 (c887a8d, còn chạy nền). Đo thanh hỏi, ngã 1.008 mã: 17 mã đọc sai (phần lớn chữ "tả"), 4 mã có thể sai. Sẽ sửa sau khi tạo xong.
+- **Chủ dự án duyệt clip tập 1 (bài 21–80):** 49 đạt, 27 không đạt. Root giao [L1] tranh động làm lại.
+- **[L1] tranh động:** làm lại 15/27 clip.
+  - 17f2366 (/u/1): voi, chó xù, trâu, lợn, mèo. Thêm 4 quy tắc vào `tranh_dong_huong_dan.md`: không tua ngược ở cuối; đi hoặc bay phải rời chỗ thật; con vật có tiếng kêu; cây lớn đúng thực tế.
+  - 15c77c9 (/u/6): 10 clip.
+  - 1265676: ghi chú tiếp tục, kịch bản 12 clip còn lại.
+  - Root đã kiểm: đúng 15 dòng `video_manifest` đổi, về `cho_duyet`, ghi chú giữ lý do cũ.
+  - /u/2 báo "unusual activity" cả 5 clip (không mất credit). Root cho dừng gửi trong ngày. Ngày 12/11 thử 1 clip trên /u/4, mỗi clip cách nhau ít nhất 1 phút.
+- **Chủ dự án duyệt thêm clip tập 2 (bài 81–148):** 32 clip cần làm lại, giao [L1] tranh động sau 12 clip tập 1 còn lại. Thêm hai quy tắc: lời trong clip chỉ tiếng Việt; máy quay không lia lung tung. Tranh `img_b101_cais_cuoocs` bị chê, phải vẽ lại tranh trước rồi mới làm clip.
+
 ## 10/11/2026 (chiều) — làm tiếp trên máy cũ
 
 Chủ dự án cho làm tiếp các việc dở trong bảng B11 trước khi chuyển máy. Phần mới sẽ đưa lên Drive bằng gói bổ sung.
