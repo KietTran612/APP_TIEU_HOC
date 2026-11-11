@@ -151,3 +151,46 @@ Mỗi tranh có một kịch bản riêng, sáng tạo theo đúng nội dung tr
 - Đóng gói clip lại trước khi chuyển máy (mục 2). Việc này do root hoặc chủ dự án quyết.
 - Chủ dự án duyệt 136 clip tập 1 và 153 clip tập 2 đang chờ duyệt. Clip nào bị chê thì làm lại theo mục 4.
 - Chưa có clip nào được đưa vào app Unity. Trước khi làm phần đó cần viết tài liệu thiết kế tranh động.
+
+## 6. Đợt làm lại 11/11: 27 clip tập 1 bị chê (bài 21–80)
+
+Ngày 11/11 chủ dự án chấm 76 clip bài 21–80: 49 đạt, 27 không đạt. Bốn lỗi lặp lại đã ghi vào mục 1 của `content/style/tranh_dong_huong_dan.md`: không tua ngược ở cuối clip, đi hoặc bay phải dời chỗ thật, con vật có tiếng kêu vui, phát triển đúng thực tế.
+
+Cách sửa chính: clip có hành động đổi từ `loop` sang `build`. Khung đầu là lúc trước đó (bé còn đứng xa, đàn sếu còn ở bên trái, sen còn là nụ, lạc còn trong đất), clip diễn tiếp tới tranh gốc nên không có đoạn chạy ngược.
+
+**Đã xong 15 clip**, đều đã xem khung hình và dạng sóng tiếng, dòng danh mục đã về `cho_duyet`:
+- commit 17f2366, trên `/u/1`: `b28_ngaf_voi`, `b33_chos_xuf`, `b61_con_traau`, `b80_con_lownj`, `b80_con_meof`;
+- commit 15c77c9, trên `/u/6`: `b23_quar_xoaif`, `b26_gaf_giof`, `b31_con_thor`, `b33_ddi_chowj`, `b46_con_nheenj`, `b49_ddons_baf`, `b49_xe_lam`, `b50_ddanf_gaf_con`, `b51_thoon_xoms`, `b52_que_kem`.
+
+**Còn 12 clip** (dòng danh mục vẫn `khong_dat` với lời chê của chủ dự án; kịch bản mới đã có trong `tranh_dong_kich_ban.json`):
+
+| Tranh | Kiểu | Khung đầu |
+|---|---|---|
+| `img_b61_quar_cau` | build | quả cau non bé xíu trong tai cau |
+| `img_b62_ddanf_seeus` | build | đàn sếu lùi sang trái |
+| `img_b63_cais_riuf` | build | thêm khúc gỗ dưới lưỡi rìu |
+| `img_b65_booj_ddooij` | build | đoàn quân lùi xa trên đường núi |
+| `img_b65_cur_lacj` | build | cây lạc có hoa, lớp đất cắt ngang, chưa có quả |
+| `img_b67_hoa_cucs` | build | cây cúc con |
+| `img_b68_coo_giaos_tawngj_quaf` | build | cô ôm hộp quà, bé buông tay |
+| `img_b69_baix_cats` | build | thuyền buồm lùi sang trái |
+| `img_b77_ddaamf_sen` | build | hai bông sen còn là nụ |
+| `img_b77_nhipj_caauf` | build | chỉ có trụ cầu |
+| `img_b78_xe_qua_caauf` | build | cả dòng xe lùi sang trái |
+| `img_b50_coo_taams` | loop | không cần (tranh gốc ở cả hai đầu) |
+
+Khung đầu và tranh đệm:
+- 11 khung đầu đã tạo trên `/u/1` (dự án 84955ab1 "Tháng 10 30 - 17:03"), tên Flow dạng "Edit illustration…". Bản tải về ở scratchpad của session cũ, `r3/start/start_<mã>.jpg`; tranh đệm 16:9 ở `r3/pad/`. Nếu mất, tạo lại theo trường `start` trong kịch bản (Nano Banana Pro, 0 credit).
+- Trên `/u/2` (dự án eb1940c8, giao diện tiếng Anh) đã có sẵn `start_` và `img_` của 5 tranh: cau, sếu, rìu, bộ đội, lạc.
+
+**Lỗi 11/11:** trên `/u/2` cả 5 lần gửi đều báo "Failed — We noticed some unusual activity", không mất credit (còn 53). Root cho dừng cả ngày, không bấm Retry.
+
+**Kế hoạch 12/11 (theo root):**
+1. Thử 1 clip trên `/u/4` (còn 50 credit, cộng 50 mỗi ngày). Được thì gửi tiếp từng clip, **mỗi clip cách nhau ít nhất 1 phút**.
+2. Nếu clip đầu trên `/u/4` lại bị "unusual activity" thì dừng hẳn và báo root.
+3. `/u/2` và `/u/3` để sau cùng. Không dùng `/u/0`.
+
+**Mẹo giao diện:** cửa sổ trình duyệt đổi cỡ sẽ làm lệch toạ độ. Chọn khung bằng mã trong trang thay cho toạ độ:
+- bấm nút có chữ "Bắt đầu" hoặc "Start", chờ ô tìm kiếm hiện rồi focus nó;
+- gõ tên tệp, bấm `[role=option]` khớp tên, rồi bấm "Thêm vào câu lệnh" hoặc "Add to prompt" nếu có;
+- focus ô lệnh `[aria-label^="Bạn muốn tạo"]`, gõ lệnh, rồi bấm `[aria-label="Bắt đầu tạo"]` (tiếng Anh: "Start generation").
