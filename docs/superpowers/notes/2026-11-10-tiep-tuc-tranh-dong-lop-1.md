@@ -294,3 +294,10 @@ Nhịp làm theo chủ dự án: mỗi lần tạo (video hay ảnh khung đầu
 - Ở giao diện tiếng Anh, phím Escape trong trang chi tiết sẽ thoát ra lưới. Muốn tải clip thì bấm vào ảnh nhỏ của clip trên dải phía trên (nhận theo tên), rồi Download → 720p.
 - Sau khi gõ lệnh ảnh, phải đặt lại con trỏ vào ô lệnh rồi mới bấm Enter, nếu không đôi khi lệnh không được gửi.
 - Gọi upd.py hai lần liền với hai tệp kịch bản khác nhau thì lần sau ghi đè phần stage của lần trước. upd.py nay nhận nhiều tệp kịch bản, cách nhau dấu phẩy.
+
+**Chia tài khoản Flow (root chốt 12/11, áp dụng từ 13/11):**
+- `/u/1` dành riêng cho [L2] tranh động.
+- [L1] dùng theo thứ tự `/u/4`, `/u/6`, `/u/3`, rồi `/u/2` sau cùng. Không dùng `/u/0`.
+- Chiều 12/11 [L2] có thể dùng phần credit còn lại, nên [L1] không mở Flow cho tới ngày 13/11.
+- Sau đợt root trả lại 3 clip của 302e6bc (commit 7a83ad6), danh sách làm lại thêm b101 (mèo đuổi chuột, đổi lời lệnh bỏ chữ mèo/chuột), b102 vịt (loop) và b102 chuông (loop).
+- Khi xem clip: lấy ít nhất 10 khung lớn và soi từng nhân vật (đuôi, tai, chồng hình, số lượng).
