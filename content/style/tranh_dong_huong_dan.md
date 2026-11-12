@@ -25,6 +25,9 @@ Tài liệu để nhớ cách làm clip cho tranh bài học, dùng lại cho c�
      - Ghi rõ vật chỉ chuyển động đúng kiểu thật của nó, ví dụ mũi khoan quay quanh trục của nó, ống nghe điện thoại nảy nhẹ trên giá, xe đi theo mặt đường và không bao giờ ra khỏi đường.
      - Câu phong cách đã có `Camera completely static`. Với vật dễ bị xoay, thêm `The object itself stays in place and does not spin or tumble`.
   7. **Người không biến thành con vật.** Trò chơi đóng vai (mèo đuổi chuột) vẫn là trẻ em bình thường, không có tai, đuôi hay lông thú. Ghi rõ `they stay ordinary children: no animal ears, no tails, no fur`.
+  8. **Tiếng con vật phải là tiếng thật của đúng con đó** (đợt duyệt 12/11: gà trống kêu như quạ, voi kêu như kèn).
+     - Lời lệnh gọi đúng tên tiếng và nói rõ không được thành tiếng gì, ví dụ `a real rooster crowing "cock-a-doodle-doo", never a crow's caw`, `a real elephant trumpeting from its trunk, an animal call, not a brass trumpet or horn instrument`.
+     - Nếu Flow vẫn ra tiếng sai: làm lại clip chỉ có tiếng động nhẹ (gió, bước chân, lá xào xạc), không có tiếng kêu, và ghi vào `ghi_chu` để chủ dự án biết.
 - **Không cần chủ dự án duyệt kịch bản trước.** Cứ làm clip. Chủ dự án xem thành phẩm trong công cụ duyệt (tab "Tranh động") và yêu cầu làm lại nếu cần.
 
 ## 2. Phong cách hình và tiếng
