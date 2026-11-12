@@ -305,3 +305,9 @@ Nhịp làm theo chủ dự án: mỗi lần tạo (video hay ảnh khung đầu
   - Chiều 12/11 [L2] dùng `/u/3` (sau 13:44); [L1] nghỉ.
   - Ngày 13/11 [L2] dùng `/u/1`; [L1] dùng `/u/6`, rồi `/u/3` (sau 13:44), cuối cùng `/u/2` nếu đã có credit lại.
   - `/u/4` không thấy được cộng lượt ngày. Sáng 13/11 xem lại; nếu có credit thì [L1] dùng.
+
+**Chủ dự án duyệt 9 clip làm lại ngày 12/11** (kết quả nằm ở working copy, chưa commit; chủ dự án hoặc root sẽ commit):
+- 7 đạt: b67 hoa cúc, b69 bãi cát, b77 đầm sen, b77 nhịp cầu, b78 xe qua cầu, b83 cặp sách, b84 tờ lịch.
+- 2 không đạt, đã sửa kịch bản và xếp vào hàng làm lại:
+  - b50 cô Tấm: chủ dự án muốn có tiếng đọc bài "bống bống bang bang". Kịch bản mới cho cô Tấm đọc tiếng Việt "Bống bống bang bang, lên ăn cơm vàng cơm bạc nhà ta".
+  - b83 lò gạch: hành động xếp gạch chưa hay. Kịch bản mới: lúc đầu chưa có chồng gạch; thợ lấy gạch từ đống bên miệng lò, xếp hai chồng cao dần từng lớp.
