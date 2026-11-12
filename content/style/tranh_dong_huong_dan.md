@@ -28,6 +28,8 @@ Tài liệu để nhớ cách làm clip cho tranh bài học, dùng lại cho c�
   8. **Tiếng con vật phải là tiếng thật của đúng con đó** (đợt duyệt 12/11: gà trống kêu như quạ, voi kêu như kèn).
      - Lời lệnh gọi đúng tên tiếng và nói rõ không được thành tiếng gì, ví dụ `a real rooster crowing "cock-a-doodle-doo", never a crow's caw`, `a real elephant trumpeting from its trunk, an animal call, not a brass trumpet or horn instrument`.
      - Nếu Flow vẫn ra tiếng sai: làm lại clip chỉ có tiếng động nhẹ (gió, bước chân, lá xào xạc), không có tiếng kêu, và ghi vào `ghi_chu` để chủ dự án biết.
+  9. **Người hay vật không đi vào từ vùng đệm ngoài tranh** (đợt xem trước 12/11: người mẹ đi vào từ mép phải bị cắt thẳng một đường dọc). Tranh đệm 16:9 có hai dải giấy trống hai bên; khi đưa vào app chỉ giữ phần vuông ở giữa, nên ai đi ra vào dải đó sẽ bị cắt thẳng. Khung đầu đặt mọi nhân vật nằm trọn trong phần tranh vuông. Lời lệnh ghi `stays fully inside the picture; never enters or leaves through the side edges`. Máy quay và nền đứng yên, không kiểu máy quay chạy theo nhân vật.
+  10. **Clip dừng đúng tư thế trong tranh, không diễn quá rồi giật về** (bé đã đứng dậy rồi khung cuối ngồi bệt lại; hai bạn đi quá chỗ rồi giật về giữa cầu). Lời lệnh tả hành động chỉ tới đúng tư thế trong tranh và nói rõ điều không được xảy ra, ví dụ `the boy never stands up`, `they never walk past that spot`.
 - **Không cần chủ dự án duyệt kịch bản trước.** Cứ làm clip. Chủ dự án xem thành phẩm trong công cụ duyệt (tab "Tranh động") và yêu cầu làm lại nếu cần.
 
 ## 2. Phong cách hình và tiếng
