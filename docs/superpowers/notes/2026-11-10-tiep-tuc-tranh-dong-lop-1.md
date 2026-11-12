@@ -301,3 +301,7 @@ Nhịp làm theo chủ dự án: mỗi lần tạo (video hay ảnh khung đầu
 - Chiều 12/11 [L2] có thể dùng phần credit còn lại, nên [L1] không mở Flow cho tới ngày 13/11.
 - Sau đợt root trả lại 3 clip của 302e6bc (commit 7a83ad6), danh sách làm lại thêm b101 (mèo đuổi chuột, đổi lời lệnh bỏ chữ mèo/chuột), b102 vịt (loop) và b102 chuông (loop).
 - Khi xem clip: lấy ít nhất 10 khung lớn và soi từng nhân vật (đuôi, tai, chồng hình, số lượng).
+- **Root chốt lại (12/11 chiều), thay cho thứ tự ở trên:**
+  - Chiều 12/11 [L2] dùng `/u/3` (sau 13:44); [L1] nghỉ.
+  - Ngày 13/11 [L2] dùng `/u/1`; [L1] dùng `/u/6`, rồi `/u/3` (sau 13:44), cuối cùng `/u/2` nếu đã có credit lại.
+  - `/u/4` không thấy được cộng lượt ngày. Sáng 13/11 xem lại; nếu có credit thì [L1] dùng.
