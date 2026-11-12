@@ -318,6 +318,8 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Trang chi tiết clip ở `/u/1`–`/u/4` không có nút mũi tên sang clip kế | Lọc lưới theo Video, mở từng thẻ theo thứ tự, xong thì quay về lưới | 09/11 |
 | Ô soạn có thêm biểu tượng nhỏ (ảnh `gstatic`), làm bộ đếm "đúng 2 ảnh" sai | Khi đếm ảnh trong ô soạn, bỏ ảnh có `src` thuộc `gstatic.com` | 09/11 |
 | Trình phát clip của Flow là canvas, không lấy được thẻ `video` để xem | Bấm phát rồi `drawImage` từ canvas theo thời gian để chụp khung; khung đen là do chưa nạp kịp. Chắc nhất là tải về rồi phát thật qua `python -m http.server` cục bộ | 09/11 |
+| Nhắc tên một thứ trong lời lệnh, kể cả để cấm hay để dặn "chỉ một chút" (khói, gió, mèo, chuột), làm Veo vẽ đúng thứ đó: cục khói phồng (b220), vệt gió trắng (b283), trẻ mọc đuôi mèo (b101) | Bỏ hẳn tên thứ không muốn có khỏi lời lệnh, kể cả câu "no X". Chỉ tả những gì có và động tác cần làm; muốn giữ yên thì viết "the roof and the sky stay completely still and clear" | 12/11 |
+| Ảnh khung đầu do Nano Banana sửa có lề giấy khác màu tranh gốc (trắng hơn), nên clip đổi màu lề giữa chừng (b220, b91) | Trước khi gửi, đặt khung đầu cạnh tranh gốc, so màu lề giấy; lệch thì sửa thêm: "keep exactly the same warm beige paper colour as the original" | 12/11 |
 
 ### Giao diện, bố cục
 
