@@ -264,3 +264,33 @@ Nhớ đệm lại tranh 16:9 từ bản mới trong `Resources/images`, đừng
   - cái cuốc (mục 8).
 - **Credit tối 11/11:** `/u/2` 53, `/u/3` 50, `/u/4` 0 (cộng 50 mỗi ngày), `/u/1` và `/u/6` hết.
 - **Chủ dự án chốt "để mai" (12/11).** Mai bắt đầu lại trên `/u/4`, cũng gửi chậm như trên. `/u/2` và `/u/3` để sau cùng.
+
+## 10. Cập nhật 12/11
+
+Nhịp làm theo chủ dự án: mỗi lần tạo (video hay ảnh khung đầu) cách nhau ít nhất 6 phút, khung đầu và video của cùng một clip cách nhau khoảng 3 phút, đổi tài khoản nghỉ 20 phút. Cả ngày không gặp "unusual activity", kể cả `/u/2` và `/u/3`.
+
+**Đã nhận và commit (cho_duyet), xếp theo tài khoản:**
+- `/u/6`: b67 hoa cúc, b69 bãi cát, b77 đầm sen, b77 nhịp cầu (commit 268e869; root đã xem, đạt).
+- `/u/1`: b78 xe qua cầu, b50 cô Tấm (commit 124f0b6; root đã xem, đạt).
+- `/u/3`: b84 tờ lịch, b83 cặp sách, b83 lò gạch (commit a98edb8; root đã xem, đạt).
+- `/u/2`: b102 cái chuông, b101 mèo đuổi chuột, b102 đàn vịt (commit 302e6bc; chờ root xem). Ở clip chuông, khúc gỗ đi vào từ bên phải; cần xem có vướng quy tắc 9 không.
+
+**Hỏng hoặc root trả lại, xếp làm lại** (kịch bản đã sửa):
+- b68 cô giáo tặng quà: hỏng 2 lần, Veo vẽ thêm trẻ em ở hai bên rồi cho biến mất. Lần tới thử thêm câu "hai dải giấy hai bên luôn để trống"; nếu vẫn hỏng thì ghi chú cho chủ dự án.
+- b81 quả chanh, b82 cầu kênh: root trả lại (commit e356984).
+- b82 học sinh, b86 vấp đá: root trả lại (commit cbc8687).
+- b87 búp măng: khóm tre mờ đi kiểu chuyển cảnh.
+- b105 cầu trượt: bé xuống chân cầu rồi lại hiện trên đỉnh.
+
+**Hàng đợi còn lại:**
+1. Làm lại: b68, b81, b82_con_keenh, b82_hocj_sinh, b86, b87, b105_caauf.
+2. Tập 2 chưa làm: b105_ruwowcs_ddenf, b106, b109 ×2, b110 ×3, b111, b112 ×2, b113, b114, b116, b136, b137, b141, b142, b145, b148, b98.
+3. Cái cuốc b101_cais_cuoocs.
+4. 16 clip mới root giao 12/11: 3 clip làm lại lần 2 (b26 gà gáy, b28 voi, b31 thỏ) và 13 clip mới chê (b42, b43, b57, b58, b69_mays_cayf, b73, b74, b91, b117, b163 ×2, b165, b166). Chưa viết kịch bản cho 16 clip này.
+
+**Mẹo kỹ thuật 12/11:**
+- Khung đầu tập 2 tạo trên chính tài khoản làm video. Khi chọn khung Bắt đầu, lấy mục mới nhất trong danh sách không bắt đầu bằng `img_` hay `start_`, rồi xem ảnh xem trước cho chắc.
+- Tài khoản giao diện tiếng Anh: nút `Start`/`End`, `Add to prompt`, `Add ingredients to the prompt box`, `Start generation`, `Settings trigger`, chế độ `Frames`/`Image`.
+- Ở giao diện tiếng Anh, phím Escape trong trang chi tiết sẽ thoát ra lưới. Muốn tải clip thì bấm vào ảnh nhỏ của clip trên dải phía trên (nhận theo tên), rồi Download → 720p.
+- Sau khi gõ lệnh ảnh, phải đặt lại con trỏ vào ô lệnh rồi mới bấm Enter, nếu không đôi khi lệnh không được gửi.
+- Gọi upd.py hai lần liền với hai tệp kịch bản khác nhau thì lần sau ghi đè phần stage của lần trước. upd.py nay nhận nhiều tệp kịch bản, cách nhau dấu phẩy.
