@@ -16,6 +16,7 @@ Root soát ngày 12/11/2026, theo lời chủ dự án: "review các ảnh độ
     - Khung đầu đặt nhân vật lùi lại vài bước trên chính con đường hay khoảng trời TRONG tranh: nhỏ hơn, xa hơn.
     - Nhân vật tự di chuyển tới đúng chỗ trong tranh. Nền và máy quay đứng yên.
     - Không đi vào từ vùng đệm (quy tắc 9).
+    - Chỉ lùi một chút: nhân vật gần như cùng cỡ, quãng đi ngắn. Nếu khung đầu đặt nhân vật quá nhỏ hoặc quá xa, Veo sẽ vẽ lại nhân vật thành người khác. Bài học từ [L2] với b235 ngày 12/11: Minh bị đổi quần áo, đổi mặt, cuối clip chồng hình.
     - Gặp ở: b105 rước đèn, b110 quê ngoại, b112 loắt choắt, b142 cái bống, b57 dơi, b69 máy cày, b73 chạy chơi, b74 xe đạp.
 12. **Tranh là một khoảnh khắc giữa động tác thì clip dựng tới đúng khoảnh khắc đó rồi dừng.**
     - Không làm hết động tác rồi quay về, vì đó chính là kiểu "tua ngược" chủ dự án chê.
