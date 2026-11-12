@@ -10,6 +10,28 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ---
 
+## 12/11/2026
+
+- **Chủ dự án:** dặn gửi clip chậm (≥6 phút mỗi lần tạo, đổi tài khoản nghỉ ≥20 phút). Root xem trước mọi clip mới, clip nào lỗi thì trả lại session làm lại trước khi tới tay chủ dự án.
+- **Chủ dự án duyệt:**
+  - 286 đạt, 60 không đạt (root commit 0b1f947);
+  - 9 clip làm lại trong ngày: 7 đạt, cô Tấm và lò gạch không đạt (8cd592b).
+- **Chủ dự án quyết:** clip chỉ làm bằng Google Flow, không ghép tiếng bằng ffmpeg hay HoaiMy, không dùng công cụ chưa được cho phép. Kịch bản cô Tấm để Veo tự đọc bài thơ (d0c1347).
+- **[L1] tranh động:** làm lại 12 clip trên /u/6, /u/1, /u/3, /u/2 (268e869, 124f0b6, a98edb8, 302e6bc). Cả ngày không gặp "unusual activity".
+  - Root xem trước và trả lại 7 clip vì: hoa ra thành chùm như nho, đi quá chỗ, máy quay chạy theo nhân vật, mẹ biến mất, trẻ mọc đuôi mèo, vịt chồng hình, khúc gỗ đi vào từ vùng đệm.
+  - [L1] đưa 7 clip đó về không đạt (e356984, cbc8687, 7a83ad6) và thêm quy tắc 9–10 vào hướng dẫn.
+- **[L2] tranh động:** trên /u/3 nhận b299 én đậu dây điện và b283 chim chiền chiện. Root xem trước: đạt (ad4c3f9). Bản b283 lúc 14:13 bị root trả vì vệt trắng. [L2] tự bỏ b235 (Minh đổi quần áo) và b220 (khói, cánh hoa).
+- **Root:**
+  - soát 43 clip không đạt, ghi lỗi bất hợp lý và cách làm lại từng clip, đề xuất quy tắc 11–16 (5116b8d, 4cb5275);
+  - ghi 2 bài học vào QUY-TRINH §12 (de9e167): nhắc tên vật trong lời lệnh, kể cả câu cấm, làm Veo vẽ chính vật đó; so màu lề giấy của khung đầu với tranh gốc.
+- **[L1] tranh động:** thêm quy tắc 11–17 vào hướng dẫn, sửa 41 kịch bản theo báo cáo soát (55bf4f0, 40aab10, 1fc949e, a42a128).
+- **Credit cuối ngày:** /u/1, /u/3, /u/4, /u/6 hết; /u/2 còn 3.
+- **Ngày 13/11:** [L2] chạy trước trên /u/1 (b235, b220, b198). Sau đó nghỉ 20 phút, [L1] làm hàng đợi khoảng 49 clip trên /u/6, /u/3 (sau 13:44), /u/2.
+- **Việc còn dở:**
+  - Hơn 20 commit chưa push.
+  - Chỉnh sửa duyệt âm thanh và tranh chưa commit.
+  - Gói bosung cho clip mới làm sau.
+
 ## 11/11/2026
 
 - **[L1] nội dung:**
