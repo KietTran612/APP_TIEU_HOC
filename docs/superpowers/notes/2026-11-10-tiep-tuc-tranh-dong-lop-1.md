@@ -338,3 +338,54 @@ Cách viết theo quy tắc 9–17 và QUY-TRINH §12 (f1b88d8):
 Tính đến 13/11, lớp 1 còn 137 dòng `khong_dat`. Với khoảng 20 clip mỗi ngày thì cần khoảng 7 ngày.
 
 **Nhịp làm:** mỗi lần tạo cách nhau ít nhất 6 phút; đổi tài khoản nghỉ ít nhất 20 phút. [L1] dùng `/u/6`, `/u/3` (sau 13:44), `/u/2`, và `/u/4` nếu có credit. [L1] chỉ bắt đầu khi root báo, sau khi [L2] xong trên `/u/1`. Mỗi clip nhận xong đều báo root xem trước.
+
+## 12. Kết quả ngày 13/11
+
+Tổng cộng 4 đợt, mỗi đợt một commit:
+- `/u/6`: 54f5b4e
+- `/u/2`: 3fecb77
+- `/u/3`: 94d37a7
+- `/u/4`: 7d7ccdf
+
+Root đều đã xem trước. Riêng b105 lướt ván chưa có kết quả xem trước lúc viết note này.
+
+**Chuyển cho_duyet (9 clip):**
+- b50 cô Tấm: nhờ chủ dự án nghe Veo đọc câu "Bống bống bang bang".
+- b102 chuông.
+- b102 vịt: lần 3, cá gần như đứng yên.
+- b83 lò gạch: loop, thợ nhấc, ngắm, đặt lại một viên rồi phủi tay; ghi chú có nói giới hạn của Veo.
+- b86 vấp đá: lần 2, mẹ đang đứng thì cúi đỡ.
+- b81 quả chanh: lần 3, chỉ quả nguyên lớn lên, không có nước chanh.
+- b87 búp măng: khung đầu chỉ bỏ hai búp.
+- b105 lướt ván: loop lần 2, ghi rõ bố cục cố định.
+
+**Dừng, để khong_dat kèm đề xuất cho chủ dự án chọn:**
+- b82 con kênh: 3 lần đều lỗi đi; file bản 3 vẫn để trong content/clips.
+- b82 học sinh: Nano Banana không lùi được người.
+- b105 cầu trượt: 3 lần đều tua ngược.
+- b101 mèo đuổi chuột: 3 lần; bản loop không mọc đuôi nhưng nửa vòng sau mờ.
+- b105 rước đèn: Nano Banana không lùi được người.
+- b68: quá 3 lần, xếp cuối hàng đợi.
+
+**Bài học (đã áp dụng trong các kịch bản trên):**
+- **Quy tắc 3 lần (root):** mỗi clip thử tối đa 3 lần; quá thì dừng, ghi chú cho chủ dự án rồi sang clip khác.
+- **Người chiếm gần hết tranh:** Nano Banana không lùi được (đã thử dời ngang, lùi một bước, thu 75–80%), ảnh trả về gần y tranh gốc. Gặp loại tranh này thì đừng tốn credit video. Hướng dùng ChatGPT vẽ khung đầu phải chờ chủ dự án cho phép.
+- **Tranh là khoảnh khắc giữa chuyển động** (trượt giữa cầu, đi giữa cầu):
+  - build quãng dài: Veo hay đi quá rồi giật về;
+  - build quãng ngắn: Veo bước tại chỗ;
+  - loop nhỏ: an toàn nhất, nhưng có thể bị chê "đứng yên".
+- **Hành động ít mà kéo dài 8 giây** (đặt 1 viên gạch): Veo tự thêm vật cho đủ việc. Đổi sang loop nhấc–ngắm–đặt lại.
+- **Câu "vài giọt nước"** thành cả dòng nước, sau đó vũng nước biến mất. Bỏ hẳn nước nếu tranh không cần.
+- **Thuyền máy kéo người** (loop): phải ghi rõ bố cục cố định, kiểu "thuyền bên phải mũi hướng phải, người lướt phía sau bên trái, chỉ nhấp nhô". Không ghi thì Veo cho thuyền chạy, quay đầu.
+- **Đông người cùng chuyển động** (9 bạn trong vòng tròn): dễ mờ, chồng hình. Chỉ cho 1–2 người động.
+- **Kỹ thuật:**
+  - Chọn khung bằng ô tìm kiếm trong bảng "Chọn một hình ảnh khung" (gõ `img_bNN` hoặc `start_bNN`). Chắc hơn bấm theo vị trí, và tránh lỡ mở chế độ sửa ảnh.
+  - Commit bằng index tạm (`scratchpad/r3/commit_own.py`) để không cuốn phần session khác đã stage.
+  - Khung đầu Nano Banana có dấu lấp lánh ở góc phải dưới: che bằng màu giấy rồi mới tải lên.
+
+**Credit cuối ngày 13/11:** `/u/6`, `/u/3`, `/u/4` hết; `/u/2` còn 3 (đặt lại 15/11).
+
+**Hàng đợi còn lại:**
+1. b68 (cuối) và các clip tập 2 ở mục 7 chưa làm.
+2. 16 clip giao ngày 12/11.
+3. Trong 91 clip soát lại, tập 1 còn: b87 lẵng bạc, b87 nhà cao tầng, b81 cây cảnh, b81 hộp bánh, b81 quả ớt, b83 cặp sách, b86 xẻng, cùng các clip khác trong `2026-11-13-soat-lai-clip-dat.md`.
