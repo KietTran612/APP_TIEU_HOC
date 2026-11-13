@@ -339,6 +339,7 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Vấn đề | Cách giải | Ngày / commit |
 |---|---|---|
 | Commit lẫn chỉnh sửa duyệt của chủ dự án | Chỉ stage dòng của mình bằng `hash-object` và `update-index` (mục 10) | 05/11 |
+| Hai session dùng chung một index: session A `git commit` không chỉ đường dẫn, cuốn luôn phần session B đã stage (df3f07d cuốn cau_b264_05 của [L2], 13/11) | Commit theo đường dẫn (`git commit -- <đường dẫn>` hoặc `git commit -m … <file>`); trước khi commit xem `git diff --cached --stat`; stage và commit liền trong một lệnh | 13/11 |
 | Hai session cùng sửa `tools/tapdoc` | Xem `git log` file trước khi sửa, sửa nhỏ, commit sớm, báo nhau trước khi thay đổi lớn | 09/11 |
 | `tapdoc build` tự thêm mã bài vào trường `bai` của danh mục | Kiểm tra đó là dữ liệu đúng rồi commit riêng các dòng đó | 09/11, 98880eb |
 | `tapdoc requests` xoá luôn các file tổng hợp `content/requests/images_<book>_dot_N.md` | Chạy `requests` trước, rồi mới ghi file danh sách tranh từng đợt; hoặc sinh lại file đợt sau khi chạy | 09/11 |
