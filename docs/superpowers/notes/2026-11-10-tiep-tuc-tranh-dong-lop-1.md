@@ -311,3 +311,30 @@ Nhịp làm theo chủ dự án: mỗi lần tạo (video hay ảnh khung đầu
 - 2 không đạt, đã sửa kịch bản và xếp vào hàng làm lại:
   - b50 cô Tấm: chủ dự án muốn có tiếng đọc bài "bống bống bang bang". Kịch bản mới cho cô Tấm đọc tiếng Việt "Bống bống bang bang, lên ăn cơm vàng cơm bạc nhà ta".
   - b83 lò gạch: hành động xếp gạch chưa hay. Kịch bản mới: lúc đầu chưa có chồng gạch; thợ lấy gạch từ đống bên miệng lò, xếp hai chồng cao dần từng lớp.
+
+## 11. Hàng đợi lớn ngày 13/11: 91 clip "đạt" bị root soát lại
+
+Chủ dự án nhờ root soát lại 347 clip đã chấm đạt. Root tìm thấy 104 clip lỗi nặng, trong đó 91 clip lớp 1 thuộc [L1]: tập 1 có 43, tập 2 có 48. Danh sách lỗi theo từng giây ở `docs/superpowers/notes/2026-11-13-soat-lai-clip-dat.md`. Các dòng này đã về `khong_dat` (commit 2744d08); ghi chú mở đầu bằng "Root soát lại 13/11 (bản đã đạt)".
+
+**Kịch bản đã viết xong:**
+- tập 1: e52dddf;
+- tập 2: c10a0ad (kể cả b98 sầu riêng, thay kịch bản cũ).
+
+Mỗi lần commit chỉ stage các dòng của [L1] lấy từ HEAD, bằng script `scratchpad/r6/apply.py`.
+
+Cách viết theo quy tắc 9–17 và QUY-TRINH §12 (f1b88d8):
+- Cảnh không cần lớn lên hay lắp ráp thì dùng loop, chuyển động nhỏ trong tranh.
+- Nhân vật đang ở giữa bước chạy hay bay thì cho chạy hoặc bay một vòng nhỏ rồi về đúng chỗ: b95 cò, b114 hoẵng, b92 khỉ.
+- Build chỉ một việc: chín màu, lớn lên, đậy nắp, khép cửa, đặt sách hoặc gạch, mở ngăn.
+- Khung đầu ghi số đo cụ thể, ví dụ thu nhỏ còn 75%, dời 1/10 hoặc 1/12 bề ngang.
+- Dừng đúng khoảnh khắc trong tranh: b49 đón cam, b58 bỏ thư, b60 chim bay, b170 tung mũ.
+- Ghi rõ số lượng: b02, b43, b44, b48, b55, b58 gà, b106 mướp.
+
+**Thứ tự hàng đợi theo root:**
+1. Các clip làm lại cũ: b68, b81, b82 ×2, b86, b87, b105 ×2, b101 ×2, b102 ×2, b50, b83 lò gạch, và các clip tập 2 ở mục 7 chưa làm.
+2. 16 clip giao ngày 12/11 (mục 10).
+3. 91 clip này, bắt đầu từ tập 1.
+
+Tính đến 13/11, lớp 1 còn 137 dòng `khong_dat`. Với khoảng 20 clip mỗi ngày thì cần khoảng 7 ngày.
+
+**Nhịp làm:** mỗi lần tạo cách nhau ít nhất 6 phút; đổi tài khoản nghỉ ít nhất 20 phút. [L1] dùng `/u/6`, `/u/3` (sau 13:44), `/u/2`, và `/u/4` nếu có credit. [L1] chỉ bắt đầu khi root báo, sau khi [L2] xong trên `/u/1`. Mỗi clip nhận xong đều báo root xem trước.
