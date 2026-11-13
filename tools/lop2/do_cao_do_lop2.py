@@ -60,8 +60,13 @@ def word_spans(text: str, spans: list) -> list:
     return [span for (_, is_digit), span in zip(order, spans) if not is_digit]
 
 
+def spoken_text(row) -> str:
+    """Chữ đã đọc: mốc từng tiếng đi theo chữ đọc (`tts.doc`), có thể khác chữ hiển thị (vd. "..." → "đoạn từ … đến …")."""
+    return (row.get("tts") or {}).get("doc") or row["text"]
+
+
 def classify(row, wav, marks, templates) -> list[dict]:
-    text = row["text"]
+    text = spoken_text(row)
     count = len(tokens(text))
     spans = word_spans(text, (marks or {}).get("words") or [])
     out = []
@@ -108,7 +113,7 @@ def main(argv):
     if not pc.has_dip_rise_templates(templates):
         print("Thiếu mẫu hỏi/ngã (cần tiếng đã `dat` có file trên máy).")
         return 2
-    targets = [r for r in rows if lop2(r) and (ids is None or r["id"] in ids) and pc.words_to_check(r["text"])
+    targets = [r for r in rows if lop2(r) and (ids is None or r["id"] in ids) and pc.words_to_check(spoken_text(r))
                and (audio / f"{r['id']}.mp3").is_file()]
     wavs = pc.decode([audio / f"{r['id']}.mp3" for r in targets], CACHE)
     results = []
