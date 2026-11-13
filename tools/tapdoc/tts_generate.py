@@ -32,24 +32,33 @@ def _json_bytes(value):
     return (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
 
 
-KEEP_PAD = 0.1  # phần đệm trim_mp3_span giữ thêm sau lời (mặc định của nó)
+_PAUSE = ",.;:!?…"
 
 
-def _speech_span(row, p, result):
-    """Khoảng lời cần giữ: cả lời đọc, hoặc với keep_first chỉ các tiếng đầu (bằng số tiếng của chữ).
+def _keep_first(row, p, result) -> tuple[bytes, float]:
+    """keep_first: giữ các tiếng đầu (bằng số tiếng của chữ) của câu đệm, cắt trên PCM rồi mã hoá lại.
 
-    Chỉ cắt được phần sau: khung MP3 của bộ đọc mượn dữ liệu khung trước nên đầu đoạn giữ luôn lùi về đầu file.
+    Không cắt theo khung MP3 nữa (soát 13/11): mốc bộ đọc của "X. X." có thể sai (tiếng sau "bắt đầu" giữa tiếng
+    đầu) và cắt khung không giảm dần được, nên file dừng khi tiếng còn to. Trả (MP3, độ dời mốc từ).
     """
-    if not p.keep_first:
-        return result.speech_start, result.speech_end
-    count = len(tokens(row["text"]))
+    text_words = tokens(row["text"])
+    count = len(text_words)
     if count == 0 or len(result.words) < count:
         raise TtsError(f"{row['id']}: không đủ mốc từ để cắt lấy tiếng đầu")
-    start, end = result.words[0][0], result.words[count - 1][1]
-    if len(result.words) > count:
-        # Tiếng kế tiếp đọc liền ("mụ già."): phần đệm cuối (KEEP_PAD) không được lấn sang tiếng đó.
-        end = max(start + 0.05, min(end, result.words[count][0] - KEEP_PAD))
-    return start, end
+    doc_words = tokens(p.doc)
+    after = doc_words[count - 1][1] + len(doc_words[count - 1][0]) if len(doc_words) >= count else len(p.doc)
+    pause = p.doc[after:after + 1] in tuple(_PAUSE)
+    next_word = tuple(result.words[count]) if len(result.words) > count else None
+    try:
+        sr, samples = audio_join.decode_bytes(result.audio)
+        pcm, offset = audio_join.keep_first_pcm(samples, sr, word_start=result.words[0][0],
+                                                next_word=next_word, pause=pause)
+        audio = audio_join.encode_mp3(pcm, sr)
+    except audio_join.JoinError as e:
+        raise TtsError(f"{row['id']}: không cắt được phần đọc lặp phía sau: {e}") from e
+    if not audio or not _looks_like_mp3(audio):
+        raise TtsError(f"{row['id']}: mã hoá lại phần giữ không ra MP3")
+    return audio, offset
 
 
 def _write_marks(marks_dir, row, p, result, offset) -> None:
@@ -89,9 +98,10 @@ def generate_one(row, settings, engine, audio_dir, prev_dir, marks_dir=None) -> 
         result = engine.synthesize(p)
         if not result.audio or not _looks_like_mp3(result.audio):
             raise TtsError(f"{row['id']}: bộ đọc trả dữ liệu rỗng hoặc không phải MP3")
-        audio, trimmed, offset = trim_mp3_span(result.audio, *_speech_span(row, p, result))
-        if p.keep_first and not trimmed:
-            raise TtsError(f"{row['id']}: không cắt được phần đọc lặp phía sau")
+        if p.keep_first:
+            (audio, offset), trimmed = _keep_first(row, p, result), True
+        else:
+            audio, trimmed, offset = trim_mp3_span(result.audio, result.speech_start, result.speech_end)
         source = "tts_edge_" + p.voice.removeprefix("vi-VN-").removesuffix("Neural").lower()
     updated = copy.deepcopy(row)
     updated.update(status="cho_duyet", source=source,

@@ -55374,19 +55374,22 @@
     "kind": "huong_dan",
     "file": "audio/hd_b04_tranh_01.mp3",
     "source": "tts_edge_hoaimy",
-    "status": "dat",
+    "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: file chỉ đọc \"Các bạn đang múa\" (cấu hình chữ đọc cũ), thiếu câu sau; đã sửa: bỏ chữ đọc riêng, tạo lại theo chữ hiện tại. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b04"
     ],
     "tts": {
-      "doc": "Các bạn đang múa",
+      "doc": "Các bạn đang múa vui. Con hãy múa theo các bạn nhé.",
       "rate": -15,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "6e9daba3c291115f614e6229ab43943229aefe5f",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "5f6057099b468cda9cef21d897914f0eae7866e9",
       "trimmed": true
     }
   },
@@ -55727,19 +55730,22 @@
     "kind": "huong_dan",
     "file": "audio/hd_b10_tranh_01.mp3",
     "source": "tts_edge_hoaimy",
-    "status": "dat",
+    "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: giọng đọc \"hai viên bi\" (cấu hình chữ đọc cũ) trong khi chữ là \"hai hòn bi\"; đã sửa: bỏ chữ đọc riêng, tạo lại theo chữ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b10"
     ],
     "tts": {
-      "doc": "Đây là hai viên bi.",
+      "doc": "Đây là hai hòn bi.",
       "rate": -15,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "1cd203b0d6607669ac1fe47d53148f421ea384bc",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "bfdc89ba9889955ca9a5c0aa21d8505f7d66efeb",
       "trimmed": true
     }
   },
@@ -91391,7 +91397,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"ệ. ệ.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"ệ. ệ.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: đuôi cụt (dừng khi tiếng còn to 81%, phần có giọng 0,09 giây); đã sửa: cắt keep_first trên PCM: giữ tới chỗ tắt tiếng (mốc bộ đọc của câu đệm sai), giảm dần 50 ms + lặng 0,1 giây; 3 khung 10 ms cuối 0% đỉnh. Đo: phần có giọng 0,39 giây, cao độ như nặng. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b40"
     ],
@@ -91570,7 +91576,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"ẹ. ẹ.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"ẹ. ẹ.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: đuôi cụt (dừng khi tiếng còn to 93%, phần có giọng chỉ 0,08 giây); đã sửa: cắt keep_first trên PCM: giữ tới chỗ tắt tiếng (mốc bộ đọc của câu đệm sai), giảm dần 50 ms + lặng 0,1 giây; 3 khung 10 ms cuối 0% đỉnh. Đo: phần có giọng 0,40 giây, cao độ như nặng. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b29"
     ],
@@ -120515,7 +120521,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "Phát âm chưa chính xác | Tạo lại 9/11: đọc lặp \"nụ, nụ.\" rồi chỉ giữ tiếng đầu (keep_first); bỏ chỉnh pitch/tốc độ cũ. Bản cũ ở prev. | Rà soát thanh nặng/âm ê 10/11: chủ dự án chọn bản 5 \"nụ hoa.\" trên trang nghe thử (keep_first). Chờ nghe xác nhận.",
+    "ghi_chu": "Phát âm chưa chính xác | Tạo lại 9/11: đọc lặp \"nụ, nụ.\" rồi chỉ giữ tiếng đầu (keep_first); bỏ chỉnh pitch/tốc độ cũ. Bản cũ ở prev. | Rà soát thanh nặng/âm ê 10/11: chủ dự án chọn bản 5 \"nụ hoa.\" trên trang nghe thử (keep_first). Chờ nghe xác nhận. | Root soát 13/11: đuôi cụt (dừng khi tiếng còn to 80%, \"nụ hoa.\" đọc liền); đã sửa: cùng bản đọc đã duyệt, cắt trên PCM ngay trước tiếng \"hoa\", giảm dần 50 ms + lặng 0,1 giây; 3 khung 10 ms cuối 0% đỉnh. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b13",
       "tv2_t1_b221",
@@ -121557,7 +121563,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"ộ. ộ.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"ộ. ộ.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: đuôi cụt (dừng khi tiếng còn to 87%, phần có giọng 0,15 giây); đã sửa: cắt keep_first trên PCM: giữ tới chỗ tắt tiếng (mốc bộ đọc của câu đệm sai), giảm dần 50 ms + lặng 0,1 giây; 3 khung 10 ms cuối 0% đỉnh. Đo: phần có giọng 0,45 giây, cao độ như nặng. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b36"
     ],

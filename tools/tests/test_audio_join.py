@@ -1,5 +1,6 @@
 import math
 import unittest
+from pathlib import Path
 
 from tapdoc import audio_join as aj
 
@@ -98,6 +99,87 @@ class JoinFilesTest(unittest.TestCase):
             aj.join_files(["a.mp3", "b.mp3"], [0.08],
                           decoder=lambda paths: (SR, {"a.mp3": tone_burst(0.2), "b.mp3": silence(0.3)}),
                           encoder=lambda s, sr: b"ID3")
+
+
+def frame_levels(samples, sr=SR):
+    step = int(0.01 * sr)
+    return [aj.rms(samples[i:i + step]) for i in range(0, len(samples) - step + 1, step)]
+
+
+def loud_seconds(samples, ratio=0.5, sr=SR):
+    levels = frame_levels(samples, sr)
+    peak = max(levels)
+    return sum(1 for v in levels if v > ratio * peak) * 0.01
+
+
+class KeepFirstPcmTest(unittest.TestCase):
+    """keep_first trên PCM (soát 13/11): giữ trọn tiếng đầu, kết thúc bằng giảm dần và lặng, không còn "tách"."""
+
+    def assert_soft_tail(self, out):
+        levels = frame_levels(out)
+        peak = max(levels)
+        self.assertTrue(all(v < 0.1 * peak for v in levels[-3:]), [round(v / peak, 2) for v in levels[-3:]])
+        self.assertTrue(all(v == 0 for v in out[-int(aj.KEEP_TAIL * SR):]))
+
+    def test_pause_after_keeps_whole_first_word_even_if_marks_are_wrong(self):
+        # "ẹ. ẹ.": bộ đọc báo tiếng thứ hai bắt đầu ở 0,38 giây nhưng tiếng đầu thật kéo dài tới 0,63 giây.
+        first, second = tone_burst(0.4), tone_burst(0.35)
+        samples = silence(0.23) + first + silence(0.8) + second + silence(0.5)
+        out, _ = aj.keep_first_pcm(samples, SR, word_start=0.17, next_word=(0.383, 0.767), pause=True)
+        self.assertGreaterEqual(loud_seconds(out), 0.4 - aj.FADE)
+        self.assertLessEqual(loud_seconds(out), 0.41)  # không lấy tiếng thứ hai
+        self.assert_soft_tail(out)
+
+    def test_read_on_stops_before_next_word_with_fade(self):
+        # "nụ hoa.": đọc liền, không có chỗ lặng; PCM giải mã trễ hơn mốc bộ đọc 0,07 giây.
+        samples = silence(0.22) + tone_burst(0.8) + silence(0.4)
+        out, _ = aj.keep_first_pcm(samples, SR, word_start=0.15, next_word=(0.517, 1.033), pause=False)
+        kept = loud_seconds(out, ratio=0.05)
+        self.assertLessEqual(kept, 0.517 + 0.07 - 0.22)  # không lấn sang tiếng sau
+        self.assertGreaterEqual(kept, 0.25)
+        self.assert_soft_tail(out)
+
+    def test_pause_without_gap_falls_back_to_next_word(self):
+        # Có dấu câu nhưng bộ đọc không nghỉ: khoảng lặng đầu tiên nằm sau cả tiếng kế tiếp thì không dùng.
+        samples = silence(0.2) + tone_burst(1.0) + silence(0.3)
+        out, _ = aj.keep_first_pcm(samples, SR, word_start=0.2, next_word=(0.6, 1.0), pause=True)
+        self.assertLessEqual(loud_seconds(out, ratio=0.05), 0.41)
+        self.assert_soft_tail(out)
+
+    def test_single_word_without_next_keeps_until_silence(self):
+        samples = silence(0.2) + tone_burst(0.3) + silence(0.6)
+        out, _ = aj.keep_first_pcm(samples, SR, word_start=0.2, next_word=None, pause=False)
+        self.assertAlmostEqual(loud_seconds(out), 0.3, delta=0.06)
+        self.assert_soft_tail(out)
+
+    def test_offset_maps_marks_into_new_audio(self):
+        samples = silence(0.23) + tone_burst(0.4) + silence(0.8) + tone_burst(0.35) + silence(0.5)
+        out, offset = aj.keep_first_pcm(samples, SR, word_start=0.17, next_word=(0.383, 0.767), pause=True)
+        onset = next(i for i, v in enumerate(out) if abs(v) > 100) / SR
+        self.assertAlmostEqual(0.17 - offset, onset, delta=0.03)
+
+    def test_silence_raises(self):
+        with self.assertRaises(aj.JoinError):
+            aj.keep_first_pcm(silence(1.0), SR, word_start=0.2, next_word=None, pause=True)
+
+
+class EncodeTest(unittest.TestCase):
+    def test_pads_silence_the_encoder_drops_at_the_end(self):
+        # Media Foundation bỏ mất khoảng 0,1 giây cuối khi mã hoá (đo 13/11): đệm lặng để chỉ mất phần lặng.
+        import wave
+        from unittest import mock
+        seen = {}
+
+        def fake_run(script, folder, wav, mp3):
+            with wave.open(str(wav), "rb") as w:
+                seen["frames"] = w.getnframes()
+            Path(mp3).write_bytes(b"ID3ok")
+
+        samples = tone_burst(0.3)
+        with mock.patch.object(aj, "_run_ps", side_effect=fake_run):
+            self.assertEqual(aj.encode_mp3(samples, SR), b"ID3ok")
+        self.assertEqual(seen["frames"], len(samples) + int(aj.ENCODER_FLUSH * SR))
+        self.assertGreaterEqual(aj.ENCODER_FLUSH, 0.15)
 
 
 if __name__ == "__main__":

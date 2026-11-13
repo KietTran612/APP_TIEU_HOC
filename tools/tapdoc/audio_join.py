@@ -110,6 +110,78 @@ def join_files(paths, gaps, decoder=None, encoder=None) -> bytes:
     return data
 
 
+# ---- keep_first trên PCM (soát 13/11) ----
+
+FADE = 0.05  # giảm dần ở cuối phần giữ (giây)
+FADE_IN = 0.005
+KEEP_LEAD = 0.05  # giữ thêm trước tiếng đầu (âm gốc, thường là lặng)
+KEEP_TAIL = 0.1  # lặng thêm sau khi giảm dần
+QUIET_DB = -30.0  # dưới mức này so với khung to nhất thì coi là đã tắt tiếng
+GAP_MIN = 0.15  # khoảng lặng ngắn nhất coi là chỗ nghỉ (dấu phẩy ~0,2 giây, hết câu ~1 giây)
+EDGE = 0.03  # đọc liền: dừng trước đầu tiếng kế tiếp chừng này
+
+
+def keep_first_pcm(samples, sr: int, *, word_start: float, next_word, pause: bool) -> tuple[list, float]:
+    """Giữ phần đọc đầu của câu đệm ("ẹ. ẹ.", "nụ hoa.") trên PCM, kết thúc bằng giảm dần và lặng.
+
+    Mốc bộ đọc không đủ tin: với "X. X." mốc tiếng sau có thể rơi giữa tiếng đầu, và PCM giải mã trễ hơn mốc
+    (độ trễ bộ giải mã, ước bằng chỗ bắt đầu có tiếng trừ `word_start`).
+    `next_word`: (đầu, cuối) theo mốc của tiếng ngay sau phần giữ, hoặc None.
+    - `pause` (sau phần giữ có dấu câu): cắt ở khoảng lặng đầu tiên dài từ GAP_MIN sau chỗ bắt đầu có tiếng, nếu nó
+      bắt đầu trước lúc tiếng kế tiếp kết thúc (theo mốc); không có thì như đọc liền (bộ đọc không nghỉ ở dấu câu).
+    - Đọc liền: cắt trước đầu tiếng kế tiếp (mốc cộng độ trễ, trừ EDGE); không có tiếng kế tiếp thì giữ tới chỗ
+      tắt tiếng cuối.
+    Trả (PCM mới, giây theo mốc bộ đọc ứng với mẫu đầu PCM mới) để dời mốc từ: mốc mới = mốc cũ - giá trị này.
+    """
+    step = max(1, int(_FRAME * sr))
+    levels = [rms(samples[i:i + step]) for i in range(0, len(samples), step)]
+    peak = max(levels, default=0.0)
+    if peak <= 0:
+        raise JoinError("câu đệm không có tiếng")
+    quiet = peak * 10 ** (QUIET_DB / 20)
+    loud = [k for k, level in enumerate(levels) if level > quiet]
+    onset = loud[0] * step
+    delay = onset / sr - word_start
+    limit, gap_before = len(samples), len(samples)
+    if next_word is not None:
+        limit = max(onset + step, int((next_word[0] + delay - EDGE) * sr))
+        gap_before = int((next_word[1] + delay) * sr)
+    cut = None
+    if pause:
+        need = max(1, int(round(GAP_MIN / _FRAME)))
+        run = 0
+        for k in range(loud[0], len(levels)):
+            run = run + 1 if levels[k] <= quiet else 0
+            if run == need:
+                if (k - need + 1) * step < gap_before:
+                    cut = (k - need + 1) * step + int(MARGIN * sr)
+                break
+    if cut is None:
+        last = max((k for k in loud if k * step < limit), default=loud[0])
+        cut = min(limit, (last + 1) * step + int(MARGIN * sr))
+    start = max(0, onset - int(KEEP_LEAD * sr))
+    piece = list(samples[start:max(cut, start + step)])
+    fade_in, fade = min(len(piece), int(FADE_IN * sr)), min(len(piece), int(FADE * sr))
+    for i in range(fade_in):
+        piece[i] = int(piece[i] * i / fade_in)
+    for i in range(fade):
+        k = len(piece) - fade + i
+        piece[k] = int(piece[k] * 0.5 * (1 + math.cos(math.pi * (i + 1) / fade)))
+    return piece + [0] * int(KEEP_TAIL * sr), start / sr - delay
+
+
+def decode_bytes(data: bytes) -> tuple[int, list]:
+    """Giải mã một MP3 (byte) ra (tần số mẫu, PCM mono)."""
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp) / "doc.mp3"
+        path.write_bytes(data)
+        sr, decoded = decode_mp3([str(path)])
+    samples = decoded.get(str(path))
+    if not samples:
+        raise JoinError("không giải mã được âm thanh của bộ đọc")
+    return sr, samples
+
+
 # ---- Media Foundation (PowerShell) ----
 
 _PS_HEAD = r"""
@@ -188,7 +260,11 @@ def decode_mp3(paths) -> tuple[int, dict]:
     return (rates.pop() if rates else SR), out
 
 
+ENCODER_FLUSH = 0.2  # bộ mã hoá MP3 của Media Foundation bỏ mất khoảng 0,1 giây cuối (đo 13/11): đệm lặng bù
+
+
 def encode_mp3(samples, sr: int = SR) -> bytes:
+    samples = list(samples) + [0] * int(ENCODER_FLUSH * sr)
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         wav, mp3 = tmp / "ghep.wav", tmp / "ghep.mp3"

@@ -10,6 +10,7 @@ from pathlib import Path
 from unittest import mock
 
 from tapdoc import __main__ as cli
+from tapdoc import audio_join
 from tapdoc.manifest import save_rows
 from tapdoc.mp3trim import trim_mp3_span
 from tapdoc.tts_engine import EdgeEngine, TtsError, TtsUnavailable
@@ -118,50 +119,79 @@ class GenerateTest(TempCase):
 
 
 class KeepFirstGenerateTest(TempCase):
-    """keep_first: cắt bỏ phần sau theo mốc từ, chỉ giữ các tiếng đầu (bằng số tiếng của chữ trong danh mục)."""
+    """keep_first: giải mã cả câu đệm, giữ các tiếng đầu (bằng số tiếng của chữ) trên PCM, giảm dần cuối, mã hoá lại.
 
-    def test_cuts_after_first_word(self):
+    Soát 13/11: cắt theo khung MP3 và mốc bộ đọc làm "ẹ. ẹ." cụt giữa nguyên âm (mốc tiếng sau sai) và "nụ hoa."
+    dừng khi tiếng còn to (đọc liền, không có lặng)."""
+
+    def setUp(self):
+        super().setUp()
+        self.pcm = [0] * 2400 + [5000, -5000] * 6000 + [0] * 4800
+        for name, kwargs in (("decode_bytes", {"return_value": (24000, self.pcm)}),
+                             ("encode_mp3", {"return_value": b"ID3cat"})):
+            patcher = mock.patch(f"tapdoc.tts_generate.audio_join.{name}", **kwargs)
+            setattr(self, name, patcher.start())
+            self.addCleanup(patcher.stop)
+        patcher = mock.patch("tapdoc.tts_generate.audio_join.keep_first_pcm", return_value=([1, 2, 3], 0.1))
+        self.cut = patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def cut_args(self):
+        return self.cut.call_args.args[2:], self.cut.call_args.kwargs
+
+    def test_pause_after_first_word(self):
         set_override(self.s, self.r, doc="bờ, bờ.", keep_first=True)
         engine = FakeEngine(speech_start=0.2, speech_end=1.3, words=[(0.2, 0.6), (0.9, 1.3)])
-        with mock.patch("tapdoc.tts_generate.trim_mp3_span", wraps=trim_mp3_span) as trim:
-            result = generate_one(self.r, self.s, engine, self.audio, self.prev)
-        self.assertEqual(trim.call_args.args[1:3], (0.2, 0.6))
+        result = generate_one(self.r, self.s, engine, self.audio, self.prev)
+        self.assertEqual(self.cut.call_args.args[:2], (self.pcm, 24000))
+        self.assertEqual(self.cut.call_args.kwargs, {"word_start": 0.2, "next_word": (0.9, 1.3), "pause": True})
+        self.encode_mp3.assert_called_once_with([1, 2, 3], 24000)
+        self.assertEqual(self.path.read_bytes(), b"ID3cat")
         self.assertTrue(result["tts"]["trimmed"])
         self.assertTrue(result["tts"]["keep_first"])
         self.assertFalse(needs_regen(self.s, result))
 
-    def test_never_keeps_start_of_next_word(self):
-        # "mụ già." đọc liền: phần đệm sau tiếng giữ lại không được lấn sang tiếng kế tiếp.
+    def test_read_on_without_pause(self):
+        # "mụ già.", "nụ hoa.": đọc liền nên phải cắt trước tiếng kế tiếp.
         set_override(self.s, self.r, doc="bờ già.", keep_first=True)
-        engine = FakeEngine(speech_start=0.2, speech_end=0.9, words=[(0.2, 0.5), (0.5, 0.9)])
-        with mock.patch("tapdoc.tts_generate.trim_mp3_span", wraps=trim_mp3_span) as trim:
-            generate_one(self.r, self.s, engine, self.audio, self.prev)
-        start, end = trim.call_args.args[1:3]
-        pad = trim.call_args.kwargs.get("pad", 0.1)
-        self.assertEqual(start, 0.2)
-        self.assertLessEqual(end + pad, 0.5 + 1e-9)
+        generate_one(self.r, self.s, FakeEngine(words=[(0.2, 0.5), (0.5, 0.9)]), self.audio, self.prev)
+        self.assertEqual(self.cut.call_args.kwargs, {"word_start": 0.2, "next_word": (0.5, 0.9), "pause": False})
 
     def test_keeps_as_many_words_as_the_text(self):
         r = row("tu_bes_bi_boo", "bé bi bô", "tu")
         set_override(self.s, r, doc="bé bi bô, bé bi bô.", keep_first=True)
         words = [(0.1, 0.3), (0.3, 0.5), (0.5, 0.8), (1.0, 1.2), (1.2, 1.4), (1.4, 1.9)]
-        with mock.patch("tapdoc.tts_generate.trim_mp3_span", wraps=trim_mp3_span) as trim:
-            generate_one(r, self.s, FakeEngine(audio=fake_mp3(2.2), words=words), self.audio, self.prev)
-        self.assertEqual(trim.call_args.args[1:3], (0.1, 0.8))
+        generate_one(r, self.s, FakeEngine(audio=fake_mp3(2.2), words=words), self.audio, self.prev)
+        self.assertEqual(self.cut.call_args.kwargs, {"word_start": 0.1, "next_word": (1.0, 1.2), "pause": True})
 
     def test_without_flag_uses_whole_speech(self):
         with mock.patch("tapdoc.tts_generate.trim_mp3_span", wraps=trim_mp3_span) as trim:
             generate_one(self.r, self.s, FakeEngine(words=[(0.5, 0.6), (0.65, 0.7)]), self.audio, self.prev)
         self.assertEqual(trim.call_args.args[1:3], (0.5, 0.7))
+        self.cut.assert_not_called()
 
     def test_cannot_cut_leaves_old_file(self):
         set_override(self.s, self.r, doc="bờ, bờ.", keep_first=True)
-        for engine in (FakeEngine(words=[]),  # không có mốc từ
-                       FakeEngine(words=[(5.0, 5.4)])):  # mốc nằm ngoài file: không cắt được
-            with self.subTest(words=engine.words), self.assertRaises(TtsError):
-                generate_one(self.r, self.s, engine, self.audio, self.prev)
-            self.assertEqual(self.path.read_bytes(), "bản cũ".encode())
-            self.assertFalse(self.prev.exists())
+        cases = (("không có mốc từ", FakeEngine(words=[]), None),
+                 ("giải mã lỗi", FakeEngine(words=[(0.2, 0.4)]), audio_join.JoinError("giải mã")),
+                 ("không có tiếng", FakeEngine(words=[(0.2, 0.4)]), "cut"))
+        for name, engine, failure in cases:
+            with self.subTest(name):
+                self.decode_bytes.side_effect = failure if isinstance(failure, Exception) else None
+                self.cut.side_effect = audio_join.JoinError("lặng") if failure == "cut" else None
+                with self.assertRaises(TtsError):
+                    generate_one(self.r, self.s, engine, self.audio, self.prev)
+                self.assertEqual(self.path.read_bytes(), "bản cũ".encode())
+                self.assertFalse(self.prev.exists())
+
+    def test_marks_follow_new_audio(self):
+        r = row("tieng_cuwr", "cử", kind="tieng")
+        set_override(self.s, r, doc="cử, cử.", keep_first=True)
+        engine = FakeEngine(words=((0.5, 0.6), (0.8, 0.9)))
+        generate_one(r, self.s, engine, self.audio, self.prev, marks_dir=self.root / "marks")
+        data = json.loads((self.root / "marks" / "tieng_cuwr.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(data["words"]), 1)
+        self.assertAlmostEqual(data["words"][0][0], 0.5 - 0.1, places=6)
 
     def test_restore_brings_back_flag(self):
         set_override(self.s, self.r, doc="bờ, bờ.", keep_first=True)
@@ -378,14 +408,6 @@ class MarksTest(TempCase):
         self.assertAlmostEqual(data["words"][0][0], 0.5 - offset, places=6)
         self.assertAlmostEqual(data["words"][1][1], 0.7 - offset, places=6)
 
-    def test_marks_keep_first_only_first_words(self):
-        r = row("tieng_cuwr", "cử", kind="tieng")
-        set_override(self.s, r, doc="cử, cử.", keep_first=True)
-        engine = FakeEngine(speech_start=0.5, speech_end=0.9, words=((0.5, 0.6), (0.8, 0.9)))
-        generate_one(r, self.s, engine, self.audio, self.prev, marks_dir=self.root / "marks")
-        data = json.loads((self.root / "marks" / "tieng_cuwr.json").read_text(encoding="utf-8"))
-        self.assertEqual(len(data["words"]), 1)
-
     def test_marks_removed_when_engine_gives_no_words(self):
         marks = self.root / "marks"
         marks.mkdir()
@@ -418,7 +440,15 @@ class CliTest(TempCase):
         save_rows(manifests / "audio_manifest.json", rows)
         out = io.StringIO()
         from tapdoc.tts_settings import load_settings, save_settings
-        with mock.patch.object(cli, "MANIFESTS", manifests),                 mock.patch.object(cli, "UNITY_RES", self.root),                 mock.patch.object(cli, "TTS_SETTINGS", self.root / "settings.json"),                 mock.patch.object(cli, "TTS_PREV", self.prev),                 mock.patch.object(cli, "TTS_MARKS", self.root / "marks"),                 redirect_stdout(out), redirect_stderr(out):
+        # keep_first giải mã/mã hoá bằng Media Foundation: thay bằng PCM giả để test không gọi PowerShell.
+        with mock.patch.object(cli, "MANIFESTS", manifests), \
+                mock.patch.object(cli, "UNITY_RES", self.root), \
+                mock.patch.object(cli, "TTS_SETTINGS", self.root / "settings.json"), \
+                mock.patch.object(cli, "TTS_PREV", self.prev), \
+                mock.patch.object(cli, "TTS_MARKS", self.root / "marks"), \
+                mock.patch("tapdoc.tts_generate.audio_join.decode_bytes", return_value=(24000, [0, 900, -900] * 9000)), \
+                mock.patch("tapdoc.tts_generate.audio_join.encode_mp3", return_value=b"ID3cat"), \
+                redirect_stdout(out), redirect_stderr(out):
             save_settings(self.root / "settings.json", self.s)
             code = cli.main(list(argv), engine_factory=lambda: FakeEngine(words=((0.5, 0.6), (0.6, 0.7))))
         return code, out.getvalue(), load_settings(self.root / "settings.json")["overrides"]
