@@ -989,8 +989,7 @@
       "keep_first": true
     },
     "tieng_suwcs": {
-      "doc": "sức, sức.",
-      "keep_first": true
+      "rate": -55
     },
     "tieng_suy": {
       "doc": "suy, suy.",
@@ -2496,8 +2495,7 @@
       "keep_first": true
     },
     "tieng_kichj": {
-      "doc": "kịch. kịch.",
-      "keep_first": true
+      "pitch": -20
     },
     "tieng_kieemj": {
       "doc": "kiệm. kiệm.",
@@ -2936,8 +2934,7 @@
       "keep_first": true
     },
     "tieng_sachj": {
-      "doc": "sạch. sạch.",
-      "keep_first": true
+      "pitch": -30
     },
     "tieng_sapj": {
       "doc": "sạp. sạp.",
@@ -3204,8 +3201,7 @@
       "keep_first": true
     },
     "tieng_cheet": {
-      "doc": "chêt, chêt.",
-      "keep_first": true
+      "pitch": -15
     },
     "tieng_cheets": {
       "doc": "chết, chết, chết.",
@@ -3240,8 +3236,7 @@
       "keep_first": true
     },
     "tieng_deet": {
-      "doc": "dêt, dêt.",
-      "keep_first": true
+      "pitch": -15
     },
     "tieng_eechs": {
       "doc": "ếch, ếch, ếch.",
@@ -3268,8 +3263,7 @@
       "keep_first": true
     },
     "tieng_heet": {
-      "doc": "hêt, hêt.",
-      "keep_first": true
+      "pitch": -15
     },
     "tieng_heets": {
       "doc": "hết, hết, hết.",
@@ -3300,8 +3294,7 @@
       "keep_first": true
     },
     "tieng_keet": {
-      "doc": "kêt, kêt.",
-      "keep_first": true
+      "pitch": -15
     },
     "tieng_keets": {
       "doc": "kết, kết, kết.",
@@ -3376,8 +3369,8 @@
       "keep_first": true
     },
     "tieng_meet": {
-      "doc": "mêt, mêt.",
-      "keep_first": true
+      "rate": -40,
+      "pitch": -15
     },
     "tieng_neen": {
       "doc": "nên, nên.",
@@ -3452,8 +3445,7 @@
       "keep_first": true
     },
     "tieng_reet": {
-      "doc": "rêt, rêt.",
-      "keep_first": true
+      "pitch": -15
     },
     "tieng_reets": {
       "doc": "rết, rết, rết.",
@@ -3488,8 +3480,8 @@
       "keep_first": true
     },
     "tieng_teet": {
-      "doc": "têt, têt.",
-      "keep_first": true
+      "rate": -40,
+      "pitch": -15
     },
     "tieng_teets": {
       "doc": "Tết, Tết, Tết.",
@@ -3576,12 +3568,12 @@
       "keep_first": true
     },
     "van_eep": {
-      "doc": "êp, êp.",
-      "keep_first": true
+      "rate": -40,
+      "pitch": -15
     },
     "van_eet": {
-      "doc": "êt, êt.",
-      "keep_first": true
+      "rate": -25,
+      "pitch": -15
     },
     "van_eeu": {
       "doc": "êu, êu.",
@@ -3836,8 +3828,7 @@
       "keep_first": true
     },
     "tieng_phachj": {
-      "doc": "phạch. phạch.",
-      "keep_first": true
+      "pitch": -25
     },
     "tieng_pheechs": {
       "doc": "phếch, phếch, phếch.",
@@ -3880,8 +3871,7 @@
       "keep_first": true
     },
     "tieng_thachj": {
-      "doc": "thạch. thạch.",
-      "keep_first": true
+      "pitch": -25
     },
     "tieng_thenj": {
       "doc": "thẹn. thẹn.",
@@ -4859,8 +4849,7 @@
       "keep_first": true
     },
     "tieng_tits": {
-      "doc": "tít, tít.",
-      "keep_first": true
+      "rate": -55
     },
     "tieng_toaf": {
       "doc": "tòa, tòa.",
@@ -5008,6 +4997,122 @@
     "cau_b264_05": {
       "doc": "Ví dụ: Sài, Gòn, là, thành, phố, có, vinh, dự, được, mang, tên, Bác.",
       "rate": 0
+    },
+    "tieng_hoc": {
+      "rate": -40,
+      "pitch": -15
+    },
+    "tieng_chichs": {
+      "rate": -55
+    },
+    "tieng_thoc": {
+      "pitch": -15
+    },
+    "tieng_taaps": {
+      "rate": -55
+    },
+    "tieng_thichs": {
+      "rate": -55
+    },
+    "tieng_gawp": {
+      "rate": 0,
+      "pitch": -15
+    },
+    "tieng_hot": {
+      "pitch": -15
+    },
+    "cau_b164_02": {
+      "doc": "Bài chép: ba câu đầu, từ Sau trận mưa đến giội rửa."
+    },
+    "cau_b171_04": {
+      "doc": "Bài viết: đoạn từ Tây Nguyên đến đua nở."
+    },
+    "tieng_cawt": {
+      "rate": -40,
+      "pitch": -25
+    },
+    "tieng_sawcs": {
+      "rate": -55
+    },
+    "tieng_cawp": {
+      "rate": -40,
+      "pitch": -25
+    },
+    "tieng_its": {
+      "rate": -55
+    },
+    "tieng_thaat": {
+      "rate": -40,
+      "pitch": -25
+    },
+    "tieng_xuwcs": {
+      "rate": -55
+    },
+    "tieng_hop": {
+      "rate": 0,
+      "pitch": -15
+    },
+    "tieng_bawt": {
+      "rate": -40,
+      "pitch": -15
+    },
+    "tieng_khuaat": {
+      "pitch": -15
+    },
+    "tieng_taat": {
+      "rate": -40,
+      "pitch": -15
+    },
+    "tieng_taac": {
+      "pitch": -15
+    },
+    "tieng_thaap": {
+      "rate": -40,
+      "pitch": -25
+    },
+    "tieng_khawp": {
+      "pitch": -15
+    },
+    "tieng_thoawt": {
+      "pitch": -15
+    },
+    "tieng_hep": {
+      "pitch": -15
+    },
+    "tieng_caat": {
+      "rate": -40,
+      "pitch": -25
+    },
+    "tieng_sawt": {
+      "pitch": -15
+    },
+    "tieng_sawp": {
+      "rate": -40,
+      "pitch": -15
+    },
+    "tieng_soocs": {
+      "rate": -55
+    },
+    "tieng_sawts": {
+      "rate": -55
+    },
+    "tieng_gawt": {
+      "pitch": -15
+    },
+    "tieng_rit": {
+      "rate": -40,
+      "pitch": -25
+    },
+    "tieng_hip": {
+      "pitch": -15
+    },
+    "tieng_vet": {
+      "rate": 0,
+      "pitch": -15
+    },
+    "tieng_vaat": {
+      "rate": 0,
+      "pitch": -15
     }
   }
 }

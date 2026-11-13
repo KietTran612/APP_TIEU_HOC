@@ -12493,17 +12493,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: dấu \"...\" đọc liền không ngắt, nghe thành một câu; đã sửa: chữ đọc riêng \"Bài chép: ba câu đầu, từ Sau trận mưa đến giội rửa.\" (chữ hiển thị giữ nguyên). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b164"
     ],
     "tts": {
-      "doc": "Bài chép: Ba câu đầu (\"Sau trận mưa... giội rửa\").",
+      "doc": "Bài chép: ba câu đầu, từ Sau trận mưa đến giội rửa.",
       "rate": -15,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "f8b630f975a193536917f72743c3b0ed75e9e8b6",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "cabc532918c12778017da0a66ba714117599c0c1",
       "trimmed": true
     }
   },
@@ -14440,17 +14443,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: dấu \"...\" đọc liền không ngắt, nghe thành một câu; đã sửa: chữ đọc riêng \"Bài viết: đoạn từ Tây Nguyên đến đua nở.\" (chữ hiển thị giữ nguyên). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b171"
     ],
     "tts": {
-      "doc": "Bài viết: Đoạn \"Tây Nguyên... đua nở\".",
+      "doc": "Bài viết: đoạn từ Tây Nguyên đến đua nở.",
       "rate": -15,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "28cf5cfb8aa2cae66aeef6479bb5a3c5ff504156",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "a7efb91a5ec17a394736fb17e2931f4ada666b3e",
       "trimmed": true
     }
   },
@@ -71298,7 +71304,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"ạch. ạch.\" rồi giữ tiếng đầu ra file TRÙNG từng byte với bản cũ (edge-tts tạo từng câu riêng nên câu đầu = đọc tiếng trần) — âm thanh không đổi. Đo: không đo được cao độ. Nếu nghe vẫn sai thì cần đặt trong ngữ cảnh như \"nụ hoa.\". Chờ nghe xác nhận.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"ạch. ạch.\" rồi giữ tiếng đầu ra file TRÙNG từng byte với bản cũ (edge-tts tạo từng câu riêng nên câu đầu = đọc tiếng trần) — âm thanh không đổi. Đo: không đo được cao độ. Nếu nghe vẫn sai thì cần đặt trong ngữ cảnh như \"nụ hoa.\". Chờ nghe xác nhận. | Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo: không đo được cao độ (hữu thanh 0.04 s)); đã thử 3 cách chưa đạt (M1_r45: huyen, lên -0.0 bán âm, cao độ TB -0.7, hữu thanh 0.07 s; M2_r55: huyen, lên -0.0 bán âm, cao độ TB -0.6, hữu thanh 0.07 s; M3_r65: huyen, lên -0.0 bán âm, cao độ TB -0.6, hữu thanh 0.07 s) → giữ bản cũ. Bộ đọc không kéo dài thêm khi chậm quá khoảng −50%; tiếng vần cụt bắt đầu bằng nguyên âm vốn ngắn. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b84"
     ],
@@ -71911,7 +71917,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo: sac, lên 0.7 bán âm, cao độ TB 6.0, hữu thanh 0.08 s); đã thử 3 cách chưa đạt (M1_r45: sac, lên 0.5 bán âm, cao độ TB 5.9, hữu thanh 0.11 s; M2_r55: sac, lên 0.5 bán âm, cao độ TB 5.9, hữu thanh 0.11 s; M3_r65: sac, lên 0.5 bán âm, cao độ TB 5.9, hữu thanh 0.11 s) → giữ bản cũ. Bộ đọc không kéo dài thêm khi chậm quá khoảng −50%; tiếng vần cụt bắt đầu bằng nguyên âm vốn ngắn. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b66",
       "tv1_t1_b68",
@@ -72035,7 +72041,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo: sac, lên 1.8 bán âm, cao độ TB 5.8, hữu thanh 0.06 s); đã thử 3 cách chưa đạt (M1_r45: sac, lên 2.4 bán âm, cao độ TB 5.7, hữu thanh 0.1 s; M2_r55: sac, lên 2.3 bán âm, cao độ TB 5.7, hữu thanh 0.1 s; M3_r65: sac, lên 2.3 bán âm, cao độ TB 5.7, hữu thanh 0.1 s) → giữ bản cũ. Bộ đọc không kéo dài thêm khi chậm quá khoảng −50%; tiếng vần cụt bắt đầu bằng nguyên âm vốn ngắn. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b74",
       "tv1_t2_b114",
@@ -72085,7 +72091,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo: sac, lên 1.4 bán âm, cao độ TB 6.2, hữu thanh 0.06 s); đã thử 3 cách chưa đạt (M1_r45: sac, lên 1.7 bán âm, cao độ TB 6.0, hữu thanh 0.09 s; M2_r55: sac, lên 1.7 bán âm, cao độ TB 6.1, hữu thanh 0.1 s; M3_r65: sac, lên 1.7 bán âm, cao độ TB 6.1, hữu thanh 0.1 s) → giữ bản cũ. Bộ đọc không kéo dài thêm khi chậm quá khoảng −50%; tiếng vần cụt bắt đầu bằng nguyên âm vốn ngắn. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b69",
       "tv1_t2_b149",
@@ -73536,7 +73542,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 1.4 bán âm, cao độ TB 2.6, hữu thanh 0.18 s); đã sửa: tốc độ -40%, hạ giọng 15 Hz → đo sau: ngang, lên 0.7 bán âm, cao độ TB 0.7, hữu thanh 0.21 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b100",
       "tv1_t2_b161",
@@ -73544,11 +73550,14 @@
     ],
     "tts": {
       "doc": "băt",
-      "rate": -25,
-      "pitch": 0,
+      "rate": -40,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "043ddaf010b91bf4346ff1ad064ab5f5cfe0dba1",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "61a3cee67679dc3727276385831cfc55975bd509",
       "trimmed": true
     }
   },
@@ -76904,7 +76913,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên -0.5 bán âm, cao độ TB 4.1, hữu thanh 0.14 s); đã sửa: tốc độ -40%, hạ giọng 25 Hz → đo sau: ngang, lên -0.6 bán âm, cao độ TB 0.9, hữu thanh 0.18 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b129",
       "tv1_t2_b138",
@@ -76912,11 +76921,14 @@
     ],
     "tts": {
       "doc": "cât",
-      "rate": -25,
-      "pitch": 0,
+      "rate": -40,
+      "pitch": -25,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "74c7ef30ab8c34c5a59defb5b00d86d9f6da66bd",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "0af4c8774fb33f654777c1430dc3690379d855a7",
       "trimmed": true
     }
   },
@@ -78274,18 +78286,21 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 1.2 bán âm, cao độ TB 4.4, hữu thanh 0.13 s); đã sửa: tốc độ -40%, hạ giọng 25 Hz → đo sau: ngang, lên 1.2 bán âm, cao độ TB 1.2, hữu thanh 0.15 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b74",
       "tv1_t2_b83"
     ],
     "tts": {
       "doc": "căp",
-      "rate": -25,
-      "pitch": 0,
+      "rate": -40,
+      "pitch": -25,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "29d818774af094a18b90f9f6e86f5fcad0423c09",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "ee341da0ccd981c0cb869213467466c5c2faf6f4",
       "trimmed": true
     }
   },
@@ -78348,18 +78363,21 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 0.7 bán âm, cao độ TB 4.3, hữu thanh 0.13 s); đã sửa: tốc độ -40%, hạ giọng 25 Hz → đo sau: ngang, lên 0.6 bán âm, cao độ TB 1.1, hữu thanh 0.18 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b69",
       "tv1_t1_b80"
     ],
     "tts": {
       "doc": "căt",
-      "rate": -25,
-      "pitch": 0,
+      "rate": -40,
+      "pitch": -25,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "7e7bec5e5a1345a637628d6bf4e0daf01c7492ce",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "385ca945dad73be39e4d7a0267242500eaf84a22",
       "trimmed": true
     }
   },
@@ -79444,20 +79462,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"chêt, chêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"chêt, chêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 0.3 bán âm, cao độ TB 3.6, hữu thanh 0.21 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên -0.3 bán âm, cao độ TB 0.5, hữu thanh 0.19 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b156"
     ],
     "tts": {
-      "doc": "chêt, chêt.",
+      "doc": "chêt",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "ca412ad81569618c06fc939a535cb79a89173744",
+      "sig": "5ca14ec659b9e6e3eb9a6161c5aa90a583ecebaa",
       "trimmed": true
     }
   },
@@ -79723,7 +79741,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo trước: sac, lên 0.4 bán âm, cao độ TB 6.8, hữu thanh 0.12 s); đã sửa: tốc độ -55% → đo sau: sac, lên 0.3 bán âm, cao độ TB 6.8, hữu thanh 0.17 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b84",
       "tv2_t1_b190",
@@ -79732,11 +79750,14 @@
     ],
     "tts": {
       "doc": "chích",
-      "rate": -25,
+      "rate": -55,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "dcbb3f4cd1de5f1a7c85ffcc26d37332e7f6e86b",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "7bb3ab029568b3e895fc528269f2752a91c3c23a",
       "trimmed": true
     }
   },
@@ -85227,7 +85248,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 2.9 bán âm, cao độ TB 2.8, hữu thanh 0.2 s); đã thử 5 cách chưa đạt (M1_r40p15: ngang, lên 2.9 bán âm, cao độ TB 1.0, hữu thanh 0.24 s; M2_r25p15: ngang, lên 2.8 bán âm, cao độ TB 1.0, hữu thanh 0.21 s; M3_r40p25: huyen, lên 2.8 bán âm, cao độ TB -0.3, hữu thanh 0.25 s; M4_r0p15: ngang, lên 2.3 bán âm, cao độ TB 1.2, hữu thanh 0.15 s; M5_r25p10: ngang, lên 2.8 bán âm, cao độ TB 1.6, hữu thanh 0.22 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b152",
       "tv1_t2_b155",
@@ -89917,20 +89938,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"dêt, dêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"dêt, dêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 5.5 bán âm, cao độ TB 4.3, hữu thanh 0.24 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên 1.1 bán âm, cao độ TB 0.4, hữu thanh 0.26 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b71"
     ],
     "tts": {
-      "doc": "dêt, dêt.",
+      "doc": "dêt",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "6169f0af1b8cd6680efb66f067e3d8e7ee3d6a8a",
+      "sig": "7ebddabad9f91c3db710e2d9cb8bfc9c2bd5109d",
       "trimmed": true
     }
   },
@@ -91867,7 +91888,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 2.2 bán âm, cao độ TB 3.4, hữu thanh 0.19 s); đã thử 5 cách chưa đạt (M1_r40p15: ngang, lên 2.8 bán âm, cao độ TB 1.4, hữu thanh 0.24 s; M2_r25p15: ngang, lên 2.2 bán âm, cao độ TB 1.5, hữu thanh 0.21 s; M3_r40p25: ngang, lên 2.8 bán âm, cao độ TB -0.0, hữu thanh 0.26 s; M4_r0p15: ngang, lên 2.5 bán âm, cao độ TB 1.6, hữu thanh 0.12 s; M5_r25p10: ngang, lên 2.1 bán âm, cao độ TB 2.2, hữu thanh 0.2 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b65",
       "tv1_t1_b68",
@@ -92124,7 +92145,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 2.1 bán âm, cao độ TB 3.0, hữu thanh 0.18 s); đã thử 5 cách chưa đạt (M1_r40p15: ngang, lên 2.4 bán âm, cao độ TB 1.2, hữu thanh 0.22 s; M2_r25p15: ngang, lên 2.3 bán âm, cao độ TB 1.2, hữu thanh 0.19 s; M3_r40p25: ngang, lên 2.0 bán âm, cao độ TB -0.1, hữu thanh 0.23 s; M4_r0p15: ngang, lên 2.0 bán âm, cao độ TB 1.2, hữu thanh 0.14 s; M5_r25p10: ngang, lên 2.5 bán âm, cao độ TB 1.8, hữu thanh 0.19 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b83"
     ],
@@ -92559,18 +92580,21 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 3.1 bán âm, cao độ TB 3.7, hữu thanh 0.18 s); đã sửa: tốc độ 0%, hạ giọng 15 Hz → đo sau: ngang, lên 1.1 bán âm, cao độ TB 2.2, hữu thanh 0.12 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b136",
       "tv1_t2_b156"
     ],
     "tts": {
       "doc": "găp",
-      "rate": -25,
-      "pitch": 0,
+      "rate": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "1bf8ab0a1246e063be339fd2d331c10a72440134",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "e1bdd883167d4785259fdc07f9f237902024baad",
       "trimmed": true
     }
   },
@@ -92631,17 +92655,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 2.5 bán âm, cao độ TB 3.1, hữu thanh 0.19 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên 1.4 bán âm, cao độ TB 1.4, hữu thanh 0.19 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b69"
     ],
     "tts": {
       "doc": "găt",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "9888a31f6e97a2bee34fe4aad339a5308bbb20ad",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "f9c235923cd56e3445af940bddde0dd9ce82aee7",
       "trimmed": true
     }
   },
@@ -96102,20 +96129,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"hêt, hêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"hêt, hêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 1.8 bán âm, cao độ TB 3.9, hữu thanh 0.15 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên -0.2 bán âm, cao độ TB 0.6, hữu thanh 0.18 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b149"
     ],
     "tts": {
-      "doc": "hêt, hêt.",
+      "doc": "hêt",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "31eb48f33cc0f03cc99c5ce3fa3dd9400bb0a867",
+      "sig": "39f3cc74da187b6392f9cdae2d758f0e7880545e",
       "trimmed": true
     }
   },
@@ -96286,17 +96313,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 1.6 bán âm, cao độ TB 3.8, hữu thanh 0.18 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên 1.4 bán âm, cao độ TB 2.0, hữu thanh 0.18 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b135"
     ],
     "tts": {
       "doc": "hep",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "f0205eebd6b5a6575b1469f5a519c28a04f91f2e",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "7667658d7f0d6946df9957ac67d170b6788b4c37",
       "trimmed": true
     }
   },
@@ -96692,17 +96722,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 0.6 bán âm, cao độ TB 3.3, hữu thanh 0.21 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên 0.3 bán âm, cao độ TB 1.5, hữu thanh 0.19 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b80"
     ],
     "tts": {
       "doc": "hip",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "49012fd701400a5497636ad297e5398c964a5362",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "11d7e111f3ef428701b4b48c9c80d5fc64333d34",
       "trimmed": true
     }
   },
@@ -97411,7 +97444,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 0.4 bán âm, cao độ TB 3.3, hữu thanh 0.15 s); đã sửa: tốc độ -40%, hạ giọng 15 Hz → đo sau: ngang, lên 0.3 bán âm, cao độ TB 1.4, hữu thanh 0.19 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b68",
       "tv1_t1_b78",
@@ -97428,11 +97461,14 @@
     ],
     "tts": {
       "doc": "hoc",
-      "rate": -25,
-      "pitch": 0,
+      "rate": -40,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "e754444eb85aa73d688727b40f09fdfb89a053a8",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "c0fe5a85eaae892d4a4a148d9573bdde3ccd759e",
       "trimmed": true
     }
   },
@@ -98020,7 +98056,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 1.5 bán âm, cao độ TB 3.5, hữu thanh 0.17 s); đã sửa: tốc độ 0%, hạ giọng 15 Hz → đo sau: ngang, lên 1.4 bán âm, cao độ TB 1.7, hữu thanh 0.13 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b75",
       "tv1_t2_b118",
@@ -98028,11 +98064,14 @@
     ],
     "tts": {
       "doc": "hop",
-      "rate": -25,
-      "pitch": 0,
+      "rate": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "f6bf6046b3ab9baded7f1404c05849e7665a2682",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "bdef84316991c5eb80a0393b90d75da6c3a8ca9f",
       "trimmed": true
     }
   },
@@ -98096,7 +98135,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 0.8 bán âm, cao độ TB 3.0, hữu thanh 0.17 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên 1.1 bán âm, cao độ TB 1.1, hữu thanh 0.18 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b70",
       "tv1_t2_b104",
@@ -98107,10 +98146,13 @@
     "tts": {
       "doc": "hot",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "36a8acddb9b183ef0c729f09978330c10968c241",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "237c815250a7d4c7e339aa1f504441aeae4d0d15",
       "trimmed": true
     }
   },
@@ -99102,7 +99144,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"ịch. ịch.\" rồi giữ tiếng đầu ra file TRÙNG từng byte với bản cũ (edge-tts tạo từng câu riêng nên câu đầu = đọc tiếng trần) — âm thanh không đổi. Nếu nghe vẫn sai thì cần đặt trong ngữ cảnh như \"nụ hoa.\". Chờ nghe xác nhận.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"ịch. ịch.\" rồi giữ tiếng đầu ra file TRÙNG từng byte với bản cũ (edge-tts tạo từng câu riêng nên câu đầu = đọc tiếng trần) — âm thanh không đổi. Nếu nghe vẫn sai thì cần đặt trong ngữ cảnh như \"nụ hoa.\". Chờ nghe xác nhận. | Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo: huyen, lên -0.4 bán âm, cao độ TB -0.6, hữu thanh 0.06 s); đã thử 3 cách chưa đạt (M1_r45: huyen, lên -0.6 bán âm, cao độ TB -0.3, hữu thanh 0.09 s; M2_r55: huyen, lên -0.7 bán âm, cao độ TB -0.3, hữu thanh 0.11 s; M3_r65: huyen, lên -0.7 bán âm, cao độ TB -0.3, hữu thanh 0.11 s) → giữ bản cũ. Bộ đọc không kéo dài thêm khi chậm quá khoảng −50%; tiếng vần cụt bắt đầu bằng nguyên âm vốn ngắn. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b84"
     ],
@@ -99127,7 +99169,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo: sac, lên 1.6 bán âm, cao độ TB 6.5, hữu thanh 0.06 s); đã thử 3 cách chưa đạt (M1_r45: sac, lên 0.5 bán âm, cao độ TB 6.3, hữu thanh 0.1 s; M2_r55: sac, lên 1.2 bán âm, cao độ TB 6.4, hữu thanh 0.11 s; M3_r65: sac, lên 1.2 bán âm, cao độ TB 6.4, hữu thanh 0.11 s) → giữ bản cũ. Bộ đọc không kéo dài thêm khi chậm quá khoảng −50%; tiếng vần cụt bắt đầu bằng nguyên âm vốn ngắn. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b84",
       "tv2_t1_b172",
@@ -99547,7 +99589,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo trước: sac, lên 1.7 bán âm, cao độ TB 6.5, hữu thanh 0.13 s); đã sửa: tốc độ -55% → đo sau: sac, lên 2.0 bán âm, cao độ TB 6.4, hữu thanh 0.17 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b73",
       "tv1_t2_b136",
@@ -99557,11 +99599,14 @@
     ],
     "tts": {
       "doc": "ít",
-      "rate": -25,
+      "rate": -55,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "f59953fee2732a22e578cce87b64e548b3cf880a",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "11ee49c8da26013c11e2ba44e4a179751850a822",
       "trimmed": true
     }
   },
@@ -99781,21 +99826,21 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"kêt, kêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"kêt, kêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 1.4 bán âm, cao độ TB 4.0, hữu thanh 0.15 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên -0.3 bán âm, cao độ TB 0.9, hữu thanh 0.2 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b71",
       "tv1_t2_b124"
     ],
     "tts": {
-      "doc": "kêt, kêt.",
+      "doc": "kêt",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "d4c724b1ccec7da87a34bb58ad6345acfc44cbd2",
+      "sig": "c7a0d819ee950f3aa14d3b47d935190e1270d56d",
       "trimmed": true
     }
   },
@@ -100620,7 +100665,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên -0.0 bán âm, cao độ TB 3.9, hữu thanh 0.14 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên -0.0 bán âm, cao độ TB 2.0, hữu thanh 0.13 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b76",
       "tv1_t2_b133",
@@ -100633,10 +100678,13 @@
     "tts": {
       "doc": "khăp",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "a8d74e645ba58d370aafe64226d60e96ca6b1b90",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "5f6b47c64ed48d9198d8d297a83f3027bf6331c3",
       "trimmed": true
     }
   },
@@ -101792,7 +101840,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên -0.3 bán âm, cao độ TB 3.9, hữu thanh 0.16 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên -0.5 bán âm, cao độ TB 2.0, hữu thanh 0.17 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b118",
       "tv1_t2_b168"
@@ -101800,10 +101848,13 @@
     "tts": {
       "doc": "khuât",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "bb61639c639e126338cbd1b4c32531689ef8499d",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "88b0e441df2998429a606395b4f3e4ab465d49ea",
       "trimmed": true
     }
   },
@@ -102360,20 +102411,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"kịch. kịch.\" rồi giữ tiếng đầu ra file TRÙNG từng byte với bản cũ (edge-tts tạo từng câu riêng nên câu đầu = đọc tiếng trần) — âm thanh không đổi. Đo: cao độ đo ra như thanh ngang. Nếu nghe vẫn sai thì cần đặt trong ngữ cảnh như \"nụ hoa.\". Chờ nghe xác nhận.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"kịch. kịch.\" rồi giữ tiếng đầu ra file TRÙNG từng byte với bản cũ (edge-tts tạo từng câu riêng nên câu đầu = đọc tiếng trần) — âm thanh không đổi. Đo: cao độ đo ra như thanh ngang. Nếu nghe vẫn sai thì cần đặt trong ngữ cảnh như \"nụ hoa.\". Chờ nghe xác nhận. | Root soát 13/11: tiếng nặng cụt nghe phẳng (thiếu nặng) (đo trước: ngang, lên -0.6 bán âm, cao độ TB 0.7, hữu thanh 0.1 s); đã sửa: hạ giọng 20 Hz → đo sau: nang, lên -0.7 bán âm, cao độ TB -1.9, hữu thanh 0.09 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b84"
     ],
     "tts": {
-      "doc": "kịch. kịch.",
+      "doc": "kịch",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -20,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "87858ebc0dfcb5ebdc463b2f2ef1279adb6c6a2f",
+      "sig": "b54eead9e3d29240ef19cc460eb6b5cb4d9c2f67",
       "trimmed": true
     }
   },
@@ -109521,20 +109572,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"mêt, mêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"mêt, mêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 2.7 bán âm, cao độ TB 2.8, hữu thanh 0.25 s); đã sửa: tốc độ -40%, hạ giọng 15 Hz → đo sau: ngang, lên -0.3 bán âm, cao độ TB -0.1, hữu thanh 0.31 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b148"
     ],
     "tts": {
-      "doc": "mêt, mêt.",
-      "rate": -25,
-      "pitch": 0,
+      "doc": "mêt",
+      "rate": -40,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "33b89ecdd9cab733eed7a936ce6c114d8199d846",
+      "sig": "24e09272cb1a1f83b7355b0a8ee575a4e11a8972",
       "trimmed": true
     }
   },
@@ -117854,7 +117905,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 2.0 bán âm, cao độ TB 3.3, hữu thanh 0.21 s); đã thử 5 cách chưa đạt (M1_r40p15: ngang, lên 2.1 bán âm, cao độ TB 1.5, hữu thanh 0.26 s; M2_r25p15: ngang, lên 2.1 bán âm, cao độ TB 1.5, hữu thanh 0.21 s; M3_r40p25: ngang, lên 1.9 bán âm, cao độ TB 0.1, hữu thanh 0.25 s; M4_r0p15: ngang, lên 1.7 bán âm, cao độ TB 1.5, hữu thanh 0.16 s; M5_r25p10: ngang, lên 1.6 bán âm, cao độ TB 2.1, hữu thanh 0.22 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b103",
       "tv1_t2_b161",
@@ -122464,20 +122515,20 @@
     "kind": "tieng",
     "file": "audio/tieng_phachj.mp3",
     "can_nghe_ky": false,
-    "ghi_chu": "Rà soát tiếng lẻ lớp 2 11/11: đo ra như thanh ngang; thử \"phạch, phạch.\" giữ tiếng đầu thì không đo được → giữ bản cũ. Cần nghe; sai thì đặt trong ngữ cảnh.",
+    "ghi_chu": "Rà soát tiếng lẻ lớp 2 11/11: đo ra như thanh ngang; thử \"phạch, phạch.\" giữ tiếng đầu thì không đo được → giữ bản cũ. Cần nghe; sai thì đặt trong ngữ cảnh. | Root soát 13/11: tiếng nặng cụt nghe phẳng (thiếu nặng) (đo trước: ngang, lên -1.0 bán âm, cao độ TB 1.1, hữu thanh 0.13 s); đã sửa: hạ giọng 25 Hz → đo sau: nang, lên -0.5 bán âm, cao độ TB -1.9, hữu thanh 0.1 s. Chờ nghe xác nhận.",
     "bai": [
       "tv2_t1_b205"
     ],
     "tts": {
-      "doc": "phạch. phạch.",
+      "doc": "phạch",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -25,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "65eef7babd5c40bcabac03c183de86382a0ff548",
+      "sig": "ec32cb576d9e9cfbe0864d1a5ee34af1601fc431",
       "trimmed": true
     },
     "status": "cho_duyet",
@@ -122491,7 +122542,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo: sac, lên 1.3 bán âm, cao độ TB 7.0, hữu thanh 0.1 s); đã thử 3 cách chưa đạt (M1_r45: sac, lên 1.6 bán âm, cao độ TB 6.5, hữu thanh 0.14 s; M2_r55: sac, lên 1.6 bán âm, cao độ TB 6.5, hữu thanh 0.16 s; M3_r65: sac, lên 1.6 bán âm, cao độ TB 6.5, hữu thanh 0.16 s) → giữ bản cũ. Bộ đọc không kéo dài thêm khi chậm quá khoảng −50%; tiếng vần cụt bắt đầu bằng nguyên âm vốn ngắn. Chờ nghe xác nhận.",
     "bai": [
       "tv2_t1_b274"
     ],
@@ -125073,7 +125124,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 1.8 bán âm, cao độ TB 4.8, hữu thanh 0.17 s); đã thử 5 cách chưa đạt (M1_r40p15: sac, lên 2.2 bán âm, cao độ TB 3.0, hữu thanh 0.18 s; M2_r25p15: sac, lên 2.4 bán âm, cao độ TB 2.9, hữu thanh 0.15 s; M3_r40p25: ngang, lên 2.1 bán âm, cao độ TB 1.6, hữu thanh 0.2 s; M4_r0p15: sac, lên 2.2 bán âm, cao độ TB 3.1, hữu thanh 0.12 s; M5_r25p10: sac, lên 2.0 bán âm, cao độ TB 3.5, hữu thanh 0.15 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b74",
       "tv1_t2_b149",
@@ -125125,7 +125176,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 1.7 bán âm, cao độ TB 4.8, hữu thanh 0.18 s); đã thử 5 cách chưa đạt (M1_r40p15: sac, lên 1.7 bán âm, cao độ TB 3.0, hữu thanh 0.22 s; M2_r25p15: sac, lên 1.7 bán âm, cao độ TB 3.0, hữu thanh 0.18 s; M3_r40p25: ngang, lên 1.5 bán âm, cao độ TB 1.6, hữu thanh 0.2 s; M4_r0p15: sac, lên 1.4 bán âm, cao độ TB 3.1, hữu thanh 0.13 s; M5_r25p10: sac, lên 1.7 bán âm, cao độ TB 3.6, hữu thanh 0.18 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b127",
       "tv1_t2_b129",
@@ -125702,7 +125753,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 1.9 bán âm, cao độ TB 4.1, hữu thanh 0.17 s); đã thử 5 cách chưa đạt (M1_r40p15: ngang, lên 2.0 bán âm, cao độ TB 2.3, hữu thanh 0.21 s; M2_r25p15: ngang, lên 1.9 bán âm, cao độ TB 2.3, hữu thanh 0.17 s; M3_r40p25: ngang, lên 1.9 bán âm, cao độ TB 0.9, hữu thanh 0.2 s; M4_r0p15: ngang, lên 1.6 bán âm, cao độ TB 2.4, hữu thanh 0.13 s; M5_r25p10: sac, lên 1.9 bán âm, cao độ TB 2.9, hữu thanh 0.17 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b158"
     ],
@@ -125846,20 +125897,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"rêt, rêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"rêt, rêt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 3.9 bán âm, cao độ TB 4.6, hữu thanh 0.21 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên 0.1 bán âm, cao độ TB 0.5, hữu thanh 0.23 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b71"
     ],
     "tts": {
-      "doc": "rêt, rêt.",
+      "doc": "rêt",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "36d7c5b8b556ec7eec0367e6e54fa42b72fa6500",
+      "sig": "566301ee64f2564d2592ab1801d3717e9b0a9f8e",
       "trimmed": true
     }
   },
@@ -126024,7 +126075,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 2.3 bán âm, cao độ TB 3.4, hữu thanh 0.2 s); đã thử 5 cách chưa đạt (M1_r40p15: ngang, lên 2.5 bán âm, cao độ TB 1.5, hữu thanh 0.25 s; M2_r25p15: ngang, lên 2.1 bán âm, cao độ TB 1.5, hữu thanh 0.21 s; M3_r40p25: ngang, lên 2.7 bán âm, cao độ TB 0.2, hữu thanh 0.25 s; M4_r0p15: ngang, lên 1.6 bán âm, cao độ TB 1.6, hữu thanh 0.15 s; M5_r25p10: ngang, lên 2.3 bán âm, cao độ TB 2.2, hữu thanh 0.2 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b71",
       "tv1_t2_b139"
@@ -126251,7 +126302,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 1.7 bán âm, cao độ TB 3.3, hữu thanh 0.24 s); đã sửa: tốc độ -40%, hạ giọng 25 Hz → đo sau: ngang, lên 1.3 bán âm, cao độ TB 0.2, hữu thanh 0.3 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b134",
       "tv1_t2_b148",
@@ -126259,11 +126310,14 @@
     ],
     "tts": {
       "doc": "rit",
-      "rate": -25,
-      "pitch": 0,
+      "rate": -40,
+      "pitch": -25,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "5bedc04e4efda0c3a5b8beb68e5faf55bee170b8",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "9435f708266a42823d7b43a6ddfa4d4e9357e07a",
       "trimmed": true
     }
   },
@@ -127979,7 +128033,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"sạch. sạch.\" rồi giữ tiếng đầu ra file TRÙNG từng byte với bản cũ (edge-tts tạo từng câu riêng nên câu đầu = đọc tiếng trần) — âm thanh không đổi. Đo: cao độ đo ra như thanh ngang. Nếu nghe vẫn sai thì cần đặt trong ngữ cảnh như \"nụ hoa.\". Chờ nghe xác nhận.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"sạch. sạch.\" rồi giữ tiếng đầu ra file TRÙNG từng byte với bản cũ (edge-tts tạo từng câu riêng nên câu đầu = đọc tiếng trần) — âm thanh không đổi. Đo: cao độ đo ra như thanh ngang. Nếu nghe vẫn sai thì cần đặt trong ngữ cảnh như \"nụ hoa.\". Chờ nghe xác nhận. | Root soát 13/11: tiếng nặng cụt nghe phẳng (thiếu nặng) (đo trước: ngang, lên -0.5 bán âm, cao độ TB 2.7, hữu thanh 0.13 s); đã sửa: hạ giọng 30 Hz → đo sau: huyen, lên -0.2 bán âm, cao độ TB -1.3, hữu thanh 0.12 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b128",
       "tv1_t2_b131",
@@ -127993,15 +128047,15 @@
       "tv2_t1_b227"
     ],
     "tts": {
-      "doc": "sạch. sạch.",
+      "doc": "sạch",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -30,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "3335980d2a1e64ef10966dcd3c15a8c8cfaec697",
+      "sig": "cd12533fb669957ee6789a1ae8edb56e71c8ee5a",
       "trimmed": true
     }
   },
@@ -128013,7 +128067,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo: sac, lên 1.3 bán âm, cao độ TB 6.8, hữu thanh 0.1 s); đã thử 3 cách chưa đạt (M1_r45: sac, lên 1.4 bán âm, cao độ TB 6.8, hữu thanh 0.14 s; M2_r55: sac, lên 1.3 bán âm, cao độ TB 6.9, hữu thanh 0.16 s; M3_r65: sac, lên 1.3 bán âm, cao độ TB 6.9, hữu thanh 0.16 s) → giữ bản cũ. Bộ đọc không kéo dài thêm khi chậm quá khoảng −50%; tiếng vần cụt bắt đầu bằng nguyên âm vốn ngắn. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b127",
       "tv1_t2_b128",
@@ -128547,7 +128601,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo trước: sac, lên 1.4 bán âm, cao độ TB 6.9, hữu thanh 0.12 s); đã sửa: tốc độ -55% → đo sau: sac, lên 1.5 bán âm, cao độ TB 6.9, hữu thanh 0.17 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b65",
       "tv1_t1_b80",
@@ -128560,11 +128614,14 @@
     ],
     "tts": {
       "doc": "sắc",
-      "rate": -25,
+      "rate": -55,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "2a48d00fcfe15c65b6c0d392d9ba17dc5bfc0799",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "fcdb3fbf3276e2733181a15e066ae4a9aa247fc4",
       "trimmed": true
     }
   },
@@ -128648,17 +128705,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 0.1 bán âm, cao độ TB 3.6, hữu thanh 0.13 s); đã sửa: tốc độ -40%, hạ giọng 15 Hz → đo sau: ngang, lên 0.2 bán âm, cao độ TB 1.8, hữu thanh 0.14 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b167"
     ],
     "tts": {
       "doc": "săp",
-      "rate": -25,
-      "pitch": 0,
+      "rate": -40,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "c3b1528db15485308ad5c77be28ca01d0220af2d",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "da0ee5eac6edfad14d58a848c05153cdfb7bf5bc",
       "trimmed": true
     }
   },
@@ -128670,7 +128730,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo: sac, lên 1.9 bán âm, cao độ TB 6.9, hữu thanh 0.12 s); đã thử 3 cách chưa đạt (M1_r45: sac, lên 1.9 bán âm, cao độ TB 6.9, hữu thanh 0.15 s; M2_r55: sac, lên 2.0 bán âm, cao độ TB 6.8, hữu thanh 0.16 s; M3_r65: sac, lên 2.0 bán âm, cao độ TB 6.8, hữu thanh 0.16 s) → giữ bản cũ. Bộ đọc không kéo dài thêm khi chậm quá khoảng −50%; tiếng vần cụt bắt đầu bằng nguyên âm vốn ngắn. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b167",
       "tv2_t1_b174",
@@ -128694,7 +128754,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên -0.2 bán âm, cao độ TB 3.5, hữu thanh 0.13 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên 0.1 bán âm, cao độ TB 1.7, hữu thanh 0.12 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b78",
       "tv1_t2_b88"
@@ -128702,10 +128762,13 @@
     "tts": {
       "doc": "săt",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "3c317a8df75d0c304ef7707a3e7ec5894df349e1",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "8273e23f508cd6b2a5199095d1046b59b3ee5f01",
       "trimmed": true
     }
   },
@@ -128717,18 +128780,21 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo trước: sac, lên 1.7 bán âm, cao độ TB 6.9, hữu thanh 0.12 s); đã sửa: tốc độ -55% → đo sau: sac, lên 1.9 bán âm, cao độ TB 6.9, hữu thanh 0.17 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b78",
       "tv1_t2_b88"
     ],
     "tts": {
       "doc": "sắt",
-      "rate": -25,
+      "rate": -55,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "04600111bc2e0e8acf3d3a41cb062f7d92463a05",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "1c23370363edc685baf5295bb8adbfcb5161c8fc",
       "trimmed": true
     }
   },
@@ -129440,17 +129506,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo trước: sac, lên 1.0 bán âm, cao độ TB 6.9, hữu thanh 0.14 s); đã sửa: tốc độ -55% → đo sau: sac, lên 1.1 bán âm, cao độ TB 6.9, hữu thanh 0.19 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b66"
     ],
     "tts": {
       "doc": "sốc",
-      "rate": -25,
+      "rate": -55,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "7485206ad54662c0f3a16d53191126e44bedf070",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "94bb9e75e352618d03539e26ee880e3fc9fa07df",
       "trimmed": true
     }
   },
@@ -130242,19 +130311,21 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo trước: sac, lên 1.0 bán âm, cao độ TB 7.4, hữu thanh 0.14 s); đã sửa: tốc độ -55% → đo sau: sac, lên 1.0 bán âm, cao độ TB 7.1, hữu thanh 0.2 s. Chờ nghe xác nhận.",
     "bai": [
       "tv2_t1_b172",
       "tv2_t1_b191"
     ],
     "tts": {
-      "doc": "sức, sức.",
-      "rate": -25,
+      "doc": "sức",
+      "rate": -55,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
-      "sig": "a9b7952a28b4abeb19e3767d2758ed0059e03041",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "185d9027b0fda6a5c08919087504a62c83964eba",
       "trimmed": true
     }
   },
@@ -130555,17 +130626,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 0.4 bán âm, cao độ TB 3.4, hữu thanh 0.14 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên 0.1 bán âm, cao độ TB 1.7, hữu thanh 0.13 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b73"
     ],
     "tts": {
       "doc": "tâc",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "3ccff472a35a6457adb020e34f79e522a50ddfd2",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "29cdab72e91e72356320fb45b8b399fd74a7d684",
       "trimmed": true
     }
   },
@@ -130782,18 +130856,21 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo trước: sac, lên 1.9 bán âm, cao độ TB 7.0, hữu thanh 0.12 s); đã sửa: tốc độ -55% → đo sau: sac, lên 1.9 bán âm, cao độ TB 7.0, hữu thanh 0.18 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b74",
       "tv1_t1_b78"
     ],
     "tts": {
       "doc": "tấp",
-      "rate": -25,
+      "rate": -55,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "4999f8a3ec0dd13a7310121a185f29ad7e2bb337",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "39af78396bdb11c5b84640055ab1789136f64f6f",
       "trimmed": true
     }
   },
@@ -130805,7 +130882,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên -0.1 bán âm, cao độ TB 3.6, hữu thanh 0.14 s); đã sửa: tốc độ -40%, hạ giọng 15 Hz → đo sau: ngang, lên -0.3 bán âm, cao độ TB 1.7, hữu thanh 0.16 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b69",
       "tv1_t1_b80",
@@ -130814,11 +130891,14 @@
     ],
     "tts": {
       "doc": "tât",
-      "rate": -25,
-      "pitch": 0,
+      "rate": -40,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "f47d790838b4a52b4e549b802dbba10e5587f621",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "3e3d9090658cfea80c11af41dd5361304871ced8",
       "trimmed": true
     }
   },
@@ -131700,22 +131780,22 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"têt, têt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"têt, têt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 2.6 bán âm, cao độ TB 3.5, hữu thanh 0.17 s); đã sửa: tốc độ -40%, hạ giọng 15 Hz → đo sau: ngang, lên -0.4 bán âm, cao độ TB 0.4, hữu thanh 0.23 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b71",
       "tv1_t1_b73",
       "tv1_t2_b117"
     ],
     "tts": {
-      "doc": "têt, têt.",
-      "rate": -25,
-      "pitch": 0,
+      "doc": "têt",
+      "rate": -40,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "b6128df5acaa3237393a5940588967e0183053a2",
+      "sig": "9df882ae60d6a3324721707f0b6ac5655c9dade3",
       "trimmed": true
     }
   },
@@ -132075,17 +132155,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 0.0 bán âm, cao độ TB 4.2, hữu thanh 0.14 s); đã sửa: tốc độ -40%, hạ giọng 25 Hz → đo sau: ngang, lên 0.1 bán âm, cao độ TB 0.3, hữu thanh 0.17 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b100"
     ],
     "tts": {
       "doc": "thâp",
-      "rate": -25,
-      "pitch": 0,
+      "rate": -40,
+      "pitch": -25,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "1a9dfce0480191a4a5a09a03abc9cc1b131ef767",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "71aba50bcdc89a18de523d943bc73d650864c10a",
       "trimmed": true
     }
   },
@@ -132120,7 +132203,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên -0.5 bán âm, cao độ TB 4.2, hữu thanh 0.15 s); đã sửa: tốc độ -40%, hạ giọng 25 Hz → đo sau: ngang, lên 0.2 bán âm, cao độ TB 1.1, hữu thanh 0.19 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b69",
       "tv1_t1_b71",
@@ -132130,11 +132213,14 @@
     ],
     "tts": {
       "doc": "thât",
-      "rate": -25,
-      "pitch": 0,
+      "rate": -40,
+      "pitch": -25,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "e9022a8f90fcd9893cef118665197619257d8cf9",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "dddf36539045eb06a7a9275195ffd5bb560836da",
       "trimmed": true
     }
   },
@@ -132300,20 +132386,20 @@
     "kind": "tieng",
     "file": "audio/tieng_thachj.mp3",
     "can_nghe_ky": false,
-    "ghi_chu": "Rà soát tiếng lẻ lớp 2 11/11: đo ra như thanh ngang; thử \"thạch, thạch.\" giữ tiếng đầu vẫn vậy → giữ bản cũ. Cần nghe; sai thì đặt trong ngữ cảnh.",
+    "ghi_chu": "Rà soát tiếng lẻ lớp 2 11/11: đo ra như thanh ngang; thử \"thạch, thạch.\" giữ tiếng đầu vẫn vậy → giữ bản cũ. Cần nghe; sai thì đặt trong ngữ cảnh. | Root soát 13/11: tiếng nặng cụt nghe phẳng (thiếu nặng) (đo trước: ngang, lên -0.4 bán âm, cao độ TB 0.6, hữu thanh 0.1 s); đã sửa: hạ giọng 25 Hz → đo sau: nang, lên -1.4 bán âm, cao độ TB -2.2, hữu thanh 0.09 s. Chờ nghe xác nhận.",
     "bai": [
       "tv2_t1_b282"
     ],
     "tts": {
-      "doc": "thạch. thạch.",
+      "doc": "thạch",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -25,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "09bd0caeb679f982c7be45bba17bb367b8aadf96",
+      "sig": "4c0d38350acbaa7e3b11fb1b69a7dab3565b1fac",
       "trimmed": true
     },
     "status": "cho_duyet",
@@ -133438,7 +133524,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo trước: sac, lên 1.8 bán âm, cao độ TB 6.8, hữu thanh 0.14 s); đã sửa: tốc độ -55% → đo sau: sac, lên 1.8 bán âm, cao độ TB 6.9, hữu thanh 0.2 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b146",
       "tv1_t2_b84",
@@ -133451,11 +133537,14 @@
     ],
     "tts": {
       "doc": "thích",
-      "rate": -25,
+      "rate": -55,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "3918fe2e198db75fbb45b0157757c87eea89a9c9",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "c3dcec52d14f0af5677afea1104dbd607de7a7d9",
       "trimmed": true
     }
   },
@@ -134095,17 +134184,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 0.1 bán âm, cao độ TB 3.9, hữu thanh 0.17 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên 0.5 bán âm, cao độ TB 2.0, hữu thanh 0.17 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b112"
     ],
     "tts": {
       "doc": "thoăt",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "39f75f14a65a780ab3977dfcaf12bceaf4be1517",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "0d19383dd61d8b4db866d40a3032ca52044688e7",
       "trimmed": true
     }
   },
@@ -134140,17 +134232,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên -0.3 bán âm, cao độ TB 3.8, hữu thanh 0.16 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên -0.3 bán âm, cao độ TB 2.0, hữu thanh 0.16 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b89"
     ],
     "tts": {
       "doc": "thoc",
       "rate": -25,
-      "pitch": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "d2c41d49e8028e18b626324318bfc603836cf916",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "0c2e48235e99dbca811d1cf9ec2b6eadb6039036",
       "trimmed": true
     }
   },
@@ -136375,20 +136470,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo trước: sac, lên 2.2 bán âm, cao độ TB 7.6, hữu thanh 0.15 s); đã sửa: tốc độ -55% → đo sau: sac, lên 2.2 bán âm, cao độ TB 6.9, hữu thanh 0.23 s. Chờ nghe xác nhận.",
     "bai": [
       "tv2_t1_b253"
     ],
     "tts": {
-      "doc": "tít, tít.",
-      "rate": -25,
+      "doc": "tít",
+      "rate": -55,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "d501e27c1fd7ecfc0d5914a2b127ba291c4cbe0d",
+      "sig": "2f7afaae53ce8cd56d17daff8ad3bc8f7330a7aa",
       "trimmed": true
     }
   },
@@ -142107,7 +142202,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 2.3 bán âm, cao độ TB 3.3, hữu thanh 0.17 s); đã thử 5 cách chưa đạt (M1_r40p15: ngang, lên 2.5 bán âm, cao độ TB 1.4, hữu thanh 0.21 s; M2_r25p15: ngang, lên 1.8 bán âm, cao độ TB 1.5, hữu thanh 0.17 s; M3_r40p25: ngang, lên 2.3 bán âm, cao độ TB 0.2, hữu thanh 0.2 s; M4_r0p15: ngang, lên 2.4 bán âm, cao độ TB 1.5, hữu thanh 0.13 s; M5_r25p10: ngang, lên 2.3 bán âm, cao độ TB 2.1, hữu thanh 0.15 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b86"
     ],
@@ -142151,7 +142246,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 1.5 bán âm, cao độ TB 3.2, hữu thanh 0.19 s); đã sửa: tốc độ 0%, hạ giọng 15 Hz → đo sau: ngang, lên -0.1 bán âm, cao độ TB 1.6, hữu thanh 0.13 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b155",
       "tv1_t2_b166",
@@ -142159,11 +142254,14 @@
     ],
     "tts": {
       "doc": "vât",
-      "rate": -25,
-      "pitch": 0,
+      "rate": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "00099135017ab3d96bd4b70c13011a173a4969b7",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "e2d2e99b3d2156546d40679d0b8b22ebc7691652",
       "trimmed": true
     }
   },
@@ -143430,18 +143528,21 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 2.2 bán âm, cao độ TB 3.0, hữu thanh 0.21 s); đã sửa: tốc độ 0%, hạ giọng 15 Hz → đo sau: ngang, lên 0.7 bán âm, cao độ TB 1.3, hữu thanh 0.16 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b71",
       "tv1_t1_b73"
     ],
     "tts": {
       "doc": "vet",
-      "rate": -25,
-      "pitch": 0,
+      "rate": 0,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "c9fb45baa359e87fffb1251f60f422274049fc97",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "ae53d83a6d7bc9ff9cf94eb1e163e3c3968b40fc",
       "trimmed": true
     }
   },
@@ -143851,7 +143952,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 2.2 bán âm, cao độ TB 3.5, hữu thanh 0.2 s); đã thử 5 cách chưa đạt (M1_r40p15: ngang, lên 2.0 bán âm, cao độ TB 1.7, hữu thanh 0.25 s; M2_r25p15: ngang, lên 2.5 bán âm, cao độ TB 1.7, hữu thanh 0.2 s; M3_r40p25: ngang, lên 1.9 bán âm, cao độ TB 0.4, hữu thanh 0.25 s; M4_r0p15: ngang, lên 2.5 bán âm, cao độ TB 1.8, hữu thanh 0.15 s; M5_r25p10: ngang, lên 2.0 bán âm, cao độ TB 2.3, hữu thanh 0.2 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b71"
     ],
@@ -144944,7 +145045,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 2.4 bán âm, cao độ TB 2.7, hữu thanh 0.22 s); đã thử 5 cách chưa đạt (M1_r40p15: ngang, lên 2.1 bán âm, cao độ TB 0.9, hữu thanh 0.27 s; M2_r25p15: ngang, lên 2.2 bán âm, cao độ TB 0.8, hữu thanh 0.22 s; M3_r40p25: huyen, lên 2.6 bán âm, cao độ TB -0.4, hữu thanh 0.26 s; M4_r0p15: ngang, lên 2.1 bán âm, cao độ TB 0.9, hữu thanh 0.15 s; M5_r25p10: ngang, lên 2.7 bán âm, cao độ TB 1.5, hữu thanh 0.21 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b72",
       "tv1_t2_b153",
@@ -145527,7 +145628,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo: sac, lên 1.1 bán âm, cao độ TB 6.7, hữu thanh 0.1 s); đã thử 3 cách chưa đạt (M1_r45: sac, lên 0.9 bán âm, cao độ TB 6.8, hữu thanh 0.14 s; M2_r55: sac, lên 1.1 bán âm, cao độ TB 6.7, hữu thanh 0.13 s; M3_r65: sac, lên 1.1 bán âm, cao độ TB 6.7, hữu thanh 0.13 s) → giữ bản cũ. Bộ đọc không kéo dài thêm khi chậm quá khoảng −50%; tiếng vần cụt bắt đầu bằng nguyên âm vốn ngắn. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b139",
       "tv1_t2_b145",
@@ -147556,17 +147657,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt ngắn bất thường (nghi bị cắt) (đo trước: sac, lên 0.8 bán âm, cao độ TB 7.0, hữu thanh 0.14 s); đã sửa: tốc độ -55% → đo sau: sac, lên 0.7 bán âm, cao độ TB 6.9, hữu thanh 0.19 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b67"
     ],
     "tts": {
       "doc": "xức",
-      "rate": -25,
+      "rate": -55,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "516892b5ea0ece5fa44b4c0ab796c291c5553862",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "eba58fec8aa6006d7e923c79c76671183081e20b",
       "trimmed": true
     }
   },
@@ -199183,7 +199287,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"êp, êp.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"êp, êp.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 1.3 bán âm, cao độ TB 3.7, hữu thanh 0.14 s); đã sửa: tốc độ -40%, hạ giọng 15 Hz → đo sau: ngang, lên -0.1 bán âm, cao độ TB 0.5, hữu thanh 0.19 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b76",
       "tv1_t1_b78",
@@ -199195,15 +199299,15 @@
       "tv1_t2_b95"
     ],
     "tts": {
-      "doc": "êp, êp.",
-      "rate": -30,
-      "pitch": 0,
+      "doc": "êp",
+      "rate": -40,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "963fd08c567cdd8f86dac41c2cc6ff785da43bf5",
+      "sig": "40aea23580cae771faac867cdf9c327c68467d7e",
       "trimmed": true
     }
   },
@@ -199215,7 +199319,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"êt, êt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát thanh nặng/âm ê 10/11: đọc \"êt, êt.\" rồi giữ tiếng đầu (keep_first), theo cách chủ dự án đã chọn cho bạ/ế. Chờ nghe xác nhận. Bản cũ ở prev. | Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo trước: sac, lên 2.7 bán âm, cao độ TB 4.9, hữu thanh 0.17 s); đã sửa: hạ giọng 15 Hz → đo sau: ngang, lên -0.2 bán âm, cao độ TB 0.6, hữu thanh 0.17 s. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b71",
       "tv1_t1_b73",
@@ -199227,15 +199331,15 @@
       "tv1_t2_b156"
     ],
     "tts": {
-      "doc": "êt, êt.",
-      "rate": -30,
-      "pitch": 0,
+      "doc": "êt",
+      "rate": -25,
+      "pitch": -15,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": true,
+      "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "01fd7633096f3e8f62ce42687449fdae92a3e470",
+      "sig": "7d0fbff3de5ed363682f43c9106c1880047b0464",
       "trimmed": true
     }
   },
@@ -202946,7 +203050,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: vần cụt không dấu đọc lên như có dấu sắc (đo: sac, lên 1.5 bán âm, cao độ TB 6.5, hữu thanh 0.1 s); đã thử 5 cách chưa đạt (M1_r40p15: sac, lên 2.2 bán âm, cao độ TB 4.6, hữu thanh 0.11 s; M2_r25p15: sac, lên 2.2 bán âm, cao độ TB 4.5, hữu thanh 0.09 s; M3_r40p25: sac, lên 1.8 bán âm, cao độ TB 3.3, hữu thanh 0.12 s; M4_r0p15: sac, lên 2.5 bán âm, cao độ TB 4.4, hữu thanh 0.09 s; M5_r25p10: sac, lên 2.4 bán âm, cao độ TB 5.2, hữu thanh 0.09 s) → giữ bản cũ. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b77",
       "tv1_t1_b78",
