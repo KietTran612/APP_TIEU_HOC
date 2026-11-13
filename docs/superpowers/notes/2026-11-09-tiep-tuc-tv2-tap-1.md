@@ -17,6 +17,7 @@
 
 - Đo bằng `do_cao_do_lop2.py` (chỉ chấm tiếng lẻ và tiếng cuối cụm, xem QUY-TRINH §12): 2432 tiếng hỏi/ngã — đạt 546, giữa cụm (không chấm) 1730, chưa đo được (quá ngắn) 130, sai 18, có thể sai 8.
 - 18 mã sai → đọc chậm hơn 20% sửa được 13 (cau_b184_01, b184_13, b215_03, b232_09, b235_05, b236_10, b238_01, b254_01, b254_11, b262_01, b292_22, b302_08, tu_thoon_xax); cau_b223_05 ghép mượt "Chính tả, Bé Hoa"; cau_b254_04/08 ("đổi") đọc như tiếng lẻ.
+- Root soát 13/11: cau_b264_05 (câu "Sài/Gòn/…" tách tiếng, rate 0, 7,8 s; df3f07d) và 21 mã có "..." (mục 2b báo cáo `2026-11-13-soat-am-thanh.md`; chữ đọc riêng, chữ hiển thị giữ nguyên; ea993b0). Cả 22 mã `cho_duyet`, bản gốc ở prev.
 - **Cần chủ dự án nghe:** cau_b203_12 (tả, gần đạt), hoi_b236_01 (khổ, câu có chữ số), tieng_phachj, tieng_thachj (đo ra như ngang, giữ bản cũ), và 8 mã "có thể sai": cau_b190_21 nhỏ, cau_b219_08 ngã, cau_b221_07 mãi, cau_b236_17 cỏ, hoi_b278_01 ngã, tu_chees_gieeux giễu, tu_chinhs_giuwax giữa, tu_ddeens_nooix nỗi.
 
 ## 2. Làm tiếp (Claude)
