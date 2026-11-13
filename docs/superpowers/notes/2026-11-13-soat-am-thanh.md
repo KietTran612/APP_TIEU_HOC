@@ -171,4 +171,4 @@ Root soát theo lời chủ dự án: "review lại các file audio, kiểm tra 
 
 - `tieng_ddox` (đõ) đọc thành "đỏ", `tieng_ngax` (ngã) đọc thành "ngả": cố ý (giọng này đọc ngã như hỏi), chủ dự án đã duyệt.
 - 4 nhóm file trùng nhau chỉ khác dấu chấm cuối câu: bình thường.
-- Kiểm tra hỏi, ngã trong từ, câu bằng công cụ `python -m tapdoc pitch`: kết quả ghi ở phần bổ sung khi chạy xong.
+- Đã chạy `python -m tapdoc pitch` trên toàn bộ: 3.716 tiếng hỏi/ngã, "đạt" 953, "không đạt" 2.108, chưa đo 655 (thiếu mốc từng tiếng). Con số "không đạt" này **không dùng được** cho tiếng trong từ, câu: công cụ so với mẫu lấy từ tiếng đọc riêng lẻ, mà trong câu tiếng hỏi/ngã ngắn và bị tiếng bên cạnh kéo, nên phần lớn bị chấm sai. Mục 3c dùng mẫu dựng từ chính các tiếng trong câu, đáng tin hơn. Ở tiếng lẻ (dùng đúng mẫu), hỏi/ngã đạt 336/336 như mục Kết quả chung.
