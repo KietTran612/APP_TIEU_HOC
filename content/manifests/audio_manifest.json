@@ -39277,18 +39277,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 13/11: 13 tiếng mà dài 9 giây (đọc tách từng tiếng, mỗi tiếng 0,4–0,6 s, nghỉ 0,22 s; không đọc thành \"gạch chéo\"); đã sửa: chữ đọc bỏ \"/\", tách tiếng bằng dấu phẩy, tốc độ thường (rate 0 thay −15) → 7,8 giây, nghỉ đều khoảng 0,2 s, đo thanh 14/14 tiếng đúng. Chữ hiển thị giữ \"/\". Chờ nghe xác nhận. Bản cũ ở prev.",
     "bai": [
       "tv2_t1_b264"
     ],
     "tts": {
-      "doc": "Ví dụ: Sài/Gòn/là/thành/phố/có/vinh/dự/được/mang/tên/Bác/.",
-      "rate": -15,
+      "doc": "Ví dụ: Sài, Gòn, là, thành, phố, có, vinh, dự, được, mang, tên, Bác.",
+      "rate": 0,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
       "keep_first": false,
-      "sig": "0ca5cb7a3c10fbdf74ce17022f949145331879ad",
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "92a0a841a6a7656fc8bdbb8844b05cbc312fc081",
       "trimmed": true
     }
   },

@@ -1,6 +1,24 @@
-# Ghi chú tiếp tục — TV1 Tập 2 và âm thanh lớp 1 (cập nhật 10/11/2026)
+# Ghi chú tiếp tục — TV1 Tập 2 và âm thanh lớp 1 (cập nhật 13/11/2026)
 
 Đọc file này trước khi làm tiếp. Thiết kế: [2026-11-05-tv1-tap-2-design.md](../specs/2026-11-05-tv1-tap-2-design.md); kế hoạch: [2026-11-05-tv1-tap-2.md](../plans/2026-11-05-tv1-tap-2.md). Cách làm âm thanh chuẩn: `QUY-TRINH-LAM-VIEC.md` mục 6 và 12.
+
+## 00. Soát âm thanh 13/11 — đã sửa 6 mã; mã cũ bị ảnh hưởng (chờ root hỏi chủ dự án, KHÔNG tạo lại hàng loạt)
+
+Commit 98b6fa0 đã sửa 6 mã: `hd_b04_tranh_01`, `hd_b10_tranh_01` (chữ đọc cũ), `tieng_ej`, `tieng_eej`, `tieng_ooj`, `tieng_nuj` (đuôi cụt). Bước cắt `keep_first` giờ cắt trên PCM, có giảm dần và lặng cuối. `encode_mp3` đệm thêm 0,2 giây vì Media Foundation bỏ mất khoảng 0,1 giây cuối. Chi tiết ở `QUY-TRINH-LAM-VIEC.md` §12, dòng 13/11.
+
+Mã tạo trước 98b6fa0 có thể bị ảnh hưởng, đã quét đuôi file (giải mã bằng Media Foundation, 13/11):
+
+| Nhóm | Số mã | Bị gì | Đo được |
+|---|---|---|---|
+| Ghép tiếng (`source` = `ghep_tieng`) | **7** (lớp 1: 6, lớp 2: 1) | Bộ mã hoá bỏ mất phần lặng cuối: thiết kế 0,12 giây, còn 0,01–0,04 giây | Không mã nào cụt tiếng: 3 khung cuối chỉ 1–3% độ to đỉnh. Riêng `cau_b160_04` chỉ còn 0,01 giây lặng nên nên nghe kỹ chữ cuối "nhỏ" |
+| `keep_first` kiểu cũ (cắt khung MP3, không mã hoá lại) | **1.036** (lớp 1: 645, lớp 2: 391; trong đó 30 mã `dat`) | Không bị lỗi bộ mã hoá vì không mã hoá lại. Chỉ có thể bị cụt như ẹ/ệ/ộ/nụ nếu mốc từ sai | **0/1.036** đuôi còn to: 3 khung cuối đều 0% đỉnh. 49 mã (lớp 1: 35, lớp 2: 14) có lặng cuối dưới 0,05 giây nhưng tiếng đã tắt hẳn |
+
+- 7 mã ghép: `cau_b160_04`, `cau_b97_02`, `cau_b223_05` (lớp 2), `tu_choox_owr`, `tu_gox_mox`, `tu_mux_len`, `tu_toor_dees` (`dat`).
+- 4 mã `keep_first` có lặng cuối ngắn nhất (0,01–0,02 giây): `tieng_cux`, `tieng_nghiax`, `tieng_goox`, `tieng_guwir`.
+- Nếu chủ dự án cho làm:
+  - 7 mã ghép tạo lại được ngay, không cần gọi bộ đọc (lệnh `tts --ma … --gom-da-duyet` sẽ không chọn vì chữ ký cấu hình không đổi, nên phải gọi `generate_one` cho từng mã).
+  - Mã `keep_first` thì không cần làm lại vì đuôi không cụt. Chỉ khi chủ dự án nghe thấy chỗ nào cụt thì tạo lại riêng mã đó.
+- Mục 3b trong báo cáo soát (20 tiếng vần cụt "ngắn bất thường": ạch, ắc, ắp…) đo đuôi đều 0%. Nếu chủ dự án nghe thấy ngắn thì có thể tạo bản thử bằng cách cắt mới để so, chưa cài.
 
 ## 0. Đợt thanh nặng và âm ê lớp 1 — XONG (10/11, chạy tiếp trên máy cũ)
 
