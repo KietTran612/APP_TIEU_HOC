@@ -320,6 +320,7 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Trình phát clip của Flow là canvas, không lấy được thẻ `video` để xem | Bấm phát rồi `drawImage` từ canvas theo thời gian để chụp khung; khung đen là do chưa nạp kịp. Chắc nhất là tải về rồi phát thật qua `python -m http.server` cục bộ | 09/11 |
 | Nhắc tên một thứ trong lời lệnh, kể cả để cấm hay để dặn "chỉ một chút" (khói, gió, mèo, chuột), làm Veo vẽ đúng thứ đó: cục khói phồng (b220), vệt gió trắng (b283), trẻ mọc đuôi mèo (b101) | Bỏ hẳn tên thứ không muốn có khỏi lời lệnh, kể cả câu "no X". Chỉ tả những gì có và động tác cần làm; muốn giữ yên thì viết "the roof and the sky stay completely still and clear" | 12/11 |
 | Ảnh khung đầu do Nano Banana sửa có lề giấy khác màu tranh gốc (trắng hơn), nên clip đổi màu lề giữa chừng (b220, b91) | Trước khi gửi, đặt khung đầu cạnh tranh gốc, so màu lề giấy; lệch thì sửa thêm: "keep exactly the same warm beige paper colour as the original" | 12/11 |
+| Xem khung clip qua máy chủ Python đơn giản (`http.server`): tua `currentTime` không ăn với một số clip, mọi ô đều là khung 0s, vì máy chủ không hỗ trợ tải từng đoạn (Range) | Nạp cả file thành blob (`URL.createObjectURL(await (await fetch(url)).blob())`) rồi mới tua; chờ `seeked` và `requestVideoFrameCallback` trước khi vẽ. Sau khi chụp, so từng ô với ô 0s để bắt bảng lỗi | 13/11 |
 
 ### Giao diện, bố cục
 
