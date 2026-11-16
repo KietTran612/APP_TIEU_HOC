@@ -10,6 +10,31 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ---
 
+## 13/11/2026
+
+- **Root soát lại 347 clip đã đạt:** 104 nặng, 154 nhẹ, 89 ổn.
+  - Báo cáo ở 2eafe3b.
+  - Chủ dự án duyệt chuyển 104 clip nặng về khong_dat (2744d08): [L1] 91 clip (kịch bản e52dddf, c10a0ad), [L2] 13 clip (adcf409).
+  - Lỗi công cụ xem clip (máy chủ không hỗ trợ Range): 33 bảng dính khung 0s, đã tạo lại. Ghi ở QUY-TRINH §12 (bb4718a).
+- **Tranh động, tối đa 3 lần mỗi clip.** Root xem trước từng clip, phóng to chỗ dễ lỗi.
+  - [L2], tài khoản /u/1: nhận b220 ngôi nhà, b235 Minh chạy kiểu chạy vòng (d72779c); b198 hỏng 2 lần.
+  - [L1], các tài khoản /u/6, /u/2, /u/3, /u/4: nhận 9 clip (b50 cô Tấm, b102 chuông, b102 vịt, b83 lò gạch, b86 vấp đá, b81 quả chanh, b87 búp măng, b105 lướt ván…; 54f5b4e, 3fecb77, 94d37a7, 7d7ccdf, 5bf38a1).
+  - [L1] dừng 6 clip chờ chủ dự án chọn hướng: b82 con kênh, b82 học sinh, b105 cầu trượt, b101 mèo, b105 rước đèn, b68.
+  - Bài học ghi ở QUY-TRINH §12 (f1b88d8): Nano Banana cần số đo cụ thể; tranh vẽ giữa bước chạy thì cho chạy vòng; một clip một việc lắp.
+- **Root soát âm thanh 8.099 mã** (de92601, 0816ac2): kỹ thuật, chữ đọc, thanh điệu, ngữ điệu.
+  - [L1] nội dung sửa:
+    - 6 mã lỗi chắc chắn; sửa keep_first cắt trên PCM và lỗi Media Foundation cắt mất đuôi (98b6fa0, test 63/63);
+    - 7 mã ghép tiếng (4443454);
+    - đợt 1, 71 mã: 49 đổi, 22 giữ bản cũ chờ nghe (ac68c8d).
+  - [L2] nội dung sửa cau_b264_05 (nằm trong df3f07d) và 21 câu có "..." (ea993b0).
+  - Root đo lại độc lập sau mỗi đợt, khớp báo cáo.
+  - Cài faster-whisper large-v3 vào môi trường riêng trong scratchpad để nhận dạng giọng nói. Bỏ qua tiếng lẻ (máy nghe không đáng tin).
+- **Chủ dự án quyết:** clip chỉ làm bằng Flow (không ffmpeg, không ghép giọng); cho tải mọi clip làm lại; root là người quản lý, tự kiểm hết rồi mới báo.
+- **Việc còn dở:**
+  - Nhận dạng 4.914 mã nhiều tiếng xong 2.767, chạy tiếp 16/11, rồi giao sửa đợt 2.
+  - Gói bosung cho khoảng 85 mp3 mới và các clip mới.
+  - Chưa push.
+
 ## 12/11/2026
 
 - **Chủ dự án:** dặn gửi clip chậm (≥6 phút mỗi lần tạo, đổi tài khoản nghỉ ≥20 phút). Root xem trước mọi clip mới, clip nào lỗi thì trả lại session làm lại trước khi tới tay chủ dự án.
