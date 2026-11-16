@@ -1704,7 +1704,8 @@
       "rate": -35
     },
     "cau_b29_01": {
-      "rate": -35
+      "doc": "bé kể bà nghe, nghỉ hè, bố và bé đi ra bờ bể.",
+      "rate": -20
     },
     "cau_b34_01": {
       "rate": -35
@@ -1793,9 +1794,6 @@
     "cau_b125_03": {
       "doc": "Quả bóng xanh bay giữa, trời xanh"
     },
-    "cau_b125_05": {
-      "doc": "Hải, âu ơi, cánh chim vờn sóng biển"
-    },
     "cau_b126_03": {
       "doc": "Mọc lên tươi thắm giữa, đồng lúa xanh."
     },
@@ -1851,7 +1849,39 @@
       "doc": "Thân hình vuông vắn đem xây cửa, nhà?"
     },
     "cau_b163_11": {
-      "doc": "Hòn gì bằng đất nặn ra, xếp vào lò lửa, nung ba bốn ngày, khi ra da đỏ, hây hây, thân hình vuông vắn đem xây cửa, nhà?"
+      "join": [
+        "tieng_honf",
+        "tieng_gif",
+        "tieng_bawngf",
+        "tieng_ddaats",
+        "tieng_nawnj",
+        "tieng_ra",
+        ",",
+        "tieng_xeeps",
+        "tieng_vaof",
+        "tieng_lof",
+        "tieng_luwar",
+        "tieng_nung",
+        "tieng_ba",
+        "tieng_boons",
+        "tieng_ngayf",
+        ",",
+        "tieng_khi",
+        "tieng_ra",
+        "tieng_da",
+        "tieng_ddor",
+        "tieng_haay",
+        "tieng_haay",
+        ",",
+        "tieng_thaan",
+        "tieng_hinhf",
+        "tieng_vuoong",
+        "tieng_vawns",
+        "tieng_ddem",
+        "tieng_xaay",
+        "tieng_cuwar",
+        "tieng_nhaf"
+      ]
     },
     "cau_b167_01": {
       "doc": "Buổi, sáng trên đất bãi"
@@ -1894,9 +1924,6 @@
     },
     "hd_b142_tranh_01": {
       "doc": "Bống gánh đỡ, mẹ chạy cơn mưa."
-    },
-    "hd_b146_tranh_01": {
-      "doc": "Bé nặn quả, thị, quả, na và con chuột."
     },
     "hd_b23_tranh_01": {
       "doc": "Đây là quả, xoài."
@@ -2016,7 +2043,8 @@
       "doc": "Giặc đem ra bãi, bắn,"
     },
     "cau_b51_01": {
-      "doc": "Thôn xóm đã, lên đèn."
+      "doc": "Thôn, xóm đã lên đèn.",
+      "rate": -20
     },
     "cau_b76_03": {
       "doc": "Đã, đi khắp nẻo quê nhà, Bác ơi!"
@@ -5179,6 +5207,58 @@
     "tu_o_o": {
       "doc": "o, o.",
       "rate": -35
+    },
+    "cau_b144_01": {
+      "rate": -30
+    },
+    "hoi_b160_03": {
+      "doc": "Ông Ké, làm việc gì ở suối? Ông Ké, đó là ai?",
+      "rate": -20
+    },
+    "tu_maatj_ngotj": {
+      "join": [
+        "tieng_maatj",
+        "tieng_ngotj"
+      ]
+    },
+    "cau_b153_02": {
+      "doc": "Trưa mùa hè, nắng vàng, như mật ong trải nhẹ trên khắp các cánh đồng cỏ.",
+      "rate": -20
+    },
+    "cau_b133_06": {
+      "doc": "Trong khu rừng vắng, Hươu, Nai yên lặng ngắm, nhìn;",
+      "rate": -20
+    },
+    "tu_vawnj_ddenf": {
+      "doc": "vặn đèn, vặn đèn.",
+      "rate": -25,
+      "keep_first": true
+    },
+    "hd_b152_tranh_01": {
+      "doc": "Các bạn hái sim, thả, diều trên đồi.",
+      "rate": -20
+    },
+    "hd_b76_tranh_01": {
+      "rate": -30
+    },
+    "hd_b109_tranh_01": {
+      "rate": -30
+    },
+    "cau_b77_01": {
+      "doc": "Búp sen, nhỏ",
+      "rate": -20
+    },
+    "cau_b150_15": {
+      "doc": "Con gì, bé tí, chăm chỉ suốt ngày, bay khắp vườn cây, tìm hoa gây mật?",
+      "rate": -20
+    },
+    "cau_b149_08": {
+      "doc": "Bé khẽ reo, lên: \"Ôi! Bông hồng đẹp quá!\".",
+      "rate": -20
+    },
+    "cau_b69_02": {
+      "doc": "Thôn, xóm vui cấy cày gặt hái.",
+      "rate": -20
     }
   }
 }

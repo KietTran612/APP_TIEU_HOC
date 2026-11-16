@@ -5299,12 +5299,12 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Hải, âu ơi, cánh chim vờn sóng biển\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Hải, âu ơi, cánh chim vờn sóng biển\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev. | Root soát 16/11 (nhận dạng giọng nói): \"âu\" nghe như \"ô\"; đã sửa: đọc nguyên câu theo chữ hiển thị (bỏ dấu phẩy thêm hồi rà hỏi/ngã). Máy nhận dạng bản mới: \"Hải Âu ơi, cánh chim vờn sóng biển.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b125"
     ],
     "tts": {
-      "doc": "Hải, âu ơi, cánh chim vờn sóng biển",
+      "doc": "Hải âu ơi, cánh chim vờn sóng biển",
       "rate": -15,
       "pitch": 0,
       "volume": 0,
@@ -5312,7 +5312,7 @@
       "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "5c5f7824c49c46c7387b48c0b8cf1f10c23c5436",
+      "sig": "77a066138776adf052e62bb30ede51e7ce961730",
       "trimmed": true
     }
   },
@@ -5459,7 +5459,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"vẫy\" thành \"vậy\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b126"
     ],
@@ -6545,17 +6545,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"ngắm\" nghe như \"nắm\"; đã sửa: ngắt nhẹ: đọc \"Trong khu rừng vắng, Hươu, Nai yên lặng ngắm, nhìn;\" (-20%). Máy nhận dạng bản mới: \"Trong khu rừng vắng, hưu, Nai yên lặng ngắm, nhìn.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b133"
     ],
     "tts": {
-      "doc": "Trong khu rừng vắng, Hươu, Nai yên lặng ngắm nhìn;",
-      "rate": -15,
+      "doc": "Trong khu rừng vắng, Hươu, Nai yên lặng ngắm, nhìn;",
+      "rate": -20,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "0e88d9c97a31c7ad3a2a16b5a4bdd6c9c29ecbad",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "47a5dd74940ca0576978e1ac4b27d1d1c7271546",
       "trimmed": true
     }
   },
@@ -6567,7 +6570,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"trông\" thành \"trong\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b133"
     ],
@@ -6945,7 +6948,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"quạ\" thành \"quả\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b136"
     ],
@@ -7012,7 +7015,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"quạ\" thành \"quả\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b136"
     ],
@@ -7571,7 +7574,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"trông\" thành \"trong\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b138"
     ],
@@ -8240,7 +8243,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"chợ\" thành \"chờ\" ở cả bản gốc và 1 cách thử (đọc chậm) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b142"
     ],
@@ -8438,17 +8441,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"cái\" nghe như \"trái\"; đã sửa: đọc chậm -30%. Máy nhận dạng bản mới: \"Tập chép Cái Võng\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b144"
     ],
     "tts": {
       "doc": "Tập chép: Cái võng",
-      "rate": -15,
+      "rate": -30,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "89059de37c7776f0442e88e00b1ceaa3d4cca500",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "7a34b6a228e68dfd7d49d20c7fd5e0cfc3111361",
       "trimmed": true
     }
   },
@@ -9154,7 +9160,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"thuận\" thành \"thượng\" ở cả bản gốc và 2 cách thử (đọc chậm, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b147"
     ],
@@ -9599,17 +9605,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"reo\" nghe như \"treo\"; đã sửa: ngắt nhẹ: đọc \"Bé khẽ reo, lên: \"Ôi! Bông hồng đẹp quá!\".\" (-20%). Máy nhận dạng bản mới: \"Bé khẽ reo, lên, y ôi! Bông hồng đẹp quá!\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b149"
     ],
     "tts": {
-      "doc": "Bé khẽ reo lên: \"Ôi! Bông hồng đẹp quá!\".",
-      "rate": -15,
+      "doc": "Bé khẽ reo, lên: \"Ôi! Bông hồng đẹp quá!\".",
+      "rate": -20,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "1b5505d38a4af1ddab3d15f03936f250d861b059",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "4656337592e3dc00fb644b9ac5d767e7bc136ae2",
       "trimmed": true
     }
   },
@@ -9952,17 +9961,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"gì\" nghe như \"dì\"; đã sửa: ngắt nhẹ: đọc \"Con gì, bé tí, chăm chỉ suốt ngày, bay khắp vườn cây, tìm hoa gây mật?\" (-20%). Máy nhận dạng bản mới: \"Con gì, bé tí, chăm chỉ suốt ngày, bay khắp vườn cây, tìm hoa gây mật.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b150"
     ],
     "tts": {
-      "doc": "Con gì bé tí, chăm chỉ suốt ngày, bay khắp vườn cây, tìm hoa gây mật?",
-      "rate": -15,
+      "doc": "Con gì, bé tí, chăm chỉ suốt ngày, bay khắp vườn cây, tìm hoa gây mật?",
+      "rate": -20,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "b739cf56409680f3a27157257203491ae77c53e1",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "4bf0552dde8e8f4d339e209ecebef175d22e5c9a",
       "trimmed": true
     }
   },
@@ -10383,17 +10395,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"vàng\" nghe như \"và\"; đã sửa: ngắt nhẹ: đọc \"Trưa mùa hè, nắng vàng, như mật ong trải nhẹ trên khắp các cánh đồng cỏ.\" (-20%). Máy nhận dạng bản mới: \"Trưa mùa hè, nắng vàng, như mật ong trải nhẹ trên khắp các cánh đồng cỏ.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b153"
     ],
     "tts": {
-      "doc": "Trưa mùa hè, nắng vàng như mật ong trải nhẹ trên khắp các cánh đồng cỏ.",
-      "rate": -15,
+      "doc": "Trưa mùa hè, nắng vàng, như mật ong trải nhẹ trên khắp các cánh đồng cỏ.",
+      "rate": -20,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "67a0f68a79b7cfcd73948921cbd0db7b77428484",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "dd7f3a97b9d01fa874e87177411161df6bbb205f",
       "trimmed": true
     }
   },
@@ -12443,24 +12458,56 @@
     "text": "Hòn gì bằng đất nặn ra, xếp vào lò lửa nung ba bốn ngày, khi ra da đỏ hây hây, thân hình vuông vắn đem xây cửa nhà?",
     "kind": "cau",
     "file": "audio/cau_b163_11.mp3",
-    "source": "tts_edge_hoaimy",
+    "source": "ghep_tieng",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Hòn gì bằng đất nặn ra, xếp vào lò lửa, nung ba bốn ngày, khi ra da đỏ, hây hây, thân hình vuông vắn đem xây cửa, nhà?\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Hòn gì bằng đất nặn ra, xếp vào lò lửa, nung ba bốn ngày, khi ra da đỏ, hây hây, thân hình vuông vắn đem xây cửa, nhà?\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev. | Root soát 16/11 (nhận dạng giọng nói): \"gì\" nghe như \"dì\"; đã sửa: ghép mượt các tiếng lẻ có sẵn. Máy nhận dạng bản mới: \"Hòn gì bằng đất nặng ra, xếp vào lò lửa nung ba bốn ngày, khi ra da đỏ hay hay, thân hình vuông vắng đêm xây cửa nhà.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b163"
     ],
     "tts": {
-      "doc": "Hòn gì bằng đất nặn ra, xếp vào lò lửa, nung ba bốn ngày, khi ra da đỏ, hây hây, thân hình vuông vắn đem xây cửa, nhà?",
+      "doc": "Hòn gì bằng đất nặn ra, xếp vào lò lửa nung ba bốn ngày, khi ra da đỏ hây hây, thân hình vuông vắn đem xây cửa nhà?",
       "rate": -15,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
       "keep_first": false,
-      "join": [],
+      "join": [
+        "tieng_honf",
+        "tieng_gif",
+        "tieng_bawngf",
+        "tieng_ddaats",
+        "tieng_nawnj",
+        "tieng_ra",
+        ",",
+        "tieng_xeeps",
+        "tieng_vaof",
+        "tieng_lof",
+        "tieng_luwar",
+        "tieng_nung",
+        "tieng_ba",
+        "tieng_boons",
+        "tieng_ngayf",
+        ",",
+        "tieng_khi",
+        "tieng_ra",
+        "tieng_da",
+        "tieng_ddor",
+        "tieng_haay",
+        "tieng_haay",
+        ",",
+        "tieng_thaan",
+        "tieng_hinhf",
+        "tieng_vuoong",
+        "tieng_vawns",
+        "tieng_ddem",
+        "tieng_xaay",
+        "tieng_cuwar",
+        "tieng_nhaf"
+      ],
       "join_gap": 0.08,
-      "sig": "04a38f9dd394d141268d331594a8af5bdb98b50a",
-      "trimmed": true
+      "sig": "c68066eada1e4f09f601f6c0107a35e2fec3ed7a",
+      "trimmed": false
     }
   },
   {
@@ -13339,7 +13386,7 @@
     "kind": "cau",
     "file": "audio/cau_b168_03.mp3",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Giặc đem ra bãi, bắn,\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Giặc đem ra bãi, bắn,\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev. | Root soát 16/11: máy nhận dạng nghe \"giặc\" thành \"dạch\" ở cả bản gốc và 4 cách thử (đọc nguyên câu, đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b168"
     ],
@@ -37711,7 +37758,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát hỏi/ngã 9/11: tiếng \"kể\" đo ra đi xuống như thanh huyền → đọc chậm hơn (tốc độ -15% → -35%), đo lại đạt. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát hỏi/ngã 9/11: tiếng \"kể\" đo ra đi xuống như thanh huyền → đọc chậm hơn (tốc độ -15% → -35%), đo lại đạt. Bản cũ ở prev. | Root soát 16/11: máy nhận dạng nghe \"dì\" thành \"gì\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t1_b25"
     ],
@@ -43401,7 +43448,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"ghép\" thành \"kép\" ở cả bản gốc và 2 cách thử (đọc chậm, ngắt nhẹ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t1_b27"
     ],
@@ -45566,7 +45613,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"bế\" thành \"bé\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t1_b28"
     ],
@@ -49238,18 +49285,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát hỏi/ngã 9/11: tiếng \"kể\" đo ra đi xuống như thanh huyền → đọc chậm hơn (tốc độ -15% → -35%), đo lại đạt. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát hỏi/ngã 9/11: tiếng \"kể\" đo ra đi xuống như thanh huyền → đọc chậm hơn (tốc độ -15% → -35%), đo lại đạt. Bản cũ ở prev. | Root soát 16/11 (nhận dạng giọng nói): \"hè\" nghe như \"hề\"; đã sửa: ngắt nhẹ: đọc \"bé kể bà nghe, nghỉ hè, bố và bé đi ra bờ bể.\" (-20%). Máy nhận dạng bản mới: \"Bé kể bà nghe, nghỉ hè, bố và bé đi ra bờ bể.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b29"
     ],
     "tts": {
-      "doc": "bé kể bà nghe, nghỉ hè bố và bé đi ra bờ bể.",
-      "rate": -35,
+      "doc": "bé kể bà nghe, nghỉ hè, bố và bé đi ra bờ bể.",
+      "rate": -20,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
       "keep_first": false,
-      "sig": "7a413278e52fb5b6754010872badae96ce6d6152",
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "b395a135dfc3b37be486fdfd5fc4c381e35b69f5",
       "trimmed": true
     }
   },
@@ -50504,7 +50553,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"bế\" thành \"bé\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t1_b45"
     ],
@@ -50796,20 +50845,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Thôn xóm đã, lên đèn.\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Thôn xóm đã, lên đèn.\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev. | Root soát 16/11 (nhận dạng giọng nói): \"thôn\" nghe như \"thung\"; đã sửa: ngắt nhẹ: đọc \"Thôn, xóm đã lên đèn.\" (-20%). Máy nhận dạng bản mới: \"Thôn, xóm đã lên đèn.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b51"
     ],
     "tts": {
-      "doc": "Thôn xóm đã, lên đèn.",
-      "rate": -15,
+      "doc": "Thôn, xóm đã lên đèn.",
+      "rate": -20,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
       "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "2c83dc661872059f5762d6a855013029da290308",
+      "sig": "836dad4403c899f7bd16d7734b977227afde3898",
       "trimmed": true
     }
   },
@@ -51063,7 +51112,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"bè\" nghe như \"bề\". Đã thử 3 cách (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ); bản ghép (bản duy nhất hết lỗi \"bè\") lại bị nghe \"vầy\" thành \"về\", bản gốc nghe đúng chữ này → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t1_b56"
     ],
@@ -51882,17 +51931,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"thôn\" nghe như \"thung\"; đã sửa: ngắt nhẹ: đọc \"Thôn, xóm vui cấy cày gặt hái.\" (-20%). Máy nhận dạng bản mới: \"Thôn, xóm vui cấy cày gặp hái.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b69"
     ],
     "tts": {
-      "doc": "Thôn xóm vui cấy cày gặt hái.",
-      "rate": -15,
+      "doc": "Thôn, xóm vui cấy cày gặt hái.",
+      "rate": -20,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "b7aee5c43528f725cadd27a05eab47593bb1d61e",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "8a466df79ca370701c2e917ab54c53a199ef9ce0",
       "trimmed": true
     }
   },
@@ -52504,17 +52556,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"sen\" nghe như \"xe\"; đã sửa: ngắt nhẹ: đọc \"Búp sen, nhỏ\" (-20%). Máy nhận dạng bản mới: \"Bút sen nhỏ.\" (hết chữ sai đó). Máy vẫn nghe \"Búp\" thành \"Bút\" ở cả bản ghép từ tiếng lẻ, nghi máy nhầm âm cuối p/t. Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b77"
     ],
     "tts": {
-      "doc": "Búp sen nhỏ",
-      "rate": -15,
+      "doc": "Búp sen, nhỏ",
+      "rate": -20,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "a25142d05861d949c808a42b3d43f66e6b19bcd5",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "636d8b2d92272184a7b7037de1f235ea58898bbd",
       "trimmed": true
     }
   },
@@ -53508,7 +53563,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"chen\" thành \"trên\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b90"
     ],
@@ -53842,7 +53897,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"cò\" thành \"cỏ\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b95"
     ],
@@ -55743,17 +55798,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"tỏ\" nghe như \"tỏa\"; đã sửa: đọc chậm -30%. Máy nhận dạng bản mới: \"Đèn và trăng, bên nào tỏ hơn?\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b109"
     ],
     "tts": {
       "doc": "Đèn và trăng, bên nào tỏ hơn?",
-      "rate": -15,
+      "rate": -30,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "cdd150aa7b4effe432d7cf99f3614cb66abe8233",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "dd37ab87937113d519cd770736345c9841e42032",
       "trimmed": true
     }
   },
@@ -56344,7 +56402,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"quạ\" thành \"quả\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b136"
     ],
@@ -56432,7 +56490,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"hoạch\" thành \"hoặc\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b141"
     ],
@@ -56523,12 +56581,12 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Bé nặn quả, thị, quả, na và con chuột.\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev.",
+    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Bé nặn quả, thị, quả, na và con chuột.\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev. | Root soát 16/11 (nhận dạng giọng nói): \"thị\" nghe như \"thì\"; đã sửa: đọc nguyên câu theo chữ hiển thị (bỏ dấu phẩy thêm hồi rà hỏi/ngã). Máy nhận dạng bản mới: \"Bé nặng quả thị, quả na và con chuột.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b146"
     ],
     "tts": {
-      "doc": "Bé nặn quả, thị, quả, na và con chuột.",
+      "doc": "Bé nặn quả thị, quả na và con chuột.",
       "rate": -15,
       "pitch": 0,
       "volume": 0,
@@ -56536,7 +56594,7 @@
       "keep_first": false,
       "join": [],
       "join_gap": 0.08,
-      "sig": "6a4d11f691f7a619c2cbf946fdb9d99ebba68615",
+      "sig": "f90108457bd9a172d75f79fadc58609c72ca16f3",
       "trimmed": true
     }
   },
@@ -56614,17 +56672,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"thả\" nghe như \"thải\"; đã sửa: ngắt nhẹ: đọc \"Các bạn hái sim, thả, diều trên đồi.\" (-20%). Máy nhận dạng bản mới: \"Các bạn hái xiêm, thả, dìu trên đồi.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b152"
     ],
     "tts": {
-      "doc": "Các bạn hái sim, thả diều trên đồi.",
-      "rate": -15,
+      "doc": "Các bạn hái sim, thả, diều trên đồi.",
+      "rate": -20,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "77bf1817ca2c376912728c631b8b6c6738b3a701",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "09d467fd51c9d4bc47450a4a5bf9f6b74b2c7b67",
       "trimmed": true
     }
   },
@@ -58927,7 +58988,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"mồi\" thành \"mùi\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t1_b57"
     ],
@@ -59350,17 +59411,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"dép\" nghe như \"vết\"; đã sửa: đọc chậm -30%. Máy nhận dạng bản mới: \"Đây là đôi dép cao su.\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t1_b76"
     ],
     "tts": {
       "doc": "Đây là đôi dép cao su.",
-      "rate": -15,
+      "rate": -30,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "6652dc05f9ba2a4e0062503387dd47dc54a071cc",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "f36e41b8b8b63b170669c0ea7190e5c5ee5b09ad",
       "trimmed": true
     }
   },
@@ -60349,7 +60413,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"ai\" thành \"i\" ở cả bản gốc và 1 cách thử (đọc chậm) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b128"
     ],
@@ -61068,7 +61132,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"hoạch\" thành \"hoặc\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b141"
     ],
@@ -61903,17 +61967,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"ké\" nghe như \"kế\", \"ké\" nghe như \"kế\"; đã sửa: ngắt nhẹ: đọc \"Ông Ké, làm việc gì ở suối? Ông Ké, đó là ai?\" (-20%). Máy nhận dạng bản mới: \"Ông ké làm việc gì ở suối? Ông ké đó là ai?\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b160"
     ],
     "tts": {
-      "doc": "Ông Ké làm việc gì ở suối? Ông Ké đó là ai?",
-      "rate": -15,
+      "doc": "Ông Ké, làm việc gì ở suối? Ông Ké, đó là ai?",
+      "rate": -20,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "sig": "847f607743e52bab591be2deb46b1a24f7292299",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "a8614152c10a323bd9a805735c8ad65b5c516afe",
       "trimmed": true
     }
   },
@@ -62170,7 +62237,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"uyên\" thành \"viên\" ở cả bản gốc và 1 cách thử (đọc chậm) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b167"
     ],
@@ -156541,7 +156608,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"chen\" thành \"trên\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv2_t1_b292"
     ],
@@ -156635,7 +156702,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"vôi\" thành \"vui\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv2_t1_b228",
       "tv2_t1_b233"
@@ -156686,7 +156753,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"chiếc\" thành \"chí\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv2_t1_b174",
       "tv2_t1_b179"
@@ -159099,7 +159166,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"nghé\" thành \"nghe\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t1_b29"
     ],
@@ -168262,7 +168329,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"hái\" thành \"hải\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv2_t1_b274"
     ],
@@ -175135,10 +175202,10 @@
     "text": "mật ngọt",
     "kind": "tu",
     "file": "audio/tu_maatj_ngotj.mp3",
-    "source": "tts_edge_hoaimy",
+    "source": "ghep_tieng",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"mật\" nghe như \"mực\"; đã sửa: ghép mượt các tiếng lẻ có sẵn. Máy nhận dạng bản mới: \"Mật Ngọc\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv2_t1_b277"
     ],
@@ -175149,10 +175216,13 @@
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
       "keep_first": false,
-      "join": [],
+      "join": [
+        "tieng_maatj",
+        "tieng_ngotj"
+      ],
       "join_gap": 0.08,
-      "sig": "289c928fd7aa072d253e9c846d7ecc29f1edef00",
-      "trimmed": true
+      "sig": "92706bb24509b3f7502f33c8cfd5f04fd0cb8a18",
+      "trimmed": false
     }
   },
   {
@@ -178624,7 +178694,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"ngay\" thành \"ngày\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv2_t1_b197",
       "tv2_t1_b215"
@@ -184683,7 +184753,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": false,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11: máy nhận dạng nghe \"reo\" thành \"rêu\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
     "bai": [
       "tv1_t2_b126",
       "tv1_t2_b131"
@@ -193701,20 +193771,20 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"đèn\" nghe như \"đền\"; đã sửa: đọc \"vặn đèn, vặn đèn.\" rồi giữ hai tiếng đầu. Máy nhận dạng bản mới: \"Vạn đèn\" (hết chữ sai đó). Chờ nghe xác nhận.",
     "bai": [
       "tv2_t1_b221"
     ],
     "tts": {
-      "doc": "vặn đèn",
-      "rate": -15,
+      "doc": "vặn đèn, vặn đèn.",
+      "rate": -25,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": false,
+      "keep_first": true,
       "join": [],
       "join_gap": 0.08,
-      "sig": "c8d354023df76f484b25d423a3ac8a63f6bc740b",
+      "sig": "661e9238c213e156f4c178db7fe75479f592bf4d",
       "trimmed": true
     }
   },
