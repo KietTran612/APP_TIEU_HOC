@@ -9605,7 +9605,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"reo\" nghe như \"treo\"; đã sửa: ngắt nhẹ: đọc \"Bé khẽ reo, lên: \"Ôi! Bông hồng đẹp quá!\".\" (-20%). Máy nhận dạng bản mới: \"Bé khẽ reo, lên, y ôi! Bông hồng đẹp quá!\" (hết chữ sai đó). Chờ nghe xác nhận.",
+    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"reo\" nghe như \"treo\"; đã sửa: ngắt nhẹ: đọc \"Bé khẽ reo, lên: \"Ôi! Bông hồng đẹp quá!\".\" (-20%). Máy nhận dạng bản mới: \"Bé khẽ reo, lên, y ôi! Bông hồng đẹp quá!\" (hết chữ sai đó). Máy nghe lúc đúng lúc sai: root nhận dạng lại, 2/3 lần nghe đúng \"reo\", bản gốc lần nào cũng \"treo\". Chờ nghe xác nhận.",
     "bai": [
       "tv1_t2_b149"
     ],
@@ -9961,20 +9961,17 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Root soát 16/11 (nhận dạng giọng nói): \"gì\" nghe như \"dì\"; đã sửa: ngắt nhẹ: đọc \"Con gì, bé tí, chăm chỉ suốt ngày, bay khắp vườn cây, tìm hoa gây mật?\" (-20%). Máy nhận dạng bản mới: \"Con gì, bé tí, chăm chỉ suốt ngày, bay khắp vườn cây, tìm hoa gây mật.\" (hết chữ sai đó). Chờ nghe xác nhận.",
+    "ghi_chu": "Root soát 16/11: gì/dì đồng âm, không phải lỗi; giữ bản gốc.",
     "bai": [
       "tv1_t2_b150"
     ],
     "tts": {
-      "doc": "Con gì, bé tí, chăm chỉ suốt ngày, bay khắp vườn cây, tìm hoa gây mật?",
-      "rate": -20,
+      "doc": "Con gì bé tí, chăm chỉ suốt ngày, bay khắp vườn cây, tìm hoa gây mật?",
+      "rate": -15,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
-      "keep_first": false,
-      "join": [],
-      "join_gap": 0.08,
-      "sig": "4bf0552dde8e8f4d339e209ecebef175d22e5c9a",
+      "sig": "b739cf56409680f3a27157257203491ae77c53e1",
       "trimmed": true
     }
   },
@@ -12458,56 +12455,24 @@
     "text": "Hòn gì bằng đất nặn ra, xếp vào lò lửa nung ba bốn ngày, khi ra da đỏ hây hây, thân hình vuông vắn đem xây cửa nhà?",
     "kind": "cau",
     "file": "audio/cau_b163_11.mp3",
-    "source": "ghep_tieng",
+    "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Hòn gì bằng đất nặn ra, xếp vào lò lửa, nung ba bốn ngày, khi ra da đỏ, hây hây, thân hình vuông vắn đem xây cửa, nhà?\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev. | Root soát 16/11 (nhận dạng giọng nói): \"gì\" nghe như \"dì\"; đã sửa: ghép mượt các tiếng lẻ có sẵn. Máy nhận dạng bản mới: \"Hòn gì bằng đất nặng ra, xếp vào lò lửa nung ba bốn ngày, khi ra da đỏ hay hay, thân hình vuông vắng đêm xây cửa nhà.\" (hết chữ sai đó). Chờ nghe xác nhận.",
+    "ghi_chu": "Rà soát hỏi/ngã 9/11: đọc nguyên câu và đọc chậm vẫn có tiếng hỏi/ngã đọc như huyền → ngắt nhẹ: đọc \"Hòn gì bằng đất nặn ra, xếp vào lò lửa, nung ba bốn ngày, khi ra da đỏ, hây hây, thân hình vuông vắn đem xây cửa, nhà?\" (thêm dấu phẩy sau tiếng đó), đo lại đạt. Bản cũ ở prev. | Root soát 16/11: gì/dì đồng âm, không phải lỗi; giữ bản gốc.",
     "bai": [
       "tv1_t2_b163"
     ],
     "tts": {
-      "doc": "Hòn gì bằng đất nặn ra, xếp vào lò lửa nung ba bốn ngày, khi ra da đỏ hây hây, thân hình vuông vắn đem xây cửa nhà?",
+      "doc": "Hòn gì bằng đất nặn ra, xếp vào lò lửa, nung ba bốn ngày, khi ra da đỏ, hây hây, thân hình vuông vắn đem xây cửa, nhà?",
       "rate": -15,
       "pitch": 0,
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
       "keep_first": false,
-      "join": [
-        "tieng_honf",
-        "tieng_gif",
-        "tieng_bawngf",
-        "tieng_ddaats",
-        "tieng_nawnj",
-        "tieng_ra",
-        ",",
-        "tieng_xeeps",
-        "tieng_vaof",
-        "tieng_lof",
-        "tieng_luwar",
-        "tieng_nung",
-        "tieng_ba",
-        "tieng_boons",
-        "tieng_ngayf",
-        ",",
-        "tieng_khi",
-        "tieng_ra",
-        "tieng_da",
-        "tieng_ddor",
-        "tieng_haay",
-        "tieng_haay",
-        ",",
-        "tieng_thaan",
-        "tieng_hinhf",
-        "tieng_vuoong",
-        "tieng_vawns",
-        "tieng_ddem",
-        "tieng_xaay",
-        "tieng_cuwar",
-        "tieng_nhaf"
-      ],
+      "join": [],
       "join_gap": 0.08,
-      "sig": "c68066eada1e4f09f601f6c0107a35e2fec3ed7a",
-      "trimmed": false
+      "sig": "04a38f9dd394d141268d331594a8af5bdb98b50a",
+      "trimmed": true
     }
   },
   {
@@ -37758,7 +37723,7 @@
     "source": "tts_edge_hoaimy",
     "status": "cho_duyet",
     "can_nghe_ky": true,
-    "ghi_chu": "Rà soát hỏi/ngã 9/11: tiếng \"kể\" đo ra đi xuống như thanh huyền → đọc chậm hơn (tốc độ -15% → -35%), đo lại đạt. Bản cũ ở prev. | Root soát 16/11: máy nhận dạng nghe \"dì\" thành \"gì\" ở cả bản gốc và 3 cách thử (đọc chậm, ngắt nhẹ, ghép mượt tiếng lẻ) → giữ bản gốc; cần chủ dự án nghe.",
+    "ghi_chu": "Rà soát hỏi/ngã 9/11: tiếng \"kể\" đo ra đi xuống như thanh huyền → đọc chậm hơn (tốc độ -15% → -35%), đo lại đạt. Bản cũ ở prev. | Root soát 16/11: dì/gì đồng âm, không phải lỗi; giữ bản gốc.",
     "bai": [
       "tv1_t1_b25"
     ],
