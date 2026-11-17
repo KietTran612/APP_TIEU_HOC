@@ -55,6 +55,15 @@ Sản phẩm có đủ 4 cuốn:
 Khoảng 35 câu hỏi TV1 tập 2 đọc tên âm, tên vần theo chữ cái (ví dụ "âm r" thành "e-rờ", "âm ch" thành "cờ hờ").
 - Chữ đọc phải theo quy ước của mã `am_*`: "âm rờ", "âm chờ"… Tên vần ghép từ file `van_*`.
 - Làm bản thử, root nhận dạng giọng nói, rồi mới cài.
+- Xong 17/11 (cùng đợt 3 và 7 mã tiếng UI ở 48930be).
+
+### A2b. Ngoặc kép giữa câu — chờ lượt tts (17/11)
+
+HoaiMy chèn một tiếng ngắn ở chỗ mở ngoặc kép giữa câu (QUY-TRINH §12, 79bf5cb). Sửa bằng chữ đọc bỏ ngoặc kép, chữ hiện giữ nguyên.
+- TV2 tập 2: L2T2 làm cùng đợt 2 (công cụ `tools/lop2/ngoac_kep_lop2.py`, b375f3e).
+- TV2 tập 1: khoảng 27 mã, session TV2 tập 1 dùng cùng công cụ (không `--t2`), chạy sau khi L2T2 xong đợt 2.
+- Lớp 1: cau_b155_06, hoi_b146_03, cau_b149_08, có thể cau_b146_13; ngoặc cong ở cau_b78_02, cau_b78_03 cần xem. L1 nội dung làm sau TV2 tập 1.
+- Mỗi bên làm bản thử, root nhận dạng giọng nói, rồi mới cài.
 
 ### A3. Tranh — root
 
