@@ -10,6 +10,55 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ---
 
+## 17/11/2026
+
+Chủ dự án giao mục tiêu: sản phẩm hoàn chỉnh đủ 4 quyển (TV1 tập 1–2, TV2 tập 1–2), bản Windows, chưa phát hành. Kế hoạch điều phối: [2026-11-17-hoan-thien-4-cuon.md](../plans/2026-11-17-hoan-thien-4-cuon.md) (0b09025, ef43c53, ac88bae, c5e8370).
+
+- **[L2T2] nội dung, mở mới:** đủ 130 mục 305–434, tuần 18–33, quyển 4 "Bé tập đọc 4".
+  - Dữ liệu và trang sách: f285c84, e9f837c, 005b828, f9b4fd5, 391c59f, 7734544, 2dce7fa.
+  - Công cụ âm thanh lớp 2: chọn tập bằng `--t2` (f95f92b); bản thử ngoài danh mục (9e6c06f); bỏ ngoặc kép giữa câu trong chữ đọc (b375f3e).
+  - Giọng đọc đợt 1 (305–338): đủ 904 mã. Root nhận dạng xong: 445 khớp, 381 nghi sai, chờ so giọng NamMinh. Đợt 2 đang chạy.
+  - Test build đủ 4 quyển (a9ebed8).
+- **[L2T2] vẽ tranh, mở mới:** 30/41 tranh ChatGPT qua ba đợt, root duyệt đạt (c43837b, 1a2b65b, f7cb4e8). Còn 11 tranh làm 18/11. Bìa Bé tập đọc 4 (216e923).
+- **[Chung] UI, nâng cấp 5 đợt theo nghiên cứu:**
+  - Spec: bd6dc1d, ba2f1f3.
+  - Các đợt: đợt 1 8b2b988; đợt 2 3d95ef7; đợt 3 9a3d2a3, 50ba2e0, f18a00b; đợt 4 a28adcb; đợt 5 4adb92d, aa92c7d.
+  - Root chạy lại test từng đợt, đều đạt, và xem ảnh 4 khung màn hình. Không chạy MvpEndToEndTests (đi hết 434 bài, quá 40 phút).
+  - Còn chờ 3 tranh ChatGPT (root vẽ 18/11).
+- **[L1] nội dung:**
+  - Âm thanh đợt 3: 19 câu "âm X" (ce277f0), 34 câu "vần X" ghép van_* (377670f, 97ca7a3). Join nhận phần "doc:" (c89b1cc).
+  - 7 mã tiếng UI (48930be). hd_nghi_mat đọc "chút, nhé" vì "nhé" sau tiếng sắc cao lên quá yếu.
+  - CliTest không phụ thuộc media (7d083e4).
+- **[L1] tranh động (Flow /u/2):** 33 video. Sau khi root soát còn 14 clip chờ duyệt.
+  - Root trả lại 6 clip: b105 rước đèn, b110 quê ngoại, b112 (đi quá tư thế tranh); b101, b68, b141 (a190791, de78c18).
+  - Dừng chờ chủ dự án chọn: b82 ×2, b105 cầu trượt, b136, b110 mũi khoan, b114.
+  - Commit: e44e2eb, fff836d, b67b2f8, 319542e, f46c9fd.
+- **[L2] tranh động (/u/1, /u/3):**
+  - Chờ duyệt: b203, b209, b279, b227, b236, b188.
+  - b219 trả lại, b198 dừng.
+  - Commit: 7e59ac2, b8d0508, 7da8ffa, e374c83.
+- **Root:**
+  - Vẽ lại bản đồ b97 bằng ChatGPT (35e538f). Clip b97 lần 3 chỉ cho sao Hà Nội sáng, các đảo đủ ở mọi khung.
+  - Quy tắc tranh động mục 11 (6609b60, 22cf55c, 71e73f1, c5ee273, 53fa7cc): người đi tới nơi ở giây thứ sáu, hai giây cuối đứng yên; khung đầu chỉ lùi 80–85%; đồ vật nhỏ chỉ cho ánh sáng chuyển động.
+  - Tìm ra lỗi ngoặc kép giữa câu làm HoaiMy chèn tiếng, ở cả 3 sách, khoảng 95 mã (QUY-TRINH §12, 79bf5cb).
+  - Nguyên tắc tạm ngưng khi usage 5 giờ từ 97% trở lên (7797a7d, 2c74b23).
+- **Còn dở:**
+  - TV2 tập 2: âm thanh đợt 2–4, tranh còn 11, clip chưa làm.
+  - Tạo lại các mã có ngoặc kép giữa câu ở TV2 tập 1 và lớp 1.
+  - 3 tranh UI.
+  - Gói media bổ sung.
+  - Bản Windows.
+  - Danh sách duyệt cuối cho chủ dự án.
+
+## 16/11/2026
+
+- **Root:** nhận dạng giọng nói hai vòng cho âm thanh đợt 2 (250563c).
+  - [L1] sửa 18/46 mã (dba3d26), trả bản gốc 2 mã đồng âm gì/dì (cd546fa).
+  - [L2] sửa 26/49 mã (6b8a563, adc78a0).
+- **[L1] tranh động:** đợt /u/6 và /u/2 (7ac1fae, e44e2eb).
+- **[L2] tranh động:** bỏ chữ "lề giấy", "mép tranh" khỏi lời lệnh (9a33ca1, 69dffcb).
+- 14–15/11 không có commit.
+
 ## 13/11/2026
 
 - **Root soát lại 347 clip đã đạt:** 104 nặng, 154 nhẹ, 89 ổn.
