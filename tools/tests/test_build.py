@@ -830,7 +830,8 @@ class IndexTest(unittest.TestCase):
 
     def test_index_has_books_and_parts(self):
         index = self.build_index([src_of(lesson_id="tv1_t1_b42", lesson_no=42) | {"type": "van_moi"}])
-        self.assertEqual([b["book_id"] for b in index["books"]], ["tv1_t1_1990", "tv1_t2_1996", "tv2_t1_2001"])
+        self.assertEqual([b["book_id"] for b in index["books"]], ["tv1_t1_1990", "tv1_t2_1996", "tv2_t1_2001",
+                                                                       "tv2_t2_2002"])
         entry = index["lessons"][0]
         self.assertEqual((entry["part"], entry["label"], entry["week"]), ("van", "Bài 42", 0))
 
