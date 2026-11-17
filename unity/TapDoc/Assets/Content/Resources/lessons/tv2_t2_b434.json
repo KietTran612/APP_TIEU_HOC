@@ -1,0 +1,277 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b434",
+  "book": "tv2_t2_2002",
+  "lesson_no": 434,
+  "type": "tap_lam_van",
+  "title": "Dùng từ đặt câu",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      121
+    ],
+    "scan_file": "061",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Đặt câu: bé nói câu của mình cùng bố mẹ, app không chấm. Các từ cho sẵn hiện thành thẻ, chạm để nghe."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "App hiện lại tranh bài Phong cảnh quê hương Bác và thêm câu nhắc đặt câu (trang chỉ in đề bài)."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[4]",
+        "note": "câu nhắc đặt câu do app thêm"
+      },
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Dùng từ – đặt câu",
+      "audio": "cau_b434_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Dựa vào bài \"Phong cảnh quê hương Bác\", em hãy dùng mỗi từ ngữ sau đây đặt thành hai câu nói về quê hương Bác Hồ:",
+      "audio": "cau_b434_02",
+      "labels": []
+    },
+    {
+      "type": "picture",
+      "image": "img_b427_quee_bacs",
+      "audio": "hd_b434_tranh_01"
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "Quê Bác",
+          "audio": "tu_quee_bacs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "xanh",
+          "audio": "tieng_xanh",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "phong cảnh",
+          "audio": "tu_phong_canhr",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Em hãy đặt hai câu với mỗi từ ngữ trên.",
+      "audio": "hoi_b434_01"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quee_bacs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quê Bác",
+          "audio": "tu_quee_bacs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "phong cảnh",
+          "audio": "tu_phong_canhr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sông Lam",
+          "audio": "tu_soong_lam",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_phong_canhr",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "phong cảnh",
+          "audio": "tu_phong_canhr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quê Bác",
+          "audio": "tu_quee_bacs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_soong_lam",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "sông Lam",
+          "audio": "tu_soong_lam",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quê Bác",
+          "audio": "tu_quee_bacs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_canhs_ddoongf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sông Lam",
+          "audio": "tu_soong_lam",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "phong cảnh",
+          "audio": "tu_phong_canhr",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_mauf_xanh",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "màu xanh",
+          "audio": "tu_mauf_xanh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "phong cảnh",
+          "audio": "tu_phong_canhr",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sông Lam",
+          "audio": "tu_soong_lam",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_dayx_nuis",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "dãy núi",
+          "audio": "tu_dayx_nuis",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "màu xanh",
+          "audio": "tu_mauf_xanh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cánh đồng",
+          "audio": "tu_canhs_ddoongf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

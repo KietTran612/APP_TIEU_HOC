@@ -1,0 +1,826 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b423",
+  "book": "tv2_t2_2002",
+  "lesson_no": 423,
+  "type": "tap_chep_chinh_ta",
+  "title": "Thư của Chú Nguyễn – Bác Hồ ở chiến khu",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      112,
+      113
+    ],
+    "scan_file": "057",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Viết tên riêng theo thứ tự: bé nói cùng bố mẹ; điền chỗ trống làm bằng chạm thẻ; cặp từ so sánh thành thẻ chạm để nghe (dấu \"≠\" thay bằng dấu phẩy)."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[4]",
+        "note": "đáp án tranh/chanh theo chính tả chuẩn (sách không in đáp án)"
+      },
+      {
+        "where": "part1[5]",
+        "note": "đáp án kêu/kiêu theo chính tả chuẩn (sách không in đáp án)"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án vâng/vân theo chính tả chuẩn (sách không in đáp án)"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Thư của Chú Nguyễn",
+      "audio": "cau_b423_01",
+      "labels": [
+        "Nghe đọc"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: \"Các cháu ngoan... rất kêu\".",
+      "audio": "cau_b423_02",
+      "labels": [
+        "Phần này con viết vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "Ma-ri-uýt",
+          "audio": "tu_ma_ri_uyts",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "Tổ quốc",
+          "audio": "tu_toor_quoocs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "Nguyễn",
+          "audio": "tieng_nguyeenx",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tranh",
+          "audio": "tieng_tranh",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lên",
+          "audio": "tieng_leen",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vâng",
+          "audio": "tieng_vaang",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "kêu",
+          "audio": "tieng_keeu",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sẽ",
+          "audio": "tieng_sex",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "những",
+          "audio": "tieng_nhuwngx",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "a) Viết các tên riêng trong bài chính tả theo thứ tự bảng chữ cái.",
+      "audio": "hoi_b423_01"
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "tranh",
+        "chanh"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "bức tranh",
+          "audio": "tu_buwcs_tranh",
+          "answer": "tranh",
+          "hl": [
+            {
+              "s": 4,
+              "n": 5
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "quả chanh",
+          "audio": "tu_quar_chanh",
+          "answer": "chanh",
+          "hl": [
+            {
+              "s": 4,
+              "n": 5
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "đấu tranh",
+          "audio": "tu_ddaaus_tranh",
+          "answer": "tranh",
+          "hl": [
+            {
+              "s": 4,
+              "n": 5
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "nước chanh",
+          "audio": "tu_nuwowcs_chanh",
+          "answer": "chanh",
+          "hl": [
+            {
+              "s": 5,
+              "n": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "kêu",
+        "kiêu"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "tiếng kêu",
+          "audio": "tu_tieengs_keeu",
+          "answer": "kêu",
+          "hl": [
+            {
+              "s": 6,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "kiêu căng",
+          "audio": "tu_kieeu_cawng",
+          "answer": "kiêu",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "kêu ca",
+          "audio": "tu_keeu_ca",
+          "answer": "kêu",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "vâng",
+        "vân"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "vâng lời",
+          "audio": "tu_vaang_lowif",
+          "answer": "vâng",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "gỗ có vân đẹp",
+          "audio": "tu_goox_cos_vaan_ddepj",
+          "answer": "vân",
+          "hl": [
+            {
+              "s": 6,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Bác Hồ ở chiến khu",
+      "audio": "cau_b423_03",
+      "labels": [
+        "So sánh"
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Một nhà sàn đơn sơ vách nứa,",
+      "audio": "cau_b423_04",
+      "items": [
+        {
+          "text": "Một",
+          "audio": "tieng_mootj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nhà",
+          "audio": "tieng_nhaf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sàn",
+          "audio": "tieng_sanf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đơn",
+          "audio": "tieng_ddown",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sơ",
+          "audio": "tieng_sow",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vách",
+          "audio": "tieng_vachs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nứa",
+          "audio": "tieng_nuwas",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Bốn bên suối chảy cá bơi vui.",
+      "audio": "cau_b423_05",
+      "items": [
+        {
+          "text": "Bốn",
+          "audio": "tieng_boons",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bên",
+          "audio": "tieng_been",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "suối",
+          "audio": "tieng_suoois",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chảy",
+          "audio": "tieng_chayr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cá",
+          "audio": "tieng_cas",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bơi",
+          "audio": "tieng_bowi",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vui",
+          "audio": "tieng_vui",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đêm đêm cháy hồng bên bếp lửa,",
+      "audio": "cau_b423_06",
+      "items": [
+        {
+          "text": "Đêm",
+          "audio": "tieng_ddeem",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đêm",
+          "audio": "tieng_ddeem",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cháy",
+          "audio": "tieng_chays",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "hồng",
+          "audio": "tieng_hoongf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bên",
+          "audio": "tieng_been",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bếp",
+          "audio": "tieng_beeps",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lửa",
+          "audio": "tieng_luwar",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Ánh đèn khuya còn sáng trên đồi.",
+      "audio": "cau_b423_07",
+      "items": [
+        {
+          "text": "Ánh",
+          "audio": "tieng_anhs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đèn",
+          "audio": "tieng_ddenf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "khuya",
+          "audio": "tieng_khuya",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "còn",
+          "audio": "tieng_conf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sáng",
+          "audio": "tieng_sangs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trên",
+          "audio": "tieng_treen",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đồi",
+          "audio": "tieng_ddooif",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: bốn câu thơ trên.",
+      "audio": "cau_b423_08",
+      "labels": [
+        "Phần này con viết vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "khuya",
+          "audio": "tieng_khuya",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "suối",
+          "audio": "tieng_suoois",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sơ",
+          "audio": "tieng_sow",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chảy",
+          "audio": "tieng_chayr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nứa",
+          "audio": "tieng_nuwas",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đêm",
+          "audio": "tieng_ddeem",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cháy",
+          "audio": "tieng_chays",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sáng",
+          "audio": "tieng_sangs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lửa",
+          "audio": "tieng_luwar",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Phát âm phân biệt tiếng in nghiêng ở mỗi cặp từ ngữ sau",
+      "audio": "cau_b423_09",
+      "labels": []
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "đơn sơ",
+          "audio": "tu_ddown_sow",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "xơ mướp",
+          "audio": "tu_xow_muwowps",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nước chảy",
+          "audio": "tu_nuwowcs_chayr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trảy quả",
+          "audio": "tu_trayr_quar",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "đêm ngày",
+          "audio": "tu_ddeem_ngayf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đem đi",
+          "audio": "tu_ddem_ddi",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bếp lửa",
+          "audio": "tu_beeps_luwar",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "củi nổ lép bép",
+          "audio": "tu_cuir_noor_leps_beps",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "đèn sáng",
+          "audio": "tu_ddenf_sangs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sán đến gần",
+          "audio": "tu_sans_ddeens_gaanf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ngọn lửa",
+          "audio": "tu_ngonj_luwar",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lần lữa",
+          "audio": "tu_laanf_luwax",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_buwcs_tranh",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bức tranh",
+          "audio": "tu_buwcs_tranh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quả chanh",
+          "audio": "tu_quar_chanh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đấu tranh",
+          "audio": "tu_ddaaus_tranh",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tieengs_keeu",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tiếng kêu",
+          "audio": "tu_tieengs_keeu",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kiêu căng",
+          "audio": "tu_kieeu_cawng",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kêu ca",
+          "audio": "tu_keeu_ca",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vaang_lowif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vâng lời",
+          "audio": "tu_vaang_lowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vân gỗ",
+          "audio": "tu_vaan_goox",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nước chanh",
+          "audio": "tu_nuwowcs_chanh",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddown_sow",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đơn sơ",
+          "audio": "tu_ddown_sow",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "xơ mướp",
+          "audio": "tu_xow_muwowps",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nước chảy",
+          "audio": "tu_nuwowcs_chayr",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddeem_ngayf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đêm ngày",
+          "audio": "tu_ddeem_ngayf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đem đi",
+          "audio": "tu_ddem_ddi",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bếp lửa",
+          "audio": "tu_beeps_luwar",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddenf_sangs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đèn sáng",
+          "audio": "tu_ddenf_sangs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lần lữa",
+          "audio": "tu_laanf_luwax",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ngọn lửa",
+          "audio": "tu_ngonj_luwar",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

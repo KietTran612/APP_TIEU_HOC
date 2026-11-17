@@ -1,0 +1,846 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b407",
+  "book": "tv2_t2_2002",
+  "lesson_no": 407,
+  "type": "tap_chep_chinh_ta",
+  "title": "Ông bác sĩ già – Một buổi đi thăm đoàn địa chất",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      97,
+      98
+    ],
+    "scan_file": "049",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Ghép chữ, điền chỗ trống làm bằng chạm thẻ; thêm chữ: bé nói cùng bố mẹ; cặp từ so sánh thành thẻ chạm để nghe. Dấu \"≠\" thay bằng dấu phẩy."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[3]",
+        "note": "ghép \"suốt đêm\", \"trong suốt\" do app chọn"
+      },
+      {
+        "where": "part1[4]",
+        "note": "ghép \"khuôn mặt trái xoan\" do app chọn"
+      },
+      {
+        "where": "part1[5]",
+        "note": "đáp án cứu/kíu theo chính tả chuẩn (sách không in đáp án)"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án mặt/mặc theo chính tả chuẩn (sách không in đáp án)"
+      },
+      {
+        "where": "part1[17]",
+        "note": "chữ in mờ: app đọc là \"đĩnh đạc\" (cặp hỏi/ngã)"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Ông bác sĩ già",
+      "audio": "cau_b407_01",
+      "labels": [
+        "Nghe đọc"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: \"Đêm ấy... của ông\".",
+      "audio": "cau_b407_02",
+      "labels": [
+        "Phần này con viết vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "dậy",
+          "audio": "tieng_daayj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "suốt",
+          "audio": "tieng_suoots",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "khuôn",
+          "audio": "tieng_khuoon",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "Vân",
+          "audio": "tieng_vaan",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trắng",
+          "audio": "tieng_trawngs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cứu",
+          "audio": "tieng_cuwus",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "mặt",
+          "audio": "tieng_mawtj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vội vã",
+          "audio": "tu_vooij_vax",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "suốt",
+      "audio": "tieng_suoots",
+      "items": [
+        {
+          "text": "suốt đêm",
+          "audio": "tu_suoots_ddeem",
+          "part": "đêm",
+          "role": "after"
+        },
+        {
+          "text": "trong suốt",
+          "audio": "tu_trong_suoots",
+          "part": "trong",
+          "role": "before"
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "khuôn mặt",
+      "audio": "tu_khuoon_mawtj",
+      "items": [
+        {
+          "text": "khuôn mặt trái xoan",
+          "audio": "tu_khuoon_mawtj_trais_xoan",
+          "part": "trái xoan",
+          "role": "after"
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "cứu",
+        "kíu"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "cấp cứu",
+          "audio": "tu_caaps_cuwus",
+          "answer": "cứu",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "nghiên cứu",
+          "audio": "tu_nghieen_cuwus",
+          "answer": "cứu",
+          "hl": [
+            {
+              "s": 7,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "ngỗng kêu kíu kíu",
+          "audio": "tu_ngoongx_keeu_kius_kius",
+          "answer": "kíu",
+          "hl": [
+            {
+              "s": 10,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "mặt",
+        "mặc"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "rửa mặt",
+          "audio": "tu_ruwar_mawtj",
+          "answer": "mặt",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "ăn mặc gọn gàng",
+          "audio": "tu_awn_mawcj_gonj_gangf",
+          "answer": "mặc",
+          "hl": [
+            {
+              "s": 3,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Một buổi đi thăm đoàn địa chất",
+      "audio": "cau_b407_03",
+      "labels": [
+        "So sánh"
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đèo cao, rừng thẳm.",
+      "audio": "cau_b407_04",
+      "items": [
+        {
+          "text": "Đèo",
+          "audio": "tieng_ddeof",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cao",
+          "audio": "tieng_cao",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rừng",
+          "audio": "tieng_ruwngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "thẳm",
+          "audio": "tieng_thawmr",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Có quãng phải vượt qua rừng song thân lởm chởm gai nhọn.",
+      "audio": "cau_b407_05",
+      "items": [
+        {
+          "text": "Có",
+          "audio": "tieng_cos",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "quãng",
+          "audio": "tieng_quangx",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "phải",
+          "audio": "tieng_phair",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vượt",
+          "audio": "tieng_vuwowtj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "qua",
+          "audio": "tieng_qua",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rừng",
+          "audio": "tieng_ruwngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "song",
+          "audio": "tieng_song",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "thân",
+          "audio": "tieng_thaan",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lởm",
+          "audio": "tieng_lowmr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chởm",
+          "audio": "tieng_chowmr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "gai",
+          "audio": "tieng_gai",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nhọn",
+          "audio": "tieng_nhonj",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Song đan chằng chịt.",
+      "audio": "cau_b407_06",
+      "items": [
+        {
+          "text": "Song",
+          "audio": "tieng_song",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đan",
+          "audio": "tieng_ddan",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chằng",
+          "audio": "tieng_chawngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chịt",
+          "audio": "tieng_chitj",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Con chó trắng khi leo tới đỉnh núi, toàn thân nó ướt đẫm.",
+      "audio": "cau_b407_07",
+      "items": [
+        {
+          "text": "Con",
+          "audio": "tieng_con",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chó",
+          "audio": "tieng_chos",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trắng",
+          "audio": "tieng_trawngs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "khi",
+          "audio": "tieng_khi",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "leo",
+          "audio": "tieng_leo",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tới",
+          "audio": "tieng_towis",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đỉnh",
+          "audio": "tieng_ddinhr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "núi",
+          "audio": "tieng_nuis",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "toàn",
+          "audio": "tieng_toanf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "thân",
+          "audio": "tieng_thaan",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nó",
+          "audio": "tieng_nos",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ướt",
+          "audio": "tieng_uwowts",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đẫm",
+          "audio": "tieng_ddaamx",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: các câu trên.",
+      "audio": "cau_b407_08",
+      "labels": [
+        "Phần này con viết vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "quãng",
+          "audio": "tieng_quangx",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chằng chịt",
+          "audio": "tu_chawngf_chitj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lởm chởm",
+          "audio": "tu_lowmr_chowmr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "toàn",
+          "audio": "tieng_toanf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đẫm",
+          "audio": "tieng_ddaamx",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rừng",
+          "audio": "tieng_ruwngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "song",
+          "audio": "tieng_song",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đan",
+          "audio": "tieng_ddan",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ướt",
+          "audio": "tieng_uwowts",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đỉnh",
+          "audio": "tieng_ddinhr",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Phát âm phân biệt các cặp từ ngữ sau",
+      "audio": "cau_b407_09",
+      "labels": []
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "rừng núi",
+          "audio": "tu_ruwngf_nuis",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dừng lại",
+          "audio": "tu_duwngf_laij",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cây song",
+          "audio": "tu_caay_song",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "làm xong bài",
+          "audio": "tu_lamf_xong_baif",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "đan áo len",
+          "audio": "tu_ddan_aos_len",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đang làm việc",
+          "audio": "tu_ddang_lamf_vieecj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ướt đẫm",
+          "audio": "tu_uwowts_ddaamx",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ước mơ",
+          "audio": "tu_uwowcs_mow",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "quãng đường đi",
+          "audio": "tu_quangx_dduwowngf_ddi",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "quảng trường",
+          "audio": "tu_quangr_truwowngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đỉnh núi",
+          "audio": "tu_ddinhr_nuis",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đĩnh đạc",
+          "audio": "tu_ddinhx_ddacj",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "b) Thêm chữ thích hợp vào cặp từ sau đây.",
+      "audio": "hoi_b407_01",
+      "rows": [
+        {
+          "text": "... chằng chịt, ... chăn len.",
+          "audio": "cau_b407_10"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_suoots_ddeem",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "suốt đêm",
+          "audio": "tu_suoots_ddeem",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trong suốt",
+          "audio": "tu_trong_suoots",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trái xoan",
+          "audio": "tu_trais_xoan",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_caaps_cuwus",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cấp cứu",
+          "audio": "tu_caaps_cuwus",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nghiên cứu",
+          "audio": "tu_nghieen_cuwus",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kíu kíu",
+          "audio": "tu_kius_kius",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ruwar_mawtj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "rửa mặt",
+          "audio": "tu_ruwar_mawtj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ăn mặc",
+          "audio": "tu_awn_mawcj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cấp cứu",
+          "audio": "tu_caaps_cuwus",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ruwngf_nuis",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "rừng núi",
+          "audio": "tu_ruwngf_nuis",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dừng lại",
+          "audio": "tu_duwngf_laij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cây song",
+          "audio": "tu_caay_song",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddan_aos",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đan áo",
+          "audio": "tu_ddan_aos",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đang làm",
+          "audio": "tu_ddang_lamf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ướt đẫm",
+          "audio": "tu_uwowts_ddaamx",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quangx_dduwowngf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quãng đường",
+          "audio": "tu_quangx_dduwowngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quảng trường",
+          "audio": "tu_quangr_truwowngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đỉnh núi",
+          "audio": "tu_ddinhr_nuis",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}
