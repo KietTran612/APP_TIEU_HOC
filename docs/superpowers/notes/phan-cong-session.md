@@ -1,7 +1,7 @@
 # Phân công session — dự án "Bờ A Ba"
 
 Bảng này do session điều phối (root) giữ. Cập nhật mỗi khi tạo session mới, giao việc lớn, hoặc một mảng việc xong.
-Cập nhật lần cuối: 10/11/2026 (tạm dừng, chuyển máy — xem CHUYEN-MAY-MOI.md). Lịch sử việc đã xong: [lich-su-cong-viec.md](lich-su-cong-viec.md). Quy trình chuẩn và cách giải vấn đề khó: [QUY-TRINH-LAM-VIEC.md](../../../QUY-TRINH-LAM-VIEC.md).
+Cập nhật lần cuối: 17/11/2026. Từ 17/11 các session làm theo kế hoạch hoàn thiện 4 cuốn: [2026-11-17-hoan-thien-4-cuon.md](../plans/2026-11-17-hoan-thien-4-cuon.md). Lịch sử việc đã xong: [lich-su-cong-viec.md](lich-su-cong-viec.md). Quy trình chuẩn và cách giải vấn đề khó: [QUY-TRINH-LAM-VIEC.md](../../../QUY-TRINH-LAM-VIEC.md).
 
 ## Nguyên tắc
 
@@ -31,6 +31,8 @@ Cập nhật lần cuối: 10/11/2026 (tạm dừng, chuyển máy — xem CHUYE
 | [L2] Làm SGK Tiếng Việt 2 tập 1 | `local_8c04ba54-8b7d-4491-97c5-f8b6526afa73` | Nội dung, âm thanh, màn mới, đóng gói TV2 tập 1 | Xong: nội dung 133 mục và âm thanh 3.321/3.321 mã, đã đo và sửa hỏi, ngã (b26949d, 379aeb7); chờ chủ dự án nghe (danh sách ở ghi chú tiếp tục mục 1b) |
 | [L2] Vẽ tranh Tiếng Việt 2 tập 1 | `local_be5a6177-2125-4c96-8ac1-da797a8751f8` | Tranh ChatGPT cho TV2 tập 1 | Xong: đủ 4 đợt, 57 tranh và kí hiệu giải nghĩa (447cf3e, d239be1, d7bbff2, 957e711); chờ duyệt |
 | [L2] Tranh động Tiếng Việt 2 tập 1 | `local_d1b0f2bf-9813-44de-8419-c1b19596eb10` | Clip Flow cho TV2 tập 1 | Xong 57/57 clip (28fe7be, a0662f8, d553b83); chờ duyệt |
+| [L2T2] Làm SGK Tiếng Việt 2 tập 2 | `local_7211e4a4-03f2-4c19-92c6-70263649b8cb` | Nội dung, âm thanh, đóng gói TV2 tập 2 (`tv2_t2_2002`, "Bé tập đọc 4") | Mở 17/11: sắp lại trang scan, mục lục, spec và plan theo mẫu TV2 tập 1 |
+| [L2T2] Vẽ tranh / Tranh động Tiếng Việt 2 tập 2 | (chưa mở) | Tranh ChatGPT; clip Flow | Mở khi session nội dung gửi danh sách tranh đợt đầu |
 | [Chung] UI và hiệu ứng | `local_98b994e9-1559-4920-b85d-4c3bcf3a5892` | Giao diện, hiệu ứng, màn mở đầu, Cài đặt, tỷ lệ màn hình | Tủ sách xong tới 916a3ca (chọn quyển, 3 bìa mới, tên "Bé tập đọc 1/2/3"); chờ duyệt bìa và "test all" |
 | [Chung] Refactor đọc dữ liệu | `local_1590fb2c-d64a-4465-b148-58ea493f67a0` | Cách nạp dữ liệu, chuẩn bị Addressables | Xong 4/11; nghỉ |
 
