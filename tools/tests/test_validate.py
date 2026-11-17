@@ -837,8 +837,12 @@ class CliTest(unittest.TestCase):
         self.assertIn("OK", out.getvalue())
 
     def run_cli(self, issues, argv=("validate",)):
+        # Không so media thật trên máy với gói (khoá trỏ vào chỗ không có): kết quả không phụ thuộc máy chạy test.
+        # Cảnh báo media khác gói đã có test riêng ở test_media_lock.
         out = io.StringIO()
-        with mock.patch.object(cli, "validate_all", return_value=issues) as fake, redirect_stdout(out):
+        with tempfile.TemporaryDirectory() as tmp, \
+                mock.patch.object(cli, "MEDIA_LOCK", Path(tmp) / "khong_co_media_lock.json"), \
+                mock.patch.object(cli, "validate_all", return_value=issues) as fake, redirect_stdout(out):
             code = cli.main(list(argv))
         return code, out.getvalue().splitlines(), fake
 
