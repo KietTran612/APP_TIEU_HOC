@@ -9,7 +9,6 @@
     <path d="M10 22 Q 90 8 175 20 T 345 20 T 515 20 T 660 19" fill="none" stroke="#2B2621" stroke-width="2.5" stroke-dasharray="7 7"/>
   </svg>
   <div id="beads"></div>
-  <div class="chick" id="token" style="width:34px;height:34px;border-radius:50%;background:#EF9D4F;border:1.5px solid #2B2621;overflow:hidden"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_chung_ga_con.png"></div>
   <img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_chung_hoa_be_ngoan.png" style="position:absolute;left:912px;top:1px;width:34px;height:34px">
   <div class="mark" style="left:215px;top:4px">1</div>
 
@@ -41,10 +40,9 @@
   const host = document.getElementById('beads');
   pts.forEach((p, i) => {
     const d = document.createElement('div');
-    const s = i === 5 ? 28 : 20;
+    const s = i === 5 ? 30 : 20;
     d.style.cssText = `position:absolute;left:${250 + p.x - s/2}px;top:${p.y - s/2}px;width:${s}px;height:${s}px;border-radius:50%;border:1.5px solid #2B2621;background:${i < 5 ? '#2F8C9B' : i === 5 ? '#EF9D4F' : '#FBF6E9'}`;
     host.appendChild(d);
   });
-  const t = document.getElementById('token'); t.style.left = (250 + pts[5].x - 17) + 'px'; t.style.top = (pts[5].y - 17) + 'px';
 </script>
 </body></html>

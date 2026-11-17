@@ -1,6 +1,6 @@
 # Nâng cấp UI toàn app theo nghiên cứu — thiết kế (17/11/2026)
 
-Trạng thái: **chờ root soát, chủ dự án xem ảnh mẫu**. Chưa code.
+Trạng thái: **root duyệt 17/11 (thay chủ dự án), kèm 7 chỉnh sửa đã ghi vào spec** (đánh dấu "Root 17/11"). Làm theo đợt, root kiểm từng đợt.
 
 Ảnh mẫu (khung 2400×1080, vẽ bằng HTML với tranh, phông, màu thật của app): thư mục [2026-11-17-nang-cap-ui/](2026-11-17-nang-cap-ui/). Số đỏ trên ảnh khớp số mục trong spec. Chụp lại ảnh mẫu: `sh 2026-11-17-nang-cap-ui/render.sh <tên>` (Edge chạy ngầm, hồ sơ riêng).
 
@@ -59,7 +59,7 @@ Chủ dự án muốn dựa trên nghiên cứu. Bốn mục tiêu:
 
 1. **Con đường bài học thay chấm tiến độ.**
    - Các hạt to (40 đơn vị, hạt đang học 56) xếp trên đường nét đứt hơi lượn, nằm gọn trong dải trên (70 ở khung rộng, rộng hơn ở 4:3). Hạt đã qua xanh, hạt đang học cam, hạt chưa tới giấy sáng.
-   - Hạt đang học mang mặt gà con (khoảng 64, thay cho hạt cam) và nhảy sang hạt sau khi qua bước. Cuối đường là bông hoa của Sổ bé ngoan.
+   - Hạt đang học là hạt cam to hơn (56), nhún nhẹ; qua bước thì hạt cam chuyển sang hạt sau. **Không có gà con trên đường**: màn học chỉ có một gà con, ở dải bên (Root 17/11, N1). Cuối đường là bông hoa của Sổ bé ngoan.
    - Bài quá 20 bước thì bỏ hạt, chỉ còn đường và gà con đi trên đó (thay thanh tiến độ hiện nay).
    - Không chạm được, không làm bé chờ: gà con nhảy song song với lật trang.
    - Lý do: N3, N7, N10.
@@ -69,18 +69,19 @@ Chủ dự án muốn dựa trên nghiên cứu. Bốn mục tiêu:
    - Mũi tên chỉ vào thẻ đang đọc: không làm ở đợt 1 (cần mỗi loại bước báo thẻ đang đọc); để sau, thêm dần cho bước từ khoá, tranh.
    - Đúng hay sai vẫn giữ phản ứng hiện có (Cheer, Ponder).
    - Lý do: N1, N4.
-3. **Nhắc khi bé ngồi im.** Bộ đếm theo bước, tính từ lần chạm cuối hoặc từ lúc giọng đọc dừng.
-   - Sau **8 giây**: gà con nhún và đọc lại lời dẫn của bước.
-   - Sau **16 giây**: bàn tay gợi ý chỉ vào việc cần làm.
-     - Phần 1: chỉ nút Tiếp. Nếu bước cần chạm vào nội dung, chỉ vào nội dung.
-     - Phần 2: chỉ nút Nghe lại, **không** chỉ đáp án, để không làm hộ bé.
+3. **Nhắc khi bé ngồi im.** Bộ đếm theo bước, tính từ lần chạm cuối hoặc từ lúc giọng đọc dừng. Hai loại bước (Root 17/11):
+   - **Bước bấm chọn và mọi lượt Phần 2** (bước cần chạm, chọn, kéo vào nội dung mới xong):
+     - sau **12 giây**: gà con nhún và đọc lại lời dẫn của bước;
+     - sau **24 giây**: bàn tay gợi ý. Phần 1 chỉ vào nội dung cần chạm (hoặc nút Tiếp nếu bước đã xong); Phần 2 chỉ nút Nghe lại, **không** chỉ đáp án, để không làm hộ bé.
+   - **Bước bé tự đọc** (câu, đọc cả bài, đọc thêm, học thuộc lòng, bài đọc dài lớp 2; nói chung là bước chỉ đọc rồi bấm Tiếp): **không** đọc lại lời dẫn, để không cắt ngang lúc bé đang đọc; chỉ hiện bàn tay chỉ nút Tiếp (hoặc dấu tích) sau **30 giây**.
+   - Mọi ngưỡng là hằng số ở một chỗ, có test. Bước tự khai báo loại của mình (mặc định: bước tự đọc nếu không cần chạm nội dung).
    - Mỗi bước nhắc tối đa 2 lần, rồi thôi.
    - Bất kỳ lần chạm nào cũng xoá nhắc. Không nhắc khi giọng đọc đang chạy.
    - Lý do: N4.
 4. **Nội dung to hơn.** Nâng mức phóng to tối đa của khung bước học (FitBox) khi còn chỗ, để tranh và chữ chiếm phần lớn khung. Rà từng loại bước bằng ảnh chụp, loại nào không đẹp thì giữ mức cũ. Lý do: N1, chữ và tranh luôn nổi nhất.
 5. **Nút của bé to hơn trên điện thoại.**
    - "Điện thoại" là khung rộng có tỉ lệ ≥ 1,9 (20:9, 19,5:9). Máy tính bảng 16:10 và 4:3 giữ như cũ (đã khoảng 2 cm).
-   - Nút Tiếp, Nghe lại hiện to 180 (hết dải bên 200), vùng nhận chạm phủ cả ô của nút trong dải bên tới mép màn (khoảng 200×260, tức 13×16 mm), không chồng vùng chạm nút khác, không vào khung bước học.
+   - Nút Tiếp, Nghe lại hiện to 180–220 (theo chỗ trong dải bên), vùng nhận chạm rộng hơn hình nút nhưng **chừa ít nhất 48 đơn vị tới mép dưới và mép bên** (bé hay tì cổ tay lên mép máy, Sesame; Root 17/11), không chồng vùng chạm nút khác, không vào khung bước học. Quy tắc 48 áp dụng cả nút "Học tiếp" ở con đường bài học.
    - Thẻ đáp án nằm trong khung bước học đã phóng (khoảng ×1,4 trên điện thoại, thẻ 220×180 thành khoảng 310×250), nên đã đủ; chỉ thêm test đo kích thước sau phóng ≥ 220.
    - Lý do: N2.
 6. **Tiếng động nhỏ lại khi có giọng đọc.** Âm lượng tiếng động 0,45 hạ xuống 0,2 khi giọng đọc đang chạy. Giọng đọc không bao giờ bị át (ràng buộc của root).
@@ -98,9 +99,10 @@ Chủ dự án muốn dựa trên nghiên cứu. Bốn mục tiêu:
    - lớp 2 theo tuần và chủ điểm.
    Thay cho tiêu đề nhóm của lưới hiện nay.
 3. **Nút "Học tiếp" to** ở góc phải dưới: vào thẳng bài đang học bằng một lần chạm. Nút Ôn lại giữ ở góc trái dưới.
-4. **Cuộn ngang và tự cuộn tới bài đang học.** Mũi tên nhỏ báo còn đường phía sau. Quyển 133 bài vẫn một đường, có biển chặng để định hướng.
-5. **Nền:** cỏ, cây nét mực nhạt 35%, không chạm được (N1). Thanh trên giữ nguyên: Tủ sách, tên quyển, bánh răng, Sổ, Phụ huynh.
-6. **Tủ sách:** gà con đứng cạnh quyển đang học thay vì đứng ở góc.
+4. **Cuộn ngang và tự cuộn tới bài đang học**, thêm **hai nút mũi tên to (≥ 160) ở hai bên để nhảy một chặng** vì trẻ nhỏ khó cuộn, kéo (NN/g; Root 17/11). Khi mở màn, gà con và mũi tên nhẹ gợi ý hướng vuốt (một lần). Quyển 133 bài vẫn một đường, có biển chặng để định hướng.
+5. **Trạm của lớp 2** (tên bài dài, Root 17/11): trong hình tròn là nhãn ngắn ("Bài 10", hoặc loại bài "Chính tả", "Từ ngữ", "Ngữ pháp", "Tập làm văn") kèm biểu tượng nhỏ theo loại bài; dưới hình tròn là tên bài chữ nhỏ, tối đa 2 dòng, cắt bằng "…". Lớp 1 giữ chữ của bài trong hình tròn. Test LayoutProbe với quyển 133 mục và quyển 130 mục.
+6. **Nền:** cỏ, cây nét mực nhạt 35%, không chạm được (N1). Thanh trên giữ nguyên: Tủ sách, tên quyển, bánh răng, Sổ, Phụ huynh.
+7. **Tủ sách:** gà con đứng cạnh quyển đang học thay vì đứng ở góc.
 
 ### 4.3 Xong bài và Sổ bé ngoan (ảnh mẫu `m4_xong_bai.png`)
 
@@ -118,14 +120,14 @@ Chủ dự án muốn dựa trên nghiên cứu. Bốn mục tiêu:
    |---|---|---|
    | Nhầm rồi tự làm đúng | "Bé tự sửa được rồi, giỏi quá!" | `khen_tu_sua` |
    | Bấm nghe lại | "Bé chịu khó nghe lại, tốt lắm!" | `khen_nghe_lai` |
-   | Làm đúng ngay từ đầu | "Bé đọc to, rõ lắm!" | `khen_doc_ro` |
+   | Làm đúng hết ngay từ đầu | "Bé nghe kĩ, làm đúng hết rồi!" | `khen_nghe_ki` |
    | Mặc định | "Bé học chăm quá!" | `khen_cham` |
 
    Cách chọn (ghi trong lúc học bài, chỉ trong bộ nhớ):
    - "Tự sửa": có ít nhất một lượt phần 2 bé nhầm đúng một lần rồi làm đúng **trước khi** gợi ý hiện (gợi ý hiện từ lần nhầm thứ hai). Lượt có gợi ý thì không tính tự sửa.
    - "Nghe lại": bé chạm nút Nghe lại ở phần 1 hoặc phần 2 ít nhất một lần.
-   - "Đọc rõ": không nhầm lượt nào.
-   - Nhiều điều đúng thì lấy theo thứ tự trên: tự sửa, nghe lại, đọc rõ; còn lại "chăm".
+   - "Nghe kĩ": không nhầm lượt nào. (Không khen "đọc to, rõ" vì app không có micro, không biết bé đọc thế nào; Root 17/11.)
+   - Nhiều điều đúng thì lấy theo thứ tự trên: tự sửa, nghe lại, nghe kĩ; còn lại "chăm".
    Câu khen hiện cả bong bóng chữ lẫn tiếng. Không có câu khen "thông minh". Lý do: N6.
 
 ### 4.4 Chào bé (ảnh mẫu `m3_chao_be.png`)
@@ -152,7 +154,7 @@ Hiện **sau màn Xong bài** khi bé đã học đủ số bài phụ huynh đ�
 4. **Nút "Tạm biệt" to** về màn chọn bé.
    - Dòng chữ nhỏ "Phụ huynh: học thêm" mở khoá phép tính; mở được thì bắt đầu lần học mới và đi tiếp như nút Tiếp của màn Xong bài (bài sau, hoặc Tủ sách nếu hết quyển).
    - Không đếm ngược, không khoá cứng (N9).
-   - Mặc định "Không nhắc" để không đổi cách app chạy hiện nay. Phụ huynh tự bật (xem mục 7).
+   - Mặc định **3 bài**; phụ huynh đổi hoặc tắt ở mục Thời lượng (Root 17/11).
 
 ### 4.6 Phụ huynh (ảnh mẫu `m6_phu_huynh.png`)
 
@@ -182,11 +184,11 @@ Mỗi đợt:
 
 | Đợt | Nội dung | Cần ảnh, tiếng mới | Test chính |
 |---|---|---|---|
-| **1** | Màn học: con đường hạt + gà con trên hạt (4.1.1); gà con bạn học (4.1.2); nhắc khi ngồi im + bàn tay (4.1.3); nút to trên điện thoại (4.1.5); tiếng động nhỏ lại (4.1.6) | Bàn tay `img_ui_tay_chi`: vẽ tạm trước, ChatGPT sau | ProgressPath (số hạt, chế độ đường dài, gà con ở hạt đang học, nằm trong dải trên); IdleNudge (8 s, 16 s, tối đa 2 lần, chạm thì xoá, phần 2 không chỉ đáp án; dùng thời gian giả); khung bước học không nhỏ hơn trước ở mọi khung; vùng chạm Tiếp/Nghe lại ở khung ≥ 1,9 và thẻ đáp án sau phóng ≥ 220, không chồng nhau; âm lượng tiếng động khi có giọng đọc; LayoutProbe mọi khung; smoke một bài lớp 1 và một bài lớp 2 |
-| **2** | Con đường bài học (4.2) + nút Học tiếp + gà con ở Tủ sách | Không (dùng sao, hoa, khoá có sẵn) | Thứ tự trạm, trạng thái mở/khoá giống luật cũ (`BookShelf`), Học tiếp mở đúng bài, tự cuộn tới bài đang học, biển chặng theo phần/tuần, quyển 133 bài vừa khung và cuộn được |
+| **1** | Màn học: con đường hạt (4.1.1); gà con bạn học (4.1.2); nhắc khi ngồi im + bàn tay (4.1.3); nút to trên điện thoại (4.1.5); tiếng động nhỏ lại (4.1.6) | Bàn tay `img_ui_tay_chi`: vẽ tạm trước, ChatGPT sau | ProgressPath (số hạt, chế độ đường dài, hạt đang học, nằm trong dải trên, không có gà con trên đường); IdleNudge (bước bấm chọn và Phần 2: 12 s, 24 s; bước tự đọc: chỉ bàn tay sau 30 s; tối đa 2 lần, chạm thì xoá, phần 2 không chỉ đáp án; dùng thời gian giả); khung bước học không nhỏ hơn trước ở mọi khung; vùng chạm Tiếp/Nghe lại ở khung ≥ 1,9 và thẻ đáp án sau phóng ≥ 220, không chồng nhau, chừa ≥ 48 tới mép; âm lượng tiếng động khi có giọng đọc; LayoutProbe mọi khung; smoke một bài lớp 1 và một bài lớp 2 |
+| **2** | Con đường bài học (4.2) + nút Học tiếp + nút lật chặng + trạm lớp 2 + gà con ở Tủ sách | Không (dùng sao, hoa, khoá có sẵn) | Thứ tự trạm, trạng thái mở/khoá giống luật cũ (`BookShelf`), Học tiếp mở đúng bài, tự cuộn tới bài đang học, biển chặng theo phần/tuần, nút lật nhảy đúng một chặng, trạm lớp 2 có nhãn ngắn và tên dưới tối đa 2 dòng, quyển 133 và 130 mục vừa khung (LayoutProbe) và cuộn được, nút chừa ≥ 48 tới mép |
 | **3** | Tem bài học + khen theo cách làm (4.3) | 4 mã tiếng `khen_*` (edge-tts như các mã khác) | Chọn tem đúng tranh từ khoá; bài không tranh thì tem chữ; chọn câu khen theo lượt nhầm hoặc nghe lại; Sổ bé ngoan có tem; tiến độ cũ vẫn mở được |
 | **4** | Chào bé (4.4) | `img_ui_canh_chao` (ChatGPT); `hd_chao_be`, `hd_cung_hoc` | Tiếng chào phát một lần mỗi lần vào màn; thẻ to vừa 7 bé; cảnh nền không nhận chạm |
-| **5** | Phụ huynh (4.6) + Nghỉ mắt (4.5) + ghi thời gian học | `img_ui_nghi_mat` (ChatGPT); `hd_nghi_mat` | Ghi ngày, số bài, số giây (bỏ quãng ngồi im); giữ 14 ngày; nghỉ mắt chỉ sau màn Xong bài, đúng số bài, mặc định không nhắc; học thêm qua khoá phép tính; gợi ý sinh đúng theo loại bài; chữ hay nhầm có loa khi có tiếng; file tiến độ cũ đọc được |
+| **5** | Phụ huynh (4.6) + Nghỉ mắt (4.5) + ghi thời gian học | `img_ui_nghi_mat` (ChatGPT); `hd_nghi_mat` | Ghi ngày, số bài, số giây (bỏ quãng ngồi im); giữ 14 ngày; nghỉ mắt chỉ sau màn Xong bài, đúng số bài, mặc định 3 bài, file cũ lấy 3; học thêm qua khoá phép tính; gợi ý sinh đúng theo loại bài; chữ hay nhầm có loa khi có tiếng; file tiến độ cũ đọc được |
 
 Thứ tự 1 → 5:
 - **Đợt 1** chạm vào mọi lần học và không cần ảnh mới.
@@ -210,7 +212,7 @@ Mỗi đợt dùng được ngay khi xong, không chờ đợt sau.
 ## 7. Dữ liệu tiến độ (đợt 5)
 
 Thêm vào `Profile`; file cũ thiếu trường thì lấy mặc định:
-- `session_lessons`: số nguyên, 0 = không nhắc (mặc định).
+- `session_lessons`: số nguyên, 0 = không nhắc; mặc định 3. File cũ không có trường thì lấy 3 (cần phân biệt "thiếu" với "0": dùng -1 hoặc cờ khi đọc).
 - `days`: danh sách `{date: "yyyy-MM-dd", lessons, seconds}`, giữ 14 ngày gần nhất.
 - `last_lesson_id`: bài học xong gần nhất (nguồn cho "Chơi cùng con").
 
@@ -220,13 +222,13 @@ Không đổi `schema` nếu chỉ thêm trường. Nếu bộ đọc JSON cần
 
 ## 8. Quyết định của mình (chủ dự án xem lại)
 
-1. Thời điểm nhắc ngồi im: 8 s và 16 s, tối đa 2 lần mỗi bước. Phần 2 chỉ chỉ nút Nghe lại, không chỉ đáp án.
-2. Nghỉ mắt mặc định **không nhắc**: phụ huynh bật trong mục Thời lượng. Nếu muốn mặc định 3 bài thì đổi một hằng số.
-3. Nút của bé 220 đơn vị chỉ ở khung rộng (điện thoại). Máy tính bảng đã đủ 2 cm nên giữ.
+1. Nhắc ngồi im: bước bấm chọn và Phần 2 là 12 s và 24 s; bước tự đọc chỉ có bàn tay sau 30 s; tối đa 2 lần mỗi bước. Phần 2 chỉ chỉ nút Nghe lại, không chỉ đáp án. (Root 17/11)
+2. Nghỉ mắt mặc định **3 bài**, phụ huynh đổi hoặc tắt. (Root 17/11)
+3. Nút của bé to hơn chỉ ở khung rộng (điện thoại). Máy tính bảng đã đủ 2 cm nên giữ. Vùng chạm chừa 48 tới mép. (Root 17/11)
 4. Không đọc tên bé trong lời chào, vì tên tự gõ không có tiếng sẵn.
 5. Danh sách bài cuộn ngang một đường dài thay vì chia trang theo chặng.
 6. Tem là tranh từ khoá của bài (thứ tự dự phòng ở 4.3), không cho bé chọn tem, để giữ bé tập trung.
-7. Bong bóng của gà con chỉ có hình loa, không có chữ; mũi tên chỉ thẻ đang đọc để sau đợt 1.
+7. Bong bóng của gà con chỉ có hình loa, không có chữ; mũi tên chỉ thẻ đang đọc để sau đợt 1. Màn học chỉ có một gà con (ở dải bên). (Root 17/11)
 8. Thêm thứ vào màn học không được thu nhỏ khung bước học; nút to hơn chỉ trong dải bên.
 9. Gợi ý "Chơi cùng con" không có tiếng (phụ huynh đọc), cả ở Phụ huynh lẫn Nghỉ mắt.
 
@@ -234,4 +236,5 @@ Không đổi `schema` nếu chỉ thêm trường. Nếu bộ đọc JSON cần
 
 - Tên app vẫn chưa chốt (`UiText.AppTitle`).
 - Tranh `img_ui_tay_chi`, `img_ui_canh_chao`, `img_ui_nghi_mat` cần vẽ bằng ChatGPT (Kiet_1). Bàn tay vẽ tạm trước để đợt 1 không phải chờ.
-- 7 mã tiếng mới: `hd_chao_be`, `hd_cung_hoc`, `hd_nghi_mat`, `khen_tu_sua`, `khen_nghe_lai`, `khen_doc_ro`, `khen_cham`. Tạo bằng quy trình TTS hiện có; root nghe soát.
+- 7 mã tiếng mới: `hd_chao_be`, `hd_cung_hoc`, `hd_nghi_mat`, `khen_tu_sua`, `khen_nghe_lai`, `khen_nghe_ki`, `khen_cham`. Gom danh sách gửi root; root xếp lượt tạo giọng, nhận dạng và soát.
+- Tranh ChatGPT: báo root trước khi mở trình duyệt (Edge dùng chung với Flow và [L2T2]); root xếp lượt.
