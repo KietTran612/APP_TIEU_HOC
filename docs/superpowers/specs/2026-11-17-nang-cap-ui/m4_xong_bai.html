@@ -1,0 +1,40 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Xong bài</title><link rel="stylesheet" href="mau.css">
+<style>
+  .page { position: absolute; top: 80px; width: 360px; height: 440px; background: var(--paper-light); border: 1.5px solid var(--ink); }
+  .slot { width: 88px; height: 88px; border: 1.5px solid var(--teal); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .slot img { width: 72px; height: 72px; }
+  .tape { position: absolute; width: 70px; height: 22px; background: rgba(248,211,166,.85); border: 1px solid rgba(43,38,33,.25); }
+</style></head>
+<body><div class="screen">
+  <div style="position:absolute;left:0;right:0;top:18px;text-align:center;font-size:42px">Giỏi lắm!</div>
+  <!-- Sổ bé ngoan: trang trái là bài vừa học -->
+  <div class="page" style="left:240px;border-radius:12px 0 0 12px">
+    <div style="position:absolute;left:24px;top:20px;font-size:28px">Bài 13 · u ư</div>
+    <div style="position:absolute;left:24px;top:66px;display:flex;gap:14px">
+      <div class="slot"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_chung_hoa_be_ngoan.png"></div>
+      <div class="slot"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_chung_hoa_be_ngoan.png"></div>
+      <div class="slot"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_chung_hoa_be_ngoan.png"></div>
+    </div>
+    <!-- 1. Tem tranh bài vừa học (tranh từ khoá), dán băng giấy, kèm chữ -->
+    <div style="position:absolute;left:70px;top:178px;width:200px;height:200px;background:#fff;border:1.5px solid var(--ink);padding:8px;transform:rotate(-4deg);box-shadow:3px 3px 0 rgba(43,38,33,.2)">
+      <img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_b13_cuwr_taj.png" style="width:182px;height:150px;object-fit:cover">
+      <div style="text-align:center;font-size:26px;margin-top:2px">c<span style="color:var(--teal)">ử</span> tạ</div>
+      <div class="tape" style="left:62px;top:-12px;transform:rotate(3deg)"></div>
+    </div>
+    <div class="mark" style="left:52px;top:166px">1</div>
+  </div>
+  <!-- Trang phải: bài kế tiếp hé lộ, mờ -->
+  <div class="page" style="left:600px;border-radius:0 12px 12px 0">
+    <div style="position:absolute;left:24px;top:20px;font-size:28px;color:var(--muted)">Bài 14 · y</div>
+    <div style="position:absolute;left:24px;top:66px;display:flex;gap:14px">
+      <div class="slot" style="border-color:var(--teal-light)"></div><div class="slot" style="border-color:var(--teal-light)"></div><div class="slot" style="border-color:var(--teal-light)"></div>
+    </div>
+    <div style="position:absolute;left:70px;top:178px;width:200px;height:200px;border:2px dashed var(--locked-ink);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--locked-ink)">Tem bài sau</div>
+  </div>
+  <!-- 2. Khen cách bé làm, có giọng đọc (mã mới khen_qua_trinh_*) -->
+  <div class="chick" style="left:880px;top:250px;width:150px;height:150px"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_chung_ga_con.png"></div>
+  <div class="bubble tail-down" style="left:850px;top:170px;font-size:24px"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_loa.png">Bé đọc to, rõ lắm!</div>
+  <div class="mark" style="left:835px;top:157px">2</div>
+  <div class="round-btn" style="left:10px;top:450px"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_nha.png"></div>
+  <div class="round-btn big orange" style="left:1080px;top:420px"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_tiep.png"></div>
+</div></body></html>

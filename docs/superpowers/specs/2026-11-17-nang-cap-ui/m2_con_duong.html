@@ -1,0 +1,80 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Con đường bài học</title><link rel="stylesheet" href="mau.css">
+<style>
+  .node { position: absolute; width: 104px; height: 104px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper-light); display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; }
+  .node .t { font-size: 40px; }
+  .node .n { font-size: 17px; color: var(--muted); margin-top: 4px; }
+  .node.done { background: #DCEFEF; }
+  .node.cur { width: 124px; height: 124px; background: var(--orange-light); border-width: 3px; box-shadow: 0 0 0 10px rgba(239,157,79,.25); }
+  .node.lock { background: var(--locked); border-color: var(--locked-ink); color: var(--locked-ink); }
+  .node.lock .n { color: var(--locked-ink); }
+  .flowers { position: absolute; display: flex; gap: 1px; }
+  .flowers img { width: 22px; height: 22px; }
+  .sign { position: absolute; background: var(--paper-light); border: 1.5px solid var(--ink); border-radius: 8px; padding: 6px 14px; font-size: 22px; }
+  .post { position: absolute; width: 4px; background: var(--ink); }
+</style></head>
+<body><div class="screen">
+  <!-- Thanh trên giữ như hiện tại: Tủ sách, tên quyển, bánh răng, Sổ, Phụ huynh -->
+  <div class="round-btn light" style="left:10px;top:10px"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_tu_sach.png"></div>
+  <div style="position:absolute;left:0;right:0;top:22px;text-align:center;font-size:40px">Bé tập đọc 1</div>
+  <div class="round-btn light" style="left:840px;top:10px"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_cai_dat.png"></div>
+  <div class="round-btn light" style="left:930px;top:10px"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_so.png"></div>
+  <div style="position:absolute;left:1020px;top:10px;width:170px;height:80px;border-radius:12px;border:1.5px solid var(--ink);background:var(--teal);color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center">Phụ huynh</div>
+
+  <!-- Đường đi: chặng "Chữ cái và âm", vuốt ngang để xem tiếp -->
+  <svg id="road" style="position:absolute;left:0;top:0" width="1200" height="540">
+    <path id="p" d="M -40 300 C 80 180, 180 180, 260 260 S 420 400, 520 330 S 660 170, 780 240 S 950 420, 1060 330 S 1180 200, 1260 260" fill="none" stroke="#E2D6B8" stroke-width="54" stroke-linecap="round"/>
+    <path d="M -40 300 C 80 180, 180 180, 260 260 S 420 400, 520 330 S 660 170, 780 240 S 950 420, 1060 330 S 1180 200, 1260 260" fill="none" stroke="#2B2621" stroke-width="2" stroke-dasharray="8 10"/>
+  </svg>
+  <!-- Cỏ, cây nét mực rất nhạt: chỉ làm nền, không chạm được -->
+  <svg style="position:absolute;left:0;top:0;opacity:.35" width="1200" height="540" fill="none" stroke="#2B2621" stroke-width="2">
+    <path d="M120 470 l6 -18 l6 18 M132 470 l5 -12 l5 12"/><path d="M640 480 l6 -18 l6 18 M652 480 l5 -12 l5 12"/>
+    <path d="M900 170 q 0 -40 0 -60 M880 120 q 20 -40 40 0 q -20 -30 -40 0" /><path d="M360 160 q 0 -30 0 -50 M342 118 q 18 -34 36 0 q -18 -26 -36 0"/>
+  </svg>
+  <div class="post" style="left:70px;top:140px;height:120px"></div>
+  <div class="sign" style="left:14px;top:110px">Chữ cái và âm</div>
+  <div id="nodes"></div>
+
+  <!-- Gà con đứng ở bài đang học -->
+  <div class="chick" id="chick" style="width:96px;height:96px"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_chung_ga_con.png"></div>
+  <div class="mark" id="m1">1</div><div class="mark" id="m2">2</div>
+
+  <!-- Nút dưới: Ôn lại (trái) và Học tiếp to (phải) -->
+  <div class="round-btn" style="left:10px;top:450px;background:#2D4F57"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_on_lai.png"></div>
+  <div class="pill-btn" style="left:900px;top:440px;height:90px;font-size:36px">Học tiếp <img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_tiep.png"></div>
+  <div class="mark" style="left:885px;top:430px">3</div>
+  <!-- Mũi tên báo còn đường phía sau -->
+  <div style="position:absolute;left:1150px;top:235px;font-size:44px;color:var(--muted)">›</div>
+  <div class="mark" style="left:1160px;top:200px">4</div>
+</div>
+<script>
+  const L = [['o',1],['c',2],['a',3],['` ´',4],['d đ',5],['? ~ .',6],['★',7],['ô ơ',8],['e ê',9]];
+  const path = document.getElementById('p'); const len = path.getTotalLength();
+  const host = document.getElementById('nodes');
+  const cur = 6;
+  L.forEach(([t, n], i) => {
+    const p = path.getPointAtLength(200 + i * 150);
+    const d = document.createElement('div');
+    d.className = 'node ' + (i < cur ? 'done' : i === cur ? 'cur' : 'lock');
+    const s = i === cur ? 124 : 104;
+    d.style.left = (p.x - s / 2) + 'px'; d.style.top = (p.y - s / 2) + 'px';
+    d.innerHTML = t === '★'
+      ? `<img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_chung_sao.png" style="width:52px;height:52px;mix-blend-mode:multiply"><div class="n">Ôn tập</div>`
+      : `<div class="t">${t}</div><div class="n">Bài ${n}</div>`;
+    host.appendChild(d);
+    if (i < cur) {
+      const f = document.createElement('div'); f.className = 'flowers';
+      f.innerHTML = '<img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_chung_hoa_be_ngoan.png">'.repeat(3);
+      f.style.left = (p.x - 34) + 'px'; f.style.top = (p.y + 50) + 'px'; host.appendChild(f);
+    }
+    if (i > cur) {
+      const k = document.createElement('img'); k.src = '../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_khoa.png';
+      k.style.cssText = `position:absolute;width:30px;height:30px;left:${p.x + 26}px;top:${p.y - 52}px`; host.appendChild(k);
+    }
+    if (i === cur) {
+      const c = document.getElementById('chick'); c.style.left = (p.x - 48) + 'px'; c.style.top = (p.y - 150) + 'px';
+      const m = document.getElementById('m1'); m.style.left = (p.x + 60) + 'px'; m.style.top = (p.y - 70) + 'px';
+    }
+    if (i === 1) { const m = document.getElementById('m2'); m.style.left = (p.x + 40) + 'px'; m.style.top = (p.y + 40) + 'px'; }
+  });
+</script>
+</body></html>

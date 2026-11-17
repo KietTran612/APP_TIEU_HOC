@@ -1,0 +1,51 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Phụ huynh</title><link rel="stylesheet" href="mau.css">
+<style>
+  .tab { height: 66px; border-radius: 10px; border: 1.5px solid var(--ink); display: flex; align-items: center; padding: 0 18px; font-size: 24px; background: var(--paper-light); margin-bottom: 10px; }
+  .tab.on { background: var(--teal); color: #fff; }
+  .box { position: absolute; background: var(--paper-light); border: 1.5px solid var(--ink); border-radius: 12px; padding: 14px 18px; }
+  .h { font-size: 24px; margin-bottom: 8px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; background: var(--chip); border-radius: 8px; padding: 4px 10px; font-size: 30px; margin: 0 6px 6px 0; }
+  .chip img { width: 26px; }
+  .bar { width: 34px; background: var(--teal); border-radius: 4px 4px 0 0; }
+  .sel { display: inline-block; border: 1.5px solid var(--ink); border-radius: 8px; padding: 2px 12px; background: #fff; }
+</style></head>
+<body><div class="screen">
+  <div class="round-btn" style="left:10px;top:10px;width:110px;border-radius:12px;font-size:28px;color:#fff">Về</div>
+  <div style="position:absolute;left:0;right:0;top:22px;text-align:center;font-size:40px">Phụ huynh · Bé Na</div>
+  <!-- Cột trái: chọn mục (người lớn, chữ thường) -->
+  <div style="position:absolute;left:20px;top:110px;width:210px">
+    <div class="tab on">Tuần này</div><div class="tab">Chơi cùng con</div><div class="tab">Thời lượng</div><div class="tab">Chú ý, Phụ lục</div>
+  </div>
+  <!-- 1. Tuần này: số bài và phút theo ngày, bài đã học -->
+  <div class="box" style="left:250px;top:110px;width:440px;height:200px">
+    <div class="h">Tuần này: 9 bài · khoảng 70 phút</div>
+    <div style="display:flex;align-items:flex-end;gap:18px;height:100px;margin-left:6px">
+      <div class="bar" style="height:40px"></div><div class="bar" style="height:70px"></div><div class="bar" style="height:0"></div><div class="bar" style="height:55px"></div><div class="bar" style="height:90px"></div><div class="bar" style="height:30px"></div><div class="bar" style="height:0;background:var(--orange)"></div>
+    </div>
+    <div style="display:flex;gap:18px;font-size:16px;color:var(--muted);margin-left:6px"><span style="width:34px">T2</span><span style="width:34px">T3</span><span style="width:34px">T4</span><span style="width:34px">T5</span><span style="width:34px">T6</span><span style="width:34px">T7</span><span style="width:34px">CN</span></div>
+  </div>
+  <div class="mark" style="left:236px;top:98px">1</div>
+  <!-- 2. Chữ hay nhầm có nút nghe -->
+  <div class="box" style="left:250px;top:325px;width:440px;height:195px">
+    <div class="h">Chữ bé hay nhầm (chạm để nghe)</div>
+    <span class="chip"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_loa.png">u</span><span class="chip"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_loa.png">ư</span><span class="chip"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_loa.png">củ từ</span><span class="chip"><img src="../../../../unity/TapDoc/Assets/Content/Resources/images/img_ui_loa.png">cá</span>
+    <div style="font-size:18px;color:var(--muted);margin-top:4px">Ôn lại: bé tự chọn nút ⟳ ở danh sách bài.</div>
+  </div>
+  <div class="mark" style="left:236px;top:313px">2</div>
+  <!-- 3. Gợi ý chơi cùng con, sinh từ bài vừa học -->
+  <div class="box" style="left:710px;top:110px;width:470px;height:250px;font-size:19px;line-height:1.35">
+    <div class="h">Chơi cùng con hôm nay</div>
+    • Tìm trong nhà đồ vật có tiếng chứa <b>u</b>, <b>ư</b> (bài 13).<br>
+    • Con đọc "cử tạ", bố mẹ làm động tác.<br>
+    • Viết chữ <b>ư</b> lên khay muối, đố nhau.<br>
+    <div style="font-size:17px;color:var(--muted);margin-top:6px">Học cùng con giúp con nhớ lâu hơn học một mình.</div>
+  </div>
+  <div class="mark" style="left:696px;top:98px">3</div>
+  <!-- 4. Thời lượng: số bài mỗi lần, nhắc nghỉ mắt -->
+  <div class="box" style="left:710px;top:375px;width:470px;height:145px;font-size:20px;line-height:1.6">
+    <div class="h">Thời lượng</div>
+    Mỗi lần học: <span class="sel">3 bài ▾</span> rồi gà con rủ nghỉ mắt<br>
+    <span style="font-size:17px;color:var(--muted)">Nghỉ sau khi xong bài, không cắt ngang bài đang học.</span>
+  </div>
+  <div class="mark" style="left:696px;top:363px">4</div>
+</div></body></html>

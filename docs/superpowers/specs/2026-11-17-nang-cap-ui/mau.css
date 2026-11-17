@@ -1,0 +1,34 @@
+/* Ảnh mẫu nâng cấp UI — khung 2400×1080 vẽ ở 1200×540 (1 px CSS = 2 đơn vị canvas app). */
+@font-face { font-family: Andika; src: url("../../../../unity/TapDoc/Assets/Content/Resources/fonts/Andika-Regular.ttf"); }
+:root {
+  --ink: #2B2621; --paper: #F6EEDB; --paper-light: #FBF6E9; --teal: #2F8C9B; --teal-light: #A9D4D6;
+  --orange: #EF9D4F; --orange-light: #F8D3A6; --hint: #F4C54A; --red: #D0453B; --locked: #E9E1CC;
+  --locked-ink: #B5AA93; --chip: #FFEB9E; --muted: #736E66;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1200px; height: 540px; overflow: hidden; background: var(--paper); font-family: Andika, sans-serif; color: var(--ink); }
+.screen { position: relative; width: 1200px; height: 540px; overflow: hidden; background: var(--paper); }
+.screen.tall { width: 1024px; height: 768px; }
+img { display: block; }
+.card { background: var(--paper-light); border: 1.5px solid var(--ink); border-radius: 12px; box-shadow: 5px 5px 0 -1px var(--paper), 5px 5px 0 0 var(--ink); }
+.hatch { box-shadow: 5px 5px 0 0 rgba(43,38,33,.25); }
+.round-btn { position: absolute; width: 80px; height: 80px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--teal); display: flex; align-items: center; justify-content: center; }
+.round-btn img { width: 52px; height: 52px; }
+.round-btn.light { background: var(--paper-light); }
+.round-btn.big { width: 110px; height: 110px; }
+.round-btn.big img { width: 70px; height: 70px; }
+.round-btn.orange { background: var(--orange); }
+.pill-btn { position: absolute; height: 80px; padding: 0 30px; border-radius: 40px; border: 1.5px solid var(--ink); background: var(--orange); display: flex; align-items: center; gap: 14px; font-size: 34px; color: var(--ink); }
+.pill-btn img { width: 50px; height: 50px; }
+.chick { position: absolute; }
+.chick img { width: 100%; height: 100%; object-fit: contain; }
+.bubble { position: absolute; background: var(--paper-light); border: 1.5px solid var(--ink); border-radius: 18px; padding: 8px 16px; font-size: 26px; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.bubble img { width: 34px; height: 34px; }
+.bubble::after { content: ""; position: absolute; width: 16px; height: 16px; background: var(--paper-light); border-right: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+.bubble.tail-down::after { bottom: -9px; left: 40px; transform: rotate(45deg); }
+.bubble.tail-left::after { left: -9px; top: 22px; transform: rotate(135deg); }
+.bubble.tail-right::after { right: -9px; top: 22px; transform: rotate(-45deg); }
+/* Đánh số chú thích (chỉ có trong ảnh mẫu, khớp mục trong spec). */
+.mark { position: absolute; width: 30px; height: 30px; border-radius: 50%; background: var(--red); color: #fff; font-size: 18px; font-weight: bold; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; z-index: 50; font-family: Arial, sans-serif; }
+.caption { position: absolute; left: 0; right: 0; bottom: 0; height: 0; }
+.faint { opacity: .5; }
