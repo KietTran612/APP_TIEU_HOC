@@ -425,3 +425,19 @@ Root đều đã xem trước và phân xử.
 - `/u/3`: 50, nạp lại hằng ngày lúc 13:44.
 - `/u/4`: 50, đặt lại 29/11.
 - `/u/6`: 50, đặt lại 1/12.
+
+## 14. Kết quả ngày 17/11 (/u/2, dự án cde23b95)
+
+Commit fff836d (chỉ dòng của L1, qua chỉ mục tạm). Lần tạo cuối 17:08:42. Sáng 11:44–12:23, chiều 13:45–17:08; giữa trưa dừng vì hết hạn mức Claude.
+
+- **20 clip cho_duyet** (ghi chú từng clip trong video_manifest): b87 nhà cao tầng, b137, b87 lẵng bạc (lần 3), b141 (lần 3), b111, b110 quê ngoại, b112, b142 (lần 2), b105 rước đèn, b101, b68, b97 bản đồ (dòng mới), b02, b04, b05, b08 ba lô, b08 quyển vở, b10 tủ, b10 đò, b10 ô tô.
+- **6 clip khong_dat**, phương án cho chủ dự án ghi trong ghi chú: b110 khoan, b114, b136 (đã thử 3 lần); b82 con kênh, b82 học sinh, b105 cầu trượt (đã thử 4 lần, tính cả 13/11).
+- **Kịch bản đã sửa, chưa tạo clip:** b63 rìu và b65 củ lạc thành loop, b31 giữ tư thế lơ lửng giây cuối, b12 bỏ chữ gió. b91 và b33 còn cần khung đầu mới.
+- **Hàng đợi tiếp theo:** b12, b13, b15, b20, b24… theo thứ tự bài, ở scratchpad r3/queue17.json. Khung đầu ChatGPT nằm trong r3/c17 (tên c17_<id>.png, đã tải lên dự án tới b13).
+
+Bài học 17/11:
+- **Khung đầu đặt người ở xa, nhỏ hơn hẳn** thì Veo hay làm chuyển cảnh mờ ở 6–7 s: nền nhạt hoặc mất, người chồng hình. Gặp ở b142 lần 1, b82 ×2, b105 cầu trượt. Thêm câu "the house, the fence … stay clearly drawn in their places at every moment, with the same colours and the same brightness" thì b142 lần 2 và b105 rước đèn đạt.
+- **Đồ vật nhỏ** (cặp, ba lô, khoan): hễ cho một bộ phận cử động (khoá, quai, nắp) là Veo vẽ thêm hoặc làm méo. Loop chỉ cho ánh sáng lướt qua thì đạt, nhưng khá nhạt.
+- **Bản đồ b97:** cho biển gợn sóng thì Veo vẽ lại cả biển, mất đảo, tối cả tranh. Chỉ cho sao Hà Nội sáng lên thì đạt.
+- **"Giữ yên giây cuối" không phải lúc nào cũng được.** b136 (sỏi lơ lửng) và b105 cầu trượt vẫn diễn quá rồi giật về.
+- **Thao tác Flow:** tải nhiều ảnh một lần (tối đa khoảng 8, dưới 10 MB) qua "Upload media". Chọn khung bằng hàm __pick (ô tìm, mục, "Add to prompt"). Nút gửi có thể xê dịch, nên đọc lại toạ độ bằng __sendRect trước khi bấm.
