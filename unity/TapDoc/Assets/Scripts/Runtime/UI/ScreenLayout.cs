@@ -98,7 +98,7 @@ namespace TapDoc
         public static float SideBandFor(Vector2 frame) => IsPhone(frame) ? PhoneSideBand : LessonSideBand;
 
         /// <summary>Dải trên của phần học ở kiểu mép (hàng chấm tiến độ).</summary>
-        public const float WideTopBand = 70f;
+        public const float WideTopBand = 120f; // đường hạt nằm giữa dải, cách mép trên (nâng cấp UI đợt 1, root 17/11)
 
         /// <summary>Lề dưới của phần học ở kiểu mép.</summary>
         public const float WideBottom = 20f;

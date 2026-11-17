@@ -17,6 +17,9 @@ namespace TapDoc
         private bool _advancing;
 
         public LessonFlow Flow { get; private set; }
+
+        /// <summary>Mã bài đang học (phiên Ôn lại là mã của phiên).</summary>
+        internal string LessonId => _lesson?.lesson_id;
         public object CurrentView { get; private set; }
         public Button NextButton { get; private set; }
         public Button ReplayButton { get; private set; }

@@ -189,7 +189,7 @@ namespace TapDoc.Tests
                 var labels = list.GetComponentsInChildren<TMP_Text>().Select(t => t.text).ToList();
                 foreach (var e in index.lessons.Where(e => e.book == book))
                 {
-                    Assert.That(labels, Has.Some.StartsWith(LessonListScreen.LabelOf(e) + "\n"));
+                    Assert.That(labels, Has.Some.StartsWith(LessonListScreen.LabelOf(e)));
                     Assert.IsNotNull(list.ButtonFor(e.lesson_id), $"Không có thẻ bài {e.lesson_id}");
                 }
                 shown += list.LessonCount;

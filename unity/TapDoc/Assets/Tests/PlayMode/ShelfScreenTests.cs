@@ -212,5 +212,21 @@ namespace TapDoc.Tests
             Assert.IsNull(Shelf().CelebratedBookId, "Quyển đã học xong: không rơi khoá lần nữa");
             Assert.AreEqual(ShelfBookState.Locked, Shelf().StateOf(null));
         }
+
+        [UnityTest]
+        public IEnumerator Mascot_StandsByCurrentBook()
+        {
+            // Nâng cấp UI mục 4.2.7: gà con đứng cạnh quyển đang học, không đứng ở góc màn.
+            yield return OpenShelf();
+            CompleteBook(BookAt(0));
+            App.ShowShelf();
+            yield return null;
+            var mascot = Shelf().Mascot;
+            Assert.IsNotNull(mascot);
+            Assert.AreEqual(1, Shelf().GetComponentsInChildren<Mascot>(true).Length, "Một gà con");
+            Assert.AreEqual(ShelfBookState.Current, Shelf().StateOf(BookAt(1)));
+            Assert.AreSame(Shelf().TitleOf(BookAt(1)).transform.parent.parent, mascot.transform.parent,
+                "Gà con nằm ở quyển đang học");
+        }
     }
 }

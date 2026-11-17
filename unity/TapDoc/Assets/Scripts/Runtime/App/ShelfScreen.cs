@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -54,6 +55,11 @@ namespace TapDoc
 
         /// <summary>Quyển vừa mở khoá đang chạy hiệu ứng mở; <c>null</c> khi không có.</summary>
         private readonly Dictionary<string, Image> _arts = new();
+        private readonly Dictionary<string, Transform> _coverRoots = new();
+        private const float MascotOnBook = 120f;
+
+        /// <summary>Gà con (đứng cạnh quyển đang học).</summary>
+        internal Mascot Mascot { get; private set; }
 
         public string CelebratedBookId { get; private set; }
 
@@ -105,10 +111,24 @@ namespace TapDoc
                 AddBook(shelf, index, id, k, state);
             }
 
-            var mascot = Mascot.Create(transform, app.Assets);
-            var mrt = (RectTransform)mascot.transform;
-            mrt.anchorMin = mrt.anchorMax = mrt.pivot = new Vector2(1f, 0f);
-            mrt.anchoredPosition = new Vector2(-Margin, Margin);
+            // Gà con đứng ở góc trên phải của quyển đang học (bản thiết kế nâng cấp UI mục 4.2.7); không có quyển đang
+            // học thì đứng ở góc dưới như trước.
+            var currentCover = _states.Where(p => p.Value == ShelfBookState.Current)
+                .Select(p => _coverRoots.TryGetValue(p.Key, out var c) ? c : null).FirstOrDefault(c => c != null);
+            Mascot = Mascot.Create(currentCover != null ? currentCover.parent : transform, app.Assets, MascotOnBook);
+            var mrt = (RectTransform)Mascot.transform;
+            if (currentCover != null)
+            {
+                mrt.anchorMin = mrt.anchorMax = new Vector2(1f, 1f);
+                mrt.pivot = new Vector2(.75f, .25f);
+                mrt.anchoredPosition = Vector2.zero;
+            }
+            else
+            {
+                mrt.sizeDelta = Vector2.one * Mascot.DefaultSize;
+                mrt.anchorMin = mrt.anchorMax = mrt.pivot = new Vector2(1f, 0f);
+                mrt.anchoredPosition = new Vector2(-Margin, Margin);
+            }
 
             // Quyển đã học xong (bé học lại bài cuối quyển trước) thì không rơi khoá lần nữa.
             if (!string.IsNullOrEmpty(celebrateBookId) && StateOf(celebrateBookId) != ShelfBookState.Done)
@@ -176,6 +196,7 @@ namespace TapDoc
             // Bìa: nút có viền mực, bên trong là ảnh bìa (hoặc nền màu dự phòng).
             var coverGo = new GameObject("Cover", typeof(RectTransform), typeof(Image), typeof(Button), typeof(TapFeedback));
             coverGo.transform.SetParent(item.transform, false);
+            _coverRoots[bookId] = coverGo.transform;
             var crt = (RectTransform)coverGo.transform;
             crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(.5f, 1f);
             crt.sizeDelta = new Vector2(CoverWidth, CoverHeight);

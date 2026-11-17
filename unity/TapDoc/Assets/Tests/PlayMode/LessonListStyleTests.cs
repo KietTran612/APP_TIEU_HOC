@@ -113,17 +113,9 @@ namespace TapDoc.Tests
             foreach (var c in corners)
             {
                 var local = list.Scroll.viewport.InverseTransformPoint(c);
-                Assert.That(local.y, Is.InRange(view.yMin - 1f, view.yMax + 1f), "Thẻ bài đang học nằm trong vùng nhìn");
+                Assert.That(local.x, Is.InRange(view.xMin - 1f, view.xMax + 1f), "Trạm bài đang học nằm trong vùng nhìn");
+                Assert.That(local.y, Is.InRange(view.yMin - 1f, view.yMax + 1f), "Trạm bài đang học nằm trong vùng nhìn");
             }
-        }
-
-        [Test]
-        public void ColumnsFor_Values()
-        {
-            Assert.AreEqual(6, LessonListScreen.ColumnsFor(1440f), "Máy tính bảng: 6 cột như cũ");
-            Assert.AreEqual(10, LessonListScreen.ColumnsFor(2400f));
-            Assert.AreEqual(8, LessonListScreen.ColumnsFor(2017.1f));
-            Assert.AreEqual(6, LessonListScreen.ColumnsFor(1000f), "Không ít hơn 6 cột");
         }
 
         private static Rect CanvasRect(RectTransform rt)
@@ -136,28 +128,41 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
-        public IEnumerator Columns_FollowFrame_AllSizes()
+        public IEnumerator Path_FitsAllSizes()
         {
             UseStubsForMissingAssets(); // chỉ kiểm bố cục; tranh tập 2 chưa nhập không phải điều đang kiểm
-            yield return LoadMainWithProfile(unlockAll: true);
+            yield return LoadMainWithProfile();
             var app = AppRoot.Instance;
             app.Progress.RecordMistake(Ordered()[0], 0);
+            for (var i = 0; i < 6; i++) app.Progress.MarkCompleted(Ordered()[i]);
+            const float gap = ScreenLayout.EdgeGap - .5f;
             foreach (var size in ScreenSizes.All)
             {
                 var rt = ScreenSizes.Apply(app, size);
                 var list = List();
                 yield return null;
                 Canvas.ForceUpdateCanvases();
-                Assert.AreEqual(LessonListScreen.ColumnsFor(app.KidRoot.rect.width), list.Columns, $"{size}: số cột");
-                foreach (var grid in list.Scroll.content.GetComponentsInChildren<GridLayoutGroup>())
-                {
-                    Assert.AreEqual(list.Columns, grid.constraintCount, $"{size}: mọi lưới cùng số cột");
-                }
                 var view = CanvasRect(list.Scroll.viewport);
-                foreach (var b in new[] { list.ShelfButton, list.BookButton, list.ParentButton, list.ReviewButton })
+                var screen = ((RectTransform)app.Canvas.transform).rect;
+                foreach (var b in new[]
+                         {
+                             list.ShelfButton, list.BookButton, list.ParentButton, list.SettingsButton, list.ReviewButton,
+                             list.ContinueButton, list.PrevButton, list.NextButton
+                         })
                 {
-                    Assert.IsFalse(view.Overlaps(CanvasRect((RectTransform)b.transform)), $"{size}: vùng cuộn đè nút {b.name}");
+                    var r = CanvasRect((RectTransform)b.transform);
+                    Assert.IsFalse(view.Overlaps(r), $"{size}: vùng đường đè nút {b.name}");
+                    Assert.GreaterOrEqual(r.xMin - screen.xMin, gap, $"{size}: {b.name} cách mép trái");
+                    Assert.GreaterOrEqual(screen.xMax - r.xMax, gap, $"{size}: {b.name} cách mép phải");
                 }
+                foreach (var b in new[] { list.ReviewButton, list.ContinueButton })
+                {
+                    Assert.GreaterOrEqual(CanvasRect((RectTransform)b.transform).yMin - screen.yMin, gap, $"{size}: {b.name} cách mép dưới");
+                }
+                var mascot = CanvasRect((RectTransform)list.Mascot.transform);
+                Assert.That(mascot.yMax, Is.LessThanOrEqualTo(view.yMax + 1f), $"{size}: gà con trong vùng đường");
+                var station = CanvasRect((RectTransform)list.ButtonFor(list.CurrentLessonId).transform);
+                Assert.That(station.yMin, Is.GreaterThanOrEqualTo(view.yMin - 1f), $"{size}: trạm đang học trong vùng đường");
                 ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.Name}/app_lesson_list.png");
                 LayoutProbe.AssertFits(app.Canvas);
                 ScreenSizes.Reset(app, rt);
@@ -184,14 +189,13 @@ namespace TapDoc.Tests
             yield return null;
             Canvas.ForceUpdateCanvases();
             Assert.AreSame(scroll, list.Scroll, "Đổi cỡ không dựng lại danh sách");
-            Assert.AreEqual(10, list.Columns);
             var corners = new Vector3[4];
             ((RectTransform)list.ButtonFor(target).transform).GetWorldCorners(corners);
             var view = list.Scroll.viewport.rect;
             foreach (var c in corners)
             {
                 var local = list.Scroll.viewport.InverseTransformPoint(c);
-                Assert.That(local.y, Is.InRange(view.yMin - 1f, view.yMax + 1f), "Bài đang xem vẫn nằm trong vùng nhìn sau khi đổi cỡ");
+                Assert.That(local.x, Is.InRange(view.xMin - 1f, view.xMax + 1f), "Bài đang xem vẫn nằm trong vùng nhìn sau khi đổi cỡ");
             }
             ScreenSizes.Reset(app, phone); // rt cũ đã bị Apply huỷ
         }

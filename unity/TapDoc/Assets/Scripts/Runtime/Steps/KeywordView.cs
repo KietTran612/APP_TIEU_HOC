@@ -8,6 +8,9 @@ namespace TapDoc
     /// </summary>
     public class KeywordView : StepViewBase
     {
+        /// <summary>Tranh chiếm từ 5% tới 95% thẻ theo cả hai chiều.</summary>
+        internal static readonly Vector2 PictureFill = new(.05f, .95f);
+
         private Tile _imageTile;
         private Tile _textTile;
 
@@ -22,6 +25,13 @@ namespace TapDoc
                 var offset = hasText ? new Vector2(-280f, 0f) : Vector2.zero;
                 _imageTile = AddTile(string.Empty, size, offset, 68f, sprite);
                 _imageTile.SetSprite(sprite, Step.image);
+                // Thẻ tranh không có chữ: tranh lấp gần hết thẻ (bản thiết kế nâng cấp UI mục 4.1.4).
+                if (_imageTile.ImageBox != null)
+                {
+                    var pic = (RectTransform)_imageTile.ImageBox.transform;
+                    pic.anchorMin = new Vector2(PictureFill.x, PictureFill.x);
+                    pic.anchorMax = new Vector2(PictureFill.y, PictureFill.y);
+                }
                 _imageTile.Tapped += OnTapped;
                 // Thiếu tranh mà vẫn còn thẻ chữ thì bỏ hẳn thẻ tranh trống; tranh không chữ thì giữ để bé còn chạm được.
                 if (sprite == null && hasText) _imageTile.gameObject.SetActive(false);

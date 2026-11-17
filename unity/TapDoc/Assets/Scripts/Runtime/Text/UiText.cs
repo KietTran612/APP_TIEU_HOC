@@ -85,6 +85,11 @@ namespace TapDoc
         public const string NoticeAccept = "Đã hiểu";
         // Tủ sách: chọn quyển.
         public const string Shelf = "Tủ sách";
+        /// <summary>Nút to ở con đường bài học: vào thẳng bài đang học.</summary>
+        public const string ContinueLearning = "Học tiếp";
+        /// <summary>Nút lật con đường về chặng trước / sang chặng sau (tên nút, không hiện chữ).</summary>
+        public const string PrevStage = "Chặng trước";
+        public const string NextStage = "Chặng sau";
         public const string ShelfTitleFormat = "Tủ sách của {0}";
         public const string BookProgressFormat = "Đã học {0}/{1} bài";
         public const string BookDone = "Đã học xong";

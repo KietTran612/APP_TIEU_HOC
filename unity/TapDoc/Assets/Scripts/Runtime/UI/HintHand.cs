@@ -4,13 +4,16 @@ using UnityEngine.UI;
 namespace TapDoc
 {
     /// <summary>
-    /// Bàn tay gợi ý khi bé ngồi im (bản thiết kế nâng cấp UI mục 4.1.3): chóp ngón trỏ chỉ vào giữa đích, tay nằm lệch
-    /// xuống dưới phải và nhún nhẹ. Không nhận chạm. Thiếu ảnh <see cref="SystemIcons.PointHand"/> thì vẽ vòng vàng
-    /// nhấp nháy quanh đích.
+    /// Bàn tay gợi ý khi bé ngồi im (bản thiết kế nâng cấp UI mục 4.1.3): chóp ngón trỏ chạm mép đích từ phía giữa màn,
+    /// thân tay nằm ngoài đích (không che biểu tượng của nút), nhún nhẹ. Không nhận chạm. Thiếu ảnh
+    /// <see cref="SystemIcons.PointHand"/> thì vẽ vòng vàng nhấp nháy quanh đích.
     /// </summary>
     public class HintHand : MonoBehaviour
     {
         public const float Size = 140f;
+
+        /// <summary>Hướng ngón trỏ trong tranh (chỉ lên trái), độ.</summary>
+        private const float ArtPointDegrees = 135f;
 
         private Image _image;
         private bool _hasArt;
@@ -50,14 +53,29 @@ namespace TapDoc
             var rt = (RectTransform)transform;
             var corners = new Vector3[4];
             target.GetWorldCorners(corners);
-            Vector2 center = parent.InverseTransformPoint((corners[0] + corners[2]) / 2f);
+            Vector2 min = parent.InverseTransformPoint(corners[0]), max = parent.InverseTransformPoint(corners[2]);
+            var center = (min + max) / 2f;
             var bounds = parent.rect;
-            // Giữ cả tay trong khung: chóp tay lệch tối đa theo phần tay còn lại.
-            var minX = bounds.xMin + rt.pivot.x * Size;
-            var maxX = bounds.xMax - (1f - rt.pivot.x) * Size;
-            var minY = bounds.yMin + rt.pivot.y * Size;
-            var maxY = bounds.yMax - (1f - rt.pivot.y) * Size;
-            rt.anchoredPosition = new Vector2(Mathf.Clamp(center.x, minX, maxX), Mathf.Clamp(center.y, minY, maxY));
+            if (!_hasArt)
+            {
+                rt.localRotation = Quaternion.identity;
+                rt.anchoredPosition = center;
+            }
+            else
+            {
+                // Tay đến từ phía giữa màn: chóp ngón chạm mép đích trên đường nối tâm đích với tâm màn; thân tay quay
+                // về phía giữa màn nên không che đích, và nằm trong khung.
+                var dir = bounds.center - center;
+                dir = dir.sqrMagnitude < 1f ? new Vector2(-1f, 1f).normalized : dir.normalized;
+                var half = (max - min) / 2f;
+                var reach = Mathf.Min(Mathf.Abs(half.x / (dir.x == 0f ? 1e-4f : dir.x)), Mathf.Abs(half.y / (dir.y == 0f ? 1e-4f : dir.y)));
+                var tip = center + dir * (reach + 6f);
+                var pointing = -dir; // từ tay hướng vào đích
+                var angle = Mathf.Atan2(pointing.y, pointing.x) * Mathf.Rad2Deg - ArtPointDegrees;
+                rt.localRotation = Quaternion.Euler(0f, 0f, angle);
+                rt.anchoredPosition = new Vector2(Mathf.Clamp(tip.x, bounds.xMin + 4f, bounds.xMax - 4f),
+                    Mathf.Clamp(tip.y, bounds.yMin + 4f, bounds.yMax - 4f));
+            }
             transform.SetAsLastSibling();
             gameObject.SetActive(true);
             Pulse.StartOn(transform, .1f, 1f);

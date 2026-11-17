@@ -53,13 +53,30 @@ namespace TapDoc.Tests
             yield return null;
         }
 
+        /// <summary>Khung bao (đã xoay nếu có) của <paramref name="rt"/> trong toạ độ canvas.</summary>
         private static Rect CanvasRect(RectTransform rt)
         {
             var corners = new Vector3[4];
             rt.GetWorldCorners(corners);
             var canvas = (RectTransform)AppRoot.Instance.Canvas.transform;
-            Vector2 min = canvas.InverseTransformPoint(corners[0]), max = canvas.InverseTransformPoint(corners[2]);
+            var min = new Vector2(float.MaxValue, float.MaxValue);
+            var max = new Vector2(float.MinValue, float.MinValue);
+            foreach (var c in corners)
+            {
+                Vector2 p = canvas.InverseTransformPoint(c);
+                min = Vector2.Min(min, p);
+                max = Vector2.Max(max, p);
+            }
             return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
+        }
+
+        /// <summary>Tâm thật của <paramref name="rt"/> (giữa khung, kể cả khi xoay) trong toạ độ canvas.</summary>
+        private static Vector2 CanvasCenter(RectTransform rt)
+        {
+            var corners = new Vector3[4];
+            rt.GetWorldCorners(corners);
+            var canvas = (RectTransform)AppRoot.Instance.Canvas.transform;
+            return canvas.InverseTransformPoint((corners[0] + corners[2]) / 2f);
         }
 
         /// <summary><paramref name="inner"/> nằm trong <paramref name="outer"/> (dung sai làm tròn nửa đơn vị).</summary>
@@ -347,6 +364,9 @@ namespace TapDoc.Tests
                 var kid = CanvasRect(app.KidRoot);
                 var hand = CanvasRect((RectTransform)s.Hand.transform);
                 Assert.IsTrue(Inside(kid, hand), $"{size}: bàn tay trong khung bé");
+                var next = CanvasRect((RectTransform)s.NextButton.transform);
+                Assert.IsFalse(next.Contains(CanvasCenter((RectTransform)s.Hand.transform)),
+                    $"{size}: thân bàn tay nằm ngoài nút Tiếp (không che biểu tượng)");
                 Assert.IsFalse(s.Hand.GetComponent<Image>().raycastTarget, "Bàn tay không chặn chạm");
                 ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.Name}/app_lesson_hint.png");
                 LayoutProbe.AssertFits(app.Canvas);

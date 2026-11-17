@@ -53,7 +53,7 @@ namespace TapDoc.Tests
         }
 
         private static string CardText(string lessonId) =>
-            List().ButtonFor(lessonId).GetComponentInChildren<TMP_Text>().text;
+            List().ButtonFor(lessonId).GetComponentInChildren<TMP_Text>().GetParsedText();
 
         [UnityTest]
         public IEnumerator ThreeSections_ByPart()
