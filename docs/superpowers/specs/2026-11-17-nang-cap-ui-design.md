@@ -134,7 +134,7 @@ Chủ dự án muốn dựa trên nghiên cứu. Bốn mục tiêu:
 
 1. **Gà con chào bằng tiếng.**
    - Gà con to (380 đơn vị) đứng bên trái.
-   - Vào màn chọn bé thì đọc `hd_chao_be`: "Chào bé! Bé nào học hôm nay nào?".
+   - Vào màn chọn bé thì đọc `hd_chao_be`: "Chào bé! Bé chạm vào hình của mình nhé!" (lời dẫn chỉ rõ việc, bé chưa đọc được tên nên chạm vào hình; root 17/11).
    - Chọn bé xong thì đọc `hd_cung_hoc`: "Mình cùng học nhé!".
    - Không đọc tên bé (tên do phụ huynh gõ, không có tiếng sẵn).
    - Lý do: N4.

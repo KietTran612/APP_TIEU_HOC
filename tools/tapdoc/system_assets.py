@@ -31,7 +31,7 @@ SYSTEM_AUDIO: dict[str, str] = {
     "khen_nghe_ki": "Bé nghe kĩ, làm đúng hết rồi!",
     "khen_cham": "Bé học chăm quá!",
     # Lời chào và nghỉ mắt (nâng cấp UI đợt 4–5), nạp không bắt buộc như trên.
-    "hd_chao_be": "Chào bé! Bé nào học hôm nay nào?",
+    "hd_chao_be": "Chào bé! Bé chạm vào hình của mình nhé!",
     "hd_cung_hoc": "Mình cùng học nhé!",
     "hd_nghi_mat": "Bé học giỏi lắm! Mình nghỉ mắt chút nhé.",
 }
