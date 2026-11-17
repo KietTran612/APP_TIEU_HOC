@@ -63,4 +63,5 @@ Gói media mới nhất (746792b, 09/11 sáng) **không có** 4 ảnh dưới đ
 - **Trước khi rời máy cũ:** chạy `python tools/run_unity_media.py pack` (đóng Unity trước), commit `content/manifests/media_lock.json`, đưa gói lên Drive. Trên máy mới, `unpack` rồi kiểm 4 file trên có mặt.
 - Nếu lỡ mất: bìa tải lại từ ChatGPT (project Kiet_1, chat "Tạo tranh bìa sách"; lấy bản **cuối cùng** của mỗi bìa), thu nhỏ 600×800, `python -m tapdoc import-image <file> img_bia_<book_id>`. Biểu tượng Tủ sách sinh lại bằng `python -m tapdoc ui-icons` (không `--force`); lệnh này cũng sinh bìa tạm nếu thiếu bìa — khi đó phải nhập lại bìa thật.
 - Biểu tượng bánh răng `img_ui_cai_dat` đã có trong gói 746792b.
+- **17/11:** thêm bìa `img_bia_tv2_t2_2002.png` ("Bé tập đọc 4": bạn lớp 2 tưới cây non, tay phải cầm bình tưới; `cho_duyet`, dòng danh mục 216e923). Ảnh này chỉ có trên máy hiện tại, cần đưa vào gói media bổ sung. Tủ sách 4 quyển vừa mọi cỡ màn (ShelfScreenTests, BookScreenTests 22/22).
 - Chủ dự án duyệt ảnh: 3 bìa và biểu tượng Tủ sách (hình tạm; có thể vẽ chính thức bằng ChatGPT như các biểu tượng khác).
