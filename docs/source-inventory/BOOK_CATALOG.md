@@ -28,7 +28,7 @@
 | `tv1_t1_1990` | Tiếng Việt 1 – Tập một (Chữ cái và Vần) | 64 | Vụ Giáo dục phổ thông – Bộ Giáo dục; NXB Giáo dục 1990, in lần thứ hai. Biên tập: Phạm Bích Hợp; minh họa: Hồng Kỳ – Phạm Ngọc Tới | Có, tr.123–124 (80 bài) | Có | `toc_verified`; 22 bài và các trang phụ `page_verified` |
 | `tv1_t2_1996` | Tiếng Việt 1 – Tập hai (Vần – Tập đọc) | 72 | Bộ GD&ĐT; NXB Giáo dục; in lần thứ 8, chỉnh lí năm 1994; ghi chú tay "1996" | Có, tr.139–140 | Có | `page_verified` cả 91 mục (5/11/2026); không có Phụ lục bảng chữ cái, dùng của tập 1 |
 | `tv2_t1_2001` | Tiếng Việt 2 – Tập một | 66 | Bộ GD&ĐT; Trịnh Mạnh – Đinh Tấn Ký – Đỗ Quang Lưu; tái bản lần thứ hai mươi | Có, khoảng tr.125–127 (theo tuần, phân môn) | Có | `metadata_verified` |
-| `tv2_t2_2002` | Tiếng Việt 2 – Tập hai | 65 | Mã số 1H202T2; in xong và nộp lưu chiểu tháng 1/2002; bìa sau ghi "Tái bản" | Chưa tìm | Có: in 01/2002 dưới dạng tái bản, trong khi sách lớp 2 mới đến năm 2003 mới dùng | `metadata_verified` |
+| `tv2_t2_2002` | Tiếng Việt 2 – Tập hai | 65 | Bộ GD&ĐT; Trịnh Mạnh – Đinh Tấn Ký – Đỗ Quang Lưu; tái bản lần thứ hai mươi; mã số 1H202T2; in xong và nộp lưu chiểu tháng 1/2002 | Có, tr.122–124 (theo tuần, phân môn) | Có: in 01/2002 dưới dạng tái bản, trong khi sách lớp 2 mới đến năm 2003 mới dùng | `metadata_verified` (130 mục từ mục lục, 17/11/2026) |
 | `truyen_doc_1_2000` | Truyện đọc 1 | 44 | Chưa xem | — | Chưa xác minh | `unverified` |
 | `truyen_doc_2_2001` | Truyện đọc 2 | 61 | Chưa xem | — | Chưa xác minh | `unverified` |
 
@@ -44,7 +44,26 @@
 2. **TV1 T1:** ảnh `041` và `042` bị đảo thứ tự. Ảnh `041` chứa tr.82–83 (bài 61) và lấy từ một bản scan khác (màu giấy, màu mực khác); ảnh `042` chứa tr.80–81 (bài 60). Tính cả hai ảnh này thì đủ trang 0–124.
 3. **TV2 T1:** hai ảnh cùng tên `Trang_29` không trùng trang mà bị đảo thứ tự: `030` là tr.56–57, `029` là tr.58–59 (lấy từ bản scan khác). Các ảnh còn lại theo công thức ảnh `NNN` = tr.`2·NNN−2`, `2·NNN−1`; ảnh `065` là tr.128 và trang trắng. Đủ trang 0–128 (xem 9/11/2026).
    - Sách theo chương trình cũ: mỗi tuần có Tập đọc, Học thuộc lòng, Bài đọc thêm, Chính tả, Từ ngữ, Ngữ pháp, Tập làm văn; **không có Kể chuyện, Tập viết**. 17 tuần, 65 bài đọc (mục lục tuần 16 để trống số bài 59–61), 2 trang câu đố (bài 15, 46), đáp án ở tr.122 "Giải đáp câu đố", mục lục tr.123–128. Kí hiệu mới: [:] giải nghĩa từ. Bài 1 in ảnh chụp Bác Hồ.
-4. **TV2 T2:** thứ tự ảnh bị xáo trộn, mỗi tên `Trang_N` lặp lại 2–3 lần (ví dụ ảnh `001` chứa tr.18–19). Phải sắp lại theo số trang in trên sách.
+4. **TV2 T2:** thứ tự ảnh bị xáo ở đầu sách, mỗi tên `Trang_N` lặp lại 2–3 lần (ví dụ ảnh `001` chứa tr.18–19). Đã sắp lại theo số trang in (17/11/2026, đọc số trang ở chân từng ảnh): **đủ trang 1–125, không trang nào thiếu, không trang nào trùng** (các ảnh cùng tên `Trang_N` chứa các trang khác nhau). Hàm `image_of` trong `tools/lop2/soan_t2/toc_t2.py` làm theo bảng này.
+
+   | Ảnh | Nội dung |
+   |---|---|
+   | `002` | bìa trước (ảnh dọc) |
+   | `005` | mặt trong bìa (trắng) và tr.1: trang tên sách ("Tái bản lần thứ hai mươi") |
+   | `008` | tr.2: "Các kí hiệu dùng trong sách" ([:] chú thích và giải nghĩa, [?] câu hỏi và bài tập, \* dành cho học sinh khá và giỏi), người biên soạn; tr.3: trang chủ điểm **"Thiếu nhi"** |
+   | `010`, `012`, `014`, `016`, `018`, `020`, `022` | tr.4–5, 6–7, 8–9, 10–11, 12–13, 14–15, 16–17 |
+   | `001`, `004`, `007`, `000`, `003`, `006` | tr.18–19, 20–21, 22–23, 24–25, 26–27, 28–29 |
+   | `009`, `011`, `013`, `015`, `017`, `019`, `021`, `023` | tr.30–31, 32–33, 34–35, 36–37, 38–39, 40–41, 42–43, 44–45 |
+   | `024` … `061` | theo công thức ảnh `NNN` = tr.`2·NNN−2`, `2·NNN−1`: tr.46–47 … 120–121 |
+   | `062` | tr.122–123: mục lục |
+   | `063` | tr.124: mục lục (hết); tr.125 trắng |
+   | `064` | bìa sau (ảnh dọc): "Danh mục sách giáo khoa lớp 2", in 210.000 bản, in xong tháng 1/2002 |
+
+   - Sách theo chương trình cũ như tập một: mỗi tuần Tập đọc, Học thuộc lòng, Bài đọc thêm, Chính tả, Từ ngữ, Ngữ pháp, Tập làm văn; không có Kể chuyện, Tập viết, câu đố.
+   - **Tuần 18–33** (16 tuần, không phải 19–35), **66 bài đọc** đánh số 1–66 (số lại từ 1, không nối số của tập một). Tuần 20, 21, 22 có 5 bài đọc; tuần 24 có 3; các tuần khác 4. Mục lục in chung một dòng "12–13", "17–18", "22–23" cho hai Bài đọc thêm, nhưng trên trang mỗi số là một bài riêng có đầu bài riêng.
+   - **Chủ điểm** in trên trang bìa chủ điểm (trang tranh, không thành bài): tr.3 "Thiếu nhi" (tuần 18–22), tr.43 "Nhân dân ta" (tuần 23–30), tr.100 "Bác Hồ" (tuần 31–33).
+   - Bài 10 (Huy Cận) in **"Trăng sao cũng hóa xú người"** (chữ U không râu, dấu sắc) ở cả đầu bài, câu thơ, câu hỏi 1 và mục lục; nghĩa đúng là "xứ người". Cách ghi trong app: xem spec TV2 tập 2.
+   - Nội dung tr.4–121; mục lục tr.122–124.
 5. **TV1 T1 (1990) và TV1 T2 (chỉnh lí 1994)** thuộc hai lần in khác nhau. Số bài nối tiếp nhau (80 → 81), nhưng chưa kiểm xem bản chỉnh lí 1994 có sửa nội dung Tập 1 hay không.
 6. **TV1 T2:** công thức trang đôi (ảnh `NNN` chứa trang `2·NNN−2` và `2·NNN−1`) đúng cho cả 72 ảnh, đã đối chiếu từng trang khi chép bài (5/11/2026). Tr.2 có thêm kí hiệu **[?] Câu hỏi**. Tr.138 "Trả lời câu đố" là đáp án của ba trang Câu đố (tr.102, 115, 128). Mục lục ghi bài 34 là "Chị Võ Thị Sáu", trang 133 in "Võ Thị Sáu".
 
