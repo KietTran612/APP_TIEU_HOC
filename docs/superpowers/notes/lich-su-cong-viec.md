@@ -10,6 +10,30 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ---
 
+## 18/11/2026
+
+- **[L2T2] nội dung — âm thanh TV2 tập 2 mục 305–370 (đợt 1–2):**
+  - Đủ 1646 mã cho_duyet (2de90da); không còn mã nào chờ tạo lại.
+  - Có 88 mã cài bản thử root chọn:
+    - 14 mã sửa cao độ hỏi/ngã ("tả", "bão", "ngã", "hải", "bảo", "ngủ"; bản chậm −25% hoặc ghép);
+    - 74 mã nhóm "làm lại".
+  - Root kiểm trước khi commit:
+    - dựng lại index tạm, bảng thay đổi trùng nhau;
+    - 33 dòng và 4 cách đọc riêng chủ dự án sửa dở vẫn nằm ngoài commit;
+    - 74 mp3 khớp từng byte.
+  - Công cụ:
+    - đo cao độ không còn coi "(khổ 2)" là cuối cụm (1fd37f9);
+    - bản thử "cham=N" và ghép theo danh sách phần (b059273).
+  - Test: 15 test lớp 2 đạt.
+- **Root — soát âm TV2 tập 2:**
+  - Nhận dạng đợt 2 (766 mã): 24 mã ngoặc kép tạo lại hết tiếng chèn.
+  - So giọng NamMinh cho 256 + 181 mã nghi. Chia nhóm: làm lại 193, nghe kỹ 82.
+  - Nhận dạng 364 bản thử: chọn được 74 mã. 119 mã vẫn bị nghe sai ở mọi bản → giữ bản cũ, đưa vào danh sách chủ dự án nghe theo cặp chữ.
+  - Cách làm ghi ở QUY-TRINH §12 (2f5aacb).
+- **Còn dở:**
+  - TV2 tập 2 đợt 3 (371–402) đang tạo giọng; còn đợt 4.
+  - Sửa ngoặc kép cho TV2 tập 1 (~27 mã) và lớp 1 (~4 mã).
+
 ## 17/11/2026
 
 Chủ dự án giao mục tiêu: sản phẩm hoàn chỉnh đủ 4 quyển (TV1 tập 1–2, TV2 tập 1–2), bản Windows, chưa phát hành. Kế hoạch điều phối: [2026-11-17-hoan-thien-4-cuon.md](../plans/2026-11-17-hoan-thien-4-cuon.md) (0b09025, ef43c53, ac88bae, c5e8370).
