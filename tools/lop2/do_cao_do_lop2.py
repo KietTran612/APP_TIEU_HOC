@@ -36,13 +36,15 @@ def lop2(row) -> bool:
 
 
 def phrase_final(text: str, k: int) -> bool:
-    """Tiếng thứ k là tiếng cuối, hoặc ngay sau nó (bỏ khoảng trắng, ngoặc kép) là dấu câu."""
+    """Tiếng thứ k là tiếng cuối, hoặc ngay sau nó (bỏ khoảng trắng, ngoặc kép) là dấu câu. Chữ số đứng ngay sau
+    thì không: bộ đọc đọc liền chữ số thành tiếng ("khổ 2)." → "khổ hai"), dù `tokens` bỏ chữ số."""
     toks = tokens(text)
-    if k == len(toks) - 1:
-        return True
     tok, start = toks[k]
-    rest = nfc(text)[start + len(tok):toks[k + 1][1]]
-    return any(ch in PUNCT for ch in rest)
+    t = nfc(text)
+    rest = t[start + len(tok):toks[k + 1][1] if k + 1 < len(toks) else len(t)]
+    if re.match(r'[\s"]*\d', rest):
+        return False
+    return k == len(toks) - 1 or any(ch in PUNCT for ch in rest)
 
 
 def rise(values) -> float:
