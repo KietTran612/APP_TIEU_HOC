@@ -103,7 +103,7 @@ Theo quy tắc mỗi cuốn có bộ session riêng, cuốn này có 3 session m
 | /u/3 | 50 | mỗi ngày 13:44 | L2 |
 | /u/4 | 50 | 29/11 | L1 |
 | /u/6 | 50 | 1/12 | L1 |
-| /u/1 | 50 | — | L2 |
+| /u/1 | 50 (hết 17/11) | 29/11 hằng tháng | L2 |
 
 Cần khoảng 380 video nên credit thiếu. Chủ dự án chọn **chờ nạp lại**, không mua thêm.
 - Ưu tiên clip của 3 cuốn đang làm; clip TV2 tập 2 làm khi có credit.
