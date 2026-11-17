@@ -239,6 +239,24 @@ class JoinTest(unittest.TestCase):
                     save_settings(path, {**s, "overrides": {"tu_toor_dees": {"join": ["tieng_toor", "tieng_dees"],
                                                                             "join_gap": gap}}})
 
+    def test_doc_piece_in_join(self):
+        # Đợt 3 (17/11): câu hỏi "… có vần ay, ai" ghép phần câu do bộ đọc đọc ("doc:…") với file van_* có sẵn.
+        s, r = settings(), row("hoi_x", "Tìm tiếng có vần ay, ai.", "cau")
+        join = ["doc:Tìm tiếng có vần", "van_ay", ",", "van_ai"]
+        before = signature(effective_params(s, r))
+        s["overrides"]["hoi_x"] = {"join": join}
+        p = effective_params(s, r)
+        self.assertEqual(p.join, tuple(join))
+        self.assertNotEqual(signature(p), before)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "settings.json"
+            save_settings(path, s)
+            self.assertEqual(load_settings(path), s)
+            for bad in (["doc:", "van_ay"], ["doc:   ", "van_ay"], ["doc:Tìm tiếng có vần"],
+                        ["Tìm tiếng có vần", "van_ay"], [",", "doc:Tìm", "van_ay"]):
+                with self.subTest(bad=bad), self.assertRaises(ValueError):
+                    save_settings(path, {**s, "overrides": {"hoi_x": {"join": bad}}})
+
     def test_comma_marker_and_gap(self):
         s, r = settings(), row("cau_x", "bé bá, bà.", "cau")
         s["overrides"]["cau_x"] = {"join": ["tieng_bes", "tieng_bas", ",", "tieng_baf"], "join_gap": 0.06}

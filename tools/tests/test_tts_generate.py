@@ -240,6 +240,37 @@ class JoinGenerateTest(TempCase):
             generate_one(self.r, self.s, FakeEngine(), self.audio, self.prev)
         self.assertEqual(join.call_args.args[1], [0.25])
 
+    def test_doc_piece_read_by_engine_and_joined_in_order(self):
+        # "doc:…" trong join: bộ đọc đọc phần câu (cùng giọng, tốc độ của mã), cắt lặng theo mốc lời, rồi ghép.
+        self.r = row("hoi_x", "Tìm tiếng có vần tổ, dế.", "cau")
+        self.s["overrides"]["hoi_x"] = {"join": ["doc:Tìm tiếng có vần", "tieng_toor", ",", "tieng_dees"],
+                                       "rate": -20}
+        engine = FakeEngine(audio=fake_mp3(1.2), speech_start=0.3, speech_end=0.9)
+        seen = {}
+
+        def fake_join(paths, gaps):
+            seen["names"] = [Path(x).name for x in paths]
+            seen["piece"] = Path(paths[0]).read_bytes()
+            seen["gaps"] = gaps
+            return b"ID3ghep"
+
+        with mock.patch("tapdoc.tts_generate.audio_join.join_files", side_effect=fake_join):
+            result = generate_one(self.r, self.s, engine, self.audio, self.prev)
+        self.assertEqual([(c.doc, c.rate) for c in engine.calls], [("Tìm tiếng có vần", -20)])
+        self.assertEqual(seen["names"][1:], ["tieng_toor.mp3", "tieng_dees.mp3"])
+        self.assertEqual(seen["piece"], trim_mp3_span(fake_mp3(1.2), 0.3, 0.9)[0])
+        self.assertEqual(seen["gaps"], [0.08, 0.25])
+        self.assertEqual((self.audio / "hoi_x.mp3").read_bytes(), b"ID3ghep")
+        self.assertEqual(result["source"], "ghep_tieng")
+        self.assertEqual(result["tts"]["join"], ["doc:Tìm tiếng có vần", "tieng_toor", ",", "tieng_dees"])
+
+    def test_doc_piece_engine_failure_leaves_old_file(self):
+        self.s["overrides"]["tu_toor_dees"] = {"join": ["doc:tổ", "tieng_dees"]}
+        with self.assertRaises(TtsError):
+            generate_one(self.r, self.s, FakeEngine(failures={"tổ"}), self.audio, self.prev)
+        self.assertEqual(self.path.read_bytes(), "bản cũ".encode())
+        self.assertFalse(self.prev.exists())
+
     def test_join_failure_leaves_old_file(self):
         from tapdoc.audio_join import JoinError
         with mock.patch("tapdoc.tts_generate.audio_join.join_files", side_effect=JoinError("hỏng")):

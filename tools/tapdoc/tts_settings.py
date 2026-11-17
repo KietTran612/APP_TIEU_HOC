@@ -89,9 +89,20 @@ def save_settings(path, settings: dict) -> None:
 _JOIN_ID = re.compile(r"[a-z0-9_]+")
 
 
+JOIN_DOC = "doc:"  # phần tử "doc:<chữ>" trong join: bộ đọc đọc chữ này rồi ghép vào (đợt 3, 17/11)
+
+
+def _join_item(v) -> bool:
+    if not isinstance(v, str):
+        return False
+    if v.startswith(JOIN_DOC):
+        return bool(v[len(JOIN_DOC):].strip())
+    return v == "," or bool(_JOIN_ID.fullmatch(v))
+
+
 def _join(value) -> list:
-    """Danh sách ghép: ít nhất hai mã âm thanh; "," (nghỉ dài) chỉ đứng giữa hai mã, không liền nhau."""
-    ok = isinstance(value, list) and all(isinstance(v, str) and (v == "," or _JOIN_ID.fullmatch(v)) for v in value)
+    """Danh sách ghép: ít nhất hai phần (mã âm thanh hoặc "doc:<chữ>"); "," (nghỉ dài) chỉ đứng giữa hai phần."""
+    ok = isinstance(value, list) and all(_join_item(v) for v in value)
     if ok:
         ids = [v for v in value if v != ","]
         ok = (len(ids) >= 2 and value[0] != "," and value[-1] != ","

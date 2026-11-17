@@ -2,14 +2,15 @@
 
 import copy
 import json
-from dataclasses import asdict, dataclass, field
+import tempfile
+from dataclasses import asdict, dataclass, field, replace
 from pathlib import Path
 
 from . import audio_join
 from .importer import _ID_RE, _looks_like_mp3, _without_changed_note, _write_atomic
 from .mp3trim import trim_mp3_span
 from .tts_engine import TtsError, TtsUnavailable
-from .tts_settings import VOICES, differs_from_settings, effective_params, set_override, signature
+from .tts_settings import JOIN_DOC, VOICES, differs_from_settings, effective_params, set_override, signature
 from .viet import tokens
 
 
@@ -69,20 +70,34 @@ def _write_marks(marks_dir, row, p, result, offset) -> None:
     _write_atomic(Path(marks_dir) / f"{row['id']}.json", _json_bytes(data))
 
 
-def _joined(row, p, audio_dir) -> bytes:
-    """Ghép các tiếng trong p.join (cắt lặng, cân âm lượng, nghỉ p.join_gap; "," là nghỉ dài) thành một MP3."""
+def _joined(row, p, audio_dir, engine) -> bytes:
+    """Ghép các phần trong p.join (cắt lặng, cân âm lượng, nghỉ p.join_gap; "," là nghỉ dài) thành một MP3.
+
+    Phần là mã âm thanh đã có, hoặc "doc:<chữ>" để bộ đọc đọc chữ đó (vd. phần câu trước tên vần).
+    """
     ids, gaps = audio_join.plan(p.join, p.join_gap)
-    paths = []
-    for audio_id in ids:
-        path = Path(audio_dir) / f"{audio_id}.mp3"
-        data = path.read_bytes() if path.is_file() else b""
-        if not data or not _looks_like_mp3(data):
-            raise TtsError(f"{row['id']}: thiếu file ghép {audio_id}.mp3 hoặc file không phải MP3")
-        paths.append(path)
-    try:
-        audio = audio_join.join_files(paths, gaps)
-    except audio_join.JoinError as e:
-        raise TtsError(f"{row['id']}: ghép tiếng lỗi: {e}") from e
+    with tempfile.TemporaryDirectory() as tmp:
+        paths = []
+        for k, audio_id in enumerate(ids):
+            if audio_id.startswith(JOIN_DOC):
+                # Phần câu do bộ đọc đọc (cùng giọng, tốc độ của mã), cắt lặng theo mốc lời như bản đọc thường.
+                piece = replace(p, doc=audio_id[len(JOIN_DOC):].strip(), keep_first=False, join=())
+                result = engine.synthesize(piece)
+                if not result.audio or not _looks_like_mp3(result.audio):
+                    raise TtsError(f"{row['id']}: bộ đọc trả dữ liệu rỗng cho phần \"{piece.doc}\"")
+                path = Path(tmp) / f"doc_{k}.mp3"
+                path.write_bytes(trim_mp3_span(result.audio, result.speech_start, result.speech_end)[0])
+                paths.append(path)
+                continue
+            path = Path(audio_dir) / f"{audio_id}.mp3"
+            data = path.read_bytes() if path.is_file() else b""
+            if not data or not _looks_like_mp3(data):
+                raise TtsError(f"{row['id']}: thiếu file ghép {audio_id}.mp3 hoặc file không phải MP3")
+            paths.append(path)
+        try:
+            audio = audio_join.join_files(paths, gaps)
+        except audio_join.JoinError as e:
+            raise TtsError(f"{row['id']}: ghép tiếng lỗi: {e}") from e
     if not _looks_like_mp3(audio):
         raise TtsError(f"{row['id']}: ghép tiếng không ra MP3")
     return audio
@@ -93,7 +108,7 @@ def generate_one(row, settings, engine, audio_dir, prev_dir, marks_dir=None) -> 
     dest, previous, metadata = _paths(row, audio_dir, prev_dir)
     p = effective_params(settings, row)
     if p.join:
-        audio, trimmed, source, result = _joined(row, p, audio_dir), False, "ghep_tieng", None
+        audio, trimmed, source, result = _joined(row, p, audio_dir, engine), False, "ghep_tieng", None
     else:
         result = engine.synthesize(p)
         if not result.audio or not _looks_like_mp3(result.audio):
