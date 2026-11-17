@@ -95,7 +95,19 @@ Theo quy tắc mỗi cuốn có bộ session riêng, cuốn này có 3 session m
   - không dùng `/u/0`;
   - gặp "unusual activity" hay CAPTCHA thì dừng.
 - Session vẽ ChatGPT được chạy cùng lúc với một session Flow, mỗi bên tab riêng. Nếu thấy trục trặc thì chạy lần lượt.
-- **Credit:** một video Veo 3.1 Lite tốn 10 credit; `/u/1` còn 50 credit (16/11). Root đang gom số credit các tài khoản để chia, và báo chủ dự án nếu thiếu.
+- **Credit:** một video Veo 3.1 Lite tốn 10 credit; `/u/1` còn 50 credit (16/11). Số liệu ngày 17/11:
+
+| Tài khoản | Credit | Nạp lại | Session dùng |
+|---|---|---|---|
+| /u/2 | 810 | 15/12 | L1 |
+| /u/3 | 50 | mỗi ngày 13:44 | L2 |
+| /u/4 | 50 | 29/11 | L1 |
+| /u/6 | 50 | 1/12 | L1 |
+| /u/1 | 50 | — | L2 |
+
+Cần khoảng 380 video nên credit thiếu. Chủ dự án chọn **chờ nạp lại**, không mua thêm.
+- Ưu tiên clip của 3 cuốn đang làm; clip TV2 tập 2 làm khi có credit.
+- /u/3 phải dùng hết trước 13:44 mỗi ngày.
 
 ## C. Giao bản cuối
 
