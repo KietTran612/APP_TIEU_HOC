@@ -238,5 +238,52 @@ namespace TapDoc.Tests
             rt.GetWorldCorners(c);
             return Rect.MinMaxRect(c[0].x, c[0].y, c[2].x, c[2].y);
         }
+
+        [UnityTest]
+        public IEnumerator Parent_ManyBooks_ProgressFits()
+        {
+            // Số quyển bất kỳ: mỗi quyển một dòng đủ to để đọc, không tràn, không nằm dưới nút hay thẻ chữ hay nhầm.
+            yield return LoadMainWithProfile();
+            var index = AppRoot.Instance.Lessons.Index;
+            for (var k = index.books.Count; k < 7; k++)
+                index.books.Add(new BookEntry { book_id = $"gia_{k}", title = $"Bé tập đọc {k + 1}", grade = 2 });
+            AppRoot.Instance.Progress.RecordMistake("tv1_t1_b13", 0);
+            AppRoot.Instance.Progress.CreateProfile("Na", ProfileScreen.Avatars[1]);
+            foreach (var size in new[] { ScreenSizes.Phone20x9, ScreenSizes.IPad43 })
+            {
+                var rt = ScreenSizes.Apply(AppRoot.Instance, size);
+                AppRoot.Instance.ShowParent();
+                yield return WaitPrepared();
+                var p = Object.FindAnyObjectByType<ParentScreen>();
+                p.SimulateUnlock();
+                yield return null;
+                Canvas.ForceUpdateCanvases();
+                ScreenProbe.Save(AppRoot.Instance.UiCamera, $"TestOutput/screens/{size.Name}/app_parent_7_quyen.png");
+                var id = AppRoot.Instance.Progress.Current.id;
+                var row = p.transform.GetComponentsInChildren<RectTransform>().First(t => t.name == $"Child_{id}");
+                var texts = row.GetComponentsInChildren<TMPro.TMP_Text>();
+                var toggle = WorldRect((RectTransform)p.UnlockToggleFor(id).transform);
+                var chips = WorldRect((RectTransform)row.Find("Confusions"));
+                var rowRect = WorldRect(row);
+                var eps = rowRect.height * .01f; // sai số làm tròn ở mép khối
+                rowRect = Rect.MinMaxRect(rowRect.xMin - eps, rowRect.yMin - eps, rowRect.xMax + eps, rowRect.yMax + eps);
+                for (var k = 0; k < index.books.Count; k++)
+                {
+                    var line = BookLine(k, 0);
+                    var label = texts.FirstOrDefault(t => t.text == line);
+                    Assert.IsNotNull(label, $"{size}: mỗi quyển một dòng riêng \"{line}\"");
+                    label.ForceMeshUpdate();
+                    Assert.IsFalse(label.isTextOverflowing, $"{size}: \"{line}\" tràn");
+                    Assert.GreaterOrEqual(label.fontSize, 30f, $"{size}: \"{line}\" quá nhỏ");
+                    var r = WorldRect(label.rectTransform);
+                    Assert.IsFalse(r.Overlaps(toggle), $"{size}: \"{line}\" nằm dưới nút Mở mọi bài");
+                    Assert.IsFalse(r.Overlaps(chips), $"{size}: \"{line}\" đè thẻ chữ hay nhầm");
+                    Assert.IsTrue(rowRect.Contains(r.min) && rowRect.Contains(r.max), $"{size}: \"{line}\" ra ngoài khối của bé");
+                }
+                Assert.IsFalse(chips.Overlaps(toggle), $"{size}: thẻ chữ hay nhầm nằm dưới nút Mở mọi bài");
+                LayoutProbe.AssertFits(AppRoot.Instance.Canvas);
+                ScreenSizes.Reset(AppRoot.Instance, rt);
+            }
+        }
     }
 }

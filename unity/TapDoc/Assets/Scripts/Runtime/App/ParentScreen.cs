@@ -15,9 +15,13 @@ namespace TapDoc
     public class ParentScreen : MonoBehaviour
     {
         private const int MaxConfusions = 5;
-        private const float RowHeight = 330f; // tên bé, ba dòng tiến độ (mỗi quyển một dòng), chữ hay nhầm
         private const float ChipHeight = 90f;
-        private const float ProgressHeight = 136f;
+        private const float NameBlock = 80f;      // tên bé ở trên cùng khối
+        private const float LineHeight = 52f;     // một dòng tiến độ
+        private const float ProgressFont = 38f;
+        private const float ProgressFontMin = 30f;
+        private const int ProgressColumns = 2;    // nhiều quyển: xếp hai cột, khối cao thêm theo số hàng
+        private const float MinRowHeight = 300f;  // thẻ chữ hay nhầm luôn nằm dưới nút "Mở mọi bài" (cao 160)
 
         private static readonly Color RowColor = Palette.PaperLight;
         private static readonly Color ChipColor = Palette.ChipYellow;
@@ -150,9 +154,6 @@ namespace TapDoc
         {
             var row = new GameObject($"Child_{profile.id}", typeof(RectTransform), typeof(Image), typeof(LayoutElement));
             row.transform.SetParent(content, false);
-            var le = row.GetComponent<LayoutElement>();
-            le.minHeight = RowHeight;
-            le.preferredHeight = RowHeight;
             var bg = row.GetComponent<Image>();
             bg.sprite = UiKit.WhiteSprite;
             bg.color = RowColor;
@@ -169,36 +170,28 @@ namespace TapDoc
             var index = _app.Lessons.Index;
             var books = BookShelf.BookIds(index);
             var perBook = books.Count > 1;
-            string learnedText;
+            List<string> lines;
             if (perBook)
             {
                 // Tủ sách (bản thiết kế mục 7): mỗi quyển một dòng tiến độ.
-                learnedText = string.Join("\n", books.Select(b =>
+                lines = books.Select(b =>
                 {
                     var ids = BookShelf.LessonIds(index, b);
                     return string.Format(UiText.BookLearnedFormat, BookShelf.Book(index, b)?.title ?? b,
                         ids.Count(id => ProgressStore.IsCompleted(profile, id)), ids.Count);
-                }));
+                }).ToList();
             }
             else
             {
                 var learned = ordered.Count(id => ProgressStore.IsCompleted(profile, id));
-                learnedText = string.Format(UiText.LearnedFormat, learned, ordered.Count);
+                lines = new List<string> { string.Format(UiText.LearnedFormat, learned, ordered.Count) };
             }
-            var progress = LeftLabel(row.transform, learnedText, 44f);
-            // Dưới tên bé, kéo dài tới mép trái nút "Mở mọi bài" (không nằm dưới nút).
-            var prt = progress.rectTransform;
-            prt.anchorMin = new Vector2(0f, 1f);
-            prt.anchorMax = Vector2.one;
-            prt.pivot = new Vector2(0f, 1f);
-            prt.offsetMin = new Vector2(140f, -80f - ProgressHeight);
-            prt.offsetMax = new Vector2(-(UnlockWidth + 40f), -80f);
-            if (perBook)
-            {
-                progress.enableAutoSizing = true;
-                progress.fontSizeMax = 40f;
-                progress.fontSizeMin = 24f;
-            }
+            var rows = AddProgressLines(row.transform, lines, perBook ? ProgressColumns : 1);
+
+            // Khối cao theo số hàng tiến độ: số quyển nào cũng không tràn chữ (khối cao thì cuộn danh sách bé).
+            var le = row.GetComponent<LayoutElement>();
+            le.minHeight = le.preferredHeight =
+                Mathf.Max(MinRowHeight, NameBlock + rows * LineHeight + 24f + ChipHeight + 12f);
 
             // "Mở mọi bài" theo từng bé: bé đã học phần trước ở trường vào thẳng bài sau; tắt lại không mất tiến độ.
             var unlock = UiKit.CreateButton(row.transform, UnlockLabel(profile), null);
@@ -240,6 +233,40 @@ namespace TapDoc
             {
                 AddChip(chipsGo.transform, text);
             }
+        }
+
+        /// <summary>
+        /// Các dòng tiến độ dưới tên bé, xếp theo hàng (trái sang phải, trên xuống dưới) trong vùng từ cột tên tới mép
+        /// trái nút "Mở mọi bài" (không nằm dưới nút). Trả về số hàng.
+        /// </summary>
+        private static int AddProgressLines(Transform row, IReadOnlyList<string> lines, int columns)
+        {
+            var area = new GameObject("Progress", typeof(RectTransform));
+            area.transform.SetParent(row, false);
+            var art = (RectTransform)area.transform;
+            art.anchorMin = new Vector2(0f, 1f);
+            art.anchorMax = Vector2.one;
+            art.pivot = new Vector2(0f, 1f);
+            var rows = Mathf.Max(1, Mathf.CeilToInt(lines.Count / (float)columns));
+            art.offsetMin = new Vector2(140f, -NameBlock - rows * LineHeight);
+            art.offsetMax = new Vector2(-(UnlockWidth + 40f), -NameBlock);
+            var size = columns > 1 ? ProgressFont : 44f;
+            for (var i = 0; i < lines.Count; i++)
+            {
+                int r = i / columns, c = i % columns;
+                var label = LeftLabel(area.transform, lines[i], size);
+                label.name = $"Progress_{i}";
+                label.enableAutoSizing = true;
+                label.fontSizeMax = size;
+                label.fontSizeMin = ProgressFontMin;
+                var lrt = label.rectTransform;
+                lrt.anchorMin = new Vector2(c / (float)columns, 1f);
+                lrt.anchorMax = new Vector2((c + 1) / (float)columns, 1f);
+                lrt.pivot = new Vector2(0f, 1f);
+                lrt.offsetMin = new Vector2(0f, -(r + 1) * LineHeight);
+                lrt.offsetMax = new Vector2(-16f, -r * LineHeight);
+            }
+            return rows;
         }
 
         /// <summary>
