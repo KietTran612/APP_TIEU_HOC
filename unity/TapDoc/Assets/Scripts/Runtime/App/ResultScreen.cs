@@ -129,12 +129,29 @@ namespace TapDoc
             ((RectTransform)Mascot.transform).anchoredPosition = wide
                 ? new Vector2(-Margin, 2f * Margin + UiKit.MinTouch)
                 : new Vector2(-(2f * Margin + UiKit.MinTouch), Margin);
+            // Kiểu mép: sổ bị chiều cao giới hạn thì phần ngang thừa chia cho hai dải mép (sổ không nhỏ đi), bong bóng khen
+            // nằm gọn trong dải phải, trên gà con. Kiểu góc: bong bóng bên trái gà con, ở hàng nút dưới. Không đè sổ.
+            var side = wide ? WideSideBand(size) : Margin;
+            Mascot.SetBubbleLayout(wide ? Mascot.BubbleSide.AboveRight : Mascot.BubbleSide.Left,
+                wide ? side - 2f * Margin : CornerBubbleWidth);
             if (BookFit == null) return;
             var area = (RectTransform)BookFit.transform;
-            var side = wide ? ScreenLayout.SideBand : Margin;
             area.offsetMin = new Vector2(side, wide ? Margin : BottomBand);
             area.offsetMax = new Vector2(-side, -TopBand);
             BookFit.Fit();
+        }
+
+        private const float CornerBubbleWidth = 520f;
+
+        /// <summary>
+        /// Dải mép ở kiểu mép: ít nhất <see cref="ScreenLayout.SideBand"/>; khi sổ bị chiều cao giới hạn thì lấy cả phần
+        /// ngang thừa (sổ vẫn to như cũ, dải rộng hơn cho bong bóng khen).
+        /// </summary>
+        internal static float WideSideBand(Vector2 size)
+        {
+            var heightScale = (size.y - TopBand - Margin) / ScreenLayout.StageSize.y;
+            var needed = ScreenLayout.StageSize.x * heightScale;
+            return Mathf.Max(ScreenLayout.SideBand, (size.x - needed) / 2f);
         }
 
         private void BuildBook(string lessonId)

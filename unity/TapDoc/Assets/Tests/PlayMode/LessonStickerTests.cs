@@ -15,6 +15,22 @@ namespace TapDoc.Tests
     {
         private const string LessonId = "tv1_t1_b13";
 
+        private static Rect CanvasRect(RectTransform rt)
+        {
+            var corners = new Vector3[4];
+            rt.GetWorldCorners(corners);
+            var canvas = (RectTransform)AppRoot.Instance.Canvas.transform;
+            var min = new Vector2(float.MaxValue, float.MaxValue);
+            var max = new Vector2(float.MinValue, float.MinValue);
+            foreach (var c in corners)
+            {
+                Vector2 p = canvas.InverseTransformPoint(c);
+                min = Vector2.Min(min, p);
+                max = Vector2.Max(max, p);
+            }
+            return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
+        }
+
         private static IEnumerator WaitSticker(BookPage page)
         {
             for (var i = 0; i < 300 && !page.StickerLoaded; i++) yield return null;
@@ -120,12 +136,26 @@ namespace TapDoc.Tests
             foreach (var size in new[] { ScreenSizes.Phone20x9, ScreenSizes.IPad43, ScreenSizes.Tablet16x10, ScreenSizes.TabletPortrait })
             {
                 var rt = ScreenSizes.Apply(app, size);
+                // Như vừa học xong bài mà không nhầm lượt nào: câu khen theo cách làm, không phải câu chung.
+                var effort = new LessonEffort();
+                effort.RecordRound(0);
+                app.LastEffort = effort;
                 app.ShowResult(LessonId);
                 yield return null;
                 var result = Object.FindAnyObjectByType<ResultScreen>();
                 result.SkipScene();
                 yield return WaitSticker(result.Spread.PageFor(LessonId));
                 Canvas.ForceUpdateCanvases();
+                Assert.AreEqual(UiText.PraiseAllRight, result.Mascot.BubbleText, $"{size}: bong bóng là câu khen theo cách làm");
+                var bubble = CanvasRect(result.Mascot.BubbleRect);
+                Assert.IsFalse(bubble.Overlaps(CanvasRect((RectTransform)result.Spread.transform)), $"{size}: bong bóng không đè sổ");
+                var kid = CanvasRect(app.KidRoot);
+                Assert.IsTrue(bubble.xMin >= kid.xMin - .5f && bubble.xMax <= kid.xMax + .5f && bubble.yMin >= kid.yMin - .5f
+                    && bubble.yMax <= kid.yMax + .5f, $"{size}: bong bóng trong khung bé");
+                foreach (var b in new[] { result.ToListButton, result.NextLessonButton, result.ShelfButton }.Where(b => b != null))
+                {
+                    Assert.IsFalse(bubble.Overlaps(CanvasRect((RectTransform)b.transform)), $"{size}: bong bóng không đè nút {b.name}");
+                }
                 ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.Name}/app_dot3_xong_bai.png");
                 LayoutProbe.AssertFits(app.Canvas);
                 app.ShowBook();

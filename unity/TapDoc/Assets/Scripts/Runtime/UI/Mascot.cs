@@ -156,13 +156,56 @@ namespace TapDoc
             var brt = (RectTransform)_bubble.transform;
             var pad = new Vector2(28f, 12f);
             var oneLine = _bubbleText.GetPreferredValues(_bubbleText.text, float.PositiveInfinity, float.PositiveInfinity);
-            var width = Mathf.Clamp(oneLine.x + pad.x, BubbleMinSize.x, BubbleMaxWidth);
+            var width = Mathf.Clamp(oneLine.x + pad.x, Mathf.Min(BubbleMinSize.x, _bubbleMaxWidth), _bubbleMaxWidth);
             var size = _bubbleText.GetPreferredValues(_bubbleText.text, width - pad.x, float.PositiveInfinity);
             brt.sizeDelta = new Vector2(width, Mathf.Max(BubbleMinSize.y, size.y + pad.y));
         }
 
         private static readonly Vector2 BubbleMinSize = new(330f, 86f);
         private const float BubbleMaxWidth = 520f;
+        private float _bubbleMaxWidth = BubbleMaxWidth;
+
+        /// <summary>Chỗ đặt bong bóng so với gà con.</summary>
+        public enum BubbleSide
+        {
+            /// <summary>Trên đầu, lệch sang trái (mặc định).</summary>
+            Above,
+
+            /// <summary>Trên đầu, mép phải bong bóng thẳng mép phải gà con (gà con ở dải mép phải).</summary>
+            AboveRight,
+
+            /// <summary>Bên trái gà con, ngang giữa (gà con ở hàng nút dưới).</summary>
+            Left
+        }
+
+        /// <summary>Khung của bong bóng (cho test bố cục).</summary>
+        internal RectTransform BubbleRect => _bubble != null ? (RectTransform)_bubble.transform : null;
+
+        /// <summary>Đặt bong bóng ở <paramref name="side"/>, rộng tối đa <paramref name="maxWidth"/> (xuống dòng khi dài).</summary>
+        public void SetBubbleLayout(BubbleSide side, float maxWidth)
+        {
+            _bubbleMaxWidth = Mathf.Max(120f, maxWidth);
+            var brt = BubbleRect;
+            switch (side)
+            {
+                case BubbleSide.AboveRight:
+                    brt.anchorMin = brt.anchorMax = new Vector2(1f, 1f);
+                    brt.pivot = new Vector2(1f, 0f);
+                    brt.anchoredPosition = new Vector2(0f, 10f);
+                    break;
+                case BubbleSide.Left:
+                    brt.anchorMin = brt.anchorMax = new Vector2(0f, .5f);
+                    brt.pivot = new Vector2(1f, .5f);
+                    brt.anchoredPosition = new Vector2(-10f, 0f);
+                    break;
+                default:
+                    brt.anchorMin = brt.anchorMax = new Vector2(.5f, 1f);
+                    brt.pivot = new Vector2(.85f, 0f);
+                    brt.anchoredPosition = new Vector2(0f, 10f);
+                    break;
+            }
+            if (_bubble.activeSelf) FitBubble();
+        }
 
         private void HideBubble()
         {
