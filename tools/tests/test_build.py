@@ -640,7 +640,11 @@ class SystemAssetsTest(unittest.TestCase):
             "hd_nghe_chon_chu", "hd_nghe_chon_tranh", "hd_nhin_keo_dau", "hd_keo_vao_cho_trong", "hd_danh_van_theo",
             "hd_keo_dau_vao_chu", "hd_thu_lai", "khen_01", "khen_02", "khen_hoan_thanh",
             "hd_nhin_chon_chu_hoa", "hd_nghe_do_chon_tranh",
-        "hd_tim_tieng", "hd_tra_loi_mieng", "hd_hoc_thuoc", "hd_doan_do"})
+        "hd_tim_tieng", "hd_tra_loi_mieng", "hd_hoc_thuoc", "hd_doan_do",
+        # Nâng cấp UI (đợt 3–5): khen theo cách làm, lời chào, nghỉ mắt; app nạp không bắt buộc.
+        "khen_tu_sua", "khen_nghe_lai", "khen_nghe_ki", "khen_cham", "hd_chao_be", "hd_cung_hoc", "hd_nghi_mat"})
+        self.assertEqual(SYSTEM_AUDIO["khen_nghe_ki"], "Bé nghe kĩ, làm đúng hết rồi!")
+        self.assertEqual(SYSTEM_AUDIO["hd_nghi_mat"], "Bé học giỏi lắm! Mình nghỉ mắt chút nhé.")
         self.assertEqual(SYSTEM_AUDIO["hd_nghe_chon_chu"], "Con nghe rồi chọn chữ đúng nhé.")
         self.assertEqual(SYSTEM_AUDIO["khen_hoan_thanh"], "Con học xong bài rồi. Giỏi lắm!")
         self.assertTrue(all(k.isascii() and unicodedata.is_normalized("NFC", v) for k, v in SYSTEM_AUDIO.items()))
@@ -660,7 +664,7 @@ class SystemAssetsTest(unittest.TestCase):
         # Giao diện mới: hoa bé ngoan, gà con và 12 biểu tượng trên nút (hình mặc định của `ui-icons`).
         ui = {"img_chung_hoa_be_ngoan", "img_chung_ga_con"} | {
             f"img_ui_{n}" for n in ("nha", "loa", "tiep", "lui", "so", "on_lai", "xong", "khoa",
-                                    "lat_truoc", "lat_sau", "sao_giay", "canh_hoa", "cai_dat", "tu_sach")}
+                                    "lat_truoc", "lat_sau", "sao_giay", "canh_hoa", "cai_dat", "tu_sach", "tay_chi")}
         self.assertEqual(set(SYSTEM_IMAGES),
                          {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap", "img_chung_cau_hoi",
                           "img_chung_giai_nghia"} | avatars | ui | covers)
