@@ -1,0 +1,265 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b312",
+  "book": "tv2_t2_2002",
+  "lesson_no": 312,
+  "type": "tap_lam_van",
+  "title": "Trả lời câu hỏi: Câu chuyện bó đũa",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      10
+    ],
+    "scan_file": "016",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi về bài đã đọc: bé trả lời miệng cùng bố mẹ, app hiện lại tranh của bài đó."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Trả lời câu hỏi",
+      "audio": "cau_b312_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Câu chuyện bó đũa.",
+      "audio": "cau_b312_02",
+      "labels": [
+        "Xem tranh ở bài Câu chuyện bó đũa."
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b305_bos_dduax",
+      "audio": "hd_b312_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Ông già bảo các con thế nào?",
+      "audio": "hoi_b312_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Bốn người con làm gì? Kết quả ra sao?",
+      "audio": "hoi_b312_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Ông già dùng cách gì để bẻ gãy bó đũa một cách dễ dàng?",
+      "audio": "hoi_b312_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "4. Chuyện này khuyên ta điều gì?",
+      "audio": "hoi_b312_04"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_bos_dduax",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bó đũa",
+          "audio": "tu_bos_dduax",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "túi tiền",
+          "audio": "tu_tuis_tieenf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ông già",
+          "audio": "tu_oong_giaf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_oong_giaf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ông già",
+          "audio": "tu_oong_giaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "người con",
+          "audio": "tu_nguwowif_con",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bó đũa",
+          "audio": "tu_bos_dduax",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_nguwowif_con",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "người con",
+          "audio": "tu_nguwowif_con",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ông già",
+          "audio": "tu_oong_giaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dễ dàng",
+          "audio": "tu_deex_dangf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_deex_dangf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "dễ dàng",
+          "audio": "tu_deex_dangf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kết quả",
+          "audio": "tu_keets_quar",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "túi tiền",
+          "audio": "tu_tuis_tieenf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_keets_quar",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "kết quả",
+          "audio": "tu_keets_quar",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dễ dàng",
+          "audio": "tu_deex_dangf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "người con",
+          "audio": "tu_nguwowif_con",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tuis_tieenf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "túi tiền",
+          "audio": "tu_tuis_tieenf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bó đũa",
+          "audio": "tu_bos_dduax",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "kết quả",
+          "audio": "tu_keets_quar",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

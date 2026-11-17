@@ -1,0 +1,612 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b335",
+  "book": "tv2_t2_2002",
+  "lesson_no": 335,
+  "type": "tap_chep_chinh_ta",
+  "title": "Làm việc thật là vui – Trăng sao cũng hóa xứ người",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      32,
+      33
+    ],
+    "scan_file": "011",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Trả lời câu hỏi bằng miệng; chọn chữ ghép được với \"gáy\", điền chỗ trống, ghép chữ làm bằng chạm thẻ."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Sách in \"xú người\" (ở đầu bài, câu thơ, câu hỏi 1 và mục lục); app sửa thành \"xứ người\" theo nghĩa câu thơ. Bài tập ghép chữ \"người\" in \"xú\", app ghi \"xứ người\"."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[4]",
+        "note": "đáp án do app chọn: gà gáy, cu gáy"
+      },
+      {
+        "where": "part1[5]",
+        "note": "đáp án dạy/dậy theo chính tả chuẩn (sách không in đáp án)"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án vang/van theo chính tả chuẩn (sách không in đáp án)"
+      },
+      {
+        "where": "part1[7]",
+        "note": "đáp án vải/vãi theo chính tả chuẩn (sách không in đáp án)"
+      },
+      {
+        "where": "part1[8]",
+        "note": "chữ \"xứ người\" app sửa từ \"xú người\" in trong sách (lỗi in): chủ dự án quyết giữ hay đổi"
+      },
+      {
+        "where": "part1[11]",
+        "note": "ghép \"sáng ngời\", \"chói ngời\" (đứng trước) do app chọn"
+      },
+      {
+        "where": "part1[12]",
+        "note": "ghép \"con người\", \"xứ người\", \"người ta\" do app chọn; chữ \"xứ người\" app sửa từ \"xú người\" in trong sách (lỗi in): chủ dự án quyết giữ hay đổi"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Làm việc thật là vui",
+      "audio": "cau_b335_01",
+      "labels": [
+        "Nghe đọc"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: \"Quanh ta... mùa vải chín\".",
+      "audio": "cau_b335_02",
+      "labels": [
+        "Phần này con viết vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "quanh",
+          "audio": "tieng_quanh",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tích tắc",
+          "audio": "tu_tichs_tawcs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "gáy",
+          "audio": "tieng_gays",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "giờ",
+          "audio": "tieng_giowf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dậy",
+          "audio": "tieng_daayj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vang",
+          "audio": "tieng_vang",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "kêu",
+          "audio": "tieng_keeu",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vải",
+          "audio": "tieng_vair",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Đồng hồ chạy kêu như thế nào?",
+      "audio": "hoi_b335_01"
+    },
+    {
+      "type": "choose_line",
+      "marker": "",
+      "text": "Có thể ghép chữ gáy với những chữ nào trong các chữ sau?",
+      "audio": "hoi_b335_02",
+      "items": [
+        {
+          "text": "gà",
+          "audio": "cau_b335_03",
+          "role": "target"
+        },
+        {
+          "text": "mèo",
+          "audio": "cau_b335_04",
+          "role": "other"
+        },
+        {
+          "text": "vịt",
+          "audio": "cau_b335_05",
+          "role": "other"
+        },
+        {
+          "text": "cu",
+          "audio": "cau_b335_06",
+          "role": "target"
+        }
+      ],
+      "need": 2
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "dạy",
+        "dậy"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "thầy dạy học",
+          "audio": "tu_thaayf_dayj_hocj",
+          "answer": "dạy",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "em dậy sớm",
+          "audio": "tu_em_daayj_sowms",
+          "answer": "dậy",
+          "hl": [
+            {
+              "s": 3,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "vang",
+        "van"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "gà gáy vang",
+          "audio": "tu_gaf_gays_vang",
+          "answer": "vang",
+          "hl": [
+            {
+              "s": 7,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "van nài",
+          "audio": "tu_van_naif",
+          "answer": "van",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "van xin",
+          "audio": "tu_van_xin",
+          "answer": "van",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "vải",
+        "vãi"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "quả vải",
+          "audio": "tu_quar_vair",
+          "answer": "vải",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "áo vải",
+          "audio": "tu_aos_vair",
+          "answer": "vải",
+          "hl": [
+            {
+              "s": 3,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "rơi vãi",
+          "audio": "tu_rowi_vaix",
+          "answer": "vãi",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "vãi thóc",
+          "audio": "tu_vaix_thocs",
+          "answer": "vãi",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Trăng sao cũng hóa xứ người",
+      "audio": "cau_b335_07",
+      "labels": [
+        "Trí nhớ"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: Cả bài.",
+      "audio": "cau_b335_08",
+      "labels": [
+        "Phần này con viết vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "hóa",
+          "audio": "tieng_hoas",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "người",
+          "audio": "tieng_nguwowif",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ngời",
+          "audio": "tieng_ngowif",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trạm",
+          "audio": "tieng_tramj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "xinh",
+          "audio": "tieng_xinh",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đặt",
+          "audio": "tieng_ddawtj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lượn",
+          "audio": "tieng_luwownj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vũ trụ",
+          "audio": "tu_vux_truj",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "ngời",
+      "audio": "tieng_ngowif",
+      "items": [
+        {
+          "text": "sáng ngời",
+          "audio": "tu_sangs_ngowif",
+          "part": "sáng",
+          "role": "before"
+        },
+        {
+          "text": "chói ngời",
+          "audio": "tu_chois_ngowif",
+          "part": "chói",
+          "role": "before"
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "người",
+      "audio": "tieng_nguwowif",
+      "items": [
+        {
+          "text": "con người",
+          "audio": "tu_con_nguwowif",
+          "part": "con",
+          "role": "before"
+        },
+        {
+          "text": "xứ người",
+          "audio": "tu_xuws_nguwowif",
+          "part": "xứ",
+          "role": "before"
+        },
+        {
+          "text": "người ta",
+          "audio": "tu_nguwowif_ta",
+          "part": "ta",
+          "role": "after"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tichs_tawcs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tích tắc",
+          "audio": "tu_tichs_tawcs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đồng hồ",
+          "audio": "tu_ddoongf_hoof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gà gáy",
+          "audio": "tu_gaf_gays",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thaayf_dayj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thầy dạy",
+          "audio": "tu_thaayf_dayj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dậy sớm",
+          "audio": "tu_daayj_sowms",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "van xin",
+          "audio": "tu_van_xin",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_van_naif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "van nài",
+          "audio": "tu_van_naif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vang xa",
+          "audio": "tu_vang_xa",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quả vải",
+          "audio": "tu_quar_vair",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_rowi_vaix",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "rơi vãi",
+          "audio": "tu_rowi_vaix",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "áo vải",
+          "audio": "tu_aos_vair",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vãi thóc",
+          "audio": "tu_vaix_thocs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_sangs_ngowif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "sáng ngời",
+          "audio": "tu_sangs_ngowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "con người",
+          "audio": "tu_con_nguwowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "người ta",
+          "audio": "tu_nguwowif_ta",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vux_truj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vũ trụ",
+          "audio": "tu_vux_truj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "lượn vòng",
+          "audio": "tu_luwownj_vongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sáng ngời",
+          "audio": "tu_sangs_ngowif",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

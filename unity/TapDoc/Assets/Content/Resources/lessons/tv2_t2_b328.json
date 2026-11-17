@@ -1,0 +1,311 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b328",
+  "book": "tv2_t2_2002",
+  "lesson_no": 328,
+  "type": "ngu_phap",
+  "title": "Danh từ (tiếp theo)",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      25,
+      26
+    ],
+    "scan_file": "000",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Bảng phân loại danh từ trong sách (có hình cụ già, cây dừa, chim bồ câu, quyển sách) thành bốn dòng đọc được; app không vẽ hình."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Sách in \"xú người\" (ở đầu bài, câu thơ, câu hỏi 1 và mục lục); app sửa thành \"xứ người\" theo nghĩa câu thơ."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi hiểu bài, câu hỏi tìm từ, đặt câu: bé trả lời miệng cùng bố mẹ, app không chấm."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[1]",
+        "note": "bảng phân loại viết thành dòng \"…: chỉ người\" do app soạn"
+      },
+      {
+        "where": "part1[5]",
+        "note": "chữ \"xứ người\" app sửa từ \"xú người\" in trong sách (lỗi in): chủ dự án quyết giữ hay đổi"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Danh từ",
+      "audio": "cau_b328_01",
+      "labels": [
+        "Tiếp theo"
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Cụ già, em bé, bộ đội: chỉ người.",
+          "audio": "cau_b328_02",
+          "role": "line"
+        },
+        {
+          "text": "Mèo, chó, gà, bồ câu: chỉ loài vật.",
+          "audio": "cau_b328_03",
+          "role": "line"
+        },
+        {
+          "text": "Cam, ổi, mít, dừa: chỉ cây cối.",
+          "audio": "cau_b328_04",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Bàn, ghế, bút chì, sách: chỉ đồ vật.",
+          "audio": "cau_b328_05",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "Từ chỉ người, loài vật, cây cối, đồ vật... gọi là danh từ.",
+          "audio": "cau_b328_06",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Em hãy tìm những danh từ chỉ người và đồ vật trong bài \"Tủ sách của bạn Sắc\".",
+      "audio": "hoi_b328_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Tìm 1 danh từ chỉ người, 1 danh từ chỉ loài vật, 1 danh từ chỉ đồ vật trong bài \"Trăng sao cũng hóa xứ người\" (khổ thứ 2).",
+      "audio": "hoi_b328_02",
+      "rows": [
+        {
+          "text": "Mẹ ơi! Mua cốm, mua hồng",
+          "audio": "cau_b328_07"
+        },
+        {
+          "text": "Mua con cá chép lượn vòng con chơi.",
+          "audio": "cau_b328_08"
+        },
+        {
+          "text": "Trăng cao, trăng đẹp, trăng ngời",
+          "audio": "cau_b328_09"
+        },
+        {
+          "text": "Mua tàu vũ trụ con ngồi lên trăng.",
+          "audio": "cau_b328_10"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_cuj_giaf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cụ già",
+          "audio": "tu_cuj_giaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "em bé",
+          "audio": "tu_em_bes",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bộ đội",
+          "audio": "tu_booj_ddooij",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_boof_caau",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bồ câu",
+          "audio": "tu_boof_caau",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "con mèo",
+          "audio": "tu_con_meof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "con gà",
+          "audio": "tu_con_gaf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quar_cam",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quả cam",
+          "audio": "tu_quar_cam",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quả mít",
+          "audio": "tu_quar_mits",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quả ổi",
+          "audio": "tu_quar_ooir",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_buts_chif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bút chì",
+          "audio": "tu_buts_chif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cái bàn",
+          "audio": "tu_cais_banf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cái ghế",
+          "audio": "tu_cais_ghees",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_booj_ddooij",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bộ đội",
+          "audio": "tu_booj_ddooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cụ già",
+          "audio": "tu_cuj_giaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bồ câu",
+          "audio": "tu_boof_caau",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_caay_duwaf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cây dừa",
+          "audio": "tu_caay_duwaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bút chì",
+          "audio": "tu_buts_chif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "em bé",
+          "audio": "tu_em_bes",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

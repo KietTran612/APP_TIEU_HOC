@@ -1,0 +1,123 @@
+{
+  "lesson_id": "tv2_t2_b329",
+  "book": "tv2_t2_2002",
+  "lesson_no": 329,
+  "type": "tap_lam_van",
+  "title": "Trả lời câu hỏi: Tủ sách của bạn Sắc",
+  "week": 20,
+  "theme": "Thiếu nhi",
+  "source": {
+    "pages": [
+      26
+    ],
+    "scan_file": "003",
+    "verification": "page_verified"
+  },
+  "new_units": [],
+  "images": {
+    "img_b321_gias_sachs": "Góc phòng nhỏ: cái giá sách nhiều tầng bằng gỗ thông, rèm xanh kéo lên một bên, ba hàng sách xếp ngay ngắn có thứ tự (truyện, sách khoa học, tập thơ, gáy sách không có chữ); bên cạnh là bàn học có một quyển sách đang mở (không có người)"
+  },
+  "review": {
+    "status": "chua_duyet",
+    "notes": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      }
+    ]
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi về bài đã đọc: bé trả lời miệng cùng bố mẹ, app hiện lại tranh của bài đó."
+    }
+  ],
+  "part1": [
+    {
+      "type": "title",
+      "text": "Tập làm văn: Trả lời câu hỏi"
+    },
+    {
+      "type": "title",
+      "text": "Đề bài: Tủ sách của bạn Sắc.",
+      "sub": "Xem tranh ở bài Tủ sách của bạn Sắc."
+    },
+    {
+      "type": "picture",
+      "image": "img_b321_gias_sachs",
+      "say": "Con nhớ lại giá sách của bạn Sắc nhé.",
+      "word": "giá sách"
+    },
+    {
+      "type": "question",
+      "text": "1. Giá sách của bạn Sắc như thế nào?"
+    },
+    {
+      "type": "question",
+      "text": "2. Khi kéo rèm lên, em thấy những gì?"
+    },
+    {
+      "type": "question",
+      "text": "3. Sách gồm có những loại nào?"
+    },
+    {
+      "type": "question",
+      "text": "4. Sắc giữ gìn sách như thế nào? Tại sao như vậy?"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "rounds": [
+        {
+          "answer": "giá sách",
+          "options": [
+            "giá sách",
+            "rèm xanh",
+            "quyển sách"
+          ]
+        },
+        {
+          "answer": "rèm xanh",
+          "options": [
+            "rèm xanh",
+            "giá sách",
+            "giữ gìn"
+          ]
+        },
+        {
+          "answer": "quyển sách",
+          "options": [
+            "quyển sách",
+            "giữ gìn",
+            "rèm xanh"
+          ]
+        },
+        {
+          "answer": "giữ gìn",
+          "options": [
+            "giữ gìn",
+            "quyển sách",
+            "giá sách"
+          ]
+        },
+        {
+          "answer": "truyện thiếu nhi",
+          "options": [
+            "truyện thiếu nhi",
+            "giữ gìn",
+            "rèm xanh"
+          ]
+        },
+        {
+          "answer": "truyện khoa học",
+          "options": [
+            "truyện khoa học",
+            "truyện thiếu nhi",
+            "quyển sách"
+          ]
+        }
+      ]
+    }
+  ]
+}

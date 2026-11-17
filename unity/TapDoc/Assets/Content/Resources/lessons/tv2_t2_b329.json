@@ -1,0 +1,265 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b329",
+  "book": "tv2_t2_2002",
+  "lesson_no": 329,
+  "type": "tap_lam_van",
+  "title": "Trả lời câu hỏi: Tủ sách của bạn Sắc",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      26
+    ],
+    "scan_file": "003",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi về bài đã đọc: bé trả lời miệng cùng bố mẹ, app hiện lại tranh của bài đó."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Trả lời câu hỏi",
+      "audio": "cau_b329_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Tủ sách của bạn Sắc.",
+      "audio": "cau_b329_02",
+      "labels": [
+        "Xem tranh ở bài Tủ sách của bạn Sắc."
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b321_gias_sachs",
+      "audio": "hd_b329_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Giá sách của bạn Sắc như thế nào?",
+      "audio": "hoi_b329_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Khi kéo rèm lên, em thấy những gì?",
+      "audio": "hoi_b329_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Sách gồm có những loại nào?",
+      "audio": "hoi_b329_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "4. Sắc giữ gìn sách như thế nào? Tại sao như vậy?",
+      "audio": "hoi_b329_04"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_gias_sachs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "giá sách",
+          "audio": "tu_gias_sachs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rèm xanh",
+          "audio": "tu_remf_xanh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quyển sách",
+          "audio": "tu_quyeenr_sachs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_remf_xanh",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "rèm xanh",
+          "audio": "tu_remf_xanh",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giá sách",
+          "audio": "tu_gias_sachs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giữ gìn",
+          "audio": "tu_giuwx_ginf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quyeenr_sachs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quyển sách",
+          "audio": "tu_quyeenr_sachs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giữ gìn",
+          "audio": "tu_giuwx_ginf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rèm xanh",
+          "audio": "tu_remf_xanh",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_giuwx_ginf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "giữ gìn",
+          "audio": "tu_giuwx_ginf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quyển sách",
+          "audio": "tu_quyeenr_sachs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giá sách",
+          "audio": "tu_gias_sachs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_truyeenj_thieeus_nhi",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "truyện thiếu nhi",
+          "audio": "tu_truyeenj_thieeus_nhi",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giữ gìn",
+          "audio": "tu_giuwx_ginf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rèm xanh",
+          "audio": "tu_remf_xanh",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_truyeenj_khoa_hocj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "truyện khoa học",
+          "audio": "tu_truyeenj_khoa_hocj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "truyện thiếu nhi",
+          "audio": "tu_truyeenj_thieeus_nhi",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quyển sách",
+          "audio": "tu_quyeenr_sachs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

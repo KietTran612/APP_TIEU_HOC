@@ -1,0 +1,265 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b338",
+  "book": "tv2_t2_2002",
+  "lesson_no": 338,
+  "type": "tap_lam_van",
+  "title": "Trả lời câu hỏi: Sao Chổi",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      34
+    ],
+    "scan_file": "013",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi về bài đã đọc: bé trả lời miệng cùng bố mẹ, app hiện lại tranh của bài đó."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Trả lời câu hỏi",
+      "audio": "cau_b338_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Sao Chổi.",
+      "audio": "cau_b338_02",
+      "labels": [
+        "Xem tranh ở bài Sao Chổi."
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b332_sao_chooir",
+      "audio": "hd_b338_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Hai anh em Tuấn và Hà làm gì, vào lúc nào?",
+      "audio": "hoi_b338_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Cảnh trời đêm lúc ấy ra sao?",
+      "audio": "hoi_b338_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Sao Chổi hiện ra như thế nào?",
+      "audio": "hoi_b338_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "4. Thấy sao Chổi, bé Hà có ý nghĩ gì?",
+      "audio": "hoi_b338_04"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_sao_chooir",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "sao Chổi",
+          "audio": "tu_sao_chooir",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trời đêm",
+          "audio": "tu_trowif_ddeem",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hai anh em",
+          "audio": "tu_hai_anh_em",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_trowif_ddeem",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "trời đêm",
+          "audio": "tu_trowif_ddeem",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sao Chổi",
+          "audio": "tu_sao_chooir",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ý nghĩ",
+          "audio": "tu_ys_nghix",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_hai_anh_em",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "hai anh em",
+          "audio": "tu_hai_anh_em",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ý nghĩ",
+          "audio": "tu_ys_nghix",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trời đêm",
+          "audio": "tu_trowif_ddeem",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ys_nghix",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ý nghĩ",
+          "audio": "tu_ys_nghix",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hai anh em",
+          "audio": "tu_hai_anh_em",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sao Chổi",
+          "audio": "tu_sao_chooir",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_baauf_trowif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bầu trời",
+          "audio": "tu_baauf_trowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trời đêm",
+          "audio": "tu_trowif_ddeem",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ý nghĩ",
+          "audio": "tu_ys_nghix",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_quets_saan",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "quét sân",
+          "audio": "tu_quets_saan",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bầu trời",
+          "audio": "tu_baauf_trowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hai anh em",
+          "audio": "tu_hai_anh_em",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}
