@@ -73,8 +73,29 @@ namespace TapDoc
         /// <summary>Cỡ thiết kế của phần học (Stage); các bước học dựng theo cỡ này.</summary>
         public static readonly Vector2 StageSize = new(1400f, 680f);
 
-        /// <summary>Dải mép ở kiểu mép: lề + nút tròn + lề.</summary>
+        /// <summary>Dải mép ở kiểu mép của Sổ bé ngoan, màn Xong bài: lề + nút tròn + lề.</summary>
         public const float SideBand = 200f;
+
+        /// <summary>Dải mép của màn học ở kiểu mép (khung tỉ lệ dưới <see cref="PhoneAspect"/>): lề mép 48 + nút 160 + lề.</summary>
+        public const float LessonSideBand = 220f;
+
+        /// <summary>Dải mép ở khung điện thoại (tỉ lệ ≥ <see cref="PhoneAspect"/>): lề mép 48 + nút to 180 + lề.</summary>
+        public const float PhoneSideBand = 240f;
+
+        /// <summary>Tỉ lệ ngang/dọc từ đây trở lên là điện thoại dài (20:9, 19,5:9): nút của bé to hơn.</summary>
+        public const float PhoneAspect = 1.9f;
+
+        /// <summary>
+        /// Khoảng chừa tối thiểu từ vùng chạm nút của bé tới mép dưới và mép bên: bé hay tì cổ tay lên mép máy (bản thiết
+        /// kế nâng cấp UI mục 4.1.5).
+        /// </summary>
+        public const float EdgeGap = 48f;
+
+        /// <summary>Khung cỡ <paramref name="frame"/> là điện thoại dài.</summary>
+        public static bool IsPhone(Vector2 frame) => frame.y > 0f && frame.x / frame.y >= PhoneAspect;
+
+        /// <summary>Bề rộng dải mép của màn học ở kiểu mép cho khung cỡ <paramref name="frame"/>.</summary>
+        public static float SideBandFor(Vector2 frame) => IsPhone(frame) ? PhoneSideBand : LessonSideBand;
 
         /// <summary>Dải trên của phần học ở kiểu mép (hàng chấm tiến độ).</summary>
         public const float WideTopBand = 70f;
@@ -90,7 +111,7 @@ namespace TapDoc
 
         /// <summary>Mức phóng to phần học nếu đặt nút ở hai dải mép của khung cỡ <paramref name="frame"/>.</summary>
         public static float WideStageScale(Vector2 frame) =>
-            Mathf.Min((frame.x - 2f * SideBand) / StageSize.x, (frame.y - WideTopBand - WideBottom) / StageSize.y);
+            Mathf.Min((frame.x - 2f * SideBandFor(frame)) / StageSize.x, (frame.y - WideTopBand - WideBottom) / StageSize.y);
 
         /// <summary>Khung có cỡ <paramref name="frameSize"/> là khung kiểu mép (rộng hơn khung chuẩn).</summary>
         public static bool IsWide(Vector2 frameSize) => frameSize.x > Frame.x + .5f;

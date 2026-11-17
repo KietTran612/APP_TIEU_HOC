@@ -1,6 +1,8 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace TapDoc
@@ -43,6 +45,26 @@ namespace TapDoc
         /// <summary>Trang của bước trước đang lật đi; <c>null</c> khi không lật.</summary>
         internal GameObject TurningPage { get; private set; }
 
+        /// <summary>Nhắc khi bé ngồi im (bản thiết kế nâng cấp UI mục 4.1.3).</summary>
+        public IdleNudge Nudge { get; private set; }
+
+        /// <summary>Bàn tay gợi ý.</summary>
+        public HintHand Hand { get; private set; }
+
+        /// <summary>Bong bóng loa cạnh gà con khi giọng đọc đang chạy.</summary>
+        public TalkBubble Talk { get; private set; }
+
+        /// <summary>Cỡ nút Tiếp và Nghe lại: to hơn ở điện thoại dài (mục 4.1.5).</summary>
+        public float KidButtonSize { get; private set; } = UiKit.MinTouch;
+
+        /// <summary>Đồng hồ của bộ nhắc (test thay bằng đồng hồ giả).</summary>
+        internal Func<float> Clock = () => Time.unscaledTime;
+
+        private const float TargetRefreshSeconds = .25f;
+        private const float PhoneKidButton = 180f;
+        private RectTransform _nudgeTarget;
+        private float _nudgeTargetAt = float.NegativeInfinity;
+
         private const float Margin = 20f;
         private const float NotesWidth = 260f;
         private const float PageTurnSeconds = .4f;
@@ -77,7 +99,7 @@ namespace TapDoc
             _stage = UiKit.CreateStage((RectTransform)transform);
             StageFit = _stage.parent.GetComponent<FitBox>();
 
-            Dots = ProgressDots.Create(transform, Flow.TotalCount);
+            Dots = ProgressDots.Create(transform, Flow.TotalCount, app.Assets);
             var dotsRt = (RectTransform)Dots.transform;
             dotsRt.anchorMin = dotsRt.anchorMax = new Vector2(.5f, 1f);
             dotsRt.anchoredPosition = new Vector2(0f, -UiKit.StageTopInset / 2f);
@@ -86,6 +108,7 @@ namespace TapDoc
             var mascotRt = (RectTransform)Mascot.transform;
             mascotRt.anchorMin = mascotRt.anchorMax = mascotRt.pivot = new Vector2(1f, 0f);
             mascotRt.anchoredPosition = new Vector2(-(2f * Margin + UiKit.MinTouch), Margin);
+            Talk = TalkBubble.Attach(Mascot, app.Speech, app.Assets);
 
             var overlay = new GameObject("FxOverlay", typeof(RectTransform));
             overlay.transform.SetParent(transform, false);
@@ -95,6 +118,8 @@ namespace TapDoc
             overlayRt.offsetMin = Vector2.zero;
             overlayRt.offsetMax = Vector2.zero;
             _fx = new LessonFx(overlayRt, app.Assets, app.Sfx, Mascot);
+            Hand = HintHand.Create(transform, app.Assets);
+            Nudge = new IdleNudge(Reprompt, t => Hand.Show(t), () => Hand.Hide());
 
             if (lesson.notes != null && lesson.notes.Count > 0)
             {
@@ -123,27 +148,60 @@ namespace TapDoc
             {
                 area.anchorMin = Vector2.zero;
                 area.anchorMax = Vector2.one;
-                area.offsetMin = new Vector2(ScreenLayout.SideBand, ScreenLayout.WideBottom);
-                area.offsetMax = new Vector2(-ScreenLayout.SideBand, -ScreenLayout.WideTopBand);
+                var band = ScreenLayout.SideBandFor(size);
+                area.offsetMin = new Vector2(band, ScreenLayout.WideBottom);
+                area.offsetMax = new Vector2(-band, -ScreenLayout.WideTopBand);
             }
-            else
+            // Nút của bé chừa ít nhất 48 tới mép dưới và mép bên của màn thật (mục 4.1.5): phần lề an toàn của máy (thanh
+            // home, tai thỏ) đã tính vào khoảng chừa. Điện thoại dài: Tiếp, Nghe lại to 180.
+            KidButtonSize = IsWideLayout && ScreenLayout.IsPhone(size) ? PhoneKidButton : UiKit.MinTouch;
+            var (edgeLeft, edgeRight, edgeBottom) = DistanceToScreenEdges();
+            var gapLeft = Mathf.Max(Margin, ScreenLayout.EdgeGap - edgeLeft);
+            var gapRight = Mathf.Max(Margin, ScreenLayout.EdgeGap - edgeRight);
+            var gapBottom = Mathf.Max(Margin, ScreenLayout.EdgeGap - edgeBottom);
+            if (!IsWideLayout)
             {
                 area.anchorMin = area.anchorMax = new Vector2(.5f, .5f);
                 area.sizeDelta = ScreenLayout.StageSize;
-                area.anchoredPosition = Vector2.zero;
+                // Phần học nằm giữa hàng nút trên (lề 20) và hàng nút dưới (chừa tới mép): dời lên bằng nửa phần chênh.
+                var bottomNeed = gapBottom + KidButtonSize;
+                var topNeed = Margin + UiKit.MinTouch;
+                area.anchoredPosition = new Vector2(0f, (bottomNeed - topNeed) / 2f);
             }
             FitStage();
 
-            ((RectTransform)Dots.transform).anchoredPosition =
-                new Vector2(0f, -(IsWideLayout ? ScreenLayout.WideTopBand : UiKit.StageTopInset) / 2f);
-            ((RectTransform)Mascot.transform).anchoredPosition = IsWideLayout
-                ? new Vector2(-Margin, 2f * Margin + UiKit.MinTouch)
-                : new Vector2(-(2f * Margin + UiKit.MinTouch), Margin);
+            Corner(BackButton, new Vector2(0f, 1f), new Vector2(gapLeft, -Margin));
+            Corner(ReplayButton, Vector2.zero, new Vector2(gapLeft, gapBottom));
+            Corner(NextButton, new Vector2(1f, 0f), new Vector2(-gapRight, gapBottom));
+            ((RectTransform)ReplayButton.transform).sizeDelta = Vector2.one * KidButtonSize;
+            ((RectTransform)NextButton.transform).sizeDelta = Vector2.one * KidButtonSize;
+
+            ((RectTransform)Dots.transform).anchoredPosition = new Vector2(0f, IsWideLayout
+                ? -ScreenLayout.WideTopBand / 2f
+                : -(size.y / 2f - (area.anchoredPosition.y + ScreenLayout.StageSize.y / 2f)) / 2f);
+
+            // Một gà con duy nhất: giữa dải mép phải, trên nút Tiếp (kiểu mép); bên trái nút Tiếp (kiểu góc).
+            var mascotRt = (RectTransform)Mascot.transform;
+            if (IsWideLayout)
+            {
+                var band = ScreenLayout.SideBandFor(size);
+                var mascotSize = Mathf.Min(band - 40f, PhoneKidButton);
+                mascotRt.sizeDelta = Vector2.one * mascotSize;
+                mascotRt.anchoredPosition = new Vector2(-(band - mascotSize) / 2f, gapBottom + KidButtonSize + Margin);
+            }
+            else
+            {
+                mascotRt.sizeDelta = Vector2.one * Mascot.DefaultSize;
+                mascotRt.anchoredPosition = new Vector2(-(gapRight + KidButtonSize + Margin), gapBottom);
+            }
+            Talk.SetAbove(IsWideLayout);
             if (NotesButton != null)
             {
+                Corner(NotesButton, Vector2.one, new Vector2(-gapRight, -Margin));
                 ((RectTransform)NotesButton.transform).sizeDelta =
                     new Vector2(IsWideLayout ? UiKit.MinTouch : NotesWidth, UiKit.MinTouch);
             }
+            if (Hand != null && Hand.IsShown) Hand.Show(Hand.Target);
         }
 
         /// <summary>
@@ -201,6 +259,25 @@ namespace TapDoc
             StageFit.FitBounds(bounds, 1f);
         }
 
+        /// <summary>Khoảng từ khung màn học tới mép trái, phải, dưới của màn thật (đơn vị canvas).</summary>
+        private (float left, float right, float bottom) DistanceToScreenEdges()
+        {
+            // Khung bé tính sẵn theo cỡ máy (không phụ thuộc lúc bố cục đã cập nhật hay chưa).
+            if (_app != null && _app.Frames.Canvas.x > 0f && transform.parent == _app.KidRoot)
+            {
+                var kid = _app.Frames.Kid;
+                return (Mathf.Max(0f, kid.xMin), Mathf.Max(0f, _app.Frames.Canvas.x - kid.xMax), Mathf.Max(0f, kid.yMin));
+            }
+            var canvas = GetComponentInParent<Canvas>()?.rootCanvas;
+            if (canvas == null) return (0f, 0f, 0f);
+            var canvasRt = (RectTransform)canvas.transform;
+            var corners = new Vector3[4];
+            ((RectTransform)transform).GetWorldCorners(corners);
+            Vector2 min = canvasRt.InverseTransformPoint(corners[0]), max = canvasRt.InverseTransformPoint(corners[2]);
+            var r = canvasRt.rect;
+            return (Mathf.Max(0f, min.x - r.xMin), Mathf.Max(0f, r.xMax - max.x), Mathf.Max(0f, min.y - r.yMin));
+        }
+
         private static void Corner(Button button, Vector2 corner, Vector2 offset)
         {
             var rt = (RectTransform)button.transform;
@@ -226,6 +303,8 @@ namespace TapDoc
             {
                 NextButton.gameObject.SetActive(false);
             }
+            Nudge?.ResetStep(Clock());
+            _nudgeTargetAt = float.NegativeInfinity;
 
             if (turnPage) TurnCurrentPage();
             else ClearCurrentView();
@@ -333,6 +412,7 @@ namespace TapDoc
                 return;
             }
             _advancing = true;
+            Nudge?.NoteActivity(Clock());
             Pulse.StopOn(NextButton.transform);
             NextButton.gameObject.SetActive(false);
             _app.Speech.Stop();
@@ -353,6 +433,72 @@ namespace TapDoc
         }
 
         private void OnReplayClicked()
+        {
+            Nudge?.NoteActivity(Clock());
+            ReplayCurrent();
+        }
+
+        /// <summary>Bé ngồi im ở bước bấm chọn: gà con nhảy gọi bé và đọc lại lời dẫn của bước.</summary>
+        private void Reprompt()
+        {
+            if (Mascot != null) Mascot.Bounce();
+            ReplayCurrent();
+        }
+
+        private void Update()
+        {
+            if (!IdleNudge.Enabled || Nudge == null || Flow == null || Flow.Phase == Phase.Done || _app == null) return;
+            var now = Clock();
+            var pointer = Pointer.current;
+            if (pointer != null && pointer.press.wasPressedThisFrame) Nudge.NoteActivity(now);
+            var busy = _app.Speech.IsBusy || _advancing || TurningPage != null
+                || (NotesPanel != null && NotesPanel.activeSelf);
+            Nudge.Tick(now, busy, NudgeKindNow(), NudgeTargetNow(now));
+        }
+
+        /// <summary>
+        /// Kiểu nhắc của bước đang học: Phần 2 và bước bấm chọn là <see cref="NudgeKind.Tap"/>; bước tự đọc, hoặc bước
+        /// đã xong chỉ còn bấm Tiếp, là <see cref="NudgeKind.Read"/>.
+        /// </summary>
+        internal NudgeKind NudgeKindNow()
+        {
+            if (CurrentView == null) return NudgeKind.None;
+            if (Flow.Phase == Phase.Part2) return NudgeKind.Tap;
+            if (NextButton != null && NextButton.gameObject.activeSelf) return NudgeKind.Read;
+            return IdleNudge.SelfReadTypes.Contains(Flow.CurrentStep?.type) ? NudgeKind.Read : NudgeKind.Tap;
+        }
+
+        /// <summary>
+        /// Chỗ bàn tay chỉ: Phần 2 là nút Nghe lại (không chỉ đáp án); nút Tiếp đang hiện thì chỉ nút Tiếp; bước bấm chọn
+        /// chỉ phần tử bấm được đầu tiên của bước (không có thì giữa phần học); bước tự đọc chưa xong thì không chỉ.
+        /// </summary>
+        internal RectTransform NudgeTargetNow(float now = float.PositiveInfinity)
+        {
+            if (CurrentView == null) return null;
+            if (Flow.Phase == Phase.Part2) return (RectTransform)ReplayButton.transform;
+            if (NextButton != null && NextButton.gameObject.activeSelf) return (RectTransform)NextButton.transform;
+            if (NudgeKindNow() != NudgeKind.Tap) return null;
+            if (_nudgeTarget != null && now - _nudgeTargetAt < TargetRefreshSeconds) return _nudgeTarget;
+            _nudgeTargetAt = now;
+            var root = CurrentView switch
+            {
+                IStepView sv => sv.Root,
+                IRoundView rv => rv.Root,
+                _ => null
+            };
+            RectTransform found = null;
+            if (root != null)
+            {
+                Component first = root.GetComponentsInChildren<Selectable>().FirstOrDefault(x => x.IsInteractable());
+                if (first == null) first = root.GetComponentsInChildren<Tile>().FirstOrDefault();
+                if (first == null) first = root.GetComponentsInChildren<DragTile>().FirstOrDefault();
+                if (first != null) found = (RectTransform)first.transform;
+            }
+            _nudgeTarget = found != null ? found : _stage;
+            return _nudgeTarget;
+        }
+
+        private void ReplayCurrent()
         {
             if (CurrentView is IStepView sv)
             {

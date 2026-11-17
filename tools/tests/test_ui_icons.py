@@ -82,8 +82,9 @@ class RenderTest(unittest.TestCase):
 
     def test_ids_match_system_images(self):
         self.assertTrue(set(ui_icons.ICONS) <= set(SYSTEM_IMAGES))
-        self.assertEqual(len(ui_icons.ICONS), 14)
+        self.assertEqual(len(ui_icons.ICONS), 15)
         self.assertIn("img_ui_tu_sach", ui_icons.ICONS)
+        self.assertIn("img_ui_tay_chi", ui_icons.ICONS)
         self.assertIn("img_ui_cai_dat", ui_icons.ICONS)
         self.assertIn(FLOWER, SYSTEM_IMAGES)
         self.assertIn(MASCOT, SYSTEM_IMAGES)

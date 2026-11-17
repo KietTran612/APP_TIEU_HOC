@@ -95,9 +95,12 @@ namespace TapDoc
         /// <summary>Nút về Tủ sách: kệ có ba gáy sách.</summary>
         public const string Shelf = "img_ui_tu_sach";
 
+        /// <summary>Bàn tay gợi ý khi bé ngồi im: ngón trỏ chỉ lên trái.</summary>
+        public const string PointHand = "img_ui_tay_chi";
+
         public static readonly string[] All =
         {
-            Home, Speaker, Forward, Backward, Book, Review, Check, Lock, PagePrev, PageNext, PaperStar, Petal, Settings, Shelf,
+            Home, Speaker, Forward, Backward, Book, Review, Check, Lock, PagePrev, PageNext, PaperStar, Petal, Settings, Shelf, PointHand,
         };
     }
 

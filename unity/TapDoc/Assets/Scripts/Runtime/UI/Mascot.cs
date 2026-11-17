@@ -111,6 +111,12 @@ namespace TapDoc
             ShowBubble(bubble, keepBubble);
         }
 
+        /// <summary>Nhảy hai nhịp, không bong bóng: gọi bé khi bé ngồi im (bản thiết kế nâng cấp UI mục 4.1.3).</summary>
+        public void Bounce() => Hop();
+
+        /// <summary>Bong bóng khen đang hiện.</summary>
+        public bool IsBubbleShown => _bubble != null && _bubble.activeSelf;
+
         /// <summary>Nghiêng đầu như đang nghĩ (khi bé chọn sai); không có bong bóng, không có tiếng.</summary>
         public void Ponder()
         {

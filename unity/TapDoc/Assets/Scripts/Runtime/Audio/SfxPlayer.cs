@@ -11,6 +11,9 @@ namespace TapDoc
     public class SfxPlayer : MonoBehaviour
     {
         public const float DefaultVolume = .45f;
+
+        /// <summary>Âm lượng tiếng động khi giọng đọc đang chạy: không át giọng đọc (bản thiết kế nâng cấp UI mục 4.1.6).</summary>
+        public const float DuckedVolume = .2f;
         private const int MaxHistory = 50;
 
         private AssetCatalog _catalog;
@@ -23,6 +26,9 @@ namespace TapDoc
 
         /// <summary>Phụ huynh có bật tiếng động không.</summary>
         public bool Enabled { get; set; } = true;
+
+        /// <summary>Âm lượng của lần phát gần nhất.</summary>
+        public float LastVolume { get; private set; } = DefaultVolume;
 
         /// <summary>Các mã đã được phép phát (kể cả khi thiếu file), mới nhất ở cuối.</summary>
         public IReadOnlyList<string> History => _history;
@@ -50,8 +56,9 @@ namespace TapDoc
             }
             if (!Enabled) return;
             Record(id);
+            LastVolume = _speech != null && _speech.IsBusy ? DuckedVolume : DefaultVolume;
             var clip = _catalog?.Sfx(id);
-            if (clip != null && _source != null) _source.PlayOneShot(clip);
+            if (clip != null && _source != null) _source.PlayOneShot(clip, LastVolume / DefaultVolume);
         }
 
         /// <summary>Như <see cref="Play"/>, nhưng bỏ qua khi giọng đọc đang phát (để không chen vào lời đánh vần).</summary>

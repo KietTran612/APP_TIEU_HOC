@@ -141,6 +141,13 @@ ICONS: dict[str, list] = {
         ("stroke", [(3, 19.8), (21, 19.8)], 1.8, INK, False),
     ],
     "img_ui_cai_dat": _gear_teeth(12, 12, 6.0, 9.8) + _outlined(_arc(12, 12, 5.2, 0, 360, 48), 3.8, closed=True),
+    # Bàn tay gợi ý khi bé ngồi im: ngón trỏ chỉ lên trái, chóp ngón ở gần góc trên trái (màn học đặt chóp vào đích).
+    "img_ui_tay_chi": _outlined([(5, 4.2), (12, 11.5)], 3.4) + [
+        ("fill", [(10, 11.5), (15.5, 9.6), (20, 13), (19.6, 19), (14.2, 21.2), (9.8, 17.2)], PAPER),
+        ("stroke", [(10, 11.5), (15.5, 9.6), (20, 13), (19.6, 19), (14.2, 21.2), (9.8, 17.2)], 1.5, INK, True),
+        ("stroke", [(13.4, 13.6), (17.6, 12.4)], 1.0, INK, False),
+        ("stroke", [(13.8, 16.2), (18.6, 15.2)], 1.0, INK, False),
+    ],
 }
 
 # Hình tạm kí hiệu [:]: ô vuông viền mực, giữa có dấu hai chấm (tranh chính thức ghi đè cùng mã).

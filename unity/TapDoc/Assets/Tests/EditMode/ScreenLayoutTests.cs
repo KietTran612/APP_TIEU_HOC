@@ -60,7 +60,7 @@ namespace TapDoc.Tests
             AssertRect(f.Safe, f.Kid, "Kid");
             Assert.AreEqual(450.7f, f.Standard.x, Tol);
             Assert.IsTrue(f.Wide);
-            Assert.AreEqual(1.155f, ScreenLayout.WideStageScale(f.Kid.size), 0.005f);
+            Assert.AreEqual((2017.1f - 2f * ScreenLayout.PhoneSideBand) / 1400f, ScreenLayout.WideStageScale(f.Kid.size), 0.005f);
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace TapDoc.Tests
             var f = Compute(1334, 750);
             Assert.AreEqual(1921f, f.Canvas.x, Tol);
             Assert.IsTrue(f.Wide);
-            Assert.AreEqual(1.086f, ScreenLayout.WideStageScale(f.Kid.size), 0.005f);
+            Assert.AreEqual((1921f - 2f * ScreenLayout.LessonSideBand) / 1400f, ScreenLayout.WideStageScale(f.Kid.size), 0.005f);
         }
 
         [Test]
@@ -145,6 +145,18 @@ namespace TapDoc.Tests
             var b = Compute(2400, 1080);
             Assert.IsTrue(a.Same(b));
             Assert.IsFalse(a.Same(Compute(2400, 1080, left: 50f)));
+        }
+
+        [Test]
+        public void SideBand_ByAspect()
+        {
+            // Nâng cấp UI mục 4.1.5: điện thoại dài có nút to hơn, mọi nút chừa 48 tới mép.
+            Assert.AreEqual(ScreenLayout.PhoneSideBand, ScreenLayout.SideBandFor(new Vector2(2400f, 1080f)));
+            Assert.AreEqual(ScreenLayout.LessonSideBand, ScreenLayout.SideBandFor(new Vector2(1920f, 1080f)));
+            Assert.AreEqual(ScreenLayout.LessonSideBand, ScreenLayout.SideBandFor(new Vector2(1728f, 1080f)));
+            Assert.AreEqual((2400f - 480f) / 1400f, ScreenLayout.WideStageScale(new Vector2(2400f, 1080f)), .001f);
+            Assert.GreaterOrEqual(ScreenLayout.LessonSideBand, ScreenLayout.EdgeGap + UiKit.MinTouch);
+            Assert.GreaterOrEqual(ScreenLayout.PhoneSideBand, ScreenLayout.EdgeGap + 180f);
         }
     }
 }

@@ -32,6 +32,7 @@ namespace TapDoc.Tests
         public void SetUpProgressStore()
         {
             Motion.Scale = 0f; // tắt hiệu ứng: test chạy nhanh, ảnh chụp ổn định; test hiệu ứng tự bật lại
+            IdleNudge.Enabled = false; // nhắc khi ngồi im chạy theo thời gian thật: tắt, test của nhắc tự bật lại
             StorePath = Path.Combine(Path.GetTempPath(), $"tapdoc_app_test_{Guid.NewGuid():N}.json");
             var path = StorePath;
             NoticeSeen = true;
@@ -57,6 +58,7 @@ namespace TapDoc.Tests
             DeviceSafeArea.Override = null;
             AppRoot.StoreFactory = null;
             Motion.Scale = 1f;
+            IdleNudge.Enabled = true;
             if (_stubSprite != null || _stubClip != null)
             {
                 AppRoot.SourceFactory = null;
