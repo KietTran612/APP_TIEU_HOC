@@ -20,6 +20,13 @@ class SpecTest(unittest.TestCase):
         self.assertEqual(bt.parse_spec("cau_b1_01:ngat=Chính, tả: Hòn đá to"),
                          ("cau_b1_01", "ngat", "Chính, tả: Hòn đá to"))
 
+    def test_tag_names_take(self):
+        # hai kiểu cùng cách của một mã cần tên bản thử khác nhau
+        self.assertEqual(bt.parse_spec("hoi_b315_04:ngat#a=Tìm từ can đảm."),
+                         ("hoi_b315_04", "ngat", "Tìm từ can đảm."))
+        self.assertEqual(bt.take_name("hoi_b315_04:ngat#a=Tìm từ can đảm."), "hoi_b315_04__ngat_a")
+        self.assertEqual(bt.take_name("hoi_b315_04:cham"), "hoi_b315_04__cham")
+
     def test_bad_specs(self):
         for spec in ("cau_b1_01:nhanh", "cau_b1_01", "cau_b1_01:ngat", "cau_b1_01:cham_ngat= "):
             with self.subTest(spec=spec), self.assertRaises(ValueError):

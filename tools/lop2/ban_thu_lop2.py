@@ -5,7 +5,7 @@ so_ban_thu) rồi mới cài bản được chọn. Cài thì giữ bản cũ �
 byte với bản thử.
 
 Dùng (từ gốc repo):
-    python tools/lop2/ban_thu_lop2.py tao <thư mục> MÃ:cách[=chữ đọc] ...
+    python tools/lop2/ban_thu_lop2.py tao <thư mục> MÃ:cách[#nhãn][=chữ đọc] ...
     python tools/lop2/ban_thu_lop2.py cai <thư mục> MÃ__cách ... --ghi-chu "…"
 Cách: cham (chậm hơn mặc định 20%), ngat (chữ đọc riêng, cần =chữ), cham_ngat (cả hai), ghep (ghép các tiếng đã
 có file, "," ở dấu câu), le (một tiếng: đọc "X, X." rồi giữ tiếng đầu). Chữ đọc riêng đã có của mã được giữ, trừ khi
@@ -41,10 +41,22 @@ PREV = ROOT / "content/tts/prev"
 MARKS = ROOT / "content/tts/marks"
 
 
-def parse_spec(spec: str) -> tuple[str, str, str | None]:
-    """"MÃ:cách[=chữ đọc]" → (mã, cách, chữ đọc hoặc None)."""
+def _split_tag(spec: str) -> tuple[str, str, str, str]:
     head, _, doc = spec.partition("=")
     audio_id, _, cach = head.partition(":")
+    cach, _, tag = cach.partition("#")
+    return audio_id, cach, tag, doc
+
+
+def take_name(spec: str) -> str:
+    """Tên bản thử: MÃ__cách, có nhãn thì MÃ__cách_nhãn (hai kiểu cùng cách của một mã)."""
+    audio_id, cach, tag, _ = _split_tag(spec)
+    return f"{audio_id}__{cach}" + (f"_{tag}" if tag else "")
+
+
+def parse_spec(spec: str) -> tuple[str, str, str | None]:
+    """"MÃ:cách[#nhãn][=chữ đọc]" → (mã, cách, chữ đọc hoặc None)."""
+    audio_id, cach, _, doc = _split_tag(spec)
     if cach not in CACH:
         raise ValueError(f"{spec}: cách phải là một trong {', '.join(CACH)}")
     if cach in ("ngat", "cham_ngat") and not doc.strip():
@@ -204,7 +216,7 @@ def main(argv) -> int:
         for spec in rest:
             audio_id, cach, doc = parse_spec(spec)
             row = by_id[audio_id]
-            name = f"{audio_id}__{cach}"
+            name = take_name(spec)
             try:
                 override = override_for(row, settings, cach, doc, audio)
                 updated = make_take(row, settings, override, engine, out_dir, name, audio)
