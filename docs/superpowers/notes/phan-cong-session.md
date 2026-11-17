@@ -20,7 +20,7 @@ Cập nhật lần cuối: 17/11/2026 (16:15). Từ 17/11 các session làm theo
 - **Chỉnh sửa duyệt** của chủ dự án nằm trong working copy của danh mục và không được commit lẫn. Các session chỉ stage dòng của mình.
 - Tên session có tiền tố `[L1]`, `[L2]`, `[Chung]`. Thanh bên luôn xếp session con dưới session root, nên dùng tiền tố thay cho nhóm.
 - Root báo chủ dự án ngắn gọn sau mỗi lần một session báo về, và kiểm tra lại kết quả (commit, file) trước khi báo "xong".
-- **Sắp hết usage thì tạm ngưng** (chủ dự án 17/11). Usage 5 giờ và usage tuần dùng chung cho mọi session. Khi usage 5 giờ khoảng 90% trở lên (xem `get_usage`), hoặc app báo giới hạn: dừng ở chỗ an toàn. Xong bước nhỏ đang làm; không để file viết dở, commit dở, hay lượt Unity sắp quá giờ. Ghi một dòng đã dừng ở đâu. Việc nền không tốn usage cứ chạy tiếp: tts, nhận dạng giọng nói, clip Flow đã gửi. Không gửi clip Flow mới. Root đặt lịch sau giờ reset để kiểm usage rồi báo các session làm tiếp.
+- **Sắp hết usage thì tạm ngưng** (chủ dự án 17/11). Usage 5 giờ và usage tuần dùng chung cho mọi session. Khi usage 5 giờ từ 97% trở lên (xem `get_usage`; chủ dự án đặt ngưỡng 97%), hoặc app báo giới hạn: dừng ở chỗ an toàn. Xong bước nhỏ đang làm; không để file viết dở, commit dở, hay lượt Unity sắp quá giờ. Ghi một dòng đã dừng ở đâu. Việc nền không tốn usage cứ chạy tiếp: tts, nhận dạng giọng nói, clip Flow đã gửi. Không gửi clip Flow mới. Root đặt lịch sau giờ reset để kiểm usage rồi báo các session làm tiếp.
 
 ## Danh sách session
 
