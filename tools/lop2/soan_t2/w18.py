@@ -129,7 +129,6 @@ lesson(309, [8, 9],
                ("part1[14]", "chữ có ươ trong bài chép do app chọn: được, sướng, tướng")])
 
 # 310 — Từ ngữ: Thiếu nhi đoàn kết (tr.9–10)
-TU_310 = ["bạn học", "tình bạn", "tập thể", "đoàn kết", "gắn bó", "đồng sức đồng lòng"]
 lesson(310, [9, 10],
        [title("Từ ngữ: Thiếu nhi đoàn kết"),
         title("Những từ ngữ cần ghi nhớ"),
@@ -137,19 +136,20 @@ lesson(310, [9, 10],
         words("đồng sức đồng lòng", marker=""),
         title("Bài tập: Chọn từ ngữ thích hợp ở trên để điền vào những chỗ trống"),
         fill_passage(["Các bạn Xuân, Phong, Thụ, Hải và em cùng học với nhau một lớp, "
-                      "nên chúng em đều là [bạn học] của nhau.",
-                      "Ở lớp cũng như ở nhà, chúng em luôn luôn [đoàn kết] với nhau, cùng giúp đỡ nhau tiến bộ.",
-                      "[Tình bạn] giữa chúng em ngày càng thêm [gắn bó]."],
-                     bank=["bạn học", "Tình bạn", "tập thể", "đoàn kết", "gắn bó", "đồng sức đồng lòng"]),
-        fill_passage(["Bác Hồ dạy: Việc gì khó mà biết [đồng sức đồng lòng] thì việc khó mấy cũng làm xong.",
-                      "Trong một [tập thể] mà mọi người không [đoàn kết] thì dù việc dễ cũng không làm được "
-                      "đến nơi đến chốn."],
-                     bank=TU_310)],
+                      "nên chúng em đều là [bạn học|tập thể|đồng sức đồng lòng] của nhau.",
+                      "Ở lớp cũng như ở nhà, chúng em luôn luôn [đoàn kết|bạn học|tình bạn] với nhau, "
+                      "cùng giúp đỡ nhau tiến bộ.",
+                      "[Tình bạn|Bạn học|Tập thể] giữa chúng em ngày càng thêm [gắn bó|tập thể|bạn học]."]),
+        fill_passage(["Bác Hồ dạy: Việc gì khó mà biết [đồng sức đồng lòng|bạn học|tình bạn] "
+                      "thì việc khó mấy cũng làm xong.",
+                      "Trong một [tập thể|bạn học|gắn bó] mà mọi người không [đoàn kết|bạn học|tập thể] "
+                      "thì dù việc dễ cũng không làm được đến nơi đến chốn."])],
        listen(("bạn học", "tình bạn", "tập thể"), ("tình bạn", "bạn học", "gắn bó"), ("tập thể", "đoàn kết", "bạn học"),
               ("đoàn kết", "gắn bó", "tình bạn"), ("gắn bó", "tập thể", "đoàn kết"),
               ("đồng sức đồng lòng", "đoàn kết", "tập thể")),
        notes=[("sach", "\"Đồng sức đồng lòng\" là thành ngữ (sách in trong mục từ ngữ cần ghi nhớ)."),
-              ("khac_sach", "Điền từ bằng chạm hoặc kéo thẻ; thẻ lấy từ các từ ngữ cần ghi nhớ, đáp án do app soạn.")],
+              ("khac_sach", "Điền từ: mỗi chỗ trống 3 thẻ do app chọn trong các từ ngữ cần ghi nhớ, tránh hai từ cùng "
+                            "đúng; đáp án do app soạn.")],
        review=[("part1[5]", "đáp án điền từ do app soạn: bạn học, đoàn kết, Tình bạn, gắn bó"),
                ("part1[6]", "đáp án điền từ do app soạn: đồng sức đồng lòng, tập thể, đoàn kết")])
 

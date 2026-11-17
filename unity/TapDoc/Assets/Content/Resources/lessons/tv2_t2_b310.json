@@ -22,7 +22,7 @@
     },
     {
       "kind": "khac_sach",
-      "text": "Điền từ bằng chạm hoặc kéo thẻ; thẻ lấy từ các từ ngữ cần ghi nhớ, đáp án do app soạn."
+      "text": "Điền từ: mỗi chỗ trống 3 thẻ do app chọn trong các từ ngữ cần ghi nhớ, tránh hai từ cùng đúng; đáp án do app soạn."
     }
   ],
   "review": {
@@ -111,14 +111,7 @@
     {
       "type": "fill_passage",
       "marker": "",
-      "labels": [
-        "bạn học",
-        "Tình bạn",
-        "tập thể",
-        "đoàn kết",
-        "gắn bó",
-        "đồng sức đồng lòng"
-      ],
+      "labels": [],
       "rows": [
         {
           "text": "Các bạn Xuân, Phong, Thụ, Hải và em cùng học với nhau một lớp, nên chúng em đều là bạn học của nhau.",
@@ -149,10 +142,7 @@
           "answer": "bạn học",
           "choices": [
             "bạn học",
-            "Tình bạn",
             "tập thể",
-            "đoàn kết",
-            "gắn bó",
             "đồng sức đồng lòng"
           ]
         },
@@ -172,12 +162,9 @@
           "role": "blank",
           "answer": "đoàn kết",
           "choices": [
-            "bạn học",
-            "Tình bạn",
-            "tập thể",
             "đoàn kết",
-            "gắn bó",
-            "đồng sức đồng lòng"
+            "bạn học",
+            "tình bạn"
           ]
         },
         {
@@ -191,12 +178,9 @@
           "role": "blank",
           "answer": "Tình bạn",
           "choices": [
-            "bạn học",
             "Tình bạn",
-            "tập thể",
-            "đoàn kết",
-            "gắn bó",
-            "đồng sức đồng lòng"
+            "Bạn học",
+            "Tập thể"
           ]
         },
         {
@@ -210,12 +194,9 @@
           "role": "blank",
           "answer": "gắn bó",
           "choices": [
-            "bạn học",
-            "Tình bạn",
-            "tập thể",
-            "đoàn kết",
             "gắn bó",
-            "đồng sức đồng lòng"
+            "tập thể",
+            "bạn học"
           ]
         },
         {
@@ -228,14 +209,7 @@
     {
       "type": "fill_passage",
       "marker": "",
-      "labels": [
-        "bạn học",
-        "tình bạn",
-        "tập thể",
-        "đoàn kết",
-        "gắn bó",
-        "đồng sức đồng lòng"
-      ],
+      "labels": [],
       "rows": [
         {
           "text": "Bác Hồ dạy: Việc gì khó mà biết đồng sức đồng lòng thì việc khó mấy cũng làm xong.",
@@ -260,12 +234,9 @@
           "role": "blank",
           "answer": "đồng sức đồng lòng",
           "choices": [
+            "đồng sức đồng lòng",
             "bạn học",
-            "tình bạn",
-            "tập thể",
-            "đoàn kết",
-            "gắn bó",
-            "đồng sức đồng lòng"
+            "tình bạn"
           ]
         },
         {
@@ -284,12 +255,9 @@
           "role": "blank",
           "answer": "tập thể",
           "choices": [
-            "bạn học",
-            "tình bạn",
             "tập thể",
-            "đoàn kết",
-            "gắn bó",
-            "đồng sức đồng lòng"
+            "bạn học",
+            "gắn bó"
           ]
         },
         {
@@ -303,12 +271,9 @@
           "role": "blank",
           "answer": "đoàn kết",
           "choices": [
-            "bạn học",
-            "tình bạn",
-            "tập thể",
             "đoàn kết",
-            "gắn bó",
-            "đồng sức đồng lòng"
+            "bạn học",
+            "tập thể"
           ]
         },
         {

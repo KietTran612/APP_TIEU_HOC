@@ -155,27 +155,28 @@ lesson(326, [24, 25],
                ("part1[4]", "đáp án tầng/tần theo chính tả chuẩn (sách không in đáp án)")])
 
 # 327 — Từ ngữ: Thiếu nhi chăm học (tr.25)
-TU_327 = ["góc học tập", "bàn học", "giá sách", "sách vở", "truyện thiếu nhi", "truyện khoa học",
-          "chuyên cần", "chăm chỉ", "chăm chú"]
 lesson(327, [25],
        [title("Từ ngữ: Thiếu nhi chăm học"),
         title("Những từ ngữ cần ghi nhớ"),
         words("góc học tập", "bàn học", "giá sách", "sách vở", "truyện thiếu nhi", "truyện khoa học"),
         words("chuyên cần", "chăm chỉ", "chăm chú"),
         title("Bài tập: Điền từ ngữ thích hợp vào những chỗ trống"),
-        fill_passage(["Bạn Hải là học sinh giỏi nhất lớp em.", "Bạn ấy đi học rất [chuyên cần].",
-                      "Ở lớp bạn ấy luôn luôn [chăm chú] nghe cô giáo giảng bài.", "Ở nhà, Hải cũng [chăm chỉ] học tập.",
-                      "Hải thường ngồi học nghiêm chỉnh ở [góc học tập] của mình.",
-                      "Trên [bàn học] của bạn ấy, [sách vở] luôn luôn được xếp đặt rất ngăn nắp.",
+        fill_passage(["Bạn Hải là học sinh giỏi nhất lớp em.", "Bạn ấy đi học rất [chuyên cần|giá sách|bàn học].",
+                      "Ở lớp bạn ấy luôn luôn [chăm chú|sách vở|góc học tập] nghe cô giáo giảng bài.",
+                      "Ở nhà, Hải cũng [chăm chỉ|giá sách|truyện thiếu nhi] học tập.",
+                      "Hải thường ngồi học nghiêm chỉnh ở [góc học tập|chăm chú|truyện khoa học] của mình.",
+                      "Trên [bàn học|chuyên cần|chăm chỉ] của bạn ấy, [sách vở|chăm chú|chuyên cần] "
+                      "luôn luôn được xếp đặt rất ngăn nắp.",
                       "Ngoài việc học bài, làm bài, Hải còn rất ham đọc sách.",
-                      "Trên [giá sách] của bạn ấy có rất nhiều truyện hay.",
-                      "Nhiều nhất là hai loại [truyện thiếu nhi] và [truyện khoa học]."],
-                     bank=TU_327),
+                      "Trên [giá sách|chăm chỉ|chuyên cần] của bạn ấy có rất nhiều truyện hay.",
+                      "Nhiều nhất là hai loại [truyện thiếu nhi|chăm chú|góc học tập] "
+                      "và [truyện khoa học|bàn học|chuyên cần]."]),
         q("2. Tìm những từ trái nghĩa với các từ chăm chỉ, chăm học.")],
        listen(("góc học tập", "bàn học", "giá sách"), ("chuyên cần", "chăm chú", "chăm chỉ"),
               ("chăm chú", "chăm chỉ", "chuyên cần"), ("sách vở", "giá sách", "bàn học"),
               ("truyện thiếu nhi", "truyện khoa học", "sách vở"), ("ngăn nắp", "chuyên cần", "góc học tập")),
-       notes=[("khac_sach", "Điền từ bằng chạm hoặc kéo thẻ; thẻ lấy từ các từ ngữ cần ghi nhớ, đáp án do app soạn."),
+       notes=[("khac_sach", "Điền từ: mỗi chỗ trống 3 thẻ do app chọn trong các từ ngữ cần ghi nhớ, tránh hai từ cùng "
+                            "đúng; đáp án do app soạn."),
               ("khac_sach", KS_ORAL)],
        review=[("part1[5]", "đáp án điền từ do app soạn: chuyên cần, chăm chú, chăm chỉ, góc học tập, bàn học, sách vở, "
                             "giá sách, truyện thiếu nhi, truyện khoa học")])

@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lop2" / "soan_t2")
 from toc_t2 import image_of  # noqa: E402
 
 FIRST = 305
-DONE = 34  # số mục tập hai đã chép (tăng theo đợt: 34, 66, 98, 130)
+DONE = 66  # số mục tập hai đã chép (tăng theo đợt: 34, 66, 98, 130)
 LABELS = {"tap_chep_chinh_ta": "Chính tả", "tu_ngu": "Từ ngữ", "ngu_phap": "Ngữ pháp", "tap_lam_van": "Tập làm văn"}
 
 

@@ -1,0 +1,271 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b370",
+  "book": "tv2_t2_2002",
+  "lesson_no": 370,
+  "type": "tap_lam_van",
+  "title": "Trả lời câu hỏi: Bộ đội đi trên Trường Sơn",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      61
+    ],
+    "scan_file": "031",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi về bài đã đọc: bé trả lời miệng cùng bố mẹ, app hiện lại tranh của bài đó."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Trả lời câu hỏi",
+      "audio": "cau_b370_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Bộ đội đi trên Trường Sơn.",
+      "audio": "cau_b370_02",
+      "labels": [
+        "Xem tranh ở bài Bộ đội đi trên Trường Sơn."
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b365_truwowngf_sown",
+      "audio": "hd_b370_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Đi trên đường Trường Sơn, các chú bộ đội gặp những khó khăn gì?",
+      "audio": "hoi_b370_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Các chú phải đi như thế nào?",
+      "audio": "hoi_b370_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Lên dốc cao như thế, nhìn lên ta thấy có gì lạ mắt?",
+      "audio": "hoi_b370_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "4. Nhìn xuống, ta thấy như thế nào?",
+      "audio": "hoi_b370_04"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "5. Tại sao khuôn mặt các chú lại đỏ bừng?",
+      "audio": "hoi_b370_05"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_booj_ddooij",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "bộ đội",
+          "audio": "tu_booj_ddooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dốc cao",
+          "audio": "tu_doocs_cao",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ba lô",
+          "audio": "tu_ba_loo",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_doocs_cao",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "dốc cao",
+          "audio": "tu_doocs_cao",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bộ đội",
+          "audio": "tu_booj_ddooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "khuôn mặt",
+          "audio": "tu_khuoon_mawtj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ba_loo",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ba lô",
+          "audio": "tu_ba_loo",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "khuôn mặt",
+          "audio": "tu_khuoon_mawtj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dốc cao",
+          "audio": "tu_doocs_cao",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_khuoon_mawtj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "khuôn mặt",
+          "audio": "tu_khuoon_mawtj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ba lô",
+          "audio": "tu_ba_loo",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Trường Sơn",
+          "audio": "tu_truwowngf_sown",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_truwowngf_sown",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "Trường Sơn",
+          "audio": "tu_truwowngf_sown",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "bộ đội",
+          "audio": "tu_booj_ddooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "đỏ bừng",
+          "audio": "tu_ddor_buwngf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddor_buwngf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đỏ bừng",
+          "audio": "tu_ddor_buwngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Trường Sơn",
+          "audio": "tu_truwowngf_sown",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ba lô",
+          "audio": "tu_ba_loo",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

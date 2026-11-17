@@ -1,0 +1,265 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b347",
+  "book": "tv2_t2_2002",
+  "lesson_no": 347,
+  "type": "tap_lam_van",
+  "title": "Trả lời câu hỏi: Tí Xíu",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      42
+    ],
+    "scan_file": "021",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Câu hỏi về bài đã đọc: bé trả lời miệng cùng bố mẹ, app hiện lại tranh của bài đó."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do app soạn"
+      },
+      {
+        "where": "part1[2]",
+        "note": "lời dẫn tranh do Claude đề xuất"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Trả lời câu hỏi",
+      "audio": "cau_b347_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Tí Xíu.",
+      "audio": "cau_b347_02",
+      "labels": [
+        "Xem tranh ở bài Tí Xíu."
+      ]
+    },
+    {
+      "type": "picture",
+      "image": "img_b331_tis_xius",
+      "audio": "hd_b347_tranh_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Tí Xíu đã biết làm những việc gì để giúp gia đình?",
+      "audio": "hoi_b347_01"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "2. Tí Xíu còn biết làm gì để góp phần giữ nước?",
+      "audio": "hoi_b347_02"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Như vậy Tí Xíu có còn bé nữa không? Tại sao?",
+      "audio": "hoi_b347_03"
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "4. Em đã làm được những việc gì để giúp nhà và giúp nước?",
+      "audio": "hoi_b347_04"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tis_xius",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "Tí Xíu",
+          "audio": "tu_tis_xius",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gia đình",
+          "audio": "tu_gia_ddinhf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giữ nước",
+          "audio": "tu_giuwx_nuwowcs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_gia_ddinhf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "gia đình",
+          "audio": "tu_gia_ddinhf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Tí Xíu",
+          "audio": "tu_tis_xius",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giúp nhà",
+          "audio": "tu_giups_nhaf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_giuwx_nuwowcs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "giữ nước",
+          "audio": "tu_giuwx_nuwowcs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giúp nhà",
+          "audio": "tu_giups_nhaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Tí Xíu",
+          "audio": "tu_tis_xius",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_giups_nhaf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "giúp nhà",
+          "audio": "tu_giups_nhaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giữ nước",
+          "audio": "tu_giuwx_nuwowcs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gia đình",
+          "audio": "tu_gia_ddinhf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_naaus_nuwowngs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "nấu nướng",
+          "audio": "tu_naaus_nuwowngs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gia đình",
+          "audio": "tu_gia_ddinhf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giữ nước",
+          "audio": "tu_giuwx_nuwowcs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_caay_choong",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cây chông",
+          "audio": "tu_caay_choong",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nấu nướng",
+          "audio": "tu_naaus_nuwowngs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giúp nhà",
+          "audio": "tu_giups_nhaf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

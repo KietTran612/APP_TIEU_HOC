@@ -17,7 +17,7 @@
   "notes": [
     {
       "kind": "khac_sach",
-      "text": "Điền từ bằng chạm hoặc kéo thẻ; thẻ lấy từ các từ ngữ cần ghi nhớ, đáp án do app soạn."
+      "text": "Điền từ: mỗi chỗ trống 3 thẻ do app chọn trong các từ ngữ cần ghi nhớ, tránh hai từ cùng đúng; đáp án do app soạn."
     },
     {
       "kind": "khac_sach",
@@ -124,17 +124,7 @@
     {
       "type": "fill_passage",
       "marker": "",
-      "labels": [
-        "góc học tập",
-        "bàn học",
-        "giá sách",
-        "sách vở",
-        "truyện thiếu nhi",
-        "truyện khoa học",
-        "chuyên cần",
-        "chăm chỉ",
-        "chăm chú"
-      ],
+      "labels": [],
       "rows": [
         {
           "text": "Bạn Hải là học sinh giỏi nhất lớp em.",
@@ -199,15 +189,9 @@
           "role": "blank",
           "answer": "chuyên cần",
           "choices": [
-            "góc học tập",
-            "bàn học",
-            "giá sách",
-            "sách vở",
-            "truyện thiếu nhi",
-            "truyện khoa học",
             "chuyên cần",
-            "chăm chỉ",
-            "chăm chú"
+            "giá sách",
+            "bàn học"
           ]
         },
         {
@@ -226,15 +210,9 @@
           "role": "blank",
           "answer": "chăm chú",
           "choices": [
-            "góc học tập",
-            "bàn học",
-            "giá sách",
+            "chăm chú",
             "sách vở",
-            "truyện thiếu nhi",
-            "truyện khoa học",
-            "chuyên cần",
-            "chăm chỉ",
-            "chăm chú"
+            "góc học tập"
           ]
         },
         {
@@ -253,15 +231,9 @@
           "role": "blank",
           "answer": "chăm chỉ",
           "choices": [
-            "góc học tập",
-            "bàn học",
-            "giá sách",
-            "sách vở",
-            "truyện thiếu nhi",
-            "truyện khoa học",
-            "chuyên cần",
             "chăm chỉ",
-            "chăm chú"
+            "giá sách",
+            "truyện thiếu nhi"
           ]
         },
         {
@@ -281,14 +253,8 @@
           "answer": "góc học tập",
           "choices": [
             "góc học tập",
-            "bàn học",
-            "giá sách",
-            "sách vở",
-            "truyện thiếu nhi",
-            "truyện khoa học",
-            "chuyên cần",
-            "chăm chỉ",
-            "chăm chú"
+            "chăm chú",
+            "truyện khoa học"
           ]
         },
         {
@@ -307,15 +273,9 @@
           "role": "blank",
           "answer": "bàn học",
           "choices": [
-            "góc học tập",
             "bàn học",
-            "giá sách",
-            "sách vở",
-            "truyện thiếu nhi",
-            "truyện khoa học",
             "chuyên cần",
-            "chăm chỉ",
-            "chăm chú"
+            "chăm chỉ"
           ]
         },
         {
@@ -329,15 +289,9 @@
           "role": "blank",
           "answer": "sách vở",
           "choices": [
-            "góc học tập",
-            "bàn học",
-            "giá sách",
             "sách vở",
-            "truyện thiếu nhi",
-            "truyện khoa học",
-            "chuyên cần",
-            "chăm chỉ",
-            "chăm chú"
+            "chăm chú",
+            "chuyên cần"
           ]
         },
         {
@@ -361,15 +315,9 @@
           "role": "blank",
           "answer": "giá sách",
           "choices": [
-            "góc học tập",
-            "bàn học",
             "giá sách",
-            "sách vở",
-            "truyện thiếu nhi",
-            "truyện khoa học",
-            "chuyên cần",
             "chăm chỉ",
-            "chăm chú"
+            "chuyên cần"
           ]
         },
         {
@@ -388,15 +336,9 @@
           "role": "blank",
           "answer": "truyện thiếu nhi",
           "choices": [
-            "góc học tập",
-            "bàn học",
-            "giá sách",
-            "sách vở",
             "truyện thiếu nhi",
-            "truyện khoa học",
-            "chuyên cần",
-            "chăm chỉ",
-            "chăm chú"
+            "chăm chú",
+            "góc học tập"
           ]
         },
         {
@@ -410,15 +352,9 @@
           "role": "blank",
           "answer": "truyện khoa học",
           "choices": [
-            "góc học tập",
-            "bàn học",
-            "giá sách",
-            "sách vở",
-            "truyện thiếu nhi",
             "truyện khoa học",
-            "chuyên cần",
-            "chăm chỉ",
-            "chăm chú"
+            "bàn học",
+            "chuyên cần"
           ]
         },
         {

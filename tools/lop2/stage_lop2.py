@@ -41,14 +41,24 @@ def stage(rel):
         if row.get("bai") and all(b.startswith(PREFIX) for b in row["bai"]):
             out.append(row)  # dòng chỉ của lớp 2 (do session này tạo): lấy cả trạng thái âm thanh vừa tạo
             continue
-        extra = [b for b in row.get("bai", []) if b.startswith(PREFIX) and b not in base.get("bai", [])]
-        if extra:
-            base = dict(base, bai=base.get("bai", []) + extra)
+        # Dòng dùng chung: giữ như HEAD, chỉ cập nhật mã bài của tập đang stage (thêm mã mới, bỏ mã bài không còn dùng).
+        now = [b for b in row.get("bai", []) if b.startswith(PREFIX)]
+        kept = [b for b in base.get("bai", []) if not b.startswith(PREFIX) or b in now]
+        extra = [b for b in now if b not in base.get("bai", [])]
+        if extra or len(kept) != len(base.get("bai", [])):
+            base = dict(base, bai=kept + extra)
             touched += 1
         out.append(base)
     missing = set(head) - {r["id"] for r in out}
-    for mid in sorted(missing):  # dòng HEAD đã bị xoá ở bản làm việc: giữ như HEAD
-        out.append(head[mid])
+    dropped = 0
+    for mid in sorted(missing):  # dòng HEAD đã bị xoá ở bản làm việc
+        bai = head[mid].get("bai") or []
+        if bai and all(b.startswith(PREFIX) for b in bai):
+            dropped += 1  # dòng chỉ của tập đang stage mà `build` đã bỏ (câu đổi chữ, tách lại): bỏ theo
+            continue
+        out.append(head[mid])  # dòng của người khác: giữ như HEAD
+    if dropped:
+        print(f"{rel}: bỏ {dropped} dòng chỉ của tập này mà build đã xoá")
     text = json.dumps(out, ensure_ascii=False, indent=2) + "\n"
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", newline="\n", suffix=".json", delete=False) as f:
         f.write(text)

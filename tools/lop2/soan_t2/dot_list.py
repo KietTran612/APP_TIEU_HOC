@@ -16,7 +16,7 @@ for f in sorted((REPO / "content/src").glob("tv2_t2_b*.json")):
             continue
         seen.add(img)
         lab = f"Bài {s['td_no']}. {s['title']}" if "td_no" in s else s["title"]
-        pages = "–".join(map(str, s["source"]["pages"]))
+        pg = s["source"]["pages"]; pages = f"{pg[0]}–{pg[-1]}" if len(pg) > 1 else str(pg[0])
         lines.append(f"| `{img}` | {s['lesson_no']} | {lab} (tr.{pages}) | {desc} |")
 head = [f"# Tranh Tiếng Việt 2 tập hai — đợt T2-{n} (tuần {weeks}, mục {lo}–{hi})", "",
         "Session nội dung [L2T2] gửi root, root chuyển session vẽ tranh [L2T2]. Phiếu vẽ đủ phong cách từng bài ở "

@@ -151,26 +151,26 @@ lesson(317, [16, 17],
                ("part1[12]", "đáp án nặng/lặng theo chính tả chuẩn (sách không in đáp án)")])
 
 # 318 — Từ ngữ: Thiếu nhi dũng cảm (tr.17–18)
-TU_318 = ["chú bé liên lạc", "mặt trận", "súng đạn", "nhà lao", "gian khổ", "hiểm nghèo", "can đảm"]
 lesson(318, [17, 18],
        [title("Từ ngữ: Thiếu nhi dũng cảm"),
         title("Những từ ngữ cần ghi nhớ"),
         words("chú bé liên lạc", "mặt trận", "súng đạn", "nhà lao"),
         words("gian khổ", "hiểm nghèo", "can đảm"),
         title("Bài tập: Tìm từ ngữ thích hợp điền vào những chỗ trống"),
-        fill_passage(["Anh Kim Đồng là một [chú bé liên lạc] rất [can đảm].",
-                      "Tuy không chiến đấu ở [mặt trận], nhưng nhiều khi đi liên lạc, "
-                      "anh cũng gặp những giây phút hết sức [hiểm nghèo].",
-                      "Năm 15 tuổi, anh đã ngã xuống vì [súng đạn] của giặc "
+        fill_passage(["Anh Kim Đồng là một [chú bé liên lạc|nhà lao|súng đạn] rất [can đảm|mặt trận|nhà lao].",
+                      "Tuy không chiến đấu ở [mặt trận|chú bé liên lạc|can đảm], nhưng nhiều khi đi liên lạc, "
+                      "anh cũng gặp những giây phút hết sức [hiểm nghèo|nhà lao|mặt trận].",
+                      "Năm 15 tuổi, anh đã ngã xuống vì [súng đạn|can đảm|mặt trận] của giặc "
                       "nhưng tấm gương sáng của anh vẫn còn mãi mãi.",
                       "Năm 14 tuổi, chị Võ Thị Sáu đã là một chiến sĩ công an rất gan dạ.",
-                      "Hoạt động trong hoàn cảnh vô cùng [gian khổ], chị vẫn luôn miệng ca hát.",
-                      "Giặc bắt được chị, nhưng [nhà lao] và còng xích của kẻ thù cũng không làm cho chị khiếp sợ."],
-                     bank=TU_318),
+                      "Hoạt động trong hoàn cảnh vô cùng [gian khổ|súng đạn|mặt trận], chị vẫn luôn miệng ca hát.",
+                      "Giặc bắt được chị, nhưng [nhà lao|can đảm|hiểm nghèo] và còng xích của kẻ thù "
+                      "cũng không làm cho chị khiếp sợ."]),
         q("2. Tìm một số từ gần nghĩa với từ: can đảm.")],
        listen(("mặt trận", "nhà lao", "súng đạn"), ("nhà lao", "mặt trận", "gian khổ"), ("gian khổ", "hiểm nghèo", "can đảm"),
               ("hiểm nghèo", "gian khổ", "mặt trận"), ("can đảm", "gan dạ", "nhà lao"), ("gan dạ", "can đảm", "hiểm nghèo")),
-       notes=[("khac_sach", "Điền từ bằng chạm hoặc kéo thẻ; thẻ lấy từ các từ ngữ cần ghi nhớ, đáp án do app soạn."),
+       notes=[("khac_sach", "Điền từ: mỗi chỗ trống 3 thẻ do app chọn trong các từ ngữ cần ghi nhớ, tránh hai từ cùng "
+                            "đúng; đáp án do app soạn."),
               ("khac_sach", KS_ORAL)],
        review=[("part1[5]", "đáp án điền từ do app soạn: chú bé liên lạc, can đảm, mặt trận, hiểm nghèo, súng đạn, "
                             "gian khổ, nhà lao")])

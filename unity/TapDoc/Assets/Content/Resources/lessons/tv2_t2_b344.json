@@ -1,0 +1,807 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b344",
+  "book": "tv2_t2_2002",
+  "lesson_no": 344,
+  "type": "tap_chep_chinh_ta",
+  "title": "Hai con chim – Con cáo và tổ ong",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      41
+    ],
+    "scan_file": "019",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Xếp chữ thành câu, thêm chữ: bé nói cùng bố mẹ; cặp từ so sánh thành thẻ chạm để nghe. Dấu \"≠\" giữa hai từ trong sách thay bằng dấu phẩy."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[3]",
+        "note": "câu gợi ý cho bố mẹ: \"Mưa to. Gió giật.\", \"Con run rẩy. Mẹ dỗ dành.\""
+      },
+      {
+        "where": "part1[4]",
+        "note": "đáp án s/x theo chính tả chuẩn (sách không in đáp án)"
+      },
+      {
+        "where": "part1[5]",
+        "note": "đáp án ném/nếm theo chính tả chuẩn (sách không in đáp án)"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Hai con chim",
+      "audio": "cau_b344_01",
+      "labels": [
+        "Nghe đọc"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: \"Mưa rồi... Ti ri... ti ri...\".",
+      "audio": "cau_b344_02",
+      "labels": [
+        "Phần này con viết vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "vốc",
+          "audio": "tieng_voocs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "giật",
+          "audio": "tieng_giaatj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "run rẩy",
+          "audio": "tu_run_raayr",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chíp",
+          "audio": "tieng_chips",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dỗ dành",
+          "audio": "tu_doox_danhf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rào rào",
+          "audio": "tu_raof_raof",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sấu",
+          "audio": "tieng_saaus",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ném",
+          "audio": "tieng_nems",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "giữa",
+          "audio": "tieng_giuwax",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "a) Xếp chữ thành câu (bé nói câu cùng bố mẹ):",
+      "audio": "hoi_b344_01",
+      "rows": [
+        {
+          "text": "giật, to, mưa, gió: thành 2 câu, mỗi câu 2 chữ.",
+          "audio": "cau_b344_03"
+        },
+        {
+          "text": "run, rẩy, dỗ, dành, con, mẹ: thành 2 câu, mỗi câu 3 chữ.",
+          "audio": "cau_b344_04"
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "s",
+        "x"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "cây sấu",
+          "audio": "tu_caay_saaus",
+          "answer": "s",
+          "hl": [
+            {
+              "s": 4,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "con cá sấu",
+          "audio": "tu_con_cas_saaus",
+          "answer": "s",
+          "hl": [
+            {
+              "s": 7,
+              "n": 1
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "không nói xấu",
+          "audio": "tu_khoong_nois_xaaus",
+          "answer": "x",
+          "hl": [
+            {
+              "s": 10,
+              "n": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "ném",
+        "nếm"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "ném hòn đá",
+          "audio": "tu_nems_honf_ddas",
+          "answer": "ném",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "nếm thức ăn",
+          "audio": "tu_neems_thuwcs_awn",
+          "answer": "nếm",
+          "hl": [
+            {
+              "s": 0,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Con cáo và tổ ong",
+      "audio": "cau_b344_05",
+      "labels": [
+        "So sánh"
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Cáo già nhè nhẹ lên cây",
+      "audio": "cau_b344_06",
+      "items": [
+        {
+          "text": "Cáo",
+          "audio": "tieng_caos",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "già",
+          "audio": "tieng_giaf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nhè",
+          "audio": "tieng_nhef",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nhẹ",
+          "audio": "tieng_nhej",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lên",
+          "audio": "tieng_leen",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cây",
+          "audio": "tieng_caay",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Định rằng lấy được ăn ngay cho giòn.",
+      "audio": "cau_b344_07",
+      "items": [
+        {
+          "text": "Định",
+          "audio": "tieng_ddinhj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rằng",
+          "audio": "tieng_rawngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lấy",
+          "audio": "tieng_laays",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "được",
+          "audio": "tieng_dduwowcj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ăn",
+          "audio": "van_awn",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ngay",
+          "audio": "tieng_ngay",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cho",
+          "audio": "tieng_cho",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "giòn",
+          "audio": "tieng_gionf",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Ong thấy cáo muốn cướp con",
+      "audio": "cau_b344_08",
+      "items": [
+        {
+          "text": "Ong",
+          "audio": "van_ong",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "thấy",
+          "audio": "tieng_thaays",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cáo",
+          "audio": "tieng_caos",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "muốn",
+          "audio": "tieng_muoons",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cướp",
+          "audio": "tieng_cuwowps",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "con",
+          "audio": "tieng_con",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Kéo nhau xúm lại vây tròn cáo ta.",
+      "audio": "cau_b344_09",
+      "items": [
+        {
+          "text": "Kéo",
+          "audio": "tieng_keos",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nhau",
+          "audio": "tieng_nhau",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "xúm",
+          "audio": "tieng_xums",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lại",
+          "audio": "tieng_laij",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vây",
+          "audio": "tieng_vaay",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tròn",
+          "audio": "tieng_tronf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cáo",
+          "audio": "tieng_caos",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ta",
+          "audio": "tieng_ta",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Châm đầu, châm mắt cáo già",
+      "audio": "cau_b344_10",
+      "items": [
+        {
+          "text": "Châm",
+          "audio": "tieng_chaam",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đầu",
+          "audio": "tieng_ddaauf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "châm",
+          "audio": "tieng_chaam",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "mắt",
+          "audio": "tieng_mawts",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cáo",
+          "audio": "tieng_caos",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "già",
+          "audio": "tieng_giaf",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: năm dòng thơ trên.",
+      "audio": "cau_b344_11",
+      "labels": [
+        "Phần này con viết vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "già",
+          "audio": "tieng_giaf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "giòn",
+          "audio": "tieng_gionf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "cướp",
+          "audio": "tieng_cuwowps",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "xúm",
+          "audio": "tieng_xums",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rằng",
+          "audio": "tieng_rawngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lấy",
+          "audio": "tieng_laays",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "châm",
+          "audio": "tieng_chaam",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "muốn",
+          "audio": "tieng_muoons",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "mắt",
+          "audio": "tieng_mawts",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Phát âm phân biệt các cặp từ ngữ sau",
+      "audio": "cau_b344_12",
+      "labels": []
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "nói rằng",
+          "audio": "tu_nois_rawngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "giằng co",
+          "audio": "tu_giawngf_co",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "châm kim",
+          "audio": "tu_chaam_kim",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trâm cài đầu",
+          "audio": "tu_traam_caif_ddaauf",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "ý muốn",
+          "audio": "tu_ys_muoons",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rau muống",
+          "audio": "tu_rau_muoongs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "con mắt",
+          "audio": "tu_con_mawts",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vướng mắc",
+          "audio": "tu_vuwowngs_mawcs",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "b) Thêm chữ thích hợp vào các cặp từ so sánh sau đây.",
+      "audio": "hoi_b344_02",
+      "rows": [
+        {
+          "text": "... vây, vay...",
+          "audio": "cau_b344_13"
+        },
+        {
+          "text": "xúm ..., xóm...",
+          "audio": "cau_b344_14"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_caay_saaus",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cây sấu",
+          "audio": "tu_caay_saaus",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nói xấu",
+          "audio": "tu_nois_xaaus",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "cá sấu",
+          "audio": "tu_cas_saaus",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tieng_nems",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "ném",
+          "audio": "tieng_nems",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nếm",
+          "audio": "tieng_neems",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mưa",
+          "audio": "tieng_muwa",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_nois_rawngf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "nói rằng",
+          "audio": "tu_nois_rawngf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giằng co",
+          "audio": "tu_giawngf_co",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "châm kim",
+          "audio": "tu_chaam_kim",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_traam_caif_ddaauf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "trâm cài đầu",
+          "audio": "tu_traam_caif_ddaauf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "châm kim",
+          "audio": "tu_chaam_kim",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ý muốn",
+          "audio": "tu_ys_muoons",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_rau_muoongs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "rau muống",
+          "audio": "tu_rau_muoongs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "ý muốn",
+          "audio": "tu_ys_muoons",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "vướng mắc",
+          "audio": "tu_vuwowngs_mawcs",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_vuwowngs_mawcs",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "vướng mắc",
+          "audio": "tu_vuwowngs_mawcs",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "con mắt",
+          "audio": "tu_con_mawts",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "giằng co",
+          "audio": "tu_giawngf_co",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}
