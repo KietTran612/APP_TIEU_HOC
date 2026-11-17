@@ -1,7 +1,7 @@
 # Phân công session — dự án "Bờ A Ba"
 
 Bảng này do session điều phối (root) giữ. Cập nhật mỗi khi tạo session mới, giao việc lớn, hoặc một mảng việc xong.
-Cập nhật lần cuối: 17/11/2026. Từ 17/11 các session làm theo kế hoạch hoàn thiện 4 cuốn: [2026-11-17-hoan-thien-4-cuon.md](../plans/2026-11-17-hoan-thien-4-cuon.md). Lịch sử việc đã xong: [lich-su-cong-viec.md](lich-su-cong-viec.md). Quy trình chuẩn và cách giải vấn đề khó: [QUY-TRINH-LAM-VIEC.md](../../../QUY-TRINH-LAM-VIEC.md).
+Cập nhật lần cuối: 17/11/2026 (16:15). Từ 17/11 các session làm theo kế hoạch hoàn thiện 4 cuốn: [2026-11-17-hoan-thien-4-cuon.md](../plans/2026-11-17-hoan-thien-4-cuon.md). Lịch sử việc đã xong: [lich-su-cong-viec.md](lich-su-cong-viec.md). Quy trình chuẩn và cách giải vấn đề khó: [QUY-TRINH-LAM-VIEC.md](../../../QUY-TRINH-LAM-VIEC.md).
 
 ## Nguyên tắc
 
@@ -34,7 +34,7 @@ Cập nhật lần cuối: 17/11/2026. Từ 17/11 các session làm theo kế ho
 | [L2T2] Làm SGK Tiếng Việt 2 tập 2 | `local_7211e4a4-03f2-4c19-92c6-70263649b8cb` | Nội dung, âm thanh, đóng gói TV2 tập 2 (`tv2_t2_2002`, "Bé tập đọc 4") | Mở 17/11: sắp lại trang scan, mục lục, spec và plan theo mẫu TV2 tập 1 |
 | [L2T2] Vẽ tranh Tiếng Việt 2 tập 2 | `local_fb53b89b-8fc5-4226-8e5b-dcad52bf4290` | Tranh ChatGPT cho TV2 tập 2 | Mở 17/11: 41 tranh, 4 đợt |
 | [L2T2] Tranh động Tiếng Việt 2 tập 2 | (chưa mở) | Clip Flow | Mở khi có tranh và có credit (sau clip của 3 cuốn kia) |
-| [Chung] UI và hiệu ứng | `local_98b994e9-1559-4920-b85d-4c3bcf3a5892` | Giao diện, hiệu ứng, màn mở đầu, Cài đặt, tỷ lệ màn hình; nâng cấp UI 17/11 (spec 2026-11-17-nang-cap-ui-design.md, 5 đợt) | Tủ sách xong tới 916a3ca (chọn quyển, 3 bìa mới, tên "Bé tập đọc 1/2/3"); chờ duyệt bìa và "test all" |
+| [Chung] UI và hiệu ứng | `local_98b994e9-1559-4920-b85d-4c3bcf3a5892` | Giao diện, hiệu ứng, màn mở đầu, Cài đặt, tỷ lệ màn hình; nâng cấp UI 17/11 (spec 2026-11-17-nang-cap-ui-design.md, 5 đợt) | Nâng cấp UI đủ 5 đợt (17/11, tới 4adb92d; root soát và chạy lại test từng đợt): con đường bài học, tem bài học, khen theo cách làm, màn Chào bé, Phụ huynh, nghỉ mắt, ghi thời gian học. Đang làm 5 điểm sửa nhỏ của đợt 5. Chờ 3 tranh ChatGPT (root vẽ 18/11) và mp3 của 7 mã tiếng UI |
 | [Chung] Refactor đọc dữ liệu | `local_1590fb2c-d64a-4465-b148-58ea493f67a0` | Cách nạp dữ liệu, chuẩn bị Addressables | Xong 4/11; nghỉ |
 
 Session cũ (chủ dự án tự tách ra hoặc đã xong), không giao việc mới: "Setup project", "Kiểm tra data bài học ôn tập", "Chuẩn bị startup dự án" (2 bản fork ngày 29/10), "Đoạn chat phụ", và bản "Thử ảnh động / sprite sheet" cũ ngày 30/10.
