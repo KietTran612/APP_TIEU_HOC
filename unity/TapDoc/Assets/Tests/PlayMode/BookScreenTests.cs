@@ -63,7 +63,9 @@ namespace TapDoc.Tests
             var page = screen.Spread.PageFor(Ordered()[0]);
             Assert.AreEqual(FlowerBook.FlowersPerLesson, page.Slots.Count);
             Assert.AreEqual("PageContent", page.Content.name);
-            Assert.AreEqual(0, page.Content.childCount, "Phần dưới trang để trống cho nội dung sau này");
+            // Nâng cấp UI đợt 3: phần dưới trang là chỗ dán tem bài học; bài chưa học chỉ có khung tem trống.
+            Assert.AreEqual(1, page.Content.childCount, "Phần dưới trang chỉ có khung tem");
+            Assert.AreSame(page.StickerSlot, page.Content.GetChild(0));
             foreach (var slot in page.Slots)
             {
                 Assert.AreEqual(SystemSfx.Tap, slot.GetComponent<TapFeedback>().Sound, "Chạm ô hoa có tiếng tách");

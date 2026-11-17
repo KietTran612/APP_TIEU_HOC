@@ -225,8 +225,13 @@ namespace TapDoc.Tests
             Assert.IsNotNull(mascot);
             Assert.AreEqual(1, Shelf().GetComponentsInChildren<Mascot>(true).Length, "Một gà con");
             Assert.AreEqual(ShelfBookState.Current, Shelf().StateOf(BookAt(1)));
-            Assert.AreSame(Shelf().TitleOf(BookAt(1)).transform.parent.parent, mascot.transform.parent,
-                "Gà con nằm ở quyển đang học");
+            yield return null;
+            Canvas.ForceUpdateCanvases();
+            var cover = (RectTransform)Shelf().TitleOf(BookAt(1)).transform.parent;
+            var corners = new Vector3[4];
+            cover.GetWorldCorners(corners);
+            Assert.Less(Vector3.Distance(corners[2], mascot.transform.position), .01f, "Gà con ở góc trên phải quyển đang học");
+            Assert.IsNull(mascot.GetComponentInParent<UnityEngine.UI.RectMask2D>(), "Gà con không bị vùng cuộn cắt");
         }
     }
 }

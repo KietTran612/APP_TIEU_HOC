@@ -14,6 +14,15 @@ namespace TapDoc
         public const string khen_01 = "khen_01";
         public const string khen_02 = "khen_02";
         public const string khen_hoan_thanh = "khen_hoan_thanh";
+
+        // Khen theo cách bé làm trong bài (nâng cấp UI mục 4.3). Nạp kiểu không bắt buộc: chưa có file thì im lặng.
+        public const string khen_tu_sua = "khen_tu_sua";
+        public const string khen_nghe_lai = "khen_nghe_lai";
+        public const string khen_nghe_ki = "khen_nghe_ki";
+        public const string khen_cham = "khen_cham";
+
+        /// <summary>Các câu khen theo cách làm; không nằm trong <see cref="All"/> vì là tiếng không bắt buộc.</summary>
+        public static readonly string[] Praise = { khen_tu_sua, khen_nghe_lai, khen_nghe_ki, khen_cham };
         // Phần Tập đọc (tập 2). Điền chữ dùng lại hd_keo_vao_cho_trong.
         public const string hd_tim_tieng = "hd_tim_tieng";
         public const string hd_tra_loi_mieng = "hd_tra_loi_mieng";

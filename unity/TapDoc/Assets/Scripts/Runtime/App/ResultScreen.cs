@@ -145,11 +145,13 @@ namespace TapDoc
             // Sổ chỉ có trang của các bài trong quyển của bài vừa học.
             var bookId = BookShelf.BookOf(_app.Lessons.Index, lessonId);
             var entries = _app.Lessons.Index.lessons.Where(e => bookId == null || e.book == bookId).ToList();
-            Spread = BookSpread.Create(book, entries, _app.Progress, _app.Assets);
+            Spread = BookSpread.Create(book, entries, _app.Progress, _app.Assets, _app.Lessons);
             Spread.ShowPage(FlowerBook.PageOf(entries.Select(e => e.lesson_id).ToList(), lessonId));
             _page = Spread.PageFor(lessonId);
             if (_page == null) return;
             _page.SetFlowers(_before);
+            // Tem bài học dán vào lúc cảnh xong (bài học lần đầu); học lại thì tem đã có sẵn.
+            _page.SetStickerVisible(_before > 0);
             LightEmptySlots();
         }
 
@@ -266,12 +268,25 @@ namespace TapDoc
             _ = Motion.Shake((RectTransform)Spread.transform, 6f, .25f);
         }
 
+        /// <summary>Câu khen gà con nói (theo cách bé làm trong bài; phiên ôn thì câu chung).</summary>
+        internal string PraiseText { get; private set; }
+
+        /// <summary>Mã tiếng của câu khen đã phát.</summary>
+        internal string PraiseAudio { get; private set; }
+
         private void Praise()
         {
             if (_praised) return;
             _praised = true;
-            Mascot.Cheer(UiText.MascotLessonDone, keepBubble: true);
-            _ = _app.Speech.PlayAsync(SystemAudio.khen_hoan_thanh);
+            var (audio, text) = _page != null && _app.LastEffort != null
+                ? _app.LastEffort.Praise()
+                : (SystemAudio.khen_hoan_thanh, UiText.MascotLessonDone);
+            // Chưa có tiếng của câu khen (đang chờ tạo giọng) thì phát câu chung "Con học xong bài rồi. Giỏi lắm!".
+            if (_app.Assets.Audio(audio) == null) audio = SystemAudio.khen_hoan_thanh;
+            PraiseText = text;
+            PraiseAudio = audio;
+            Mascot.Cheer(text, keepBubble: true);
+            _ = _app.Speech.PlayAsync(audio);
         }
 
         /// <summary>Bé chạm màn khi cảnh đang chạy: hoa đã dán, dấu đã đóng, nút đã hiện.</summary>
@@ -293,7 +308,15 @@ namespace TapDoc
         {
             if (IsSceneDone) return;
             IsSceneDone = true;
-            if (_page != null) _page.SetFlowers(_after);
+            if (_page != null)
+            {
+                _page.SetFlowers(_after);
+                if (!_page.StickerVisible)
+                {
+                    _page.SetStickerVisible(true);
+                    if (_page.Sticker != null) _ = Motion.Punch(_page.Sticker, 1.12f, .3f);
+                }
+            }
             if (_skipper != null) Destroy(_skipper.gameObject);
             SetButtonsVisible(true);
             _ = Motion.Punch(ToListButton.transform, 1.15f, .25f);

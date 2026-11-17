@@ -141,6 +141,7 @@ namespace TapDoc
         {
             var gen = ++_bubbleGeneration;
             _bubbleText.text = text ?? string.Empty;
+            FitBubble();
             _bubble.SetActive(true);
             _bubble.transform.localScale = Vector3.one * .3f;
             _ = Motion.ScaleTo(_bubble.transform, 1f, .15f);
@@ -148,6 +149,20 @@ namespace TapDoc
             await Awaitable.WaitForSecondsAsync(BubbleSeconds * Motion.Scale);
             if (this != null && gen == _bubbleGeneration) HideBubble();
         }
+
+        /// <summary>Bong bóng vừa câu nói: rộng theo chữ (tối đa <see cref="BubbleMaxWidth"/>), xuống dòng khi dài.</summary>
+        private void FitBubble()
+        {
+            var brt = (RectTransform)_bubble.transform;
+            var pad = new Vector2(28f, 12f);
+            var oneLine = _bubbleText.GetPreferredValues(_bubbleText.text, float.PositiveInfinity, float.PositiveInfinity);
+            var width = Mathf.Clamp(oneLine.x + pad.x, BubbleMinSize.x, BubbleMaxWidth);
+            var size = _bubbleText.GetPreferredValues(_bubbleText.text, width - pad.x, float.PositiveInfinity);
+            brt.sizeDelta = new Vector2(width, Mathf.Max(BubbleMinSize.y, size.y + pad.y));
+        }
+
+        private static readonly Vector2 BubbleMinSize = new(330f, 86f);
+        private const float BubbleMaxWidth = 520f;
 
         private void HideBubble()
         {

@@ -16,6 +16,7 @@ namespace TapDoc
         private IReadOnlyList<LessonEntry> _entries;
         private ProgressStore _progress;
         private AssetCatalog _assets;
+        private LessonRepository _lessons;
         private RectTransform _left;
         private RectTransform _right;
         private readonly List<BookPage> _pages = new();
@@ -32,7 +33,7 @@ namespace TapDoc
         /// Dựng quyển sổ phủ kín <paramref name="parent"/>: hai trang giấy viền mực có gáy ở giữa và bóng gạch chéo.
         /// </summary>
         public static BookSpread Create(RectTransform parent, IReadOnlyList<LessonEntry> entries, ProgressStore progress,
-            AssetCatalog assets)
+            AssetCatalog assets, LessonRepository lessons = null)
         {
             var go = new GameObject("BookSpread", typeof(RectTransform), typeof(BookSpread));
             go.transform.SetParent(parent, false);
@@ -47,6 +48,7 @@ namespace TapDoc
             spread._entries = entries;
             spread._progress = progress;
             spread._assets = assets;
+            spread._lessons = lessons;
             spread._left = spread.Sheet("PageLeft", 0f);
             spread._right = spread.Sheet("PageRight", .5f);
             spread.ShowPage(0);
@@ -101,7 +103,7 @@ namespace TapDoc
         {
             var entry = page < PageCount ? _entries[page] : null;
             var flowers = entry != null ? FlowerBook.FlowersFor(_progress, entry.lesson_id) : 0;
-            return BookPage.Create(sheet, entry, flowers, _assets);
+            return BookPage.Create(sheet, entry, flowers, _assets, _lessons);
         }
 
         /// <summary>Trang của bài <paramref name="lessonId"/> nếu đang mở; <c>null</c> nếu không.</summary>

@@ -34,7 +34,8 @@ namespace TapDoc.Tests
             Assert.IsFalse(LessonListScreen.TitleInCircle(new LessonEntry { title = "Bé" }, 2), "Lớp 2: tên dưới trạm");
             Assert.AreEqual(SystemImages.Star, LessonListScreen.TypeIcon("on_tap_am"));
             Assert.AreEqual(SystemImages.EmDoc, LessonListScreen.TypeIcon("tap_doc"));
-            Assert.AreEqual(SystemImages.LuyenTap, LessonListScreen.TypeIcon("tap_lam_van"));
+            Assert.IsNull(LessonListScreen.TypeIcon("tap_lam_van"), "Tập làm văn: chỉ chữ (ngôi nhà dễ lẫn với nút Về)");
+            Assert.IsNull(LessonListScreen.TypeIcon("tap_chep_chinh_ta"));
             Assert.AreEqual(SystemImages.CauHoi, LessonListScreen.TypeIcon("cau_do"));
             Assert.IsNull(LessonListScreen.TypeIcon("am_moi"));
         }

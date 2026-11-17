@@ -140,7 +140,8 @@ namespace TapDoc.Tests
         [Test]
         public void SystemIcons_AllInSystemImages()
         {
-            Assert.AreEqual(14, SystemIcons.All.Length);
+            Assert.AreEqual(15, SystemIcons.All.Length);
+            CollectionAssert.Contains(SystemIcons.All, SystemIcons.PointHand); // bàn tay gợi ý (nâng cấp UI đợt 1)
             Assert.AreEqual("img_ui_tu_sach", SystemIcons.Shelf);
             Assert.AreEqual("img_bia_tv1_t1_1990", SystemImages.CoverOf("tv1_t1_1990"));
             CollectionAssert.Contains(SystemIcons.All, "img_ui_cai_dat");

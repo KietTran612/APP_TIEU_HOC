@@ -61,6 +61,22 @@ namespace TapDoc
         /// <summary>Gà con (đứng cạnh quyển đang học).</summary>
         internal Mascot Mascot { get; private set; }
 
+        /// <summary>Gà con ngồi ở góc trên phải bìa: một phần tư thân ở trong bìa, phần còn lại nhô lên trên.</summary>
+        internal static readonly Vector2 MascotPivot = new(.75f, .25f);
+
+        private RectTransform _mascotCover;
+
+        /// <summary>Đặt gà con vào góc trên phải bìa đang học.</summary>
+        private void PlaceMascot()
+        {
+            if (_mascotCover == null || Mascot == null) return;
+            var corners = new Vector3[4];
+            _mascotCover.GetWorldCorners(corners);
+            Mascot.transform.position = corners[2];
+        }
+
+        private void LateUpdate() => PlaceMascot();
+
         public string CelebratedBookId { get; private set; }
 
         public Button CoverButton(string bookId) => bookId != null && _covers.TryGetValue(bookId, out var b) ? b : null;
@@ -115,13 +131,15 @@ namespace TapDoc
             // học thì đứng ở góc dưới như trước.
             var currentCover = _states.Where(p => p.Value == ShelfBookState.Current)
                 .Select(p => _coverRoots.TryGetValue(p.Key, out var c) ? c : null).FirstOrDefault(c => c != null);
-            Mascot = Mascot.Create(currentCover != null ? currentCover.parent : transform, app.Assets, MascotOnBook);
+            // Gà con nằm ngoài vùng cuộn của hàng bìa (không bị cắt), mỗi khung hình đặt theo góc bìa (theo cả khi cuộn).
+            Mascot = Mascot.Create(transform, app.Assets, MascotOnBook);
             var mrt = (RectTransform)Mascot.transform;
-            if (currentCover != null)
+            _mascotCover = currentCover as RectTransform;
+            if (_mascotCover != null)
             {
-                mrt.anchorMin = mrt.anchorMax = new Vector2(1f, 1f);
-                mrt.pivot = new Vector2(.75f, .25f);
-                mrt.anchoredPosition = Vector2.zero;
+                mrt.anchorMin = mrt.anchorMax = new Vector2(.5f, .5f);
+                mrt.pivot = MascotPivot;
+                PlaceMascot();
             }
             else
             {

@@ -61,6 +61,9 @@ namespace TapDoc
         /// <summary>Hồ sơ bé và tiến độ học; <c>Progress.Current</c> là bé đang học.</summary>
         public ProgressStore Progress { get; private set; }
 
+        /// <summary>Cách bé làm trong bài vừa học (màn học ghi, màn Xong bài đọc để chọn câu khen).</summary>
+        public LessonEffort LastEffort { get; internal set; }
+
         /// <summary>
         /// Màn chuyển phủ lên trong lúc chuẩn bị bài, ôn lại, màn Phụ huynh. Dựng lần đầu khi cần (sau khi bộ chung đã
         /// nạp, để hình gà con có sẵn).

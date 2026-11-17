@@ -18,6 +18,9 @@ namespace TapDoc
 
         public LessonFlow Flow { get; private set; }
 
+        /// <summary>Cách bé làm trong bài này (lượt nhầm, tự sửa, nghe lại).</summary>
+        public LessonEffort Effort { get; private set; }
+
         /// <summary>Mã bài đang học (phiên Ôn lại là mã của phiên).</summary>
         internal string LessonId => _lesson?.lesson_id;
         public object CurrentView { get; private set; }
@@ -83,6 +86,8 @@ namespace TapDoc
             _lesson = lesson;
             _review = review;
             Flow = new LessonFlow(lesson);
+            Effort = new LessonEffort();
+            app.LastEffort = Effort;
 
             BackButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Home, UiText.Back, OnBackClicked);
             Corner(BackButton, new Vector2(0f, 1f), new Vector2(Margin, -Margin));
@@ -392,6 +397,7 @@ namespace TapDoc
             if (this == null || _lesson == null) return;
             var index = _lesson.part2.IndexOf(round);
             if (index < 0) return;
+            Effort?.RecordRound(mistakes);
 
             if (_review != null)
             {
@@ -438,6 +444,7 @@ namespace TapDoc
         private void OnReplayClicked()
         {
             Nudge?.NoteActivity(Clock());
+            Effort?.RecordReplay();
             ReplayCurrent();
         }
 

@@ -59,7 +59,7 @@ namespace TapDoc
             // Sổ bé ngoan theo quyển đang mở (bản thiết kế Tủ sách mục 7).
             var bookLessons = app.OpenBookLessonIds();
             var entries = app.Lessons.Index.lessons.Where(e => bookLessons.Contains(e.lesson_id)).ToList();
-            Spread = BookSpread.Create(book, entries, app.Progress, app.Assets);
+            Spread = BookSpread.Create(book, entries, app.Progress, app.Assets, app.Lessons);
             Spread.ShowPage(FlowerBook.StartPage(app.Progress, entries.Select(e => e.lesson_id).ToList()));
 
             PrevButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Backward, UiText.PagePrev,

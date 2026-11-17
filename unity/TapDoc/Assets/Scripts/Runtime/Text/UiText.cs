@@ -57,6 +57,11 @@ namespace TapDoc
         // Bong bóng của bạn gà con.
         public const string MascotCorrect = "Đúng rồi!";
         public const string MascotLessonDone = "Bé ngoan quá!";
+        /// <summary>Khen theo cách bé làm trong bài (màn Xong bài).</summary>
+        public const string PraiseSelfFix = "Bé tự sửa được rồi, giỏi quá!";
+        public const string PraiseReplay = "Bé chịu khó nghe lại, tốt lắm!";
+        public const string PraiseAllRight = "Bé nghe kĩ, làm đúng hết rồi!";
+        public const string PraiseHardWork = "Bé học chăm quá!";
 
         // Công tắc tiếng động ở menu Cài đặt.
         public const string SfxOn = "Tiếng động: Bật";
@@ -163,6 +168,11 @@ namespace TapDoc
             StampText,
             MascotCorrect,
             MascotLessonDone,
+            PraiseSelfFix,
+            PraiseReplay,
+            PraiseAllRight,
+            PraiseHardWork,
+            ContinueLearning,
             SfxOn,
             SfxOff,
             PartReading,

@@ -449,11 +449,7 @@ namespace TapDoc
                 case "doc_them":
                 case "hoc_thuoc_long":
                     return SystemImages.EmDoc;
-                case "tap_chep_chinh_ta":
-                case "tu_ngu":
-                case "ngu_phap":
-                case "tap_lam_van":
-                    return SystemImages.LuyenTap;
+                // Chính tả, Từ ngữ, Ngữ pháp, Tập làm văn: chỉ chữ (kí hiệu luyện tập là ngôi nhà, dễ lẫn với nút Về).
                 case "cau_do":
                     return SystemImages.CauHoi;
                 default:
@@ -564,10 +560,10 @@ namespace TapDoc
             var words = title.Split(' ');
             for (var n = words.Length - 1; n > 0; n--)
             {
-                var candidate = string.Join(" ", words.Take(n)).TrimEnd(',', ':', '–', '-', ' ') + "…";
+                var candidate = string.Join(" ", words.Take(n)).TrimEnd(',', ':', ';', '.', '!', '?', '…', '–', '-', ' ') + "…";
                 if (Fits(candidate)) return candidate;
             }
-            return words[0] + "…";
+            return words[0].TrimEnd(',', ':', ';', '.', '!', '?', '…', '–', '-') + "…";
         }
 
         /// <summary>Cuộn để trạm của bài nằm trọn trong vùng nhìn (đặt vào giữa); bỏ qua mã bài không có.</summary>
