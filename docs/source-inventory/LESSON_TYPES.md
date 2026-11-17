@@ -30,6 +30,7 @@
 | | | `on_luyen` ôn luyện | 3 |
 | **Tập đọc** | TV1 T2 tuần 27–33 | `tap_doc` 21, `hoc_thuoc_long` 7, `doc_them` 8, `cau_do` 3, `tap_chep_chinh_ta` 7, `tra_loi_cau_do` 1 | 47 mục |
 | **Lớp 2** (`part` = `lop2`) | TV2 T1 tuần 1–17, mục 172–304 | `tap_doc` 31, `hoc_thuoc_long` 17, `doc_them` 15, `cau_do` 2, `tap_chep_chinh_ta` 17, `tu_ngu` 17, `ngu_phap` 17, `tap_lam_van` 17 | 133 mục |
+| | TV2 T2 tuần 18–33, mục 305–434 | `tap_doc` 31, `hoc_thuoc_long` 16, `doc_them` 19, `tap_chep_chinh_ta` 16, `tu_ngu` 16, `ngu_phap` 16, `tap_lam_van` 16 | 130 mục |
 
 ---
 
@@ -249,6 +250,18 @@ Sách chương trình cũ, không còn học vần; không có Kể chuyện, T�
 | `tu_ngu` | từ ngữ cần ghi nhớ, bài tập điền từ | `words`, `fill_passage` (sách để trống thì mỗi ô 3 thẻ do app soạn), `question` |
 | `ngu_phap` | khung quy tắc, bài tập về câu, tiếng, từ, chữ, chữ cái | `rule`, `choose_line`, `find_words`, `question` có câu kèm, `letter_pairs` (bảng chữ cái) |
 | `tap_lam_van` | điền từ (tuần 1–7), quan sát tranh và trả lời câu hỏi (tuần 8–17) | `fill_passage`; tranh dùng lại của bài đọc + `question` |
+
+## Lớp 2 — Tiếng Việt 2 tập hai (2002), tuần 18–33
+
+Cùng chương trình và khuôn trang với tập một; số bài đọc đánh lại từ 1 (bài 1–66), không có câu đố. Chủ điểm: Thiếu nhi (tuần 18–22), Nhân dân ta (23–30), Bác Hồ (31–33). Mục lục in chung một dòng "12–13", "17–18", "22–23" nhưng trên trang là hai bài đọc thêm riêng. Ảnh scan đầu sách bị xáo (BOOK_CATALOG mục 4.4). Chi tiết: [thiết kế TV2 tập hai](../superpowers/specs/2026-11-17-tv2-tap-2-design.md).
+
+| Loại | Khác tập một | Trong app |
+|---|---|---|
+| `tap_doc`, `hoc_thuoc_long`, `doc_them` | nhiều bài về người thật (Bác Hồ, Võ Thị Sáu, Bà Triệu, Trần Quốc Toản, Hồ Giáo…) | tranh vẽ cảnh không có người thật, `khac_sach` |
+| `tap_chep_chinh_ta` | thêm "Phát âm phân biệt các cặp từ ngữ so sánh" (dấu "≠"), "Thêm chữ thích hợp vào các cặp từ", "Xếp ô chữ thành câu" | cặp từ thành thẻ `words` (dấu "≠" thay bằng dấu phẩy); thêm chữ, xếp câu: `question` (nói miệng) |
+| `tu_ngu` | điền từ phần lớn có hai từ cùng đúng (đoàn kết/gắn bó…) | `fill_passage`, mỗi ô 3 thẻ do app chọn, `can_duyet` |
+| `ngu_phap` | danh từ, danh từ chung/riêng, viết hoa tên người và tên đất, xếp tên người theo bảng chữ cái (chữ cái, họ, tên lót, dấu thanh) | `rule`, `choose_line` (chạm danh từ riêng / tên người), `find_words`, `question` có `lines`, `letter_pairs` |
+| `tap_lam_van` | "Trả lời câu hỏi" về bài đọc (tuần 18–25); "Dùng từ – đặt câu" (tuần 26–33) | tranh bài đọc + `question`; từ cho sẵn thành thẻ `words` + `question` (đặt câu miệng) |
 
 ---
 

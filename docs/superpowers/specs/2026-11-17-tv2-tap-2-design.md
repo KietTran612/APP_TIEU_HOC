@@ -158,3 +158,20 @@ Như tập một mục 8. Mục đầu cuốn (305) ghi `khac_sach` "chạm ti�
 - **Âm thanh chậm:** khoảng 3.000 mã mới, 1 tiến trình dùng chung cả máy với các session khác.
 - **Bài về chiến tranh và người thật nhiều:** tranh thay thế phải vẫn gợi đúng bài; root và chủ dự án xem lời dẫn `can_duyet`.
 - **Bản quyền bài đọc, lỗi in:** như tập một; lỗi in khác (nếu gặp) ghi `can_duyet`, xử lý như mục 5.3.
+
+## 15. Kết quả (17/11/2026)
+
+- **Nội dung:** đủ **130 mục** `page_verified` (305–434, tuần 18–33), chép từ ảnh 010–061 theo bảng ảnh → trang. Commit e9f837c (T2-1), 005b828 (T2-2), f9b4fd5 (T2-3), 391c59f (T2-4).
+- **Công cụ:** f285c84 (quyển 4, tuần lớp 2 đến 35, ba chủ điểm mới); f95f92b (`tools/lop2` cờ `--t2`, `xuat_wav_lop2.py`). Không bước mới, không sửa Unity ngoài test smoke mới.
+- **Root chốt 17/11:** bài 10 ghi "xứ người" (`khac_sach` + `can_duyet`); âm thanh theo cách 1 (tạo thẳng vào danh mục, xuất WAV cho root nhận dạng, mã sai làm bản thử ngoài danh mục).
+- **Khác kế hoạch:**
+  - Từ ngữ: chỗ trống có hai từ cùng đúng (đoàn kết/gắn bó, chuyên cần/chăm chỉ…) nên dùng thẻ riêng mỗi ô (3 thẻ) thay cho danh sách chung.
+  - Câu dài trong lời thoại bị công cụ tách đôi giữa chừng: `l2t2lib.sentences` thêm chỗ ngắt tay " | ".
+  - `stage_lop2.py` bỏ theo dòng chỉ của tập đang stage mà `build` đã xoá (trước giữ lại như HEAD).
+  - "Sa Pa" không dùng làm phương án nghe (mã `tu_sa_pa` của lớp 1 đọc khác), như tập một.
+  - Thêm tranh cho hai bài sách không có tranh (bài 9 giá sách, bài 63 quê Bác) để Tập làm văn dùng lại; `can_duyet`.
+- **Lỗi in, `can_duyet`:** "xú người" (đã sửa), "tráng nắng" (bài 46), "Dấu trăng, sao" (bài 48), "Xa ra" (Chính tả tuần 25, app ghi "Xa xa").
+- **Chủ dự án xem:** bài 58 "Một que diêm" có chi tiết mời hút thuốc lá (đúng sách).
+- **Tranh:** 41 tranh (`content/requests/images_tv2_t2_dot_1..4.md`, 12 + 8 + 11 + 10), đã gửi root.
+- **Test:** Python `test_lop2t2_content`, `test_tap1_regression` (304 file ba cuốn kia dựng lại y hệt), `test_grade2_build`, `test_books`, `test_lop2_sach`, `test_curriculum` xanh. Unity chờ lượt của root.
+- **Còn lại:** âm thanh HoaiMy khoảng 3.150 mã (chờ lượt), root nhận dạng, Unity PlayMode (BookScreen, Parent, smoke 4 đợt), tranh và clip của các session `[L2T2]`, root đóng gói `bosung`.

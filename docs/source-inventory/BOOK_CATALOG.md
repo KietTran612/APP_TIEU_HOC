@@ -28,7 +28,7 @@
 | `tv1_t1_1990` | Tiếng Việt 1 – Tập một (Chữ cái và Vần) | 64 | Vụ Giáo dục phổ thông – Bộ Giáo dục; NXB Giáo dục 1990, in lần thứ hai. Biên tập: Phạm Bích Hợp; minh họa: Hồng Kỳ – Phạm Ngọc Tới | Có, tr.123–124 (80 bài) | Có | `toc_verified`; 22 bài và các trang phụ `page_verified` |
 | `tv1_t2_1996` | Tiếng Việt 1 – Tập hai (Vần – Tập đọc) | 72 | Bộ GD&ĐT; NXB Giáo dục; in lần thứ 8, chỉnh lí năm 1994; ghi chú tay "1996" | Có, tr.139–140 | Có | `page_verified` cả 91 mục (5/11/2026); không có Phụ lục bảng chữ cái, dùng của tập 1 |
 | `tv2_t1_2001` | Tiếng Việt 2 – Tập một | 66 | Bộ GD&ĐT; Trịnh Mạnh – Đinh Tấn Ký – Đỗ Quang Lưu; tái bản lần thứ hai mươi | Có, khoảng tr.125–127 (theo tuần, phân môn) | Có | `metadata_verified` |
-| `tv2_t2_2002` | Tiếng Việt 2 – Tập hai | 65 | Bộ GD&ĐT; Trịnh Mạnh – Đinh Tấn Ký – Đỗ Quang Lưu; tái bản lần thứ hai mươi; mã số 1H202T2; in xong và nộp lưu chiểu tháng 1/2002 | Có, tr.122–124 (theo tuần, phân môn) | Có: in 01/2002 dưới dạng tái bản, trong khi sách lớp 2 mới đến năm 2003 mới dùng | `metadata_verified` (130 mục từ mục lục, 17/11/2026) |
+| `tv2_t2_2002` | Tiếng Việt 2 – Tập hai | 65 | Bộ GD&ĐT; Trịnh Mạnh – Đinh Tấn Ký – Đỗ Quang Lưu; tái bản lần thứ hai mươi; mã số 1H202T2; in xong và nộp lưu chiểu tháng 1/2002 | Có, tr.122–124 (theo tuần, phân môn) | Có: in 01/2002 dưới dạng tái bản, trong khi sách lớp 2 mới đến năm 2003 mới dùng | `page_verified` cả 130 mục (305–434, 17/11/2026) |
 | `truyen_doc_1_2000` | Truyện đọc 1 | 44 | Chưa xem | — | Chưa xác minh | `unverified` |
 | `truyen_doc_2_2001` | Truyện đọc 2 | 61 | Chưa xem | — | Chưa xác minh | `unverified` |
 
