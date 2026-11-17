@@ -23,6 +23,14 @@ namespace TapDoc
 
         /// <summary>Các câu khen theo cách làm; không nằm trong <see cref="All"/> vì là tiếng không bắt buộc.</summary>
         public static readonly string[] Praise = { khen_tu_sua, khen_nghe_lai, khen_nghe_ki, khen_cham };
+
+        // Lời chào ở màn chọn bé, lời rủ học sau khi chọn bé, lời rủ nghỉ mắt (nâng cấp UI đợt 4–5); không bắt buộc.
+        public const string hd_chao_be = "hd_chao_be";
+        public const string hd_cung_hoc = "hd_cung_hoc";
+        public const string hd_nghi_mat = "hd_nghi_mat";
+
+        /// <summary>Lời dẫn mới không bắt buộc (chưa có file thì im lặng).</summary>
+        public static readonly string[] Guide = { hd_chao_be, hd_cung_hoc, hd_nghi_mat };
         // Phần Tập đọc (tập 2). Điền chữ dùng lại hd_keo_vao_cho_trong.
         public const string hd_tim_tieng = "hd_tim_tieng";
         public const string hd_tra_loi_mieng = "hd_tra_loi_mieng";
@@ -64,6 +72,9 @@ namespace TapDoc
 
         /// <summary>Bạn gà con đồng hành.</summary>
         public const string Mascot = "img_chung_ga_con";
+
+        /// <summary>Cảnh sân trường nét mực rất nhạt sau màn chọn bé (tranh ChatGPT; không bắt buộc, chưa có thì không vẽ).</summary>
+        public const string WelcomeScene = "img_ui_canh_chao";
 
         public static readonly string[] All = new[] { Star, EmDoc, LuyenTap, CauHoi, GiaiNghia, Flower, Mascot }
             .Concat(SystemIcons.All).ToArray();

@@ -62,6 +62,8 @@ namespace TapDoc
         public const string PraiseReplay = "Bé chịu khó nghe lại, tốt lắm!";
         public const string PraiseAllRight = "Bé nghe kĩ, làm đúng hết rồi!";
         public const string PraiseHardWork = "Bé học chăm quá!";
+        /// <summary>Gà con chào ở màn chọn bé (đọc bằng tiếng hd_chao_be): bé chưa đọc được tên nên chạm vào hình.</summary>
+        public const string Greeting = "Chào bé! Bé chạm vào hình của mình nhé!";
 
         // Công tắc tiếng động ở menu Cài đặt.
         public const string SfxOn = "Tiếng động: Bật";
@@ -172,6 +174,7 @@ namespace TapDoc
             PraiseReplay,
             PraiseAllRight,
             PraiseHardWork,
+            Greeting,
             ContinueLearning,
             SfxOn,
             SfxOff,

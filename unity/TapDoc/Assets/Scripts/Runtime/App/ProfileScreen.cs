@@ -55,6 +55,28 @@ namespace TapDoc
         internal Button DoneButton { get; private set; }
         internal Button NewChildButton { get; private set; }
 
+        /// <summary>Gà con chào bé ở phần chọn bé (nâng cấp UI mục 4.4).</summary>
+        internal Mascot Mascot { get; private set; }
+
+        /// <summary>Tiếng chào đã phát lần vào màn gần nhất; <c>null</c> khi chưa có file tiếng (chỉ hiện chữ).</summary>
+        internal string GreetingAudio { get; private set; }
+
+        /// <summary>Thẻ bé theo thứ tự hiện (bé học gần nhất trước).</summary>
+        internal IReadOnlyList<Button> ProfileCards => _profileOrder;
+
+        /// <summary>Lớp cảnh nền (tranh không bắt buộc); <c>null</c> khi chưa có tranh.</summary>
+        internal Image Scene { get; private set; }
+
+        private readonly List<Button> _profileOrder = new();
+        private RectTransform _cardsArea;
+        private GridLayoutGroup _grid;
+
+        /// <summary>Cột trái cho gà con và bong bóng chào.</summary>
+        private const float GreetColumn = 420f;
+        private const float MascotSize = 300f;
+        private const float CardGap = 40f;
+        private static readonly Vector2 MaxCard = new(420f, 500f);
+
         /// <summary>Bánh răng mở menu Cài đặt (ở cả phần chọn lẫn phần tạo bé).</summary>
         internal Button SettingsButton { get; private set; }
 
@@ -194,17 +216,61 @@ namespace TapDoc
             var header = UiKit.CreateLabel(_pickPanel.transform, UiText.AppTitle, 64f);
             Place(header.rectTransform, new Vector2(0.5f, 1f), new Vector2(900f, 140f), new Vector2(0f, -40f));
 
+            // Cảnh sân trường nét mực rất nhạt phía sau (không chạm được); chưa có tranh thì chỉ có nét đất.
+            var sceneSprite = _app.Assets.Image(SystemImages.WelcomeScene);
+            if (sceneSprite != null)
+            {
+                var sceneGo = new GameObject("WelcomeScene", typeof(RectTransform), typeof(Image));
+                sceneGo.transform.SetParent(_pickPanel.transform, false);
+                var srt = (RectTransform)sceneGo.transform;
+                srt.anchorMin = Vector2.zero;
+                srt.anchorMax = Vector2.one;
+                srt.offsetMin = srt.offsetMax = Vector2.zero;
+                Scene = sceneGo.GetComponent<Image>();
+                Scene.sprite = sceneSprite;
+                Scene.preserveAspect = true;
+                Scene.color = new Color(1f, 1f, 1f, .3f);
+                Scene.raycastTarget = false;
+                sceneGo.transform.SetAsFirstSibling();
+            }
+            var ground = new GameObject("Ground", typeof(RectTransform), typeof(Image));
+            ground.transform.SetParent(_pickPanel.transform, false);
+            var grt = (RectTransform)ground.transform;
+            grt.anchorMin = new Vector2(0f, 0f);
+            grt.anchorMax = new Vector2(1f, 0f);
+            grt.offsetMin = new Vector2(0f, 110f);
+            grt.offsetMax = new Vector2(0f, 113f);
+            var gimg = ground.GetComponent<Image>();
+            gimg.sprite = UiKit.WhiteSprite;
+            gimg.color = new Color(Palette.Ink.r, Palette.Ink.g, Palette.Ink.b, .22f);
+            gimg.raycastTarget = false;
+
+            // Gà con to ở cột trái, chào bé bằng tiếng (nâng cấp UI mục 4.4).
+            Mascot = Mascot.Create(_pickPanel.transform, _app.Assets, MascotSize);
+            var mrt = (RectTransform)Mascot.transform;
+            mrt.anchorMin = mrt.anchorMax = new Vector2(0f, .5f);
+            mrt.pivot = new Vector2(.5f, .5f);
+            mrt.anchoredPosition = new Vector2(GreetColumn / 2f + 20f, -110f);
+            Mascot.SetBubbleLayout(Mascot.BubbleSide.AboveLeft, GreetColumn - 40f);
+
             var gridGo = new GameObject("ProfileCards", typeof(RectTransform), typeof(GridLayoutGroup));
             gridGo.transform.SetParent(_pickPanel.transform, false);
-            Place((RectTransform)gridGo.transform, new Vector2(0.5f, 0.5f), new Vector2(1320f, 680f), new Vector2(0f, -60f));
+            _cardsArea = (RectTransform)gridGo.transform;
+            _cardsArea.anchorMin = Vector2.zero;
+            _cardsArea.anchorMax = Vector2.one;
+            _cardsArea.offsetMin = new Vector2(GreetColumn + 40f, 140f);
+            _cardsArea.offsetMax = new Vector2(-40f, -200f);
             var grid = gridGo.GetComponent<GridLayoutGroup>();
+            _grid = grid;
             grid.cellSize = new Vector2(300f, 320f);
-            grid.spacing = new Vector2(40f, 40f);
+            grid.spacing = new Vector2(CardGap, CardGap);
             grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
             grid.constraintCount = 4;
             grid.childAlignment = TextAnchor.MiddleCenter;
 
-            foreach (var profile in _app.Progress.Profiles)
+            // Bé học gần nhất đứng đầu, có quầng cam.
+            var ordered = _app.Progress.ProfilesByRecent;
+            foreach (var profile in ordered)
             {
                 var id = profile.id;
                 var card = UiKit.CreateCardButton(gridGo.transform, profile.name, () => Choose(id));
@@ -229,11 +295,72 @@ namespace TapDoc
                 AddAvatar(picGo.transform, _app.Assets, profile.avatar, profile.name);
 
                 _profileButtons[id] = card;
+                _profileOrder.Add(card);
+                if (profile == ordered[0] && profile.last_played > 0) MarkRecent(card);
             }
 
             NewChildButton = UiKit.CreateCardButton(gridGo.transform, UiText.AddChild, OpenCreate);
             NewChildButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
             NewChildButton.gameObject.SetActive(_app.Progress.Profiles.Count < MaxProfiles);
+
+            FrameWatcher.On(gameObject).Changed += _ => ApplyPickLayout();
+        }
+
+        /// <summary>Bé học gần nhất: viền cam, nhún chậm.</summary>
+        private static void MarkRecent(Button card)
+        {
+            var border = card.transform.Find("Border")?.GetComponent<Image>() ?? card.GetComponent<Image>();
+            border.color = Palette.Orange;
+            Pulse.StartOn(card.transform, .03f, 1.8f);
+        }
+
+        /// <summary>Thẻ bé lớn nhất vừa vùng thẻ (tối đa 420×500, hai hàng), ít bé thì thẻ to.</summary>
+        internal void ApplyPickLayout()
+        {
+            if (_cardsArea == null) return;
+            Canvas.ForceUpdateCanvases();
+            var area = _cardsArea.rect.size;
+            if (area.x < 1f || area.y < 1f) return;
+            var count = _profileOrder.Count + (NewChildButton != null && NewChildButton.gameObject.activeSelf ? 1 : 0);
+            var aspect = MaxCard.y / MaxCard.x;
+            var best = Vector2.zero;
+            var bestCols = 1;
+            for (var rows = 1; rows <= 2; rows++)
+            {
+                var cols = Mathf.Max(1, Mathf.CeilToInt(count / (float)rows));
+                var w = Mathf.Min(MaxCard.x, (area.x - (cols - 1) * CardGap) / cols);
+                var h = w * aspect;
+                if (rows * h + (rows - 1) * CardGap > area.y)
+                {
+                    h = (area.y - (rows - 1) * CardGap) / rows;
+                    w = h / aspect;
+                }
+                if (w > best.x)
+                {
+                    best = new Vector2(w, h);
+                    bestCols = cols;
+                }
+            }
+            _grid.cellSize = best;
+            _grid.constraintCount = bestCols;
+        }
+
+        /// <summary>Gà con chào (bong bóng và tiếng hd_chao_be nếu đã có file).</summary>
+        private void Greet()
+        {
+            if (Mascot == null) return;
+            Mascot.Cheer(UiText.Greeting, keepBubble: true);
+            GreetingAudio = _app.Assets.Audio(SystemAudio.hd_chao_be) != null ? SystemAudio.hd_chao_be : null;
+            if (GreetingAudio != null) _ = _app.Speech.PlayAsync(GreetingAudio);
+        }
+
+        /// <summary>Vào Tủ sách sau khi chọn bé; gà con rủ "Mình cùng học nhé!" nếu đã có tiếng.</summary>
+        private void GoLearn(string profileId)
+        {
+            _app.Progress.MarkPlayed(profileId);
+            _app.SaveProgress();
+            _app.ShowShelf();
+            if (_app.Assets.Audio(SystemAudio.hd_cung_hoc) != null) _ = _app.Speech.PlayAsync(SystemAudio.hd_cung_hoc);
         }
 
         private void BuildCreate()
@@ -335,6 +462,8 @@ namespace TapDoc
         {
             _createPanel.SetActive(false);
             _pickPanel.SetActive(true);
+            ApplyPickLayout();
+            Greet();
         }
 
         private bool CanCreate =>
@@ -353,16 +482,14 @@ namespace TapDoc
         private void Choose(string profileId)
         {
             _app.Progress.Select(profileId);
-            _app.SaveProgress();
-            _app.ShowShelf();
+            GoLearn(profileId);
         }
 
         private void OnDone()
         {
             if (!CanCreate) return;
-            _app.Progress.CreateProfile(_nameInput.text, _avatar);
-            _app.SaveProgress();
-            _app.ShowShelf();
+            var profile = _app.Progress.CreateProfile(_nameInput.text, _avatar);
+            GoLearn(profile.id);
         }
 
         /// <summary>Đặt <paramref name="rt"/> theo điểm neo <paramref name="anchor"/> (cũng là tâm xoay).</summary>

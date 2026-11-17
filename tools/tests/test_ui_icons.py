@@ -96,7 +96,7 @@ class WriteAllTest(unittest.TestCase):
         self.dir = Path(self._tmp.name)
         (self.dir / f"{AVATAR}.png").write_bytes(b"avatar-bytes")
         # Cỡ nhỏ cho nhanh: ở đây chỉ kiểm tra file nào được ghi, không kiểm tra nét vẽ.
-        for name in ("ICON_SIZE", "FLOWER_SIZE"):
+        for name in ("ICON_SIZE", "FLOWER_SIZE", "WELCOME_SIZE"):
             patcher = mock.patch.object(ui_icons, name, 16)
             patcher.start()
             self.addCleanup(patcher.stop)
@@ -106,7 +106,7 @@ class WriteAllTest(unittest.TestCase):
 
     def test_writes_missing_copies_mascot(self):
         written = ui_icons.write_all(self.dir)
-        self.assertEqual(set(written), set(ui_icons.ICONS) | {FLOWER, MASCOT, ui_icons.GLOSSARY_ID})
+        self.assertEqual(set(written), set(ui_icons.ICONS) | {FLOWER, MASCOT, ui_icons.GLOSSARY_ID, ui_icons.WELCOME_ID})
         for icon_id in ui_icons.ICONS:
             self.assertEqual((self.dir / f"{icon_id}.png").read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
         self.assertEqual((self.dir / f"{FLOWER}.png").read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
@@ -116,7 +116,9 @@ class WriteAllTest(unittest.TestCase):
         (self.dir / f"{FLOWER}.png").write_bytes(b"x")
         (self.dir / f"{MASCOT}.png").write_bytes(b"x")
         (self.dir / f"{ui_icons.GLOSSARY_ID}.png").write_bytes(b"x")
+        (self.dir / f"{ui_icons.WELCOME_ID}.png").write_bytes(b"x")
         written = ui_icons.write_all(self.dir, force=True)
+        self.assertEqual((self.dir / f"{ui_icons.WELCOME_ID}.png").read_bytes(), b"x", "tranh cảnh chào không bị ghi đè")
         self.assertEqual((self.dir / f"{ui_icons.GLOSSARY_ID}.png").read_bytes(), b"x")
         self.assertEqual((self.dir / f"{FLOWER}.png").read_bytes(), b"x")
         self.assertEqual((self.dir / f"{MASCOT}.png").read_bytes(), b"x")

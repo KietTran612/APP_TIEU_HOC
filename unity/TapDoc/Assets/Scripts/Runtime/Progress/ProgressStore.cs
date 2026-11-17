@@ -169,6 +169,16 @@ namespace TapDoc
             return profile;
         }
 
+        /// <summary>Ghi bé <paramref name="profileId"/> vừa được chọn để học (xếp lên đầu ở màn chọn bé).</summary>
+        public void MarkPlayed(string profileId)
+        {
+            var profile = _data.profiles.FirstOrDefault(p => p.id == profileId);
+            if (profile != null) profile.last_played = Math.Max(DateTime.UtcNow.Ticks, profile.last_played + 1);
+        }
+
+        /// <summary>Các bé, bé học gần nhất trước; bé chưa chọn lần nào giữ thứ tự tạo.</summary>
+        public IReadOnlyList<Profile> ProfilesByRecent => _data.profiles.OrderByDescending(p => p.last_played).ToList();
+
         public void Select(string profileId)
         {
             if (string.IsNullOrEmpty(profileId) || _data.profiles.All(p => p.id != profileId))

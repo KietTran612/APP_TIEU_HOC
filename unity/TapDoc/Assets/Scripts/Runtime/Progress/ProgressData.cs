@@ -39,6 +39,8 @@ namespace TapDoc
         public int grade_tab;
         /// <summary>Quyển bé đang mở ở Tủ sách (mã quyển). File cũ không có thì trống: Tủ sách chọn quyển đang học.</summary>
         public string open_book;
+        /// <summary>Lần chọn bé gần nhất (ticks UTC): màn chọn bé xếp bé học gần nhất lên đầu. File cũ không có thì 0.</summary>
+        public long last_played;
         public List<LessonProgress> lessons = new();
         public List<Mistake> mistakes = new();
     }

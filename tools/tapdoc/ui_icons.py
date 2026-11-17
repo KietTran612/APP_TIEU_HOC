@@ -37,6 +37,8 @@ FLOWER_ID = "img_chung_hoa_be_ngoan"
 MASCOT_ID = "img_chung_ga_con"
 MASCOT_SOURCE_ID = "img_chung_avatar_04"
 GLOSSARY_ID = "img_chung_giai_nghia"  # kí hiệu [:] giải nghĩa từ của sách lớp 2
+WELCOME_ID = "img_ui_canh_chao"  # cảnh nền màn chọn bé (tranh ChatGPT thay sau)
+WELCOME_SIZE = 512
 
 
 def _arc(cx, cy, r, start_deg, end_deg, steps=24):
@@ -149,6 +151,17 @@ ICONS: dict[str, list] = {
         ("stroke", [(13.8, 16.2), (18.6, 15.2)], 1.0, INK, False),
     ],
 }
+
+# Hình tạm cảnh nền màn chọn bé: nét mực mảnh, nền trong (app hiện mờ): mái nhà, cây, mặt trời, nền đất.
+WELCOME: list = [
+    ("stroke", [(0, 19.5), (6, 18.8), (12, 19.4), (18, 18.6), (24, 19.2)], .18, INK, False),
+    ("stroke", [(1.5, 11.5), (6.5, 7.5), (11.5, 11.5)], .18, INK, False),
+    ("stroke", [(2.5, 11), (2.5, 18.9), (10.5, 18.9), (10.5, 11)], .18, INK, False),
+    ("stroke", [(5.5, 18.9), (5.5, 14.5), (7.5, 14.5), (7.5, 18.9)], .18, INK, False),
+    ("stroke", [(19, 18.7), (19, 12.5)], .18, INK, False),
+    ("circle", 19, 10, 3.3, None, .18),
+    ("circle", 20.5, 3.5, 1.6, None, .16),
+]
 
 # Hình tạm kí hiệu [:]: ô vuông viền mực, giữa có dấu hai chấm (tranh chính thức ghi đè cùng mã).
 GLOSSARY: list = [
@@ -319,6 +332,10 @@ def write_all(image_dir: Path, force: bool = False, book_ids=()) -> list[str]:
         if force or not path.exists():
             path.write_bytes(render(shapes, ICON_SIZE))
             written.append(icon_id)
+    welcome = image_dir / f"{WELCOME_ID}.png"
+    if not welcome.exists():
+        welcome.write_bytes(render(WELCOME, WELCOME_SIZE))
+        written.append(WELCOME_ID)
     glossary = image_dir / f"{GLOSSARY_ID}.png"
     if not glossary.exists():
         glossary.write_bytes(render(GLOSSARY, ICON_SIZE))

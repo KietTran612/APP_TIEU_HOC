@@ -69,6 +69,8 @@ SYSTEM_IMAGES: dict[str, str] = {
     "img_ui_cai_dat": "Biểu tượng mở menu Cài đặt: bánh răng",
     "img_ui_tu_sach": "Biểu tượng về Tủ sách: kệ có ba gáy sách",
     "img_ui_tay_chi": "Bàn tay gợi ý khi bé ngồi im: ngón trỏ chỉ lên trái, nét mực, nền giấy",
+    "img_ui_canh_chao": "Cảnh nền màn chọn bé: sân trường làng nét mực rất nhạt (mái ngói, cây phượng, đường đất), "
+    "không người, không chữ, khổ ngang 16:9, phần giữa và bên phải để trống",
     "img_ui_lat_truoc": "Biểu tượng trang trước: tờ giấy gấp góc, mũi tên nhỏ chỉ sang trái",
     "img_ui_lat_sau": "Biểu tượng trang sau: tờ giấy gấp góc, mũi tên nhỏ chỉ sang phải",
     "img_ui_sao_giay": "Ngôi sao giấy màu vàng viền mực, bung ra khi bé làm đúng",

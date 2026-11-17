@@ -157,6 +157,12 @@ namespace TapDoc
             var pad = new Vector2(28f, 12f);
             var oneLine = _bubbleText.GetPreferredValues(_bubbleText.text, float.PositiveInfinity, float.PositiveInfinity);
             var width = Mathf.Clamp(oneLine.x + pad.x, Mathf.Min(BubbleMinSize.x, _bubbleMaxWidth), _bubbleMaxWidth);
+            if (oneLine.x + pad.x > _bubbleMaxWidth)
+            {
+                // Câu dài: chia đều các dòng (không để một chữ rớt một mình xuống dòng cuối).
+                var lines = Mathf.CeilToInt(oneLine.x / (_bubbleMaxWidth - pad.x));
+                width = Mathf.Min(_bubbleMaxWidth, oneLine.x / lines * 1.12f + pad.x);
+            }
             var size = _bubbleText.GetPreferredValues(_bubbleText.text, width - pad.x, float.PositiveInfinity);
             brt.sizeDelta = new Vector2(width, Mathf.Max(BubbleMinSize.y, size.y + pad.y));
         }
@@ -175,7 +181,10 @@ namespace TapDoc
             AboveRight,
 
             /// <summary>Bên trái gà con, ngang giữa (gà con ở hàng nút dưới).</summary>
-            Left
+            Left,
+
+            /// <summary>Trên đầu, mép trái bong bóng thẳng mép trái gà con (gà con ở cột trái màn).</summary>
+            AboveLeft
         }
 
         /// <summary>Khung của bong bóng (cho test bố cục).</summary>
@@ -191,6 +200,11 @@ namespace TapDoc
                 case BubbleSide.AboveRight:
                     brt.anchorMin = brt.anchorMax = new Vector2(1f, 1f);
                     brt.pivot = new Vector2(1f, 0f);
+                    brt.anchoredPosition = new Vector2(0f, 10f);
+                    break;
+                case BubbleSide.AboveLeft:
+                    brt.anchorMin = brt.anchorMax = new Vector2(0f, 1f);
+                    brt.pivot = new Vector2(0f, 0f);
                     brt.anchoredPosition = new Vector2(0f, 10f);
                     break;
                 case BubbleSide.Left:
