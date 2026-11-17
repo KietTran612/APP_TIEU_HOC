@@ -133,13 +133,71 @@ namespace TapDoc.Tests
             Assert.AreEqual(0, app.Progress.Current.session_lessons, "Phụ huynh tắt được");
         }
 
+        [UnityTest]
+        public IEnumerator StudyTime_SavedWhenAppPaused()
+        {
+            // Tắt app giữa bài: Unity gọi OnApplicationPause(true) (điện thoại) hay OnApplicationQuit; giả lập bằng
+            // SendMessage tới màn học, không rời màn.
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            app.ShowLesson(LessonId);
+            yield return WaitPrepared();
+            yield return new WaitForSecondsRealtime(1.3f);
+            var screen = Object.FindAnyObjectByType<LessonScreen>();
+            Assert.Greater(screen.StudySeconds, 1f);
+            screen.SendMessage("OnApplicationPause", true);
+            Assert.AreEqual(0f, screen.StudySeconds, "Đã ghi xuống nhật ký");
+            Assert.GreaterOrEqual(ProgressStore.Load(StorePath).Current.days.Sum(d => d.seconds), 1, "Ghi xuống file ngay");
+            Assert.IsNotNull(Object.FindAnyObjectByType<LessonScreen>(), "Vẫn ở màn học");
+        }
+
+        [UnityTest]
+        public IEnumerator Parent_WeekLabels_UnderMinute_NearestSession()
+        {
+            yield return LoadMainWithProfile();
+            var app = AppRoot.Instance;
+            app.Progress.Current.session_lessons = 1; // giá trị không có trong lựa chọn (bản cũ hay sửa tay)
+            app.Progress.RecordLessonDone("tv1_t1_b01");
+            app.Progress.AddStudySeconds(30f);
+            app.ShowParent();
+            yield return WaitPrepared();
+            var p = Object.FindAnyObjectByType<ParentScreen>();
+            p.SimulateUnlock();
+            yield return null;
+            var id = app.Progress.Current.id;
+            Assert.AreEqual(string.Format(UiText.WeekSummaryUnderMinuteFormat, 1), p.WeekLineFor(id).text, "Dưới 60 giây");
+            var labels = p.DayLabelsFor(id);
+            Assert.AreEqual(7, labels.Count, "Mỗi cột một nhãn thứ");
+            Assert.AreEqual(UiText.WeekdayShort[(int)System.DateTime.Now.DayOfWeek], labels.Last(), "Cột cuối là hôm nay");
+            p.ShowTab(ParentScreen.ParentTab.Time);
+            yield return null;
+            var fill = p.SessionButtonFor(id, 2).transform.Find("Fill").GetComponent<UnityEngine.UI.Image>();
+            Assert.AreEqual(Palette.Teal, fill.color, "Giá trị 1 không có trong lựa chọn: tô lựa chọn gần nhất (2 bài)");
+            Assert.AreEqual(2, ParentScreen.ShownSessionChoice(1));
+            Assert.AreEqual(3, ParentScreen.ShownSessionChoice(4), "Cách đều 3 và 5: chọn ít bài hơn");
+            Assert.AreEqual(5, ParentScreen.ShownSessionChoice(9));
+            Assert.AreEqual(0, ParentScreen.ShownSessionChoice(0));
+            Canvas.ForceUpdateCanvases();
+            LayoutProbe.AssertFits(app.Canvas);
+        }
+
+        [UnityTest]
+        public IEnumerator Break_ParentMoreButton_BreaksAfterColon()
+        {
+            yield return LoadMainWithProfile();
+            AppRoot.Instance.ShowBreak(() => { });
+            yield return null;
+            var label = Object.FindAnyObjectByType<BreakScreen>().ParentMoreButton.GetComponentInChildren<TMPro.TMP_Text>();
+            Assert.AreEqual("Phụ huynh:\nhọc thêm", label.text);
+        }
+
         [UnityTest, Timeout(600000)]
         public IEnumerator Screens_ParentAndBreak_FourSizes()
         {
             UseStubsForMissingAssets();
             yield return LoadMainWithProfile();
             var app = AppRoot.Instance;
-            app.Progress.Current.session_lessons = 1;
+            app.Progress.Current.session_lessons = 2;
             yield return FinishLesson("tv1_t1_b13");
             app.Progress.RecordMistake("tv1_t1_b13", 0);
             app.Progress.CreateProfile("Na", ProfileScreen.Avatars[1]);

@@ -542,6 +542,14 @@ namespace TapDoc
 
         private void OnDestroy() => FlushStudyTime();
 
+        // Tắt app hay chuyển app giữa bài: ghi ngay phút đã học (OnDestroy có thể không chạy khi hệ điều hành đóng app).
+        private void OnApplicationPause(bool paused)
+        {
+            if (paused) FlushStudyTime();
+        }
+
+        private void OnApplicationQuit() => FlushStudyTime();
+
         private void ReplayCurrent()
         {
             if (CurrentView is IStepView sv)

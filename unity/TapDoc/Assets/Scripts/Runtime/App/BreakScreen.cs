@@ -117,7 +117,8 @@ namespace TapDoc
             grt.anchoredPosition = Vector2.zero;
             GoodbyeButton.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
 
-            ParentMoreButton = UiKit.CreateButton(right, UiText.ParentMore, OpenGate);
+            // Ngắt sau dấu hai chấm: "Phụ huynh: / học thêm".
+            ParentMoreButton = UiKit.CreateButton(right, UiText.ParentMore.Replace(": ", ":\n"), OpenGate);
             var prt2 = (RectTransform)ParentMoreButton.transform;
             prt2.anchorMin = prt2.anchorMax = prt2.pivot = new Vector2(1f, 0f);
             prt2.sizeDelta = new Vector2(300f, UiKit.MinTouch);

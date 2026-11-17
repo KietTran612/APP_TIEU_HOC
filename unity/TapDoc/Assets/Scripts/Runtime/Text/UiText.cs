@@ -78,6 +78,9 @@ namespace TapDoc
         public const string TabPlay = "Chơi cùng con";
         public const string TabTime = "Thời lượng";
         public const string WeekSummaryFormat = "7 ngày qua: {0} bài · khoảng {1} phút";
+        public const string WeekSummaryUnderMinuteFormat = "7 ngày qua: {0} bài · chưa tới 1 phút";
+        /// <summary>Nhãn thứ dưới cột theo ngày (Chủ nhật trước, theo <see cref="System.DayOfWeek"/>).</summary>
+        public static readonly string[] WeekdayShort = { "CN", "T2", "T3", "T4", "T5", "T6", "T7" };
         public const string PlayTogetherNote = "Học cùng con giúp con nhớ lâu hơn học một mình.";
         public const string PlayFindSound = "Cùng con tìm trong nhà đồ vật có tiếng chứa {0}.";
         public const string PlayActWord = "Con đọc \"{0}\", bố mẹ làm động tác cho con đoán, rồi đổi vai.";
@@ -210,6 +213,7 @@ namespace TapDoc
             TabPlay,
             TabTime,
             WeekSummaryFormat,
+            WeekSummaryUnderMinuteFormat,
             PlayTogetherNote,
             PlayFindSound,
             PlayActWord,

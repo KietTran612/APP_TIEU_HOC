@@ -16,7 +16,7 @@ namespace TapDoc
     {
         private const int MaxConfusions = 5;
         private const float ChipHeight = UiKit.MinTouch; // thẻ chữ hay nhầm chạm để nghe (vùng chạm ≥ 160)
-        private const float WeekBlock = 64f;    // dòng "7 ngày qua" + cột theo ngày
+        private const float WeekBlock = 104f;    // dòng "7 ngày qua" + cột theo ngày có nhãn thứ
         private const float NameBlock = 80f;      // tên bé ở trên cùng khối
         private const float LineHeight = 52f;     // một dòng tiến độ
         private const float ProgressFont = 38f;
@@ -283,10 +283,22 @@ namespace TapDoc
 
         private void RefreshSession(Profile profile)
         {
+            var shown = ShownSessionChoice(profile.session_lessons);
             foreach (var value in SessionChoices)
             {
-                if (_sessionButtons.TryGetValue((profile.id, value), out var b)) PaintChoice(b, value == profile.session_lessons);
+                if (_sessionButtons.TryGetValue((profile.id, value), out var b)) PaintChoice(b, value == shown);
             }
+        }
+
+        /// <summary>
+        /// Lựa chọn được tô cho giá trị đã lưu: đúng lựa chọn thì tô nó; giá trị khác (ví dụ 1, 4 từ bản cũ hay sửa tay) thì
+        /// tô lựa chọn có nhắc gần nhất; 0 hay âm là "Không nhắc".
+        /// </summary>
+        internal static int ShownSessionChoice(int stored)
+        {
+            if (stored <= 0) return 0;
+            if (SessionChoices.Contains(stored)) return stored;
+            return SessionChoices.Where(v => v > 0).OrderBy(v => Mathf.Abs(v - stored)).ThenBy(v => v).First();
         }
 
         /// <summary>Khối nền giấy sáng cao <paramref name="height"/> trong danh sách dọc.</summary>
@@ -345,6 +357,7 @@ namespace TapDoc
         {
             var row = new GameObject($"Child_{profile.id}", typeof(RectTransform), typeof(Image), typeof(LayoutElement));
             row.transform.SetParent(content, false);
+            _rowsById[profile.id] = row.transform;
             var bg = row.GetComponent<Image>();
             bg.sprite = UiKit.WhiteSprite;
             bg.color = RowColor;
@@ -430,20 +443,34 @@ namespace TapDoc
             }
         }
 
-        private const float BarWidth = 22f;
-        private const float BarMaxHeight = 46f;
+        private const float BarWidth = 40f;
+        private const float BarGap = 26f;
+        private const float BarMaxHeight = 40f;
+        private const float DayLabelHeight = 52f;
+        private const float DayLabelFont = UiKit.MinFontSize;
+
+        /// <summary>Nhãn thứ của các cột 7 ngày (cho test).</summary>
+        internal IReadOnlyList<string> DayLabelsFor(string profileId) =>
+            _rowsById.TryGetValue(profileId, out var row)
+                ? row.GetComponentsInChildren<TMP_Text>().Where(t => t.name.StartsWith("DayLabel_")).Select(t => t.text).ToList()
+                : new List<string>();
+
+        private readonly Dictionary<string, Transform> _rowsById = new();
 
         private void AddWeek(Transform row, Profile profile, float top)
         {
             var week = ProgressStore.LastWeek(profile, DateTime.Now);
             var lessons = week.Sum(d => d.lessons);
-            var minutes = Mathf.RoundToInt(week.Sum(d => d.seconds) / 60f);
-            var line = LeftLabel(row, string.Format(UiText.WeekSummaryFormat, lessons, minutes), 34f);
+            var seconds = week.Sum(d => d.seconds);
+            var summary = seconds < 60
+                ? string.Format(UiText.WeekSummaryUnderMinuteFormat, lessons)
+                : string.Format(UiText.WeekSummaryFormat, lessons, Mathf.RoundToInt(seconds / 60f));
+            var line = LeftLabel(row, summary, 34f);
             line.name = "Week";
             line.enableAutoSizing = true;
             line.fontSizeMax = 34f;
             line.fontSizeMin = UiKit.MinFontSize;
-            PlaceLeft(line.rectTransform, 1f, new Vector2(140f, -top - 4f), new Vector2(520f, WeekBlock - 8f));
+            PlaceLeft(line.rectTransform, 1f, new Vector2(140f, -top - 4f), new Vector2(520f, 60f));
             _weekLines[profile.id] = line;
             var most = Mathf.Max(1, week.Max(d => d.lessons));
             for (var k = 0; k < week.Count; k++)
@@ -454,12 +481,23 @@ namespace TapDoc
                 rt.anchorMin = rt.anchorMax = new Vector2(0f, 1f);
                 rt.pivot = new Vector2(0f, 0f);
                 var h = week[k].lessons > 0 ? Mathf.Max(6f, BarMaxHeight * week[k].lessons / most) : 3f;
+                var x = 680f + k * (BarWidth + BarGap);
                 rt.sizeDelta = new Vector2(BarWidth, h);
-                rt.anchoredPosition = new Vector2(680f + k * (BarWidth + 8f), -top - WeekBlock + 6f);
+                rt.anchoredPosition = new Vector2(x, -top - WeekBlock + DayLabelHeight + 4f);
                 var img = bar.GetComponent<Image>();
                 img.sprite = UiKit.WhiteSprite;
                 img.color = k == week.Count - 1 ? Palette.Orange : Palette.Teal;
                 img.raycastTarget = false;
+                // Nhãn thứ dưới cột (T2 … CN) để phụ huynh biết cột nào là hôm nào; cột cuối là hôm nay (màu cam).
+                var day = UiKit.CreateLabel(row, UiText.WeekdayShort[(int)week[k].day.DayOfWeek], DayLabelFont);
+                day.name = $"DayLabel_{k}";
+                day.color = k == week.Count - 1 ? Palette.Orange : MutedText;
+                day.raycastTarget = false;
+                var drt = day.rectTransform;
+                drt.anchorMin = drt.anchorMax = new Vector2(0f, 1f);
+                drt.pivot = new Vector2(.5f, 0f);
+                drt.sizeDelta = new Vector2(BarWidth + BarGap, DayLabelHeight);
+                drt.anchoredPosition = new Vector2(x + BarWidth / 2f, -top - WeekBlock);
             }
         }
 
