@@ -230,7 +230,8 @@ namespace TapDoc.Tests
             var cover = (RectTransform)Shelf().TitleOf(BookAt(1)).transform.parent;
             var corners = new Vector3[4];
             cover.GetWorldCorners(corners);
-            Assert.Less(Vector3.Distance(corners[2], mascot.transform.position), .01f, "Gà con ở góc trên phải quyển đang học");
+            Assert.Less(Vector3.Distance((corners[1] + corners[2]) / 2f, mascot.transform.position), .01f,
+                "Gà con ở giữa mép trên quyển đang học");
             Assert.IsNull(mascot.GetComponentInParent<UnityEngine.UI.RectMask2D>(), "Gà con không bị vùng cuộn cắt");
         }
     }

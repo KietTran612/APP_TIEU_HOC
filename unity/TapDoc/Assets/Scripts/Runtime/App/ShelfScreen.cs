@@ -61,20 +61,23 @@ namespace TapDoc
         /// <summary>Gà con (đứng cạnh quyển đang học).</summary>
         internal Mascot Mascot { get; private set; }
 
-        /// <summary>Gà con ngồi ở góc trên phải bìa: một phần tư thân ở trong bìa, phần còn lại nhô lên trên.</summary>
-        internal static readonly Vector2 MascotPivot = new(.75f, .25f);
+        /// <summary>Gà con ngồi giữa mép trên bìa đang học: một phần năm thân ở trong bìa, phần còn lại nhô lên trên.</summary>
+        internal static readonly Vector2 MascotPivot = new(.5f, .2f);
 
         private RectTransform _mascotCover;
 
-        /// <summary>Đặt gà con vào góc trên phải bìa đang học.</summary>
+        /// <summary>Đặt gà con vào giữa mép trên bìa đang học.</summary>
         private void PlaceMascot()
         {
             if (_mascotCover == null || Mascot == null) return;
             var corners = new Vector3[4];
             _mascotCover.GetWorldCorners(corners);
-            Mascot.transform.position = corners[2];
+            Mascot.transform.position = (corners[1] + corners[2]) / 2f;
         }
 
+        // Đặt lại trước khi vẽ, sau khi hàng bìa đã sắp xếp (bố cục chạy trong willRenderCanvases).
+        private void OnEnable() => Canvas.willRenderCanvases += PlaceMascot;
+        private void OnDisable() => Canvas.willRenderCanvases -= PlaceMascot;
         private void LateUpdate() => PlaceMascot();
 
         public string CelebratedBookId { get; private set; }
