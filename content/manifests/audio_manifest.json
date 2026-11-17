@@ -80924,6 +80924,56 @@
     }
   },
   {
+    "id": "hd_chao_be",
+    "text": "Chào bé! Bé chạm vào hình của mình nhé!",
+    "kind": "huong_dan",
+    "file": "audio/hd_chao_be.mp3",
+    "source": "tts_edge_hoaimy",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "chung"
+    ],
+    "tts": {
+      "doc": "Chào bé! Bé chạm vào hình của mình nhé!",
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0,
+      "voice": "vi-VN-HoaiMyNeural",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "26dc6ddd1d66e345d77d1ffea49c743e8be01018",
+      "trimmed": true
+    }
+  },
+  {
+    "id": "hd_cung_hoc",
+    "text": "Mình cùng học nhé!",
+    "kind": "huong_dan",
+    "file": "audio/hd_cung_hoc.mp3",
+    "source": "tts_edge_hoaimy",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "chung"
+    ],
+    "tts": {
+      "doc": "Mình cùng học nhé!",
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0,
+      "voice": "vi-VN-HoaiMyNeural",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "774c0c8693718a674e04e862cf40f2717d05704e",
+      "trimmed": true
+    }
+  },
+  {
     "id": "hd_danh_van_theo",
     "text": "Con đánh vần theo nhé.",
     "kind": "huong_dan",
@@ -81096,6 +81146,31 @@
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
       "sig": "6eb56d86ce2616edd1169af17091962324b30aef",
+      "trimmed": true
+    }
+  },
+  {
+    "id": "hd_nghi_mat",
+    "text": "Bé học giỏi lắm! Mình nghỉ mắt chút nhé.",
+    "kind": "huong_dan",
+    "file": "audio/hd_nghi_mat.mp3",
+    "source": "tts_edge_hoaimy",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "Root soát 17/11: \"nhé\" cuối câu đứng sau \"chút\" lên quá yếu, nghe như ngang (máy nhận dạng nghe \"nha\"); đọc có dấu phẩy trước \"nhé\" cho rõ thanh sắc (chữ đọc riêng \"Bé học giỏi lắm! Mình nghỉ mắt chút, nhé!\"); nghe kiểm nhé/nha. Chờ nghe xác nhận.",
+    "bai": [
+      "chung"
+    ],
+    "tts": {
+      "doc": "Bé học giỏi lắm! Mình nghỉ mắt chút, nhé!",
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0,
+      "voice": "vi-VN-HoaiMyNeural",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "4d4a1b73c3771ae2a5b586369476a401242552be",
       "trimmed": true
     }
   },
@@ -96902,6 +96977,31 @@
     }
   },
   {
+    "id": "khen_cham",
+    "text": "Bé học chăm quá!",
+    "kind": "khen",
+    "file": "audio/khen_cham.mp3",
+    "source": "tts_edge_hoaimy",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "chung"
+    ],
+    "tts": {
+      "doc": "Bé học chăm quá!",
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0,
+      "voice": "vi-VN-HoaiMyNeural",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "a79513caf2532a7233000f8049ea6b2e75b103e9",
+      "trimmed": true
+    }
+  },
+  {
     "id": "khen_hoan_thanh",
     "text": "Con học xong bài rồi. Giỏi lắm!",
     "kind": "khen",
@@ -96920,6 +97020,81 @@
       "volume": 0,
       "voice": "vi-VN-HoaiMyNeural",
       "sig": "8a835cad00aedea39b7c316df8aade427277858a",
+      "trimmed": true
+    }
+  },
+  {
+    "id": "khen_nghe_ki",
+    "text": "Bé nghe kĩ, làm đúng hết rồi!",
+    "kind": "khen",
+    "file": "audio/khen_nghe_ki.mp3",
+    "source": "tts_edge_hoaimy",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "chung"
+    ],
+    "tts": {
+      "doc": "Bé nghe kĩ, làm đúng hết rồi!",
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0,
+      "voice": "vi-VN-HoaiMyNeural",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "bfbd9632ec871e2646d6b5c7202036f84fe33447",
+      "trimmed": true
+    }
+  },
+  {
+    "id": "khen_nghe_lai",
+    "text": "Bé chịu khó nghe lại, tốt lắm!",
+    "kind": "khen",
+    "file": "audio/khen_nghe_lai.mp3",
+    "source": "tts_edge_hoaimy",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "chung"
+    ],
+    "tts": {
+      "doc": "Bé chịu khó nghe lại, tốt lắm!",
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0,
+      "voice": "vi-VN-HoaiMyNeural",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "627b5f6f112b510b108ba63b0af3f9b9f5febac9",
+      "trimmed": true
+    }
+  },
+  {
+    "id": "khen_tu_sua",
+    "text": "Bé tự sửa được rồi, giỏi quá!",
+    "kind": "khen",
+    "file": "audio/khen_tu_sua.mp3",
+    "source": "tts_edge_hoaimy",
+    "status": "cho_duyet",
+    "can_nghe_ky": true,
+    "ghi_chu": "",
+    "bai": [
+      "chung"
+    ],
+    "tts": {
+      "doc": "Bé tự sửa được rồi, giỏi quá!",
+      "rate": -15,
+      "pitch": 0,
+      "volume": 0,
+      "voice": "vi-VN-HoaiMyNeural",
+      "keep_first": false,
+      "join": [],
+      "join_gap": 0.08,
+      "sig": "84580ebebe89a82e54f89002982c351d6a235903",
       "trimmed": true
     }
   },
