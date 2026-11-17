@@ -169,6 +169,53 @@ namespace TapDoc
             return profile;
         }
 
+        public const int DefaultSessionLessons = 3;
+        public const int DaysKept = 14;
+        private const string DateFormat = "yyyy-MM-dd";
+
+        /// <summary>Nhật ký ngày <paramref name="day"/> của bé <paramref name="profile"/> (tạo mới nếu chưa có; giữ 14 ngày).</summary>
+        public static DayLog DayOf(Profile profile, DateTime day)
+        {
+            var key = day.ToString(DateFormat, System.Globalization.CultureInfo.InvariantCulture);
+            profile.days ??= new List<DayLog>();
+            var log = profile.days.FirstOrDefault(d => d.date == key);
+            if (log != null) return log;
+            log = new DayLog { date = key };
+            profile.days.Add(log);
+            profile.days.Sort((a, b) => string.CompareOrdinal(a.date, b.date));
+            while (profile.days.Count > DaysKept) profile.days.RemoveAt(0);
+            return log;
+        }
+
+        /// <summary>7 ngày gần nhất tính tới <paramref name="today"/> (cũ trước); ngày không học thì 0 bài, 0 giây.</summary>
+        public static IReadOnlyList<(DateTime day, int lessons, int seconds)> LastWeek(Profile profile, DateTime today)
+        {
+            var result = new List<(DateTime, int, int)>();
+            for (var k = 6; k >= 0; k--)
+            {
+                var day = today.Date.AddDays(-k);
+                var key = day.ToString(DateFormat, System.Globalization.CultureInfo.InvariantCulture);
+                var log = profile?.days?.FirstOrDefault(d => d.date == key);
+                result.Add((day, log?.lessons ?? 0, log?.seconds ?? 0));
+            }
+            return result;
+        }
+
+        /// <summary>Bé đang học vừa học xong bài <paramref name="lessonId"/>: thêm vào nhật ký hôm nay.</summary>
+        public void RecordLessonDone(string lessonId, DateTime? now = null)
+        {
+            if (Current == null) return;
+            DayOf(Current, now ?? DateTime.Now).lessons++;
+            Current.last_lesson_id = lessonId;
+        }
+
+        /// <summary>Cộng <paramref name="seconds"/> giây học vào nhật ký hôm nay của bé đang học.</summary>
+        public void AddStudySeconds(float seconds, DateTime? now = null)
+        {
+            if (Current == null || seconds <= 0f) return;
+            DayOf(Current, now ?? DateTime.Now).seconds += Mathf.RoundToInt(seconds);
+        }
+
         /// <summary>Ghi bé <paramref name="profileId"/> vừa được chọn để học (xếp lên đầu ở màn chọn bé).</summary>
         public void MarkPlayed(string profileId)
         {

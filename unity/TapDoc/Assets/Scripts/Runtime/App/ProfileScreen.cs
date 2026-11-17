@@ -359,6 +359,7 @@ namespace TapDoc
         {
             _app.Progress.MarkPlayed(profileId);
             _app.SaveProgress();
+            _app.StartSession();
             _app.ShowShelf();
             if (_app.Assets.Audio(SystemAudio.hd_cung_hoc) != null) _ = _app.Speech.PlayAsync(SystemAudio.hd_cung_hoc);
         }

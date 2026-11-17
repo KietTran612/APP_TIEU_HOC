@@ -67,6 +67,14 @@ namespace TapDoc
         internal Func<float> Clock = () => Time.unscaledTime;
 
         private const float TargetRefreshSeconds = .25f;
+
+        /// <summary>Ngồi im quá chừng này thì không tính vào thời gian học (nâng cấp UI mục 4.6).</summary>
+        internal const float StudyIdleCutoff = 60f;
+
+        /// <summary>Số giây học đã tính ở màn này (chưa ghi xuống nhật ký).</summary>
+        internal float StudySeconds { get; private set; }
+
+        private float _lastActiveReal = float.NegativeInfinity;
         private const float PhoneKidButton = 180f;
         private RectTransform _nudgeTarget;
         private float _nudgeTargetAt = float.NegativeInfinity;
@@ -444,6 +452,7 @@ namespace TapDoc
         private void OnReplayClicked()
         {
             Nudge?.NoteActivity(Clock());
+            _lastActiveReal = Time.unscaledTime;
             Effort?.RecordReplay();
             ReplayCurrent();
         }
@@ -457,6 +466,7 @@ namespace TapDoc
 
         private void Update()
         {
+            TrackStudyTime();
             if (!IdleNudge.Enabled || Nudge == null || Flow == null || Flow.Phase == Phase.Done || _app == null) return;
             var now = Clock();
             var pointer = Pointer.current;
@@ -507,6 +517,30 @@ namespace TapDoc
             _nudgeTarget = found != null ? found : _stage;
             return _nudgeTarget;
         }
+
+        /// <summary>
+        /// Cộng thời gian học: tính khi bé vừa chạm (trong <see cref="StudyIdleCutoff"/> giây) hoặc giọng đọc đang chạy.
+        /// </summary>
+        private void TrackStudyTime()
+        {
+            if (_app == null || Flow == null || Flow.Phase == Phase.Done) return;
+            var now = Time.unscaledTime;
+            var pointer = Pointer.current;
+            if (_app.Speech.IsBusy || (pointer != null && pointer.press.isPressed) || _lastActiveReal == float.NegativeInfinity)
+                _lastActiveReal = now;
+            if (now - _lastActiveReal <= StudyIdleCutoff) StudySeconds += Time.unscaledDeltaTime;
+        }
+
+        /// <summary>Ghi thời gian học của màn này vào nhật ký hôm nay (khi rời màn).</summary>
+        private void FlushStudyTime()
+        {
+            if (_app == null || StudySeconds <= 0f || _app.Progress?.Current == null) return;
+            _app.Progress.AddStudySeconds(StudySeconds);
+            StudySeconds = 0f;
+            _app.SaveProgress();
+        }
+
+        private void OnDestroy() => FlushStudyTime();
 
         private void ReplayCurrent()
         {

@@ -74,8 +74,10 @@ namespace TapDoc
             foreach (var avatar in ProfileScreen.Avatars) _optional.Add((ContentKind.Image, avatar));
             foreach (var praise in SystemAudio.Praise.Concat(SystemAudio.Guide)) _optional.Add((ContentKind.Speech, praise));
             _optional.Add((ContentKind.Image, SystemImages.WelcomeScene));
+            _optional.Add((ContentKind.Image, SystemImages.BreakPicture));
             var ids = SystemAudio.All.Concat(SystemAudio.Praise).Concat(SystemAudio.Guide).Select(id => (ContentKind.Speech, id))
                 .Append((ContentKind.Image, SystemImages.WelcomeScene))
+                .Append((ContentKind.Image, SystemImages.BreakPicture))
                 .Concat(SystemImages.All.Select(id => (ContentKind.Image, id)))
                 .Concat(ProfileScreen.Avatars.Select(id => (ContentKind.Image, id)))
                 .Concat(SystemSfx.All.Select(id => (ContentKind.Sfx, id)))

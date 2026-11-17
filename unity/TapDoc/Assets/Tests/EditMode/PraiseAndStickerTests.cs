@@ -98,5 +98,17 @@ namespace TapDoc.Tests
             }
             Assert.Greater(withPicture, TestLessons.Real.Index.lessons.Count / 2, "Phần lớn bài có tem tranh");
         }
+
+        [Test]
+        public void BubbleLines_BreakAfterPunctuationFirst()
+        {
+            // Đo theo số chữ cho dễ đoán; gà con đo bằng bề rộng thật của chữ.
+            float Len(string t) => t.Length;
+            Assert.AreEqual("Bé nghe kĩ,\nlàm đúng hết rồi!", Mascot.BreakLines(UiText.PraiseAllRight, Len, 20f),
+                "Ngắt sau dấu phẩy, không tách cụm 'làm đúng'");
+            Assert.AreEqual("Chào bé!\nBé chạm vào hình\ncủa mình nhé!", Mascot.BreakLines(UiText.Greeting, Len, 17f),
+                "Ngắt sau dấu chấm than; cụm dài chia đều, không để 'Bé' treo cuối dòng");
+            Assert.AreEqual(UiText.PraiseHardWork, Mascot.BreakLines(UiText.PraiseHardWork, Len, 40f), "Vừa một dòng thì giữ nguyên");
+        }
     }
 }

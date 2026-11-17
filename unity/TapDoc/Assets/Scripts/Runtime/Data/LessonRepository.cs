@@ -45,6 +45,9 @@ namespace TapDoc
             return _index;
         }
 
+        /// <summary>Bài đã nạp sẵn (lấy bằng <see cref="Get"/> không phải nạp, không cảnh báo).</summary>
+        public bool IsLoaded(string lessonId) => !string.IsNullOrEmpty(lessonId) && _lessons.ContainsKey(lessonId);
+
         public Lesson Get(string lessonId)
         {
             CheckId(lessonId);

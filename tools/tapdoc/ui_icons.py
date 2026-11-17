@@ -39,6 +39,7 @@ MASCOT_SOURCE_ID = "img_chung_avatar_04"
 GLOSSARY_ID = "img_chung_giai_nghia"  # kí hiệu [:] giải nghĩa từ của sách lớp 2
 WELCOME_ID = "img_ui_canh_chao"  # cảnh nền màn chọn bé (tranh ChatGPT thay sau)
 WELCOME_SIZE = 512
+BREAK_ID = "img_ui_nghi_mat"  # tranh màn nghỉ mắt (tranh ChatGPT thay sau)
 
 
 def _arc(cx, cy, r, start_deg, end_deg, steps=24):
@@ -161,6 +162,18 @@ WELCOME: list = [
     ("stroke", [(19, 18.7), (19, 12.5)], .18, INK, False),
     ("circle", 19, 10, 3.3, None, .18),
     ("circle", 20.5, 3.5, 1.6, None, .16),
+]
+
+# Hình tạm tranh nghỉ mắt: khung cửa sổ bốn ô, ngoài cửa có cây và mây; nét mực mảnh, nền trong.
+BREAK: list = [
+    ("fill", [(3, 3), (21, 3), (21, 18), (3, 18)], PAPER),
+    ("stroke", [(3, 3), (21, 3), (21, 18), (3, 18)], .5, INK, True),
+    ("stroke", [(12, 3), (12, 18)], .4, INK, False),
+    ("stroke", [(3, 10.5), (21, 10.5)], .4, INK, False),
+    ("circle", 7.5, 7, 2.2, LEAF_GREEN, .3),
+    ("stroke", [(7.5, 9.2), (7.5, 10.5)], .3, INK, False),
+    ("stroke", [(14.5, 6.5), (16, 5.6), (17.5, 6.2), (19, 5.8)], .3, INK, False),
+    ("stroke", [(2, 21), (22, 21)], .45, INK, False),
 ]
 
 # Hình tạm kí hiệu [:]: ô vuông viền mực, giữa có dấu hai chấm (tranh chính thức ghi đè cùng mã).
@@ -332,6 +345,10 @@ def write_all(image_dir: Path, force: bool = False, book_ids=()) -> list[str]:
         if force or not path.exists():
             path.write_bytes(render(shapes, ICON_SIZE))
             written.append(icon_id)
+    rest = image_dir / f"{BREAK_ID}.png"
+    if not rest.exists():
+        rest.write_bytes(render(BREAK, WELCOME_SIZE))
+        written.append(BREAK_ID)
     welcome = image_dir / f"{WELCOME_ID}.png"
     if not welcome.exists():
         welcome.write_bytes(render(WELCOME, WELCOME_SIZE))

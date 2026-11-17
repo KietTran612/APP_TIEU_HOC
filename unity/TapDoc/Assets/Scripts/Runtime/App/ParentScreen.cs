@@ -15,13 +15,14 @@ namespace TapDoc
     public class ParentScreen : MonoBehaviour
     {
         private const int MaxConfusions = 5;
-        private const float ChipHeight = 90f;
+        private const float ChipHeight = UiKit.MinTouch; // thẻ chữ hay nhầm chạm để nghe (vùng chạm ≥ 160)
+        private const float WeekBlock = 64f;    // dòng "7 ngày qua" + cột theo ngày
         private const float NameBlock = 80f;      // tên bé ở trên cùng khối
         private const float LineHeight = 52f;     // một dòng tiến độ
         private const float ProgressFont = 38f;
         private const float ProgressFontMin = 30f;
         private const int ProgressColumns = 2;    // nhiều quyển: xếp hai cột, khối cao thêm theo số hàng
-        private const float MinRowHeight = 300f;  // thẻ chữ hay nhầm luôn nằm dưới nút "Mở mọi bài" (cao 160)
+        private const float MinRowHeight = 370f;  // thẻ chữ hay nhầm luôn nằm dưới nút "Mở mọi bài" (cao 160)
 
         private static readonly Color RowColor = Palette.PaperLight;
         private static readonly Color ChipColor = Palette.ChipYellow;
@@ -67,15 +68,81 @@ namespace TapDoc
             _progressPanel.SetActive(true);
         }
 
-        private void BuildProgress()
+        /// <summary>Các mục của màn Phụ huynh (bản thiết kế nâng cấp UI mục 4.6).</summary>
+        internal enum ParentTab
         {
-            var scrollGo = new GameObject("Children", typeof(RectTransform), typeof(ScrollRect));
+            Week,
+            Play,
+            Time
+        }
+
+        private readonly Dictionary<ParentTab, GameObject> _tabPanels = new();
+        private readonly Dictionary<ParentTab, Button> _tabButtons = new();
+        private readonly Dictionary<string, TMP_Text> _weekLines = new();
+        private readonly Dictionary<string, List<Button>> _chipButtons = new();
+        private readonly Dictionary<string, List<string>> _playLines = new();
+        private readonly Dictionary<(string, int), Button> _sessionButtons = new();
+        private const float TabWidth = 320f;
+        private const float TabsTop = 196f;
+        private const float ContentTop = TabsTop + UiKit.MinTouch + 16f;
+
+        internal ParentTab CurrentTab { get; private set; }
+        internal Button TabButton(ParentTab tab) => _tabButtons.TryGetValue(tab, out var b) ? b : null;
+        internal TMP_Text WeekLineFor(string profileId) => _weekLines.TryGetValue(profileId, out var t) ? t : null;
+        internal IReadOnlyList<Button> ChipButtonsFor(string profileId) =>
+            _chipButtons.TryGetValue(profileId, out var l) ? l : new List<Button>();
+        internal IReadOnlyList<string> PlayLinesFor(string profileId) =>
+            _playLines.TryGetValue(profileId, out var l) ? l : new List<string>();
+        internal Button SessionButtonFor(string profileId, int lessons) =>
+            _sessionButtons.TryGetValue((profileId, lessons), out var b) ? b : null;
+
+        /// <summary>Số bài mỗi lần học phụ huynh chọn được (0 = không nhắc).</summary>
+        internal static readonly int[] SessionChoices = { 0, 2, 3, 5 };
+
+        /// <summary>Hiện mục <paramref name="tab"/>.</summary>
+        internal void ShowTab(ParentTab tab)
+        {
+            CurrentTab = tab;
+            foreach (var pair in _tabPanels) pair.Value.SetActive(pair.Key == tab);
+            foreach (var pair in _tabButtons) PaintChoice(pair.Value, pair.Key == tab);
+        }
+
+        /// <summary>Nút chọn đang chọn: nền lam ngọc chữ trắng; chưa chọn: nền giấy chữ mực.</summary>
+        private static void PaintChoice(Button button, bool on)
+        {
+            var fill = button.transform.Find("Fill")?.GetComponent<Image>();
+            if (fill != null) fill.color = on ? Palette.Teal : Palette.PaperLight;
+            var label = button.GetComponentInChildren<TMP_Text>();
+            if (label != null) label.color = on ? Color.white : Palette.Ink;
+        }
+
+        private void BuildTabs()
+        {
+            var tabs = new[] { (ParentTab.Week, UiText.TabWeek), (ParentTab.Play, UiText.TabPlay), (ParentTab.Time, UiText.TabTime) };
+            for (var k = 0; k < tabs.Length; k++)
+            {
+                var (tab, label) = tabs[k];
+                var button = UiKit.CreateButton(_progressPanel.transform, label, () => ShowTab(tab));
+                button.name = $"Tab_{tab}";
+                var rt = (RectTransform)button.transform;
+                rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(.5f, 1f);
+                rt.sizeDelta = new Vector2(TabWidth, UiKit.MinTouch);
+                rt.anchoredPosition = new Vector2((k - 1) * (TabWidth + 20f), -TabsTop);
+                button.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
+                _tabButtons[tab] = button;
+            }
+        }
+
+        /// <summary>Một vùng cuộn dọc của mục <paramref name="tab"/>; trả về khung nội dung (xếp dọc).</summary>
+        private Transform NewTabScroll(ParentTab tab, string name)
+        {
+            var scrollGo = new GameObject(name, typeof(RectTransform), typeof(ScrollRect));
             scrollGo.transform.SetParent(_progressPanel.transform, false);
             var scrollRt = (RectTransform)scrollGo.transform;
             scrollRt.anchorMin = Vector2.zero;
             scrollRt.anchorMax = Vector2.one;
             scrollRt.offsetMin = new Vector2(40f, 20f);
-            scrollRt.offsetMax = new Vector2(-40f, -200f);
+            scrollRt.offsetMax = new Vector2(-40f, -ContentTop);
 
             var viewportGo = new GameObject("Viewport", typeof(RectTransform), typeof(RectMask2D), typeof(Image));
             viewportGo.transform.SetParent(scrollGo.transform, false);
@@ -110,7 +177,14 @@ namespace TapDoc
             scroll.horizontal = false;
             scroll.vertical = true;
             scroll.movementType = ScrollRect.MovementType.Clamped;
+            _tabPanels[tab] = scrollGo;
+            return contentGo.transform;
+        }
 
+        private void BuildProgress()
+        {
+            BuildTabs();
+            var contentGo = NewTabScroll(ParentTab.Week, "Children").gameObject;
             var ordered = _app.Lessons.Index.lessons.Select(e => e.lesson_id).ToList();
             var appendix = UiKit.CreateButton(contentGo.transform, UiText.BookAppendix, OpenAppendix);
             appendix.GetComponent<LayoutElement>().preferredHeight = UiKit.MinTouch;
@@ -119,6 +193,123 @@ namespace TapDoc
             {
                 BuildRow(contentGo.transform, profile, ordered, lessons);
             }
+            BuildPlay(lessons);
+            BuildTime();
+            ShowTab(ParentTab.Week);
+        }
+
+        /// <summary>Mục "Chơi cùng con": mỗi bé 2–3 việc làm cùng bố mẹ, sinh từ bài bé vừa học.</summary>
+        private void BuildPlay(Dictionary<string, Lesson> lessons)
+        {
+            var content = NewTabScroll(ParentTab.Play, "Play");
+            foreach (var profile in _app.Progress.Profiles)
+            {
+                var entry = _app.Lessons.Index.lessons.FirstOrDefault(e => e.lesson_id == profile.last_lesson_id);
+                Lesson lesson = null;
+                if (entry != null && !lessons.TryGetValue(entry.lesson_id, out lesson))
+                {
+                    try
+                    {
+                        lesson = _app.Lessons.Get(entry.lesson_id);
+                    }
+                    catch (Exception)
+                    {
+                        lesson = null;
+                    }
+                }
+                var lines = ParentSuggestions.For(entry, lesson);
+                _playLines[profile.id] = lines;
+                var block = Block(content, $"Play_{profile.id}", 90f + lines.Count * PlayLineHeight);
+                var name = LeftLabel(block, profile.name, 44f);
+                PlaceTop(name.rectTransform, 14f, 64f);
+                for (var k = 0; k < lines.Count; k++)
+                {
+                    var line = LeftLabel(block, "• " + lines[k], 34f);
+                    line.name = $"Suggestion_{k}";
+                    line.enableAutoSizing = true;
+                    line.fontSizeMax = 34f;
+                    line.fontSizeMin = UiKit.MinFontSize;
+                    PlaceTop(line.rectTransform, 84f + k * PlayLineHeight, PlayLineHeight - 6f);
+                }
+            }
+            var note = LeftLabel(content, UiText.PlayTogetherNote, 30f);
+            note.color = MutedText;
+            note.gameObject.AddComponent<LayoutElement>().preferredHeight = 60f;
+        }
+
+        private const float PlayLineHeight = 100f;
+
+        /// <summary>Mục "Thời lượng": mỗi bé chọn số bài mỗi lần học rồi gà con rủ nghỉ mắt (0 = không nhắc).</summary>
+        private void BuildTime()
+        {
+            var content = NewTabScroll(ParentTab.Time, "Time");
+            foreach (var profile in _app.Progress.Profiles)
+            {
+                var block = Block(content, $"Time_{profile.id}", 90f + UiKit.MinTouch + 20f);
+                var name = LeftLabel(block, profile.name, 44f);
+                PlaceTop(name.rectTransform, 14f, 64f);
+                var label = LeftLabel(block, UiText.SessionLabel, 36f);
+                PlaceLeft(label.rectTransform, 0f, new Vector2(20f, 20f), new Vector2(260f, UiKit.MinTouch));
+                for (var k = 0; k < SessionChoices.Length; k++)
+                {
+                    var value = SessionChoices[k];
+                    var text = value == 0 ? UiText.SessionOff : string.Format(UiText.SessionCountFormat, value);
+                    var p = profile;
+                    Button button = null;
+                    button = UiKit.CreateButton(block, text, () => SetSession(p, value));
+                    button.name = $"Session_{value}";
+                    var rt = (RectTransform)button.transform;
+                    rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0f, 0f);
+                    rt.sizeDelta = new Vector2(220f, UiKit.MinTouch);
+                    rt.anchoredPosition = new Vector2(290f + k * 240f, 20f);
+                    button.GetComponent<TapFeedback>().Sound = SystemSfx.Tap;
+                    _sessionButtons[(profile.id, value)] = button;
+                }
+                RefreshSession(profile);
+            }
+            var note = LeftLabel(content, UiText.SessionNote, 30f);
+            note.color = MutedText;
+            note.enableAutoSizing = true;
+            note.fontSizeMin = UiKit.MinFontSize;
+            note.gameObject.AddComponent<LayoutElement>().preferredHeight = 90f;
+        }
+
+        private void SetSession(Profile profile, int lessons)
+        {
+            profile.session_lessons = lessons;
+            _app.SaveProgress();
+            RefreshSession(profile);
+        }
+
+        private void RefreshSession(Profile profile)
+        {
+            foreach (var value in SessionChoices)
+            {
+                if (_sessionButtons.TryGetValue((profile.id, value), out var b)) PaintChoice(b, value == profile.session_lessons);
+            }
+        }
+
+        /// <summary>Khối nền giấy sáng cao <paramref name="height"/> trong danh sách dọc.</summary>
+        private static Transform Block(Transform content, string name, float height)
+        {
+            var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(LayoutElement));
+            go.transform.SetParent(content, false);
+            var bg = go.GetComponent<Image>();
+            bg.sprite = UiKit.WhiteSprite;
+            bg.color = RowColor;
+            var le = go.GetComponent<LayoutElement>();
+            le.minHeight = le.preferredHeight = height;
+            return go.transform;
+        }
+
+        /// <summary>Nhãn kéo dài theo bề ngang khối, cách đỉnh <paramref name="top"/>, cao <paramref name="height"/>.</summary>
+        private static void PlaceTop(RectTransform rt, float top, float height)
+        {
+            rt.anchorMin = new Vector2(0f, 1f);
+            rt.anchorMax = new Vector2(1f, 1f);
+            rt.pivot = new Vector2(0f, 1f);
+            rt.offsetMin = new Vector2(20f, -top - height);
+            rt.offsetMax = new Vector2(-20f, -top);
         }
 
         private const float UnlockWidth = 380f;
@@ -191,7 +382,10 @@ namespace TapDoc
             // Khối cao theo số hàng tiến độ: số quyển nào cũng không tràn chữ (khối cao thì cuộn danh sách bé).
             var le = row.GetComponent<LayoutElement>();
             le.minHeight = le.preferredHeight =
-                Mathf.Max(MinRowHeight, NameBlock + rows * LineHeight + 24f + ChipHeight + 12f);
+                Mathf.Max(MinRowHeight, NameBlock + rows * LineHeight + WeekBlock + 24f + ChipHeight + 12f);
+
+            // 7 ngày qua: số bài, số phút, cột theo ngày (nâng cấp UI mục 4.6).
+            AddWeek(row.transform, profile, NameBlock + rows * LineHeight);
 
             // "Mở mọi bài" theo từng bé: bé đã học phần trước ở trường vào thẳng bài sau; tắt lại không mất tiến độ.
             var unlock = UiKit.CreateButton(row.transform, UnlockLabel(profile), null);
@@ -223,15 +417,49 @@ namespace TapDoc
             hlg.childForceExpandHeight = true;
 
             var confusions = Confusions(profile, lessons);
+            _chipButtons[profile.id] = new List<Button>();
             if (confusions.Count == 0)
             {
                 var none = LeftLabel(chipsGo.transform, UiText.NoConfusion, 36f);
                 none.color = MutedText;
                 none.gameObject.AddComponent<LayoutElement>().preferredWidth = 400f;
             }
-            foreach (var text in confusions)
+            foreach (var (text, audio) in confusions)
             {
-                AddChip(chipsGo.transform, text);
+                _chipButtons[profile.id].Add(AddChip(chipsGo.transform, text, audio));
+            }
+        }
+
+        private const float BarWidth = 22f;
+        private const float BarMaxHeight = 46f;
+
+        private void AddWeek(Transform row, Profile profile, float top)
+        {
+            var week = ProgressStore.LastWeek(profile, DateTime.Now);
+            var lessons = week.Sum(d => d.lessons);
+            var minutes = Mathf.RoundToInt(week.Sum(d => d.seconds) / 60f);
+            var line = LeftLabel(row, string.Format(UiText.WeekSummaryFormat, lessons, minutes), 34f);
+            line.name = "Week";
+            line.enableAutoSizing = true;
+            line.fontSizeMax = 34f;
+            line.fontSizeMin = UiKit.MinFontSize;
+            PlaceLeft(line.rectTransform, 1f, new Vector2(140f, -top - 4f), new Vector2(520f, WeekBlock - 8f));
+            _weekLines[profile.id] = line;
+            var most = Mathf.Max(1, week.Max(d => d.lessons));
+            for (var k = 0; k < week.Count; k++)
+            {
+                var bar = new GameObject($"Day_{k}", typeof(RectTransform), typeof(Image));
+                bar.transform.SetParent(row, false);
+                var rt = (RectTransform)bar.transform;
+                rt.anchorMin = rt.anchorMax = new Vector2(0f, 1f);
+                rt.pivot = new Vector2(0f, 0f);
+                var h = week[k].lessons > 0 ? Mathf.Max(6f, BarMaxHeight * week[k].lessons / most) : 3f;
+                rt.sizeDelta = new Vector2(BarWidth, h);
+                rt.anchoredPosition = new Vector2(680f + k * (BarWidth + 8f), -top - WeekBlock + 6f);
+                var img = bar.GetComponent<Image>();
+                img.sprite = UiKit.WhiteSprite;
+                img.color = k == week.Count - 1 ? Palette.Orange : Palette.Teal;
+                img.raycastTarget = false;
             }
         }
 
@@ -273,25 +501,26 @@ namespace TapDoc
         /// Tối đa 5 chữ bé hay nhầm: đáp án đúng của các lượt bé nhầm, gộp chữ trùng nhau, nhầm nhiều trước rồi mới
         /// nhầm trước. Lượt lỗi thời (bài không nạp được, chỉ số lượt hay đáp án không còn) bị bỏ qua.
         /// </summary>
-        private List<string> Confusions(Profile profile, Dictionary<string, Lesson> lessons)
+        private List<(string text, string audio)> Confusions(Profile profile, Dictionary<string, Lesson> lessons)
         {
-            var totals = new Dictionary<string, (int count, long last)>();
+            var totals = new Dictionary<string, (int count, long last, string audio)>();
             foreach (var mistake in ProgressStore.MistakesOf(profile, int.MaxValue))
             {
-                var text = AnswerText(mistake, lessons);
+                var (text, audio) = Answer(mistake, lessons);
                 if (string.IsNullOrEmpty(text)) continue;
                 totals.TryGetValue(text, out var t);
-                totals[text] = (t.count + mistake.count, Math.Max(t.last, mistake.last_ticks));
+                totals[text] = (t.count + mistake.count, Math.Max(t.last, mistake.last_ticks), t.audio ?? audio);
             }
             return totals
                 .OrderByDescending(p => p.Value.count)
                 .ThenByDescending(p => p.Value.last)
-                .Select(p => p.Key)
+                .Select(p => (p.Key, p.Value.audio))
                 .Take(MaxConfusions)
                 .ToList();
         }
 
-        private string AnswerText(Mistake mistake, Dictionary<string, Lesson> lessons)
+        /// <summary>Chữ (và tiếng, nếu có) của đáp án đúng ở lượt bé nhầm.</summary>
+        private (string text, string audio) Answer(Mistake mistake, Dictionary<string, Lesson> lessons)
         {
             if (!lessons.TryGetValue(mistake.lesson_id, out var lesson))
             {
@@ -305,34 +534,63 @@ namespace TapDoc
                 }
                 lessons[mistake.lesson_id] = lesson;
             }
-            if (lesson?.part2 == null || mistake.round < 0 || mistake.round >= lesson.part2.Count) return null;
+            if (lesson?.part2 == null || mistake.round < 0 || mistake.round >= lesson.part2.Count) return (null, null);
             var round = lesson.part2[mistake.round];
-            if (round?.options == null || round.answer < 0 || round.answer >= round.options.Count) return null;
+            if (round?.options == null || round.answer < 0 || round.answer >= round.options.Count) return (null, null);
             // Lượt nhìn chữ kéo dấu: phương án là kí hiệu dấu; phụ huynh cần thấy chữ mẫu có dấu (ví dụ "cá").
-            if (round.kind == "look_tone" && !string.IsNullOrEmpty(round.prompt_text)) return round.prompt_text;
-            return round.options[round.answer]?.text;
+            if (round.kind == "look_tone" && !string.IsNullOrEmpty(round.prompt_text)) return (round.prompt_text, round.prompt_audio);
+            var option = round.options[round.answer];
+            return (option?.text, option?.audio);
         }
 
-        private static void AddChip(Transform parent, string text)
+        /// <summary>Thẻ chữ hay nhầm: chạm để nghe (có tiếng thì có biểu tượng loa).</summary>
+        private Button AddChip(Transform parent, string text, string audio)
         {
-            var chip = new GameObject("Confusion", typeof(RectTransform), typeof(Image), typeof(LayoutElement));
+            var chip = new GameObject("Confusion", typeof(RectTransform), typeof(Image), typeof(LayoutElement), typeof(Button),
+                typeof(TapFeedback));
             chip.transform.SetParent(parent, false);
             var img = chip.GetComponent<Image>();
             img.sprite = UiKit.WhiteSprite;
             img.color = ChipColor;
-            img.raycastTarget = false;
+            var hasAudio = !string.IsNullOrEmpty(audio);
+            var iconWidth = hasAudio ? 56f : 0f;
+            if (hasAudio)
+            {
+                var icon = new GameObject("Speaker", typeof(RectTransform), typeof(Image));
+                icon.transform.SetParent(chip.transform, false);
+                var irt = (RectTransform)icon.transform;
+                irt.anchorMin = irt.anchorMax = irt.pivot = new Vector2(0f, .5f);
+                irt.sizeDelta = new Vector2(44f, 44f);
+                irt.anchoredPosition = new Vector2(10f, 0f);
+                var iimg = icon.GetComponent<Image>();
+                iimg.sprite = _app.Assets.Image(SystemIcons.Speaker);
+                iimg.preserveAspect = true;
+                iimg.raycastTarget = false;
+                iimg.enabled = iimg.sprite != null;
+            }
 
             var label = UiKit.CreateLabel(chip.transform, text, 56f);
             var lrt = label.rectTransform;
             lrt.anchorMin = Vector2.zero;
             lrt.anchorMax = Vector2.one;
-            lrt.offsetMin = new Vector2(10f, 4f);
+            lrt.offsetMin = new Vector2(10f + iconWidth, 4f);
             lrt.offsetMax = new Vector2(-10f, -4f);
+            label.raycastTarget = false;
 
-            var width = label.GetPreferredValues(text, 10000f, ChipHeight).x + 28f;
+            var width = label.GetPreferredValues(text, 10000f, ChipHeight).x + 28f + iconWidth;
             var le = chip.GetComponent<LayoutElement>();
-            le.preferredWidth = Mathf.Clamp(width, ChipHeight, 300f);
+            le.preferredWidth = Mathf.Clamp(width, ChipHeight, 340f);
             le.minWidth = ChipHeight;
+
+            var button = chip.GetComponent<Button>();
+            button.targetGraphic = img;
+            button.interactable = hasAudio;
+            var colors = button.colors;
+            colors.disabledColor = Color.white;
+            button.colors = colors;
+            if (hasAudio) button.onClick.AddListener(() => _ = _app.Speech.PlayAsync(audio));
+            chip.GetComponent<TapFeedback>().Sound = null;
+            return button;
         }
 
         private static TextMeshProUGUI LeftLabel(Transform parent, string text, float size)

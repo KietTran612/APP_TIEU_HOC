@@ -41,8 +41,26 @@ namespace TapDoc
         public string open_book;
         /// <summary>Lần chọn bé gần nhất (ticks UTC): màn chọn bé xếp bé học gần nhất lên đầu. File cũ không có thì 0.</summary>
         public long last_played;
+        /// <summary>
+        /// Số bài mỗi lần học rồi gà con rủ nghỉ mắt (nâng cấp UI mục 4.5); 0 = không nhắc. File cũ không có trường này
+        /// thì giữ giá trị mặc định 3.
+        /// </summary>
+        public int session_lessons = ProgressStore.DefaultSessionLessons;
+        /// <summary>Bài học xong gần nhất (gợi ý "Chơi cùng con").</summary>
+        public string last_lesson_id;
+        /// <summary>Số bài và thời gian học theo ngày, giữ <see cref="ProgressStore.DaysKept"/> ngày gần nhất.</summary>
+        public List<DayLog> days = new();
         public List<LessonProgress> lessons = new();
         public List<Mistake> mistakes = new();
+    }
+
+    /// <summary>Một ngày học: số bài học xong, số giây học (chỉ tính lúc ở màn học, bỏ quãng ngồi im quá 60 giây).</summary>
+    [Serializable]
+    public class DayLog
+    {
+        public string date;
+        public int lessons;
+        public int seconds;
     }
 
     [Serializable]

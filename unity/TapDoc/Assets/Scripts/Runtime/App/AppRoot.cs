@@ -311,6 +311,45 @@ namespace TapDoc
             });
         }
 
+        /// <summary>Số bài đã học xong trong lần học này (tính từ lúc chọn bé; rời quá 30 phút thì tính lần mới).</summary>
+        public int SessionLessons { get; private set; }
+
+        private DateTime _lastLessonDone = DateTime.MinValue;
+        internal static readonly TimeSpan SessionGap = TimeSpan.FromMinutes(30);
+
+        /// <summary>Bắt đầu lần học mới (chọn bé, hay phụ huynh cho học thêm sau màn nghỉ mắt).</summary>
+        public void StartSession()
+        {
+            SessionLessons = 0;
+            _lastLessonDone = DateTime.MinValue;
+        }
+
+        /// <summary>Một bài vừa học xong (không tính Ôn lại).</summary>
+        internal void NoteLessonDone(DateTime? now = null)
+        {
+            var t = now ?? DateTime.Now;
+            if (_lastLessonDone != DateTime.MinValue && t - _lastLessonDone > SessionGap) SessionLessons = 0;
+            _lastLessonDone = t;
+            SessionLessons++;
+        }
+
+        /// <summary>Đã học đủ số bài phụ huynh đặt cho một lần học: gà con rủ nghỉ mắt (nâng cấp UI mục 4.5).</summary>
+        public bool BreakDue
+        {
+            get
+            {
+                var limit = Progress?.Current?.session_lessons ?? 0;
+                return limit > 0 && SessionLessons >= limit;
+            }
+        }
+
+        /// <summary>Màn nghỉ mắt; <paramref name="continueLearning"/> là nơi đi tiếp khi phụ huynh cho học thêm.</summary>
+        public void ShowBreak(Action continueLearning)
+        {
+            InitIfNeeded();
+            Present<BreakScreen>().Build(this, continueLearning);
+        }
+
         /// <summary>Màn chọn bé. Chưa có hồ sơ nào thì mở thẳng phần tạo hồ sơ.</summary>
         public void ShowProfiles()
         {

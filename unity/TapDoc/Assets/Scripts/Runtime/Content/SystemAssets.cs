@@ -76,6 +76,9 @@ namespace TapDoc
         /// <summary>Cảnh sân trường nét mực rất nhạt sau màn chọn bé (tranh ChatGPT; không bắt buộc, chưa có thì không vẽ).</summary>
         public const string WelcomeScene = "img_ui_canh_chao";
 
+        /// <summary>Tranh màn nghỉ mắt (cửa sổ, gà con duỗi cánh; tranh ChatGPT; không bắt buộc).</summary>
+        public const string BreakPicture = "img_ui_nghi_mat";
+
         public static readonly string[] All = new[] { Star, EmDoc, LuyenTap, CauHoi, GiaiNghia, Flower, Mascot }
             .Concat(SystemIcons.All).ToArray();
 

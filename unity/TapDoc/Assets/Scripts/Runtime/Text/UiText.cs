@@ -65,6 +65,30 @@ namespace TapDoc
         /// <summary>Gà con chào ở màn chọn bé (đọc bằng tiếng hd_chao_be): bé chưa đọc được tên nên chạm vào hình.</summary>
         public const string Greeting = "Chào bé! Bé chạm vào hình của mình nhé!";
 
+        // Nghỉ mắt (nâng cấp UI mục 4.5).
+        public const string BreakTitle = "Nghỉ mắt thôi!";
+        public const string BreakMascot = "Bé học giỏi lắm! Mình nghỉ mắt chút nhé.";
+        public const string TodayLessonsFormat = "Hôm nay bé học {0} bài";
+        public const string ForParents = "Cho bố mẹ:";
+        public const string Goodbye = "Tạm biệt";
+        public const string ParentMore = "Phụ huynh: học thêm";
+
+        // Phụ huynh: các mục (nâng cấp UI mục 4.6).
+        public const string TabWeek = "Tuần này";
+        public const string TabPlay = "Chơi cùng con";
+        public const string TabTime = "Thời lượng";
+        public const string WeekSummaryFormat = "7 ngày qua: {0} bài · khoảng {1} phút";
+        public const string PlayTogetherNote = "Học cùng con giúp con nhớ lâu hơn học một mình.";
+        public const string PlayFindSound = "Cùng con tìm trong nhà đồ vật có tiếng chứa {0}.";
+        public const string PlayActWord = "Con đọc \"{0}\", bố mẹ làm động tác cho con đoán, rồi đổi vai.";
+        public const string PlayWriteSalt = "Viết chữ {0} lên khay muối hay khay cát, đố nhau xem là chữ gì.";
+        public const string PlayReadAgain = "Con đọc lại bài \"{0}\" cho bố mẹ nghe, rồi hỏi con một câu về bài.";
+        public const string PlayNone = "Con chưa học bài nào. Cùng con chọn một quyển trong Tủ sách nhé.";
+        public const string SessionLabel = "Mỗi lần học:";
+        public const string SessionOff = "Không nhắc";
+        public const string SessionCountFormat = "{0} bài";
+        public const string SessionNote = "Học đủ số bài thì gà con rủ nghỉ mắt; nghỉ sau khi xong bài, không cắt ngang bài đang học.";
+
         // Công tắc tiếng động ở menu Cài đặt.
         public const string SfxOn = "Tiếng động: Bật";
         public const string SfxOff = "Tiếng động: Tắt";
@@ -176,6 +200,26 @@ namespace TapDoc
             PraiseHardWork,
             Greeting,
             ContinueLearning,
+            BreakTitle,
+            BreakMascot,
+            TodayLessonsFormat,
+            ForParents,
+            Goodbye,
+            ParentMore,
+            TabWeek,
+            TabPlay,
+            TabTime,
+            WeekSummaryFormat,
+            PlayTogetherNote,
+            PlayFindSound,
+            PlayActWord,
+            PlayWriteSalt,
+            PlayReadAgain,
+            PlayNone,
+            SessionLabel,
+            SessionOff,
+            SessionCountFormat,
+            SessionNote,
             SfxOn,
             SfxOff,
             PartReading,

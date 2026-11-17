@@ -65,6 +65,8 @@ namespace TapDoc
             {
                 _before = FlowerBook.FlowersFor(app.Progress, lessonId);
                 app.Progress.MarkCompleted(lessonId);
+                app.Progress.RecordLessonDone(lessonId);
+                app.NoteLessonDone();
                 app.SaveProgress();
                 _after = FlowerBook.FlowersFor(app.Progress, lessonId);
             }
@@ -85,14 +87,14 @@ namespace TapDoc
             mrt.anchorMin = mrt.anchorMax = mrt.pivot = new Vector2(1f, 0f);
 
             ToListButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Home, UiText.ToList,
-                () => app.ShowLessonList());
+                () => Continue(app.ShowLessonList));
             Corner(ToListButton, Vector2.zero, new Vector2(Margin, Margin));
             var index = app.Lessons.Index;
             var nextLessonId = isLesson ? BookShelf.NextLessonInBook(index, app.Progress, lessonId) : null;
             if (!string.IsNullOrEmpty(nextLessonId))
             {
                 NextLessonButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Forward, UiText.NextLesson,
-                    () => app.ShowLesson(nextLessonId), Palette.Orange);
+                    () => Continue(() => app.ShowLesson(nextLessonId)), Palette.Orange);
                 Corner(NextLessonButton, new Vector2(1f, 0f), new Vector2(-Margin, Margin));
             }
             else if (isLesson)
@@ -102,7 +104,7 @@ namespace TapDoc
                 if (nextBook != null && BookShelf.IsBookUnlocked(index, app.Progress, nextBook))
                 {
                     ShelfButton = UiKit.CreateIconButton(transform, app.Assets, SystemIcons.Shelf, UiText.Shelf,
-                        () => app.ShowShelf(nextBook), Palette.Orange);
+                        () => Continue(() => app.ShowShelf(nextBook)), Palette.Orange);
                     Corner(ShelfButton, new Vector2(1f, 0f), new Vector2(-Margin, Margin));
                 }
             }
@@ -142,6 +144,13 @@ namespace TapDoc
         }
 
         private const float CornerBubbleWidth = 520f;
+
+        /// <summary>Đi tiếp sau màn Xong bài; học đủ số bài của lần học thì qua màn nghỉ mắt trước.</summary>
+        private void Continue(System.Action next)
+        {
+            if (_app.BreakDue && _page != null) _app.ShowBreak(next);
+            else next();
+        }
 
         /// <summary>
         /// Dải mép ở kiểu mép: ít nhất <see cref="ScreenLayout.SideBand"/>; khi sổ bị chiều cao giới hạn thì lấy cả phần

@@ -1,3 +1,7 @@
+using System.Text.RegularExpressions;
+using System.Linq;
+using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +32,9 @@ namespace TapDoc
         public MascotMood LastMood { get; private set; }
 
         /// <summary>Chữ trong bong bóng đang hiện; chuỗi rỗng khi bong bóng ẩn.</summary>
-        public string BubbleText => _bubble != null && _bubble.activeSelf ? _bubbleText.text : string.Empty;
+        public string BubbleText => _bubble != null && _bubble.activeSelf ? _bubbleRaw : string.Empty;
+
+        private string _bubbleRaw = string.Empty;
 
         public static Mascot Create(Transform parent, AssetCatalog assets, float size = DefaultSize)
         {
@@ -140,7 +146,8 @@ namespace TapDoc
         private async void ShowBubble(string text, bool keep)
         {
             var gen = ++_bubbleGeneration;
-            _bubbleText.text = text ?? string.Empty;
+            _bubbleRaw = text ?? string.Empty;
+            _bubbleText.text = _bubbleRaw;
             FitBubble();
             _bubble.SetActive(true);
             _bubble.transform.localScale = Vector3.one * .3f;
@@ -155,16 +162,70 @@ namespace TapDoc
         {
             var brt = (RectTransform)_bubble.transform;
             var pad = new Vector2(28f, 12f);
-            var oneLine = _bubbleText.GetPreferredValues(_bubbleText.text, float.PositiveInfinity, float.PositiveInfinity);
-            var width = Mathf.Clamp(oneLine.x + pad.x, Mathf.Min(BubbleMinSize.x, _bubbleMaxWidth), _bubbleMaxWidth);
-            if (oneLine.x + pad.x > _bubbleMaxWidth)
-            {
-                // Câu dài: chia đều các dòng (không để một chữ rớt một mình xuống dòng cuối).
-                var lines = Mathf.CeilToInt(oneLine.x / (_bubbleMaxWidth - pad.x));
-                width = Mathf.Min(_bubbleMaxWidth, oneLine.x / lines * 1.12f + pad.x);
-            }
+            float Measure(string t) => _bubbleText.GetPreferredValues(t, float.PositiveInfinity, float.PositiveInfinity).x;
+            _bubbleText.text = BreakLines(_bubbleRaw, Measure, _bubbleMaxWidth - pad.x);
+            var widest = _bubbleText.text.Split('\n').Max(Measure);
+            var width = Mathf.Clamp(widest + pad.x + 4f, Mathf.Min(BubbleMinSize.x, _bubbleMaxWidth), _bubbleMaxWidth);
             var size = _bubbleText.GetPreferredValues(_bubbleText.text, width - pad.x, float.PositiveInfinity);
             brt.sizeDelta = new Vector2(width, Mathf.Max(BubbleMinSize.y, size.y + pad.y));
+        }
+
+        /// <summary>
+        /// Chia câu cho vừa <paramref name="maxWidth"/>: ưu tiên ngắt ngay sau dấu câu (! . , ? :), ghép các cụm vào dòng khi
+        /// còn vừa; cụm nào vẫn dài thì chia đều theo từ (không để một chữ rớt một mình hay treo cuối dòng).
+        /// </summary>
+        internal static string BreakLines(string text, Func<string, float> measure, float maxWidth)
+        {
+            if (string.IsNullOrEmpty(text) || measure(text) <= maxWidth) return text ?? string.Empty;
+            var phrases = Regex.Split(text.Trim(), @"(?<=[!.,?:])\s+").Where(p => p.Length > 0).ToList();
+            var lines = new List<string>();
+            var current = string.Empty;
+            foreach (var phrase in phrases)
+            {
+                var joined = current.Length == 0 ? phrase : current + " " + phrase;
+                if (measure(joined) <= maxWidth)
+                {
+                    current = joined;
+                    continue;
+                }
+                if (current.Length > 0) lines.Add(current);
+                current = string.Empty;
+                if (measure(phrase) <= maxWidth)
+                {
+                    current = phrase;
+                    continue;
+                }
+                lines.AddRange(WrapEven(phrase, measure, maxWidth));
+            }
+            if (current.Length > 0) lines.Add(current);
+            return string.Join("\n", lines);
+        }
+
+        /// <summary>Chia một cụm dài theo từ thành ít dòng nhất, các dòng dài gần bằng nhau.</summary>
+        private static IEnumerable<string> WrapEven(string phrase, Func<string, float> measure, float maxWidth)
+        {
+            var words = phrase.Split(' ');
+            var count = Mathf.CeilToInt(measure(phrase) / maxWidth);
+            for (; count <= words.Length; count++)
+            {
+                var target = measure(phrase) / count;
+                var lines = new List<string>();
+                var line = string.Empty;
+                foreach (var w in words)
+                {
+                    var joined = line.Length == 0 ? w : line + " " + w;
+                    // Thêm chữ khi dòng còn ngắn hơn mức đều (nhích quá một chút vẫn được), không vượt bề rộng tối đa.
+                    if (line.Length == 0 || (measure(line) < target * .92f && measure(joined) <= maxWidth)) line = joined;
+                    else
+                    {
+                        lines.Add(line);
+                        line = w;
+                    }
+                }
+                if (line.Length > 0) lines.Add(line);
+                if (lines.Count <= count && lines.All(l => measure(l) <= maxWidth)) return lines;
+            }
+            return words;
         }
 
         private static readonly Vector2 BubbleMinSize = new(330f, 86f);

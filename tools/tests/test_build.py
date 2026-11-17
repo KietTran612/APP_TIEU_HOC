@@ -665,7 +665,7 @@ class SystemAssetsTest(unittest.TestCase):
         ui = {"img_chung_hoa_be_ngoan", "img_chung_ga_con"} | {
             f"img_ui_{n}" for n in ("nha", "loa", "tiep", "lui", "so", "on_lai", "xong", "khoa",
                                     "lat_truoc", "lat_sau", "sao_giay", "canh_hoa", "cai_dat", "tu_sach", "tay_chi",
-                                    "canh_chao")}
+                                    "canh_chao", "nghi_mat")}
         self.assertEqual(set(SYSTEM_IMAGES),
                          {"img_chung_sao", "img_chung_em_doc", "img_chung_luyen_tap", "img_chung_cau_hoi",
                           "img_chung_giai_nghia"} | avatars | ui | covers)

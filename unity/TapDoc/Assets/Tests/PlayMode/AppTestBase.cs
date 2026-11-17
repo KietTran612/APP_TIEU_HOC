@@ -113,6 +113,8 @@ namespace TapDoc.Tests
             DeleteStoreFiles();
             var store = new ProgressStore(StorePath);
             var profile = store.CreateProfile(TestChildName, ProfileScreen.Avatars[0]);
+            // Test luồng bài đi liền nhiều bài: tắt nhắc nghỉ mắt (test của nghỉ mắt tự đặt lại).
+            profile.session_lessons = 0;
             if (unlockAll)
             {
                 foreach (var id in Ordered()) store.MarkCompleted(id);
