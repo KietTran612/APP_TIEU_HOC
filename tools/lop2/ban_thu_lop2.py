@@ -7,12 +7,13 @@ byte với bản thử.
 Dùng (từ gốc repo):
     python tools/lop2/ban_thu_lop2.py tao <thư mục> MÃ:cách[#nhãn][=chữ đọc] ...
     python tools/lop2/ban_thu_lop2.py cai <thư mục> MÃ__cách ... --ghi-chu "…"
-Cách: cham (chậm hơn mặc định 20%), ngat (chữ đọc riêng, cần =chữ), cham_ngat (cả hai), ghep (ghép các tiếng đã
-có file, "," ở dấu câu), le (một tiếng: đọc "X, X." rồi giữ tiếng đầu). Chữ đọc riêng đã có của mã được giữ, trừ khi
-cách cho chữ mới.
+Cách: cham (chậm hơn mặc định 20%; "cham=25" chậm hơn 25), ngat (chữ đọc riêng, cần =chữ),
+cham_ngat (cả hai), ghep (ghép các tiếng đã có file, "," ở dấu câu; "ghep=a|,|doc:…" ghép đúng các phần
+cho sẵn: mã có file, "," hoặc "doc:<chữ>" do bộ đọc đọc), le (một tiếng: đọc "X, X." rồi giữ tiếng đầu).
+Chữ đọc riêng đã có của mã được giữ, trừ khi cách cho chữ mới.
 Ra: <thư mục>/mp3, wav (16 kHz mono), marks, chi_muc.json {MÃ__cách: {id, chu, cach, doc, rate, keep_first, wav,
 co_wav, override, do_cao_do, hang}}; tạo thêm vào thư mục cũ thì chi_muc gộp.
-Chỉ một tiến trình đọc trên máy: mọi cách trừ ghep đều gọi bộ đọc, hỏi root trước khi chạy.
+Chỉ một tiến trình đọc trên máy: mọi cách gọi bộ đọc, trừ ghep chỉ gồm mã có file; hỏi root trước khi chạy.
 """
 import copy
 import json
@@ -80,16 +81,29 @@ def join_parts_for(text: str, audio_dir: Path) -> list[str]:
     return parts
 
 
+def explicit_parts(spec: str, audio_dir: Path) -> list[str]:
+    """Danh sách ghép cho sẵn, "|" ngăn phần: mã có file, "," (nghỉ dài) hoặc "doc:<chữ>" (bộ đọc đọc phần đó)."""
+    parts = [p.strip() for p in spec.split("|") if p.strip()]
+    missing = [p for p in parts if p != "," and not p.startswith("doc:") and not (Path(audio_dir) / f"{p}.mp3").is_file()]
+    if missing:
+        raise ValueError(f"thiếu file để ghép: {missing}")
+    return parts
+
+
 def override_for(row, settings, cach: str, doc: str | None, audio_dir: Path) -> dict:
     """Chỉnh riêng của bản thử: chỉnh riêng hiện có của mã, đổi theo cách."""
     out = dict(settings["overrides"].get(row["id"]) or {})
-    if cach in ("cham", "cham_ngat"):
+    if cach == "cham" and doc is not None:  # "cham=25": chậm hơn mặc định 25 thay vì 20
+        if not doc.isdigit():
+            raise ValueError(f"{row['id']}: cham=<số> là mức chậm hơn mặc định, không phải chữ đọc")
+        out["rate"] = settings["defaults"][row["kind"]]["rate"] - int(doc)
+    elif cach in ("cham", "cham_ngat"):
         out["rate"] = settings["defaults"][row["kind"]]["rate"] - SLOWER
     if cach in ("ngat", "cham_ngat"):
         out["doc"] = doc
     if cach == "ghep":
         out = {k: v for k, v in out.items() if k not in ("doc", "keep_first")}
-        out.update(join=join_parts_for(row["text"], audio_dir), join_gap=GAP)
+        out.update(join=explicit_parts(doc, audio_dir) if doc else join_parts_for(row["text"], audio_dir), join_gap=GAP)
     if cach == "le":
         if len(tokens(row["text"])) != 1:
             raise ValueError(f"{row['id']}: cách le chỉ cho mã một tiếng")

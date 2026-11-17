@@ -52,6 +52,15 @@ class OverrideTest(TempCase):
         o = bt.override_for(self.r, self.s, "cham", None, self.audio)
         self.assertEqual(o, {"doc": "hoa, quả", "rate": self.s["defaults"]["cau"]["rate"] - 20})
 
+    def test_cham_custom_amount(self):
+        # "cham=25": chậm hơn mặc định 25 (root hỏi bản −25%)
+        audio_id, cach, doc = bt.parse_spec("cau_b999_01:cham#25=25")
+        o = bt.override_for(self.r, self.s, cach, doc, self.audio)
+        self.assertEqual(o["rate"], self.s["defaults"]["cau"]["rate"] - 25)
+        self.assertNotIn("doc", o)
+        with self.assertRaises(ValueError):
+            bt.override_for(self.r, self.s, "cham", "nhanh", self.audio)
+
     def test_cham_ngat(self):
         o = bt.override_for(self.r, self.s, "cham_ngat", "hoa. quả.", self.audio)
         self.assertEqual(o["doc"], "hoa. quả.")
@@ -65,6 +74,16 @@ class OverrideTest(TempCase):
         set_override(self.s, self.r, doc="hoa, quả")
         o = bt.override_for(self.r, self.s, "ghep", None, self.audio)
         self.assertEqual(o, {"join": ["tieng_hoa", "tieng_quar"], "join_gap": 0.08})
+
+    def test_ghep_explicit_parts(self):
+        # ghép theo danh sách cho sẵn ("|" ngăn phần): dùng mã từ có sẵn, phần "doc:" do bộ đọc đọc
+        (self.audio / "tieng_hoa.mp3").write_bytes(fake_mp3(0.3))
+        spec = "cau_b999_01:ghep#tu=tieng_hoa|,|doc:quả chín"
+        audio_id, cach, doc = bt.parse_spec(spec)
+        o = bt.override_for(self.r, self.s, cach, doc, self.audio)
+        self.assertEqual(o, {"join": ["tieng_hoa", ",", "doc:quả chín"], "join_gap": 0.08})
+        with self.assertRaises(ValueError):  # phần không có file
+            bt.override_for(self.r, self.s, "ghep", "tieng_hoa|tu_khong_co", self.audio)
 
     def test_le_only_single_word(self):
         with self.assertRaises(ValueError):
