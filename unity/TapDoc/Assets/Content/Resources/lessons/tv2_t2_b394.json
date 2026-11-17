@@ -1,0 +1,276 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b394",
+  "book": "tv2_t2_2002",
+  "lesson_no": 394,
+  "type": "tap_lam_van",
+  "title": "Dùng từ đặt câu",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      82
+    ],
+    "scan_file": "042",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Đặt câu: bé nói câu của mình cùng bố mẹ, app không chấm. Các từ cho sẵn hiện thành thẻ, chạm để nghe."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Câu \"Em hãy đặt câu với mỗi từ ngữ trên\" do app thêm để nhắc bé (trang chỉ in đề bài)."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[3]",
+        "note": "câu nhắc đặt câu do app thêm"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Tập làm văn: Dùng từ – đặt câu",
+      "audio": "cau_b394_01",
+      "labels": []
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Đề bài: Em hãy dùng mỗi từ ngữ sau đây đặt thành một câu nói về chú công nhân điện:",
+      "audio": "cau_b394_02",
+      "labels": []
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "thợ điện",
+          "audio": "tu_thowj_ddieenj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "yêu thương",
+          "audio": "tu_yeeu_thuwowng",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sáng ngời",
+          "audio": "tu_sangs_ngowif",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dây điện",
+          "audio": "tu_daay_ddieenj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "mắc điện",
+          "audio": "tu_mawcs_ddieenj",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "Em hãy đặt câu với mỗi từ ngữ trên.",
+      "audio": "hoi_b394_01"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thowj_ddieenj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thợ điện",
+          "audio": "tu_thowj_ddieenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dây điện",
+          "audio": "tu_daay_ddieenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mắc điện",
+          "audio": "tu_mawcs_ddieenj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_yeeu_thuwowng",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "yêu thương",
+          "audio": "tu_yeeu_thuwowng",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sáng ngời",
+          "audio": "tu_sangs_ngowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thợ điện",
+          "audio": "tu_thowj_ddieenj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_sangs_ngowif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "sáng ngời",
+          "audio": "tu_sangs_ngowif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "yêu thương",
+          "audio": "tu_yeeu_thuwowng",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dây điện",
+          "audio": "tu_daay_ddieenj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_daay_ddieenj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "dây điện",
+          "audio": "tu_daay_ddieenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mắc điện",
+          "audio": "tu_mawcs_ddieenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "sáng ngời",
+          "audio": "tu_sangs_ngowif",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_mawcs_ddieenj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "mắc điện",
+          "audio": "tu_mawcs_ddieenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thợ điện",
+          "audio": "tu_thowj_ddieenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "yêu thương",
+          "audio": "tu_yeeu_thuwowng",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_cootj_ddieenj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "cột điện",
+          "audio": "tu_cootj_ddieenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dây điện",
+          "audio": "tu_daay_ddieenj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thợ điện",
+          "audio": "tu_thowj_ddieenj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

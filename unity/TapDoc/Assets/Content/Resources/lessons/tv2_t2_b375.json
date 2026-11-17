@@ -1,0 +1,890 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b375",
+  "book": "tv2_t2_2002",
+  "lesson_no": 375,
+  "type": "tap_chep_chinh_ta",
+  "title": "Cái máy tuốt lúa – Đánh cá đèn",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      66,
+      67
+    ],
+    "scan_file": "034",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Phần chép, viết vào vở không có trong app: bé viết vào vở cùng bố mẹ. Mục \"Viết đúng\" thành bước đọc."
+    },
+    {
+      "kind": "khac_sach",
+      "text": "Đặt câu, thêm chữ: bé nói cùng bố mẹ; ghép chữ, điền chỗ trống làm bằng chạm thẻ; cặp từ so sánh thành thẻ chạm để nghe. Dấu \"≠\" giữa hai từ trong sách thay bằng dấu phẩy."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[3]",
+        "note": "ghép \"một triệu\", \"triệu lúa\" do app chọn (sách: ghép chữ một, lúa với triệu, tuốt)"
+      },
+      {
+        "where": "part1[4]",
+        "note": "ghép \"máy tuốt\", \"tuốt lúa\" do app chọn"
+      },
+      {
+        "where": "part1[6]",
+        "note": "đáp án quay/quai theo chính tả chuẩn (sách không in đáp án)"
+      },
+      {
+        "where": "part1[7]",
+        "note": "đáp án rào/dào theo chính tả chuẩn (sách không in đáp án)"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Cái máy tuốt lúa",
+      "audio": "cau_b375_01",
+      "labels": [
+        "Nghe đọc"
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: Cả bài.",
+      "audio": "cau_b375_02",
+      "labels": [
+        "Phần này con viết vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "triệu",
+          "audio": "tieng_trieeuj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tuốt",
+          "audio": "tieng_tuoots",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "quay",
+          "audio": "tieng_quay",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ngoan",
+          "audio": "tieng_ngoan",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rung",
+          "audio": "tieng_rung",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rào rào",
+          "audio": "tu_raof_raof",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "suốt",
+          "audio": "tieng_suoots",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dũng sĩ",
+          "audio": "tu_dungx_six",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "triệu",
+      "audio": "tieng_trieeuj",
+      "items": [
+        {
+          "text": "một triệu",
+          "audio": "tu_mootj_trieeuj",
+          "part": "một",
+          "role": "before"
+        },
+        {
+          "text": "triệu lúa",
+          "audio": "tu_trieeuj_luas",
+          "part": "lúa",
+          "role": "after"
+        }
+      ]
+    },
+    {
+      "type": "combine_words",
+      "marker": "",
+      "text": "tuốt",
+      "audio": "tieng_tuoots",
+      "items": [
+        {
+          "text": "máy tuốt",
+          "audio": "tu_mays_tuoots",
+          "part": "máy",
+          "role": "before"
+        },
+        {
+          "text": "tuốt lúa",
+          "audio": "tu_tuoots_luas",
+          "part": "lúa",
+          "role": "after"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "b) Đặt câu với mỗi từ: rung, dũng sĩ, suốt.",
+      "audio": "hoi_b375_01"
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "quay",
+        "quai"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "tròn quay",
+          "audio": "tu_tronf_quay",
+          "answer": "quay",
+          "hl": [
+            {
+              "s": 5,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "quai búa",
+          "audio": "tu_quai_buas",
+          "answer": "quai",
+          "hl": [
+            {
+              "s": 0,
+              "n": 4
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "lăn quay",
+          "audio": "tu_lawn_quay",
+          "answer": "quay",
+          "hl": [
+            {
+              "s": 4,
+              "n": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "marker": "",
+      "labels": [
+        "rào",
+        "dào"
+      ],
+      "items": [
+        {
+          "role": "blank",
+          "text": "mưa rào",
+          "audio": "tu_muwa_raof",
+          "answer": "rào",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "hàng rào",
+          "audio": "tu_hangf_raof",
+          "answer": "rào",
+          "hl": [
+            {
+              "s": 5,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "dạt dào",
+          "audio": "tu_datj_daof",
+          "answer": "dào",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        },
+        {
+          "role": "blank",
+          "text": "dồi dào",
+          "audio": "tu_dooif_daof",
+          "answer": "dào",
+          "hl": [
+            {
+              "s": 4,
+              "n": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Chính tả: Đánh cá đèn",
+      "audio": "cau_b375_03",
+      "labels": [
+        "So sánh"
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Thuyền nổ máy ran ran, trườn nhanh qua vùng sóng lừng.",
+      "audio": "cau_b375_04",
+      "items": [
+        {
+          "text": "Thuyền",
+          "audio": "tieng_thuyeenf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nổ",
+          "audio": "tieng_noor",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "máy",
+          "audio": "tieng_mays",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ran",
+          "audio": "tieng_ran",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ran",
+          "audio": "tieng_ran",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trườn",
+          "audio": "tieng_truwownf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nhanh",
+          "audio": "tieng_nhanh",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "qua",
+          "audio": "tieng_qua",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vùng",
+          "audio": "tieng_vungf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sóng",
+          "audio": "tieng_songs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lừng",
+          "audio": "tieng_luwngf",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Nắng chiều tỏa ánh vàng hoe.",
+      "audio": "cau_b375_05",
+      "items": [
+        {
+          "text": "Nắng",
+          "audio": "tieng_nawngs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "chiều",
+          "audio": "tieng_chieeuf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tỏa",
+          "audio": "tieng_toar",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "ánh",
+          "audio": "tieng_anhs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "vàng",
+          "audio": "tieng_vangf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "hoe",
+          "audio": "tieng_hoe",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Mặt trời lặn.",
+      "audio": "cau_b375_06",
+      "items": [
+        {
+          "text": "Mặt",
+          "audio": "tieng_mawtj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trời",
+          "audio": "tieng_trowif",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lặn",
+          "audio": "tieng_lawnj",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Màn đêm buông xuống.",
+      "audio": "cau_b375_07",
+      "items": [
+        {
+          "text": "Màn",
+          "audio": "tieng_manf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đêm",
+          "audio": "tieng_ddeem",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "buông",
+          "audio": "tieng_buoong",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "xuống",
+          "audio": "tieng_xuoongs",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "sentence",
+      "marker": "",
+      "text": "Đèn điện trên các thuyền bật sáng rực rỡ.",
+      "audio": "cau_b375_08",
+      "items": [
+        {
+          "text": "Đèn",
+          "audio": "tieng_ddenf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "điện",
+          "audio": "tieng_ddieenj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trên",
+          "audio": "tieng_treen",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "các",
+          "audio": "tieng_cacs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "thuyền",
+          "audio": "tieng_thuyeenf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bật",
+          "audio": "tieng_baatj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "sáng",
+          "audio": "tieng_sangs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rực",
+          "audio": "tieng_ruwcj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rỡ",
+          "audio": "tieng_rowx",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Bài viết: các câu trên.",
+      "audio": "cau_b375_09",
+      "labels": [
+        "Phần này con viết vào vở cùng bố mẹ."
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "ran ran",
+          "audio": "tu_ran_ran",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "trườn",
+          "audio": "tieng_truwownf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tỏa",
+          "audio": "tieng_toar",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "hoe",
+          "audio": "tieng_hoe",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "lặn",
+          "audio": "tieng_lawnj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rực rỡ",
+          "audio": "tu_ruwcj_rowx",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "màn",
+          "audio": "tieng_manf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "buông",
+          "audio": "tieng_buoong",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "bật",
+          "audio": "tieng_baatj",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nổ",
+          "audio": "tieng_noor",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Phát âm phân biệt các cặp từ ngữ sau",
+      "audio": "cau_b375_10",
+      "labels": []
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "nổ ran",
+          "audio": "tu_noor_ran",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "gian nhà",
+          "audio": "tu_gian_nhaf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "rực rỡ",
+          "audio": "tu_ruwcj_rowx",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "dỡ nhà",
+          "audio": "tu_dowx_nhaf",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "tỏa ánh sáng",
+          "audio": "tu_toar_anhs_sangs",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "tần tảo",
+          "audio": "tu_taanf_taor",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "đỏ hoe",
+          "audio": "tu_ddor_hoe",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "con heo",
+          "audio": "tu_con_heo",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "words",
+      "marker": "",
+      "items": [
+        {
+          "text": "trườn lên",
+          "audio": "tu_truwownf_leen",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nhà trường",
+          "audio": "tu_nhaf_truwowngf",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nổ máy",
+          "audio": "tu_noor_mays",
+          "hl": [],
+          "spells": []
+        },
+        {
+          "text": "nỗ lực",
+          "audio": "tu_noox_luwcj",
+          "hl": [],
+          "spells": []
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "b) Thêm chữ thích hợp vào các cặp từ sau.",
+      "audio": "hoi_b375_02",
+      "rows": [
+        {
+          "text": "lặn..., nặn...",
+          "audio": "cau_b375_11"
+        },
+        {
+          "text": "... bật, ... bậc",
+          "audio": "cau_b375_12"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_mootj_trieeuj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "một triệu",
+          "audio": "tu_mootj_trieeuj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "máy tuốt",
+          "audio": "tu_mays_tuoots",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tuốt lúa",
+          "audio": "tu_tuoots_luas",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_tronf_quay",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tròn quay",
+          "audio": "tu_tronf_quay",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "quai búa",
+          "audio": "tu_quai_buas",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "mưa rào",
+          "audio": "tu_muwa_raof",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_datj_daof",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "dạt dào",
+          "audio": "tu_datj_daof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "hàng rào",
+          "audio": "tu_hangf_raof",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "dồi dào",
+          "audio": "tu_dooif_daof",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_noor_ran",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "nổ ran",
+          "audio": "tu_noor_ran",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "gian nhà",
+          "audio": "tu_gian_nhaf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "rực rỡ",
+          "audio": "tu_ruwcj_rowx",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ddor_hoe",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "đỏ hoe",
+          "audio": "tu_ddor_hoe",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "con heo",
+          "audio": "tu_con_heo",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tần tảo",
+          "audio": "tu_taanf_taor",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_noox_luwcj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "nỗ lực",
+          "audio": "tu_noox_luwcj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nổ máy",
+          "audio": "tu_noor_mays",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "nhà trường",
+          "audio": "tu_nhaf_truwowngf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -9,6 +9,8 @@ rows = {r["id"]: r for r in json.loads((REPO / "content/manifests/image_manifest
 seen, lines = set(), []
 for f in sorted((REPO / "content/src").glob("tv2_t2_b*.json")):
     s = json.loads(f.read_text(encoding="utf-8"))
+    if s["lesson_no"] < lo:
+        seen |= set(s["images"])  # tranh đã có ở đợt trước (Tập làm văn dùng lại): không gửi lại
     if not lo <= s["lesson_no"] <= hi:
         continue
     for img, desc in s["images"].items():

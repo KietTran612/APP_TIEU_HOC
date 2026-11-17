@@ -1,0 +1,285 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b401",
+  "book": "tv2_t2_2002",
+  "lesson_no": 401,
+  "type": "ngu_phap",
+  "title": "Tập xếp tên người theo thứ tự bảng chữ cái (tiếp theo)",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      91
+    ],
+    "scan_file": "046",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Xếp tên theo thứ tự bảng chữ cái: bé xếp bằng miệng cùng bố mẹ (như tập một)."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": []
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Tập xếp tên người theo thứ tự bảng chữ cái",
+      "audio": "cau_b401_01",
+      "labels": [
+        "Tiếp theo"
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "1. Nếu 2 người trùng tên thì căn cứ vào con chữ đầu của Họ để xếp thứ tự:",
+          "audio": "cau_b401_02",
+          "role": "line"
+        },
+        {
+          "text": "Nguyễn Hữu Hưng xếp trước Trịnh Văn Hưng (vì n trước t).",
+          "audio": "cau_b401_03",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "marker": "",
+      "items": [
+        {
+          "text": "2. Nếu 2 người trùng tên, trùng họ thì căn cứ vào con chữ đầu của tên lót để xếp thứ tự.",
+          "audio": "cau_b401_04",
+          "role": "line"
+        },
+        {
+          "text": "Trịnh Anh Hạnh xếp trên Trịnh Văn Hạnh (vì a trước v),",
+          "audio": "cau_b401_05",
+          "role": "line"
+        },
+        {
+          "text": "hoặc: Đỗ Quang xếp trước Đỗ Văn Quang (tên người nào ít tiếng thì xếp trước).",
+          "audio": "cau_b401_06",
+          "role": "line"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Có 5 bạn tên là: (Em hãy xếp tên 5 bạn đó theo thứ tự bảng chữ cái.)",
+      "audio": "hoi_b401_01",
+      "rows": [
+        {
+          "text": "Nguyễn Xuân Cảnh",
+          "audio": "cau_b401_07"
+        },
+        {
+          "text": "Trần Văn Cảnh",
+          "audio": "cau_b401_08"
+        },
+        {
+          "text": "Đỗ Thị Cảnh",
+          "audio": "cau_b401_09"
+        },
+        {
+          "text": "Trần Tấn Cảnh",
+          "audio": "cau_b401_10"
+        },
+        {
+          "text": "Đỗ Đức Cảnh",
+          "audio": "cau_b401_11"
+        }
+      ]
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_hoj_teen",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "họ tên",
+          "audio": "tu_hoj_teen",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tên lót",
+          "audio": "tu_teen_lots",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thứ tự",
+          "audio": "tu_thuws_tuwj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_teen_lots",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "tên lót",
+          "audio": "tu_teen_lots",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "họ tên",
+          "audio": "tu_hoj_teen",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chữ cái",
+          "audio": "tu_chuwx_cais",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_thuws_tuwj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "thứ tự",
+          "audio": "tu_thuws_tuwj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chữ cái",
+          "audio": "tu_chuwx_cais",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "tên lót",
+          "audio": "tu_teen_lots",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_chuwx_cais",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "chữ cái",
+          "audio": "tu_chuwx_cais",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thứ tự",
+          "audio": "tu_thuws_tuwj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "họ tên",
+          "audio": "tu_hoj_teen",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_trungf_teen",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "trùng tên",
+          "audio": "tu_trungf_teen",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trùng họ",
+          "audio": "tu_trungf_hoj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "thứ tự",
+          "audio": "tu_thuws_tuwj",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_trungf_hoj",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "trùng họ",
+          "audio": "tu_trungf_hoj",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "trùng tên",
+          "audio": "tu_trungf_teen",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "chữ cái",
+          "audio": "tu_chuwx_cais",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

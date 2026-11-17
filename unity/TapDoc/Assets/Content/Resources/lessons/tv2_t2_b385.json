@@ -1,0 +1,308 @@
+{
+  "schema": 1,
+  "lesson_id": "tv2_t2_b385",
+  "book": "tv2_t2_2002",
+  "lesson_no": 385,
+  "type": "ngu_phap",
+  "title": "Ôn cách viết hoa danh từ riêng",
+  "in_app": true,
+  "new_units": [],
+  "source": {
+    "pages": [
+      75
+    ],
+    "scan_file": "038",
+    "verification": "page_verified"
+  },
+  "notes": [
+    {
+      "kind": "khac_sach",
+      "text": "Viết lại tên riêng, viết tên trường và tên bạn: bé nói cách viết hoa cùng bố mẹ; xếp 2 cột thành chạm vào các tên người (app hiện tên đã viết hoa)."
+    }
+  ],
+  "review": {
+    "status": "chua_duyet",
+    "can_duyet": [
+      {
+        "where": "part1[2]",
+        "note": "đáp án tên người do app chọn: Nguyễn Văn Trỗi, Nguyễn Thị Minh Khai, Trần Quốc Toản, Kim Đồng"
+      }
+    ]
+  },
+  "part1": [
+    {
+      "type": "title",
+      "marker": "",
+      "text": "Ngữ pháp: Ôn cách viết hoa danh từ riêng",
+      "audio": "cau_b385_01",
+      "labels": []
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "1. Viết lại cho đúng các danh từ riêng sau đây:",
+      "audio": "hoi_b385_01",
+      "rows": [
+        {
+          "text": "nguyễn văn trỗi, nguyễn thị minh khai, hải phòng,",
+          "audio": "cau_b385_02"
+        },
+        {
+          "text": "hà nội, trần quốc toản, kim đồng,",
+          "audio": "cau_b385_03"
+        },
+        {
+          "text": "ba vì, tản viên, nha trang, cửu long.",
+          "audio": "cau_b385_04"
+        }
+      ]
+    },
+    {
+      "type": "choose_line",
+      "marker": "",
+      "text": "2. Xếp các danh từ riêng ở trên thành 2 cột: một cột chỉ tên người, một cột chỉ địa danh. Con chạm vào các tên người.",
+      "audio": "hoi_b385_02",
+      "items": [
+        {
+          "text": "Nguyễn Văn Trỗi",
+          "audio": "cau_b385_05",
+          "role": "target"
+        },
+        {
+          "text": "Nguyễn Thị Minh Khai",
+          "audio": "cau_b385_06",
+          "role": "target"
+        },
+        {
+          "text": "Hải Phòng",
+          "audio": "cau_b385_07",
+          "role": "other"
+        },
+        {
+          "text": "Hà Nội",
+          "audio": "cau_b385_08",
+          "role": "other"
+        },
+        {
+          "text": "Trần Quốc Toản",
+          "audio": "cau_b385_09",
+          "role": "target"
+        },
+        {
+          "text": "Kim Đồng",
+          "audio": "cau_b385_10",
+          "role": "target"
+        },
+        {
+          "text": "Ba Vì",
+          "audio": "cau_b385_11",
+          "role": "other"
+        },
+        {
+          "text": "Tản Viên",
+          "audio": "cau_b385_12",
+          "role": "other"
+        },
+        {
+          "text": "Nha Trang",
+          "audio": "cau_b385_13",
+          "role": "other"
+        },
+        {
+          "text": "Cửu Long",
+          "audio": "cau_b385_14",
+          "role": "other"
+        }
+      ],
+      "need": 4
+    },
+    {
+      "type": "question",
+      "marker": "",
+      "text": "3. Viết tên trường em học và tên 5 bạn trong lớp (viết cả họ và tên).",
+      "audio": "hoi_b385_03"
+    }
+  ],
+  "part2": [
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_hair_phongf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "Hải Phòng",
+          "audio": "tu_hair_phongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Hà Nội",
+          "audio": "tu_haf_nooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Nha Trang",
+          "audio": "tu_nha_trang",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_haf_nooij",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "Hà Nội",
+          "audio": "tu_haf_nooij",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Hải Phòng",
+          "audio": "tu_hair_phongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Cửu Long",
+          "audio": "tu_cuwur_long",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_ba_vif",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "Ba Vì",
+          "audio": "tu_ba_vif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Tản Viên",
+          "audio": "tu_tanr_vieen",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Kim Đồng",
+          "audio": "tu_kim_ddoongf",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_kim_ddoongf",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "Kim Đồng",
+          "audio": "tu_kim_ddoongf",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Ba Vì",
+          "audio": "tu_ba_vif",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Hà Nội",
+          "audio": "tu_haf_nooij",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_cuwur_long",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "Cửu Long",
+          "audio": "tu_cuwur_long",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Nha Trang",
+          "audio": "tu_nha_trang",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Tản Viên",
+          "audio": "tu_tanr_vieen",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "kind": "listen_choose",
+      "tag": "",
+      "instruction_audio": "hd_nghe_chon_chu",
+      "prompt_audio": "tu_nha_trang",
+      "prompt_text": "",
+      "base_text": "",
+      "image": "",
+      "options": [
+        {
+          "text": "Nha Trang",
+          "audio": "tu_nha_trang",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Cửu Long",
+          "audio": "tu_cuwur_long",
+          "image": "",
+          "tone": ""
+        },
+        {
+          "text": "Ba Vì",
+          "audio": "tu_ba_vif",
+          "image": "",
+          "tone": ""
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}
