@@ -38,9 +38,13 @@ lesson(364, [56, 57],
        listen(("hải quân", "hải đảo", "biển lớn"), ("hải đảo", "hải quân", "trứng sáo"), ("trứng sáo", "gió bão", "hải đảo"),
               ("gió bão", "trứng sáo", "ra khơi"), ("ra khơi", "biển lớn", "gió bão"), ("biển lớn", "ra khơi", "hải quân")),
        images={img(364, "hải quân"): "Mỏm đá trên hòn đảo nhỏ có bụi cỏ: chú hải quân mặc áo thủy thủ kẻ sọc, đội mũ "
-                                     "hải quân có dải băng, khoác súng trên vai, đứng gác nhìn ra biển xanh; xa xa có "
-                                     "con tàu, chim hải âu bay (súng khoác vai, không chĩa)"},
-       notes=[("khac_sach", KS_HTL), ("khac_sach", KS_ORAL)])
+                                     "hải quân có dải băng, đứng gác, hai tay cầm ống nhòm nhìn ra biển xanh; bên cạnh "
+                                     "là cột cờ cao có lá cờ bay trong gió; xa xa có con tàu, chim hải âu bay "
+                                     "(không vẽ súng hay vũ khí nào)"},
+       notes=[("khac_sach", "Sách vẽ chú hải quân cầm súng; app vẽ chú đứng gác cầm ống nhòm bên cột cờ "
+                            "(tranh cho trẻ nhỏ không vẽ vũ khí)."),
+              ("khac_sach", KS_HTL), ("khac_sach", KS_ORAL)],
+       review=[("part1[0]", "tranh thay súng bằng ống nhòm; lời dẫn tranh do app soạn")])
 
 # 365 — Bài 33. Bộ đội đi trên Trường Sơn (tr.57–58)
 TRUONG_SON = img(365, "Trường Sơn")

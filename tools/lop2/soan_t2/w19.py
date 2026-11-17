@@ -65,7 +65,7 @@ lesson(314, [12, 13],
 # 315 — Bài 7. Ai can đảm (tr.14–15)
 NGONG = img(315, "đàn ngỗng")
 NGONG_DESC = ("Sân nhà quê có túp nhà tranh và bụi tre: đàn ngỗng trắng vươn dài cổ, kêu quàng quạc; cậu bé Tiến "
-              "cầm cành xoan xua đàn ngỗng, cậu bé Thắng cầm thanh kiếm gỗ nấp sau lưng Tiến, xa xa cậu bé Hùng "
+              "cầm cành xoan xua đàn ngỗng, cậu bé Thắng mếu máo nấp sau lưng Tiến, xa xa cậu bé Hùng "
               "đang chạy biến")
 lesson(315, [14, 15],
        [picture(NGONG, "Tiến cầm cành xoan xua đàn ngỗng.", "đàn ngỗng"),

@@ -27,7 +27,7 @@ Chi tiết ở [BOOK_CATALOG.md](../../source-inventory/BOOK_CATALOG.md) mục 4
   - Ngữ pháp: danh từ, danh từ chung và riêng, viết hoa tên người và tên đất, xếp tên người theo thứ tự bảng chữ cái.
   - Tập làm văn: "Trả lời câu hỏi" (đề bài là một bài đọc đã học, 4 câu hỏi); "Dùng từ – đặt câu" (đề bài + các từ cho sẵn).
 - **Nhiều bài về người thật:** Bác Hồ, chị Võ Thị Sáu, Bà Triệu, Trần Quốc Toản, Quang Trung (Gò Đống Đa), anh Phạm Tuân, các anh hùng nhỏ tuổi. Tranh sách vẽ các nhân vật này.
-- **Lỗi in, bài 10 (Huy Cận):** sách in "Trăng sao cũng hóa **xú** người" ở cả đầu bài, câu thơ, câu hỏi 1 và mục lục; nghĩa đúng là "xứ người" (xem mục 5.3).
+- **Bài 10 (Huy Cận) "Trăng sao cũng hóa xứ người":** sách in đúng "xứ" (root phóng to scan 004: chữ "Ư" có râu như "Ư" của "NGƯỜI"); bản scan mờ nên nhìn nhỏ dễ đọc nhầm thành "xú" (xem mục 5.3).
 
 ## 3. Mục tiêu, việc không làm, điều coi là thất bại
 
@@ -78,10 +78,8 @@ Tranh của bài nói về người thật (Bác Hồ, nhân vật lịch sử, 
 - Bộ đội, công nhân, nông dân không tên trong tranh sách (đứng gác, hải quân, thợ đốt lò…) là người chung chung, vẽ được [Đề xuất]. Không vẽ súng chĩa vào người, không cảnh đánh nhau [Đề xuất].
 - Bài về chiến tranh (chị Võ Thị Sáu bị giải ra nhà lao, voi Bà Triệu ra trận, Gò Đống Đa): tranh tả cảnh thiên nhiên và nơi chốn trong bài (đường ven biển Côn Đảo lúc bình minh, gò đất, rừng núi). Chữ bài đọc giữ nguyên như sách.
 
-### 5.3 Bài 10 "xú người" [Đề xuất, cần root/chủ dự án chọn]
-Sách in sai "xú người" ở 4 chỗ (đầu bài, câu thơ, câu hỏi 1, mục lục); "xú" nghĩa là hôi, không có nghĩa trong câu thơ.
-- **Đề xuất:** app ghi **"xứ người"** ở mọi chỗ (bài 10 và tên bài Chính tả tuần 21), ghi `khac_sach` "Sách in 'xú người', app sửa thành 'xứ người' theo nghĩa câu thơ" và `can_duyet`. Lý do: bé học đọc và học nghĩa từ app, chép lỗi in thì dạy sai chữ, máy đọc cũng đọc sai.
-- Cách khác: chép đúng "xú" như sách, ghi `sach` "sách in xú, nghĩa là xứ".
+### 5.3 Bài 10 "xứ người" [Chốt, root 17/11]
+Lúc soạn spec, bản scan mờ làm tưởng sách in "xú người". Root phóng to scan 004 (tr.20) lên 10–12 lần: chữ "Ư" ở "XỨ" có râu giống hệt "Ư" của "NGƯỜI" ngay cạnh, cả ở đầu bài lẫn dòng thơ. Sách in đúng **"xứ người"**, không có lỗi in. App chép "xứ người" như sách, không ghi chú lỗi in.
 
 ## 6. Chính tả, Từ ngữ, Ngữ pháp, Tập làm văn [như tập một mục 6, thêm dưới đây]
 
@@ -157,20 +155,21 @@ Như tập một mục 8. Mục đầu cuốn (305) ghi `khac_sach` "chạm ti�
 ## 14. Rủi ro
 - **Âm thanh chậm:** khoảng 3.000 mã mới, 1 tiến trình dùng chung cả máy với các session khác.
 - **Bài về chiến tranh và người thật nhiều:** tranh thay thế phải vẫn gợi đúng bài; root và chủ dự án xem lời dẫn `can_duyet`.
-- **Bản quyền bài đọc, lỗi in:** như tập một; lỗi in khác (nếu gặp) ghi `can_duyet`, xử lý như mục 5.3.
+- **Bản quyền bài đọc, lỗi in:** như tập một; chỗ nghi lỗi in phóng to scan trước (mục 5.3), lỗi in thật thì chép như sách, ghi `sach` + `can_duyet`.
 
 ## 15. Kết quả (17/11/2026)
 
 - **Nội dung:** đủ **130 mục** `page_verified` (305–434, tuần 18–33), chép từ ảnh 010–061 theo bảng ảnh → trang. Commit e9f837c (T2-1), 005b828 (T2-2), f9b4fd5 (T2-3), 391c59f (T2-4).
 - **Công cụ:** f285c84 (quyển 4, tuần lớp 2 đến 35, ba chủ điểm mới); f95f92b (`tools/lop2` cờ `--t2`, `xuat_wav_lop2.py`). Không bước mới, không sửa Unity ngoài test smoke mới.
-- **Root chốt 17/11:** bài 10 ghi "xứ người" (`khac_sach` + `can_duyet`); âm thanh theo cách 1 (tạo thẳng vào danh mục, xuất WAV cho root nhận dạng, mã sai làm bản thử ngoài danh mục).
+- **Root chốt 17/11:** bài 10 sách in đúng "xứ người" (mục 5.3, đã bỏ ghi chú lỗi in); âm thanh theo cách 1 (tạo thẳng vào danh mục, xuất WAV cho root nhận dạng, mã sai làm bản thử ngoài danh mục).
 - **Khác kế hoạch:**
   - Từ ngữ: chỗ trống có hai từ cùng đúng (đoàn kết/gắn bó, chuyên cần/chăm chỉ…) nên dùng thẻ riêng mỗi ô (3 thẻ) thay cho danh sách chung.
   - Câu dài trong lời thoại bị công cụ tách đôi giữa chừng: `l2t2lib.sentences` thêm chỗ ngắt tay " | ".
   - `stage_lop2.py` bỏ theo dòng chỉ của tập đang stage mà `build` đã xoá (trước giữ lại như HEAD).
   - "Sa Pa" không dùng làm phương án nghe (mã `tu_sa_pa` của lớp 1 đọc khác), như tập một.
   - Thêm tranh cho hai bài sách không có tranh (bài 9 giá sách, bài 63 quê Bác) để Tập làm văn dùng lại; `can_duyet`.
-- **Lỗi in, `can_duyet`:** "xú người" (đã sửa), "tráng nắng" (bài 46), "Dấu trăng, sao" (bài 48), "Xa ra" (Chính tả tuần 25, app ghi "Xa xa").
+- **Lỗi in, `can_duyet`:** "tráng nắng" (bài 46) và "Dấu trăng, sao" (bài 48) chép như sách (root đã xem scan); "Xa ra" (Chính tả tuần 25, app ghi "Xa xa").
+- **Tranh không vẽ vũ khí** (root 17/11): b364 chú hải quân cầm ống nhòm bên cột cờ thay vì súng; b315 bỏ thanh kiếm gỗ khỏi tranh.
 - **Chủ dự án xem:** bài 58 "Một que diêm" có chi tiết mời hút thuốc lá (đúng sách).
 - **Tranh:** 41 tranh (`content/requests/images_tv2_t2_dot_1..4.md`, 12 + 8 + 11 + 10), đã gửi root.
 - **Test:** Python `test_lop2t2_content`, `test_tap1_regression` (304 file ba cuốn kia dựng lại y hệt), `test_grade2_build`, `test_books`, `test_lop2_sach`, `test_curriculum` xanh. Unity chờ lượt của root.

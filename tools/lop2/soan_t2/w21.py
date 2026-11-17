@@ -149,15 +149,13 @@ lesson(335, [32, 33],
        title="Làm việc thật là vui – Trăng sao cũng hóa xứ người",
        notes=[("khac_sach", KS_WRITE),
               ("khac_sach", "Trả lời câu hỏi bằng miệng; chọn chữ ghép được với \"gáy\", điền chỗ trống, ghép chữ "
-                            "làm bằng chạm thẻ."),
-              ("khac_sach", XU_NGUOI + " Bài tập ghép chữ \"người\" in \"xú\", app ghi \"xứ người\".")],
+                            "làm bằng chạm thẻ.")],
        review=[("part1[4]", "đáp án do app chọn: gà gáy, cu gáy"),
                ("part1[5]", "đáp án dạy/dậy theo chính tả chuẩn (sách không in đáp án)"),
                ("part1[6]", "đáp án vang/van theo chính tả chuẩn (sách không in đáp án)"),
                ("part1[7]", "đáp án vải/vãi theo chính tả chuẩn (sách không in đáp án)"),
-               ("part1[8]", XU_REVIEW),
                ("part1[11]", "ghép \"sáng ngời\", \"chói ngời\" (đứng trước) do app chọn"),
-               ("part1[12]", "ghép \"con người\", \"xứ người\", \"người ta\" do app chọn; " + XU_REVIEW)])
+               ("part1[12]", "ghép \"con người\", \"xứ người\", \"người ta\" do app chọn")])
 
 # 336 — Từ ngữ: Thiếu nhi chăm làm (tr.33–34)
 TU_336 = ["lao động", "nhà cửa", "lợn gà", "cơm nước", "đỡ đần", "bận rộn", "đến nơi đến chốn"]

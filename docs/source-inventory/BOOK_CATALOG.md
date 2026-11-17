@@ -62,7 +62,7 @@
    - Sách theo chương trình cũ như tập một: mỗi tuần Tập đọc, Học thuộc lòng, Bài đọc thêm, Chính tả, Từ ngữ, Ngữ pháp, Tập làm văn; không có Kể chuyện, Tập viết, câu đố.
    - **Tuần 18–33** (16 tuần, không phải 19–35), **66 bài đọc** đánh số 1–66 (số lại từ 1, không nối số của tập một). Tuần 20, 21, 22 có 5 bài đọc; tuần 24 có 3; các tuần khác 4. Mục lục in chung một dòng "12–13", "17–18", "22–23" cho hai Bài đọc thêm, nhưng trên trang mỗi số là một bài riêng có đầu bài riêng.
    - **Chủ điểm** in trên trang bìa chủ điểm (trang tranh, không thành bài): tr.3 "Thiếu nhi" (tuần 18–22), tr.43 "Nhân dân ta" (tuần 23–30), tr.100 "Bác Hồ" (tuần 31–33).
-   - Bài 10 (Huy Cận) in **"Trăng sao cũng hóa xú người"** (chữ U không râu, dấu sắc) ở cả đầu bài, câu thơ, câu hỏi 1 và mục lục; nghĩa đúng là "xứ người". Cách ghi trong app: xem spec TV2 tập 2.
+   - Bài 10 (Huy Cận) "Trăng sao cũng hóa xứ người": sách in đúng "xứ" (scan mờ, phóng to thấy chữ "Ư" có râu); không phải lỗi in.
    - Nội dung tr.4–121; mục lục tr.122–124.
 5. **TV1 T1 (1990) và TV1 T2 (chỉnh lí 1994)** thuộc hai lần in khác nhau. Số bài nối tiếp nhau (80 → 81), nhưng chưa kiểm xem bản chỉnh lí 1994 có sửa nội dung Tập 1 hay không.
 6. **TV1 T2:** công thức trang đôi (ảnh `NNN` chứa trang `2·NNN−2` và `2·NNN−1`) đúng cho cả 72 ảnh, đã đối chiếu từng trang khi chép bài (5/11/2026). Tr.2 có thêm kí hiệu **[?] Câu hỏi**. Tr.138 "Trả lời câu đố" là đáp án của ba trang Câu đố (tr.102, 115, 128). Mục lục ghi bài 34 là "Chị Võ Thị Sáu", trang 133 in "Võ Thị Sáu".

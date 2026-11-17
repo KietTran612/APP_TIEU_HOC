@@ -18,10 +18,6 @@ TOC = {r["lesson_no"]: r for r in json.loads((HERE / "toc_t2.json").read_text(en
 KS_REAL = "Sách vẽ {who}; app vẽ {what} (không vẽ người thật)."
 KS_TLC = "Câu hỏi về bài đã đọc: bé trả lời miệng cùng bố mẹ, app hiện lại tranh của bài đó."
 KS_DAT_CAU = "Đặt câu: bé nói câu của mình cùng bố mẹ, app không chấm. Các từ cho sẵn hiện thành thẻ, chạm để nghe."
-# Bài 10: sách in "xú người", root chốt 17/11 app ghi "xứ người" (thiết kế TV2 tập hai mục 5.3).
-XU_NGUOI = ("Sách in \"xú người\" (ở đầu bài, câu thơ, câu hỏi 1 và mục lục); app sửa thành \"xứ người\" "
-            "theo nghĩa câu thơ.")
-XU_REVIEW = "chữ \"xứ người\" app sửa từ \"xú người\" in trong sách (lỗi in): chủ dự án quyết giữ hay đổi"
 KS_XEP_TEN = "Xếp tên theo thứ tự bảng chữ cái: bé xếp bằng miệng cùng bố mẹ (như tập một)."
 
 

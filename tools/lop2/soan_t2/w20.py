@@ -56,8 +56,7 @@ lesson(322, [20, 21],
                                        "vẫy tay, ngồi trên con tàu vũ trụ sơn xanh trắng đang phóng lên, khói trắng "
                                        "phía sau; bên dưới là mái nhà, hàng cây và vài đám mây (không có cờ, không có chữ)"},
        title="Trăng sao cũng hóa xứ người",
-       notes=[("khac_sach", XU_NGUOI), ("khac_sach", KS_HTL), ("khac_sach", KS_ORAL)],
-       review=[("part1[1]", XU_REVIEW)])
+       notes=[("khac_sach", KS_HTL), ("khac_sach", KS_ORAL)])
 
 # 323 — Bài 11. Bóc lịch (tr.21–22)
 BOC_LICH = ["Em cầm tờ lịch cũ", "- Ngày hôm qua đâu rồi?", "Ra ngoài sân hỏi bố", "Xoa đầu em, bố cười:",
@@ -194,9 +193,8 @@ lesson(328, [25, 26],
               ("bút chì", "cái bàn", "cái ghế"), ("bộ đội", "cụ già", "bồ câu"), ("cây dừa", "bút chì", "em bé")),
        notes=[("khac_sach", "Bảng phân loại danh từ trong sách (có hình cụ già, cây dừa, chim bồ câu, quyển sách) "
                             "thành bốn dòng đọc được; app không vẽ hình."),
-              ("khac_sach", XU_NGUOI), ("khac_sach", KS_ORAL)],
-       review=[("part1[1]", "bảng phân loại viết thành dòng \"…: chỉ người\" do app soạn"),
-               ("@2. Tìm 1 danh từ", XU_REVIEW)])
+              ("khac_sach", KS_ORAL)],
+       review=[("part1[1]", "bảng phân loại viết thành dòng \"…: chỉ người\" do app soạn")])
 
 # 329 — Tập làm văn: Trả lời câu hỏi — Tủ sách của bạn Sắc (tr.26)
 lesson(329, [26],

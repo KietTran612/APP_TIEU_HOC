@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 # (tuần, [(số bài, loại, tên, trang)], chính tả (tên1, tr1, tên2, tr2), từ ngữ (tên, tr), ngữ pháp (tên, tr), tlv (tên, tr))
-# Tên theo đầu bài in trên trang. Bài 10 sách in "xú người" (nghĩa "xứ người"), xem spec TV2 tập 2.
+# Tên theo đầu bài in trên trang.
 # Mục lục in chung một dòng "12–13", "17–18", "22–23" (Bài đọc thêm): mỗi số là một bài riêng có đầu bài riêng.
 TD, HTL, DT = "tap_doc", "hoc_thuoc_long", "doc_them"
 TLC = "Trả lời câu hỏi: "
@@ -23,13 +23,13 @@ WEEKS = [
           (8, DT, "Làm cách nào dễ hơn", 15)],
      ("Trên đường đến nhà lao", 16, "Hòn đá to", 16), ("Thiếu nhi dũng cảm", 17), ("Danh từ (tiếp theo)", 18),
      (TLC + "Trên đường đến nhà lao", 18)),
-    (20, [(9, TD, "Tủ sách của bạn Sắc", 19), (10, HTL, "Trăng sao cũng hóa xú người", 20), (11, TD, "Bóc lịch", 21),
+    (20, [(9, TD, "Tủ sách của bạn Sắc", 19), (10, HTL, "Trăng sao cũng hóa xứ người", 20), (11, TD, "Bóc lịch", 21),
           (12, DT, "Có một lần", 22), (13, DT, "Chiếc dao nóng nảy", 23)],
      ("Tủ sách của bạn Sắc", 24, "Ai can đảm", 24), ("Thiếu nhi chăm học", 25), ("Danh từ (tiếp theo)", 25),
      (TLC + "Tủ sách của bạn Sắc", 26)),
     (21, [(14, TD, "Làm việc thật là vui", 27), (15, HTL, "Tí Xíu", 28), (16, TD, "Sao Chổi", 29),
           (17, DT, "Chế giễu người lười", 31), (18, DT, "Chuyện bé Chăm", 32)],
-     ("Làm việc thật là vui", 32, "Trăng sao cũng hóa xú người", 33), ("Thiếu nhi chăm làm", 33),
+     ("Làm việc thật là vui", 32, "Trăng sao cũng hóa xứ người", 33), ("Thiếu nhi chăm làm", 33),
      ("Danh từ chung – Danh từ riêng", 34), (TLC + "Sao Chổi", 34)),
     (22, [(19, TD, "Hai con chim", 35), (20, HTL, "Tiếng ru", 36), (21, TD, "Con cáo và tổ ong", 38),
           (22, DT, "Cái ổ gà", 39), (23, DT, "Nhắn chú Phạm Tuân", 40)],
