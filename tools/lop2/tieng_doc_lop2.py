@@ -2,8 +2,8 @@
 - thanh nặng: "X. X." giữ tiếng đầu;
 - có ê thanh sắc (ế): "X, X, X." giữ tiếng đầu;
 - còn lại: "X, X." giữ tiếng đầu.
-Chỉ mã tieng_* mà mọi bài đều là tv2_t1_*, chưa 'dat', và override hiện tại trống hoặc là "X, X." mặc định.
-Dùng: python tools/lop2/tieng_doc_lop2.py [--ghi]  (không --ghi: chỉ in)"""
+Chỉ mã tieng_* mà mọi bài đều thuộc tập đã chọn (mặc định tv2_t1_*, --t2: tv2_t2_*), chưa 'dat', và override hiện tại trống hoặc là "X, X." mặc định.
+Dùng: python tools/lop2/tieng_doc_lop2.py [--t2] [--ghi]  (không --ghi: chỉ in)"""
 import json
 import sys
 import unicodedata
@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 from tapdoc.tts_settings import load_settings, save_settings  # noqa: E402
+from sach import prefix  # noqa: E402
 
 MANIFEST = ROOT / "content" / "manifests" / "audio_manifest.json"
 SETTINGS = ROOT / "content" / "tts" / "settings.json"
@@ -28,13 +29,14 @@ def want_doc(text):
 
 
 def main():
+    pre = prefix(sys.argv)
     write = "--ghi" in sys.argv
     rows = json.loads(MANIFEST.read_text(encoding="utf-8"))
     settings = load_settings(SETTINGS)
     changed = {"nang": [], "e_sac": []}
     for r in rows:
         bai = r.get("bai", [])
-        if r.get("kind") != "tieng" or not bai or not all(b.startswith("tv2_t1_") for b in bai):
+        if r.get("kind") != "tieng" or not bai or not all(b.startswith(pre) for b in bai):
             continue
         if r.get("status") == "dat":
             continue

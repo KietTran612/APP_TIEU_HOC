@@ -16,6 +16,7 @@ sys.path.insert(0, str(TOOLS))
 from tapdoc import pitch_check as pc  # noqa: E402
 from tapdoc.manifest import load_rows  # noqa: E402
 from tapdoc.paths import ROOT, UNITY_RES  # noqa: E402
+from sach import prefix  # noqa: E402
 
 PREFIX = "tv2_t1_"
 CACHE = ROOT / "content/tts/pitch_cache"
@@ -43,6 +44,8 @@ def odd_reason(text: str, values, templates) -> str | None:
 
 
 def main(argv):
+    global PREFIX
+    PREFIX = prefix(argv)
     rows = load_rows(ROOT / "content/manifests/audio_manifest.json")
     audio = UNITY_RES / "audio"
     templates = pc.reference_templates(rows, audio, CACHE / "refs")

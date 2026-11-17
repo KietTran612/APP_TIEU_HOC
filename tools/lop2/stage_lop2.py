@@ -1,9 +1,12 @@
 """Stage chỉ phần lớp 2 của danh mục (thêm dòng mới và mã bài tv2_t1_ trong `bai`), giữ nguyên chỉnh sửa duyệt
 chưa commit của chủ dự án: dựng blob từ HEAD + phần lớp 2 rồi `git hash-object -w` + `git update-index --cacheinfo`.
 
-Dùng: python tools/lop2/stage_lop2.py content/manifests/audio_manifest.json [content/tts/settings.json ...]
+Dùng: python tools/lop2/stage_lop2.py [--t2] content/manifests/audio_manifest.json [content/tts/settings.json ...]
+--t2: phần của Tiếng Việt 2 tập hai (tv2_t2_). Nên chạy với GIT_INDEX_FILE là chỉ mục tạm dựng từ HEAD (git read-tree HEAD)
+để không cuốn phần session khác đã stage (QUY-TRINH §12).
 """
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -80,6 +83,11 @@ def stage_settings(rel="content/tts/settings.json", manifest="content/manifests/
 
 
 if __name__ == "__main__":
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from sach import prefix
+    PREFIX = prefix(sys.argv)
+    if PREFIX != "tv2_t1_":
+        EXTRA_IDS = set()
     for rel in sys.argv[1:]:
         if rel.endswith("settings.json"):
             stage_settings(rel)

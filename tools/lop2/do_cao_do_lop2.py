@@ -21,6 +21,7 @@ from tapdoc import pitch_check as pc  # noqa: E402
 from tapdoc.manifest import load_rows  # noqa: E402
 from tapdoc.paths import ROOT, UNITY_RES  # noqa: E402
 from tapdoc.viet import nfc, tokens  # noqa: E402
+from sach import prefix  # noqa: E402
 
 PREFIX = "tv2_t1_"
 CACHE = ROOT / "content/tts/pitch_cache"
@@ -96,6 +97,8 @@ def classify(row, wav, marks, templates) -> list[dict]:
 
 
 def main(argv):
+    global PREFIX
+    PREFIX = prefix(argv)
     ids = None
     out_json = None
     if "--ma" in argv:
