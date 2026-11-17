@@ -389,3 +389,39 @@ Root đều đã xem trước. Riêng b105 lướt ván chưa có kết quả xe
 1. b68 (cuối) và các clip tập 2 ở mục 7 chưa làm.
 2. 16 clip giao ngày 12/11.
 3. Trong 91 clip soát lại, tập 1 còn: b87 lẵng bạc, b87 nhà cao tầng, b81 cây cảnh, b81 hộp bánh, b81 quả ớt, b83 cặp sách, b86 xẻng, cùng các clip khác trong `2026-11-13-soat-lai-clip-dat.md`.
+
+## 13. Kết quả ngày 16/11
+
+Hai đợt, mỗi đợt một commit:
+- `/u/6` buổi sáng: 7ac1fae.
+- `/u/2` buổi chiều, 24 video, video cuối lúc 17:48: e44e2eb.
+
+Root đều đã xem trước và phân xử.
+
+**Chuyển cho_duyet:** b81 hộp bánh, b81 quả ớt, b83 cặp sách (7ac1fae); b81 cây cảnh (lần 2), b86 xẻng (lần 3, loop), b106 con bướm, b109 cái loa, b109 đèn trăng, b110 điện thoại (hết 3 lượt, còn 2 điểm trừ), b113 thu hoạch lúa (lần 2), b145 bà và cháu, b116 hoa huệ, b112 chỗ ngoặt, b98 sầu riêng (lần 2, loop), b148 mẹ đã về (lần 3, loop). Ghi chú cho chủ dự án nằm ở từng dòng trong `video_manifest.json`.
+
+**Còn khong_dat, kịch bản lần sau đã sửa theo root (e44e2eb):**
+- b87 lẵng bạc, b87 nhà cao tầng: đổi sang loop. Không thêm chim hay mây vì tranh không có.
+- b110 mũi khoan: gần đứng yên, chỉ có vệt sáng và mũi khoan lăn nhẹ. Không viết chữ rotate, turn, crank.
+- b114 khai hoang: cuốc chỉ nâng ngang vai, dao phát lưỡi thẳng, hò "hò dô ta, hò dô".
+- b137 cái thước: vạch khắc rồi giữ nguyên, đi từ trái sang phải; giây cuối đứng yên.
+- b141 bác đưa thư: khung đầu bé đứng ở bậc cửa; tay bác tới dưới cốc ở giây thứ 6 rồi giữ yên.
+- b136 con quạ: khung đầu đếm đúng 3 sỏi trong lọ, 5 dưới đất, 1 ở mỏ; giây cuối giữ đúng lúc sỏi vừa rời mỏ.
+
+**Tập 2 mục 7 chưa làm:** b111 nghé, b110 quê ngoại, b112 bé loắt choắt, b142 cái bống. Ba clip sau là cảnh người đi, mà Nano Banana khó lùi người, nên cần nghĩ trước cách làm khung đầu.
+
+**Bài học 16/11:**
+- **Soi 0,25 s cuối** ở 7,70 / 7,80 / 7,85 / 7,90 s, cắt đúng phần vuông giữa, trước khi báo root. b114 (dao biến mất) và b137 (thước thứ hai trượt vào) chỉ hỏng ở mấy khung này.
+- **Nhắc tới lề giấy** ("paper margins", "inside the picture") là Veo vẽ giấy rách ở lề (b113). Chỉ tả cái đang có: "nobody new appears", "the camera and the background stay still".
+- **Chỉ cho chim, mây** nếu tranh gốc đã có.
+- **Vật nhỏ không đủ việc cho 8 giây** (xẻng, khoan, điện thoại): build hay loop có quay đều dễ biến dạng. Loop gần đứng yên với một vệt sáng mảnh là an toàn nhất; ghi chú cho chủ dự án biết là có thể bị chê "đứng yên".
+- **Tranh vật bị bổ đôi** (sầu riêng): build cảnh "nứt" thì Veo phải bỏ đi một nửa vỏ, nên vỏ rơi ra rồi chuyển cảnh mờ. Dùng loop.
+- **Trao vật cho nhau** (b141, b148): Veo hay cho cầm hẳn rồi buông, hoặc đưa ra rụt vào. Dồn động tác đến đích sớm (giây thứ 6) rồi giữ yên.
+- **Nano Banana** chỉnh số lượng vật nhỏ (sỏi) không chính xác: sửa 3 lần vẫn lệch 1–2 viên.
+- **Kỹ thuật:** chụp màn hình Flow hay bị treo. Dùng `find` và `ref` cho mọi nút (Start, End, Search assets, Add to prompt, Download media → 720p / Original size). Sau mỗi lần trang nạp lại phải cài lại hook tải tệp.
+
+**Credit (xem sáng 17/11):**
+- `/u/2`: 810, đặt lại 15/12.
+- `/u/3`: 50, nạp lại hằng ngày lúc 13:44.
+- `/u/4`: 50, đặt lại 29/11.
+- `/u/6`: 50, đặt lại 1/12.
