@@ -111,7 +111,7 @@ Khi quy trình thay đổi (chủ dự án quyết điều mới, hoặc tìm ra
   - Dự án Kiet_1 trên ChatGPT.
   - **Mỗi đợt khoảng 30 tranh thì mở một cuộc trò chuyện mới**, vì trò chuyện quá dài thì trang bị treo.
   - Chỉ gửi tranh kế tiếp khi tranh trước đã vẽ xong. Lúc đang vẽ, nút gửi đổi thành `aria-label="Ngừng"`. Gửi chồng thì ChatGPT bỏ qua tranh.
-  - Hết lượt vẽ thì ChatGPT báo "giới hạn" hoặc "hạn mức"; lượt tự mở lại sau khoảng một ngày.
+  - Hết lượt vẽ thì ChatGPT báo "giới hạn" hoặc "hạn mức"; lượt tự mở lại sau khoảng 9 giờ (17/11). Lượt vẽ của tài khoản dùng chung giữa mọi session (vẽ tranh, khung đầu cho tranh động), nên nhắn root trước khi bắt đầu một đợt để root xếp lượt.
 - **Lấy ảnh về:** đọc thẳng dữ liệu cuộc trò chuyện, không cuộn trang.
   1. Lấy accessToken từ `/api/auth/session`. Chỉ giữ trong biến của trang, **không bao giờ in ra**.
   2. Đọc `/backend-api/conversation/<id>`, ghép tin "Mã tranh: X" với các `image_asset_pointer` trong câu trả lời phía sau.
@@ -304,6 +304,8 @@ Gặp vấn đề mới mà đã tìm ra cách giải (nhất là cách được
 | Máy không có Pillow để thu nhỏ ảnh | Dùng System.Drawing trong PowerShell (HighQualityBicubic); bìa thu nhỏ 600×800 trước khi `import-image` | 09/11 |
 | Lệnh JS tải cả đợt (khoảng 18 ảnh) chạy quá 45 giây, công cụ trình duyệt báo hết giờ; trang vẫn tải tiếp nhưng không trả kết quả | Gọi hàm tải mà không `await`; hàm ghi kết quả vào `window.__dlres`, đọc lại sau ít giây. Đếm file trong Downloads để xác nhận đủ | 09/11 |
 | Một lô chờ trình duyệt dài quá khoảng 2 phút thì mất kết nối | Mỗi lô chờ tối đa khoảng 110 giây, rồi đọc tiến độ trong `window.__prog`. Mất kết nối thì chỉ đọc lại trạng thái một lần, không gửi lại thao tác | 09/11 |
+| Vòng tự tải trong trang (`setInterval` gọi `/backend-api/conversation` 20 giây một lần) cứ đọc mãi cho một tranh bị ChatGPT từ chối vì hết lượt, hàng giờ liền: bị trả 429 "Too many requests", trang treo rồi tự tải lại (L2T2, b397) | Đọc dữ liệu cuộc trò chuyện cách nhau ít nhất 60 giây. Dừng hẳn sau 10 phút có mã chờ mà không có ảnh mới. Trang báo "giới hạn" hay "hạn mức" thì dừng ngay, không đọc lại; gặp 429 cũng dừng. Vòng gửi tranh cũng kiểm "giới hạn" sau mỗi lần vẽ và không đánh dấu tranh bị từ chối là xong. Hết lượt thì chờ khoảng 9 giờ; lượt dùng chung giữa các session | 17/11 |
+| Cuộc trò chuyện có khoảng 16 ảnh trở lên làm trang treo rồi tự tải lại; tải lại thì mất các hàm JS đã dán và vòng gửi tranh, mã tab cũng đổi | Kiểm `typeof window.RUN` trước khi tin là vòng đang chạy. Đọc tranh nào đã vẽ qua `/backend-api/conversation`, rồi chuyển phần còn lại sang cuộc trò chuyện mới | 17/11 |
 
 ### Tranh động (Flow)
 
