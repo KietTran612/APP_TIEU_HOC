@@ -48,7 +48,9 @@ _RIME_LESSON_TYPES = ("van_moi", "on_tap_van", "on_tap_cuoi_ki")
 # Trang tập đọc không có số bài: nhãn trong danh sách bài là tên loại trang.
 _READING_LABELS = {"cau_do": "Câu đố", "tap_chep_chinh_ta": "Chính tả", "tu_ngu": "Từ ngữ", "ngu_phap": "Ngữ pháp",
                    "tap_lam_van": "Tập làm văn"}
-_THEMES_LOP2 = ("Nhà trường", "Gia đình", "Đất nước ta")
+# Chủ điểm lớp 2: tập một (tuần 1–17) rồi tập hai (tuần 18–33, trang bìa chủ điểm tr.3, 43, 100).
+_THEMES_LOP2 = ("Nhà trường", "Gia đình", "Đất nước ta", "Thiếu nhi", "Nhân dân ta", "Bác Hồ")
+_WEEKS_LOP2 = range(1, 36)
 
 
 class BuildError(Exception):
@@ -666,8 +668,8 @@ class _Builder:
             raise self.error(_HEAD, f"bài tập đọc cần trường 'week' (số tuần): {week!r}")
         extra = {"grade": grade}
         if grade == 2:
-            if not 1 <= week <= 17:
-                raise self.error(_HEAD, f"tuần lớp 2 phải từ 1 đến 17: {week!r}")
+            if week not in _WEEKS_LOP2:
+                raise self.error(_HEAD, f"tuần lớp 2 phải từ 1 đến 35: {week!r}")
             if src.get("theme") not in _THEMES_LOP2:
                 raise self.error(_HEAD, f"bài lớp 2 cần trường 'theme' trong {_THEMES_LOP2}: {src.get('theme')!r}")
             extra["theme"] = src["theme"]

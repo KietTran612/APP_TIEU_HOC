@@ -2,12 +2,20 @@
 
 import unittest
 
-from tapdoc.books import appendix_book, load_books, part_of
+from tapdoc.books import appendix_book, grade_of, load_books, part_of, spells
 
 
 class BooksTest(unittest.TestCase):
     def test_books_in_program_order(self):
-        self.assertEqual([b["book_id"] for b in load_books()], ["tv1_t1_1990", "tv1_t2_1996", "tv2_t1_2001"])
+        self.assertEqual([b["book_id"] for b in load_books()], ["tv1_t1_1990", "tv1_t2_1996", "tv2_t1_2001", "tv2_t2_2002"])
+
+    def test_tap2_book4(self):
+        """Tiếng Việt 2 tập hai là "Bé tập đọc 4": lớp 2, không đánh vần, Phụ lục của tập một lớp 1."""
+        book = next(b for b in load_books() if b["book_id"] == "tv2_t2_2002")
+        self.assertEqual(book["title"], "Bé tập đọc 4")
+        self.assertEqual(grade_of("tv2_t2_2002"), 2)
+        self.assertFalse(spells("tv2_t2_2002"))
+        self.assertEqual(appendix_book("tv2_t2_2002"), "tv1_t1_1990")
 
     def test_tap2_uses_tap1_appendix(self):
         self.assertEqual(appendix_book("tv1_t2_1996"), "tv1_t1_1990")

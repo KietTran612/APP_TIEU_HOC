@@ -71,8 +71,21 @@ class Grade2IndexTest(unittest.TestCase):
             build_lesson(src)
 
     def test_grade2_week_range(self):
+        """Tập hai lớp 2 in tuần 18–33 (thiết kế TV2 tập hai mục 4.1): tuần lớp 2 hợp lệ 1–35."""
+        entry = index_of(grade2_src([{"type": "title", "text": "x"}], week=18, theme="Thiếu nhi"))
+        self.assertEqual((entry["week"], entry["theme"]), (18, "Thiếu nhi"))
+        self.assertEqual(index_of(grade2_src([{"type": "title", "text": "x"}], week=35))["week"], 35)
+        for week in (0, 36):
+            with self.assertRaises(BuildError, msg=week):
+                build_lesson(grade2_src([{"type": "title", "text": "x"}], week=week))
+
+    def test_grade2_new_themes(self):
+        """Ba chủ điểm của tập hai in trên trang bìa chủ điểm tr.3, 43, 100."""
+        for theme in ("Thiếu nhi", "Nhân dân ta", "Bác Hồ"):
+            self.assertEqual(index_of(grade2_src([{"type": "title", "text": "x"}], week=20, theme=theme))["theme"],
+                             theme)
         with self.assertRaises(BuildError):
-            build_lesson(grade2_src([{"type": "title", "text": "x"}], week=18))
+            build_lesson(grade2_src([{"type": "title", "text": "x"}], theme="Quê hương"))
 
 
 def _all_spells(node, found):

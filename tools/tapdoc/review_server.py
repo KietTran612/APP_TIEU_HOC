@@ -27,7 +27,7 @@ _VALID_REVIEW_STATUSES = frozenset({"dat", "khong_dat", "cho_duyet"})
 _MAX_BODY_BYTES = 1_000_000
 # Thư mục ảnh scan của từng quyển trong bản clone sách gốc (ngoài git, chỉ để đối chiếu trên máy).
 SCAN_BOOK_DIRS = {"tv1_t1_1990": "Tiếng Việt 1 (tập 1 1990)", "tv1_t2_1996": "Tiếng Việt 1 (tập 2 1996)",
-                  "tv2_t1_2001": "Tiếng Việt 2 (tập 1 2001)"}
+                  "tv2_t1_2001": "Tiếng Việt 2 (tập 1 2001)", "tv2_t2_2002": "Tiếng Việt 2 (tập 2 2002)"}
 
 
 def _collect_shown(node, found) -> None:
