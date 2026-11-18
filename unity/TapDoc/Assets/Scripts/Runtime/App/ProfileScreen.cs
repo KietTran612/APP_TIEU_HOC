@@ -348,14 +348,21 @@ namespace TapDoc
             _grid.constraintCount = bestCols;
         }
 
-        /// <summary>Gà con chào (bong bóng và tiếng hd_chao_be nếu đã có file).</summary>
+        /// <summary>
+        /// Gà con chào (bong bóng và tiếng hd_chao_be nếu đã có file). Tiếng chỉ phát một lần mỗi lần vào màn: mở phần
+        /// tạo bé rồi bấm Về thì bong bóng hiện lại nhưng không đọc lại.
+        /// </summary>
         private void Greet()
         {
             if (Mascot == null) return;
             Mascot.Cheer(UiText.Greeting, keepBubble: true);
             GreetingAudio = _app.Assets.Audio(SystemAudio.hd_chao_be) != null ? SystemAudio.hd_chao_be : null;
-            if (GreetingAudio != null) _ = _app.Speech.PlayAsync(GreetingAudio);
+            if (GreetingAudio == null || _greeted) return;
+            _greeted = true;
+            _ = _app.Speech.PlayAsync(GreetingAudio);
         }
+
+        private bool _greeted;
 
         /// <summary>Vào Tủ sách sau khi chọn bé; gà con rủ "Mình cùng học nhé!" nếu đã có tiếng.</summary>
         private void GoLearn(string profileId)
