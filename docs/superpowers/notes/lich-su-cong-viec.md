@@ -12,6 +12,20 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ## 18/11/2026
 
+- **[L2T2] vẽ tranh — 11 tranh còn lại (b397, b403–b429), c9c0903:** đủ 41/41 tranh TV2 tập hai, cho_duyet/chatgpt_tam. Root soát tờ kiểm tra: đúng nội dung, không vũ khí, không chữ; đủ 11 file; commit chỉ 11 dòng. Chi tiết để chủ dự án xem: b403 vạch nắp lọ mực, b421 Khải Hoàn Môn, b429 đỉnh núi hình đầu ngựa.
+- **Root — 3 tranh giao diện bằng ChatGPT (e18c029):** bàn tay chỉ (nền trong suốt, thêm lề để đầu ngón trùng pivot HintHand), cảnh chào sân trường 16:9, cửa sổ nghỉ mắt 4:3 (không vẽ gà con vì mascot đứng trước).
+- **[Chung] UI — lắp 3 tranh (e5236ca):** chóp ngón chạm viền elip nội tiếp của đích (nút tròn trước hở ~30 px trên iPad), hướng ngón 138°; cảnh chào phủ kín màn (EnvelopeParent), có tranh thì ẩn nét đất. Test: Hand_FitsAllSizes + Nudge_* 4/4, WelcomeTests 4/4 (1 mới), ProfileScreenTests 9/9, RestAndParentTests 9/9, ParentScreenTests 12/12, IdleNudgeTests 8/8. Root xem ảnh phone_20x9 và ipad_43: đạt.
+- **[Chung] UI — 7 mã tiếng mới phát đúng chỗ (3df36c0):** GuideVoiceTests 3/3 (hd_chao_be một lần mỗi lần vào màn, mở tạo bé rồi Về không chào lại; hd_cung_hoc khi chọn bé; hd_nghi_mat; 4 khen_* theo cách làm, sau cảnh hoa bay). WelcomeTests 4/4, ProfileScreenTests 9/9, LessonStickerTests 6/6, RestAndParentTests 9/9, PraiseAndStickerTests 9/9. Root kiểm diff: đạt. Nâng cấp UI chỉ còn chờ chủ dự án duyệt.
+- **[L1] tranh động — b12 quả me (57b8d07):** khung đầu ChatGPT, một quả chín xanh → nâu; root xem trước: đạt, cho_duyet. b219 lần 3 (L2) gửi trên /u/2 lúc 09:41 theo lời chủ dự án "Cho chạy ／u/2".
+- **[L2] tranh động — b173 lần 3 không đạt (3edbea4):** chuyển cảnh mờ 4,5–5,4 s; hết 3 lượt, chờ chủ dự án chọn tranh tĩnh hay loop đứng yên.
+
+- **Ngoặc kép giữa câu — sửa 36 mã (root điều phối, 08:30–09:10):**
+  - [L2] nội dung: 30 mã TV2 tập 1, chữ đọc bỏ ngoặc kép bằng ngoac_kep_lop2.py kiểu a (4990a01).
+  - [L1] nội dung: 6 mã lớp 1 (696c375), gồm 2 mã ngoặc cong cau_b78_02 và cau_b78_03. Trước đây máy nghe mất hẳn phần trong ngoặc.
+  - Root nhận dạng lại cả 36 mã: không còn tiếng chèn. Thêm nghe kỹ 2 mã: cau_b176_04 ("nhé" nghe "nha", có từ trước) và cau_b146_13 ("Vểnh" nghe "Vỉnh").
+  - Root kiểm cả hai commit: đúng bộ mã dòng/override, phần còn lại của settings giữ nguyên, phần chủ dự án sửa dở nằm ngoài. 36 mp3 đi theo gói bosung.
+- **[L2] nội dung — 7514730:** van_thay trong sua_hoi_nga_lop2.py. Khi ghép thiếu tieng_X thì dùng van_X; đây là thay đổi 16/11 trước đó chưa commit. Root chạy lại 4 test mới: đạt.
+
 - **[L2T2] nội dung — âm thanh TV2 tập 2 mục 371–402 (đợt 3):**
   - 791 mã cho_duyet (760e607), 43 mã cài bản thử root chọn:
     - 28 mã bản thử khớp hẳn, gồm 2 mã cao độ: cau_b376_06 ghép "cả" từ tieng_car, cau_b373_04 chậm −25%;
