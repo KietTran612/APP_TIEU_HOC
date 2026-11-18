@@ -12,11 +12,11 @@
 | Tranh | 41 tranh `chua_co`, danh sách đã gửi root (`content/requests/images_tv2_t2_dot_1..4.md`, ngoài git). Bìa `img_bia_tv2_t2_2002` đã có (216e923, `[Chung]` UI) |
 | Âm thanh | **Xong 18/11**, 4 đợt HoaiMy: 3147 mã chỉ của tập hai đều `cho_duyet`, không thiếu mp3. Đợt 1–2 (305–370) 2de90da, đợt 3 (371–402) 760e607, đợt 4 (403–434) 9dfe844. Root đã nhận dạng từng đợt và so với giọng NamMinh; 168 bản thử được cài; các mã "giữ cũ" và "nghe kỹ" nằm trong danh sách nghe của chủ dự án (root giữ, `TapDocSoat/danh_sach_chu_du_an.md`) |
 | Media | Chưa đóng gói. Root chạy `bosung` một lần cho mọi session; session này **không** chạy `bosung` hay `pack` |
-| Unity | **Chưa chạy.** `BookScreenTests`, `ParentScreenTests` (4 quyển), smoke `Grade2Tap2LessonSmokeTests` (4 đợt); chờ root xếp lượt Unity |
+| Unity | **Xanh 18/11.** EditMode 37/37 (`DataTests`, `BookShelfTests`, `LessonRepositoryTests`); PlayMode 39/39 (`Grade2Tap2LessonSmokeTests` 4 đợt, `BookScreenTests`, `ParentScreenTests`, `LessonPathTests`, `LessonListPartsTests`). Mọi mp3 và tranh đã có `.meta` |
 
 ## 2. Làm tiếp
 
-1. **Unity** (chỉ khi root nhắn tới lượt; đóng Editor): `python tools/run_unity_tests.py playmode --filter BookScreenTests`, `--filter ParentScreenTests`, `--filter Grade2Tap2LessonSmokeTests`. Hỏng ở màn dùng chung thì báo root, không tự sửa.
+1. **Unity**, chạy lại khi nội dung đổi (chỉ khi root nhắn tới lượt; đóng Editor): `cd tools && python run_unity_tests.py playmode --filter "TapDoc.Tests.Grade2Tap2LessonSmokeTests;TapDoc.Tests.BookScreenTests;TapDoc.Tests.ParentScreenTests"`. Hỏng ở màn dùng chung thì báo root, không tự sửa.
 2. Khi tranh về đủ: `python -m tapdoc validate` (không `--allow-missing`).
 3. **Làm lại âm thanh một mã** (chỉ khi root giao lượt tts; cả máy chỉ một tiến trình đọc):
    - Tạo bản thử ngoài danh mục: `python tools/lop2/ban_thu_lop2.py tao <thư mục> MÃ:cham#25=25 MÃ:ghep`. Ghép theo phần cho sẵn: `MÃ:ghep#nhãn=doc:…|tieng_x|,|doc:…`. Chữ số được giữ thành phần `doc:` (75dab62).
