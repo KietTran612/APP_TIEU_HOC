@@ -39,6 +39,16 @@ def join_parts(text: str) -> list[str]:
     return out
 
 
+def van_thay(parts: list[str], has) -> list[str]:
+    """Tiếng bắt đầu bằng nguyên âm ("em", "ông") có file ở mã vần `van_*`: thay `tieng_X` thiếu file bằng `van_X`
+    khi `van_X` có file (`has(mã)` → có file). Tiếng đã có file, dấu "," và tiếng thiếu cả hai giữ nguyên."""
+    out = []
+    for p in parts:
+        van = "van_" + p.removeprefix("tieng_")
+        out.append(van if p.startswith("tieng_") and not has(p) and has(van) else p)
+    return out
+
+
 def main(argv) -> int:
     action, ids = argv[0], argv[1:]
     rows = load_rows(MANIFEST)
@@ -65,7 +75,11 @@ def main(argv) -> int:
                 print(f"{i}: chỉ một tiếng — đọc như tiếng lẻ (\"X, X.\" giữ tiếng đầu), không ghép")
                 bad += 1
                 continue
-            missing = [p for p in parts if p != "," and not (p in by_id and (audio / f"{p}.mp3").is_file())]
+            def has(p):
+                return p in by_id and (audio / f"{p}.mp3").is_file()
+
+            parts = van_thay(parts, has)
+            missing = [p for p in parts if p != "," and not has(p)]
             if missing:
                 print(f"{i}: thiếu tiếng {missing} — không ghép")
                 bad += 1
