@@ -161,7 +161,8 @@ def update_audio_manifest(results: list[BuildResult], old_rows: list[dict], audi
         status = _status(file_exists, old.get("status"))
         note = old.get("ghi_chu", "")
         old_text = old.get("text")
-        if file_exists and old_text is not None and _same_text_key(old_text) != _same_text_key(text):
+        same_text = old_text is not None and _same_text_key(old_text) == _same_text_key(text)
+        if file_exists and old_text is not None and not same_text:
             status = STATUS_BAD
             note = _with_changed_note(note)
         rows.append({
@@ -171,7 +172,8 @@ def update_audio_manifest(results: list[BuildResult], old_rows: list[dict], audi
             "file": f"audio/{audio_id}.mp3",
             "source": old.get("source", ""),
             "status": status,
-            "can_nghe_ky": careful_listen(text),
+            # dấu "nghe kỹ" đặt tay (root/chủ dự án) được giữ khi chữ không đổi
+            "can_nghe_ky": careful_listen(text) or (same_text and old.get("can_nghe_ky") is True),
             "ghi_chu": note,
             "bai": sorted(lessons),
         })

@@ -216,6 +216,25 @@ class AudioManifestTest(TempDirCase):
         self.assertIs(by["am_dd"]["can_nghe_ky"], False)
         self.assertIs(by["tieng_cuwr"]["can_nghe_ky"], True)
 
+    def test_manual_careful_flag_kept_when_text_unchanged(self):
+        # Root/chủ dự án đặt tay can_nghe_ky (mã máy nghe lệch); dựng lại danh mục không được xoá dấu đó.
+        touch(self.audio_dir, "am_dd")
+        rows = update_audio_manifest(
+            [self.res13],
+            [{"id": "am_dd", "status": "cho_duyet", "text": "đờ", "can_nghe_ky": True, "ghi_chu": "nghe kỹ"}],
+            self.audio_dir)
+        by = {r["id"]: r for r in rows}
+        self.assertIs(by["am_dd"]["can_nghe_ky"], True)
+
+    def test_manual_careful_flag_dropped_when_text_changed(self):
+        # Chữ đổi thì dấu cũ không còn đúng cho lời đọc mới: chỉ còn careful_listen của chữ mới.
+        rows = update_audio_manifest(
+            [self.res13],
+            [{"id": "am_dd", "status": "cho_duyet", "text": "đa", "can_nghe_ky": True}],
+            self.audio_dir)
+        by = {r["id"]: r for r in rows}
+        self.assertIs(by["am_dd"]["can_nghe_ky"], False)
+
     def test_sorted_by_id_and_covers_lessons_and_system(self):
         rows = update_audio_manifest([self.res13], [], self.audio_dir)
         ids = [r["id"] for r in rows]
