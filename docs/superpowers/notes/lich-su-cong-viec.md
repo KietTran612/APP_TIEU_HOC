@@ -12,6 +12,10 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ## 18/11/2026
 
+- **[L2T2] nội dung — âm thanh TV2 tập hai mục 403–434 (đợt 4), 9dfe844:** 710 mã cho_duyet; 37 mã cài bản thử root chọn (30 khớp hẳn gồm 4 mã cao độ tả/xã/Hảo/vả, 7 nghe kỹ); 37 mã giữ bản cũ nghe kỹ. Toàn TV2 tập hai 3147 mã cho_duyet. Root kiểm: đúng tập dot4, 116 override không xoá, 37 mp3 khớp từng byte, phần chủ dự án nằm ngoài.
+- **Root — soát âm đợt 4:** nghi 238, NamMinh 166 mã → làm lại 68, nghe kỹ 33, do máy nghe 67, tiếng lẻ 70 (không hỏi/ngã nào ra huyền). Bản thử 149 bản nhận dạng; đệm lặng gỡ câu ảo cau_b406_22. tieng_ix chốt giữ bản cũ (mọi cách đều ra sắc).
+- **Root — d7f6842:** update_audio_manifest giữ dấu can_nghe_ky đặt tay khi chữ không đổi ([L2T2] phát hiện); 2 test mới, 991 test Python OK.
+
 - **[L2T2] vẽ tranh — 11 tranh còn lại (b397, b403–b429), c9c0903:** đủ 41/41 tranh TV2 tập hai, cho_duyet/chatgpt_tam. Root soát tờ kiểm tra: đúng nội dung, không vũ khí, không chữ; đủ 11 file; commit chỉ 11 dòng. Chi tiết để chủ dự án xem: b403 vạch nắp lọ mực, b421 Khải Hoàn Môn, b429 đỉnh núi hình đầu ngựa.
 - **Root — 3 tranh giao diện bằng ChatGPT (e18c029):** bàn tay chỉ (nền trong suốt, thêm lề để đầu ngón trùng pivot HintHand), cảnh chào sân trường 16:9, cửa sổ nghỉ mắt 4:3 (không vẽ gà con vì mascot đứng trước).
 - **[Chung] UI — lắp 3 tranh (e5236ca):** chóp ngón chạm viền elip nội tiếp của đích (nút tròn trước hở ~30 px trên iPad), hướng ngón 138°; cảnh chào phủ kín màn (EnvelopeParent), có tranh thì ẩn nét đất. Test: Hand_FitsAllSizes + Nudge_* 4/4, WelcomeTests 4/4 (1 mới), ProfileScreenTests 9/9, RestAndParentTests 9/9, ParentScreenTests 12/12, IdleNudgeTests 8/8. Root xem ảnh phone_20x9 và ipad_43: đạt.
