@@ -12,6 +12,8 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ## 18/11/2026
 
+- **[L2T2] — TV2 tập hai hoàn tất phía nội dung (74d08dc ghi chú resume):** smoke Unity EditMode 37/37 (DataTests, BookShelfTests, LessonRepositoryTests), PlayMode 39/39 (Grade2Tap2LessonSmokeTests 4 tuần-khối, BookScreenTests, ParentScreenTests 12/12, LessonPathTests, LessonListPartsTests); batchmode tạo .meta cho 11253 mp3 + 476 tranh; `tapdoc validate` (không --allow-missing) OK. Root đọc TestOutput và chạy lại validate: đạt. Chỉ còn bosung media cuối ngày.
+
 - **[L2T2] nội dung — âm thanh TV2 tập hai mục 403–434 (đợt 4), 9dfe844:** 710 mã cho_duyet; 37 mã cài bản thử root chọn (30 khớp hẳn gồm 4 mã cao độ tả/xã/Hảo/vả, 7 nghe kỹ); 37 mã giữ bản cũ nghe kỹ. Toàn TV2 tập hai 3147 mã cho_duyet. Root kiểm: đúng tập dot4, 116 override không xoá, 37 mp3 khớp từng byte, phần chủ dự án nằm ngoài.
 - **Root — soát âm đợt 4:** nghi 238, NamMinh 166 mã → làm lại 68, nghe kỹ 33, do máy nghe 67, tiếng lẻ 70 (không hỏi/ngã nào ra huyền). Bản thử 149 bản nhận dạng; đệm lặng gỡ câu ảo cau_b406_22. tieng_ix chốt giữ bản cũ (mọi cách đều ra sắc).
 - **Root — d7f6842:** update_audio_manifest giữ dấu can_nghe_ky đặt tay khi chữ không đổi ([L2T2] phát hiện); 2 test mới, 991 test Python OK.
