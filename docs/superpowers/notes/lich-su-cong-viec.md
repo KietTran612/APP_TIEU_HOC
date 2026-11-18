@@ -12,6 +12,27 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ## 18/11/2026
 
+- **[L2T2] nội dung — âm thanh TV2 tập 2 mục 371–402 (đợt 3):**
+  - 791 mã cho_duyet (760e607), 43 mã cài bản thử root chọn:
+    - 28 mã bản thử khớp hẳn, gồm 2 mã cao độ: cau_b376_06 ghép "cả" từ tieng_car, cau_b373_04 chậm −25%;
+    - 11 mã cài kèm "nghe kỹ";
+    - 4 mã vòng 2: 3 câu hỏi ghép lại có số đầu câu, cau_b395_07.
+  - Giữ bản cũ 60 mã, nghe kỹ 53 mã: đưa vào danh sách chủ dự án nghe.
+  - tieng_ix ("ĩ") nghe như sắc, 2 bản thử không đỡ; đợt 4 thử thêm "ỹ".
+  - Công cụ: ghép từng tiếng giữ chữ số "2." (75dab62). Test: 16 test lớp 2 (bản thử + đo cao độ) đạt.
+  - Root kiểm trước commit:
+    - dựng lại index tạm, stat trùng;
+    - 791 mã đúng bằng danh sách đợt 3, không mp3 rỗng;
+    - 33 dòng và 4 cách đọc riêng của chủ dự án nằm ngoài commit;
+    - 43 mp3 khớp từng byte.
+- **Root — soát âm đợt 3:**
+  - Nhận dạng 791 mã, nghi 317. So NamMinh 237 mã, chia làm lại 101, nghe kỹ 53, do máy nghe 83, tiếng lẻ 75.
+  - Chấm thanh 90 tiếng lẻ bằng mẫu đã duyệt: không tiếng hỏi/ngã nào ra huyền.
+  - Ghi thêm 3 cách vào quy trình chuẩn §12:
+    - đệm 0,5 s lặng để Whisper hết nghe ra câu ảo;
+    - chấm thanh tiếng lẻ;
+    - ghép phải giữ số đầu câu.
+
 - **[L2T2] nội dung — âm thanh TV2 tập 2 mục 305–370 (đợt 1–2):**
   - Đủ 1646 mã cho_duyet (2de90da); không còn mã nào chờ tạo lại.
   - Có 88 mã cài bản thử root chọn:
