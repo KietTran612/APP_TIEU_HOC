@@ -12,6 +12,10 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ## 18/11/2026
 
+- **[L1] tranh động — ngày 18/11 (57b8d07 … b9d6e0d, df93c0c §15):** 30 clip root xem trước và nhận (b12, b13, b105 rước đèn, b68, b101, b82 con kênh, b15, b20, b24, b25, b26, b28, b31, b33, b34, b35, b36, b43 củ sắn, b43 khăn, b44, b47, b49, b52, b54, b55, b57 chim non, b58 gà mẹ, b58 cái túi, b65 tranh mới, b110 quê ngoại). Tranh tĩnh: b57 con dơi. Hết credit /u/2, /u/3, /u/4, /u/6. Hàng 19/11: cinemagraph lượt cuối cho các mã dừng, b58 gửi thư lượt 2, b115/b119 tranh mới.
+- **[L2] tranh động — ngày 18/11 (d2ec938, 36b765f, 013f635, 3fa0398):** b219, b284, b267, b261 (bản lần 2), b198, b250, b173 lượt cuối → cho_duyet; b274 lượt cuối gửi /u/1 18:47.
+- **Root — quyết định 18/11:** chủ dự án giao root kiểm tra và duyệt luôn tới khi app hoàn chỉnh; root tự chốt các mục trước để chủ dự án chọn (clip dừng: một lượt cinemagraph cuối rồi tranh tĩnh). Tranh vũ khí: vẽ lại b65 (efbada3), b119, b115 (84a49b5); b252 tàu hải quân chủ dự án chốt giữ nguyên. Đề xuất và duyệt spec phát tranh động trong app (dc8da76, kế hoạch 12d448c, Task 1 e7be8e9).
+
 - **[L2T2] — TV2 tập hai hoàn tất phía nội dung (74d08dc ghi chú resume):** smoke Unity EditMode 37/37 (DataTests, BookShelfTests, LessonRepositoryTests), PlayMode 39/39 (Grade2Tap2LessonSmokeTests 4 tuần-khối, BookScreenTests, ParentScreenTests 12/12, LessonPathTests, LessonListPartsTests); batchmode tạo .meta cho 11253 mp3 + 476 tranh; `tapdoc validate` (không --allow-missing) OK. Root đọc TestOutput và chạy lại validate: đạt. Chỉ còn bosung media cuối ngày.
 
 - **[L2T2] nội dung — âm thanh TV2 tập hai mục 403–434 (đợt 4), 9dfe844:** 710 mã cho_duyet; 37 mã cài bản thử root chọn (30 khớp hẳn gồm 4 mã cao độ tả/xã/Hảo/vả, 7 nghe kỹ); 37 mã giữ bản cũ nghe kỹ. Toàn TV2 tập hai 3147 mã cho_duyet. Root kiểm: đúng tập dot4, 116 override không xoá, 37 mp3 khớp từng byte, phần chủ dự án nằm ngoài.
