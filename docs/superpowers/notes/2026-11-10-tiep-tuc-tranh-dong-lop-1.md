@@ -444,3 +444,28 @@ Bài học 17/11:
 - **Bản đồ b97:** cho biển gợn sóng thì Veo vẽ lại cả biển, mất đảo, tối cả tranh. Chỉ cho sao Hà Nội sáng lên thì đạt.
 - **"Giữ yên giây cuối" không phải lúc nào cũng được.** b136 (sỏi lơ lửng) và b105 cầu trượt vẫn diễn quá rồi giật về.
 - **Thao tác Flow:** tải nhiều ảnh một lần (tối đa khoảng 8, dưới 10 MB) qua "Upload media". Chọn khung bằng hàm __pick (ô tìm, mục, "Add to prompt"). Nút gửi có thể xê dịch, nên đọc lại toạ độ bằng __sendRect trước khi bấm.
+
+## 15. Kết quả ngày 18/11 (/u/2 → /u/3 → /u/4 → /u/6)
+
+Chạy 09:34–18:27, dùng hết credit cả bốn tài khoản (/u/2 tới 15:25:25; /u/3 15:45:25–16:15:58; /u/4 16:36:00–17:00:00; /u/6 17:42:15–18:27:16). Mỗi lần đổi tài khoản cách lần gửi trước ≥20 phút; gửi xen kẽ với L2 (cùng một Edge) cách ≥6 phút. Mỗi clip root xem trước rồi mới commit, chỉ dòng của L1, qua chỉ mục tạm. Commit trong ngày: 57b8d07 … b9d6e0d (31 commit, `git log --since=2026-11-18 --grep "tranh động lớp 1"`). Tờ khung soát nằm ở `side-session-notes/.../tranh-dong/L1-*-1811-*.jpg`.
+
+**Chuyển cho_duyet (ghi chú từng clip trong video_manifest):** b12 quả me, b13 củ từ, b105 rước đèn (cinemagraph), b68 cô giáo, b101 mèo chuột, b82 con kênh (lần 2), b15 chiếc lá, b20 bó kê, b24 hoa sen, b25 ghế gỗ, b26 gà gáy, b28 con voi, b31 con thỏ (cinemagraph), b33 đi chợ (cinemagraph), b34 bụi tre, b35 đĩa quả, b36 phố xá, b43 củ sắn, b43 khăn rằn, b44 quả mận, b47 số chín, b49 đón bà, b52 que kem, b54 xem phim, b55 chùm vải, b57 chim non (cinemagraph, kèm điểm trừ), b58 gà mẹ, b58 cái túi, b65 bộ đội (tranh mới không súng), b110 quê ngoại (cinemagraph lượt cuối, kèm điểm trừ người giặt). Theo root, ghi chú chỉ tả clip và điểm trừ, không còn câu "chủ dự án chọn" (0eeebcd).
+
+**Dừng / còn khong_dat:**
+- Hết 3 lượt: b112 (loop 18/11, 27b7da7); b57 con dơi (6c0be7e, dùng tranh tĩnh).
+- Dừng có phương án: b42 bàn ghế, b48 chợ ngan, b51 com pa.
+- Còn lượt: b58 gửi thư (lần 1 mất lá thư ở khung cuối; lượt 2 làm loop giữ dáng, lá thư nằm yên nửa trong khe, bé chỉ cười rộng hơn).
+- Root giao làm sau, mỗi mã một lượt cinemagraph cuối (khung đầu và cuối là tranh gốc, chỉ ánh sáng dịu, nước hay mây có sẵn, lá ở xa người): b112, b141, b114 khai hoang, b110 mũi khoan, b82 học sinh, b105 cầu trượt, b136, b42, b48, b51. b110 quê ngoại đã chạy lượt này lúc 18:27 và được nhận.
+- Tranh có vũ khí đã được root vẽ lại 18/11 (b65, b115, b119; ảnh trong images/, media ngoài git): làm cinemagraph từ tranh mới, pad mới ở scratchpad r3/s18/pad18_*. b65 xong; b115, b119 chưa làm. Khung c17 cũ của b65 bỏ.
+
+**Bài học 18/11:**
+- **Người đang dở bước** (đi, chạy, bước tới): build hay loop đều hỏng (tới muộn rồi bước tiếp, hoặc đi tại chỗ). Dùng cinemagraph: "A cinemagraph of this illustration: the whole picture stays perfectly still like a printed photograph; the only movement is …", không nhắc người. Đạt ở b105, b31, b33, b36, b49, b54, b65.
+- **Bớt chuyển động trên người thì Veo không vẽ lại người** (b52: lượt 1 cho tay nhún thì vẽ lại mặt; lượt 2 chỉ cười rộng hơn thì giữ đúng). Chim non b57: cho vươn cổ, rung cánh thì mọc thêm con, rụt xuống; chỉ cho lá lay mới giữ được.
+- **Khung đầu ChatGPT phải vẽ từ chính tranh gốc, đổi đúng một thứ**, rồi soát bằng cách ghép cạnh và chồng 50/50 với tranh gốc (`r7/sosanh.py`). Khung c17 vẽ hôm 17/11 có cái lệch hẳn (b58 cái túi). Dời ngang giữ nền tốt; bảo "nhỏ đi 10%" thì ChatGPT có thể thu gần một nửa (b57 dơi lần 1), phải nói rõ "the SAME SIZE".
+- **Lời nhắc:** không viết breeze, wind, paper, edges, margins, khăn, vạt áo (Veo vẽ vệt gió, khăn bay như cờ). "Leaves sway" hay thành lá rời cành bay qua (b54, b57, b65); "light flickers" làm màn ảnh bạc mờ (b54). Ánh sáng đặt lên vật nhỏ người cầm thì vật đó thành đốm sáng (b49). Bụi cây sát người đừng cho lay.
+- **Vật bay/trôi** (dơi b57): vỗ cánh thì nhòe, cánh trong suốt; lượn thì quá đà ra ngoài mép. Khung cuối hay lệch tranh, nên chồng khung cuối lên tranh (`r7/lastov.py`) trước khi báo.
+- **Người phụ trong tranh vẫn tự cử động** dù lời nhắc không nhắc tới (người giặt b110 giũ vải trắng rồi nhúng, vải cam khuất 1–4 s). Cinemagraph không giữ yên được người đang làm việc tay; root chấp nhận khi động tác tự nhiên.
+- **Thao tác:** Flow /u/4, /u/6 giao diện tiếng Việt ("Bắt đầu", "Kết thúc", "Tìm kiếm thành phần", "Thêm vào câu lệnh", "Tải nội dung nghe nhìn lên"); helper `r7/flow_helpers.js` dùng được cả hai thứ tiếng. Khi khung soạn dài ra, cú bấm đầu có thể chỉ làm khung mở rộng, hoặc trang cuộn làm nút gửi dời chỗ: kiểm khung soạn trống và có thẻ mới rồi mới tính là đã gửi. Flow có lúc báo "high demand" và hoàn credit sau vài phút. Hộp "không đủ tín dụng" có nút mua thêm: không bấm, chỉ Esc.
+- **Lịch hai phiên trên cùng Edge:** đổi tài khoản phải cách ≥20 phút tính cả lần gửi của phiên kia; báo nhau giờ gửi thật từng lần.
+
+**Credit (tối 18/11):** /u/2, /u/3, /u/4, /u/6 đều 0. /u/3 nạp lại hằng ngày 13:44; /u/4 đặt lại 29/11; /u/6 đặt lại 1/12; /u/2 đặt lại 15/12.
