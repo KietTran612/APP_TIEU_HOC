@@ -5073,14 +5073,14 @@
   },
   {
     "id": "img_ui_canh_chao",
-    "mo_ta": "Cảnh nền màn chọn bé: sân trường làng nét mực rất nhạt (mái ngói, cây phượng, đường đất), không người, không chữ, khổ ngang 16:9, phần giữa và bên phải để trống",
+    "mo_ta": "Cảnh nền màn chọn bé: sân trường làng (lớp học mái ngói bên trái, cây phượng sát mép phải, mặt trời góc trên phải, đường đất và cỏ phía dưới), hoạt hình viền đen, màu phẳng dịu, không người, không chữ, khổ ngang 16:9, phần giữa để trống",
     "bai": [
       "chung"
     ],
     "file": "images/img_ui_canh_chao.png",
-    "source": "",
+    "source": "chatgpt_tam",
     "status": "cho_duyet",
-    "ghi_chu": "hình tạm vẽ bằng ui-icons; chờ tranh ChatGPT (root 18/11)"
+    "ghi_chu": "Root 18/11: tranh ChatGPT (lớp học mái ngói bên trái, cây phượng sát mép phải, giữa để trống); màn chọn bé hiện mờ 30%."
   },
   {
     "id": "img_ui_cai_dat",
@@ -5161,14 +5161,14 @@
   },
   {
     "id": "img_ui_nghi_mat",
-    "mo_ta": "Màn nghỉ mắt: gà con vàng duỗi cánh bên khung cửa sổ nhìn ra cây xanh, nét mực, màu phẳng, không chữ, khổ ngang 4:3",
+    "mo_ta": "Màn nghỉ mắt: cửa sổ gỗ mở hai cánh nhìn ra cây xanh, đồi xa, trời xanh có mây; bậu cửa rộng, chậu cây góc trái, giữa bậu để trống cho gà con (mascot) đứng phía trước; hoạt hình viền đen, màu phẳng dịu, không chữ, khổ ngang 4:3",
     "bai": [
       "chung"
     ],
     "file": "images/img_ui_nghi_mat.png",
-    "source": "",
+    "source": "chatgpt_tam",
     "status": "cho_duyet",
-    "ghi_chu": "hình tạm vẽ bằng ui-icons; chờ tranh ChatGPT (root 18/11)"
+    "ghi_chu": "Root 18/11: tranh ChatGPT. Không vẽ gà con trong tranh vì màn nghỉ mắt đã đặt gà con mascot đứng trước tranh (như ảnh mẫu m5_nghi_mat)."
   },
   {
     "id": "img_ui_nha",
@@ -5216,14 +5216,14 @@
   },
   {
     "id": "img_ui_tay_chi",
-    "mo_ta": "Bàn tay gợi ý khi bé ngồi im: ngón trỏ chỉ lên trái, nét mực, nền giấy",
+    "mo_ta": "Bàn tay gợi ý khi bé ngồi im: ngón trỏ chỉ chéo lên trái, kiểu biểu tượng hoạt hình viền đen dày như bộ img_ui_*, cổ tay áo cam, nền trong suốt; đầu ngón nằm ở 18% từ trái, 14% từ trên (pivot của HintHand)",
     "bai": [
       "chung"
     ],
     "file": "images/img_ui_tay_chi.png",
-    "source": "",
+    "source": "chatgpt_tam",
     "status": "cho_duyet",
-    "ghi_chu": ""
+    "ghi_chu": "Root 18/11: tranh ChatGPT; thêm lề trong suốt trái 201 px, trên 161 px để đầu ngón trùng pivot (.18, .86) của HintHand."
   },
   {
     "id": "img_ui_tiep",
