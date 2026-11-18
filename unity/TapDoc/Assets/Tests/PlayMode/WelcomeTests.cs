@@ -53,6 +53,32 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator Scene_CoversScreen_NoGroundLine()
+        {
+            yield return OpenWithKids(1);
+            var s = Screen();
+            Assume.That(s.Scene, Is.Not.Null, "Chưa có tranh img_ui_canh_chao (gói media) thì bỏ qua");
+            var ground = s.GetComponentsInChildren<Transform>(true).First(t => t.name == "Ground");
+            Assert.IsFalse(ground.gameObject.activeSelf, "Có tranh thì không vẽ nét đất tạm");
+            var app = AppRoot.Instance;
+            foreach (var size in ScreenSizes.All)
+            {
+                var rt = ScreenSizes.Apply(app, size);
+                app.ShowProfiles();
+                yield return null;
+                Canvas.ForceUpdateCanvases();
+                var panel = CanvasRect((RectTransform)Screen().Scene.transform.parent);
+                var scene = CanvasRect((RectTransform)Screen().Scene.transform);
+                Assert.LessOrEqual(scene.xMin, panel.xMin + .5f, $"{size}: tranh phủ mép trái");
+                Assert.GreaterOrEqual(scene.xMax, panel.xMax - .5f, $"{size}: tranh phủ mép phải");
+                Assert.LessOrEqual(scene.yMin, panel.yMin + .5f, $"{size}: tranh phủ mép dưới");
+                Assert.GreaterOrEqual(scene.yMax, panel.yMax - .5f, $"{size}: tranh phủ mép trên");
+                Assert.AreEqual(.3f, Screen().Scene.color.a, .001f, "Tranh mờ 30%");
+                ScreenSizes.Reset(app, rt);
+            }
+        }
+
+        [UnityTest]
         public IEnumerator RecentKid_First_WithHalo()
         {
             yield return OpenWithKids(3);

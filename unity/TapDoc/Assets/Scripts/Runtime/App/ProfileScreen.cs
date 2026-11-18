@@ -220,21 +220,24 @@ namespace TapDoc
             var sceneSprite = _app.Assets.Image(SystemImages.WelcomeScene);
             if (sceneSprite != null)
             {
-                var sceneGo = new GameObject("WelcomeScene", typeof(RectTransform), typeof(Image));
+                // Phủ kín màn (cắt bớt mép tranh theo tỉ lệ màn), không để dải trống hai bên hay trên dưới.
+                var sceneGo = new GameObject("WelcomeScene", typeof(RectTransform), typeof(Image), typeof(AspectRatioFitter));
                 sceneGo.transform.SetParent(_pickPanel.transform, false);
                 var srt = (RectTransform)sceneGo.transform;
-                srt.anchorMin = Vector2.zero;
-                srt.anchorMax = Vector2.one;
-                srt.offsetMin = srt.offsetMax = Vector2.zero;
+                srt.anchorMin = srt.anchorMax = srt.pivot = new Vector2(.5f, .5f);
+                var fitter = sceneGo.GetComponent<AspectRatioFitter>();
+                fitter.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
+                fitter.aspectRatio = sceneSprite.rect.width / sceneSprite.rect.height;
                 Scene = sceneGo.GetComponent<Image>();
                 Scene.sprite = sceneSprite;
-                Scene.preserveAspect = true;
+                Scene.preserveAspect = false;
                 Scene.color = new Color(1f, 1f, 1f, .3f);
                 Scene.raycastTarget = false;
                 sceneGo.transform.SetAsFirstSibling();
             }
             var ground = new GameObject("Ground", typeof(RectTransform), typeof(Image));
             ground.transform.SetParent(_pickPanel.transform, false);
+            ground.SetActive(Scene == null); // nét đất chỉ thay cho tranh khi chưa có tranh
             var grt = (RectTransform)ground.transform;
             grt.anchorMin = new Vector2(0f, 0f);
             grt.anchorMax = new Vector2(1f, 0f);

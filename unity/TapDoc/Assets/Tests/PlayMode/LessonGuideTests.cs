@@ -368,6 +368,12 @@ namespace TapDoc.Tests
                 Assert.IsFalse(next.Contains(CanvasCenter((RectTransform)s.Hand.transform)),
                     $"{size}: thân bàn tay nằm ngoài nút Tiếp (không che biểu tượng)");
                 Assert.IsFalse(s.Hand.GetComponent<Image>().raycastTarget, "Bàn tay không chặn chạm");
+                // Chóp ngón (pivot của bàn tay) chạm viền nút Tiếp tròn: không lấn vào trong, không hở quá 8.
+                Vector2 tip = ((RectTransform)app.Canvas.transform).InverseTransformPoint(s.Hand.transform.position);
+                var off = tip - next.center;
+                var k = Mathf.Sqrt(off.x * off.x / (next.width * next.width / 4f) + off.y * off.y / (next.height * next.height / 4f));
+                var gap = off.magnitude * (1f - 1f / k);
+                Assert.That(gap, Is.InRange(0f, 8f), $"{size}: chóp ngón chạm mép nút (hở {gap:0.0})");
                 ScreenProbe.Save(app.UiCamera, $"TestOutput/screens/{size.Name}/app_lesson_hint.png");
                 LayoutProbe.AssertFits(app.Canvas);
                 ScreenSizes.Reset(app, rt);

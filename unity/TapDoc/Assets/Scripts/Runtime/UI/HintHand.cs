@@ -12,8 +12,11 @@ namespace TapDoc
     {
         public const float Size = 140f;
 
-        /// <summary>Hướng ngón trỏ trong tranh (chỉ lên trái), độ.</summary>
-        private const float ArtPointDegrees = 135f;
+        /// <summary>Khoảng hở giữa chóp ngón (mép viền đen) và mép đích, đơn vị canvas.</summary>
+        public const float TipGap = 2f;
+
+        /// <summary>Hướng ngón trỏ trong tranh (chỉ lên trái), độ; đo trên tranh img_ui_tay_chi 18/11: khoảng 138°.</summary>
+        private const float ArtPointDegrees = 138f;
 
         private Image _image;
         private bool _hasArt;
@@ -67,9 +70,11 @@ namespace TapDoc
                 // về phía giữa màn nên không che đích, và nằm trong khung.
                 var dir = bounds.center - center;
                 dir = dir.sqrMagnitude < 1f ? new Vector2(-1f, 1f).normalized : dir.normalized;
-                var half = (max - min) / 2f;
-                var reach = Mathf.Min(Mathf.Abs(half.x / (dir.x == 0f ? 1e-4f : dir.x)), Mathf.Abs(half.y / (dir.y == 0f ? 1e-4f : dir.y)));
-                var tip = center + dir * (reach + 6f);
+                // Mép đích là hình elip nội tiếp khung: nút tròn thì chóp ngón chạm đúng viền tròn (đo theo góc khung
+                // thì hở xa ở nút tròn); nút chữ nhật bo góc thì chạm gần góc bo.
+                var half = Vector2.Max((max - min) / 2f, Vector2.one);
+                var reach = 1f / Mathf.Sqrt(dir.x * dir.x / (half.x * half.x) + dir.y * dir.y / (half.y * half.y));
+                var tip = center + dir * (reach + TipGap);
                 var pointing = -dir; // từ tay hướng vào đích
                 var angle = Mathf.Atan2(pointing.y, pointing.x) * Mathf.Rad2Deg - ArtPointDegrees;
                 rt.localRotation = Quaternion.Euler(0f, 0f, angle);
