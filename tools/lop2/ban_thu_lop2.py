@@ -17,6 +17,7 @@ Chỉ một tiến trình đọc trên máy: mọi cách gọi bộ đọc, tr�
 """
 import copy
 import json
+import re
 import shutil
 import sys
 import tempfile
@@ -31,7 +32,7 @@ from tapdoc.paths import ROOT, UNITY_RES  # noqa: E402
 from tapdoc.tts_engine import TtsError  # noqa: E402
 from tapdoc.tts_generate import generate_one  # noqa: E402
 from tapdoc.tts_settings import effective_params, load_settings, save_settings, set_override, signature  # noqa: E402
-from tapdoc.viet import tokens  # noqa: E402
+from tapdoc.viet import nfc, tokens  # noqa: E402
 
 CACH = ("cham", "ngat", "cham_ngat", "ghep", "le")
 SLOWER = 20
@@ -78,7 +79,31 @@ def join_parts_for(text: str, audio_dir: Path) -> list[str]:
         raise ValueError(f"thiếu file tiếng để ghép: {missing}")
     if len([p for p in parts if p != ","]) < 2:
         raise ValueError("chỉ một tiếng: dùng cách le, không ghép")
-    return parts
+    return _with_numbers(text, parts)
+
+
+def _with_numbers(text: str, parts: list[str]) -> list[str]:
+    """Chữ số không có file tiếng (`tokens` bỏ qua): chèn "doc:<số>" ngay sau tiếng đứng trước nó; số có dấu câu
+    theo sau ("2. Vì…") thì nghỉ "," trước tiếng kế."""
+    s = nfc(text)
+    toks = tokens(s)
+    at = [k for k, p in enumerate(parts) if p != ","]  # vị trí phần của từng tiếng
+    inserts: dict[int, list[str]] = {}
+    for m in re.finditer(r"\d+(?:[.,]\d+)*\.?", s):
+        before = [k for k, (_, start) in enumerate(toks) if start < m.start()]
+        nxt = next((start for _, start in toks if start > m.start()), None)
+        new = ["doc:" + m.group()]
+        if nxt is not None and (m.group().endswith(".") or any(c in ",.;:?!)…" for c in s[m.end():nxt])):
+            new.append(",")
+        inserts.setdefault(at[before[-1]] + 1 if before else 0, []).extend(new)
+    out: list[str] = []
+    for k in range(len(parts) + 1):
+        for p in inserts.get(k, []) + parts[k:k + 1]:
+            if not (p == "," and (not out or out[-1] == ",")):
+                out.append(p)
+    while out and out[-1] == ",":
+        out.pop()
+    return out
 
 
 def explicit_parts(spec: str, audio_dir: Path) -> list[str]:

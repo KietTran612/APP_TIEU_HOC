@@ -75,6 +75,18 @@ class OverrideTest(TempCase):
         o = bt.override_for(self.r, self.s, "ghep", None, self.audio)
         self.assertEqual(o, {"join": ["tieng_hoa", "tieng_quar"], "join_gap": 0.08})
 
+    def test_ghep_keeps_numbers(self):
+        # chữ số không có file tiếng: ghép giữ bằng phần "doc:" đúng chỗ (root 18/11: 5 câu hỏi mất "2." đầu câu)
+        for t in ("tieng_vif", "tieng_sao", "tieng_khoor", "tieng_vaf"):
+            (self.audio / f"{t}.mp3").write_bytes(fake_mp3(0.3))
+        self.assertEqual(bt.join_parts_for("2. Vì sao?", self.audio),
+                         ["doc:2.", ",", "tieng_vif", "tieng_sao"])
+        self.assertEqual(bt.join_parts_for("Vì sao (khổ 1 và khổ 2).", self.audio),
+                         ["tieng_vif", "tieng_sao", ",", "tieng_khoor", "doc:1", "tieng_vaf", "tieng_khoor", "doc:2"])
+        self.assertEqual(bt.join_parts_for("khổ 1, và khổ", self.audio),
+                         ["tieng_khoor", "doc:1", ",", "tieng_vaf", "tieng_khoor"])
+        self.assertEqual(bt.join_parts_for("Vì sao", self.audio), ["tieng_vif", "tieng_sao"])
+
     def test_ghep_explicit_parts(self):
         # ghép theo danh sách cho sẵn ("|" ngăn phần): dùng mã từ có sẵn, phần "doc:" do bộ đọc đọc
         (self.audio / "tieng_hoa.mp3").write_bytes(fake_mp3(0.3))
