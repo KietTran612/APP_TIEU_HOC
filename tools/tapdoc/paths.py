@@ -15,3 +15,5 @@ LESSON_INDEX = ROOT / "docs" / "source-inventory" / "LESSON_INDEX.csv"
 
 UNITY_ASSETS = ROOT / "unity" / "TapDoc" / "Assets"
 UNITY_RES = UNITY_ASSETS / "Content" / "Resources"
+UNITY_RES_CLIPS = UNITY_RES / "clips"  # bản chép clip phát được (clip_sync.py), không đưa vào git
+VIDEO_MANIFEST = MANIFESTS / "video_manifest.json"

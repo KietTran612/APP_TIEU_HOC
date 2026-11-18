@@ -27,8 +27,12 @@ class UnityMediaTest(unittest.TestCase):
         (self.clips / "img_b01_bof.mp4").write_bytes(b"mp4")
         self.dist = root / "dist"
         self.lock = root / "media_lock.json"
+        self.video_manifest = root / "video_manifest.json"
+        self.write_video_manifest({"img_b01_bof": "dat"})
+        self.res_clips = self.res / "clips"
         for name, value in (("UNITY_EXE", self.unity), ("OUTPUT", root / "out"), ("RES_DIR", self.res),
                             ("CLIPS_DIR", self.clips), ("DIST_DIR", self.dist), ("LOCK_PATH", self.lock),
+                            ("VIDEO_MANIFEST", self.video_manifest), ("RES_CLIPS_DIR", self.res_clips),
                             ("project_is_open", Mock(return_value=False)), ("today", Mock(return_value="2026-11-02"))):
             patcher = patch.object(run_unity_media, name, value)
             patcher.start()
@@ -37,6 +41,11 @@ class UnityMediaTest(unittest.TestCase):
         patcher.start()
         self.addCleanup(patcher.stop)
         self.package = self.dist / "TapDoc-media-2026-11-02.unitypackage"
+
+    def write_video_manifest(self, statuses: dict) -> None:
+        rows = [{"id": i, "file": f"clips/{i}.mp4", "source": "flow_veo31_lite", "status": s, "ghi_chu": ""}
+                for i, s in statuses.items()]
+        self.video_manifest.write_text(json.dumps(rows, ensure_ascii=False), encoding="utf-8")
 
     def fake_unity_export(self, cmd, **_):
         out = Path(cmd[cmd.index("-mediaOut") + 1])
@@ -192,6 +201,32 @@ class UnityMediaTest(unittest.TestCase):
         with patch("run_unity_media.subprocess.run") as run:
             self.assertEqual(run_unity_media.unpack(self.dist / "khong_co.unitypackage", None), 1)
         run.assert_not_called()
+
+    # --- lệnh clips: chép clip phát được (dat, cho_duyet) vào Resources/clips ---
+
+    def test_clips_command_syncs_playable_clips(self):
+        (self.clips / "img_b02_coj.mp4").write_bytes(b"mp4-2")
+        self.write_video_manifest({"img_b01_bof": "dat", "img_b02_coj": "khong_dat"})
+        self.assertEqual(run_unity_media.sync_clips(), 0)
+        self.assertEqual((self.res_clips / "img_b01_bof.mp4").read_bytes(), b"mp4")
+        self.assertFalse((self.res_clips / "img_b02_coj.mp4").exists())
+        self.assertFalse(self.lock.exists(), "lệnh clips không ghi khoá media")
+
+    def test_clips_command_refuses_when_project_is_open(self):
+        with patch.object(run_unity_media, "project_is_open", Mock(return_value=True)):
+            self.assertEqual(run_unity_media.sync_clips(), 2)
+        self.assertFalse(self.res_clips.exists())
+
+    def test_unpack_syncs_clips_at_end(self):
+        self.dist.mkdir()
+        self.package.write_bytes(b"unitypackage")
+        clips_zip = self.dist / "TapDoc-clips-2026-11-02.zip"
+        with zipfile.ZipFile(clips_zip, "w") as z:
+            z.writestr("img_b02_coj.mp4", b"mp4-2")
+        self.write_video_manifest({"img_b02_coj": "cho_duyet"})
+        with patch("run_unity_media.subprocess.run", return_value=Mock(returncode=0)):
+            self.assertEqual(run_unity_media.unpack(self.package, clips_zip), 0)
+        self.assertEqual((self.res_clips / "img_b02_coj.mp4").read_bytes(), b"mp4-2")
 
 
 if __name__ == "__main__":

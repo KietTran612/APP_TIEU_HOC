@@ -6,9 +6,13 @@ của dự án; máy mới tải về rồi nhập gói (xem CHUYEN-MAY-MOI.md).
 Gói bổ sung: sau khi gói lớn đã lên Drive, chỉ gói phần tranh, âm thanh (kèm .meta) và clip đã đổi so với khoá
 thành `dist/TapDoc-bosung-<ngày>.zip`; máy mới nhập gói lớn rồi nhập lần lượt các gói bổ sung.
 
+Clip trong app: lệnh `clips` chép clip phát được (`dat`, `cho_duyet` trong video_manifest.json) từ `content/clips/`
+vào `Resources/clips/` (ngoài git, không ghi khoá, không vào gói); `unpack` tự chạy bước này ở cuối.
+
 Cách dùng (chạy từ thư mục tools/, Unity Editor phải đang đóng):
     python run_unity_media.py pack
     python run_unity_media.py bosung
+    python run_unity_media.py clips
     python run_unity_media.py unpack ../dist/TapDoc-media-2026-11-02.unitypackage --clips ../dist/TapDoc-clips-2026-11-02.zip \
         --bosung ../dist/TapDoc-bosung-2026-11-10.zip
 """
@@ -31,13 +35,16 @@ from run_unity_tests import (
     project_is_open,
     read_log,
 )
+from tapdoc.clip_sync import apply_sync, plan_sync
+from tapdoc.manifest import load_rows
 from tapdoc.media_lock import compare, describe, missing_meta, snapshot, write_lock
-from tapdoc.paths import CLIPS, MEDIA_LOCK, ROOT, UNITY_RES
+from tapdoc.paths import CLIPS, MEDIA_LOCK, ROOT, UNITY_RES, UNITY_RES_CLIPS, VIDEO_MANIFEST
 
 RES_DIR = UNITY_RES
 CLIPS_DIR = CLIPS
 DIST_DIR = ROOT / "dist"
 LOCK_PATH = MEDIA_LOCK
+RES_CLIPS_DIR = UNITY_RES_CLIPS
 
 
 def today() -> str:
@@ -196,8 +203,29 @@ def apply_bosung(zip_path: Path) -> int:
     return 0
 
 
+def _sync_clips_files() -> None:
+    """Chép clip phát được (dat, cho_duyet) từ content/clips vào Resources/clips; in việc đã làm."""
+    plan = plan_sync(load_rows(VIDEO_MANIFEST), CLIPS_DIR, RES_CLIPS_DIR)
+    apply_sync(plan, CLIPS_DIR, RES_CLIPS_DIR)
+    print(f"Clip tranh động trong Resources: chép mới {len(plan.new)}, chép đè {len(plan.changed)}, "
+          f"xoá {len(plan.remove)}, giữ {len(plan.unchanged)}")
+    if plan.missing_source:
+        print(f"Thiếu file {len(plan.missing_source)} clip phát được (ví dụ {plan.missing_source[0]}): "
+              f"giải nén zip clip và các gói bổ sung vào content/clips rồi chạy lại.")
+
+
+def sync_clips() -> int:
+    """Lệnh `clips`: đồng bộ Resources/clips với danh mục clip. Không đụng khoá media hay gói media."""
+    if project_is_open():
+        print(BUSY_MESSAGE)
+        return 2
+    _sync_clips_files()
+    return 0
+
+
 def unpack(package: Path, clips_zip: Path | None, timeout: int = 3600, bosung: list[Path] | None = None) -> int:
-    """Nhập gói media (giữ .meta, GUID), giải nén clip, nhập các gói bổ sung theo thứ tự; xong thì so với khoá."""
+    """Nhập gói media (giữ .meta, GUID), giải nén clip, nhập các gói bổ sung theo thứ tự, chép clip phát được vào
+    Resources; xong thì so với khoá."""
     package = Path(package)
     if not package.is_file():
         print(f"Không tìm thấy gói: {package}")
@@ -221,6 +249,7 @@ def unpack(package: Path, clips_zip: Path | None, timeout: int = 3600, bosung: l
     for zip_path in bosung:
         if apply_bosung(zip_path) != 0:
             return 1
+    _sync_clips_files()
     warning = describe(compare(RES_DIR, LOCK_PATH))
     print(f"Cảnh báo: {warning}" if warning else "Đã nhập gói media.")
     return 0
@@ -232,6 +261,7 @@ def main() -> int:
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("pack", help="xuất dist/TapDoc-media-<ngày>.unitypackage và dist/TapDoc-clips-<ngày>.zip")
     commands.add_parser("bosung", help="gói phần media đổi so với khoá ra dist/TapDoc-bosung-<ngày>.zip")
+    commands.add_parser("clips", help="chép clip phát được (dat, cho_duyet) từ content/clips vào Resources/clips")
     unpack_cmd = commands.add_parser("unpack", help="nhập gói .unitypackage (và zip clip, gói bổ sung) vào project")
     unpack_cmd.add_argument("package", type=Path)
     unpack_cmd.add_argument("--clips", type=Path, help="file zip clip tranh động")
@@ -243,6 +273,8 @@ def main() -> int:
         return pack(timeout=args.timeout)
     if args.command == "bosung":
         return pack_bosung()
+    if args.command == "clips":
+        return sync_clips()
     return unpack(args.package, args.clips, timeout=args.timeout, bosung=args.bosung)
 
 

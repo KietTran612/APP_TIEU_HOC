@@ -73,6 +73,7 @@ python run_unity_media.py unpack ../dist/TapDoc-media-<ngày>.unitypackage --cli
 
    Hoặc làm tay: mở project trong Unity, chọn **Assets → Import Package → Custom Package…**, chọn file `.unitypackage`, bấm Import tất cả; rồi giải nén file zip vào `content/clips/`.
 3. Kết quả đúng: lệnh in "Đã nhập gói media." (không có dòng "Cảnh báo: media…"); có 213 file `.png` trong `Resources/images` và 1.926 file `.mp3` trong `Resources/audio`.
+4. Clip tranh động trong app: `unpack` tự chép clip phát được (`dat`, `cho_duyet`) từ `content/clips/` vào `Resources/clips/` (dòng "Clip tranh động trong Resources: …"). Sau khi clip được làm lại hay đổi trạng thái, và trước mỗi lần build, đóng Unity rồi chạy `python run_unity_media.py clips` (trong `tools/`). Lệnh này không đụng khoá media và gói media.
 
 **Khi sửa media** (duyệt hay tạo lại âm thanh, vẽ lại tranh, thêm clip): đóng Unity, chạy `python run_unity_media.py pack` (trong `tools/`). Lệnh xuất gói mới có ngày vào `dist/` và ghi lại `media_lock.json`. Sau đó commit `media_lock.json`, rồi nhờ chủ dự án kéo thả hai file mới vào thư mục Drive. Lệnh `python -m tapdoc validate` sẽ cảnh báo khi media trên máy khác gói đã ghi.
 

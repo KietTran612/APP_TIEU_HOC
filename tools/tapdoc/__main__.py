@@ -13,7 +13,9 @@ from .launcher import ensure_edge_tts, tool_running
 from .manifest import (ManifestError, keep_concurrent_tts, load_rows, save_rows, update_audio_manifest,
                        update_image_manifest)
 from .media_lock import compare as compare_media, describe as describe_media
-from .paths import CLIPS, CONTENT_SRC, MANIFESTS, MEDIA_LOCK, REQUESTS_DIR, ROOT, STYLE_FILE, UNITY_RES
+from .clip_sync import describe as describe_clips, plan_sync as plan_clip_sync
+from .paths import (CLIPS, CONTENT_SRC, MANIFESTS, MEDIA_LOCK, REQUESTS_DIR, ROOT, STYLE_FILE, UNITY_RES,
+                    UNITY_RES_CLIPS, VIDEO_MANIFEST)
 from .review_server import make_server
 from .sfx_default import write_missing as write_default_sfx
 from .ui_icons import write_all as write_ui_icons
@@ -193,6 +195,13 @@ def _cmd_validate(args: argparse.Namespace) -> int:
     media = describe_media(compare_media(UNITY_RES, MEDIA_LOCK))
     if media:
         print(_printable(f"Cảnh báo: {media}"))
+    if CLIPS.is_dir() and VIDEO_MANIFEST.is_file():
+        try:
+            clips = describe_clips(plan_clip_sync(load_rows(VIDEO_MANIFEST), CLIPS, UNITY_RES_CLIPS))
+        except ManifestError:
+            clips = None  # danh mục clip hỏng: công cụ duyệt báo riêng, ở đây chỉ bỏ qua cảnh báo
+        if clips:
+            print(_printable(f"Cảnh báo: {clips}"))
     for issue in issues:
         print(_printable(f"{issue.lesson} {issue.where}: {issue.message}"))
     if not issues:

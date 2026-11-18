@@ -219,6 +219,7 @@ cd /c/Source/AURA/APP_TIEU_HOC
 ls unity/TapDoc/Assets/Content/Resources/audio/*.mp3 | wc -l     # đúng: 8099
 ls unity/TapDoc/Assets/Content/Resources/images/*.png | wc -l    # đúng: 431
 ls content/clips/*.mp4 | wc -l                                   # đúng: 400
+ls unity/TapDoc/Assets/Content/Resources/clips/*.mp4 | wc -l     # clip dat + cho_duyet (unpack tự chép; chép lại: python tools/run_unity_media.py clips)
 ls unity/TapDoc/Assets/Content/Resources/images/img_bia_*.png    # đúng: 3 bìa
 grep -A2 '"package"' content/manifests/media_lock.json           # đúng: gói 2026-11-10 và "bosung": ["TapDoc-bosung-2026-11-11.zip"]
 ```
