@@ -6543,7 +6543,8 @@
       "doc": "2. Người nông dân nhắn nhủ, động viên trâu cùng chịu khó vất vả trong nghề cày cấy với mình qua hai câu nào? Ai mà quản công ý nói gì? (dựa vào mục chú thích để trả lời)"
     },
     "hoi_b381_04": {
-      "doc": "4. Tìm một từ ghép có tiếng sum ở đầu và cùng nghĩa với từ sum vầy. Đặt một câu với từ đó."
+      "doc": "4. Tìm một từ ghép có tiếng sum ở đầu và cùng nghĩa với từ sum vầy. Đặt một câu với từ đó.",
+      "rate": -40
     },
     "hoi_b387_01": {
       "doc": "1. Anh thợ đốt lò đang đứng làm việc ở đâu? Tại sao tác giả lại ví cửa lò như cửa mặt trời?"
@@ -7767,6 +7768,681 @@
         "tieng_ys",
         "tieng_nghix"
       ]
+    },
+    "cau_b371_13": {
+      "join": [
+        "tieng_mays",
+        "tieng_thanhf",
+        "tieng_dungx",
+        "tieng_six"
+      ]
+    },
+    "cau_b372_01": {
+      "rate": -40
+    },
+    "cau_b373_04": {
+      "rate": -40
+    },
+    "cau_b373_17": {
+      "rate": -40
+    },
+    "cau_b375_01": {
+      "rate": -40,
+      "join": [
+        "tieng_chinhs",
+        "tieng_tar",
+        ",",
+        "tieng_cais",
+        "tieng_mays",
+        "tieng_tuoots",
+        "tieng_luas"
+      ]
+    },
+    "cau_b375_03": {
+      "rate": -40
+    },
+    "cau_b376_06": {
+      "join": [
+        "doc:Nhưng nhờ chịu khó cày sâu cuốc bẫm và ra công chăm bón nên cả hai vụ chiêm và vụ mùa lúa đều tốt",
+        "tieng_car"
+      ]
+    },
+    "cau_b379_01": {
+      "rate": -40
+    },
+    "cau_b379_05": {
+      "rate": -40
+    },
+    "cau_b379_06": {
+      "join": [
+        "tieng_giaos",
+        "tieng_dduwngs",
+        "tieng_treen",
+        "tieng_ddoongf",
+        "tieng_cor",
+        "tieng_ddax",
+        "tieng_laau",
+        "tieng_lawms"
+      ]
+    },
+    "cau_b379_12": {
+      "join": [
+        "tieng_choocs",
+        "tieng_choocs",
+        "tieng_laij",
+        "tieng_nguwngf",
+        "van_awn"
+      ]
+    },
+    "cau_b380_05": {
+      "join": [
+        "tieng_ta",
+        "tieng_ddaay",
+        "tieng_traau",
+        "tieng_ddaays",
+        ",",
+        "van_ai",
+        "tieng_maf",
+        "tieng_quanr",
+        "tieng_coong"
+      ]
+    },
+    "cau_b380_07": {
+      "join": [
+        "tieng_thowif",
+        "tieng_conf",
+        "tieng_ngonj",
+        "tieng_cor",
+        "tieng_ngoaif",
+        "tieng_ddoongf",
+        "tieng_traau",
+        "van_awn"
+      ]
+    },
+    "cau_b381_05": {
+      "rate": -40
+    },
+    "cau_b383_01": {
+      "rate": -40
+    },
+    "cau_b383_03": {
+      "rate": -40
+    },
+    "cau_b384_08": {
+      "join": [
+        "tieng_chij",
+        "tieng_chawm",
+        "tieng_bawmx",
+        "tieng_chungs",
+        "tieng_chawngr",
+        "tieng_khacs",
+        "tieng_gif",
+        "tieng_cacs",
+        "tieng_con",
+        "tieng_nhor",
+        "tieng_cuar",
+        "tieng_chij",
+        "tieng_owr",
+        "tieng_nhaf"
+      ]
+    },
+    "cau_b388_02": {
+      "rate": -40
+    },
+    "cau_b389_10": {
+      "join": [
+        "tieng_chus",
+        "tieng_cho",
+        "tieng_cuwowng",
+        "tieng_mootj",
+        "tieng_loj",
+        "tieng_muwcj",
+        "tieng_loe",
+        "tieng_mieengj",
+        "tieng_mauf",
+        "tieng_men",
+        "tieng_canhs",
+        "tieng_gians",
+        "tieng_mowis",
+        "tieng_nung"
+      ]
+    },
+    "cau_b390_02": {
+      "join": [
+        "tieng_trowif",
+        "tieng_gaanf",
+        "tieng_dduwngs",
+        "tieng_bongs",
+        ",",
+        "tieng_hoef",
+        "tieng_ddang",
+        "tieng_raor",
+        "tieng_buwowcs",
+        "tieng_treen",
+        "tieng_viar",
+        "tieng_hef"
+      ]
+    },
+    "cau_b390_05": {
+      "join": [
+        "tieng_hoef",
+        "tieng_vooij",
+        "tieng_quay",
+        "tieng_laij"
+      ]
+    },
+    "cau_b390_08": {
+      "join": [
+        "tieng_ddois",
+        "tieng_chuwa",
+        ",",
+        "tieng_ddaay",
+        ",",
+        "van_awn",
+        "tieng_ddi"
+      ]
+    },
+    "cau_b390_12": {
+      "join": [
+        "tieng_bacs",
+        "tieng_voox",
+        "tieng_voox",
+        "tieng_vaof",
+        "tieng_vai",
+        "tieng_hoef",
+        "tieng_cuwowif",
+        "tieng_ha",
+        "tieng_har"
+      ]
+    },
+    "cau_b391_01": {
+      "rate": -40
+    },
+    "cau_b391_19": {
+      "rate": -40
+    },
+    "cau_b391_26": {
+      "doc": "ngắm, lửa, ngắm.",
+      "rate": -40
+    },
+    "cau_b395_07": {
+      "join": [
+        "tieng_nguwowif",
+        "tieng_bacs",
+        "tieng_khoong",
+        "tieng_cao",
+        "tieng_to",
+        ",",
+        "tieng_tieengs",
+        "tieng_bacs",
+        "tieng_khoong",
+        "tieng_aamf",
+        "tieng_ix"
+      ]
+    },
+    "cau_b396_11": {
+      "join": [
+        "tieng_luwngr",
+        "tieng_low",
+        "tieng_luwng",
+        "tieng_chuwngf",
+        "tieng_trowif"
+      ]
+    },
+    "cau_b398_09": {
+      "doc": "Tuần trước tớ đã chở một con sư tử cho vườn bách thú đấy, nhé!"
+    },
+    "cau_b398_24": {
+      "join": [
+        "van_anh",
+        "tieng_ddaauf",
+        "tieng_mays",
+        ",",
+        "tieng_taij",
+        "tieng_sao",
+        "van_anh",
+        "tieng_khoong",
+        "tieng_chayj"
+      ]
+    },
+    "cau_b399_01": {
+      "rate": -40
+    },
+    "cau_b399_04": {
+      "join": [
+        "tieng_ra",
+        ",",
+        "tieng_vuwown",
+        "tieng_tay",
+        ",",
+        "tieng_caanf",
+        "tieng_trucj",
+        ",",
+        "tieng_coox",
+        "tieng_mays",
+        ",",
+        "tieng_leen",
+        ",",
+        "tieng_nhaacs"
+      ]
+    },
+    "cau_b399_05": {
+      "rate": -40
+    },
+    "cau_b400_15": {
+      "join": [
+        "tieng_mays",
+        "tieng_bay",
+        "tieng_caats",
+        "tieng_canhs"
+      ]
+    },
+    "hoi_b378_02": {
+      "join": [
+        "doc:2.",
+        ",",
+        "tieng_mays",
+        "tieng_tuoots",
+        "tieng_luas",
+        "tieng_chayj",
+        "tieng_nhanh",
+        "tieng_nhuw",
+        "tieng_thees",
+        "tieng_naof"
+      ]
+    },
+    "hoi_b378_05": {
+      "join": [
+        "doc:5.",
+        ",",
+        "tieng_taij",
+        "tieng_sao",
+        "tieng_mays",
+        "tieng_dduwowcj",
+        "tieng_khen",
+        "tieng_laf",
+        "tieng_ngoan"
+      ]
+    },
+    "hoi_b381_01": {
+      "join": [
+        "doc:1.",
+        ",",
+        "tieng_owr",
+        "tieng_nhaf",
+        "van_em",
+        ",",
+        "tieng_gaf",
+        "tieng_con",
+        "tieng_thuwowngf",
+        "tieng_ddi",
+        "tieng_vowis",
+        "tieng_gaf",
+        "tieng_mej",
+        ",",
+        "tieng_owr",
+        "tieng_ddaay",
+        "tieng_taij",
+        "tieng_sao",
+        "tieng_khoong",
+        "tieng_cos",
+        "tieng_gaf",
+        "tieng_mej"
+      ]
+    },
+    "tieng_bachs": {
+      "doc": "bách, bách.",
+      "keep_first": true
+    },
+    "tieng_bawmx": {
+      "doc": "bẵm, bẵm.",
+      "keep_first": true
+    },
+    "tieng_benx": {
+      "doc": "bẽn, bẽn.",
+      "keep_first": true
+    },
+    "tieng_boocs": {
+      "doc": "bốc, bốc.",
+      "keep_first": true
+    },
+    "tieng_chawngf": {
+      "doc": "chằng, chằng.",
+      "keep_first": true
+    },
+    "tieng_chinhr": {
+      "doc": "chỉnh, chỉnh.",
+      "keep_first": true
+    },
+    "tieng_coox": {
+      "doc": "cỗ, cỗ.",
+      "keep_first": true
+    },
+    "tieng_cuis": {
+      "doc": "cúi, cúi.",
+      "keep_first": true
+    },
+    "tieng_dams": {
+      "doc": "dám, dám.",
+      "keep_first": true
+    },
+    "tieng_danh": {
+      "doc": "danh, danh.",
+      "keep_first": true
+    },
+    "tieng_ddanhf": {
+      "doc": "đành, đành.",
+      "keep_first": true
+    },
+    "tieng_ddoif": {
+      "doc": "đòi, đòi.",
+      "keep_first": true
+    },
+    "tieng_dis": {
+      "doc": "dí, dí.",
+      "keep_first": true
+    },
+    "tieng_duis": {
+      "doc": "dúi, dúi.",
+      "keep_first": true
+    },
+    "tieng_gians": {
+      "doc": "gián, gián.",
+      "keep_first": true
+    },
+    "tieng_gowms": {
+      "doc": "gớm, gớm.",
+      "keep_first": true
+    },
+    "tieng_guoongf": {
+      "doc": "guồng, guồng.",
+      "keep_first": true
+    },
+    "tieng_hamx": {
+      "doc": "hãm, hãm.",
+      "keep_first": true
+    },
+    "tieng_hanf": {
+      "doc": "hàn, hàn.",
+      "keep_first": true
+    },
+    "tieng_has": {
+      "doc": "há, há.",
+      "keep_first": true
+    },
+    "tieng_hawng": {
+      "doc": "hăng, hăng.",
+      "keep_first": true
+    },
+    "tieng_heer": {
+      "doc": "hể, hể.",
+      "keep_first": true
+    },
+    "tieng_homf": {
+      "doc": "Hòm, Hòm.",
+      "keep_first": true
+    },
+    "tieng_hooir": {
+      "doc": "hổi, hổi.",
+      "keep_first": true
+    },
+    "tieng_howir": {
+      "doc": "hởi, hởi.",
+      "keep_first": true
+    },
+    "tieng_if": {
+      "doc": "ì, ì.",
+      "keep_first": true
+    },
+    "tieng_ix": {
+      "doc": "ĩ, ĩ.",
+      "keep_first": true
+    },
+    "tieng_khis": {
+      "doc": "khí, khí.",
+      "keep_first": true
+    },
+    "tieng_kieeu": {
+      "doc": "kiêu, kiêu.",
+      "keep_first": true
+    },
+    "tieng_kins": {
+      "doc": "kín, kín.",
+      "keep_first": true
+    },
+    "tieng_laayx": {
+      "doc": "lẫy, lẫy.",
+      "keep_first": true
+    },
+    "tieng_lenx": {
+      "doc": "lẽn, lẽn.",
+      "keep_first": true
+    },
+    "tieng_loe": {
+      "doc": "loe, loe.",
+      "keep_first": true
+    },
+    "tieng_loongf": {
+      "doc": "lồng, lồng.",
+      "keep_first": true
+    },
+    "tieng_luwowis": {
+      "doc": "lưới, lưới.",
+      "keep_first": true
+    },
+    "tieng_maaur": {
+      "doc": "mẩu, mẩu.",
+      "keep_first": true
+    },
+    "tieng_mer": {
+      "doc": "mẻ, mẻ.",
+      "keep_first": true
+    },
+    "tieng_miar": {
+      "doc": "mỉa, mỉa.",
+      "keep_first": true
+    },
+    "tieng_mieenf": {
+      "doc": "miền, miền.",
+      "keep_first": true
+    },
+    "tieng_mieenx": {
+      "doc": "Miễn, Miễn.",
+      "keep_first": true
+    },
+    "tieng_mocs": {
+      "doc": "móc, móc.",
+      "keep_first": true
+    },
+    "tieng_momx": {
+      "doc": "mõm, mõm.",
+      "keep_first": true
+    },
+    "tieng_moois": {
+      "doc": "mối, mối.",
+      "keep_first": true
+    },
+    "tieng_muis": {
+      "doc": "múi, múi.",
+      "keep_first": true
+    },
+    "tieng_ngheef": {
+      "doc": "nghề, nghề.",
+      "keep_first": true
+    },
+    "tieng_nghieenf": {
+      "doc": "nghiền, nghiền.",
+      "keep_first": true
+    },
+    "tieng_nguwowcs": {
+      "doc": "ngước, ngước.",
+      "keep_first": true
+    },
+    "tieng_nhaamf": {
+      "doc": "nhầm, nhầm.",
+      "keep_first": true
+    },
+    "tieng_nhawns": {
+      "doc": "nhắn, nhắn.",
+      "keep_first": true
+    },
+    "tieng_nhucs": {
+      "doc": "nhúc, nhúc.",
+      "keep_first": true
+    },
+    "tieng_nowts": {
+      "doc": "nớt, nớt.",
+      "keep_first": true
+    },
+    "tieng_nungx": {
+      "doc": "nũng, nũng.",
+      "keep_first": true
+    },
+    "tieng_phun": {
+      "doc": "phun, phun.",
+      "keep_first": true
+    },
+    "tieng_quaangr": {
+      "doc": "quẩng, quẩng.",
+      "keep_first": true
+    },
+    "tieng_quanr": {
+      "doc": "quản, quản.",
+      "keep_first": true
+    },
+    "tieng_ran": {
+      "doc": "ran, ran.",
+      "keep_first": true
+    },
+    "tieng_raor": {
+      "doc": "rảo, rảo.",
+      "keep_first": true
+    },
+    "tieng_ref": {
+      "doc": "rè, rè.",
+      "keep_first": true
+    },
+    "tieng_rens": {
+      "doc": "rén, rén.",
+      "keep_first": true
+    },
+    "tieng_rons": {
+      "doc": "rón, rón.",
+      "keep_first": true
+    },
+    "tieng_sans": {
+      "doc": "sán, sán.",
+      "keep_first": true
+    },
+    "tieng_suwowir": {
+      "doc": "sưởi, sưởi.",
+      "keep_first": true
+    },
+    "tieng_thoair": {
+      "doc": "thoải, thoải.",
+      "keep_first": true
+    },
+    "tieng_thowif": {
+      "doc": "Thời, Thời.",
+      "keep_first": true
+    },
+    "tieng_toong": {
+      "doc": "tông, tông.",
+      "keep_first": true
+    },
+    "tieng_trangs": {
+      "doc": "tráng, tráng.",
+      "keep_first": true
+    },
+    "tieng_trats": {
+      "doc": "trát, trát.",
+      "keep_first": true
+    },
+    "tieng_truwownf": {
+      "doc": "trườn, trườn.",
+      "keep_first": true
+    },
+    "tieng_tuwr": {
+      "doc": "tử, tử.",
+      "keep_first": true
+    },
+    "tieng_vuwax": {
+      "doc": "vữa, vữa.",
+      "keep_first": true
+    },
+    "tieng_xawng": {
+      "doc": "xăng, xăng.",
+      "keep_first": true
+    },
+    "tieng_xinhf": {
+      "doc": "xình, xình.",
+      "keep_first": true
+    },
+    "tu_cayf_saau_cuoocs_baamx": {
+      "join": [
+        "doc:cày sâu",
+        "tieng_cuoocs",
+        "doc:bẫm"
+      ]
+    },
+    "tu_chaan_laams_tay_bunf": {
+      "join": [
+        "tieng_chaan",
+        "tieng_laams",
+        "tieng_tay",
+        "tieng_bunf"
+      ]
+    },
+    "tu_coox_mays": {
+      "rate": -40
+    },
+    "tu_ddanf_bee": {
+      "rate": -40
+    },
+    "tu_gian_nhaf": {
+      "join": [
+        "tieng_gian",
+        "tieng_nhaf"
+      ]
+    },
+    "tu_hoof_howir": {
+      "join": [
+        "tieng_hoof",
+        "tieng_howir"
+      ]
+    },
+    "tu_luwar_vangf": {
+      "join": [
+        "tieng_luwar",
+        "tieng_vangf"
+      ]
+    },
+    "tu_noong_truwowngf_chawn_nuooi": {
+      "rate": -40
+    },
+    "tu_quai_buas": {
+      "join": [
+        "doc:quai",
+        "doc:búa"
+      ]
+    },
+    "tu_taacs_ddaats": {
+      "rate": -40
+    },
+    "tu_troocs_reex": {
+      "join": [
+        "doc:trốc",
+        "tieng_reex"
+      ]
+    },
+    "tu_trungf_hoj": {
+      "join": [
+        "tieng_trungf",
+        "tieng_hoj"
+      ]
+    },
+    "tu_vieecj_cayf_caays": {
+      "rate": -40
     }
   }
 }
