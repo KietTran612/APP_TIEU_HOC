@@ -19,6 +19,10 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
   - Root xem tờ khung từng clip. b110 quê ngoại NHẬN (cho_duyet): hai bà cháu đi thật từ xa, tới đúng chỗ ở cuối. Điểm trừ: vải của người giặt đổi màu.
   - KHÔNG NHẬN b112 (đá chân, bước tại chỗ), b82 (đứng nghiêm rồi giật về dáng), b105 và b33 (khung đầu chỉ lùi khoảng 10%, đi tại chỗ).
   - Bài học ghi QUY-TRINH §12 (5b305ff, a233711): khung đầu lùi xa; người đang bước thì đi liên tục tới khung cuối. L1 vẽ lại khung lùi xa b105, b33, b112 (root duyệt); bốn mã làm lần 2 ở đầu lượt 21/11.
+- **[Chung] Phát tranh động trong app — clip "tiếp" giữ khung cuối (d6a3e65):** chủ dự án cho chọn cách làm clip theo từng tranh (QUY-TRINH §12, f9f6872).
+  - Clip có `"ket": "giu"` trong video_manifest thì hết clip giữ khung cuối, không mờ về tranh tĩnh. Danh sách cho app nằm ở Resources/clips/index.json (lệnh `run_unity_media.py clips`).
+  - Root tự chạy lại test: Python 39/39, EditMode 17/17, PlayMode 78/78 (ClipPlayer, AssetCatalog, ClipApp, ClipRealVideo, ClipInViews, SettingsScreen).
+  - Root đọc diff. Clip không đánh dấu chạy như cũ. Khung giữ nằm trên RenderTexture riêng và được giải phóng khi lớp phủ bị huỷ; bản sao lúc lật trang không chép theo khung đang giữ. Hiện chưa clip nào đánh dấu.
 - **Soát lại theo bài học cách A (chiều 19/11):** root duyệt từng tờ khung.
   - **L1:** kịch bản 19 mã nhóm 1–3 cùng 4 mã lần 2 (e80c38e). b65 và b57 vẽ lại cho to khoảng 50–60% (dd79d13, 826b3b4).
   - **L2, 5 mã lớp 2 cho ngày 20/11:** 7fc0e96 và 23d4b0c. b219 vẽ lại vì người anh phải bước sang phải. b250 vẽ lại vì khung đầu có 6 én, tranh gốc 5.
