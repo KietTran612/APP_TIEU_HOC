@@ -22,6 +22,27 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator Reading_Lesson80_EachBookRowOneLine()
+        {
+            // Hàng (1) bài 80 có 2 tiếng 4 chữ: trước đây xuống dòng thành 5 dòng, tràn đáy vùng học trên iPhone.
+            var index = TestLessons.Real.Get("tv1_t1_b80").part1.FindIndex(s => s.type == "reading");
+            var v = Bind("tv1_t1_b80", index);
+            yield return null;
+            Assert.IsTrue(((ItemsView)v).ReadingCompacted, "Hàng dư thì thu gọn");
+            foreach (var row in new[] { new[] { "sàn", "sắn", "cân", "ngọn", "thôn" }, new[] { "bát", "cắt", "tất", "sọt", "tốt" } })
+            {
+                var ys = row.Select(t => ((RectTransform)TileWithText(v, t).transform).anchoredPosition.y).Distinct().ToList();
+                Assert.AreEqual(1, ys.Count, $"Hàng {row[0]}…: một dòng");
+            }
+            var ngon = (RectTransform)TileWithText(v, "ngọn").transform;
+            Assert.GreaterOrEqual(ngon.rect.width, 190f, "Thẻ dài không hẹp hơn thẻ ngắn");
+            var label = ngon.GetComponentInChildren<TMPro.TMP_Text>();
+            label.ForceMeshUpdate();
+            Assert.IsFalse(label.isTextOverflowing, "Chữ vừa thẻ");
+            Assert.LessOrEqual(label.textBounds.size.x, ngon.rect.width, "Chữ vừa bề ngang thẻ");
+        }
+
+        [UnityTest]
         public IEnumerator Words_SpellEachThenRead()
         {
             var v = Bind("tv1_t1_b13", 8);

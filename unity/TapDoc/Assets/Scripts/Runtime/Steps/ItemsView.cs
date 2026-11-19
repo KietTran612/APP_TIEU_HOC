@@ -18,6 +18,11 @@ namespace TapDoc
     {
         private const float ReadingTileH = 170f;
         private const float ReadingGap = 24f;
+        private const float ReadingFont = 76f;
+        private const float ReadingLabelFont = 60f;
+        private const float ReadingShortW = 190f;  // tiếng đến 3 chữ
+        private const float ReadingLongW = 300f;   // tiếng dài hơn
+        private const float ReadingLabelW = 220f;  // nhãn hàng "(1)"
 
         private readonly List<Tile> _tiles = new();
 
@@ -81,14 +86,22 @@ namespace TapDoc
         private void BuildReading()
         {
             // Mỗi hàng của sách là một hoặc nhiều dòng thẻ: hàng dài hơn Stage tự xuống dòng (ví dụ 9 tiếng ở bài 15).
-            var lines = new List<List<(Item item, int index, float width, string label)>>();
+            var rows = new List<List<(Item item, int index, float width, string label)>>();
             foreach (var group in Step.items.Select((it, j) => (it, j)).GroupBy(p => p.it.row).OrderBy(g => g.Key))
             {
-                var row = group.ToList();
-                var entries = row.Select(p => (item: p.it, index: p.j,
-                    width: p.it.text.Length <= 3 ? 190f : 300f, label: (string)null)).ToList();
+                var entries = group.Select(p => (item: p.it, index: p.j,
+                    width: p.it.text.Length <= 3 ? ReadingShortW : ReadingLongW, label: (string)null)).ToList();
                 var label = Step.labels != null && group.Key >= 0 && group.Key < Step.labels.Count ? Step.labels[group.Key] : null;
-                if (!string.IsNullOrEmpty(label)) entries.Insert(0, (null, -1, 220f, label));
+                if (!string.IsNullOrEmpty(label)) entries.Insert(0, (null, -1, ReadingLabelW, label));
+                rows.Add(entries);
+            }
+            // Hàng chỉ dư một chút (ví dụ hàng (1) bài 80: 3 tiếng ngắn, 2 tiếng 4 chữ và nhãn) thì xuống dòng thành 5 dòng,
+            // cao quá vùng học của điện thoại dài. Khi đó cả bước thu cột nhãn và thẻ tiếng dài về vừa chữ (không nhỏ hơn
+            // thẻ tiếng ngắn), để mỗi hàng của sách vẫn là một dòng nếu được.
+            if (rows.Any(r => RowWidth(r) > FlowWidth)) rows = rows.Select(Compact).ToList();
+            var lines = new List<List<(Item item, int index, float width, string label)>>();
+            foreach (var entries in rows)
+            {
                 var widths = entries.Select(p => p.width).ToList();
                 foreach (var line in FlowLayout.Lines(widths, FlowWidth, ReadingGap))
                 {
@@ -119,6 +132,38 @@ namespace TapDoc
                     x += width + ReadingGap;
                 }
             }
+        }
+
+        /// <summary>Bước bảng đọc đã thu gọn cột nhãn và thẻ dài (cho test).</summary>
+        internal bool ReadingCompacted { get; private set; }
+
+        private static float RowWidth(List<(Item item, int index, float width, string label)> row) =>
+            row.Sum(p => p.width) + (row.Count - 1) * ReadingGap;
+
+        private List<(Item item, int index, float width, string label)> Compact(
+            List<(Item item, int index, float width, string label)> row)
+        {
+            ReadingCompacted = true;
+            return row.Select(p =>
+            {
+                if (p.label != null)
+                    return (p.item, p.index, Mathf.Min(ReadingLabelW, Mathf.Max(120f, TextWidth(p.label, ReadingLabelFont) + 40f)), p.label);
+                if (p.width <= ReadingShortW) return p;
+                return (p.item, p.index, Mathf.Clamp(TextWidth(p.item.text, ReadingFont) + 70f, ReadingShortW, ReadingLongW), p.label);
+            }).ToList();
+        }
+
+        /// <summary>Bề ngang chữ <paramref name="text"/> ở cỡ <paramref name="size"/> với phông của app (đơn vị thiết kế).</summary>
+        private float TextWidth(string text, float size)
+        {
+            var probe = UiKit.CreateLabel(Root.transform, text, size);
+            probe.enableAutoSizing = false;
+            probe.fontSize = size;
+            probe.fontStyle = FontStyles.Bold; // đo theo nét đậm cho chắc
+            var w = probe.GetPreferredValues(text, float.PositiveInfinity, float.PositiveInfinity).x;
+            probe.gameObject.SetActive(false);
+            Object.Destroy(probe.gameObject);
+            return w;
         }
 
         private async void OnWordTapped(int index)
