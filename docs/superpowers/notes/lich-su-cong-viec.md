@@ -19,6 +19,12 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
   - Root xem tờ khung từng clip. b110 quê ngoại NHẬN (cho_duyet): hai bà cháu đi thật từ xa, tới đúng chỗ ở cuối. Điểm trừ: vải của người giặt đổi màu.
   - KHÔNG NHẬN b112 (đá chân, bước tại chỗ), b82 (đứng nghiêm rồi giật về dáng), b105 và b33 (khung đầu chỉ lùi khoảng 10%, đi tại chỗ).
   - Bài học ghi QUY-TRINH §12 (5b305ff, a233711): khung đầu lùi xa; người đang bước thì đi liên tục tới khung cuối. L1 vẽ lại khung lùi xa b105, b33, b112 (root duyệt); bốn mã làm lần 2 ở đầu lượt 21/11.
+- **Soát lại theo bài học cách A (chiều 19/11):** root duyệt từng tờ khung.
+  - **L1:** kịch bản 19 mã nhóm 1–3 cùng 4 mã lần 2 (e80c38e). b65 và b57 vẽ lại cho to khoảng 50–60% (dd79d13, 826b3b4).
+  - **L2, 5 mã lớp 2 cho ngày 20/11:** 7fc0e96 và 23d4b0c. b219 vẽ lại vì người anh phải bước sang phải. b250 vẽ lại vì khung đầu có 6 én, tranh gốc 5.
+  - **L2, 41 mã TV2 tập hai:** 054d1f0 và fd1dea4. Vẽ lại 8 khung; b315 và b330 vẽ lại lần nữa cho to ít nhất khoảng 55%. Root nhận giữ khung cũ b340, b341, b395, b404.
+  - **Ngưỡng cỡ khung đầu ít nhất khoảng 55%:** ghi QUY-TRINH §12 (3cf952f).
+- **Root — thử Google Vids lần 2 (chủ dự án chọn "Thử thêm Vids"):** b82 con kênh, clip bắt đầu từ chính tranh gốc. Khung đầu trùng tranh (lệch 14,7). Hai bạn đi thật hết cầu và ở trong tranh, nền giữ ổn. Khung cuối khác tranh (lệch khoảng 22), nên chỉ dùng được nếu app giữ khung cuối của clip; việc này chờ chủ dự án quyết. /u/3 còn 44 giây Vids trong tháng 11.
 - **Root — thử Google Vids (chủ dự án cho thử 1 clip):** b112 trên /u/3, Animate 8 giây.
   - Tốt: đi tự nhiên hơn Flow.
   - Không đạt: Vids không có khung cuối, nên clip đi quá ra ngoài tranh, nền tự thêm nhà và cây, khung cuối lệch tranh, góc có dấu ✦.
