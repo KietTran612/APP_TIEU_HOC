@@ -15,6 +15,14 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 - **[Chung] Phát tranh động trong app (dc8da76, 12d448c, e7be8e9, e8351af, 8653586, 672bce3, 26a43da, 30916c9):** clip phát ở 4 màn Phần 1 sau khi đọc chữ của tranh, giọng đọc luôn ưu tiên, máy yếu dùng tranh tĩnh, cài đặt "Tranh động", lệnh `run_unity_media.py clips` chép clip dat+cho_duyet vào Resources/clips (ngoài git), cắt thêm 4 điểm ảnh mỗi mép. Soát độc lập: 0 Critical, 3 Important đã sửa có test (52/52 lớp clip), 5 Minor ghi sổ. Root duyệt spec và xem ảnh phone_20x9, ipad_43: đạt. Bản Windows lớn thêm ~0,9 GB.
 - **[Chung] UI — 25c81f2:** bảng đọc bài 80 tràn đáy trên iPhone (LessonNotesTests.Notes_PanelFitsAllSizes đỏ từ đợt UI 1): hàng dư thì thu cột nhãn và thẻ dài về vừa chữ. ItemsViewTests 8/8, LessonNotesTests 7/7. Root kiểm: đạt.
 - **Tranh động 19/11:** b274 lượt cuối (L2, e82013c) và b115 (L1, 1d57ae6, f372d7d) root nhận; b58 gửi thư lần 2, b119 lần 1 không đạt (0c1cfdf).
+- **[L1] tranh động — lượt /u/3 chiều 19/11 (ef2269e, bfe3980, 681f180, 043de45, dddac1a):** đây là lượt cách A đầu tiên.
+  - Root xem tờ khung từng clip. b110 quê ngoại NHẬN (cho_duyet): hai bà cháu đi thật từ xa, tới đúng chỗ ở cuối. Điểm trừ: vải của người giặt đổi màu.
+  - KHÔNG NHẬN b112 (đá chân, bước tại chỗ), b82 (đứng nghiêm rồi giật về dáng), b105 và b33 (khung đầu chỉ lùi khoảng 10%, đi tại chỗ).
+  - Bài học ghi QUY-TRINH §12 (5b305ff, a233711): khung đầu lùi xa; người đang bước thì đi liên tục tới khung cuối. L1 vẽ lại khung lùi xa b105, b33, b112 (root duyệt); bốn mã làm lần 2 ở đầu lượt 21/11.
+- **Root — thử Google Vids (chủ dự án cho thử 1 clip):** b112 trên /u/3, Animate 8 giây.
+  - Tốt: đi tự nhiên hơn Flow.
+  - Không đạt: Vids không có khung cuối, nên clip đi quá ra ngoài tranh, nền tự thêm nhà và cây, khung cuối lệch tranh, góc có dấu ✦.
+  - Hạn mức tài khoản cá nhân 60 giây mỗi tháng. Kết luận: clip build vẫn làm bằng Flow. Tờ so sánh ở Downloads/vids_thu/.
 - **[L2] tranh động TV2 tập hai — kịch bản và khung đầu đủ 41/41 (d519217, c4450f9, 0c1b485, 4d58e04, 7fe511b, dfc9872, 1641cac):** cách A, hướng di chuyển thật. Root soát tờ so sánh từng nhóm. Đợt vẽ lại 7 khung cho quãng đi đủ dài (b364 hải âu bay vào từ lề phải). b307 thêm câu giữ cỡ cào cào. b397 vẽ lại lần hai: thanh thép từ sát đống cát lên khoảng 1/4–1/3 chiều cao. Chưa gửi Flow; chờ credit /u/1, /u/4 (29/11).
 - **Chủ dự án sửa hướng tranh động:** lỗi cần sửa là "cử động mà không di chuyển" → nhân vật phải DI CHUYỂN THẬT (cách A: khung đầu lùi một quãng, tới đúng chỗ tranh ở cuối; được sáng tạo). Cinemagraph giữ người đứng yên là sai; 14 clip như vậy chuyển về khong_dat để làm lại. Quy trình sửa ở ba1536c.
 
