@@ -45,6 +45,27 @@ namespace TapDoc.Tests
         }
 
         [Test]
+        public void UvRect_EdgeInset_TrimsEachSideOfCrop_StaysSquare()
+        {
+            // 37/327 clip có 3 hàng đen ở mép trên, mép dưới phần vuông: cắt thêm 4 điểm ảnh mỗi mép (trên khung 720).
+            // Phần vuông 720 còn 712: x = 284/1280, y = 4/720, rộng 712/1280, cao 712/720.
+            AssertRect(ClipCrop.UvRect(1280, 720, 1f, 4), .221875f, .0055556f, .55625f, .9888889f);
+        }
+
+        [Test]
+        public void UvRect_EdgeInset_TooLarge_FallsBackToNoInset()
+        {
+            AssertRect(ClipCrop.UvRect(1280, 720, 1f, 400), .21875f, 0f, .5625f, 1f);
+        }
+
+        [Test]
+        public void AppInset_HidesThreeDarkRows()
+        {
+            Assert.GreaterOrEqual(ClipCrop.EdgeInsetPx, 4, "che được 3 hàng đen ở mép clip Flow");
+            Assert.LessOrEqual(ClipCrop.EdgeInsetPx, 8, "không phóng tranh quá 2,2% so với tranh tĩnh");
+        }
+
+        [Test]
         public void UvRect_UnknownSize_WholeClip()
         {
             AssertRect(ClipCrop.UvRect(0, 0, 1f), 0f, 0f, 1f, 1f);

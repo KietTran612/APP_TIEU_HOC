@@ -122,7 +122,7 @@ namespace TapDoc
 
             var raw = overlay.GetComponent<RawImage>();
             raw.texture = backend.Texture;
-            raw.uvRect = ClipCrop.UvRect(backend.Width, backend.Height, aspect);
+            raw.uvRect = ClipCrop.UvRect(backend.Width, backend.Height, aspect, ClipCrop.EdgeInsetPx);
             await Motion.Fade(overlay.GetComponent<CanvasGroup>(), 1f, FadeInSeconds);
 
             while (this != null && gen == _generation && !backend.Finished && !backend.Failed)

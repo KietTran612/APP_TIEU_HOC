@@ -120,8 +120,9 @@ namespace TapDoc.Tests
             Assert.AreEqual(1f, overlay.GetComponent<CanvasGroup>().alpha);
             var raw = overlay.GetComponent<RawImage>();
             Assert.AreSame(_backend.Texture, raw.texture);
-            Assert.AreEqual(.21875f, raw.uvRect.x, 1e-4f);
-            Assert.AreEqual(.5625f, raw.uvRect.width, 1e-4f);
+            Assert.AreEqual(.221875f, raw.uvRect.x, 1e-4f, "phần vuông giữa, cắt thêm 4 điểm ảnh mỗi mép");
+            Assert.AreEqual(4f / 720f, raw.uvRect.y, 1e-4f);
+            Assert.AreEqual(.55625f, raw.uvRect.width, 1e-4f);
             Assert.IsFalse(run.IsCompleted);
         }
 
