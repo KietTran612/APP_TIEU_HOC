@@ -208,7 +208,7 @@ def _sync_clips_files() -> None:
     plan = plan_sync(load_rows(VIDEO_MANIFEST), CLIPS_DIR, RES_CLIPS_DIR)
     apply_sync(plan, CLIPS_DIR, RES_CLIPS_DIR)
     print(f"Clip tranh động trong Resources: chép mới {len(plan.new)}, chép đè {len(plan.changed)}, "
-          f"xoá {len(plan.remove)}, giữ {len(plan.unchanged)}")
+          f"xoá {len(plan.remove)}, giữ {len(plan.unchanged)}; giữ khung cuối (ket=giu): {len(plan.index['giu'])}")
     if plan.missing_source:
         print(f"Thiếu file {len(plan.missing_source)} clip phát được (ví dụ {plan.missing_source[0]}): "
               f"giải nén zip clip và các gói bổ sung vào content/clips rồi chạy lại.")

@@ -33,6 +33,9 @@ class ClipSyncTest(unittest.TestCase):
         if meta:
             (self.res / f"{clip_id}.mp4.meta").write_text("guid: x", encoding="utf-8")
 
+    def dst_index(self, hold: list[str]) -> None:
+        (self.res / "index.json").write_text(json.dumps({"giu": hold}), encoding="utf-8")
+
     def test_plan_copies_dat_and_cho_duyet_skips_khong_dat(self):
         for clip_id in ("a", "b", "c"):
             self.src(clip_id, b"mp4-" + clip_id.encode())
@@ -102,6 +105,7 @@ class ClipSyncTest(unittest.TestCase):
     def test_describe_none_when_in_sync(self):
         self.src("a", b"a")
         self.dst("a", b"a")
+        self.dst_index([])
         self.assertIsNone(describe(plan_sync([_row("a", "dat")], self.clips, self.res)))
 
     def test_describe_mentions_command_when_out_of_sync(self):
@@ -109,6 +113,45 @@ class ClipSyncTest(unittest.TestCase):
         text = describe(plan_sync([_row("a", "dat")], self.clips, self.res))
         self.assertIsNotNone(text)
         self.assertIn("run_unity_media.py clips", text)
+
+    # --- clip "tiếp": "ket": "giu" — hết clip thì app giữ khung cuối; danh sách nằm ở Resources/clips/index.json ---
+
+    def index(self) -> dict:
+        return json.loads((self.res / "index.json").read_text(encoding="utf-8"))
+
+    def test_apply_writes_index_with_playable_hold_clips_only(self):
+        for clip_id in ("a", "b", "c", "d"):
+            self.src(clip_id, clip_id.encode())
+        rows = [{**_row("a", "dat"), "ket": "giu"}, {**_row("b", "cho_duyet"), "ket": "giu"},
+                {**_row("c", "khong_dat"), "ket": "giu"}, _row("d", "dat")]
+        apply_sync(plan_sync(rows, self.clips, self.res), self.clips, self.res)
+        self.assertEqual(self.index(), {"giu": ["a", "b"]})
+
+    def test_index_written_even_without_hold_clips(self):
+        self.src("a", b"a")
+        apply_sync(plan_sync([_row("a", "dat")], self.clips, self.res), self.clips, self.res)
+        self.assertEqual(self.index(), {"giu": []})
+
+    def test_plan_in_sync_only_when_index_matches(self):
+        self.src("a", b"a")
+        self.dst("a", b"a")
+        rows = [{**_row("a", "dat"), "ket": "giu"}]
+        plan = plan_sync(rows, self.clips, self.res)
+        self.assertTrue(plan.index_changed, "chưa có index.json")
+        self.assertIn("run_unity_media.py clips", describe(plan))
+        apply_sync(plan, self.clips, self.res)
+        again = plan_sync(rows, self.clips, self.res)
+        self.assertFalse(again.index_changed)
+        self.assertIsNone(describe(again))
+        rows[0]["ket"] = "khac"  # giá trị lạ: như không đánh dấu
+        self.assertTrue(plan_sync(rows, self.clips, self.res).index_changed)
+
+    def test_index_json_is_not_treated_as_a_stale_clip(self):
+        self.src("a", b"a")
+        apply_sync(plan_sync([_row("a", "dat")], self.clips, self.res), self.clips, self.res)
+        plan = plan_sync([_row("a", "dat")], self.clips, self.res)
+        self.assertEqual(plan.remove, [])
+        self.assertTrue((self.res / "index.json").is_file())
 
     # --- tapdoc validate: chỉ cảnh báo, không tính là lỗi ---
 
@@ -132,6 +175,7 @@ class ClipSyncTest(unittest.TestCase):
     def test_validate_quiet_when_clips_in_sync(self):
         self.src("a", b"a")
         self.dst("a", b"a")
+        self.dst_index([])
         self.assertNotIn("clip trong Resources", self.run_validate())
 
 

@@ -30,6 +30,14 @@ namespace TapDoc.Tests
             Assert.AreEqual(typeof(AudioClip), ContentPaths.TypeOf(ContentKind.Sfx));
             Assert.AreEqual(typeof(Font), ContentPaths.TypeOf(ContentKind.Font));
             Assert.AreEqual(typeof(UnityEngine.Video.VideoClip), ContentPaths.TypeOf(ContentKind.Clip));
+            Assert.AreEqual(typeof(TextAsset), ContentPaths.TypeOf(ContentKind.ClipIndex));
+        }
+
+        [Test]
+        public void ClipIndex_IsJsonNextToClips()
+        {
+            // Lệnh clips ghi Resources/clips/index.json: danh sách clip "tiếp" giữ khung cuối.
+            Assert.AreEqual("clips/index", ContentPaths.PathOf(ContentKind.ClipIndex, AssetCatalog.ClipIndexId));
         }
     }
 }

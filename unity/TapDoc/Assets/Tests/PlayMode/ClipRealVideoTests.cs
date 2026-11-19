@@ -116,6 +116,85 @@ namespace TapDoc.Tests
             Object.Destroy(sprite.texture);
         }
 
+        /// <summary>Nguồn thật, riêng danh sách clip "tiếp" do test đặt.</summary>
+        private sealed class HoldIndexSource : IContentSource
+        {
+            private readonly ResourcesContentSource _real = new();
+            public TextAsset Index;
+
+            public async Awaitable<Object> LoadAsync(ContentKind kind, string id) =>
+                kind == ContentKind.ClipIndex ? Index : await _real.LoadAsync(kind, id);
+
+            public Object Load(ContentKind kind, string id) => kind == ContentKind.ClipIndex ? Index : _real.Load(kind, id);
+            public void Release(ContentKind kind, string id, Object asset) => _real.Release(kind, id, asset);
+            public void ReleaseUnused() => _real.ReleaseUnused();
+        }
+
+        [UnityTest]
+        public IEnumerator RealClip_Hold_KeepsLastFrameAfterEnd_ThenReleases()
+        {
+            var source = new HoldIndexSource { Index = new TextAsset("{\"giu\": [\"" + ClipId + "\"]}") };
+            if (source.Load(ContentKind.Clip, ClipId) == null)
+                Assert.Inconclusive("Chưa chép clip vào Resources/clips (python tools/run_unity_media.py clips)");
+            if (!ClipSupport.CurrentDevice()) Assert.Inconclusive("Máy chạy test không phát được clip");
+
+            _root = new GameObject("RealHoldRoot");
+            _target = new RenderTexture(1280, 720, 0);
+            var cam = new GameObject("Cam").AddComponent<Camera>();
+            cam.transform.SetParent(_root.transform, false);
+            cam.targetTexture = _target;
+            if (Object.FindAnyObjectByType<AudioListener>() == null) cam.gameObject.AddComponent<AudioListener>();
+            var canvas = UiKit.CreateCanvas(cam);
+            canvas.transform.SetParent(_root.transform, false);
+
+            var catalog = new AssetCatalog(source);
+            yield return AwaitableTestUtil.Wait(catalog.PrepareAsync(new[]
+            {
+                (ContentKind.Clip, ClipId), (ContentKind.ClipIndex, AssetCatalog.ClipIndexId),
+            }), null);
+            var speech = new GameObject("Speech").AddComponent<SpeechPlayer>();
+            speech.transform.SetParent(_root.transform, false);
+            speech.Init(catalog);
+            var player = new GameObject("ClipPlayer").AddComponent<ClipPlayer>();
+            player.transform.SetParent(_root.transform, false);
+            player.Init(catalog, speech);
+
+            var sprite = FakeContentSource.NewSprite();
+            var tile = UiKit.CreateTile(canvas.transform, string.Empty, sprite);
+            tile.SetSprite(sprite, ClipId);
+            ((RectTransform)tile.transform).sizeDelta = new Vector2(460f, 460f);
+
+            var start = Time.realtimeSinceStartup;
+            var run = player.PlayAsync(tile, ClipId).GetAwaiter();
+            while (!run.IsCompleted && Time.realtimeSinceStartup - start < 14f) yield return null;
+            Assert.IsTrue(run.IsCompleted, "phát hết trong 14 s");
+            Assert.IsTrue(run.GetResult());
+            yield return null;
+
+            var overlay = tile.GetComponentInChildren<ClipOverlay>(true);
+            Assert.IsNotNull(overlay, "clip tiếp: giữ khung cuối");
+            Assert.AreEqual(1f, overlay.GetComponent<CanvasGroup>().alpha);
+            var held = overlay.GetComponent<RawImage>().texture as RenderTexture;
+            Assert.IsNotNull(held);
+            Assert.AreEqual(ClipPlayer.HeldFrameName, held.name, "khung cuối chép riêng");
+            var centre = CentrePixel(held);
+            Assert.Greater(centre.a, .5f, "khung cuối có nội dung");
+            Assert.Greater(centre.r + centre.g + centre.b, .3f, "không phải khung đen");
+            var video = player.GetComponent<UnityEngine.Video.VideoPlayer>();
+            Assert.IsNull(video.clip, "phần phát đã dừng: tắt tiếng");
+            Assert.IsFalse(player.IsPlaying);
+
+            player.ReleaseAll(); // rời màn
+            yield return null;
+            Assert.IsNull(tile.GetComponentInChildren<ClipOverlay>(true));
+            var left = 0;
+            foreach (var rt in Resources.FindObjectsOfTypeAll<RenderTexture>())
+                if (rt != null && (rt.name == "ClipTexture" || rt.name == ClipPlayer.HeldFrameName)) left++;
+            Assert.AreEqual(0, left, "không còn RenderTexture của bộ phát hay khung cuối");
+            Object.Destroy(sprite.texture);
+            Object.Destroy(source.Index);
+        }
+
         private static Color CentrePixel(RenderTexture rt)
         {
             var active = RenderTexture.active;

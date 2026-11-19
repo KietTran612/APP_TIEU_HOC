@@ -31,6 +31,9 @@ namespace TapDoc
         /// <summary>Âm lượng clip: clip vốn nhỏ hơn giọng đọc khoảng 12 dB (đo 18/11), nên để nguyên.</summary>
         public const float Volume = 1f;
 
+        /// <summary>Tên RenderTexture chép khung cuối của clip "tiếp" (mỗi khung đang giữ một cái).</summary>
+        public const string HeldFrameName = "ClipHeldFrame";
+
         /// <summary>Tắt hẳn clip (test app tắt mặc định để không phát video thật).</summary>
         public static bool Enabled = true;
 
@@ -50,6 +53,8 @@ namespace TapDoc
         private bool _deviceOk;
         private bool _settingEnabled = true;
         private int _generation;
+        private HashSet<string> _holdIds;
+        private readonly List<ClipOverlay> _held = new();
 
         /// <summary>Cài đặt "Tranh động" của phụ huynh. Tắt thì dừng clip đang chạy; bật lại thì đếm hỏng lại từ 0.</summary>
         public bool SettingEnabled
@@ -79,6 +84,22 @@ namespace TapDoc
             _catalog = catalog;
             _speech = speech;
             _deviceOk = (DeviceCheck ?? ClipSupport.CurrentDevice)();
+            _holdIds = null;
+        }
+
+        /// <summary>
+        /// Clip của <paramref name="imageId"/> là kiểu "tiếp" (<c>ket: giu</c>): bắt đầu từ tranh, khung cuối khác tranh, nên
+        /// hết clip thì giữ khung cuối thay vì mờ về tranh tĩnh (thiết kế tranh động mục 4.1, 5).
+        /// </summary>
+        public bool HoldsLastFrame(string imageId)
+        {
+            if (string.IsNullOrEmpty(imageId) || _catalog == null) return false;
+            if (_holdIds == null)
+            {
+                var index = _catalog.ClipIndex();
+                _holdIds = ClipIndex.Parse(index != null ? index.text : null);
+            }
+            return _holdIds.Contains(imageId);
         }
 
         private IClipBackend Backend => _backend ??= (BackendFactory ?? (host => new VideoPlayerBackend(host)))(gameObject);
@@ -99,6 +120,7 @@ namespace TapDoc
             if (!CanPlay(imageId)) return false;
 
             Stop();
+            RemoveHeld(tile, StopFadeSeconds); // phát lại clip "tiếp": khung đang giữ mờ nhanh về tranh, rồi phát từ đầu
             var gen = ++_generation;
             var backend = Backend;
             var overlay = CreateOverlay(tile, out var aspect);
@@ -138,6 +160,11 @@ namespace TapDoc
             }
 
             Failures = 0;
+            if (HoldsLastFrame(imageId))
+            {
+                Hold(overlay, backend);
+                return true;
+            }
             // Giữ khung cuối (khớp tranh) rồi mờ về tranh tĩnh bên dưới.
             await Motion.Fade(overlay.GetComponent<CanvasGroup>(), 0f, FadeOutSeconds);
             if (this != null && gen == _generation) Clear(fadeSeconds: 0f);
@@ -170,7 +197,45 @@ namespace TapDoc
         {
             _generation++;
             Clear(fadeSeconds: 0f);
+            foreach (var held in _held)
+            {
+                if (held != null) Destroy(held.gameObject);
+            }
+            _held.Clear();
             _backend?.Release();
+        }
+
+        /// <summary>
+        /// Clip "tiếp" vừa hết: chép khung cuối sang RenderTexture riêng (texture chung còn cho clip khác), để lớp phủ đứng
+        /// yên trên khung đó; dừng phần phát (tắt tiếng). Khung chỉ mất khi thẻ bị huỷ, lật trang, rời màn hay phát lại.
+        /// </summary>
+        private void Hold(ClipOverlay overlay, IClipBackend backend)
+        {
+            var source = backend.Texture;
+            if (source != null)
+            {
+                var frame = new RenderTexture(source.width, source.height, 0, RenderTextureFormat.ARGB32) { name = HeldFrameName };
+                Graphics.Blit(source, frame);
+                overlay.HeldFrame = frame;
+                overlay.GetComponent<RawImage>().texture = frame;
+            }
+            _held.RemoveAll(h => h == null);
+            _held.Add(overlay);
+            ActiveOverlay = null; // không còn là clip đang chạy: Clear không gỡ nó
+            Clear(fadeSeconds: 0f);
+        }
+
+        /// <summary>Gỡ các khung cuối đang giữ trên tranh của <paramref name="tile"/> (mờ đi trong <paramref name="fadeSeconds"/>).</summary>
+        private void RemoveHeld(Tile tile, float fadeSeconds)
+        {
+            _held.RemoveAll(h => h == null);
+            var box = tile.ImageBox.transform;
+            for (var i = _held.Count - 1; i >= 0; i--)
+            {
+                if (!_held[i].transform.IsChildOf(box)) continue;
+                _ = FadeAndDestroy(_held[i], fadeSeconds);
+                _held.RemoveAt(i);
+            }
         }
 
         private void Update()

@@ -28,6 +28,7 @@ Từ 30/10, các session tranh động đã làm clip cho tranh bài học trên
   - `loop` (247 clip): khung đầu và khung cuối đều là tranh gốc.
   - `build` (76 clip): khung đầu là lúc trước (mầm cây, người đứng xa hơn), khung cuối là tranh gốc.
   - Ở cả hai kiểu, khung cuối đã được soát là khớp tranh tĩnh (`endDiff`, `picDiff` trong lúc duyệt). Vì vậy hết clip quay về tranh tĩnh mà không giật.
+  - **Kiểu "tiếp"** (thêm 19/11, QUY-TRINH §12, f9f6872): clip bắt đầu từ chính tranh gốc, nhân vật đi tiếp một quãng, nên khung cuối **khác** tranh. Mờ về tranh tĩnh thì nhân vật nhảy ngược về chỗ cũ, nên với kiểu này app giữ khung cuối (mục 5). Clip kiểu "tiếp" được đánh dấu trong danh mục (mục 4).
 - **Độ to:** đo 30 clip và 30 file giọng đọc, lấy RMS của 1/3 đoạn to nhất. Clip có trung vị −28 dBFS (10% to nhất từ −19 dBFS). Giọng đọc có trung vị −16,5 dBFS. Clip vốn nhỏ hơn giọng đọc khoảng 12 dB, nên không cần giảm âm lượng clip.
 - **Chỗ tranh có clip xuất hiện trong bài** (đếm từ `Resources/lessons/*.json`):
 
@@ -90,6 +91,13 @@ Quy tắc chung [Đề xuất]: **clip phát ngay sau khi app đọc xong chữ 
 - Ở `KeywordView` bước `picture` (tranh không chữ), "đọc chữ" là `Step.audio` của bước.
 - Tranh thiếu clip (`khong_dat`, chưa có file, máy không phát được, cài đặt tắt): mọi thứ như hiện nay, không có dấu hiệu gì khác.
 
+### 4.1 Đánh dấu clip "tiếp" (thêm 19/11, root giao)
+
+- Trong `content/manifests/video_manifest.json`, dòng của clip "tiếp" có thêm trường tuỳ chọn **`"ket": "giu"`** ("kết: giữ khung cuối"). Ví dụ: `{"id": "img_b50_ddanf_gaf_con", "file": "clips/img_b50_ddanf_gaf_con.mp4", "source": "flow_veo31_lite", "status": "cho_duyet", "ket": "giu", "ghi_chu": "…"}`.
+- Không có trường, hay giá trị khác `"giu"`: giữ cách cũ (hết clip thì mờ về tranh tĩnh).
+- Ai làm clip "tiếp" thì thêm trường này cùng lúc chuyển dòng sang `cho_duyet`. Sửa danh mục theo cách thường lệ: chỉ mục tạm dựng từ HEAD, không kéo theo sửa chưa commit của người khác.
+- App biết danh sách qua `Resources/clips/index.json` (mục 12). Chạy lại lệnh `clips` sau khi đổi trường này.
+
 ## 5. Phát một lần rồi về tranh
 
 - **Lớp phủ:** clip hiện trên một `RawImage` phủ đúng vùng tranh đang hiện trong thẻ. Tranh tĩnh vẫn nằm bên dưới. Lớp phủ là con của khung tranh (`Tile.ImageBox`), nên tự theo khi thẻ nảy, phóng hay lật trang [Đề xuất].
@@ -100,6 +108,13 @@ Quy tắc chung [Đề xuất]: **clip phát ngay sau khi app đọc xong chữ 
 - **Kết thúc:** clip hết thì giữ khung cuối, rồi lớp phủ mờ đi trong 0,25 s để lộ tranh tĩnh bên dưới. Khung cuối gần như trùng tranh nên bé không thấy đổi. Xong thì gỡ lớp phủ [Đề xuất].
 - **Dừng giữa chừng** (mục 6): tắt tiếng clip ngay, lớp phủ mờ đi trong 0,15 s, rồi gỡ [Đề xuất].
 - Test đặt `Motion.Scale = 0` nên mờ vào, mờ ra xảy ra tức thì, giống các hiệu ứng khác.
+- **Clip "tiếp" (`ket: giu`, thêm 19/11):**
+  - Mờ vào như mọi clip. Khung đầu là tranh nên hình không đổi.
+  - Hết clip: **giữ khung cuối** trên lớp phủ, không mờ về tranh tĩnh. Phần phát dừng hẳn nên tiếng tắt. Khung cuối được chép sang một `RenderTexture` riêng (`ClipHeldFrame`), để clip khác dùng texture chung không đè lên.
+  - Khung đang giữ không tính là "đang phát" (`IsPlaying = false`), nên lời nhắc và giờ học chạy như thường. Giọng đọc chạy sau đó (bé chạm chữ, Nghe lại, lời khen) **không** gỡ khung đang giữ. Tranh khác trong cùng bước phát clip thì khung đang giữ vẫn đứng yên.
+  - Chỉ gỡ khi bước bị huỷ (đi tiếp, về danh sách), khi lật trang (trang lật chỉ mang tranh tĩnh), khi rời màn (`ReleaseAll`), hoặc khi chính clip đó phát lại trên thẻ đó. Phát lại thì khung đang giữ mờ nhanh về tranh (0,15 s), rồi clip phát từ đầu.
+  - Dừng **giữa chừng** (giọng đọc chen vào khi clip còn chạy): như mọi clip, tắt tiếng và mờ về tranh.
+  - Gỡ khung thì nhả luôn `RenderTexture` của nó.
 - **Lật trang:** `LessonScreen.TurnCurrentPage` nhân bản bước cũ để lật. Bản sao không được giữ lớp phủ clip mà chỉ hiện tranh tĩnh. Bước thật bị huỷ thì clip dừng (mục 6) [Đề xuất].
 
 ## 6. Tiếng clip và tiếng đọc
@@ -210,6 +225,10 @@ Nguyên tắc: **giọng đọc luôn được ưu tiên; clip nhường** [Đ�
   2. Chép vào `Resources/clips/`: thiếu thì chép; khác nội dung (so cỡ, rồi sha256) thì chép đè.
   3. Xoá khỏi `Resources/clips/` các `.mp4` (và `.meta`) không còn trong tập phát được. Đó là clip bị chuyển sang `khong_dat` hoặc bị bỏ.
   4. In số clip chép mới, chép đè, xoá, giữ nguyên, và các mã phát được mà thiếu file.
+  5. (Thêm 19/11.) Ghi `Resources/clips/index.json` = `{"giu": [mã…]}`: các clip phát được có `"ket": "giu"`. Luôn ghi, kể cả khi danh sách rỗng.
+     - App đọc file này như một `TextAsset` (`ContentKind.ClipIndex`, đường dẫn `clips/index`) cùng bộ dữ liệu chung, và coi là không bắt buộc.
+     - Thiếu file hay file hỏng thì mọi clip theo cách cũ.
+     - `tapdoc validate` cảnh báo khi file lệch danh mục.
 - `unpack` gọi bước đồng bộ này ở cuối, sau khi giải nén clip và nhập các gói `bosung`. Máy mới nhờ vậy có đủ clip.
 - `tapdoc validate` thêm một cảnh báo (không phải lỗi) khi `Resources/clips/` lệch tập phát được, kèm gợi ý chạy lệnh `clips`.
 - Ghi thêm một dòng về lệnh `clips` vào `SETUP-MAY-MOI.md` và `CHUYEN-MAY-MOI.md`, ở chỗ nói về nhập gói media.
@@ -276,6 +295,21 @@ Chỉ chạy các lớp test liên quan, không chạy cả bộ [Chốt, quy đ
   - xoá clip đã thành `khong_dat` cùng `.meta`;
   - báo mã thiếu file;
   - `unpack` có gọi bước đồng bộ.
+
+**Clip "tiếp" (thêm 19/11):**
+- EditMode `ClipIndexTests`: đọc danh sách; file rỗng, thiếu hay hỏng thì danh sách rỗng.
+- `ContentPathsTests`: `ClipIndex` → `clips/index`, kiểu `TextAsset`.
+- `AssetCatalogTests`: nạp cùng bộ chung; thiếu thì im lặng.
+- PlayMode `ClipPlayerTests`:
+  - hết clip thì giữ khung cuối trên texture riêng, không bận, phần phát đã dừng;
+  - giọng đọc sau đó không gỡ khung;
+  - giọng đọc giữa chừng thì mờ về tranh như cũ;
+  - phát lại cùng thẻ thì gỡ khung rồi phát từ đầu;
+  - tranh khác phát thì khung đang giữ đứng yên;
+  - thẻ bị huỷ hay `ReleaseAll` thì nhả khung.
+- `ClipAppTests`: khung cuối còn qua Nghe lại, mất khi đi tiếp.
+- `ClipRealVideoTests`: clip thật giữ khung cuối có nội dung, rồi nhả.
+- Python `test_clip_sync`: `index.json` chỉ có clip phát được mang `"ket": "giu"`; ghi cả khi rỗng; lệch thì `validate` cảnh báo.
 
 **Ảnh chụp cho root soát:** test chụp `phone_20x9` và `ipad_43`, mỗi máy 2 ảnh: giữa clip (khoảng 3 s, `KeywordView` của một bài có clip) và sau khi clip hết (tranh tĩnh). Lưu ở `TestOutput/screens/<máy>/clip_*.png`. Ảnh được gửi root soát; không đưa vào git.
 

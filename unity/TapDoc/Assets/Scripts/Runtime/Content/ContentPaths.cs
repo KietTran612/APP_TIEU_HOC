@@ -20,12 +20,13 @@ namespace TapDoc
             ContentKind.Sfx => "sfx/" + id,
             ContentKind.Font => "fonts/" + id,
             ContentKind.Clip => "clips/" + id,
+            ContentKind.ClipIndex => "clips/index",
             _ => throw new ArgumentOutOfRangeException(nameof(kind), kind, null),
         };
 
         public static Type TypeOf(ContentKind kind) => kind switch
         {
-            ContentKind.LessonIndex or ContentKind.Lesson or ContentKind.Appendix => typeof(TextAsset),
+            ContentKind.LessonIndex or ContentKind.Lesson or ContentKind.Appendix or ContentKind.ClipIndex => typeof(TextAsset),
             ContentKind.Image => typeof(Sprite),
             ContentKind.Speech or ContentKind.Sfx => typeof(AudioClip),
             ContentKind.Font => typeof(Font),

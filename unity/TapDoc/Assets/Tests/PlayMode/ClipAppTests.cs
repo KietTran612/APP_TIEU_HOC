@@ -40,10 +40,18 @@ namespace TapDoc.Tests
             /// <summary>Ở lần dọn đầu tiên sau khi clip đã bắt đầu: (đã nhả phần phát, còn giữ clip).</summary>
             public (bool released, bool holdsClip)? AtFirstCleanupAfterPlay { get; private set; }
 
-            public async Awaitable<Object> LoadAsync(ContentKind kind, string id) =>
-                kind == ContentKind.Clip ? _clip : await _real.LoadAsync(kind, id);
+            /// <summary>Danh sách clip "tiếp" (giữ khung cuối) app đọc; <c>null</c> là chưa có index.json.</summary>
+            public TextAsset Index { get; set; }
 
-            public Object Load(ContentKind kind, string id) => kind == ContentKind.Clip ? _clip : _real.Load(kind, id);
+            public async Awaitable<Object> LoadAsync(ContentKind kind, string id) =>
+                kind is ContentKind.Clip or ContentKind.ClipIndex ? Load(kind, id) : await _real.LoadAsync(kind, id);
+
+            public Object Load(ContentKind kind, string id) => kind switch
+            {
+                ContentKind.Clip => _clip,
+                ContentKind.ClipIndex => Index,
+                _ => _real.Load(kind, id),
+            };
 
             public void Release(ContentKind kind, string id, Object asset) => _real.Release(kind, id, asset);
 
@@ -185,6 +193,34 @@ namespace TapDoc.Tests
             Assert.IsNotNull(s.TurningPage, "đang lật trang");
             Assert.IsEmpty(s.TurningPage.GetComponentsInChildren<ClipOverlay>(true), "trang lật chỉ có tranh tĩnh");
             Motion.Scale = 0f;
+        }
+
+        [UnityTest]
+        public IEnumerator HoldClip_KeepsLastFrameThroughReplay_GoneOnNext()
+        {
+            var index = new TextAsset("{\"giu\": [\"" + Keyword01 + "\"]}");
+            _source.Index = index;
+            yield return OpenKeywordWithClip();
+            var s = Screen();
+            var tile = PictureTile(s);
+            _backend.Finished = true;
+            yield return null;
+            yield return null;
+            Assert.IsNotNull(tile.GetComponentInChildren<ClipOverlay>(true), "clip tiếp hết: giữ khung cuối");
+            Assert.IsFalse(Clips.IsPlaying);
+
+            Press(s.ReplayButton); // Nghe lại: giọng đọc chạy, khung cuối vẫn đứng yên
+            yield return null;
+            yield return null;
+            Assert.IsNotNull(tile.GetComponentInChildren<ClipOverlay>(true), "giọng đọc không gỡ khung đang giữ");
+
+            yield return ((ITestCompletable)s.CurrentView).CompleteForTest();
+            yield return null;
+            s.NextButton.onClick.Invoke(); // bước bị huỷ: bỏ khung cuối
+            yield return null;
+            yield return null;
+            Assert.IsTrue(tile == null, "bước cũ đã huỷ cùng khung đang giữ");
+            Object.Destroy(index);
         }
 
         [UnityTest]

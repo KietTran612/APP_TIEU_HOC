@@ -23,6 +23,7 @@ namespace TapDoc.Tests
         private ClipPlayer _player;
         private Texture2D _clipA;
         private Texture2D _clipB;
+        private TextAsset _index;
         private Sprite _sprite;
 
         [SetUp]
@@ -51,11 +52,17 @@ namespace TapDoc.Tests
             source.Put(ContentKind.Clip, "img_a", _clipA);
             source.Put(ContentKind.Clip, "img_b", _clipB);
             source.Put(ContentKind.Speech, LongSpeech, AudioClip.Create(LongSpeech, 88200, 1, 44100, false));
+            // Clip "tiếp" (ket = giu): hết clip giữ khung cuối.
+            source.Put(ContentKind.Clip, "img_tiep", _clipA);
+            source.Put(ContentKind.Clip, "img_tiep2", _clipB);
+            _index = new TextAsset("{\"giu\": [\"img_tiep\", \"img_tiep2\"]}");
+            source.Put(ContentKind.ClipIndex, AssetCatalog.ClipIndexId, _index);
             var catalog = new AssetCatalog(source);
             AwaitableTestUtil.RunNow(catalog.PrepareAsync(new[]
             {
                 (ContentKind.Clip, "img_a"), (ContentKind.Clip, "img_b"), (ContentKind.Clip, "img_khong"),
-                (ContentKind.Speech, LongSpeech),
+                (ContentKind.Clip, "img_tiep"), (ContentKind.Clip, "img_tiep2"),
+                (ContentKind.ClipIndex, AssetCatalog.ClipIndexId), (ContentKind.Speech, LongSpeech),
             }));
 
             var spGo = new GameObject("SpeechPlayer");
@@ -82,6 +89,7 @@ namespace TapDoc.Tests
             Object.Destroy(_target);
             Object.Destroy(_clipA);
             Object.Destroy(_clipB);
+            Object.Destroy(_index);
         }
 
         private Tile NewTile(string imageId)
@@ -94,6 +102,147 @@ namespace TapDoc.Tests
 
         private static ClipOverlay OverlayOf(Tile tile) =>
             tile == null ? null : tile.GetComponentInChildren<ClipOverlay>(true);
+
+        /// <summary>Số khung cuối đang được giữ (mỗi khung một RenderTexture riêng).</summary>
+        private static int HeldFrames()
+        {
+            var n = 0;
+            foreach (var rt in Resources.FindObjectsOfTypeAll<RenderTexture>())
+                if (rt != null && rt.name == ClipPlayer.HeldFrameName) n++;
+            return n;
+        }
+
+        /// <summary>Phát <paramref name="id"/> trên <paramref name="tile"/> tới hết (phần phát giả); trả kết quả qua <paramref name="done"/>.</summary>
+        private IEnumerator PlayToEnd(Tile tile, string id, System.Action<bool> done = null)
+        {
+            var run = _player.PlayAsync(tile, id).GetAwaiter();
+            yield return null;
+            _backend.FirstFrameReady = true;
+            yield return Frames(2);
+            _backend.Finished = true;
+            yield return Frames(3);
+            Assert.IsTrue(run.IsCompleted, "phát xong");
+            var result = run.GetResult();
+            done?.Invoke(result);
+        }
+
+        // --- Clip "tiếp" (ket = giu): bắt đầu từ tranh, khung cuối khác tranh, hết clip thì giữ khung cuối ---
+
+        [Test]
+        public void HoldsLastFrame_FromIndex()
+        {
+            Assert.IsTrue(_player.HoldsLastFrame("img_tiep"));
+            Assert.IsFalse(_player.HoldsLastFrame("img_a"), "không có trong danh sách: như cũ");
+            Assert.IsFalse(_player.HoldsLastFrame(null));
+        }
+
+        [UnityTest]
+        public IEnumerator HoldClip_Finished_KeepsLastFrame_SilentAndIdle()
+        {
+            var tile = NewTile("img_tiep");
+            var before = HeldFrames();
+            var result = false;
+            yield return PlayToEnd(tile, "img_tiep", r => result = r);
+            Assert.IsTrue(result);
+            var overlay = OverlayOf(tile);
+            Assert.IsNotNull(overlay, "giữ khung cuối, không mờ về tranh tĩnh");
+            Assert.AreEqual(1f, overlay.GetComponent<CanvasGroup>().alpha);
+            var raw = overlay.GetComponent<RawImage>();
+            Assert.AreNotSame(_backend.Texture, raw.texture, "khung cuối được chép riêng: texture chung còn cho clip khác");
+            Assert.AreEqual(before + 1, HeldFrames());
+            Assert.AreEqual(.221875f, raw.uvRect.x, 1e-4f, "giữ đúng phần cắt");
+            Assert.IsFalse(_player.IsPlaying, "hết clip: không còn bận (nhắc, giọng đọc chạy bình thường)");
+            Assert.IsNull(_player.CurrentId);
+            Assert.IsNull(_backend.LastClip, "phần phát đã dừng: tắt tiếng, bỏ clip");
+        }
+
+        [UnityTest]
+        public IEnumerator HoldClip_SpeechAfterEnd_KeepsFrame()
+        {
+            var tile = NewTile("img_tiep");
+            yield return PlayToEnd(tile, "img_tiep");
+            _ = _speech.PlayAsync(LongSpeech); // bé chạm chữ, Nghe lại, lời khen…
+            yield return Frames(3);
+            Assert.IsTrue(_speech.IsBusy);
+            Assert.IsNotNull(OverlayOf(tile), "giọng đọc không gỡ khung cuối đang giữ");
+        }
+
+        [UnityTest]
+        public IEnumerator HoldClip_SpeechMidway_FadesBackLikeBefore()
+        {
+            var tile = NewTile("img_tiep");
+            var before = HeldFrames();
+            var run = _player.PlayAsync(tile, "img_tiep").GetAwaiter();
+            yield return null;
+            _backend.FirstFrameReady = true;
+            yield return Frames(2);
+            _ = _speech.PlayAsync(LongSpeech);
+            yield return Frames(3);
+            Assert.IsNull(OverlayOf(tile), "dừng giữa chừng: tắt tiếng, mờ về tranh như cũ");
+            Assert.IsFalse(run.GetResult());
+            Assert.AreEqual(before, HeldFrames());
+        }
+
+        [UnityTest]
+        public IEnumerator HoldClip_ReplaySameTile_RemovesHeldThenPlaysFromStart()
+        {
+            var tile = NewTile("img_tiep");
+            yield return PlayToEnd(tile, "img_tiep");
+            var held = OverlayOf(tile);
+            Assert.IsNotNull(held);
+            _ = _player.PlayAsync(tile, "img_tiep");
+            yield return Frames(2);
+            Assert.IsTrue(held == null, "phát lại: khung đang giữ mờ nhanh về tranh");
+            var fresh = OverlayOf(tile);
+            Assert.IsNotNull(fresh);
+            Assert.AreEqual(0f, fresh.GetComponent<CanvasGroup>().alpha, "chờ khung đầu, phát từ đầu");
+            Assert.AreEqual(2, _backend.BeginCount);
+            Assert.IsTrue(_player.IsPlaying);
+        }
+
+        [UnityTest]
+        public IEnumerator HoldClip_OtherTilePlays_HeldFrameStays()
+        {
+            var tileA = NewTile("img_tiep");
+            yield return PlayToEnd(tileA, "img_tiep");
+            var heldTexture = OverlayOf(tileA).GetComponent<RawImage>().texture;
+            var tileB = NewTile("img_a");
+            _ = _player.PlayAsync(tileB, "img_a");
+            yield return null;
+            _backend.FirstFrameReady = true;
+            yield return Frames(2);
+            Assert.IsNotNull(OverlayOf(tileA), "tranh khác phát thì khung đang giữ vẫn đứng yên");
+            Assert.AreSame(heldTexture, OverlayOf(tileA).GetComponent<RawImage>().texture);
+            Assert.AreEqual("img_a", _player.CurrentId);
+        }
+
+        [UnityTest]
+        public IEnumerator HoldClip_TileDestroyed_ReleasesHeldFrame()
+        {
+            var before = HeldFrames();
+            var tile = NewTile("img_tiep");
+            yield return PlayToEnd(tile, "img_tiep");
+            Assert.AreEqual(before + 1, HeldFrames());
+            Object.Destroy(tile.gameObject); // bước bị huỷ (bấm Tiếp, về danh sách)
+            yield return Frames(2);
+            Assert.AreEqual(before, HeldFrames(), "nhả khung cuối khi bước bị huỷ");
+        }
+
+        [UnityTest]
+        public IEnumerator HoldClip_ReleaseAll_RemovesHeldFrames()
+        {
+            var before = HeldFrames();
+            var tileA = NewTile("img_tiep");
+            var tileB = NewTile("img_tiep2");
+            yield return PlayToEnd(tileA, "img_tiep");
+            yield return PlayToEnd(tileB, "img_tiep2");
+            Assert.AreEqual(before + 2, HeldFrames());
+            _player.ReleaseAll(); // rời màn
+            yield return Frames(2);
+            Assert.IsNull(OverlayOf(tileA));
+            Assert.IsNull(OverlayOf(tileB));
+            Assert.AreEqual(before, HeldFrames());
+        }
 
         private static IEnumerator Frames(int n)
         {

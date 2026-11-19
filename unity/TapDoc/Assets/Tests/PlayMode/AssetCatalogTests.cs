@@ -198,6 +198,28 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator ClipIndex_PreparedWithCommonSet_MissingIsSilent()
+        {
+            FillCommon();
+            yield return AwaitableTestUtil.Wait(_catalog.PrepareCommonAsync());
+            Assert.AreEqual(1, _source.LoadCount(ContentKind.ClipIndex, AssetCatalog.ClipIndexId), "nạp cùng bộ chung");
+            Assert.IsNull(_catalog.ClipIndex(), "máy chưa có index.json: không có");
+            Assert.IsEmpty(_catalog.UnpreparedAsks);
+            LogAssert.NoUnexpectedReceived();
+        }
+
+        [UnityTest]
+        public IEnumerator ClipIndex_ReturnsTextAsset()
+        {
+            FillCommon();
+            var index = new TextAsset("{\"giu\": [\"img_a\"]}");
+            _source.Put(ContentKind.ClipIndex, AssetCatalog.ClipIndexId, index);
+            yield return AwaitableTestUtil.Wait(_catalog.PrepareCommonAsync());
+            Assert.AreSame(index, _catalog.ClipIndex());
+            Object.DestroyImmediate(index);
+        }
+
+        [UnityTest]
         public IEnumerator PreparedClip_ReturnsSourceObject()
         {
             // Không tạo được VideoClip bằng code: catalog trả nguyên vật nguồn đưa, để test dùng vật giả.

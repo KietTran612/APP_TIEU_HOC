@@ -22,5 +22,10 @@ namespace TapDoc
         /// Tranh động (clip) theo mã tranh. Không bắt buộc: tranh không có clip phát được thì app dùng tranh tĩnh.
         /// </summary>
         Clip,
+
+        /// <summary>
+        /// Danh sách clip "tiếp" (hết clip giữ khung cuối), <c>clips/index</c>, do lệnh clips ghi. Không bắt buộc.
+        /// </summary>
+        ClipIndex,
     }
 }

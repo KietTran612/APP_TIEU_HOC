@@ -61,6 +61,14 @@ namespace TapDoc
         /// </summary>
         public Object Clip(string id) => Get(ContentKind.Clip, id);
 
+        /// <summary>Mã của danh sách clip "tiếp" (<see cref="ContentKind.ClipIndex"/>), để nạp theo bộ như mọi thứ khác.</summary>
+        public const string ClipIndexId = "index";
+
+        /// <summary>
+        /// Danh sách clip "tiếp" (<c>Resources/clips/index.json</c>), nạp cùng bộ chung; không có thì <c>null</c>, im lặng.
+        /// </summary>
+        public TextAsset ClipIndex() => Get(ContentKind.ClipIndex, ClipIndexId) as TextAsset;
+
         /// <summary>Có tranh này không. Không ghi log, kể cả khi chưa chuẩn bị hay thiếu file.</summary>
         public bool HasImage(string id)
         {
@@ -87,7 +95,8 @@ namespace TapDoc
                 .Concat(SystemImages.All.Select(id => (ContentKind.Image, id)))
                 .Concat(ProfileScreen.Avatars.Select(id => (ContentKind.Image, id)))
                 .Concat(SystemSfx.All.Select(id => (ContentKind.Sfx, id)))
-                .Append((ContentKind.Font, FontProvider.MainFontId));
+                .Append((ContentKind.Font, FontProvider.MainFontId))
+                .Append((ContentKind.ClipIndex, ClipIndexId));
             _common = await PrepareAsync(ids);
         }
 
@@ -206,7 +215,8 @@ namespace TapDoc
         private void ReportMissing((ContentKind kind, string id) key)
         {
             // Tranh không có clip phát được (khong_dat) là chuyện thường: không báo gì.
-            if (key.kind == ContentKind.Clip || _optional.Contains(key) || !_loggedMissing.Add(key)) return;
+            if (key.kind is ContentKind.Clip or ContentKind.ClipIndex || _optional.Contains(key) || !_loggedMissing.Add(key))
+                return;
             switch (key.kind)
             {
                 case ContentKind.Sfx:
