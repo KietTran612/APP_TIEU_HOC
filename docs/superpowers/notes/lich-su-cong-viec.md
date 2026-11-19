@@ -10,6 +10,13 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ---
 
+## 19/11/2026
+
+- **[Chung] Phát tranh động trong app (dc8da76, 12d448c, e7be8e9, e8351af, 8653586, 672bce3, 26a43da, 30916c9):** clip phát ở 4 màn Phần 1 sau khi đọc chữ của tranh, giọng đọc luôn ưu tiên, máy yếu dùng tranh tĩnh, cài đặt "Tranh động", lệnh `run_unity_media.py clips` chép clip dat+cho_duyet vào Resources/clips (ngoài git), cắt thêm 4 điểm ảnh mỗi mép. Soát độc lập: 0 Critical, 3 Important đã sửa có test (52/52 lớp clip), 5 Minor ghi sổ. Root duyệt spec và xem ảnh phone_20x9, ipad_43: đạt. Bản Windows lớn thêm ~0,9 GB.
+- **[Chung] UI — 25c81f2:** bảng đọc bài 80 tràn đáy trên iPhone (LessonNotesTests.Notes_PanelFitsAllSizes đỏ từ đợt UI 1): hàng dư thì thu cột nhãn và thẻ dài về vừa chữ. ItemsViewTests 8/8, LessonNotesTests 7/7. Root kiểm: đạt.
+- **Tranh động 19/11:** b274 lượt cuối (L2, e82013c) và b115 (L1, 1d57ae6, f372d7d) root nhận; b58 gửi thư lần 2, b119 lần 1 không đạt (0c1cfdf).
+- **Chủ dự án sửa hướng tranh động:** lỗi cần sửa là "cử động mà không di chuyển" → nhân vật phải DI CHUYỂN THẬT (cách A: khung đầu lùi một quãng, tới đúng chỗ tranh ở cuối; được sáng tạo). Cinemagraph giữ người đứng yên là sai; 14 clip như vậy chuyển về khong_dat để làm lại. Quy trình sửa ở ba1536c.
+
 ## 18/11/2026
 
 - **[L1] tranh động — ngày 18/11 (57b8d07 … b9d6e0d, df93c0c §15):** 30 clip root xem trước và nhận (b12, b13, b105 rước đèn, b68, b101, b82 con kênh, b15, b20, b24, b25, b26, b28, b31, b33, b34, b35, b36, b43 củ sắn, b43 khăn, b44, b47, b49, b52, b54, b55, b57 chim non, b58 gà mẹ, b58 cái túi, b65 tranh mới, b110 quê ngoại). Tranh tĩnh: b57 con dơi. Hết credit /u/2, /u/3, /u/4, /u/6. Hàng 19/11: cinemagraph lượt cuối cho các mã dừng, b58 gửi thư lượt 2, b115/b119 tranh mới.
