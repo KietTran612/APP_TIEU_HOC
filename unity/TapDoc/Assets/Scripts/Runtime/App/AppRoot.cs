@@ -34,6 +34,9 @@ namespace TapDoc
 
         /// <summary>Kênh tiếng động khi tương tác, tách khỏi giọng đọc.</summary>
         public SfxPlayer Sfx { get; private set; }
+
+        /// <summary>Bộ phát tranh động (một clip mỗi lúc), dùng ở màn học.</summary>
+        public ClipPlayer Clips { get; private set; }
         public AssetCatalog Assets { get; private set; }
 
         /// <summary>Kho bài: danh sách bài, bài học và Phụ lục, đọc qua cùng nguồn dữ liệu với <see cref="Assets"/>.</summary>
@@ -252,6 +255,12 @@ namespace TapDoc
             Sfx = sfxGo.AddComponent<SfxPlayer>();
             Sfx.Init(Assets, Speech);
             Sfx.Enabled = Progress.SfxEnabled;
+
+            var clipGo = new GameObject("ClipPlayer");
+            clipGo.transform.SetParent(transform, false);
+            Clips = clipGo.AddComponent<ClipPlayer>();
+            Clips.Init(Assets, Speech);
+            Clips.SettingEnabled = Progress.ClipsEnabled;
         }
 
         private void Update()
@@ -539,6 +548,8 @@ namespace TapDoc
             _currentSet = set;
             Assets.CurrentHolder = set;
             if (old == null) return;
+            // Bộ phát clip bỏ clip và nhả hình trước, để lúc dọn không còn ai giữ clip của bài cũ.
+            if (Clips != null) Clips.ReleaseAll();
             old.Dispose();
             _source.ReleaseUnused();
         }
@@ -612,6 +623,7 @@ namespace TapDoc
         {
             InitIfNeeded();
             Speech.Stop();
+            Clips.ReleaseAll();
             ClearCurrentScreen();
             RefreshFrames();
 

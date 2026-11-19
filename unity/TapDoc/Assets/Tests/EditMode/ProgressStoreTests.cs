@@ -113,6 +113,37 @@ namespace TapDoc.Tests
         }
 
         [Test]
+        public void ClipsEnabled_DefaultOn_PersistsOff_IndependentOfSfx()
+        {
+            var s = new ProgressStore(P);
+            Assert.IsTrue(s.ClipsEnabled, "Tranh động mặc định bật");
+            s.ClipsEnabled = false;
+            s.Save();
+            var t = ProgressStore.Load(P);
+            Assert.IsFalse(t.ClipsEnabled);
+            Assert.IsTrue(t.SfxEnabled, "Tắt tranh động không tắt tiếng động");
+        }
+
+        [Test]
+        public void OldFileWithoutClipsField_ClipsOn()
+        {
+            File.WriteAllText(P, "{\"schema\":1,\"profiles\":[],\"current\":null,\"sfx_off\":true}");
+            var s = ProgressStore.Load(P);
+            Assert.IsTrue(s.ClipsEnabled);
+            Assert.IsFalse(s.SfxEnabled);
+        }
+
+        [Test]
+        public void ResetAll_TurnsClipsBackOn()
+        {
+            var s = new ProgressStore(P);
+            s.ClipsEnabled = false;
+            s.Save();
+            s.ResetAll();
+            Assert.IsTrue(s.ClipsEnabled);
+        }
+
+        [Test]
         public void OldFile_SfxOnAndFlowersKept()
         {
             // File tiến độ trước bản giao diện mới: không có trường sfx_off, bài đã học có 3 sao.

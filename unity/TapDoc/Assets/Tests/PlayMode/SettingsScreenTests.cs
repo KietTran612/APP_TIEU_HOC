@@ -49,6 +49,31 @@ namespace TapDoc.Tests
         }
 
         [UnityTest]
+        public IEnumerator ClipsToggle_BelowSfx_SavesAndTurnsClipsOff_IndependentOfSfx()
+        {
+            UseStubsForMissingAssets();
+            yield return LoadMainWithProfile();
+            AppRoot.Instance.ShowSettings(AppRoot.Instance.ShowLessonList);
+            yield return null;
+            var s = Settings();
+            var toggle = s.ClipsToggle;
+            Assert.IsNotNull(toggle, "có hàng Tranh động");
+            Assert.AreEqual(s.SfxToggle.transform.GetSiblingIndex() + 1, toggle.transform.GetSiblingIndex(),
+                "ngay dưới hàng tiếng động");
+            Assert.AreEqual(UiText.ClipsOn, Label(toggle));
+            Press(toggle);
+            yield return null;
+            Assert.AreEqual(UiText.ClipsOff, Label(toggle));
+            Assert.IsFalse(AppRoot.Instance.Progress.ClipsEnabled);
+            Assert.IsFalse(AppRoot.Instance.Clips.SettingEnabled, "tắt thì không phát clip nữa");
+            Assert.IsFalse(ProgressStore.Load(StorePath).ClipsEnabled, "cài đặt được lưu");
+            Assert.IsTrue(AppRoot.Instance.Progress.SfxEnabled, "không đụng tiếng động");
+            Press(toggle);
+            Assert.IsTrue(AppRoot.Instance.Clips.SettingEnabled);
+            Assert.AreEqual(UiText.ClipsOn, Label(toggle));
+        }
+
+        [UnityTest]
         public IEnumerator SfxToggle_SharesFlag()
         {
             UseStubsForMissingAssets();

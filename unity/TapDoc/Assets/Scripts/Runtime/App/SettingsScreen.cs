@@ -22,6 +22,7 @@ namespace TapDoc
 
         public Button BackButton { get; private set; }
         public Button SfxToggle { get; private set; }
+        public Button ClipsToggle { get; private set; }
         public Button ReviewNoticeButton { get; private set; }
         public TMP_Text InfoLabel { get; private set; }
 
@@ -80,6 +81,7 @@ namespace TapDoc
             Content = BuildScroll(transform);
 
             SfxToggle = Row(SfxLabel(), ToggleSfx);
+            ClipsToggle = Row(ClipsLabel(), ToggleClips);
             ReviewNoticeButton = Row(UiText.ReviewNotice, () => _app.ShowNotice(firstRun: false));
 
             ManageButton = Row(UiText.ManageProfiles, OpenManage);
@@ -346,6 +348,17 @@ namespace TapDoc
             if (_app.Sfx != null) _app.Sfx.Enabled = _app.Progress.SfxEnabled;
             _app.SaveProgress();
             SfxToggle.GetComponentInChildren<TMP_Text>().text = SfxLabel();
+        }
+
+        private string ClipsLabel() => _app.Progress.ClipsEnabled ? UiText.ClipsOn : UiText.ClipsOff;
+
+        /// <summary>Bật, tắt tranh động (thiết kế tranh động mục 11); không đụng tiếng động.</summary>
+        private void ToggleClips()
+        {
+            _app.Progress.ClipsEnabled = !_app.Progress.ClipsEnabled;
+            if (_app.Clips != null) _app.Clips.SettingEnabled = _app.Progress.ClipsEnabled;
+            _app.SaveProgress();
+            ClipsToggle.GetComponentInChildren<TMP_Text>().text = ClipsLabel();
         }
     }
 }

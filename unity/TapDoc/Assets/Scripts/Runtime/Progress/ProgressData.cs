@@ -18,6 +18,12 @@ namespace TapDoc
         public bool sfx_off;
 
         /// <summary>
+        /// Phụ huynh tắt tranh động (cài đặt cho cả máy, độc lập với tiếng động). File cũ không có trường này thì đọc ra
+        /// <c>false</c>, tức là tranh động bật.
+        /// </summary>
+        public bool clips_off;
+
+        /// <summary>
         /// Phiên bản nội dung popup "Gửi phụ huynh" đã xem trên máy này (so với <c>UiText.NoticeVersion</c>). File cũ
         /// không có trường này thì đọc ra 0, tức là chưa xem.
         /// </summary>

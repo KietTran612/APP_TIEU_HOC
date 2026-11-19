@@ -82,6 +82,16 @@ namespace TapDoc
             return finished && IsAlive;
         }
 
+        /// <summary>
+        /// Phát tranh động của tranh <paramref name="imageId"/> trên thẻ <paramref name="tile"/> (nếu tranh có clip và
+        /// được phát), không chờ. Gọi ngay sau khi đọc xong chữ của tranh (thiết kế tranh động mục 4).
+        /// </summary>
+        protected void PlayClip(Tile tile, string imageId)
+        {
+            if (!IsAlive || Ctx.Clips == null || tile == null) return;
+            _ = Ctx.Clips.PlayAsync(tile, imageId);
+        }
+
         /// <summary>Hiện kí hiệu của sách (●, ⌂) ở góc trên trái nếu bước có <c>marker</c>.</summary>
         protected void AddMarker()
         {

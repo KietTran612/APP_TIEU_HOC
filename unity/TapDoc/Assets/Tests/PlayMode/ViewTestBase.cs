@@ -20,6 +20,7 @@ namespace TapDoc.Tests
         private Func<string, AudioClip> _audioLoader;
         private Func<string, Sprite> _imageLoader;
         private Func<string, Sprite> _stockImageLoader;
+        private Func<string, Object> _clipLoader;
         private Texture2D _dummyTex;
         private readonly HashSet<object> _completedViews = new();
 
@@ -144,7 +145,8 @@ namespace TapDoc.Tests
             var lessonImages = _imageLoader;
             var stock = _stockImageLoader;
             var common = new HashSet<string>(SystemImages.All);
-            var catalog = TestCatalog.FromLoaders(_audioLoader, id => common.Contains(id) ? stock(id) : lessonImages(id));
+            var catalog = TestCatalog.FromLoaders(_audioLoader, id => common.Contains(id) ? stock(id) : lessonImages(id),
+                clip: _clipLoader);
             AwaitableTestUtil.RunNow(catalog.PrepareCommonAsync());
             return catalog;
         }
@@ -204,6 +206,14 @@ namespace TapDoc.Tests
         protected void UseImageLoader(Func<string, Sprite> loader)
         {
             _imageLoader = loader;
+            Ctx.Assets = NewCatalog();
+            Ctx.Speech.Init(Ctx.Assets);
+        }
+
+        /// <summary>Đặt clip giả theo mã tranh (mặc định không tranh nào có clip). Gọi trước <see cref="Bind"/>.</summary>
+        protected void UseClipLoader(Func<string, Object> loader)
+        {
+            _clipLoader = loader;
             Ctx.Assets = NewCatalog();
             Ctx.Speech.Init(Ctx.Assets);
         }

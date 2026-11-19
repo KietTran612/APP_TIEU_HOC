@@ -49,6 +49,13 @@ namespace TapDoc
             set => _data.sfx_off = !value;
         }
 
+        /// <summary>Tranh động có bật không (cài đặt cho cả máy, độc lập với tiếng động).</summary>
+        public bool ClipsEnabled
+        {
+            get => !_data.clips_off;
+            set => _data.clips_off = !value;
+        }
+
         /// <summary>Phiên bản popup "Gửi phụ huynh" đã xem trên máy này; 0 là chưa xem.</summary>
         public int NoticeVersion
         {
@@ -144,6 +151,7 @@ namespace TapDoc
             _data.profiles.Clear();
             _data.current = null;
             _data.sfx_off = false;
+            _data.clips_off = false;
             _data.notice_version = 0;
             foreach (var f in new[] { FilePath, FilePath + ".tmp", FilePath + ".bak" })
             {

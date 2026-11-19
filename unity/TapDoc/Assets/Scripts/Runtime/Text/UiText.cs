@@ -96,6 +96,10 @@ namespace TapDoc
         public const string SfxOn = "Tiếng động: Bật";
         public const string SfxOff = "Tiếng động: Tắt";
 
+        // Công tắc tranh động (clip) ở menu Cài đặt, độc lập với tiếng động.
+        public const string ClipsOn = "Tranh động: Bật";
+        public const string ClipsOff = "Tranh động: Tắt";
+
         // Phần Tập đọc (tập 2) trong danh sách bài, nhóm theo tuần; công tắc mở mọi bài của từng bé (màn Phụ huynh).
         public const string PartReading = "Tập đọc";
         public const string WeekFormat = "Tuần {0}";
@@ -226,6 +230,8 @@ namespace TapDoc
             SessionNote,
             SfxOn,
             SfxOff,
+            ClipsOn,
+            ClipsOff,
             PartReading,
             WeekFormat,
             GradeTabFormat,

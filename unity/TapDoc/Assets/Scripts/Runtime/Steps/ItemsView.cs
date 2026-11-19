@@ -20,6 +20,9 @@ namespace TapDoc
         private const float ReadingGap = 24f;
 
         private readonly List<Tile> _tiles = new();
+
+        /// <summary>Thẻ tranh của từng từ (bước <c>words</c>), theo chỉ số từ: chỗ phát tranh động sau khi đọc từ.</summary>
+        private readonly Dictionary<int, Tile> _pictures = new();
         private readonly Dictionary<int, RectTransform> _noteAnchors = new();
         private TapProgress _progress;
         private bool _busy;
@@ -59,6 +62,7 @@ namespace TapDoc
                     pic.SetSprite(sprite, item.image);
                     pic.Tapped += () => OnWordTapped(index);
                     if (sprite == null) pic.gameObject.SetActive(false);
+                    _pictures[j] = pic;
                 }
                 var y = flow != null ? flow[j].y : hasImage ? -95f : 0f;
                 var tile = AddTile(TextStyler.Apply(item.text, item.hl), new Vector2(380f, 160f), new Vector2(x, y), 84f);
@@ -133,6 +137,8 @@ namespace TapDoc
                 if (!IsAlive) return;
                 if (!string.IsNullOrEmpty(item.note)) ShowNote(index, item.note);
                 if (finished && _progress.AllTapped) Complete();
+                // Đọc trơn xong từ có tranh: tranh của từ đó động lên (thiết kế tranh động mục 4).
+                if (finished && _pictures.TryGetValue(index, out var picture)) PlayClip(picture, item.image);
             }
             finally
             {

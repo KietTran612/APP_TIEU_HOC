@@ -46,7 +46,13 @@ namespace TapDoc
 
         private async Awaitable Choose(Item item, Tile chosen)
         {
-            if (_busy || IsCompleted) return;
+            if (_busy) return;
+            if (IsCompleted)
+            {
+                // Đã đoán đúng: chạm tranh đáp án thì xem lại tranh động, không đọc lại.
+                if (chosen == CorrectTile) PlayClip(chosen, Step.image);
+                return;
+            }
             _busy = true;
             var ok = await _feedback.Handle(item.image == Step.image, CorrectTile, chosen);
             if (!IsAlive) return;
@@ -58,9 +64,11 @@ namespace TapDoc
             foreach (var tile in _options)
                 if (tile != CorrectTile) tile.gameObject.SetActive(false);
             _answer.gameObject.SetActive(true);
-            await Play(Step.audio);
+            var read = await Play(Step.audio);
             _busy = false;
             Complete();
+            // Đọc xong đáp án: tranh đáp án động lên như phần thưởng; bước không chờ clip.
+            if (read) PlayClip(CorrectTile, Step.image);
         }
 
         public override void Replay() => _ = Ctx.Speech.PlayAsync(AnswerShown ? Step.audio : SystemAudio.hd_doan_do);

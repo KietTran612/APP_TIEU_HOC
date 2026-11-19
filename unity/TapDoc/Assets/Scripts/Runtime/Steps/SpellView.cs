@@ -67,6 +67,11 @@ namespace TapDoc
                 _imageTile = AddTile(string.Empty, new Vector2(300f, 300f), new Vector2(430f, -150f), 68f);
                 _imageTile.SetSprite(null, Step.image); // tranh chỉ hiện khi bé làm xong
                 _imageTile.gameObject.SetActive(false);
+                // Đã xong: chạm tranh thì xem lại tranh động.
+                _imageTile.Tapped += () =>
+                {
+                    if (IsCompleted) PlayClip(_imageTile, Step.image);
+                };
             }
 
             RunDemo();
@@ -201,13 +206,18 @@ namespace TapDoc
                 if (!IsAlive) return;
             }
             Ctx.Fx?.Correct((RectTransform)_result.transform);
+            Awaitable wiggle = null;
             if (_imageTile != null)
             {
                 _imageTile.gameObject.SetActive(true);
                 _imageTile.SetSprite(Ctx.Assets.Image(Step.image), Step.image);
-                _ = Motion.Wiggle(_imageTile.transform, 3f, .4f);
+                wiggle = Motion.Wiggle(_imageTile.transform, 3f, .4f);
             }
             Complete();
+            if (wiggle == null) return;
+            // Tranh hiện, lắc nhẹ xong thì động lên (thiết kế tranh động mục 4); bước không chờ clip.
+            await wiggle;
+            if (IsAlive) PlayClip(_imageTile, Step.image);
         }
 
         public override void Replay()

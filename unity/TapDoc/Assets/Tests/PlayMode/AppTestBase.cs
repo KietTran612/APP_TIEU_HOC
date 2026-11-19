@@ -33,6 +33,8 @@ namespace TapDoc.Tests
         {
             Motion.Scale = 0f; // tắt hiệu ứng: test chạy nhanh, ảnh chụp ổn định; test hiệu ứng tự bật lại
             IdleNudge.Enabled = false; // nhắc khi ngồi im chạy theo thời gian thật: tắt, test của nhắc tự bật lại
+            // Máy có Resources/clips thì test đi hết bài sẽ phát video thật (chậm, có tiếng): tắt, test clip tự bật lại.
+            ClipPlayer.Enabled = false;
             StorePath = Path.Combine(Path.GetTempPath(), $"tapdoc_app_test_{Guid.NewGuid():N}.json");
             var path = StorePath;
             NoticeSeen = true;
@@ -59,6 +61,7 @@ namespace TapDoc.Tests
             AppRoot.StoreFactory = null;
             Motion.Scale = 1f;
             IdleNudge.Enabled = true;
+            ClipPlayer.Enabled = true;
             if (_stubSprite != null || _stubClip != null)
             {
                 AppRoot.SourceFactory = null;

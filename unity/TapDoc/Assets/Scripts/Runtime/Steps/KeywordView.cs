@@ -5,6 +5,8 @@ namespace TapDoc
     /// <summary>
     /// Từ khóa (tranh và chữ) hoặc tranh không chữ (<c>picture</c>). Tự đọc một lần; bé chạm tranh hoặc chữ
     /// lần đầu và nghe xong thì báo xong. Thiếu tranh thì ẩn khung tranh.
+    /// Tranh động: tự phát một lần sau lần đọc trọn đầu tiên của bước (app tự đọc hay bé chạm); sau đó chạm tranh thì
+    /// đọc rồi xem lại, chạm chữ hay nút Nghe lại thì chỉ đọc.
     /// </summary>
     public class KeywordView : StepViewBase
     {
@@ -13,6 +15,7 @@ namespace TapDoc
 
         private Tile _imageTile;
         private Tile _textTile;
+        private bool _clipAutoPlayed;
 
         protected override void Build()
         {
@@ -32,7 +35,7 @@ namespace TapDoc
                     pic.anchorMin = new Vector2(PictureFill.x, PictureFill.x);
                     pic.anchorMax = new Vector2(PictureFill.y, PictureFill.y);
                 }
-                _imageTile.Tapped += OnTapped;
+                _imageTile.Tapped += () => Read(picture: true, completes: true);
                 // Thiếu tranh mà vẫn còn thẻ chữ thì bỏ hẳn thẻ tranh trống; tranh không chữ thì giữ để bé còn chạm được.
                 if (sprite == null && hasText) _imageTile.gameObject.SetActive(false);
             }
@@ -41,18 +44,26 @@ namespace TapDoc
             {
                 var offset = string.IsNullOrEmpty(Step.image) ? Vector2.zero : new Vector2(300f, 0f);
                 _textTile = AddTile(TextStyler.Apply(Step.text, Step.hl), new Vector2(560f, 240f), offset, 110f);
-                _textTile.Tapped += OnTapped;
+                _textTile.Tapped += () => Read(picture: false, completes: true);
             }
 
-            _ = Ctx.Speech.PlayAsync(Step.audio);
+            Read(picture: false, completes: false);
         }
 
-        private async void OnTapped()
+        /// <summary>
+        /// Đọc chữ của bước. Đọc trọn thì: bé chạm (<paramref name="completes"/>) thì báo xong; rồi phát tranh động nếu bé
+        /// chạm tranh, hoặc nếu đây là lần đọc trọn đầu tiên của bước.
+        /// </summary>
+        private async void Read(bool picture, bool completes)
         {
-            if (await Play(Step.audio)) Complete();
+            if (!await Play(Step.audio)) return;
+            if (completes) Complete();
+            if (!picture && _clipAutoPlayed) return;
+            _clipAutoPlayed = true;
+            PlayClip(_imageTile, Step.image);
         }
 
-        public override void Replay() => _ = Ctx.Speech.PlayAsync(Step.audio);
+        public override void Replay() => Read(picture: false, completes: false);
 
         protected override void ActForTest()
         {

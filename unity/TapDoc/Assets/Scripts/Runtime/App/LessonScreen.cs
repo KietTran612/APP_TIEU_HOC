@@ -304,6 +304,7 @@ namespace TapDoc
         private void OpenNotes()
         {
             _app.Speech.Stop();
+            if (_app.Clips != null) _app.Clips.Stop();
             if (NotesPanel == null) NotesPanel = TapDoc.NotesPanel.ForLesson(transform, _lesson);
             NotesPanel.transform.SetAsLastSibling();
             NotesPanel.SetActive(true);
@@ -339,6 +340,7 @@ namespace TapDoc
                 Assets = _app.Assets,
                 Stage = _stage,
                 Fx = _fx,
+                Clips = _app.Clips,
                 RoundFinished = OnRoundFinished,
                 OpenNotes = NotesButton != null ? OpenNotes : null
             };
@@ -471,7 +473,7 @@ namespace TapDoc
             var now = Clock();
             var pointer = Pointer.current;
             if (pointer != null && pointer.press.wasPressedThisFrame) Nudge.NoteActivity(now);
-            var busy = _app.Speech.IsBusy || _advancing || TurningPage != null
+            var busy = _app.Speech.IsBusy || ClipPlaying || _advancing || TurningPage != null
                 || (NotesPanel != null && NotesPanel.activeSelf);
             Nudge.Tick(now, busy, NudgeKindNow(), NudgeTargetNow(now));
         }
@@ -526,7 +528,8 @@ namespace TapDoc
             if (_app == null || Flow == null || Flow.Phase == Phase.Done) return;
             var now = Time.unscaledTime;
             var pointer = Pointer.current;
-            if (_app.Speech.IsBusy || (pointer != null && pointer.press.isPressed) || _lastActiveReal == float.NegativeInfinity)
+            if (_app.Speech.IsBusy || ClipPlaying || (pointer != null && pointer.press.isPressed)
+                || _lastActiveReal == float.NegativeInfinity)
                 _lastActiveReal = now;
             if (now - _lastActiveReal <= StudyIdleCutoff) StudySeconds += Time.unscaledDeltaTime;
         }
@@ -604,6 +607,8 @@ namespace TapDoc
             {
                 page = Instantiate(root, root.transform.parent);
                 page.name = "TurningPage";
+                // Trang lật chỉ mang tranh tĩnh: bỏ ngay lớp phủ tranh động của bản sao.
+                foreach (var overlay in page.GetComponentsInChildren<ClipOverlay>(true)) DestroyImmediate(overlay.gameObject);
                 var paper = page.GetComponent<Image>();
                 if (paper == null) paper = page.AddComponent<Image>();
                 paper.color = Palette.Paper; // nền giấy che bước mới bên dưới cho tới khi lật qua
@@ -621,6 +626,9 @@ namespace TapDoc
             if (page != null) Destroy(page);
             if (this != null && TurningPage == page) TurningPage = null;
         }
+
+        /// <summary>Tranh động đang chạy: tính là bận (không nhắc khi ngồi im) và tính vào thời gian học.</summary>
+        private bool ClipPlaying => _app != null && _app.Clips != null && _app.Clips.IsPlaying;
 
         private void ClearCurrentView()
         {
