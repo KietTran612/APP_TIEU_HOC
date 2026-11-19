@@ -186,5 +186,27 @@ namespace TapDoc.Tests
             Assert.IsTrue(awaiter.IsCompleted);
             Assert.IsNotNull(awaiter.GetResult());
         }
+
+        [UnityTest]
+        public IEnumerator MissingClip_IsSilent_PreparedOrAskedDirectly()
+        {
+            // Tranh không có clip phát được (khong_dat) là chuyện thường: không lỗi, không cảnh báo.
+            yield return Prepare(Ids((ContentKind.Clip, "img_x")), null);
+            Assert.IsNull(_catalog.Clip("img_x"));
+            Assert.IsNull(_catalog.Clip("img_chua_chuan_bi"));
+            LogAssert.NoUnexpectedReceived();
+        }
+
+        [UnityTest]
+        public IEnumerator PreparedClip_ReturnsSourceObject()
+        {
+            // Không tạo được VideoClip bằng code: catalog trả nguyên vật nguồn đưa, để test dùng vật giả.
+            var fake = new Texture2D(2, 2);
+            _source.Put(ContentKind.Clip, "img_a", fake);
+            yield return Prepare(Ids((ContentKind.Clip, "img_a")), null);
+            Assert.AreSame(fake, _catalog.Clip("img_a"));
+            Assert.IsEmpty(_catalog.UnpreparedAsks);
+            Object.DestroyImmediate(fake);
+        }
     }
 }

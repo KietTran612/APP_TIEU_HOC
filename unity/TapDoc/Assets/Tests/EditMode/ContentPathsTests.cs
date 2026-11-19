@@ -29,8 +29,7 @@ namespace TapDoc.Tests
             Assert.AreEqual(typeof(AudioClip), ContentPaths.TypeOf(ContentKind.Speech));
             Assert.AreEqual(typeof(AudioClip), ContentPaths.TypeOf(ContentKind.Sfx));
             Assert.AreEqual(typeof(Font), ContentPaths.TypeOf(ContentKind.Font));
-            // Tranh động chỉ chừa chỗ: chưa có module video, kiểu cụ thể gắn khi đưa clip vào app.
-            Assert.AreEqual(typeof(Object), ContentPaths.TypeOf(ContentKind.Clip));
+            Assert.AreEqual(typeof(UnityEngine.Video.VideoClip), ContentPaths.TypeOf(ContentKind.Clip));
         }
     }
 }

@@ -55,6 +55,12 @@ namespace TapDoc
 
         public Font Font(string id) => Get(ContentKind.Font, id) as Font;
 
+        /// <summary>
+        /// Clip tranh động của tranh <paramref name="id"/> (bản thật là <c>VideoClip</c>; test có thể đặt vật giả), hoặc
+        /// <c>null</c>. Clip không bắt buộc: thiếu thì im lặng.
+        /// </summary>
+        public Object Clip(string id) => Get(ContentKind.Clip, id);
+
         /// <summary>Có tranh này không. Không ghi log, kể cả khi chưa chuẩn bị hay thiếu file.</summary>
         public bool HasImage(string id)
         {
@@ -199,7 +205,8 @@ namespace TapDoc
 
         private void ReportMissing((ContentKind kind, string id) key)
         {
-            if (_optional.Contains(key) || !_loggedMissing.Add(key)) return;
+            // Tranh không có clip phát được (khong_dat) là chuyện thường: không báo gì.
+            if (key.kind == ContentKind.Clip || _optional.Contains(key) || !_loggedMissing.Add(key)) return;
             switch (key.kind)
             {
                 case ContentKind.Sfx:

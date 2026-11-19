@@ -18,7 +18,9 @@ namespace TapDoc
         Sfx,
         Font,
 
-        /// <summary>Tranh động: chỉ chừa chỗ, app chưa nạp.</summary>
+        /// <summary>
+        /// Tranh động (clip) theo mã tranh. Không bắt buộc: tranh không có clip phát được thì app dùng tranh tĩnh.
+        /// </summary>
         Clip,
     }
 }

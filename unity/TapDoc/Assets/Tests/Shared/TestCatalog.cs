@@ -11,10 +11,15 @@ namespace TapDoc.Tests
     {
         private static readonly ResourcesContentSource Real = new();
 
+        /// <summary>
+        /// <paramref name="clip"/>: clip giả theo mã tranh (không tạo được <c>VideoClip</c> bằng code, nên test dùng
+        /// vật bất kỳ cùng <see cref="FakeClipBackend"/>); không có thì không tranh nào có clip.
+        /// </summary>
         public static FakeContentSource Source(
             Func<string, AudioClip> speech = null,
             Func<string, Sprite> image = null,
-            Func<string, AudioClip> sfx = null) =>
+            Func<string, AudioClip> sfx = null,
+            Func<string, UnityEngine.Object> clip = null) =>
             new()
             {
                 Fallback = (kind, id) => kind switch
@@ -22,7 +27,7 @@ namespace TapDoc.Tests
                     ContentKind.Speech => speech?.Invoke(id),
                     ContentKind.Image => image?.Invoke(id),
                     ContentKind.Sfx => sfx?.Invoke(id),
-                    ContentKind.Clip => null,
+                    ContentKind.Clip => clip?.Invoke(id),
                     _ => Real.Load(kind, id),
                 },
             };
@@ -30,7 +35,8 @@ namespace TapDoc.Tests
         public static AssetCatalog FromLoaders(
             Func<string, AudioClip> speech = null,
             Func<string, Sprite> image = null,
-            Func<string, AudioClip> sfx = null) =>
-            new(Source(speech, image, sfx));
+            Func<string, AudioClip> sfx = null,
+            Func<string, UnityEngine.Object> clip = null) =>
+            new(Source(speech, image, sfx, clip));
     }
 }

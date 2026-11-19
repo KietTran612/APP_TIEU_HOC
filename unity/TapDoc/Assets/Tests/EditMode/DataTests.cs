@@ -24,13 +24,55 @@ namespace TapDoc.Tests
         }
 
         [Test]
-        public void ContentIds_IsUnionOfAudioAndImage()
+        public void ClipIds_TakesFourPlacesOnly()
         {
-            var json = ((TextAsset)new ResourcesContentSource().Load(ContentKind.Lesson, "tv1_t1_b17")).text;
+            var riddle = new Step { type = "riddle_answer", image = "img_r" };
+            riddle.items.Add(new Item { image = "img_r" });
+            riddle.items.Add(new Item { image = "img_x" });
+            var words = new Step { type = "words" };
+            words.items.Add(new Item { image = "img_w1" });
+            words.items.Add(new Item { image = "img_w2" });
+            words.items.Add(new Item { image = "" });
+            var reading = new Step { type = "reading" };
+            reading.items.Add(new Item { image = "img_doc" });
+            var round = new Round { kind = "listen_picture", image = "img_q" };
+            round.options.Add(new Option { image = "img_opt" });
+            var lesson = new Lesson
+            {
+                part1 = new List<Step>
+                {
+                    new() { type = "keyword", image = "img_k" },
+                    new() { type = "picture", image = "img_p" },
+                    new() { type = "picture", image = "img_k" },
+                    riddle,
+                    new() { type = "tone_attach", image = "img_t" },
+                    words,
+                    reading,
+                    new() { type = "spell", image = "img_spell" },
+                    new() { type = "keyword" },
+                },
+                part2 = new List<Round> { round },
+            };
+
+            var ids = LessonAssets.ClipIds(lesson).ToList();
+
+            CollectionAssert.AreEquivalent(new[] { "img_k", "img_p", "img_r", "img_t", "img_w1", "img_w2" }, ids);
+            Assert.AreEqual(ids.Count, ids.Distinct().Count(), "ClipIds có mã trùng");
+        }
+
+        [Test]
+        public void ContentIds_IsUnionOfAudioImageAndClip()
+        {
+            var json = ((TextAsset)new ResourcesContentSource().Load(ContentKind.Lesson, "tv1_t1_b13")).text;
             var lesson = LessonRepository.Parse(json);
+            // Bài 13: hai tranh từ khoá (cái đu, cử tạ) và hai tranh của bước words (đu đủ, củ từ).
+            CollectionAssert.AreEquivalent(
+                new[] { "img_b13_cais_ddu", "img_b13_cuwr_taj", "img_b13_ddu_ddur", "img_b13_cur_tuwf" },
+                LessonAssets.ClipIds(lesson).ToList());
 
             var expected = LessonAssets.AudioIds(lesson).Select(id => (ContentKind.Speech, id))
                 .Concat(LessonAssets.ImageIds(lesson).Select(id => (ContentKind.Image, id)))
+                .Concat(LessonAssets.ClipIds(lesson).Select(id => (ContentKind.Clip, id)))
                 .ToList();
             var actual = LessonAssets.ContentIds(lesson).ToList();
             CollectionAssert.AreEquivalent(expected, actual);
@@ -108,7 +150,8 @@ namespace TapDoc.Tests
                 foreach (var key in LessonAssets.ContentIds(TestLessons.Real.Get(e.lesson_id)))
                 {
                     Assert.IsFalse(string.IsNullOrWhiteSpace(key.id), $"Bài {e.lesson_id} có mã {key.kind} rỗng");
-                    ids.Add(key);
+                    // Clip không bắt buộc: tranh không có clip phát được (khong_dat) là bình thường.
+                    if (key.kind != ContentKind.Clip) ids.Add(key);
                 }
             }
 

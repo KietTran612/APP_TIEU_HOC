@@ -29,8 +29,7 @@ namespace TapDoc
             ContentKind.Image => typeof(Sprite),
             ContentKind.Speech or ContentKind.Sfx => typeof(AudioClip),
             ContentKind.Font => typeof(Font),
-            // Chưa có module video trong project: kiểu cụ thể (VideoClip) gắn khi đưa tranh động vào app.
-            ContentKind.Clip => typeof(Object),
+            ContentKind.Clip => typeof(UnityEngine.Video.VideoClip),
             _ => throw new ArgumentOutOfRangeException(nameof(kind), kind, null),
         };
     }

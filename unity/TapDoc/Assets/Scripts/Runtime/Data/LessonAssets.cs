@@ -5,10 +5,37 @@ namespace TapDoc
 {
     public static class LessonAssets
     {
-        /// <summary>Mọi tranh và âm thanh phát âm bài dùng, kèm loại: là bộ cần chuẩn bị trước khi mở bài.</summary>
+        /// <summary>Loại bước có một tranh chính phát clip (<c>step.image</c>), thiết kế tranh động mục 4.</summary>
+        private static readonly HashSet<string> ClipStepTypes = new() { "keyword", "picture", "riddle_answer", "tone_attach" };
+
+        /// <summary>
+        /// Mọi tranh, âm thanh phát âm và clip tranh động bài dùng, kèm loại: là bộ cần chuẩn bị trước khi mở bài.
+        /// </summary>
         public static IEnumerable<(ContentKind kind, string id)> ContentIds(Lesson lesson) =>
             AudioIds(lesson).Select(id => (ContentKind.Speech, id))
-                .Concat(ImageIds(lesson).Select(id => (ContentKind.Image, id)));
+                .Concat(ImageIds(lesson).Select(id => (ContentKind.Image, id)))
+                .Concat(ClipIds(lesson).Select(id => (ContentKind.Clip, id)));
+
+        /// <summary>
+        /// Mã tranh ở những chỗ phát clip (chỉ Phần 1): tranh chính của bước <c>keyword</c>, <c>picture</c>,
+        /// <c>riddle_answer</c>, <c>tone_attach</c> và tranh của từng từ trong bước <c>words</c>. Không trùng.
+        /// </summary>
+        public static IEnumerable<string> ClipIds(Lesson lesson)
+        {
+            if (lesson?.part1 == null) yield break;
+            var seen = new HashSet<string>();
+            foreach (var step in lesson.part1)
+            {
+                if (step == null) continue;
+                if (ClipStepTypes.Contains(step.type) && !string.IsNullOrEmpty(step.image) && seen.Add(step.image))
+                    yield return step.image;
+                if (step.type != "words" || step.items == null) continue;
+                foreach (var item in step.items)
+                {
+                    if (item != null && !string.IsNullOrEmpty(item.image) && seen.Add(item.image)) yield return item.image;
+                }
+            }
+        }
 
         public static IEnumerable<string> AudioIds(Lesson lesson)
         {
