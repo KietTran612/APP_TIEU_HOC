@@ -573,7 +573,7 @@ namespace TapDoc
         }
 
         /// <summary>
-        /// "Xoá toàn bộ dữ liệu": kho về như lúc mới cài (xoá cả file phụ), tiếng động bật; rồi luồng như lần đầu mở
+        /// "Xoá toàn bộ dữ liệu": kho về như lúc mới cài (xoá cả file phụ), tiếng động và tranh động bật; rồi luồng như lần đầu mở
         /// app: màn tạo bé và popup "Gửi phụ huynh".
         /// </summary>
         public void ResetAllData()
@@ -581,6 +581,7 @@ namespace TapDoc
             InitIfNeeded();
             Progress.ResetAll();
             if (Sfx != null) Sfx.Enabled = true;
+            if (Clips != null) Clips.SettingEnabled = true; // như lúc mới cài: tranh động bật
             SaveProgress();
             ShowProfiles();
             ShowNotice(firstRun: true);

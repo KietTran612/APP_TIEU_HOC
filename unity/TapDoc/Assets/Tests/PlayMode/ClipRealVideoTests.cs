@@ -101,6 +101,18 @@ namespace TapDoc.Tests
             yield return null;
             Assert.IsNull(tile.GetComponentInChildren<ClipOverlay>(true), "hết clip thì về tranh tĩnh");
             Assert.IsFalse(player.IsPlaying);
+
+            // Rời bài (thiết kế mục 9): bộ phát bỏ clip và nhả RenderTexture của nó.
+            player.ReleaseAll();
+            yield return null;
+            var video = player.GetComponent<UnityEngine.Video.VideoPlayer>();
+            Assert.IsNotNull(video, "phần phát thật đã được dùng");
+            Assert.IsNull(video.clip, "không còn giữ clip");
+            Assert.IsNull(video.targetTexture);
+            var left = 0;
+            foreach (var rt in Resources.FindObjectsOfTypeAll<RenderTexture>())
+                if (rt != null && rt.name == "ClipTexture") left++;
+            Assert.AreEqual(0, left, "không còn RenderTexture của bộ phát");
             Object.Destroy(sprite.texture);
         }
 

@@ -294,6 +294,8 @@ namespace TapDoc.Tests
         {
             yield return OpenManageWithTwoChildren();
             System.IO.File.WriteAllText(StorePath + ".bak", "x");
+            App.Progress.ClipsEnabled = false; // phụ huynh đã tắt tranh động trước khi xoá toàn bộ
+            App.Clips.SettingEnabled = false;
             Press(Settings().DeleteAllButton);
             yield return null;
             Press(Dialog().ConfirmButton);
@@ -306,6 +308,8 @@ namespace TapDoc.Tests
             Assert.AreEqual(0, App.Progress.Profiles.Count);
             Assert.IsTrue(App.Progress.SfxEnabled);
             Assert.IsTrue(App.Sfx.Enabled);
+            Assert.IsTrue(App.Progress.ClipsEnabled);
+            Assert.IsTrue(App.Clips.SettingEnabled, "đặt lại dữ liệu thì tranh động bật lại ngay, như lúc mới cài");
             Assert.IsFalse(System.IO.File.Exists(StorePath + ".bak"));
             Assert.IsNotNull(App.Notice, "Như lúc mới cài: popup Gửi phụ huynh");
             Assert.AreEqual(UiText.NoticeAccept, Label(App.Notice.CloseButton));

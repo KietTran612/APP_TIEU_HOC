@@ -262,6 +262,67 @@ namespace TapDoc.Tests
             Assert.IsFalse(runB.IsCompleted);
         }
 
+        // Thẻ bị huỷ đúng khung mà phần phát báo tin (khung đầu tới, hay clip hết), và PlayAsync chạy tiếp trước Update
+        // của bộ phát: tắt component để giữ đúng thứ tự đó (thứ tự giữa await và Update không được Unity bảo đảm).
+
+        [UnityTest]
+        public IEnumerator TileDestroyedAsFirstFrameArrives_BeforePlayerUpdate_StopsWithoutError()
+        {
+            var tile = NewTile("img_a");
+            var run = _player.PlayAsync(tile, "img_a").GetAwaiter();
+            yield return null;
+            _player.enabled = false;
+            Object.DestroyImmediate(tile.gameObject);
+            _backend.FirstFrameReady = true;
+            yield return Frames(2);
+            Assert.IsTrue(run.IsCompleted);
+            Assert.IsFalse(run.GetResult(), "không lỗi, không phát");
+            Assert.IsFalse(_player.IsPlaying);
+            Assert.IsNull(_player.CurrentId);
+            Assert.AreEqual(0, _player.Failures, "thẻ bị huỷ không phải clip hỏng");
+            _player.enabled = true;
+        }
+
+        [UnityTest]
+        public IEnumerator TileDestroyedAsClipEnds_BeforePlayerUpdate_StopsWithoutError()
+        {
+            var tile = NewTile("img_a");
+            var run = _player.PlayAsync(tile, "img_a").GetAwaiter();
+            yield return null;
+            _backend.FirstFrameReady = true;
+            yield return Frames(2);
+            _player.enabled = false;
+            Object.DestroyImmediate(tile.gameObject);
+            _backend.Finished = true;
+            yield return Frames(2);
+            Assert.IsTrue(run.IsCompleted);
+            Assert.IsFalse(run.GetResult());
+            Assert.IsFalse(_player.IsPlaying);
+            Assert.IsNull(_player.CurrentId);
+            _player.enabled = true;
+        }
+
+        [UnityTest]
+        public IEnumerator StepDestroyedDuringFadeOut_StopsCleanly()
+        {
+            Motion.Scale = 1f; // mờ ra thật (0,25 s)
+            var tile = NewTile("img_a");
+            var run = _player.PlayAsync(tile, "img_a").GetAwaiter();
+            yield return null;
+            _backend.FirstFrameReady = true;
+            yield return new WaitForSecondsRealtime(ClipPlayer.FadeInSeconds + .1f);
+            _backend.Finished = true;
+            yield return Frames(2); // đang mờ ra
+            Assert.IsTrue(_player.IsPlaying, "đối chứng: còn đang mờ ra");
+            Object.Destroy(tile.gameObject); // bé bấm Tiếp ngay khi clip hết
+            yield return new WaitForSecondsRealtime(ClipPlayer.FadeOutSeconds + .2f);
+            Assert.IsTrue(run.IsCompleted);
+            run.GetResult();
+            Assert.IsFalse(_player.IsPlaying);
+            Assert.IsNull(_player.CurrentId);
+            LogAssert.NoUnexpectedReceived();
+        }
+
         [UnityTest]
         public IEnumerator PlayAsync_StopDuringWaitForFirstFrame_LeavesNoOverlay()
         {

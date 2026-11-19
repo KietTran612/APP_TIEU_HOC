@@ -113,7 +113,7 @@ namespace TapDoc
             {
                 await Awaitable.NextFrameAsync();
             }
-            if (this == null || gen != _generation) return false;
+            if (Abandoned(gen, overlay)) return false;
             if (!backend.FirstFrameReady || backend.Failed)
             {
                 Fail(imageId);
@@ -124,12 +124,13 @@ namespace TapDoc
             raw.texture = backend.Texture;
             raw.uvRect = ClipCrop.UvRect(backend.Width, backend.Height, aspect, ClipCrop.EdgeInsetPx);
             await Motion.Fade(overlay.GetComponent<CanvasGroup>(), 1f, FadeInSeconds);
+            if (Abandoned(gen, overlay)) return false;
 
             while (this != null && gen == _generation && !backend.Finished && !backend.Failed)
             {
                 await Awaitable.NextFrameAsync();
             }
-            if (this == null || gen != _generation) return false;
+            if (Abandoned(gen, overlay)) return false;
             if (backend.Failed)
             {
                 Fail(imageId);
@@ -140,6 +141,19 @@ namespace TapDoc
             // Giữ khung cuối (khớp tranh) rồi mờ về tranh tĩnh bên dưới.
             await Motion.Fade(overlay.GetComponent<CanvasGroup>(), 0f, FadeOutSeconds);
             if (this != null && gen == _generation) Clear(fadeSeconds: 0f);
+            return true;
+        }
+
+        /// <summary>
+        /// Lần phát <paramref name="gen"/> phải thôi: bộ phát bị huỷ, đã có lần phát khác hay <see cref="Stop"/>, hoặc thẻ
+        /// bị huỷ trước khi <see cref="Update"/> kịp dừng (thứ tự giữa await và Update không chắc chắn) — khi đó dọn luôn.
+        /// </summary>
+        private bool Abandoned(int gen, ClipOverlay overlay)
+        {
+            if (this == null || gen != _generation) return true;
+            if (overlay != null) return false;
+            _generation++;
+            Clear(fadeSeconds: 0f);
             return true;
         }
 

@@ -125,7 +125,7 @@ Nguyên tắc: **giọng đọc luôn được ưu tiên; clip nhường** [Đ�
   - `uvRect = (x = (1 − w)/2, y = (1 − h)/2, w, h)`
   - Với 1280×720 và `a = 1`: `uvRect = (0,21875; 0; 0,5625; 1)`.
 - Hàm tính là một hàm thuần (ví dụ `ClipCrop.UvRect(int clipW, int clipH, float pictureAspect)`) để test EditMode [Đề xuất].
-- **Bổ sung 19/11, sau khi duyệt** [Đề xuất, chờ root xem]: app cắt thêm 4 điểm ảnh ở mỗi mép phần tranh (trên khung 720, `ClipCrop.EdgeInsetPx`), nên `uvRect` là `(0,221875; 0,00556; 0,55625; 0,98889)`.
+- **Bổ sung 19/11, sau khi duyệt** [Chốt, root 19/11]: app cắt thêm 4 điểm ảnh ở mỗi mép phần tranh (trên khung 720, `ClipCrop.EdgeInsetPx`), nên `uvRect` là `(0,221875; 0,00556; 0,55625; 0,98889)`.
   - Lý do: quét 327 clip phát được thì 37 clip có 3 hàng đen ở mép trên và mép dưới phần vuông, tranh tĩnh không có (ví dụ `img_b01_chumf_nho`, ảnh chụp có hai đường kẻ đen).
   - Cái giá: tranh trong clip to hơn tranh tĩnh khoảng 1,1%. Lúc mờ về tranh tĩnh hầu như không thấy.
   - Muốn bỏ thì đặt `EdgeInsetPx = 0`.
