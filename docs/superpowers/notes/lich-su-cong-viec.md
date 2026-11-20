@@ -10,6 +10,14 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ---
 
+## 20/11/2026
+
+- **[L2] tranh động — lượt /u/3 ngày 20/11 (cff3b64, 87cf9dc):** lùi giờ sang 14:35 cho qua lúc usage 5 giờ reset.
+  - b274 NHẬN (cho_duyet): root xem tờ khung, hai cô gái đi thật xuống lối mòn, khung cuối lệch tranh 8,2.
+  - KHÔNG NHẬN: b284 mọc thêm người gánh (root xem tờ khung); b219, b250, b173 theo mô tả và số đo của L2.
+  - Bốn mã hỏng làm lại theo cách B sau khi usage tuần reset (25/11).
+- **Root:** cập nhật bảng phân công session theo ngày 20/11 (884ba72).
+
 ## 19/11/2026
 
 - **[Chung] Phát tranh động trong app (dc8da76, 12d448c, e7be8e9, e8351af, 8653586, 672bce3, 26a43da, 30916c9):** clip phát ở 4 màn Phần 1 sau khi đọc chữ của tranh, giọng đọc luôn ưu tiên, máy yếu dùng tranh tĩnh, cài đặt "Tranh động", lệnh `run_unity_media.py clips` chép clip dat+cho_duyet vào Resources/clips (ngoài git), cắt thêm 4 điểm ảnh mỗi mép. Soát độc lập: 0 Critical, 3 Important đã sửa có test (52/52 lớp clip), 5 Minor ghi sổ. Root duyệt spec và xem ảnh phone_20x9, ipad_43: đạt. Bản Windows lớn thêm ~0,9 GB.
