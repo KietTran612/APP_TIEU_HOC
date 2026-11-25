@@ -10,6 +10,25 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ---
 
+## 25/11/2026
+
+- **[L2] tranh động — Vids /u/3 cách B "tiếp", lần 2 cho 4 mã lớp 2 (f2af12b):** Root xem từng tờ khung. Cả 4 KHÔNG NHẬN, vẫn khong_dat:
+  - b219: ô tô chui vào gầm xe tập đi;
+  - b284: người gánh bước tại chỗ;
+  - b250: én to gấp đôi từ 1 s, số con đổi;
+  - b173: từ 5 s mọc thêm một bạn ở cửa lớp.
+  - Lần 3 (cuối) đặt ngày 27/11 trên Vids /u/4, mỗi clip 5 s, root đã duyệt lời nhắc. Hỏng nữa thì giữ tranh tĩnh.
+  - /u/3 còn 4 giây Vids trong tháng 11.
+  - Bài học: clip Vids chưa Insert sẽ mất nếu tab rời nhóm; từ nay Insert ngay.
+- **Root duyệt 7 mã TV2 tập hai làm cách B:** b340, b341, b395, b364, b332, b404, b405, trên Vids 6 s ngày 26/11, tài khoản /u/4 và /u/6. Root sửa 4 lời nhắc:
+  - b405, b364: bỏ chữ số;
+  - b404: cá bơi vòng trong ao;
+  - b332: sao chổi chỉ đi một đoạn ngắn.
+  - Các mã còn lại của TV2 tập hai giữ cách A.
+- **Root duyệt 14 mã lớp 1 làm cách B (L1):**
+  - Lịch Vids 26/11: /u/1 b60, b62, b69, b88; /u/2 b94, b95, b106.
+  - 7 mã còn lại làm ngày 27/11.
+
 ## 20/11/2026
 
 - **[L2] tranh động — lượt /u/3 ngày 20/11 (cff3b64, 87cf9dc):** lùi giờ sang 14:35 cho qua lúc usage 5 giờ reset.
