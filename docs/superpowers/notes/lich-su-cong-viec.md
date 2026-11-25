@@ -31,6 +31,14 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
     - b62 đàn sếu: sếu lớn vỗ cánh tại chỗ, đàn nhỏ xáo đội hình. Lần 2 Vids /u/1 sáng 26/11, lời nhắc mới root đã duyệt.
     - b88 cầu sắt: giàn thép dày thêm ô giữa clip, đầu máy chạy ra khỏi tranh, đầu máy điện phun khói hơi nước. Lần 2 cách A trên Flow từ 1/12: khung đầu ChatGPT chỉ dời đoàn tàu, root đã so giàn thép trùng tranh.
   - Root kiểm commit: đúng 4 dòng video_manifest, 4 dòng kịch bản; clip b60, b69 trong content/clips đúng bản Vids mới.
+- **[L1] tranh động — khối Vids /u/2 chiều 25/11, 3 mã cách B "tiếp" (8776100):** Hộp điều khoản không hiện trên /u/2. Root chép clip về xem, cắt ô vuông 9 khung và kiểm tiếng (không có lời nói).
+  - NHẬN, cho_duyet kèm "ket": "giu":
+    - b94 đàn kiến: kiến đi thật về tổ, con tha cào cào kéo mồi vào cửa tổ, thêm kiến bò vào từ mép trái.
+  - KHÔNG NHẬN:
+    - b95 cò đi mưa: cò bay nhanh, khung cuối đầu cò ra ngoài tranh; mép phải hiện mảng lá chuối lơ lửng. Lần 2 Vids /u/2 ngày 27/11 lúc 09:48, 5 s, cò lượn ngắn.
+    - b106 hồ Gươm: xe đạp quay đầu sang phải mà lùi sang trái, rồi biến mất sau người ngồi ghế. Lần 2 Vids /u/1 ngày 26/11 lúc 10:00, 5 s, xe đi theo hướng đầu xe ra mép phải.
+    - Root đã duyệt lời nhắc lần 2 của cả hai.
+  - Root kiểm commit: đúng 3 dòng video_manifest và 1 dòng kịch bản.
 - **[L2] tranh động — khối Vids /u/4 chiều 25/11, 4 mã TV2 tập hai cách B "tiếp" (3ba5a68):** Chủ dự án đồng ý điều khoản ảnh của Vids trên /u/4, gõ trong chat L2. Root chép từng clip về xem, cắt ô vuông 9 khung và kiểm tiếng bằng Whisper (không có lời nói).
   - NHẬN, cho_duyet kèm "ket": "giu":
     - b341 tổ ong: cáo rơi thật, đáp ngửa trên cỏ; ong bay ra từ tổ vây quanh.
