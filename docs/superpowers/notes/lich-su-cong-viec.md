@@ -12,6 +12,21 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ## 25/11/2026
 
+- **[L1] tranh động — lượt Flow /u/3 chiều 25/11, 5 clip cách A (f0440b5):** Root xem tờ khung từng clip, cắt cận chỗ nghi và đo picDiff từng khung cuối.
+  - NHẬN, chuyển cho_duyet:
+    - b112 bé đi học (lần 2, khung đầu xa2): bé đi thật từ xa tới gần, tới đúng dáng tranh. Hai nhà nhỏ trên sườn đồi trái lộ ra sau cặp rồi khuất sau người bé, là che khuất tự nhiên.
+    - b33 đi chợ (lần 2): cô đi thật khoảng 0,4 bề ngang, chó con chạy theo, một người một chó.
+    - b31 con thỏ (lần 1 cách A): thỏ nhảy thật sang phải, vài nhịp bật lên đáp gần chỗ cũ (§12 cho phép).
+    - b33 và b31 trùng tranh nhất ở 7,70 s, 0,2 s cuối lệch ra (khoảng 15). App mờ 0,25 s từ khung cuối về tranh (ClipPlayer FadeOutSeconds), nên root nhận, ngang mức b112.
+  - KHÔNG NHẬN, khong_dat:
+    - b82 học sinh: chỉ dời khoảng 0,1 bề ngang, thành đi tại chỗ.
+    - b105 rước đèn: 7,0–7,5 s cả đoàn to vọt lên cỡ tranh, khung cuối lệch 26,9.
+  - Lần 3 (cuối) của b82 và b105: khung đầu ChatGPT giữ đúng cỡ, chỉ dời nhân vật sang trái, thò qua mép trái. Root đã duyệt khung đầu và lời nhắc (không chữ số). Chạy Flow /u/3 từ 1/12.
+  - Root kiểm commit: đúng 5 dòng video_manifest và 2 dòng kịch bản; ba file chủ dự án đang sửa không bị đụng.
+- **Root kéo lịch Vids sớm một ngày (chủ dự án hỏi "tại sao chờ lâu vậy?"):**
+  - Chiều 25/11 chạy 4 khối Vids: L1 /u/1 14:50, L2 /u/4 15:35, L1 /u/2 16:15, L2 /u/6 16:55.
+  - Lịch 27/11 chuyển sang 26/11, lịch 28/11 sang 27/11. Còn 28–30/11 để làm lần 3 trước khi hạn mức Vids tháng 11 hết.
+  - Flow /u/3 vẫn mỗi ngày 5 clip, vì credit tính theo ngày.
 - **Root soát clip kiểu cũ loop (6dd12cb).** Chủ dự án 25/11: ảnh tĩnh chỉ cần là khung đầu hoặc khung cuối để clip không giật; ảnh động phải hợp lý, đúng nội dung.
   - Lọc 239 clip loop đang phát (197 dat, 42 cho_duyet), còn 44 clip có lời nhắc di chuyển. Root xem tờ khung 8 nhịp của cả 44 (loop_soat_01…11.jpg).
   - 22 KHÔNG NHẬN, chuyển khong_dat: đi tại chỗ, bị kéo về chỗ cũ, hoặc đổi nét vẽ giữa chừng. Lý do và cách làm lại (A/B) ghi trong ghi_chu.
