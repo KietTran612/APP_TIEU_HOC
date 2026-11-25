@@ -31,6 +31,17 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
     - b62 đàn sếu: sếu lớn vỗ cánh tại chỗ, đàn nhỏ xáo đội hình. Lần 2 Vids /u/1 sáng 26/11, lời nhắc mới root đã duyệt.
     - b88 cầu sắt: giàn thép dày thêm ô giữa clip, đầu máy chạy ra khỏi tranh, đầu máy điện phun khói hơi nước. Lần 2 cách A trên Flow từ 1/12: khung đầu ChatGPT chỉ dời đoàn tàu, root đã so giàn thép trùng tranh.
   - Root kiểm commit: đúng 4 dòng video_manifest, 4 dòng kịch bản; clip b60, b69 trong content/clips đúng bản Vids mới.
+- **[L2] tranh động — khối Vids /u/4 chiều 25/11, 4 mã TV2 tập hai cách B "tiếp" (3ba5a68):** Chủ dự án đồng ý điều khoản ảnh của Vids trên /u/4, gõ trong chat L2. Root chép từng clip về xem, cắt ô vuông 9 khung và kiểm tiếng bằng Whisper (không có lời nói).
+  - NHẬN, cho_duyet kèm "ket": "giu":
+    - b341 tổ ong: cáo rơi thật, đáp ngửa trên cỏ; ong bay ra từ tổ vây quanh.
+    - b395 cần trục: thùng gỗ được nhấc lên một quãng ngắn và đung đưa. Tàu nhả khói ống khói cùng nét vẽ tranh, root nhận.
+  - KHÔNG NHẬN:
+    - b340 vòng múa: các bạn nhún tại chỗ, vòng không xoay.
+    - b364 hải âu: chim bay vào lá cờ, có con khuất sau cờ, khung cuối rối.
+    - Lần 2 của cả hai: 26/11 lúc 10:44 và 10:50 trên Vids /u/4, lời nhắc root đã duyệt.
+  - L2 đã chạy run_unity_media.py clips (Unity đóng): chép mới 8, xoá 22 clip loop đã chuyển khong_dat, giữ khung cuối 4 clip.
+  - Root kiểm commit: đúng 4 dòng thêm mới và 3 dòng kịch bản; index.json giữ đủ b60, b69, b341, b395.
+  - Nguyên văn hộp điều khoản Vids (L2 chép lại, đã đưa chủ dự án đọc): "Đảm bảo rằng bạn có các quyền cần thiết đối với mọi hình ảnh bạn sử dụng… phải tuân theo Chính sách về các hành vi bị cấm khi sử dụng."
 - **Root kéo lịch Vids sớm một ngày (chủ dự án hỏi "tại sao chờ lâu vậy?"):**
   - Chiều 25/11 chạy 4 khối Vids: L1 /u/1 14:50, L2 /u/4 15:35, L1 /u/2 16:15, L2 /u/6 16:55.
   - Lịch 27/11 chuyển sang 26/11, lịch 28/11 sang 27/11. Còn 28–30/11 để làm lần 3 trước khi hạn mức Vids tháng 11 hết.
