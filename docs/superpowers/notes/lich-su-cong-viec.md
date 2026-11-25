@@ -18,6 +18,13 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
   - 18 mã lớp 1 giao L1; 4 mã lớp 2 (b181, b235, b268, b282) giao L2.
   - 22 clip giữ lại: chuyển động tại chỗ tự nhiên, hoặc tàu thuyền lớn có sóng như máy quay chạy theo (b56, b93, b252).
   - Quy tắc mới ghi QUY-TRINH §12: kiểu loop chỉ cho chuyển động tại chỗ; vật di chuyển thì tranh chỉ trùng một đầu clip.
+- **Kịch bản làm lại các clip loop, root duyệt từng khung đầu và lời nhắc:**
+  - **[L1] (c1c18ed), 18 mã lớp 1:** 14 cách A, 3 cách B "tiếp", b89 giữ loop nhưng sửa câu trăng.
+    - Bốn tranh nền trơn (b01, b19, b21, b36) dời chính tranh gốc sang lề làm khung đầu, không qua ChatGPT.
+    - Root kiểm commit: đúng 18 dòng, đúng mode, cách B có câu "ở trong ô, không mờ chồng".
+    - Lịch: Flow /u/3 từ 26 tới 30/11, mỗi ngày 3 mã cùng 2 mã nhóm 1–3; cách B trên Vids ngày 28/11.
+  - **[L2] (a5d988d), b181 và b282:** chuyển sang cách A, làm trên Flow từ 29/11.
+    - b235 và b268 làm cách B trên Vids ngày 27/11. Lời nhắc b235 root sửa để Minh vẫn hớt hải chạy vào lớp (đúng bài "Đồ dùng để ở đâu").
 - **[L2] tranh động — Vids /u/3 cách B "tiếp", lần 2 cho 4 mã lớp 2 (f2af12b):** Root xem từng tờ khung. Cả 4 KHÔNG NHẬN, vẫn khong_dat:
   - b219: ô tô chui vào gầm xe tập đi;
   - b284: người gánh bước tại chỗ;
