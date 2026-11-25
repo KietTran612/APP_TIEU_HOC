@@ -23,6 +23,14 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
     - b105 rước đèn: 7,0–7,5 s cả đoàn to vọt lên cỡ tranh, khung cuối lệch 26,9.
   - Lần 3 (cuối) của b82 và b105: khung đầu ChatGPT giữ đúng cỡ, chỉ dời nhân vật sang trái, thò qua mép trái. Root đã duyệt khung đầu và lời nhắc (không chữ số). Chạy Flow /u/3 từ 1/12.
   - Root kiểm commit: đúng 5 dòng video_manifest và 2 dòng kịch bản; ba file chủ dự án đang sửa không bị đụng.
+- **[L1] tranh động — khối Vids /u/1 chiều 25/11, 4 mã cách B "tiếp" (7a53bd4):** Root chép từng clip về máy xem, cắt ô vuông 9 khung và kiểm tiếng bằng Whisper (không có lời nói).
+  - NHẬN, chuyển cho_duyet kèm "ket": "giu":
+    - b60 chim chào mào: chim mẹ bay từ góc trên trái xuống đậu cành cạnh tổ rồi đứng mớm.
+    - b69 máy cày: máy cày đi thật sang phải, chậm; chim nhạn bay vào từ mép trái thành khoảng bảy con, như đàn chim bay ngang, hợp lý.
+  - KHÔNG NHẬN:
+    - b62 đàn sếu: sếu lớn vỗ cánh tại chỗ, đàn nhỏ xáo đội hình. Lần 2 Vids /u/1 sáng 26/11, lời nhắc mới root đã duyệt.
+    - b88 cầu sắt: giàn thép dày thêm ô giữa clip, đầu máy chạy ra khỏi tranh, đầu máy điện phun khói hơi nước. Lần 2 cách A trên Flow từ 1/12: khung đầu ChatGPT chỉ dời đoàn tàu, root đã so giàn thép trùng tranh.
+  - Root kiểm commit: đúng 4 dòng video_manifest, 4 dòng kịch bản; clip b60, b69 trong content/clips đúng bản Vids mới.
 - **Root kéo lịch Vids sớm một ngày (chủ dự án hỏi "tại sao chờ lâu vậy?"):**
   - Chiều 25/11 chạy 4 khối Vids: L1 /u/1 14:50, L2 /u/4 15:35, L1 /u/2 16:15, L2 /u/6 16:55.
   - Lịch 27/11 chuyển sang 26/11, lịch 28/11 sang 27/11. Còn 28–30/11 để làm lần 3 trước khi hạn mức Vids tháng 11 hết.
