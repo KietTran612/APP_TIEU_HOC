@@ -12,6 +12,12 @@ Phân công hiện tại xem ở [phan-cong-session.md](phan-cong-session.md). C
 
 ## 25/11/2026
 
+- **Root soát clip kiểu cũ loop (6dd12cb).** Chủ dự án 25/11: ảnh tĩnh chỉ cần là khung đầu hoặc khung cuối để clip không giật; ảnh động phải hợp lý, đúng nội dung.
+  - Lọc 239 clip loop đang phát (197 dat, 42 cho_duyet), còn 44 clip có lời nhắc di chuyển. Root xem tờ khung 8 nhịp của cả 44 (loop_soat_01…11.jpg).
+  - 22 KHÔNG NHẬN, chuyển khong_dat: đi tại chỗ, bị kéo về chỗ cũ, hoặc đổi nét vẽ giữa chừng. Lý do và cách làm lại (A/B) ghi trong ghi_chu.
+  - 18 mã lớp 1 giao L1; 4 mã lớp 2 (b181, b235, b268, b282) giao L2.
+  - 22 clip giữ lại: chuyển động tại chỗ tự nhiên, hoặc tàu thuyền lớn có sóng như máy quay chạy theo (b56, b93, b252).
+  - Quy tắc mới ghi QUY-TRINH §12: kiểu loop chỉ cho chuyển động tại chỗ; vật di chuyển thì tranh chỉ trùng một đầu clip.
 - **[L2] tranh động — Vids /u/3 cách B "tiếp", lần 2 cho 4 mã lớp 2 (f2af12b):** Root xem từng tờ khung. Cả 4 KHÔNG NHẬN, vẫn khong_dat:
   - b219: ô tô chui vào gầm xe tập đi;
   - b284: người gánh bước tại chỗ;
